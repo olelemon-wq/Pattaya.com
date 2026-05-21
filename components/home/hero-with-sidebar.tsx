@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FeaturedHeroCinematic } from "@/components/home/featured-hero-cinematic";
+import { PattayaWeatherWidget } from "@/components/home/pattaya-weather-widget";
 
 const events = [
   { date: "OCT 24", title: "Pattaya International Fireworks" },
@@ -72,25 +73,7 @@ export function HeroWithSidebar() {
           </div>
         </div>
 
-        {/* Weather */}
-        <div className="rounded-2xl bg-[#afccee80] p-4">
-          <h2 className="mb-3 text-sm font-bold text-black">
-            Pattaya Weather
-          </h2>
-          <div className="flex items-start justify-between">
-            <div>
-              <p className="text-4xl font-extrabold text-black">31°C</p>
-              <p className="text-xs font-semibold text-black">Feels like 34°</p>
-            </div>
-            <span className="text-4xl" aria-hidden="true">
-              ⛅
-            </span>
-          </div>
-          <div className="mt-3 flex gap-4 text-[10px] font-bold text-black">
-            <span>Sea &amp; UV: High</span>
-            <span>Wind: 12km/h</span>
-          </div>
-        </div>
+        <PattayaWeatherWidget />
 
         {/* Traffic */}
         <div className="rounded-2xl border border-[#e2e8f0] bg-white p-4 shadow-sm">
