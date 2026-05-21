@@ -1,4 +1,5 @@
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
+import { NewsFeaturedHeroCinematic } from "@/components/news/news-featured-hero-cinematic";
 import Image from "next/image";
 import Link from "next/link";
 import { newsImages } from "@/lib/design/news-images";
@@ -63,8 +64,8 @@ function NewsCard({
           <Badge className={badgeClass}>{badge}</Badge>
         </div>
       </div>
-      <div className="p-6">
-        <h3 className="mb-3 text-lg font-semibold leading-snug text-[#191c1d] transition-colors group-hover:text-[#455f88]">
+      <div className="p-4 sm:p-6">
+        <h3 className="mb-3 text-base font-semibold leading-snug text-[#191c1d] transition-colors group-hover:text-[#455f88] sm:text-lg">
           {title}
         </h3>
         <p className="mb-4 text-sm leading-relaxed text-[#444748]">{excerpt}</p>
@@ -84,50 +85,21 @@ function NewsCard({
 export function NewsHubPage() {
   return (
     <div data-full-bleed className="bg-[#f8f9fa] pb-16 text-[#191c1d]">
-      <BreakingNewsTicker variant="news" />
-      <div className="mx-auto max-w-[1280px] px-5 py-8 md:px-16">
+      <div className="relative z-10 shrink-0 shadow-sm">
+        <BreakingNewsTicker variant="news" />
+      </div>
+      <div className="mx-auto max-w-[1280px] px-4 pt-4 pb-10 sm:px-6 sm:pt-6 md:px-16 md:pt-8">
         {/* Featured City Updates + three cards below */}
-        <section className="mb-20 flex flex-col gap-6">
-          <Link
-            href="/news/local-news/city-updates"
-            className="group relative block h-[420px] w-full cursor-pointer overflow-hidden rounded-xl bg-[#e7e8e9] shadow-sm sm:h-[480px] lg:h-[520px]"
-          >
-            <Image
-              src={newsImages.heroFeatured}
-              alt="Pattaya bay shoreline at sunset"
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
-              priority
-              sizes="100vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#191c1d]/90 via-[#191c1d]/30 to-transparent" />
-            <div className="absolute left-6 top-6">
-              <Badge className="flex items-center gap-2 bg-[#455f88] text-white">
-                ★ SEO FEATURED
-              </Badge>
-            </div>
-            <div className="absolute bottom-10 left-6 right-6 md:left-10 md:right-10">
-              <span className="mb-2 block text-xs font-semibold uppercase tracking-widest text-[#ffb3b0]">
-                City Updates
-              </span>
-              <h1 className="mb-4 text-3xl font-bold leading-tight text-white md:text-5xl">
-                Pattaya Smart City Initiatives: Infrastructure Overhaul
-                Commences on Beach Road
-              </h1>
-              <p className="mb-6 max-w-2xl text-lg text-white/80">
-                City Hall unveils a 500 million THB plan to modernize waterfront
-                access and telecommunications cabling by Q4 2024.
-              </p>
-              <div className="flex items-center gap-4 text-sm text-white/60">
-                <span>By Editor-in-Chief</span>
-                <span className="h-1 w-1 rounded-full bg-white/40" />
-                <span>2 Hours Ago</span>
-              </div>
-            </div>
-          </Link>
+        <section className="mb-12 flex flex-col gap-5 sm:mb-20 sm:gap-6">
+          <NewsFeaturedHeroCinematic />
+          <p className="hidden flex-wrap items-center gap-3 px-1 text-sm text-[#777777] sm:flex">
+            <span>By Editor-in-Chief</span>
+            <span className="h-1 w-1 rounded-full bg-[#c4c7c8]" aria-hidden />
+            <span>2 Hours Ago</span>
+          </p>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            <div className="flex h-full flex-col justify-between rounded-xl border border-[#c4c7c8]/30 bg-white p-6 transition-colors hover:border-[#455f88]">
+          <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-3">
+            <div className="flex h-full flex-col justify-between rounded-xl border border-[#c4c7c8]/30 bg-white p-4 transition-colors hover:border-[#455f88] sm:p-6">
               <div>
                 <div className="mb-4 flex items-start justify-between">
                   <Badge className="bg-[#f3f4f5] text-[#455f88]">
@@ -137,7 +109,7 @@ export function NewsHubPage() {
                     🏢
                   </span>
                 </div>
-                <h3 className="mb-2 text-xl font-semibold leading-snug transition-colors hover:text-[#455f88]">
+                <h3 className="mb-2 text-lg font-semibold leading-snug transition-colors hover:text-[#455f88] sm:text-xl">
                   Wongamat Riviera: New Luxury Penthouse Units Released
                 </h3>
                 <p className="line-clamp-2 text-sm text-[#444748]">

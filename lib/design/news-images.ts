@@ -1,5 +1,8 @@
 /** Image URLs from Stitch screen: Pattaya News Hub (project 14411769462073198042) */
 export const newsImages = {
+  /** Cinematic hero — Pattaya bay at sunset (Stitch News Hub) */
+  heroCinematic:
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuDrglUrR9RvbLrNoWp8ows7Q1fIuG70Gy3DZftX1cARG_gJanwGczQpR3Sb7BIBJTRfmbXj9Vt_mmgfKGuzeJ-FtJIAC8HPUKYRG2rYG-HIxrhqIupGf1N9V5FKtz-sWg6_Pu-IWnVZZmqa-nkyM4DyY8ze5iJlO0F5NmXJi6hUZSN9LWr0ZllRPe3Na908Feq2OHeVo2u82RcAFR0UCd-zE9ZI-8uQZh4EfKYFrn49gbWtE3okU0UsWFJSa5N7pnISeuaRbo2YwwPa",
   heroFeatured:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuDrglUrR9RvbLrNoWp8ows7Q1fIuG70Gy3DZftX1cARG_gJanwGczQpR3Sb7BIBJTRfmbXj9Vt_mmgfKGuzeJ-FtJIAC8HPUKYRG2rYG-HIxrhqIupGf1N9V5FKtz-sWg6_Pu-IWnVZZmqa-nkyM4DyY8ze5iJlO0F5NmXJi6hUZSN9LWr0ZllRPe3Na908Feq2OHeVo2u82RcAFR0UCd-zE9ZI-8uQZh4EfKYFrn49gbWtE3okU0UsWFJSa5N7pnISeuaRbo2YwwPa",
   policeCrime:

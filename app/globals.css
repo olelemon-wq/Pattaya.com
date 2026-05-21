@@ -40,21 +40,21 @@ body {
   animation-play-state: paused;
 }
 
-/* Homepage featured hero — cinematic (runs after client mount) */
+/* Featured hero — cinematic (home + news) */
 @keyframes hero-ken-burns {
   from {
-    transform: scale(1.08);
+    transform: scale(1.1) translate(0, 0);
   }
   to {
-    transform: scale(1.18);
+    transform: scale(1.22) translate(-1.5%, -0.5%);
   }
 }
 
 @keyframes hero-cinematic-rise {
   from {
     opacity: 0;
-    transform: translateY(28px);
-    filter: blur(4px);
+    transform: translateY(36px);
+    filter: blur(6px);
   }
   to {
     opacity: 1;
@@ -72,50 +72,136 @@ body {
   }
 }
 
+@keyframes hero-cinematic-shine {
+  0% {
+    transform: translateX(-120%) skewX(-12deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.35;
+  }
+  45% {
+    opacity: 0.12;
+  }
+  100% {
+    transform: translateX(220%) skewX(-12deg);
+    opacity: 0;
+  }
+}
+
+@keyframes hero-cta-glow {
+  0%,
+  100% {
+    box-shadow: 0 8px 32px rgba(255, 115, 32, 0.4);
+  }
+  50% {
+    box-shadow: 0 10px 42px rgba(255, 115, 32, 0.55);
+  }
+}
+
+.hero-cinematic__vignette {
+  background: linear-gradient(
+    165deg,
+    rgba(10, 25, 47, 0.55) 0%,
+    rgba(10, 25, 47, 0.25) 40%,
+    rgba(10, 25, 47, 0.92) 100%
+  );
+}
+
+@media (max-width: 639px) {
+  .hero-cinematic__vignette {
+    background: linear-gradient(
+      180deg,
+      rgba(10, 25, 47, 0.35) 0%,
+      rgba(10, 25, 47, 0.5) 35%,
+      rgba(10, 25, 47, 0.95) 72%,
+      rgba(10, 25, 47, 0.98) 100%
+    );
+  }
+}
+
+.hero-cinematic__glow {
+  background: linear-gradient(
+    to top,
+    rgba(255, 115, 32, 0.22) 0%,
+    rgba(255, 115, 32, 0.06) 40%,
+    transparent 100%
+  );
+}
+
+.hero-cinematic__grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+.hero-cinematic__shine {
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.08) 48%,
+    rgba(255, 200, 150, 0.15) 50%,
+    rgba(255, 255, 255, 0.06) 52%,
+    transparent 60%
+  );
+}
+
 /* Idle: show content (SSR + before hydration) */
 .hero-cinematic[data-cinematic="idle"] .hero-cinematic__rise {
   opacity: 1;
   transform: none;
+  filter: none;
 }
 
 /* Active: Ken Burns + staggered copy */
 .hero-cinematic[data-cinematic="active"] .hero-cinematic__bg {
-  animation: hero-ken-burns 14s cubic-bezier(0.25, 1, 0.5, 1) infinite alternate;
-  transform-origin: center center;
+  animation: hero-ken-burns 18s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate;
+  transform-origin: center 40%;
 }
 
 .hero-cinematic[data-cinematic="active"] .hero-cinematic__bg.is-paused {
   animation-play-state: paused;
 }
 
-.hero-cinematic[data-cinematic="active"] .hero-cinematic__vignette {
-  animation: hero-cinematic-fade 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+.hero-cinematic[data-cinematic="active"] .hero-cinematic__shine {
+  animation: hero-cinematic-shine 2.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
+}
+
+.hero-cinematic[data-cinematic="active"] .hero-cinematic__vignette,
+.hero-cinematic[data-cinematic="active"] .hero-cinematic__glow {
+  animation: hero-cinematic-fade 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .hero-cinematic[data-cinematic="active"] .hero-cinematic__rise {
-  animation: hero-cinematic-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: hero-cinematic-rise 1s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .hero-cinematic[data-cinematic="active"] .hero-cinematic__rise--0 {
   animation-delay: 0ms;
 }
 .hero-cinematic[data-cinematic="active"] .hero-cinematic__rise--1 {
-  animation-delay: 80ms;
+  animation-delay: 100ms;
 }
 .hero-cinematic[data-cinematic="active"] .hero-cinematic__rise--2 {
-  animation-delay: 160ms;
+  animation-delay: 200ms;
 }
 .hero-cinematic[data-cinematic="active"] .hero-cinematic__rise--3 {
-  animation-delay: 240ms;
+  animation-delay: 320ms;
 }
 .hero-cinematic[data-cinematic="active"] .hero-cinematic__rise--4 {
-  animation-delay: 320ms;
+  animation-delay: 440ms;
+}
+
+.hero-cinematic[data-cinematic="active"] .hero-cinematic__cta {
+  animation: hero-cta-glow 3s ease-in-out 1.2s infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-cinematic[data-cinematic="active"] .hero-cinematic__bg,
+  .hero-cinematic[data-cinematic="active"] .hero-cinematic__shine,
   .hero-cinematic[data-cinematic="active"] .hero-cinematic__vignette,
-  .hero-cinematic[data-cinematic="active"] .hero-cinematic__rise {
+  .hero-cinematic[data-cinematic="active"] .hero-cinematic__glow,
+  .hero-cinematic[data-cinematic="active"] .hero-cinematic__rise,
+  .hero-cinematic[data-cinematic="active"] .hero-cinematic__cta {
     animation: none;
     opacity: 1;
     transform: none;
