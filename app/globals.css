@@ -1,0 +1,183 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f4f6f9;
+  --foreground: #0c1a33;
+  --brand: #f97316;
+  --brand-navy: #0c1a33;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand: var(--brand);
+  --color-brand-navy: var(--brand-navy);
+  --font-sans: var(--font-inter), var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), var(--font-geist-sans), system-ui, sans-serif;
+}
+
+@keyframes breaking-news-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.breaking-news-marquee-track {
+  animation: breaking-news-marquee 28s linear infinite;
+  will-change: transform;
+}
+
+.breaking-news-marquee-track.is-paused {
+  animation-play-state: paused;
+}
+
+/* Homepage featured hero — cinematic (runs after client mount) */
+@keyframes hero-ken-burns {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1.18);
+  }
+}
+
+@keyframes hero-cinematic-rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes hero-cinematic-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Idle: show content (SSR + before hydration) */
+.hero-cinematic[data-cinematic="idle"] .hero-cinematic__rise {
+  opacity: 1;
+  transform: none;
+}
+
+/* Active: Ken Burns + staggered copy */
+.hero-cinematic[data-cinematic="active"] .hero-cinematic__bg {
+  animation: hero-ken-burns 14s cubic-bezier(0.25, 1, 0.5, 1) infinite alternate;
+  transform-origin: center center;
+}
+
+.hero-cinematic[data-cinematic="active"] .hero-cinematic__bg.is-paused {
+  animation-play-state: paused;
+}
+
+.hero-cinematic[data-cinematic="active"] .hero-cinematic__vignette {
+  animation: hero-cinematic-fade 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-cinematic[data-cinematic="active"] .hero-cinematic__rise {
+  animation: hero-cinematic-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-cinematic[data-cinematic="active"] .hero-cinematic__rise--0 {
+  animation-delay: 0ms;
+}
+.hero-cinematic[data-cinematic="active"] .hero-cinematic__rise--1 {
+  animation-delay: 80ms;
+}
+.hero-cinematic[data-cinematic="active"] .hero-cinematic__rise--2 {
+  animation-delay: 160ms;
+}
+.hero-cinematic[data-cinematic="active"] .hero-cinematic__rise--3 {
+  animation-delay: 240ms;
+}
+.hero-cinematic[data-cinematic="active"] .hero-cinematic__rise--4 {
+  animation-delay: 320ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-cinematic[data-cinematic="active"] .hero-cinematic__bg,
+  .hero-cinematic[data-cinematic="active"] .hero-cinematic__vignette,
+  .hero-cinematic[data-cinematic="active"] .hero-cinematic__rise {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .breaking-news-marquee-track {
+    animation: none;
+    width: 100%;
+    will-change: auto;
+  }
+
+  .breaking-news-marquee-track > span:last-child {
+    display: none;
+  }
+
+  .breaking-news-marquee-track > span:first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    padding-right: 0;
+  }
+}
+
+/* Retirement visa page — staggered entrance */
+@keyframes visa-step-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.visa-timeline-step {
+  animation: visa-step-in 0.45s ease-out both;
+}
+
+.visa-req-card {
+  animation: visa-step-in 0.4s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .visa-timeline-step,
+  .visa-req-card {
+    animation: none;
+  }
+}
+
+.yacht-charter-card,
+.yacht-route-card {
+  animation: visa-step-in 0.45s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yacht-charter-card,
+  .yacht-route-card {
+    animation: none;
+  }
+}

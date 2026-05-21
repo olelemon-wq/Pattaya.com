@@ -1,0 +1,702 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Explore Pattaya | Pattaya.com - The Elite Pulse of the Coast</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#adc7f7",
+                    "on-tertiary-fixed-variant": "#8c1520",
+                    "primary-container": "#ffffff",
+                    "surface-dim": "#d9dadb",
+                    "on-secondary-container": "#3f5882",
+                    "error-container": "#ffdad6",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#e1e3e4",
+                    "secondary": "#455f88",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed": "#d6e3ff",
+                    "tertiary": "#ae2f34",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#edeeef",
+                    "surface": "#f8f9fa",
+                    "on-primary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "tertiary-container": "#ffffff",
+                    "on-surface": "#191c1d",
+                    "on-background": "#191c1d",
+                    "inverse-surface": "#2e3132",
+                    "on-tertiary-fixed": "#410006",
+                    "on-surface-variant": "#444748",
+                    "on-secondary-fixed": "#001b3c",
+                    "outline-variant": "#c4c7c8",
+                    "surface-variant": "#e1e3e4",
+                    "error": "#ba1a1a",
+                    "secondary-container": "#b6d0ff",
+                    "outline": "#747878",
+                    "on-primary-container": "#747676",
+                    "tertiary-fixed": "#ffdad8",
+                    "on-primary-fixed": "#1a1c1c",
+                    "surface-tint": "#5d5f5f",
+                    "primary-fixed": "#e2e2e2",
+                    "on-primary-fixed-variant": "#454747",
+                    "on-tertiary-container": "#ce4749",
+                    "on-secondary-fixed-variant": "#2d476f",
+                    "primary": "#5d5f5f",
+                    "tertiary-fixed-dim": "#ffb3b0",
+                    "surface-container-low": "#f3f4f5",
+                    "inverse-primary": "#c6c6c7",
+                    "surface-container-high": "#e7e8e9",
+                    "surface-bright": "#f8f9fa",
+                    "inverse-on-surface": "#f0f1f2",
+                    "background": "#f8f9fa",
+                    "on-error-container": "#93000a",
+                    "primary-fixed-dim": "#c6c6c7"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-gap": "80px",
+                    "container-max": "1280px",
+                    "unit": "8px",
+                    "margin-mobile": "20px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "display-lg-mobile": ["Montserrat"],
+                    "headline-md": ["Montserrat"],
+                    "headline-lg": ["Montserrat"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "display-lg": ["Montserrat"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-secondary-container">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant/30 shadow-sm">
+<div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<a class="font-display-lg font-bold text-secondary tracking-tight text-headline-sm md:text-headline-md" href="#">PATTAYA.COM</a>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#">Home</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#">News</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#">Living</a>
+<a class="font-label-md text-label-md text-secondary border-b-2 border-tertiary pb-1" href="#">Explore</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#">Business</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="relative group hidden md:block">
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-secondary py-2 transition-all duration-300">
+<span class="material-symbols-outlined text-[20px]">language</span>
+<span class="font-label-md">English</span>
+<span class="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover:rotate-180">expand_more</span>
+</button>
+<div class="absolute right-0 top-full mt-2 w-48 bg-surface/90 backdrop-blur-md border border-outline-variant/30 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[60] overflow-hidden">
+<div class="py-2">
+<a class="flex items-center px-4 py-2 text-body-md text-on-surface hover:bg-secondary/10 transition-colors" href="#">ภาษาไทย</a>
+<a class="flex items-center px-4 py-2 text-body-md text-secondary bg-secondary/5 font-semibold transition-colors" href="#">English</a>
+<a class="flex items-center px-4 py-2 text-body-md text-on-surface hover:bg-secondary/10 transition-colors" href="#">中文</a>
+<a class="flex items-center px-4 py-2 text-body-md text-on-surface hover:bg-secondary/10 transition-colors" href="#">Русский</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative h-[85vh] w-full overflow-hidden">
+<img alt="" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCK-LOxvUHxKw3nNQwbMeG_zxI-BXE5n76JrcOfpP4OtRHveNa9GTIeUham2YE2IOPziTy_DluCVTAB6MVcSEu07Yzbiiu4uvKu7DdUQgFwinJqU1P1o93dmPCh4Dw-LvEsd3h4IgZjJbHvRGyTvw9stYl3fEw7aypmDeSyDozxgAqLGDgv1TTTnkLNHQc0KzLMxB3baKjs11mx_xXH8k056URQzlMHR-kEVycEVvuOPtkfunqu1Vx7Cdh8N2MjVq4Pqs9OfF_eExB_">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20"></div>
+<div class="relative h-full flex flex-col items-center justify-center text-center px-margin-mobile">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-8 drop-shadow-lg">Discover Your Pattaya</h1>
+<div class="w-full max-w-2xl glass-panel p-2 rounded-full flex items-center shadow-2xl">
+<div class="flex-1 flex items-center px-6">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-body-md text-on-surface placeholder:text-outline px-3" placeholder="Search experiences, places, or tours..." type="text">
+</div>
+<button class="bg-tertiary text-on-tertiary px-8 py-4 rounded-full font-label-md hover:bg-tertiary/90 transition-all flex items-center gap-2">
+<span class="">Explore</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Icon-Driven Nav -->
+<section class="bg-surface-container-lowest py-8 border-b border-outline-variant/30 sticky top-20 z-40">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex items-center justify-start md:justify-center gap-6 md:gap-10 overflow-x-auto hide-scrollbar pb-2">
+<a class="flex flex-col items-center gap-3 group min-w-max transition-all duration-300" href="#">
+<div class="w-14 h-14 flex items-center justify-center bg-secondary/5 border border-secondary/20 rounded-full group-hover:bg-secondary group-hover:text-white group-hover:shadow-lg group-hover:-translate-y-1 transition-all duration-300 text-secondary">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: &quot;FILL&quot; 1;">beach_access</span>
+</div>
+<span class="font-display font-semibold text-[10px] uppercase tracking-[0.15em] text-secondary">Beaches</span>
+</a>
+<a class="flex flex-col items-center gap-3 group min-w-max transition-all duration-300" href="#">
+<div class="w-14 h-14 flex items-center justify-center bg-surface-container border border-outline-variant/30 rounded-full group-hover:bg-secondary group-hover:text-white group-hover:shadow-lg group-hover:-translate-y-1 transition-all duration-300 text-on-surface-variant">
+<span class="material-symbols-outlined text-[24px]">kayaking</span>
+</div>
+<span class="font-display font-semibold text-[10px] uppercase tracking-[0.15em] text-on-surface-variant group-hover:text-secondary">Islands</span>
+</a>
+<a class="flex flex-col items-center gap-3 group min-w-max transition-all duration-300" href="#">
+<div class="w-14 h-14 flex items-center justify-center bg-surface-container border border-outline-variant/30 rounded-full group-hover:bg-secondary group-hover:text-white group-hover:shadow-lg group-hover:-translate-y-1 transition-all duration-300 text-on-surface-variant">
+<span class="material-symbols-outlined text-[24px]">restaurant</span>
+</div>
+<span class="font-display font-semibold text-[10px] uppercase tracking-[0.15em] text-on-surface-variant group-hover:text-secondary">Luxury Dining</span>
+</a>
+<a class="flex flex-col items-center gap-3 group min-w-max transition-all duration-300" href="#">
+<div class="w-14 h-14 flex items-center justify-center bg-surface-container border border-outline-variant/30 rounded-full group-hover:bg-secondary group-hover:text-white group-hover:shadow-lg group-hover:-translate-y-1 transition-all duration-300 text-on-surface-variant">
+<span class="material-symbols-outlined text-[24px]">local_dining</span>
+</div>
+<span class="font-display font-semibold text-[10px] uppercase tracking-[0.15em] text-on-surface-variant group-hover:text-secondary">Local Food</span>
+</a>
+<a class="flex flex-col items-center gap-3 group min-w-max transition-all duration-300" href="#">
+<div class="w-14 h-14 flex items-center justify-center bg-surface-container border border-outline-variant/30 rounded-full group-hover:bg-secondary group-hover:text-white group-hover:shadow-lg group-hover:-translate-y-1 transition-all duration-300 text-on-surface-variant">
+<span class="material-symbols-outlined text-[24px]">coffee</span>
+</div>
+<span class="font-display font-semibold text-[10px] uppercase tracking-[0.15em] text-on-surface-variant group-hover:text-secondary">Cafes</span>
+</a>
+<a class="flex flex-col items-center gap-3 group min-w-max transition-all duration-300" href="#">
+<div class="w-14 h-14 flex items-center justify-center bg-surface-container border border-outline-variant/30 rounded-full group-hover:bg-secondary group-hover:text-white group-hover:shadow-lg group-hover:-translate-y-1 transition-all duration-300 text-on-surface-variant">
+<span class="material-symbols-outlined text-[24px]">shopping_bag</span>
+</div>
+<span class="font-display font-semibold text-[10px] uppercase tracking-[0.15em] text-on-surface-variant group-hover:text-secondary">Shopping</span>
+</a>
+<a class="flex flex-col items-center gap-3 group min-w-max transition-all duration-300" href="#">
+<div class="w-14 h-14 flex items-center justify-center bg-surface-container border border-outline-variant/30 rounded-full group-hover:bg-secondary group-hover:text-white group-hover:shadow-lg group-hover:-translate-y-1 transition-all duration-300 text-on-surface-variant">
+<span class="material-symbols-outlined text-[24px]">storefront</span>
+</div>
+<span class="font-display font-semibold text-[10px] uppercase tracking-[0.15em] text-on-surface-variant group-hover:text-secondary">Markets</span>
+</a>
+<a class="flex flex-col items-center gap-3 group min-w-max transition-all duration-300" href="#">
+<div class="w-14 h-14 flex items-center justify-center bg-surface-container border border-outline-variant/30 rounded-full group-hover:bg-secondary group-hover:text-white group-hover:shadow-lg group-hover:-translate-y-1 transition-all duration-300 text-on-surface-variant">
+<span class="material-symbols-outlined text-[24px]">family_restroom</span>
+</div>
+<span class="font-display font-semibold text-[10px] uppercase tracking-[0.15em] text-on-surface-variant group-hover:text-secondary">Family</span>
+</a>
+<a class="flex flex-col items-center gap-3 group min-w-max transition-all duration-300" href="#">
+<div class="w-14 h-14 flex items-center justify-center bg-surface-container border border-outline-variant/30 rounded-full group-hover:bg-secondary group-hover:text-white group-hover:shadow-lg group-hover:-translate-y-1 transition-all duration-300 text-on-surface-variant">
+<span class="material-symbols-outlined text-[24px]">directions_boat</span>
+</div>
+<span class="font-display font-semibold text-[10px] uppercase tracking-[0.15em] text-on-surface-variant group-hover:text-secondary">Yacht</span>
+</a>
+<a class="flex flex-col items-center gap-3 group min-w-max transition-all duration-300" href="#">
+<div class="w-14 h-14 flex items-center justify-center bg-surface-container border border-outline-variant/30 rounded-full group-hover:bg-secondary group-hover:text-white group-hover:shadow-lg group-hover:-translate-y-1 transition-all duration-300 text-on-surface-variant">
+<span class="material-symbols-outlined text-[24px]">diamond</span>
+</div>
+<span class="font-display font-semibold text-[10px] uppercase tracking-[0.15em] text-on-surface-variant group-hover:text-secondary">Hidden Gems</span>
+</a>
+<a class="flex flex-col items-center gap-3 group min-w-max transition-all duration-300" href="#">
+<div class="w-14 h-14 flex items-center justify-center bg-surface-container border border-outline-variant/30 rounded-full group-hover:bg-secondary group-hover:text-white group-hover:shadow-lg group-hover:-translate-y-1 transition-all duration-300 text-on-surface-variant">
+<span class="material-symbols-outlined text-[24px]">spa</span>
+</div>
+<span class="font-display font-semibold text-[10px] uppercase tracking-[0.15em] text-on-surface-variant group-hover:text-secondary">Wellness</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Section 2: Vertical Priority -->
+<section class="py-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Must-Visit & Top Bookings -->
+<div class="lg:col-span-8 space-y-12">
+<div class="flex justify-between items-end">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Must-Visit &amp; Top Bookings</h2>
+<a class="text-secondary font-label-md flex items-center gap-1 hover:underline" href="#">View All <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Beaches Card -->
+<div class="group relative aspect-[4/5] rounded-3xl overflow-hidden shadow-lg border border-outline-variant/30">
+<img alt="" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida/ADBb0uiHUYTaNG21cWRCZXiWaFYg57obYoUF-tpimAbBudlXb3-zwkfymJmwfbqdVw6qMpeVtpozjPC38xquzz1wJ8XnDkseo9X5-R1F9P-8FKXOZ37p4SjKPGClo7tkmu8_bEw_jJKk7IcjlF_dy37YGNJHHrq2hcUUvlVye6XGXSfVmLSwHPzknW4zEqL3iaZmGyUgjZl5FSayVrqdpP5OXKDfcvBG4bSTi8muZEW6EibruvINHtmdWuIeFh7T">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<span class="bg-tertiary text-on-tertiary text-[10px] uppercase font-bold px-3 py-1 rounded-full mb-3 inline-block">Best Seller</span>
+<h3 class="font-headline-md text-headline-md text-white mb-2">Pristine Island Hopping</h3>
+<p class="text-white/80 font-body-md mb-6 line-clamp-2">Discover the hidden lagoons and crystal clear waters of Koh Larn and beyond.</p>
+<div class="flex gap-3">
+<button class="flex-1 bg-white text-on-surface py-3 rounded-xl font-label-md hover:bg-surface-container-lowest transition-all">See Map</button>
+<button class="flex-1 bg-secondary text-on-secondary py-3 rounded-xl font-label-md hover:opacity-90 transition-all">Book Tour</button>
+</div>
+</div>
+</div>
+<!-- Islands Card (Simplified for Grid Rhythm) -->
+<div class="group relative aspect-[4/5] rounded-3xl overflow-hidden shadow-lg border border-outline-variant/30">
+<img alt="" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida/ADBb0uiHUYTaNG21cWRCZXiWaFYg57obYoUF-tpimAbBudlXb3-zwkfymJmwfbqdVw6qMpeVtpozjPC38xquzz1wJ8XnDkseo9X5-R1F9P-8FKXOZ37p4SjKPGClo7tkmu8_bEw_jJKk7IcjlF_dy37YGNJHHrq2hcUUvlVye6XGXSfVmLSwHPzknW4zEqL3iaZmGyUgjZl5FSayVrqdpP5OXKDfcvBG4bSTi8muZEW6EibruvINHtmdWuIeFh7T">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<span class="bg-secondary text-on-secondary text-[10px] uppercase font-bold px-3 py-1 rounded-full mb-3 inline-block">Popular</span>
+<h3 class="font-headline-md text-headline-md text-white mb-2">Coral Coast Discovery</h3>
+<p class="text-white/80 font-body-md mb-6 line-clamp-2">The ultimate guide to Pattaya's most exclusive beach clubs and sunset spots.</p>
+<div class="flex gap-3">
+<button class="flex-1 bg-white text-on-surface py-3 rounded-xl font-label-md hover:bg-surface-container-lowest transition-all">See Map</button>
+<button class="flex-1 bg-secondary text-on-secondary py-3 rounded-xl font-label-md hover:opacity-90 transition-all">Book Tour</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pattaya Dining Guide -->
+<div class="space-y-8 pt-12 border-t border-outline-variant/20">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="space-y-2">
+<h2 class="font-display-lg text-headline-lg text-on-surface">Pattaya Dining Guide</h2>
+<p class="text-on-surface-variant font-body-md">Curated culinary experiences for the discerning palate.</p>
+</div>
+<div class="flex gap-2 p-1 bg-surface-container-low rounded-xl">
+<button class="px-6 py-2.5 rounded-lg font-label-md bg-white text-secondary shadow-sm transition-all">Luxury Dining</button>
+<button class="px-6 py-2.5 rounded-lg font-label-md text-on-surface-variant hover:bg-white/50 transition-all">Local Food</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Sky Gallery Card -->
+<div class="group relative rounded-[32px] overflow-hidden bg-white border border-outline-variant/30 hover:shadow-2xl transition-all duration-500">
+<div class="aspect-[16/10] overflow-hidden">
+<img alt="Sky Gallery Cliffside Signature Dish" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ2ulLVoneBNLeyKyoWxMF0rilBglP2n3AyVfmH1IYsWhsPflauGPGH4lLPh_HDdTthyxEIfhIctLInnv7w5sZetKZCRSFFQFRpoq3vYzjJq9yV7xAnqs6lpf1oyvrS6TAzcjXfEoxU-TF_VuKJ3mvg5o_2pWl2o2fT4KJT2DX5dPYM-UTccR5IUOC4UdObWpbEnEBCzuYSHC64CtEgb7nzW5BmLrax78AsNNRfWi4bTb82i-oEx86JLRH--kYRHMV4PYBSRN5QpwM">
+</div>
+<div class="p-8 relative">
+<div class="absolute -top-12 left-8 bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-full shadow-sm">
+<span class="text-[11px] text-tertiary font-bold uppercase tracking-[0.2em]">Sponsored</span>
+</div>
+<div class="flex justify-between items-start mb-4">
+<h4 class="font-display text-headline-md text-on-surface leading-tight">Sky Gallery Cliffside</h4>
+<div class="flex items-center text-secondary">
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="ml-1 font-label-md">4.9</span>
+</div>
+</div>
+<p class="text-on-surface-variant font-body-md mb-8 leading-relaxed">Savor world-class fusion cuisine with panoramic clifftop views of the Gulf of Thailand at Pattaya's most iconic sunset destination.</p>
+<div class="flex items-center justify-between">
+<span class="text-[12px] font-bold text-outline uppercase tracking-widest">Pratumnak Hill</span>
+<a class="flex items-center gap-2 text-secondary font-label-md group/link underline-offset-4 hover:underline" href="#">
+            Explore Menu
+            <span class="material-symbols-outlined text-[18px] transition-transform group-hover/link:translate-x-1">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Cave Beach Club Card -->
+<div class="group relative rounded-[32px] overflow-hidden bg-white border border-outline-variant/30 hover:shadow-2xl transition-all duration-500">
+<div class="aspect-[16/10] overflow-hidden">
+<img alt="Cave Beach Club Interior" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdCQ7xX4hDWOhumQSrarSYbt-tHWKem7S4r5B30ENlUXIu1oDTICMVxKjOqfDtxIvVNRwu3HqdWemTgr_9DR5kjsiwJex6ADRlicITaHbH4nbomEL5XLn9xmFIhuaArBOxSz-ypYA467YgKWmIEDQvQfiZ3SrP4L_JgzbQod0kfnVkQnnSpBoSavpFPVR42r-SiBMqkvQ8Umz8vUunIoOvfhU4bIWieCnz_l-MVumFfy_bMNd2m6RLGAoQUt3bumlxzZgON60wx09P">
+</div>
+<div class="p-8 relative">
+<div class="absolute -top-12 left-8 bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-full shadow-sm">
+<span class="text-[11px] text-tertiary font-bold uppercase tracking-[0.2em]">Sponsored</span>
+</div>
+<div class="flex justify-between items-start mb-4">
+<h4 class="font-display text-headline-md text-on-surface leading-tight">Cave Beach Club</h4>
+<div class="flex items-center text-secondary">
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="ml-1 font-label-md">4.8</span>
+</div>
+</div>
+<p class="text-on-surface-variant font-body-md mb-8 leading-relaxed">Escape to a bohemian sanctuary. Experience sophisticated rustic dining directly on the sand with a curation of elite tropical cocktails.</p>
+<div class="flex items-center justify-between">
+<span class="text-[12px] font-bold text-outline uppercase tracking-widest">Na Jomtien</span>
+<a class="flex items-center gap-2 text-secondary font-label-md group/link underline-offset-4 hover:underline" href="#">
+            Book Table
+            <span class="material-symbols-outlined text-[18px] transition-transform group-hover/link:translate-x-1">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Content: Relax & Wellness -->
+<div class="lg:col-span-4 space-y-12">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Relax &amp; Wellness</h2>
+<div class="group relative bg-surface-container-highest rounded-[40px] overflow-hidden flex flex-col h-full shadow-2xl border border-white/20 transition-all duration-500 hover:shadow-secondary/10">
+<!-- Image Container -->
+<div class="h-[400px] relative overflow-hidden">
+<img alt="Aura Sanctuary Luxury Interior" class="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110" src="https://lh3.googleusercontent.com/aida/ADBb0uj1wo1bjw4_P4BoDTzVRw8llKoAjrVfcyHVX555VnlQHlM_QQqxMsFIjYMzKXi61g16Vi6dVeVOkutnQrPxUpUcUx9gtaLLOVUxyI6d5gp9wiGapWLocymvAmvRssztrwJd521yLsnWv5c3FVcVkIVsizrWP2qdW_UV5OYYhRjHtEPfRmv6Yvyjk_RA2jb0glzre0d5SrJ-YxdqxoGgmWk97g9-0amt9l1Q20QVU9AG5H9oRL4nQTZH3Rg">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<div class="absolute top-6 left-6">
+<span class="px-4 py-2 bg-white/90 backdrop-blur-md rounded-full text-[11px] font-bold text-tertiary uppercase tracking-[0.2em] shadow-lg">Elite Choice</span>
+</div>
+</div>
+<!-- Content Area with Glassmorphism Effect -->
+<div class="p-8 flex flex-col flex-1 bg-white/80 backdrop-blur-xl -mt-12 relative rounded-t-[40px] border-t border-white/50"><div class="flex justify-between items-start mb-6">
+<div class="space-y-1.5 flex-1">
+<span class="text-secondary font-bold text-[11px] uppercase tracking-[0.25em] mb-1 block">Global Wellness Destination</span>
+<h3 class="font-display text-[36px] font-extrabold text-on-surface leading-[1.1]">Aura Sanctuary</h3>
+<p class="text-on-surface-variant font-medium text-[13px] italic">บริการนวดไทยแผนโบราณและสปาระดับเวิลด์คลาส</p>
+</div>
+<div class="flex flex-col items-end gap-1 ml-4">
+<div class="flex text-[#FFD700] mb-1">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+</div>
+<span class="text-[10px] font-bold text-on-surface/60 uppercase tracking-widest whitespace-nowrap">4.9 (120 รีวิว)</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-3 py-1 bg-secondary/5 border border-secondary/10 rounded-lg text-[9px] font-extrabold text-secondary uppercase tracking-widest">พรีเมียม</span>
+<span class="px-3 py-1 bg-secondary/5 border border-secondary/10 rounded-lg text-[9px] font-extrabold text-secondary uppercase tracking-widest">วิวดาดฟ้า</span>
+<span class="px-3 py-1 bg-white/40 border border-outline-variant/20 rounded-lg text-[9px] font-extrabold text-on-surface-variant uppercase tracking-widest">วิวทะเล</span>
+</div>
+<div class="space-y-6 mb-12">
+<p class="font-body-md text-on-surface-variant leading-relaxed text-[15px]">
+    Indulge in a premium spa experience that blends traditional Thai techniques with modern luxury aromatherapy.
+  </p>
+<ul class="space-y-4">
+<li class="flex items-center gap-4 text-on-surface-variant group/item">
+<div class="w-8 h-8 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary group-hover/item:bg-secondary group-hover/item:text-white transition-colors">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</div>
+<span class="text-label-md font-semibold tracking-tight">Award-winning therapists</span>
+</li>
+<li class="flex items-center gap-4 text-on-surface-variant group/item">
+<div class="w-8 h-8 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary group-hover/item:bg-secondary group-hover/item:text-white transition-colors">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+</div>
+<span class="text-label-md font-semibold tracking-tight">Signature 90-minute treatment</span>
+</li>
+</ul>
+</div>
+<div class="mt-auto">
+<div class="flex items-end justify-between mb-8 pb-6 border-b border-outline-variant/20">
+<div>
+<span class="text-on-surface-variant text-[10px] uppercase font-bold tracking-[0.25em] mb-2 block">Investment in Wellness</span>
+<div class="flex items-baseline gap-1.5">
+<span class="text-[38px] font-display font-extrabold tracking-tighter text-secondary">฿2,400</span>
+<span class="text-label-md text-on-surface-variant font-medium">/ session</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<button class="w-full text-white py-4 rounded-xl font-label-md hover:bg-secondary transition-all shadow-lg uppercase tracking-[0.15em] text-[13px] font-bold bg-secondary">
+      จองคิวออนไลน์ (Book Now)
+    </button>
+<button class="w-full bg-white border border-outline-variant text-on-surface py-4 rounded-xl font-label-md hover:bg-surface-container transition-all uppercase tracking-[0.15em] text-[13px] font-bold">
+      เช็กราคาประเมิน (Check Price)
+    </button>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Horizontal Carousels -->
+<section class="bg-surface-container-lowest py-section-gap overflow-hidden">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-8 flex justify-between items-end">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Lifestyle &amp; Local Vibes</h2>
+<p class="text-on-surface-variant font-body-md">The trendiest beach cafes and sunset spots.</p>
+</div>
+<div class="flex gap-2">
+<button class="p-2 rounded-full border border-outline-variant hover:bg-surface transition-all">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-2 rounded-full border border-outline-variant bg-surface-container hover:bg-surface-container-highest transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="flex gap-gutter overflow-x-auto hide-scrollbar px-margin-mobile md:px-margin-desktop"><!-- Coco Lounge & Bar -->
+<div class="min-w-[320px] md:min-w-[400px] group cursor-pointer">
+<div class="aspect-[16/10] rounded-[2rem] overflow-hidden mb-6 relative shadow-xl border border-outline-variant/20 bg-surface-container">
+<img alt="Coco Lounge &amp; Bar" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChFtDN2fSYC-aiNL35_yBu_Nsx6F4N4VjdjZ9KV-inPn-UQCWWQmrZUiVmGt-2-VRatwvu1vrDSFM7EIw8Wa0erXSS1_QzFGYB4-RHdo9dVDE6FHq7UksrnC423qmYOZ7EZSseCwADSzZKbEkjYgKP7ijyZUcDpQYFILrZNfXawRwn2ni-tobZKrfH58QtiUwzZIkW4o51YAbdkY1md3lyjJJEAH_n2dzh9xH95MtfvDe_dHP0nCTLlJ2JY-yrNuXpKssstZYgb-V3">
+<div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+<div class="absolute top-5 left-5 bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-full shadow-sm">
+<span class="text-[10px] font-bold text-secondary uppercase tracking-[0.15em]">Ocean Front</span>
+</div>
+</div>
+<div class="px-2">
+<h4 class="font-display text-headline-md text-on-surface group-hover:text-secondary transition-colors mb-2">Coco Lounge &amp; Bar</h4>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="text-label-md font-medium">Jomtien Beach</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="text-label-md font-semibold">Open until 11 PM</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Horizon Terrace -->
+<div class="min-w-[320px] md:min-w-[400px] group cursor-pointer">
+<div class="aspect-[16/10] rounded-[2rem] overflow-hidden mb-6 relative shadow-xl border border-outline-variant/20 bg-surface-container">
+<img alt="Horizon Terrace" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChFtDN2fSYC-aiNL35_yBu_Nsx6F4N4VjdjZ9KV-inPn-UQCWWQmrZUiVmGt-2-VRatwvu1vrDSFM7EIw8Wa0erXSS1_QzFGYB4-RHdo9dVDE6FHq7UksrnC423qmYOZ7EZSseCwADSzZKbEkjYgKP7ijyZUcDpQYFILrZNfXawRwn2ni-tobZKrfH58QtiUwzZIkW4o51YAbdkY1md3lyjJJEAH_n2dzh9xH95MtfvDe_dHP0nCTLlJ2JY-yrNuXpKssstZYgb-V3">
+<div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+<div class="absolute top-5 left-5 bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-full shadow-sm">
+<span class="text-[10px] font-bold text-secondary uppercase tracking-[0.15em]">Sunset View</span>
+</div>
+</div>
+<div class="px-2">
+<h4 class="font-display text-headline-md text-on-surface group-hover:text-secondary transition-colors mb-2">Horizon Terrace</h4>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="text-label-md font-medium">Pattaya Beach</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="text-label-md font-semibold">Open until 2 AM</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bake & Bloom -->
+<div class="min-w-[320px] md:min-w-[400px] group cursor-pointer">
+<div class="aspect-[16/10] rounded-[2rem] overflow-hidden mb-6 relative shadow-xl border border-outline-variant/20 bg-surface-container">
+<img alt="Bake &amp; Bloom" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChFtDN2fSYC-aiNL35_yBu_Nsx6F4N4VjdjZ9KV-inPn-UQCWWQmrZUiVmGt-2-VRatwvu1vrDSFM7EIw8Wa0erXSS1_QzFGYB4-RHdo9dVDE6FHq7UksrnC423qmYOZ7EZSseCwADSzZKbEkjYgKP7ijyZUcDpQYFILrZNfXawRwn2ni-tobZKrfH58QtiUwzZIkW4o51YAbdkY1md3lyjJJEAH_n2dzh9xH95MtfvDe_dHP0nCTLlJ2JY-yrNuXpKssstZYgb-V3">
+<div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+<div class="absolute top-5 left-5 bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-full shadow-sm">
+<span class="text-[10px] font-bold text-secondary uppercase tracking-[0.15em]">Artisan Coffee</span>
+</div>
+</div>
+<div class="px-2">
+<h4 class="font-display text-headline-md text-on-surface group-hover:text-secondary transition-colors mb-2">Bake &amp; Bloom</h4>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="text-label-md font-medium">Pratumnak Hill</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="text-label-md font-semibold">Open until 6 PM</span>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<!-- Shopping & Family Grid -->
+<section class="py-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<!-- Shopping & Markets Section -->
+<div class="space-y-8">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Shopping &amp; Markets</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Card 1: Luxury Malls -->
+<div class="group relative aspect-[4/5] rounded-3xl overflow-hidden shadow-lg border border-outline-variant/30">
+<img alt="Central Festival Pattaya Beach" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBvTUlsfn5qeEarbJEOnddBQ75gGaExY8eWNlkdQtRNNMprjcm-LXeZCdxXqFFEZDVOhQsIat-Rq7a4IdUwbI7WSV0bJu4vGjI7SsGWR7q1tX6--NPrz4JJmm7jmTnUEfgl7iupae-g2u7JTFEa3wDMAY8GAaCf25N7qQchaGuyvn-mY_91pYNEwnZz1_qF2Iz5oDRp483vdsP6_I2rlgSrGZiL4hVwXJkFxN8FzyAalGCvoFqkKtjKaBYRIrEDwrb7tRbPOwKdoPG">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<span class="bg-secondary text-on-secondary text-[10px] uppercase font-bold px-3 py-1 rounded-full mb-3 inline-block">Luxury Malls</span>
+<h3 class="font-headline-md text-headline-md text-white mb-2">Central Festival Pattaya Beach</h3>
+<p class="text-white/80 font-body-md mb-6 line-clamp-2">Pattaya's flagship oceanfront mall featuring international brands, premium dining, and a cinema complex.</p>
+<div class="flex">
+<a class="flex-1 bg-white text-on-surface py-3 rounded-xl font-label-md hover:bg-surface-container-lowest transition-all text-center" href="#">View Directory</a>
+</div>
+</div>
+</div>
+<!-- Card 2: Night Markets -->
+<div class="group relative aspect-[4/5] rounded-3xl overflow-hidden shadow-lg border border-outline-variant/30">
+<img alt="Thepprasit Night Market" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMYEWqYrVvLo2t35wsBjZPbzvPQbKJK9Xcixl1JOy-t4vUKsMsKheKAaEWeXmMH3T74lx3uTRywwme5meJAc5ygF-ur6CaxXJrx-AHsvcKFQDtjED0Ola6Nr8FcVEB5f1mJ0jEJKMb5UHxVr74oMTA51SFKP6hyMsfo_CmpSsv6EpUCeq6MjBH6FHiJq_l--W_2KhhQN_39Sga9KcJWtR3Rmxiu93g6raYINHqpqHVSNkxcEheOtKeZK4YKrSUkQBsnEXP8NzUw8MW">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<span class="bg-tertiary text-on-tertiary text-[10px] uppercase font-bold px-3 py-1 rounded-full mb-3 inline-block">Local Markets</span>
+<h3 class="font-headline-md text-headline-md text-white mb-2">Thepprasit Night Market</h3>
+<p class="text-white/80 font-body-md mb-6 line-clamp-2">A must-visit for street food lovers and bargain hunters, offering a wide array of local goods and vibrant energy.</p>
+<div class="flex">
+<a class="flex-1 bg-white text-on-surface py-3 rounded-xl font-label-md hover:bg-surface-container-lowest transition-all text-center" href="#">Explore Stalls</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Family Activities Section -->
+<div class="space-y-8">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Family Activities</h2>
+<div class="bg-surface-container p-6 rounded-[32px] h-full flex flex-col md:flex-row gap-6">
+<div class="md:w-1/2 aspect-square rounded-2xl overflow-hidden">
+<img alt="Columbia Pictures Aquaverse" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uik0Bz9X3vyFyurzhBRWUxUcaiWSLzEyLRu1vF87TjO5zTHlJfYcAg8vNoj5MMZBaICVy9d5cYNDjL9NXmR5HvkrhJgPolNhCM2zb_ojN3VHVfQBsbtjmTg4Systo40pCFTGqJiq1t8dJzpEdOSGXu2lvnsXMHYYMxjVS8hQE2wZMKe6e0PIN5amnlhr6pycLtZ44hLa8LkLgAcnxujxnxthiuPCLb96zYqNmQP-wPaPLH4x5tEMrmmMXsS">
+</div>
+<div class="md:w-1/2 flex flex-col justify-center">
+<span class="text-secondary font-bold text-[12px] uppercase mb-2">Water Parks</span>
+<h3 class="font-headline-lg text-headline-md mb-4">Columbia Pictures Aquaverse</h3>
+<p class="text-on-surface-variant font-body-md mb-6">World's first Columbia Pictures theme park. The perfect day out for kids and adults alike.</p>
+<button class="bg-secondary text-on-secondary py-3 px-6 rounded-xl font-label-md w-max hover:shadow-lg transition-all">Buy Tickets</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Premium & SEO -->
+<section class="py-section-gap">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Exclusive Yacht Life -->
+<div class="relative rounded-[40px] overflow-hidden h-[600px] mb-section-gap group">
+<img alt="" class="w-full h-full object-cover transition-transform duration-[3s] group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/ADBb0uh3TEpd9izbXZnxng63VZD1k6Nr_CMSbLBud63FyVkIEcSNmulh8-5iGFBhHOAk4ccxWfT8mqf1b7qIf2HRUW7jYYu7Jp_KmzlNqyie-QckMOcOJPOCk6EQ2h830lzPgeLeckbQ30rIqihoZXiBa1InZkbFgPcDkNGVm26FBa5ZGIrprCUMkZqanwfCDj2R_DlWb4MMT4dCPlDl6RVbBk_3YZcUvh3F0YZ5iYYNyzqfthUN_G8pQ779w4I">
+<div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
+<div class="absolute inset-0 flex items-center px-12 md:px-24">
+<div class="max-w-xl">
+<span class="text-tertiary-fixed-dim font-bold text-label-md uppercase tracking-widest mb-4 block">Ultra-Luxury Experience</span>
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-6 leading-tight">Elite Yacht Life &amp; Charters</h2>
+<p class="text-white/80 font-body-lg mb-8">Access the most prestigious fleet of private yachts in the Gulf of Thailand. Tailored itineraries for the discerning traveler.</p>
+<button class="bg-white text-secondary px-10 py-5 rounded-full font-label-md hover:bg-secondary hover:text-white transition-all transform hover:-translate-y-1">Contact for Charter</button>
+</div>
+</div>
+</div>
+<!-- Hidden Gems Articles -->
+<div class="space-y-12"><div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div class="space-y-2">
+<h2 class="font-display-lg text-headline-lg text-on-surface tracking-tight">Hidden Gems Articles</h2>
+<p class="text-on-surface-variant font-body-md">Curated insights for the modern explorer.</p>
+</div>
+<a class="text-secondary font-label-md flex items-center gap-1 hover:underline underline-offset-4" href="#">Read All Stories <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+<!-- Article 1: Magazine -->
+<div class="group cursor-pointer flex flex-col">
+<div class="aspect-[4/3] rounded-xl overflow-hidden mb-6 relative shadow-lg">
+<img alt="10 Hidden Spots Only Locals Know" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFJ7X4CdEv2oYq_PXJBLXveq2Xbzjtg1UGMUcYnk1OtNpdqM3y7gY44E5YibzP3Tp97A2XCPVA6_HVkR5Nck_4UgHktTMAddnK0glfXroBUYaQe7wgcfDr8ticmZCAjAJBaeoiuqi_-9RzbdJbKHoxfny9ERl8lK7pwQ-Wf75w63cV9G4P4_oVaphUDQZtxyjZH1Sm_ZGk7-z1VuzmjsygiGQrgkuIEmQaO3BaH8rK15uCGg4v969v_8JwnHnpoHArjrXrIHQKbhmt">
+<div class="absolute top-4 left-4">
+<span class="px-3 py-1 bg-white/90 backdrop-blur-md rounded-full text-[10px] font-bold text-tertiary uppercase tracking-[0.2em] shadow-sm">Magazine</span>
+</div>
+<button class="absolute top-4 right-4 p-2 bg-black/20 backdrop-blur-md rounded-full text-white hover:bg-black/40 transition-colors">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+</button>
+</div>
+<h3 class="font-display text-headline-md text-on-surface group-hover:text-secondary transition-colors leading-tight mb-3">10 Hidden Spots Only Locals Know</h3>
+<p class="text-on-surface-variant font-body-md line-clamp-3 mb-6">From secret viewpoints to the best street stalls in Naklua, we go off the beaten path to discover the authentic soul of the city.</p>
+<div class="mt-auto flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container"></div>
+<span class="text-label-md text-on-surface-variant font-semibold">5 min read</span>
+</div>
+</div>
+<!-- Article 2: Guide -->
+<div class="group cursor-pointer flex flex-col">
+<div class="aspect-[4/3] rounded-xl overflow-hidden mb-6 relative shadow-lg">
+<img alt="The Ultimate Weekend Guide" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCK-LOxvUHxKw3nNQwbMeG_zxI-BXE5n76JrcOfpP4OtRHveNa9GTIeUham2YE2IOPziTy_DluCVTAB6MVcSEu07Yzbiiu4uvKu7DdUQgFwinJqU1P1o93dmPCh4Dw-LvEsd3h4IgZjJbHvRGyTvw9stYl3fEw7aypmDeSyDozxgAqLGDgv1TTTnkLNHQc0KzLMxB3baKjs11mx_xXH8k056URQzlMHR-kEVycEVvuOPtkfunqu1Vx7Cdh8N2MjVq4Pqs9OfF_eExB_">
+<div class="absolute top-4 left-4">
+<span class="px-3 py-1 bg-white/90 backdrop-blur-md rounded-full text-[10px] font-bold text-secondary uppercase tracking-[0.2em] shadow-sm">Guide</span>
+</div>
+<button class="absolute top-4 right-4 p-2 bg-black/20 backdrop-blur-md rounded-full text-white hover:bg-black/40 transition-colors">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+</button>
+</div>
+<h3 class="font-display text-headline-md text-on-surface group-hover:text-secondary transition-colors leading-tight mb-3">The Ultimate Weekend Guide</h3>
+<p class="text-on-surface-variant font-body-md line-clamp-3 mb-6">How to spend 48 hours in luxury in Pattaya, covering high-end dining, exclusive stays, and the most vibrant nightlife.</p>
+<div class="mt-auto flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container"></div>
+<span class="text-label-md text-on-surface-variant font-semibold">8 min read</span>
+</div>
+</div>
+<!-- Newsletter Block -->
+<div class="rounded-xl p-10 flex flex-col justify-between relative overflow-hidden shadow-2xl group/newsletter border border-secondary/10 bg-[#D3E4FE]">
+<div class="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-[80px] -mr-24 -mt-24 transition-transform duration-1000 group-hover/newsletter:scale-125"></div>
+<div class="absolute bottom-0 left-0 w-48 h-48 bg-secondary/10 rounded-full blur-[60px] -ml-24 -mb-24"></div>
+<div class="relative z-10">
+<span class="text-secondary font-bold text-[11px] uppercase tracking-[0.4em] mb-4 block">Newsletter</span>
+<h3 class="font-display text-headline-md font-bold mb-4 leading-tight tracking-tight text-secondary">Want more exclusive insights?</h3>
+<p class="text-secondary/80 font-body-md mb-10 leading-relaxed max-w-[280px]">Join our elite circle for weekly updates on luxury property, lifestyle, and invitation-only events.</p>
+</div>
+<form class="relative z-10 space-y-4">
+<div class="relative group/input">
+<input class="w-full bg-white/50 border border-secondary/20 rounded-xl py-4 px-5 text-on-surface placeholder:text-secondary/40 focus:ring-2 focus:ring-secondary/50 focus:border-secondary/50 backdrop-blur-md transition-all outline-none shadow-inner" placeholder="Your Email Address" type="email">
+</div>
+<button class="w-full bg-secondary text-white py-4 rounded-xl font-label-md hover:bg-secondary/90 transition-all flex items-center justify-center gap-2 font-bold uppercase tracking-widest text-[13px] shadow-lg active:scale-[0.98]">
+<span class="">Join Now</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</form>
+</div>
+</div></div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant/50 w-full mt-section-gap">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-12 max-w-container-max mx-auto">
+<div class="space-y-6">
+<a class="font-headline-lg text-headline-lg text-secondary" href="#">Pattaya.com</a>
+<p class="font-body-md text-on-surface-variant">© 2024 Pattaya.com. All rights reserved. The Elite Pulse of the Coast.</p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:scale-110 transition-transform">social_leaderboard</span>
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:scale-110 transition-transform">alternate_email</span>
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:scale-110 transition-transform">public</span>
+</div>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-md text-on-surface font-bold uppercase tracking-widest">Company</h4>
+<nav class="flex flex-col gap-2">
+<a class="font-label-md text-on-surface-variant hover:text-tertiary transition-colors" href="#">About Us</a>
+<a class="font-label-md text-on-surface-variant hover:text-tertiary transition-colors" href="#">Contact</a>
+<a class="font-label-md text-on-surface-variant hover:text-tertiary transition-colors" href="#">Advertise</a>
+</nav>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-md text-on-surface font-bold uppercase tracking-widest">Legal</h4>
+<nav class="flex flex-col gap-2">
+<a class="font-label-md text-on-surface-variant hover:text-tertiary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-md text-on-surface-variant hover:text-tertiary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-md text-on-surface-variant hover:text-tertiary transition-colors" href="#">Sitemap</a>
+</nav>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-md text-on-surface font-bold uppercase tracking-widest">Global Sites</h4>
+<div class="flex items-center gap-2 p-3 rounded-xl border border-outline-variant bg-white">
+<span class="material-symbols-outlined text-secondary">language</span>
+<span class="text-on-surface font-label-md">English (US)</span>
+</div>
+</div>
+</div>
+</footer>
+<!-- FAB for focused task -->
+<button class="md:hidden fixed bottom-6 right-6 bg-tertiary text-white p-4 rounded-full shadow-2xl flex items-center justify-center z-[60]">
+<span class="material-symbols-outlined">explore</span>
+</button>
+<script>
+        // Micro-interactions and scroll effects
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+
+        // Tab switching logic (simple simulation)
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const parent = e.target.closest('.flex');
+                parent.querySelectorAll('button').forEach(b => {
+                    b.classList.remove('text-secondary', 'border-b-2', 'border-secondary');
+                    b.classList.add('text-on-surface-variant');
+                });
+                btn.classList.add('text-secondary', 'border-b-2', 'border-secondary');
+                btn.classList.remove('text-on-surface-variant');
+            });
+        });
+    </script>
+
+
+
+
+</body></html>

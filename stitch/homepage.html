@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pattaya.com - Your Trusted Guide</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#6e7977",
+                      "background": "#faf8ff",
+                      "surface-variant": "#dae2fd",
+                      "surface": "#faf8ff",
+                      "primary-fixed": "#9cf2e8",
+                      "on-secondary-container": "#fffbff",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary": "#b80938",
+                      "secondary-container": "#db2e4e",
+                      "surface-bright": "#faf8ff",
+                      "outline-variant": "#bdc9c6",
+                      "inverse-on-surface": "#eef0ff",
+                      "on-secondary": "#ffffff",
+                      "primary-fixed-dim": "#80d5cb",
+                      "primary-container": "#0f766e",
+                      "tertiary-fixed-dim": "#ffb598",
+                      "on-secondary-fixed": "#40000d",
+                      "secondary-fixed": "#ffdadb",
+                      "surface-tint": "#006a63",
+                      "secondary-fixed-dim": "#ffb2b7",
+                      "on-tertiary-container": "#ffe5db",
+                      "on-primary-fixed-variant": "#00504a",
+                      "error": "#ba1a1a",
+                      "on-surface-variant": "#3e4947",
+                      "tertiary-container": "#9c573a",
+                      "on-primary": "#ffffff",
+                      "surface-container-low": "#f2f3ff",
+                      "surface-dim": "#d2d9f4",
+                      "on-surface": "#131b2e",
+                      "on-tertiary-fixed": "#370e00",
+                      "inverse-primary": "#80d5cb",
+                      "on-tertiary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-fixed-variant": "#72361b",
+                      "primary": "#005c55",
+                      "surface-container-high": "#e2e7ff",
+                      "tertiary-fixed": "#ffdbce",
+                      "on-primary-container": "#a3faef",
+                      "surface-container-highest": "#dae2fd",
+                      "on-primary-fixed": "#00201d",
+                      "inverse-surface": "#283044",
+                      "tertiary": "#7f4025",
+                      "surface-container": "#eaedff",
+                      "on-secondary-fixed-variant": "#920029",
+                      "error-container": "#ffdad6",
+                      "on-background": "#131b2e",
+                      "on-error": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "gutter": "24px",
+                      "xl": "3rem",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "64px",
+                      "md": "1.5rem",
+                      "xs": "0.5rem",
+                      "sm": "1rem",
+                      "lg": "2rem"
+              },
+              "fontFamily": {
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "headline-xl-mobile": [
+                              "Inter"
+                      ],
+                      "headline-xl": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "26px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-xl-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-xl": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "30px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased">
+<!-- TopAppBar -->
+<header class="bg-surface text-primary text-headline-lg font-headline-lg text-body-md font-body-md text-label-md font-label-md w-full top-0 sticky border-b border-outline-variant shadow-sm flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 z-50">
+<div class="text-headline-lg font-headline-lg font-black text-primary tracking-tight">
+            Pattaya.com
+        </div>
+<nav class="hidden md:flex gap-gutter items-center">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 hover:text-primary transition-colors duration-200 opacity-80 scale-95 transition-all" href="#">Home</a>
+<a class="text-on-surface-variant font-label-md hover:text-primary hover:text-primary transition-colors duration-200" href="#">News</a>
+<a class="text-on-surface-variant font-label-md hover:text-primary hover:text-primary transition-colors duration-200" href="#">Living</a>
+<a class="text-on-surface-variant font-label-md hover:text-primary hover:text-primary transition-colors duration-200" href="#">Explore</a>
+<a class="text-on-surface-variant font-label-md hover:text-primary hover:text-primary transition-colors duration-200" href="#">Business</a>
+</nav>
+<div class="flex items-center gap-sm">
+<button class="p-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="md:hidden p-xs text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</header>
+<!-- Breaking News Ticker -->
+<div class="bg-secondary text-on-secondary text-label-md font-label-md w-full top-0 relative flex items-center px-margin-mobile md:px-margin-desktop h-10 overflow-hidden">
+<div class="flex items-center gap-xs text-label-md font-label-md uppercase tracking-widest text-on-secondary font-bold shrink-0">
+<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+            BREAKING
+        </div>
+<div class="ml-md whitespace-nowrap overflow-hidden text-on-secondary/80 flex gap-xl">
+<span class="hover:underline cursor-pointer">Major Highway Renovation Project Announced for 2025</span>
+<span class="hover:underline cursor-pointer">New International Flights Direct to U-Tapao Airport Starting Next Month</span>
+<span class="hover:underline cursor-pointer">City Council Approves Budget for Beachfront Revitalization</span>
+</div>
+</div>
+<!-- Hero Section -->
+<section class="bg-primary-container text-on-primary w-full py-xl px-margin-mobile md:px-margin-desktop flex flex-col items-center justify-center text-center relative overflow-hidden min-h-[400px]">
+<div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1588880331179-bc9b93a8cb65?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=2070&amp;q=80')] bg-cover bg-center opacity-20 mix-blend-overlay" data-alt="A breathtaking aerial view of Pattaya Bay at twilight, captured from a high vantage point looking down at the sweeping curve of the coastline. The sea is a deep, tranquil blue, contrasting with the warm, glowing lights of the city skyline emerging along the shore. The atmosphere is vibrant yet serene, embodying a modern, premium editorial style suitable for a trusted regional guide, emphasizing deep teals and soft twilight hues."></div>
+<div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center gap-md">
+<h1 class="text-display-lg font-display-lg text-on-primary text-center">Your Trusted Guide to Pattaya</h1>
+<p class="text-headline-md font-headline-md text-on-primary-container opacity-90 font-light tracking-wide">คู่มือที่เชื่อถือได้ของคุณสำหรับพัทยา</p>
+<div class="flex flex-wrap gap-sm justify-center mt-sm">
+<button class="bg-primary text-on-primary font-label-md text-label-md py-sm px-lg rounded-full hover:bg-surface-tint transition-colors shadow-sm">News</button>
+<button class="bg-transparent border border-on-primary text-on-primary font-label-md text-label-md py-sm px-lg rounded-full hover:bg-on-primary hover:text-primary transition-colors shadow-sm">Living</button>
+<button class="bg-transparent border border-on-primary text-on-primary font-label-md text-label-md py-sm px-lg rounded-full hover:bg-on-primary hover:text-primary transition-colors shadow-sm">Explore</button>
+<button class="bg-transparent border border-on-primary text-on-primary font-label-md text-label-md py-sm px-lg rounded-full hover:bg-on-primary hover:text-primary transition-colors shadow-sm">Business</button>
+</div>
+</div>
+</section>
+<!-- Main Content Area -->
+<main class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop py-xl flex flex-col gap-xl">
+<!-- Daily Essentials Grid -->
+<section>
+<div class="mb-lg">
+<h2 class="text-headline-lg font-headline-lg text-on-surface">Daily Essentials</h2>
+<div class="w-12 h-1 bg-primary mt-base rounded-full"></div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-5 gap-sm md:gap-md">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md flex flex-col items-center justify-center text-center gap-xs hover:shadow-sm hover:border-primary transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform" data-icon="article" data-weight="fill">article</span>
+<span class="text-label-md font-label-md text-on-surface">Top Stories</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">ข่าวเด่น</span>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md flex flex-col items-center justify-center text-center gap-xs hover:shadow-sm hover:border-primary transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-secondary text-3xl group-hover:scale-110 transition-transform" data-icon="campaign" data-weight="fill">campaign</span>
+<span class="text-label-md font-label-md text-on-surface">Breaking News</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">ข่าวด่วน</span>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md flex flex-col items-center justify-center text-center gap-xs hover:shadow-sm hover:border-primary transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform" data-icon="event" data-weight="fill">event</span>
+<span class="text-label-md font-label-md text-on-surface">Events Today</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">กิจกรรมวันนี้</span>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md flex flex-col items-center justify-center text-center gap-xs hover:shadow-sm hover:border-primary transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform" data-icon="partly_cloudy_day" data-weight="fill">partly_cloudy_day</span>
+<span class="text-label-md font-label-md text-on-surface">Weather</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">สภาพอากาศ</span>
+</div>
+<!-- Card 5 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md flex flex-col items-center justify-center text-center gap-xs hover:shadow-sm hover:border-primary transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform" data-icon="directions_car" data-weight="fill">directions_car</span>
+<span class="text-label-md font-label-md text-on-surface">Traffic</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">จราจร</span>
+</div>
+<!-- Card 6 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md flex flex-col items-center justify-center text-center gap-xs hover:shadow-sm hover:border-primary transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform" data-icon="forum" data-weight="fill">forum</span>
+<span class="text-label-md font-label-md text-on-surface">Forum</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">เว็บบอร์ด</span>
+</div>
+<!-- Card 7 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md flex flex-col items-center justify-center text-center gap-xs hover:shadow-sm hover:border-primary transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform" data-icon="map" data-weight="fill">map</span>
+<span class="text-label-md font-label-md text-on-surface">Guide</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">คู่มือ</span>
+</div>
+<!-- Card 8 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md flex flex-col items-center justify-center text-center gap-xs hover:shadow-sm hover:border-primary transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-secondary text-3xl group-hover:scale-110 transition-transform" data-icon="emergency" data-weight="fill">emergency</span>
+<span class="text-label-md font-label-md text-on-surface">Emergency</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">ฉุกเฉิน</span>
+</div>
+<!-- Card 9 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md flex flex-col items-center justify-center text-center gap-xs hover:shadow-sm hover:border-primary transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform" data-icon="currency_exchange" data-weight="fill">currency_exchange</span>
+<span class="text-label-md font-label-md text-on-surface">Rates</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">อัตราแลกเปลี่ยน</span>
+</div>
+<!-- Card 10 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md flex flex-col items-center justify-center text-center gap-xs hover:shadow-sm hover:border-primary transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform" data-icon="storefront" data-weight="fill">storefront</span>
+<span class="text-label-md font-label-md text-on-surface">Businesses</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">ธุรกิจ</span>
+</div>
+</div>
+</section>
+<!-- Top Stories (Bento-inspired asymmetric layout for premium feel) -->
+<section>
+<div class="mb-lg flex justify-between items-end border-b border-outline-variant pb-sm">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">Top Stories</h2>
+<div class="w-12 h-1 bg-primary mt-base rounded-full"></div>
+</div>
+<a class="text-label-md font-label-md text-primary hover:text-surface-tint flex items-center gap-xs" href="#">
+                    View All <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Large Featured Story -->
+<div class="md:col-span-8 group cursor-pointer relative rounded-xl overflow-hidden border border-outline-variant bg-surface-container-lowest shadow-[0_4px_20px_rgba(15,23,42,0.05)] flex flex-col">
+<div class="h-64 md:h-[400px] w-full bg-surface-variant overflow-hidden">
+<img alt="News Image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A striking wide-angle photograph of a modern, bustling urban street scene in a coastal Southeast Asian city during golden hour. The sunlight reflects off the sleek glass of newly constructed high-rise buildings, while busy locals and expats traverse wide, clean sidewalks. The image features a bright, clean, modern light-mode editorial aesthetic with crisp contrast, deep shadows, and an optimistic, forward-looking mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjFimeH_zYN7hU_rjmJEqChdk1aQLenDtP4kMmIsNOHk2WMqWU5GLSAJlcI2zKhlgHDYUNsHGMtXQ3O8zYbw3GMVIXcxAL69Jtf6gpc4H8fz_wzH-AjptSYX5832iEhY5XkqFMG51-XeLdi7kcpRGx8nuVixX5x4ahPkSsPu4MlqEIB6Q4ckNBxg5TxfOohMoq6sEFd11fy_6NFouz4UwsIrkJyYCN8LJhOrh7B0LdLpiEtt33P3XG0Kl-3AefHPXNaY4hvx-4UwY"/>
+</div>
+<div class="p-md md:p-lg flex flex-col justify-end gap-sm bg-surface-container-lowest flex-grow">
+<div class="flex items-center gap-sm">
+<span class="bg-surface-container-low text-primary text-label-sm font-label-sm px-xs py-1 rounded-full border border-primary/20">Development</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span> 2 hours ago</span>
+</div>
+<h3 class="text-headline-xl font-headline-xl text-on-surface group-hover:text-primary transition-colors leading-tight">Major Infrastructure Upgrade Commences Along Pattaya Beach Road</h3>
+<p class="text-body-md font-body-md text-on-surface-variant hidden md:block mt-xs line-clamp-2">City officials have broken ground on the comprehensive beachfront revitalization project, promising wider pedestrian walkways, improved drainage systems, and extensive landscaping to elevate the tourist experience.</p>
+</div>
+</div>
+<!-- Secondary Stories Column -->
+<div class="md:col-span-4 flex flex-col gap-gutter">
+<!-- Story 2 -->
+<div class="group cursor-pointer rounded-xl overflow-hidden border border-outline-variant bg-surface-container-lowest shadow-[0_4px_20px_rgba(15,23,42,0.05)] flex flex-col h-full">
+<div class="h-48 w-full bg-surface-variant overflow-hidden">
+<img alt="Tourism Image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A vivid, high-quality photograph of a bustling night market scene in a coastal town, filled with warm, glowing yellow and orange lights from various food stalls. The focus is sharp on a vibrant display of local cuisine in the foreground, with the busy crowd softly blurred in the background. The aesthetic is lively and authentic, maintaining a clean editorial style suitable for a high-end travel and living guide." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAi1JaVjc4_u84Rw6X8mUEuPFfMYV382Qtl-klC3QSwXY2NqdVzaBeo493ec0dA72PVGuX5xRMud3FM1XwJ1JmJ6gTQ0fr78XUYhh6MzxYFaG6pHzoSy30tHjveK1hCDN5mYBHXvaKCp06SOpuuHOxvoVINOaRw6qwi5RVRg1HzjgPrzrNS94M7cBTaqquM5venQ9842PkRPaoMKiYa8lna3biSd58i3pjrN6C_5p7CBmXnVz7dXTRFSarMYfW21ZFgdmipRaBrtjY"/>
+</div>
+<div class="p-md flex flex-col gap-xs bg-surface-container-lowest flex-grow">
+<div class="flex items-center gap-sm mb-xs">
+<span class="bg-surface-container-low text-primary text-label-sm font-label-sm px-xs py-1 rounded-full border border-primary/20">Tourism</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">4 hours ago</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface group-hover:text-primary transition-colors">Record Tourist Arrivals Expected for Upcoming Festival Season</h3>
+</div>
+</div>
+<!-- Story 3 -->
+<div class="group cursor-pointer rounded-xl overflow-hidden border border-outline-variant bg-surface-container-lowest shadow-[0_4px_20px_rgba(15,23,42,0.05)] flex flex-col h-full">
+<div class="h-48 w-full bg-surface-variant overflow-hidden">
+<img alt="Business Image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A crisp, professional photograph of a modern, airy co-working space or cafe interior bathed in bright, natural daylight. The space features sleek wooden furniture, minimalist decor, and a few individuals working quietly on laptops. The aesthetic is clean, sophisticated, and aspirational, perfectly aligning with a modern editorial layout focused on local business and expatriate lifestyle, utilizing a palette of whites, woods, and subtle greens." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALKLTBbgSiDXLM_5DDaGwxB6dv5F3ttxIpTcrpdga_7ylIpQ-ZRsJrjR3yBrsN10mOrg5Ab6awBIHJBKNJvTXprYBoukkymcjjtnZIDVbuKateac48wxSlYJpZAxmNVfQzHIozUd8zTEdL8BphMpnTNxHhAW6kooIQhNtVqvK4_Umouxj487Hpu1ZkupOQPirMVXrU8UTlWiJFz-cadmm3VYvMuo6gHlKs8V8RlHZFaZ4c9GF-GAxGPhzeJwyXQk1W5kpcryViKnQ"/>
+</div>
+<div class="p-md flex flex-col gap-xs bg-surface-container-lowest flex-grow">
+<div class="flex items-center gap-sm mb-xs">
+<span class="bg-surface-container-low text-primary text-label-sm font-label-sm px-xs py-1 rounded-full border border-primary/20">Business</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Yesterday</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface group-hover:text-primary transition-colors">New Tech Hub Opens to Support Growing Digital Nomad Community</h3>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Links Overview -->
+<section class="border-t border-outline-variant pt-lg">
+<h2 class="text-headline-md font-headline-md text-on-surface mb-md">Explore by Section</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-sm">
+<a class="bg-surface-container hover:bg-surface-container-high transition-colors rounded-lg p-md border border-outline-variant flex flex-col gap-xs group" href="#">
+<span class="text-headline-md font-headline-md text-on-surface group-hover:text-primary">News</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">248 Articles</span>
+</a>
+<a class="bg-surface-container hover:bg-surface-container-high transition-colors rounded-lg p-md border border-outline-variant flex flex-col gap-xs group" href="#">
+<span class="text-headline-md font-headline-md text-on-surface group-hover:text-primary">Living</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">156 Guides</span>
+</a>
+<a class="bg-surface-container hover:bg-surface-container-high transition-colors rounded-lg p-md border border-outline-variant flex flex-col gap-xs group" href="#">
+<span class="text-headline-md font-headline-md text-on-surface group-hover:text-primary">Explore</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">89 Locations</span>
+</a>
+<a class="bg-surface-container hover:bg-surface-container-high transition-colors rounded-lg p-md border border-outline-variant flex flex-col gap-xs group" href="#">
+<span class="text-headline-md font-headline-md text-on-surface group-hover:text-primary">Business</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">312 Listings</span>
+</a>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest text-on-surface text-body-md font-body-md text-label-md font-label-md w-full border-t border-outline-variant grid grid-cols-1 md:grid-cols-12 gap-lg py-xl px-margin-mobile md:px-margin-desktop mt-xl">
+<div class="md:col-span-4 flex flex-col gap-sm">
+<div class="text-headline-md font-headline-md font-bold text-primary">Pattaya.com</div>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-sm">The Voice of the Eastern Seaboard. Delivering reliable, insightful, and rapid news and guides for residents and visitors alike.</p>
+</div>
+<div class="md:col-span-8 flex flex-col md:flex-row justify-between gap-lg md:gap-gutter">
+<div class="flex flex-col gap-sm">
+<span class="text-label-md font-label-md font-bold text-on-surface">Sections</span>
+<nav class="flex flex-col gap-xs">
+<a class="text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">News</a>
+<a class="text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Living</a>
+<a class="text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Explore</a>
+<a class="text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Business</a>
+</nav>
+</div>
+<div class="flex flex-col gap-sm">
+<span class="text-label-md font-label-md font-bold text-on-surface">Company</span>
+<nav class="flex flex-col gap-xs">
+<a class="text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">About</a>
+<a class="text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Contact</a>
+<a class="text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Advertise</a>
+<a class="text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Careers</a>
+</nav>
+</div>
+<div class="flex flex-col gap-sm">
+<span class="text-label-md font-label-md font-bold text-on-surface">Legal</span>
+<nav class="flex flex-col gap-xs">
+<a class="text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Cookie Policy</a>
+</nav>
+</div>
+</div>
+<div class="md:col-span-12 border-t border-outline-variant pt-md mt-sm text-center md:text-left text-label-sm font-label-sm text-on-surface-variant flex flex-col md:flex-row justify-between items-center gap-sm">
+<span>© 2024 Pattaya.com - The Voice of the Eastern Seaboard. All rights reserved.</span>
+<div class="flex gap-sm">
+<!-- Social placeholders -->
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined" data-icon="language">language</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined" data-icon="share">share</span></a>
+</div>
+</div>
+</footer>
+</body></html>
