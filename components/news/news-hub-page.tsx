@@ -1,3 +1,4 @@
+import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import Image from "next/image";
 import Link from "next/link";
 import { newsImages } from "@/lib/design/news-images";
@@ -83,6 +84,7 @@ function NewsCard({
 export function NewsHubPage() {
   return (
     <div data-full-bleed className="bg-[#f8f9fa] pb-16 text-[#191c1d]">
+      <BreakingNewsTicker variant="news" />
       <div className="mx-auto max-w-[1280px] px-5 py-8 md:px-16">
         {/* Featured City Updates + three cards below */}
         <section className="mb-20 flex flex-col gap-6">

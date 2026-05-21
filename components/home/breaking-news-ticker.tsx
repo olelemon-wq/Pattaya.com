@@ -2,12 +2,33 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const headline =
-  "Major infrastructure upgrade announced for Pattaya Beach Road — construction begins Q3 2025";
+const defaultHeadlines = {
+  home: "Major infrastructure upgrade announced for Pattaya Beach Road — construction begins Q3 2025",
+  news: "Pattaya Smart City: 500M THB Beach Road infrastructure overhaul begins — City Updates",
+} as const;
 
-export function BreakingNewsTicker() {
+type BreakingNewsTickerProps = {
+  variant?: keyof typeof defaultHeadlines;
+  headline?: string;
+};
+
+const barStyles = {
+  home: "bg-[#f97316] text-white",
+  news: "bg-[#10438f] text-white",
+} as const;
+
+const labelStyles = {
+  home: "shrink-0",
+  news: "shrink-0 text-[#FF8C00]",
+} as const;
+
+export function BreakingNewsTicker({
+  variant = "home",
+  headline,
+}: BreakingNewsTickerProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   const [paused, setPaused] = useState(false);
+  const text = headline ?? defaultHeadlines[variant];
 
   useEffect(() => {
     const node = rootRef.current;
@@ -24,11 +45,11 @@ export function BreakingNewsTicker() {
   return (
     <div
       ref={rootRef}
-      className="flex h-8 items-center overflow-hidden bg-[#f97316] px-4 text-[11px] font-bold uppercase tracking-[0.15em] text-white lg:px-6"
+      className={`flex h-8 items-center overflow-hidden px-4 text-[11px] font-bold uppercase tracking-[0.15em] lg:px-6 ${barStyles[variant]}`}
       role="region"
       aria-label="Breaking news"
     >
-      <span className="shrink-0">Breaking</span>
+      <span className={labelStyles[variant]}>Breaking</span>
       <div
         className="relative ml-4 min-w-0 flex-1 overflow-hidden"
         style={{
@@ -47,7 +68,7 @@ export function BreakingNewsTicker() {
               className="inline-block shrink-0 pr-12 font-medium normal-case tracking-normal opacity-95 motion-reduce:pr-0"
               aria-hidden={copy === 1 ? true : undefined}
             >
-              {headline}
+              {text}
             </span>
           ))}
         </div>
