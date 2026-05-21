@@ -1,5 +1,13 @@
 "use client";
 
+import {
+  Camera,
+  Palmtree,
+  Ship,
+  UtensilsCrossed,
+  Waves,
+  type LucideIcon,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -13,7 +21,11 @@ const beaches = [
     image: kohLarnImages.beachTaWan,
     description:
       "หาดยอดนิยมสุดของเกาะล้าน — น้ำใส หาดทรายละเอียด ร้านอาหารและกิจกรรมทางน้ำครบ เหมาะกับครอบครัวและกลุ่มเพื่อน",
-    features: ["🏊‍♂️ ว่ายน้ำได้", "🍔 มีอาหาร", "🚤 กิจกรรมทางน้ำ"],
+    features: [
+      { icon: Waves, label: "ว่ายน้ำได้" },
+      { icon: UtensilsCrossed, label: "มีอาหาร" },
+      { icon: Ship, label: "กิจกรรมทางน้ำ" },
+    ],
     reviewHref: "/explore/beaches",
   },
   {
@@ -23,7 +35,11 @@ const beaches = [
     image: kohLarnImages.beachNual,
     description:
       "บรรยากาศเงียบสงบกว่าหาดหลัก — ชายหาดกว้าง น้ำทะเลใส เหมาะสำหรับพักผ่อน ถ่ายรูป และว่ายน้ำแบบไม่พลุกพล่าน",
-    features: ["🏊‍♂️ ว่ายน้ำได้", "📸 จุดถ่ายรูป", "🌴 เงียบสงบ"],
+    features: [
+      { icon: Waves, label: "ว่ายน้ำได้" },
+      { icon: Camera, label: "จุดถ่ายรูป" },
+      { icon: Palmtree, label: "เงียบสงบ" },
+    ],
     reviewHref: "/explore/beaches",
   },
   {
@@ -33,7 +49,11 @@ const beaches = [
     image: kohLarnImages.beachTien,
     description:
       "หาดโค้งสวยงาม น้ำใสมากในช่วงฤดูท่องเที่ยว — มีร้านอาหารริมทะเลและจุดชมวิว พระอาทิตย์ตกที่สวยที่สุดแห่งหนึ่งบนเกาะ",
-    features: ["🏊‍♂️ ว่ายน้ำได้", "🍔 มีอาหาร", "📸 จุดถ่ายรูป"],
+    features: [
+      { icon: Waves, label: "ว่ายน้ำได้" },
+      { icon: UtensilsCrossed, label: "มีอาหาร" },
+      { icon: Camera, label: "จุดถ่ายรูป" },
+    ],
     reviewHref: "/explore/beaches",
   },
 ] as const;
@@ -112,14 +132,18 @@ export function KohLarnBeachGuide() {
             {active.description}
           </p>
           <ul className="mt-4 flex flex-wrap gap-2">
-            {active.features.map((feature) => (
-              <li
-                key={feature}
-                className="rounded-full bg-[#F8FAFC] px-3 py-1.5 text-sm font-medium text-[#0A192F] ring-1 ring-[#e2e8f0]"
-              >
-                {feature}
-              </li>
-            ))}
+            {active.features.map((feature) => {
+              const Icon = feature.icon;
+              return (
+                <li
+                  key={feature.label}
+                  className="inline-flex items-center gap-1.5 rounded-full bg-[#F8FAFC] px-3 py-1.5 text-sm font-medium text-[#0A192F] ring-1 ring-[#e2e8f0]"
+                >
+                  <Icon className="h-3.5 w-3.5 shrink-0 text-[#2563EB]" aria-hidden />
+                  {feature.label}
+                </li>
+              );
+            })}
           </ul>
           {active.id === "tien" && (
             <Link

@@ -1,5 +1,6 @@
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import { NewsFeaturedHeroCinematic } from "@/components/news/news-featured-hero-cinematic";
+import { Building2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { newsImages } from "@/lib/design/news-images";
@@ -105,9 +106,7 @@ export function NewsHubPage() {
                   <Badge className="bg-[#f3f4f5] text-[#455f88]">
                     Property Market
                   </Badge>
-                  <span className="text-[#455f88]" aria-hidden>
-                    🏢
-                  </span>
+                  <Building2 className="h-5 w-5 text-[#455f88]" aria-hidden />
                 </div>
                 <h3 className="mb-2 text-lg font-semibold leading-snug transition-colors hover:text-[#455f88] sm:text-xl">
                   Wongamat Riviera: New Luxury Penthouse Units Released

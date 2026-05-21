@@ -1,3 +1,4 @@
+import { MapPin, Ship, Sparkles, Star, type LucideIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { KohLarnBeachGuide } from "@/components/explore/koh-larn-beach-guide";
@@ -76,10 +77,10 @@ const activityOptions = [
   { value: "island-tour", label: "ทัวร์รอบเกาะ" },
 ];
 
-function QuickInfoBadge({ icon, text }: { icon: string; text: string }) {
+function QuickInfoBadge({ icon: Icon, text }: { icon: LucideIcon; text: string }) {
   return (
     <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1.5 text-sm font-medium text-white backdrop-blur-sm ring-1 ring-white/25">
-      <span aria-hidden>{icon}</span>
+      <Icon className="h-4 w-4 shrink-0" aria-hidden />
       {text}
     </span>
   );
@@ -114,7 +115,7 @@ function TourCard({
       </div>
       <div className="flex flex-1 flex-col p-4 sm:p-5">
         <div className="flex items-center gap-1 text-sm font-semibold text-[#0A192F]">
-          <span aria-hidden>⭐</span>
+          <Star className="h-4 w-4 fill-[#FBBF24] text-[#FBBF24]" aria-hidden />
           <span>{rating}</span>
         </div>
         <h3 className="mt-2 text-base font-bold leading-snug text-[#0A192F]">
@@ -210,9 +211,9 @@ export function KohLarnPage() {
             หาดทรายขาว และกิจกรรมสุดเอกซ์คลูซีฟใกล้กรุง
           </p>
           <div className="mt-5 flex flex-wrap gap-2 sm:gap-3">
-            <QuickInfoBadge icon="🏝️" text="8 Main Beaches" />
-            <QuickInfoBadge icon="🚢" text="30 mins from Pattaya" />
-            <QuickInfoBadge icon="✨" text="Top Destination" />
+            <QuickInfoBadge icon={MapPin} text="8 Main Beaches" />
+            <QuickInfoBadge icon={Ship} text="30 mins from Pattaya" />
+            <QuickInfoBadge icon={Sparkles} text="Top Destination" />
           </div>
         </div>
       </section>

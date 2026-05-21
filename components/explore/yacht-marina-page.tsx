@@ -1,12 +1,13 @@
+import {
+  Anchor,
+  Building2,
+  Palmtree,
+  Sunset,
+  Users,
+  type LucideIcon,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  IconAnchor,
-  IconIsland,
-  IconMarina,
-  IconSunset,
-  IconUsers,
-} from "@/components/explore/yacht-ui-icons";
 import { yachtImages } from "@/lib/design/yacht-images";
 
 const featuredCharters = [
@@ -47,7 +48,7 @@ const cruiseRoutes = [
     duration: "3 hours",
     description:
       "Golden-hour sailing along Pattaya Bay with champagne service and live DJ optional.",
-    icon: IconSunset,
+    icon: Sunset,
     href: "/explore/beaches",
   },
   {
@@ -56,7 +57,7 @@ const cruiseRoutes = [
     duration: "Full day",
     description:
       "Secluded island anchorage, snorkeling, and beach picnic — ideal for VIP groups.",
-    icon: IconIsland,
+    icon: Palmtree,
     href: "/explore/islands/koh-larn",
   },
   {
@@ -65,7 +66,7 @@ const cruiseRoutes = [
     duration: "6–8 hours",
     description:
       "Island-hopping with water toys, lunch at sea, and flexible beach stops.",
-    icon: IconAnchor,
+    icon: Anchor,
     href: "/explore/islands/koh-larn",
   },
 ];
@@ -116,7 +117,7 @@ function CharterCard({
         <p className="text-sm text-[#777777]">{nameTh}</p>
         <div className="mt-4 flex flex-wrap items-center gap-3">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-[#F8FAFC] px-3 py-1 text-xs font-medium text-[#444748] ring-1 ring-[#e2e8f0]">
-            <IconUsers />
+            <Users className="h-4 w-4" aria-hidden />
             Max {guests} guests
           </span>
         </div>
@@ -146,7 +147,7 @@ function RouteBlock({
   icon: Icon,
   href,
   index,
-}: (typeof cruiseRoutes)[number] & { index: number }) {
+}: (typeof cruiseRoutes)[number] & { index: number; icon: LucideIcon }) {
   return (
     <Link
       href={href}
@@ -305,7 +306,7 @@ export function YachtMarinaPage() {
             </div>
             <div className="flex flex-col justify-center p-6 sm:p-10 lg:p-12">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#0A192F] text-white">
-                <IconMarina className="h-7 w-7" />
+                <Building2 className="h-7 w-7" aria-hidden />
               </div>
               <p className="mt-4 text-xs font-bold uppercase tracking-[0.2em] text-[#FF8C00]">
                 Marina Infrastructure

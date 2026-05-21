@@ -1,12 +1,12 @@
 "use client";
 
+import { CloudSun, Sun, Wind } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { WeatherPartlyCloudyIcon } from "@/components/home/weather-icon";
 
 const stats = [
-  { label: "Sea & UV", value: "High" },
-  { label: "Wind", value: "12 km/h" },
+  { label: "Sea & UV", value: "High", icon: Sun },
+  { label: "Wind", value: "12 km/h", icon: Wind },
 ] as const;
 
 function formatDateLabel(date: Date, locale: string) {
@@ -69,20 +69,27 @@ export function PattayaWeatherWidget() {
           </div>
 
           <div className="flex shrink-0 items-center justify-center pr-0.5 sm:pr-1">
-            <WeatherPartlyCloudyIcon className="h-[4.5rem] w-[4.5rem] drop-shadow-sm transition-transform duration-300 group-hover:scale-105 sm:h-24 sm:w-24" />
+            <CloudSun
+              className="h-[4.5rem] w-[4.5rem] stroke-[1.25] text-[#0A192F] drop-shadow-sm transition-transform duration-300 group-hover:scale-105 sm:h-24 sm:w-24"
+              aria-hidden
+            />
           </div>
         </div>
 
         <div className="relative mt-4 flex flex-wrap gap-2">
-          {stats.map((item) => (
-            <span
-              key={item.label}
-              className="inline-flex items-center gap-1.5 rounded-full border border-white/70 bg-white/60 px-2.5 py-1 text-[10px] font-semibold text-[#0A192F] backdrop-blur-sm sm:text-[11px]"
-            >
-              <span className="text-[#64748b]">{item.label}</span>
-              <span>{item.value}</span>
-            </span>
-          ))}
+          {stats.map((item) => {
+            const Icon = item.icon;
+            return (
+              <span
+                key={item.label}
+                className="inline-flex items-center gap-1.5 rounded-full border border-white/70 bg-white/60 px-2.5 py-1 text-[10px] font-semibold text-[#0A192F] backdrop-blur-sm sm:text-[11px]"
+              >
+                <Icon className="h-3.5 w-3.5 shrink-0 text-[#10438f]" aria-hidden />
+                <span className="text-[#64748b]">{item.label}</span>
+                <span>{item.value}</span>
+              </span>
+            );
+          })}
         </div>
       </div>
     </Link>

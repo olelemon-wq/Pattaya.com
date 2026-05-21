@@ -1,8 +1,7 @@
-import type { ComponentType } from "react";
-import { IconAge, IconBank, IconHealth } from "@/components/living/visa-ui-icons";
+import { Activity, Info, Landmark, User, type LucideIcon } from "lucide-react";
 
 const requirements: {
-  icon: ComponentType<{ className?: string }>;
+  icon: LucideIcon;
   title: string;
   titleTh: string;
   highlight: string;
@@ -10,7 +9,7 @@ const requirements: {
   detail: string;
 }[] = [
   {
-    icon: IconAge,
+    icon: User,
     title: "Age Requirement",
     titleTh: "อายุขั้นต่ำ",
     highlight: "50+",
@@ -18,7 +17,7 @@ const requirements: {
     detail: "บุคคลอายุ 50 ปีขึ้นไป ณ วันยื่นคำขอ",
   },
   {
-    icon: IconBank,
+    icon: Landmark,
     title: "Financial Requirements",
     titleTh: "เงินทุนการเงิน",
     highlight: "800K THB",
@@ -26,7 +25,7 @@ const requirements: {
     detail: "ฝากเงิน 800,000 บาทในธนาคารไทย หรือแสดงรายได้ 65,000 บาท/เดือน",
   },
   {
-    icon: IconHealth,
+    icon: Activity,
     title: "Medical Insurance",
     titleTh: "ประกันสุขภาพ",
     highlight: "Required",
@@ -97,17 +96,7 @@ export function RetirementVisaRequirements() {
       </div>
 
       <p className="mt-6 flex items-start gap-2 rounded-xl bg-[#F8FAFC] px-4 py-3 text-xs text-[#777777] ring-1 ring-[#e2e8f0]">
-        <svg
-          className="mt-0.5 h-4 w-4 shrink-0 text-[#2563EB]"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          aria-hidden
-        >
-          <circle cx="12" cy="12" r="10" />
-          <path d="M12 16v-4M12 8h.01" />
-        </svg>
+        <Info className="mt-0.5 h-4 w-4 shrink-0 text-[#2563EB]" aria-hidden />
         Requirements may change per Immigration notices. Always confirm with an
         official source or our visa consultants before applying.
       </p>

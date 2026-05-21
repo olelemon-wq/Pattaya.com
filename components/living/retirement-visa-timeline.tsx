@@ -1,9 +1,10 @@
 import {
-  IconCalendar,
-  IconDocuments,
-  IconPlane,
-  IconStamp,
-} from "@/components/living/visa-ui-icons";
+  Calendar,
+  ClipboardCheck,
+  FileText,
+  Plane,
+  type LucideIcon,
+} from "lucide-react";
 
 const steps = [
   {
@@ -13,7 +14,7 @@ const steps = [
     duration: "1–2 weeks",
     description:
       "Passport, photos, bank statements, insurance certificate, criminal record (if required), and Thai address proof.",
-    icon: IconDocuments,
+    icon: FileText,
   },
   {
     step: 2,
@@ -22,7 +23,7 @@ const steps = [
     duration: "On arrival",
     description:
       "Arrive on an appropriate visa (often Non-Immigrant O or O-A from your home country embassy, or planned conversion with expert guidance).",
-    icon: IconPlane,
+    icon: Plane,
   },
   {
     step: 3,
@@ -31,7 +32,7 @@ const steps = [
     duration: "Same day – 3 days",
     description:
       "Submit your retirement extension at Chonburi Immigration (Pattaya/Jomtien) with complete financial and medical evidence.",
-    icon: IconStamp,
+    icon: ClipboardCheck,
   },
   {
     step: 4,
@@ -40,7 +41,7 @@ const steps = [
     duration: "Every 90 days",
     description:
       "Report your address every 90 days online or in person to remain compliant for the full one-year stay.",
-    icon: IconCalendar,
+    icon: Calendar,
   },
 ] as const;
 

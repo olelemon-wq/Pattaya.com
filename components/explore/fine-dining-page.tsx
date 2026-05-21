@@ -1,3 +1,4 @@
+import { Building2, ChefHat, Sunset, type LucideIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -46,7 +47,7 @@ const collections = [
     description: "Romantic terraces and beachfront tables for golden hour.",
     image: fineDiningImages.collectionSunset,
     href: "/explore/beaches",
-    icon: "🌅",
+    icon: Sunset,
   },
   {
     title: "Rooftop Dining",
@@ -54,7 +55,7 @@ const collections = [
     description: "City lights, cocktails, and elevated tasting menus.",
     image: fineDiningImages.collectionRooftop,
     href: "/explore/cafes",
-    icon: "🏙️",
+    icon: Building2,
   },
   {
     title: "Chef's Table",
@@ -62,7 +63,7 @@ const collections = [
     description: "Omakase-style experiences and private chef counters.",
     image: fineDiningImages.collectionChefsTable,
     href: "/explore/restaurants/fine-dining",
-    icon: "👨‍🍳",
+    icon: ChefHat,
   },
 ];
 
@@ -165,6 +166,7 @@ function CollectionCard({
   href,
   icon,
 }: (typeof collections)[number]) {
+  const Icon = icon;
   return (
     <Link
       href={href}
@@ -179,10 +181,10 @@ function CollectionCard({
           sizes="96px"
         />
         <span
-          className="absolute inset-0 flex items-center justify-center bg-[#0A192F]/40 text-2xl"
+          className="absolute inset-0 flex items-center justify-center bg-[#0A192F]/40"
           aria-hidden
         >
-          {icon}
+          <Icon className="h-8 w-8 text-white sm:h-9 sm:w-9" strokeWidth={1.75} />
         </span>
       </div>
       <div className="min-w-0 flex-1">
