@@ -1,4 +1,5 @@
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
+import { EmergencySupportFab } from "@/components/home/emergency-support-fab";
 import { FeaturedBusinesses } from "@/components/home/featured-businesses";
 import { ForumAndCurrency } from "@/components/home/forum-and-currency";
 import { HeroWithSidebar } from "@/components/home/hero-with-sidebar";
@@ -14,6 +15,7 @@ export default function HomePage() {
         <PattayaGuideSection />
         <FeaturedBusinesses />
       </div>
+      <EmergencySupportFab />
     </div>
   );
 }

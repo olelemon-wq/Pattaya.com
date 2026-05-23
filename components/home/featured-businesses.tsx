@@ -1,25 +1,61 @@
+import Image from "next/image";
 import Link from "next/link";
 
-const businesses = [
+type FeaturedBusiness = {
+  name: string;
+  badge: string;
+  badgeStyle: string;
+  logoSrc: string;
+  logoAlt: string;
+  markClassName?: string;
+};
+
+const businesses: FeaturedBusiness[] = [
   {
     name: "Royal Cliff Hotels",
     badge: "Verified",
     badgeStyle: "bg-[#fff7ed] text-[#f97316]",
-    icon: "★",
+    logoSrc: "/logos/royal-cliff.png",
+    logoAlt: "Royal Cliff Hotels",
+    markClassName:
+      "overflow-hidden rounded-full border border-[#fde8d8] bg-white p-3 shadow-sm",
   },
   {
     name: "Siam Yacht Club",
     badge: "Featured",
     badgeStyle: "bg-[#eff6ff] text-[#2563eb]",
-    icon: "⚓",
+    logoSrc: "/logos/siam-yacht-club.png",
+    logoAlt: "Siam Yacht Club",
+    markClassName: "overflow-hidden rounded-full bg-[#1a2344] p-2.5 shadow-sm",
   },
   {
     name: "Bangkok Hospital",
     badge: "Featured",
     badgeStyle: "bg-[#eff6ff] text-[#2563eb]",
-    icon: "✚",
+    logoSrc: "/logos/bangkok-hospital.png",
+    logoAlt: "Bangkok Hospital Pattaya",
+    markClassName:
+      "overflow-hidden rounded-full border border-[#e2e8f0] bg-white p-3 shadow-sm",
   },
 ];
+
+const markSizeClass =
+  "mb-3 flex h-28 w-28 shrink-0 items-center justify-center sm:h-32 sm:w-32";
+
+function BusinessMark({ biz }: { biz: FeaturedBusiness }) {
+  return (
+    <span className={`${markSizeClass} ${biz.markClassName ?? ""}`}>
+      <Image
+        src={biz.logoSrc}
+        alt={biz.logoAlt}
+        width={96}
+        height={96}
+        className="h-full w-full object-contain"
+        priority
+      />
+    </span>
+  );
+}
 
 export function FeaturedBusinesses() {
   return (
@@ -35,9 +71,7 @@ export function FeaturedBusinesses() {
             href="/directory/featured"
             className="flex flex-col items-center rounded-2xl border border-[#e2e8f0] bg-white p-6 text-center shadow-sm transition-shadow hover:shadow-md"
           >
-            <span className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-[#fff7ed] text-xl text-[#f97316]">
-              {biz.icon}
-            </span>
+            <BusinessMark biz={biz} />
             <span
               className={`mb-2 rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide ${biz.badgeStyle}`}
             >
@@ -62,4 +96,3 @@ export function FeaturedBusinesses() {
     </section>
   );
 }
-
