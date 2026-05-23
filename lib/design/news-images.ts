@@ -23,4 +23,15 @@ export const newsImages = {
     "https://lh3.googleusercontent.com/aida-public/AB6AXuBTjRmAHyS-59YdzB8U3GZ13tqyWcaA6QSqWvaOVHYebIux0rDU69HyK5SuDZ8JV5tlOxqBg1pERHPf0E7JexTNmFxCKfw6XLruygAP-Q22P-dZJ29g2cQmznwIngkELMrv1tmGZqe1ckNCsQw5ZF70oJisr-qGi_h1TAzpNDbARnGVt3HELswhZ71_nK14zQuL1whxJOARPSDaK8W_pDLNlBtcgRXMOwmZEhk3BcS_TsmsK8emQu23a9KL3X860fAvmacc6HbznUbZ",
   golf:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuBo4OKu1r8GOie1jxS-u26WM6dH1QyS4dM8Lma_aWMqChYb42PnNQ4seLw3V3TEHFGPJ5oiLd96ahH9WXOOv-KPjSG9vN2pW-nZsewmowcVxTvcZj4XE_QSEbfkyYZSxakjq5fjK1go0fw8dY-p1-KUdZbLgOrEnTEqw5D3TmaPuTSgfCwIDQJQ2H0hp5q7Mj7k6lE5so61CmgH1pk9HQtSaJtcZUz90I0zPu1elqysnHFs3-iFXgzblrcT8Dp-4wQJl357RjVc6pzb",
+  /** Featured update row — property / visa / immigration */
+  featuredProperty:
+    "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=900&q=80",
+  featuredVisa:
+    "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=900&q=80",
+  /** Muay Thai — local assets (verified; remote fallbacks were 404) */
+  muayThaiHero: "/images/news/muay-thai-hero.png",
+  muayThaiStadium: "/images/news/muay-thai-stadium.jpg",
+  muayThaiTraining: "/images/news/muay-thai-training.jpg",
+  muayThaiFighter: "/images/news/muay-thai-sparring.jpg",
+  muayThaiRing: "/images/news/muay-thai-ring.jpg",
 } as const;

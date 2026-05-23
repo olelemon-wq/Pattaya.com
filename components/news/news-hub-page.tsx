@@ -1,87 +1,14 @@
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import { NewsFeaturedHeroCinematic } from "@/components/news/news-featured-hero-cinematic";
-import { Building2 } from "lucide-react";
+import {
+  NewsArticleCard,
+  NewsBadge,
+  OverlayFeaturedCard,
+} from "@/components/news/news-ui";
+import { Building2, ClipboardList, IdCard } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { newsImages } from "@/lib/design/news-images";
-
-function Badge({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <span
-      className={`inline-block rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider ${className}`}
-    >
-      {children}
-    </span>
-  );
-}
-
-function NewsCard({
-  href,
-  image,
-  imageAlt,
-  badge,
-  badgeClass,
-  title,
-  excerpt,
-  footer,
-  footerClass,
-  children,
-  className = "",
-  borderHover,
-}: {
-  href: string;
-  image: string;
-  imageAlt: string;
-  badge: string;
-  badgeClass?: string;
-  title: string;
-  excerpt: string;
-  footer?: React.ReactNode;
-  footerClass?: string;
-  children?: React.ReactNode;
-  className?: string;
-  borderHover?: string;
-}) {
-  return (
-    <Link
-      href={href}
-      className={`group overflow-hidden rounded-xl bg-[#f3f4f5] transition-all ${borderHover ?? ""} ${className}`}
-    >
-      <div className="relative h-48 overflow-hidden">
-        <Image
-          src={image}
-          alt={imageAlt}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-          sizes="(max-width: 768px) 100vw, 33vw"
-        />
-        <div className="absolute left-4 top-4">
-          <Badge className={badgeClass}>{badge}</Badge>
-        </div>
-      </div>
-      <div className="p-4 sm:p-6">
-        <h3 className="mb-3 text-base font-semibold leading-snug text-[#191c1d] transition-colors group-hover:text-[#455f88] sm:text-lg">
-          {title}
-        </h3>
-        <p className="mb-4 text-sm leading-relaxed text-[#444748]">{excerpt}</p>
-        {children}
-        {footer && (
-          <p
-            className={`flex items-center gap-1 text-xs ${footerClass ?? "text-[#444748]"}`}
-          >
-            {footer}
-          </p>
-        )}
-      </div>
-    </Link>
-  );
-}
 
 export function NewsHubPage() {
   return (
@@ -100,86 +27,106 @@ export function NewsHubPage() {
           </p>
 
           <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-3">
-            <div className="flex h-full flex-col justify-between rounded-xl border border-[#c4c7c8]/30 bg-white p-4 transition-colors hover:border-[#455f88] sm:p-6">
+            <OverlayFeaturedCard
+              image={newsImages.featuredProperty}
+              imageAlt="Luxury penthouse property in Wongamat, Pattaya"
+              overlayClass="bg-gradient-to-t from-[#0c1a33]/95 via-[#0c1a33]/65 to-[#0c1a33]/30"
+            >
               <div>
                 <div className="mb-4 flex items-start justify-between">
-                  <Badge className="bg-[#f3f4f5] text-[#455f88]">
+                  <NewsBadge className="bg-white/15 text-white backdrop-blur-sm">
                     Property Market
-                  </Badge>
-                  <Building2 className="h-5 w-5 text-[#455f88]" aria-hidden />
+                  </NewsBadge>
+                  <Building2
+                    className="h-5 w-5 text-white/90"
+                    strokeWidth={2}
+                    aria-hidden
+                  />
                 </div>
-                <h3 className="mb-2 text-lg font-semibold leading-snug transition-colors hover:text-[#455f88] sm:text-xl">
+                <h3 className="mb-2 text-lg font-semibold leading-snug text-white sm:text-xl">
                   Wongamat Riviera: New Luxury Penthouse Units Released
                 </h3>
-                <p className="line-clamp-2 text-sm text-[#444748]">
+                <p className="line-clamp-2 text-sm text-white/85">
                   Exclusive preview of the highest-floor residences starting at 25M
                   THB with panoramic sea views.
                 </p>
               </div>
               <Link
                 href="/news/business/real-estate"
-                className="mt-4 block rounded-lg border border-[#455f88] py-2 text-center text-sm font-semibold text-[#455f88] transition-all hover:bg-[#455f88] hover:text-white"
+                className="mt-4 block rounded-lg border border-white/60 bg-white/10 py-2 text-center text-sm font-semibold text-white backdrop-blur-sm transition-all hover:border-white hover:bg-white hover:text-[#455f88]"
               >
                 View Property Ads
               </Link>
-            </div>
+            </OverlayFeaturedCard>
 
-            <div className="flex h-full flex-col justify-between rounded-xl bg-[#b6d0ff] p-6">
+            <OverlayFeaturedCard
+              image={newsImages.featuredVisa}
+              imageAlt="Travel and visa documentation"
+              overlayClass="bg-gradient-to-t from-[#1e3a5f]/95 via-[#2563eb]/75 to-[#3b82f6]/35"
+            >
               <div>
                 <div className="mb-4 flex items-start justify-between">
-                  <Badge className="bg-white/50 text-[#3f5882]">Visa News</Badge>
-                  <span aria-hidden>🪪</span>
+                  <NewsBadge className="bg-white/20 text-white backdrop-blur-sm">
+                    Visa News
+                  </NewsBadge>
+                  <IdCard
+                    className="h-5 w-5 text-white/90"
+                    strokeWidth={2}
+                    aria-hidden
+                  />
                 </div>
-                <h3 className="mb-2 text-xl font-semibold leading-snug text-[#3f5882]">
+                <h3 className="mb-2 text-lg font-semibold leading-snug text-white sm:text-xl">
                   New &apos;Destination Thailand&apos; Visa: Expert Guide
                 </h3>
-                <p className="text-sm text-[#3f5882]/80">
+                <p className="text-sm text-white/85">
                   Everything you need to know about the new 5-year visa for digital
                   nomads and remote workers.
                 </p>
               </div>
               <Link
                 href="/news/expat/visa"
-                className="mt-4 block rounded-lg bg-[#3f5882] py-2 text-center text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                className="mt-4 block rounded-lg bg-white py-2 text-center text-sm font-semibold text-[#1e3a5f] transition-opacity hover:opacity-90"
               >
                 Get Visa Quote
               </Link>
-            </div>
+            </OverlayFeaturedCard>
 
-            <Link
+            <OverlayFeaturedCard
+              image={newsImages.immigration}
+              imageAlt="Immigration office and official documents in Thailand"
+              overlayClass="bg-gradient-to-t from-[#0c1a33]/95 via-[#455f88]/70 to-[#455f88]/25"
               href="/news/expat/immigration"
-              className="group flex h-full cursor-pointer flex-col justify-between gap-4 rounded-xl border border-[#c4c7c8]/30 bg-white p-6 shadow-sm transition-colors hover:border-[#455f88]"
             >
-              <div className="mb-2 flex items-center justify-between">
+              <div className="mb-2 flex items-center justify-between gap-2">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#d6e3ff] text-[#455f88]">
-                    📋
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/15 text-white backdrop-blur-sm">
+                    <ClipboardList className="h-5 w-5" aria-hidden />
                   </div>
-                  <h4 className="font-bold uppercase tracking-wide text-[#191c1d] transition-colors group-hover:text-[#455f88]">
+                  <h4 className="font-bold uppercase tracking-wide text-white">
                     Immigration Updates
                   </h4>
                 </div>
-                <span className="text-xs font-medium text-[#444748]">
+                <span className="shrink-0 text-xs font-medium text-white/75">
                   Updated 15m ago
                 </span>
               </div>
               <div className="space-y-3">
-                <h5 className="text-sm font-bold text-[#455f88]">
+                <h5 className="text-sm font-bold text-[#b6d0ff]">
                   90-Day Online Reporting System
                 </h5>
-                <p className="text-sm leading-relaxed text-[#444748]">
+                <p className="text-sm leading-relaxed text-white/85">
                   Temporary maintenance scheduled for{" "}
-                  <span className="font-semibold">Oct 14–16</span>. Residents are
-                  advised to visit the Jomtien office or use the mobile app for
-                  alternative filings.
+                  <span className="font-semibold text-white">Oct 14–16</span>.
+                  Residents are advised to visit the Jomtien office or use the
+                  mobile app for alternative filings.
                 </p>
               </div>
-              <div className="border-t border-[#c4c7c8]/30 pt-2">
-                <span className="text-xs font-bold text-[#455f88] group-hover:underline">
+              <div className="border-t border-white/20 pt-2">
+                <span className="text-xs font-bold text-white group-hover:underline">
                   View Detailed Advisory →
                 </span>
               </div>
-            </Link>
+            </OverlayFeaturedCard>
           </div>
         </section>
 
@@ -196,7 +143,7 @@ export function NewsHubPage() {
           </div>
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <NewsCard
+            <NewsArticleCard
               href="/news/local-news/crime"
               image={newsImages.policeCrime}
               imageAlt="Night street with police lights"
@@ -207,7 +154,7 @@ export function NewsHubPage() {
               footer="🕐 45 mins ago"
             />
 
-            <NewsCard
+            <NewsArticleCard
               href="/news/local-news/accidents"
               image={newsImages.breakingAccident}
               imageAlt="Pattaya highway at night"
@@ -220,7 +167,7 @@ export function NewsHubPage() {
               borderHover="border-2 border-transparent hover:border-[#ba1a1a]"
             />
 
-            <NewsCard
+            <NewsArticleCard
               href="/news/tourism/attractions"
               image={newsImages.hiddenGems}
               imageAlt="Hidden islands near Pattaya"
@@ -232,9 +179,9 @@ export function NewsHubPage() {
               <span className="flex w-full items-center justify-center gap-2 rounded-lg border border-[#ae2f34] py-2.5 text-sm font-semibold text-[#ae2f34] transition-all group-hover:bg-[#ae2f34] group-hover:text-white">
                 Book Tour Now
               </span>
-            </NewsCard>
+            </NewsArticleCard>
 
-            <NewsCard
+            <NewsArticleCard
               href="/news/tourism/attractions"
               image={newsImages.sanctuary}
               imageAlt="Sanctuary of Truth"
@@ -245,7 +192,7 @@ export function NewsHubPage() {
               footer="🕐 3 Hours Ago"
             />
 
-            <NewsCard
+            <NewsArticleCard
               href="/news/nightlife/walking-street"
               image={newsImages.walkingStreet}
               imageAlt="Walking Street at night"
@@ -256,7 +203,7 @@ export function NewsHubPage() {
               footer="🕐 5 Hours Ago"
             />
 
-            <NewsCard
+            <NewsArticleCard
               href="/news/expat/immigration"
               image={newsImages.immigration}
               imageAlt="Immigration documents"
