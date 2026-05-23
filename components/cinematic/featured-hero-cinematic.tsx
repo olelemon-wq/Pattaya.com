@@ -36,6 +36,7 @@ export function FeaturedHeroCinematic({
   const articleRef = useRef<HTMLElement>(null);
   const [active, setActive] = useState(false);
   const [kenBurnsPaused, setKenBurnsPaused] = useState(false);
+  const isLocalAsset = image.startsWith("/");
 
   useEffect(() => {
     let frame2 = 0;
@@ -73,6 +74,7 @@ export function FeaturedHeroCinematic({
           src={image}
           alt={imageAlt}
           fill
+          unoptimized={isLocalAsset}
           className="object-cover"
           priority
           sizes="100vw"

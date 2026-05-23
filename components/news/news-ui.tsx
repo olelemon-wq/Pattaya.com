@@ -32,19 +32,23 @@ export function OverlayFeaturedCard({
   className?: string;
   children: React.ReactNode;
 }) {
-  const shellClass = `group relative isolate flex min-h-[300px] flex-col justify-between overflow-hidden rounded-xl shadow-sm transition-shadow hover:shadow-lg sm:min-h-[320px] ${className}`;
+  const isLocalAsset = image.startsWith("/");
+  const shellClass = `group relative isolate flex min-h-[300px] flex-col justify-between overflow-hidden rounded-xl bg-[#0c1a33] shadow-sm transition-shadow hover:shadow-lg sm:min-h-[320px] ${className}`;
 
   const body = (
     <>
-      <Image
-        src={image}
-        alt=""
-        fill
-        className="object-cover transition-transform duration-700 group-hover:scale-105"
-        sizes="(max-width: 768px) 100vw, 33vw"
-        aria-hidden
-      />
-      <div className={`absolute inset-0 ${overlayClass}`} aria-hidden />
+      <div className="absolute inset-0 z-0 overflow-hidden bg-[#0c1a33]">
+        <Image
+          src={image}
+          alt=""
+          fill
+          unoptimized={isLocalAsset}
+          className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, 33vw"
+          aria-hidden
+        />
+      </div>
+      <div className={`absolute inset-0 z-[1] ${overlayClass}`} aria-hidden />
       <div className="relative z-10 flex flex-1 flex-col justify-between p-4 sm:p-6">
         {children}
       </div>

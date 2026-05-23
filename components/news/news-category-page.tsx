@@ -55,22 +55,24 @@ export function NewsCategoryPage({ item, content }: NewsCategoryPageProps) {
           </p>
         </header>
 
-        <section className="mb-12 flex flex-col gap-5 sm:mb-16 sm:gap-6">
-          <FeaturedHeroCinematic
-            image={content.hero.image}
-            imageAlt={content.hero.imageAlt}
-            href="#latest"
-            category={item.subcategory}
-            featuredLabel={content.hero.featuredLabel ?? "Featured"}
-            title={content.hero.title}
-            excerpt={content.hero.excerpt}
-            ctaLabel={content.hero.ctaLabel ?? "Read Full Story"}
-            showAiSummary={false}
-            minHeightClass="min-h-[min(70dvh,380px)] sm:min-h-[460px] lg:min-h-[520px]"
-            byline={content.hero.byline}
-          />
+        <section className="relative mb-12 flex flex-col gap-5 sm:mb-16 sm:gap-6">
+          <div className="relative z-0">
+            <FeaturedHeroCinematic
+              image={content.hero.image}
+              imageAlt={content.hero.imageAlt}
+              href="#latest"
+              category={item.subcategory}
+              featuredLabel={content.hero.featuredLabel ?? "Featured"}
+              title={content.hero.title}
+              excerpt={content.hero.excerpt}
+              ctaLabel={content.hero.ctaLabel ?? "Read Full Story"}
+              showAiSummary={false}
+              minHeightClass="min-h-[min(70dvh,380px)] sm:min-h-[460px] lg:min-h-[520px]"
+              byline={content.hero.byline}
+            />
+          </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-3">
+          <div className="relative z-10 grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-3">
             {content.spotlights.map((spotlight, index) => {
               const Icon = spotlightIcons[index] ?? Building2;
 

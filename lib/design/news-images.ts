@@ -11,12 +11,15 @@ export const newsImages = {
     "https://lh3.googleusercontent.com/aida-public/AB6AXuBZNn4wYqvRCK_16zog_SCV4_XVnP8PwFQxIX_3ZLKAkdF3NPZ9fCYIPbUHq11ryGP-NZltspuzzQs7wc2WR0JYQeY1t_VDdGoLhLTaYWH24URiT66aiW_PXXFoduG78R3Gt47yLzcwzOkskflCrQau2GP2k94i3lnJA7onmIIJro4_6P_Z3Tq3jcQ_lxmo4zH7n6lZzCyUc1hFldInFkXR2kcFUp7u8OWZq0gi82n1FBysGa_3-hTHfVwoBRslpn4egw7CYWtjP7jM",
   hiddenGems:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuAUxFKphuiUOpz0frV6tazzcP-p6G8aIybLPIFvrRjpDYC0UC8Q3tl82kaB1TRKLIDvAploGMhxoQrJt9GCSwPmEnD3sQ4vqib53-PC2WNuwWlpV-eXIzvQT0Mmq7UBekmvB8KfExVdjHcc-n00EVq4P4z2Jx1tQB1tMeqpHL0yIV_BeVg-jTv6ImzWqSztlgaPqrofKGrA5OczhnBewmD8hHOtje2mlbK5LoGq_Lp5v33450ctDUVyM9VXk3hjy72NM6h8Yfd02_ad",
+  /** Sanctuary of Truth — aida-public (private aida/ URLs return 403) */
   sanctuary:
-    "https://lh3.googleusercontent.com/aida/ADBb0ujNAjUo7YLxjguqA0Jk_FmCjUJpif9Q6jnTf2pIvCXCxR_3PI0MnX228tJ7KqVAAE-OBbn-8neA7G4IYd_pIybBmzXaTz-iXSw8OsmsYxzcvwoC16J4rP-PkWFJPtDlf0oYfbZj8Kz4H66UcAy2Qlg4Dh7I-Q03bSi3NZU9Oe2q6T_YXK8qL5xbg-w7BusVfIjXbIw7r7cWAK4YoMfA2X-G5k79qwvP4MMbuYNtc9Mew9uUsr2kuqdgW0Q",
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuAUxFKphuiUOpz0frV6tazzcP-p6G8aIybLPIFvrRjpDYC0UC8Q3tl82kaB1TRKLIDvAploGMhxoQrJt9GCSwPmEnD3sQ4vqib53-PC2WNuwWlpV-eXIzvQT0Mmq7UBekmvB8KfExVdjHcc-n00EVq4P4z2Jx1tQB1tMeqpHL0yIV_BeVg-jTv6ImzWqSztlgaPqrofKGrA5OczhnBewmD8hHOtje2mlbK5LoGq_Lp5v33450ctDUVyM9VXk3hjy72NM6h8Yfd02_ad",
+  /** Walking Street at night — aida-public night-street asset */
   walkingStreet:
-    "https://lh3.googleusercontent.com/aida/ADBb0uiiVTaY6QxY0wpp8sOEzqIfeQBwYBYdnRH5i_tj-EyQG9uWcftJt_CSDsj1kGORgeVEUZXxwzFvkcPm_wfP1MUqNXGi3cdCFmjiwiQB_NNTWDOIddbTYkm-_zJ2j7TGm_OICYOHTRFjRTZd04sP1Kl1nY4ZpzSF3esvWqV_lcNAfXnSY0zk89qGzSsCUON-vi9Yaw-d7WHbiqE05q0HSBfwxT7uFn62LX8CTvlamWyRd8mhpPTOfZwRkDQO",
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuA4qEQUnP4rM9x8y1G8Vhw2QTBh5Ikrr0F9rptp2elgrIZrlsWjDkMUJE9ULV5KgetpTix0m3DXCsehByc0kZTKwJZlGMhiMZc87Lu0tuQI_RCVpHz4CN6OIZCQ08mWVfjl0htu2jfP87O3MoruOnGPuKd4DjF9B7XCmvFx-b6afU9_jof63VzONllcoP2KI67e3D_-wAc85bCiq0sG_gA_DlM8UUIVfifqzWVI5ZiP8mo1hmrqFf0rvmAym9Hwmf3pT_ZD8FuHA36B",
+  /** Immigration forms & documents — verified Unsplash */
   immigration:
-    "https://lh3.googleusercontent.com/aida/ADBb0uiqehYo8Ic66Qc8OUldOGk4PojwnDliUtmoIeEY3X5omNZF9vFTQDqzgw6ImwAqp9ItInEJXfJ5VowGAWDalcXq0vgsFldyY5iYh2bM5E0D_mgY6yIh3zswt_aK-LOeeqnBGKIJTUG4JdKH8TCaYCkW1kVnYwLcZu0oXFDhqKuszodhqS-Qy_ckZJAsybBnDslaUSq9HmXdK8VXOYdqBkPOmnoXJF7HPtvyHmlKyugOVG557JOSRa5rAT_C",
+    "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=80",
   hotels:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuDlxE79PoOk34J5Q3uU_n9cDwcALVNQKQ6TU9PQQ1CeasoKjF3q6s4Ppt4xpzrqSNx_X9yBmwMeLdguQc1PtrRM6X_Y6icY9r5YBvrFrtLqj_HloLATOowbTTJvE56ojvLYbGefHAAufDKuzS4t2y0xW5zEHJN8SkcE6MieB_SZ0nnvOlv6RrxZYNZ9QA_Qix2FgL0uUYXZsfoRjaWd88YBr9sLYRLVbaGeg28_iOiB4roiOL4iKwp8amKycqcRpoifT_H_Xii7z5KF",
   promotions:
@@ -29,8 +32,9 @@ export const newsImages = {
   featuredVisa:
     "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=900&q=80",
   /** Muay Thai — local assets (verified; remote fallbacks were 404) */
-  muayThaiHero: "/images/news/muay-thai-hero.png",
-  muayThaiStadium: "/images/news/muay-thai-stadium.jpg",
+  muayThaiHero: "/images/news/muay-thai-hero.jpg",
+  /** Stadium spotlight — unique path avoids stale Next/image cache */
+  muayThaiStadium: "/images/news/muay-thai-main-event.jpg",
   muayThaiTraining: "/images/news/muay-thai-training.jpg",
   muayThaiFighter: "/images/news/muay-thai-sparring.jpg",
   muayThaiRing: "/images/news/muay-thai-ring.jpg",
