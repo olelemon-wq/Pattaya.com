@@ -7,7 +7,7 @@ import { getNavItemBySlug, getSectionById } from "@/lib/navigation/site-map";
 
 const SECTION_ID = "living";
 
-/** Handled by living/housing/[slug] or living/visa/[slug] — omit from catch-all */
+/** Handled by category [slug] routes — omit from catch-all */
 const DEDICATED_SLUGS = new Set([
   "visa/retirement",
   "visa/thailand-elite",
@@ -16,8 +16,14 @@ const DEDICATED_SLUGS = new Set([
   "housing/condo-buying",
   "housing/rentals",
   "housing/ownership",
+  "cost-of-living/utilities",
+  "healthcare/hospitals",
+  "healthcare/insurance",
+  "transportation/songthaew",
+  "transportation/driving",
   "culture/etiquette",
   "culture/thai-culture",
+  "safety/emergency-guide",
 ]);
 
 interface PageProps {

@@ -616,7 +616,7 @@ export function LivingHubPage() {
               </div>
             </div>
 
-            <div className="flex flex-col justify-center rounded-xl border border-[#455f88]/10 bg-[#b6d0ff]/20 p-10 lg:col-span-4">
+            <div className="flex flex-col justify-center rounded-xl border border-[#455f88]/10 bg-[#D7CBBA] p-10 lg:col-span-4">
               <h3 className="mb-4 text-xl font-semibold text-[#3f5882]">
                 Elite Mobility
               </h3>

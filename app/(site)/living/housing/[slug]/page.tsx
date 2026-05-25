@@ -1,4 +1,6 @@
 import { CondoBuyingPage } from "@/components/living/condo-buying-page";
+import { OwnershipPage } from "@/components/living/ownership-page";
+import { RentalsPage } from "@/components/living/rentals-page";
 import {
   createItemMetadata,
   SectionDetail,
@@ -12,6 +14,8 @@ const CATEGORY = "housing";
 
 const DEDICATED_PAGES: Record<string, () => React.JSX.Element> = {
   "condo-buying": () => <CondoBuyingPage />,
+  rentals: () => <RentalsPage />,
+  ownership: () => <OwnershipPage />,
 };
 
 interface PageProps {
@@ -33,6 +37,29 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         title: "Condo Buying | ซื้อคอนโด — Pattaya.com",
         description:
           "Master Pattaya's condo market: legal basics, area guides, transfer process, and free property consultation.",
+      },
+    };
+  }
+  if (slug === "rentals") {
+    return {
+      title: "Rentals Guide Pattaya | เช่าบ้าน | Pattaya.com",
+      description:
+        "Finding rentals in Pattaya — lease checklist, TM30, deposit rules, area rent ranges, and verified listings.",
+      openGraph: {
+        title: "Rentals | เช่าบ้าน — Pattaya.com",
+        description:
+          "Condo and house rentals in Jomtien, Pratumnak, and central Pattaya with contract tips.",
+      },
+    };
+  }
+  if (slug === "ownership") {
+    return {
+      title: "Property Ownership Pattaya | สิทธิการถือครอง | Pattaya.com",
+      description:
+        "Leasehold vs freehold, foreign condo quota, land rules, and ownership options for expats in Thailand.",
+      openGraph: {
+        title: "Leasehold vs Freehold — Pattaya.com",
+        description: "Understand Thai property ownership frameworks before you buy.",
       },
     };
   }

@@ -1,4 +1,7 @@
+import { NinetyDayReportPage } from "@/components/living/ninety-day-report-page";
 import { RetirementVisaPage } from "@/components/living/retirement-visa-page";
+import { ThailandElitePage } from "@/components/living/thailand-elite-page";
+import { WorkPermitPage } from "@/components/living/work-permit-page";
 import {
   createItemMetadata,
   SectionDetail,
@@ -12,6 +15,9 @@ const CATEGORY = "visa";
 
 const DEDICATED_PAGES: Record<string, () => React.JSX.Element> = {
   retirement: () => <RetirementVisaPage />,
+  "thailand-elite": () => <ThailandElitePage />,
+  "work-permit": () => <WorkPermitPage />,
+  "90-day-report": () => <NinetyDayReportPage />,
 };
 
 interface PageProps {
@@ -38,6 +44,41 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         title: "Retirement Visa | วีซ่าเกษียณ — Pattaya.com",
         description:
           "Requirements, step-by-step process, and free consultation for Thailand retirement visa applicants in Pattaya.",
+      },
+    };
+  }
+  if (slug === "thailand-elite") {
+    return {
+      title: "Thailand Elite Visa Pattaya | Elite Visa | Pattaya.com",
+      description:
+        "Thailand Elite membership tiers, benefits, airport VIP, long-stay privileges, and application support for Pattaya residents.",
+      openGraph: {
+        title: "Thailand Elite | Elite Visa — Pattaya.com",
+        description:
+          "5–20 year privilege visa with concierge service — compare tiers and apply with expert guidance.",
+      },
+    };
+  }
+  if (slug === "work-permit") {
+    return {
+      title: "Work Permit Guide Pattaya | ใบอนุญาตทำงาน | Pattaya.com",
+      description:
+        "Work permit requirements, Non-B visa steps, employer ratio, LTR options, and legal compliance for professionals in Chonburi.",
+      openGraph: {
+        title: "Work Permit | ใบอนุญาตทำงาน — Pattaya.com",
+        description:
+          "Employment visas, Labour Office filings, and digital nomad pathways explained for Pattaya.",
+      },
+    };
+  }
+  if (slug === "90-day-report") {
+    return {
+      title: "90-Day Report Pattaya | รายงานตัว 90 วัน | Pattaya.com",
+      description:
+        "How to complete 90-day immigration reporting — online TM47, mail, in-person, TM30, deadlines, and FAQ.",
+      openGraph: {
+        title: "90-Day Report | รายงานตัว 90 วัน — Pattaya.com",
+        description: "Stay compliant with Chonburi Immigration address reporting.",
       },
     };
   }

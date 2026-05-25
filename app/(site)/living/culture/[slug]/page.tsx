@@ -1,4 +1,5 @@
 import { CultureEtiquettePage } from "@/components/living/culture-etiquette-page";
+import { ThaiCulturePage } from "@/components/living/thai-culture-page";
 import {
   createItemMetadata,
   SectionDetail,
@@ -12,6 +13,7 @@ const CATEGORY = "culture";
 
 const DEDICATED_PAGES: Record<string, () => React.JSX.Element> = {
   etiquette: () => <CultureEtiquettePage />,
+  "thai-culture": () => <ThaiCulturePage />,
 };
 
 interface PageProps {
@@ -33,6 +35,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         title: "Do & Don't | สิ่งควรทำ/ไม่ควรทำ — Pattaya.com",
         description:
           "Master Thai cultural dos and don'ts for respectful, rewarding life in Pattaya.",
+      },
+    };
+  }
+  if (slug === "thai-culture") {
+    return {
+      title: "Thai Culture Guide Pattaya | วัฒนธรรมไทย | Pattaya.com",
+      description:
+        "Understanding Thai culture as a Pattaya resident — festivals, language, social values, and integration tips.",
+      openGraph: {
+        title: "Thai Culture | วัฒนธรรมไทย — Pattaya.com",
+        description: "Live respectfully and confidently in Thailand's coastal expat hub.",
       },
     };
   }
