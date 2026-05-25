@@ -3,9 +3,9 @@ export const livingImages = {
   hero:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuDeK9B8FjynFYWkNXqz2r6w_T4L9sCVHrPyuRR8dcKlHX9jsH0dkMDNMMobyPbvNMhw3X3NmRE0sSE_ug2HY4ZRLGtDJovT5b6ytCmk-iMi-wYyd3wDZJZ_BC9bdTvpqXwNuH7CCia2UYUqSP51Jm6uMbGs8Zph9o2VSzIv62N0ZTbncyaX0_hhxD2y-K5v3p_ubh1EZ6NCXZ82ATUMrt4p_vcbO37Z2ShmiQNVOc7Ann8TIIK09bfM5leW89YJ1Ha1cW5xSQIOmz2X",
   retirementVisa:
-    "https://lh3.googleusercontent.com/aida/ADBb0uhXyl9TwDu6F0FvzphGGNhtAtP19ktzXMgwTq5aftnzuD9GR4P5iTH073WWePF1w4NWs12lRl_e1Odh7wgpEp2MHfJjdXbdIB3lQA7-9HlBXWws8qrJal0zXD8qIf_38dvzIxRpDjYQHh3WvdYCd3hFnVhlO6NlgigRfNHVq6ovhHGYHyPQsUtXyWAmIrInuXf2bfpOUVxtbziqN7ZwdC3nPyjHpg0paUfWhtVgQwM9CSWXBeVff17WSWk",
+    "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80",
   realEstate:
-    "https://lh3.googleusercontent.com/aida/ADBb0ujVpVrg4582lSBZPJkJkQomZGZOk_xSiQlM53Pbe3bHD1IyBNYQFEq1Cc69ibJjwBy9vAeb4p_u8JjEL7MS2wa4pG24P9nbb4SXa-6-KV3hht9DuyAjf9fm8809L4Vv179kdxuFyGrkvT9K-widRoUiQRVy91V2zijXWsbpaVk8shj0_AIG9mL5af6I8UDN8q12qk-XHGR_qGx3CHZIyqRGT6QEOoU0d0Z1mUJ2lS16rg86c-E38RWj05U",
+    "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80",
   scamAlerts:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuA99qmjKzNyFb3UairoEDa4Dd9c6lui74hvxiFojcNRr1cv9ZjM6RYSrsYnfWy7KU0kousB10bJpaBx5wuA_tpLaSVEmopewEOwg7jNvR70-gVl6ExE9Ed21aQ-VQ1GSErfoeoVSvDf_f0JCfCVBVHu0M1baCrleOXqKgIheba-quNNuangMC0R2R2P9Jk7IzuzU-f849jePIiNbJoDsUWL5vosb7I8AZCIA5QBLLeVIZhsYWKc_CT_rdPYQIzL38VstoFf_ieMK0-U",
   cultureEtiquette:
@@ -19,19 +19,19 @@ export const livingImages = {
   medical:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuDJYmMUxbPmgBBx0raN2Q-vkdND-f-E7pCE582xFBbQc54Q21TFfHo9IOSDySGCnJF1OfuJUV2c4ox928uP8nFGTIhl9ZUl-fo7BfHwadvovT8y60qHqT7mtnHNfz_hHcykfQfQlj1GTU5wObcSbQszZE2gS-p2PupvRY3gpesctG87Of3I9PKpGU_LYPZR_fVG8LwOonGGges8owN6gQ1k_RzCrwnGMpyrwUTvwRgVQD2UObDNXYw2iakZJx96Fm3zGk7iBXjTwTkP",
   ownership:
-    "https://lh3.googleusercontent.com/aida/ADBb0uhWQsIz0Pq4MOWdpGBuYoCwQVHkplhf9awGZFkic07YHRRmO8rMqPuKk6KegYZjDlXXdjLGWPS6WCkpwYT8zHP2JR6zu_ope12JYdyU85urUknXI8AHpL_XSxP3FFu_yfCzX8dmPg0jQ2PVzXfthGpj6sfi2Cl88CuUknJazpWsUZjqXQNvFpmjMTf0E-HOvoMHrHz1gLdZGmilecFdJWvf9-q0U-NSd_3UwF9KxvkB2KuvA7-UCWfRQ8Nk",
+    "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80",
   utilities:
-    "https://lh3.googleusercontent.com/aida/ADBb0uhYbwBDQCpBoSYg-4Eyq-89QmAPVYLu5z3xi7IzDU4VxDWxbHeXnO0k5YQPwsvC4N9CRz7JLr2QnrMc1gPtEgpwqaDDWq-19q-3irzMm1R4zi7nZhP0syhHDET7-IjpvOkhkj8z0uFrERl-hw2_aZqJNqY1UKcaxZI_Z9fmHdHPQH_k0HsP50EGVldc2TNij1LHX2wOcTh_hbWjHztXRmHqelFSJEDgKG6vi1UemJ7dgvN-BExp6soq2g3m",
+    "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80",
   insurance:
-    "https://lh3.googleusercontent.com/aida/ADBb0uhSCZ_zGb3b_vvYVO35EVysGGEwN422tpdDp5WwAmdoAj3QjadmhuWzYvzDUyhOPHENCyPtuU8Op2Cqsj8-NqysCwTdueuWyCbAywnHit9z3b_x9RvoCeS8Sub2Sx1lNc6OdvylSu-L95zpi8OxHJXBNeGxLaYfxvXxW7I5jVfBCDt9rZwXyZ1NoKP9pfl9jtER7iJbCrLJkdo3UZfV-JfK1NB-BnNEIt4iw6IHsyH3BElxXrYUuFofwAof",
+    "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80",
   driving:
-    "https://lh3.googleusercontent.com/aida/ADBb0ugrJsjSwO3c6wMYInhJ-RQkBi8kAcinPbLC15r9IutZ-diWHpF8Rx0aQ-oS10zSUbjMBPosp7r0BULNa8fwlQF6l-OAohNrOTBVWijFve3M2peR_gTFiePAsMrGSn3P5BIgcE2sDXcyQPBmtRbs-VkmN7I1TkEu3XBrCU3LxLBH3HU3Hbe0uup7H5ofQVWZuRO8CxJuHrIf_Pe8wfGKDWU53KPHZnafp2Jvo4_O-m75vcFa9KPjxAMT43Gp",
+    "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=800&q=80",
   cultureCard:
-    "https://lh3.googleusercontent.com/aida/ADBb0ujQcC2rnTPalpSu6aKisDMtcz0eeQQMhT6QZsZPgQpKf_g-JnmvIjHZGHDEbN08921VQAE_xKTBcx1AgtYh63w0hwLcXTh2Q6GEMpxzwRQtb5v1sjrPq5vtIG73stGF7q0-yWEhNZ2CpIJ3e7L3k9doN8lzT3o5A-HCczPIUcwlQDqYtIj9jStDzb-b-9FTkHklqmB1B0qbFUhiukMeaY-G-r8GSKAEcq02Mr8XwDmnmcMIeMJljMF0G0Qu",
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuDgHRHTs44RnWQGUGkcQhs44nPAdKqu3s56UY9ZVig37OexggLa1AV4IkJ3MD9j2zmcNUOaDDFm0p07t3wqmJhUVwfFd3BVRpfpsenjm9s07Xh4pjIDwNsnxUENmqzTWa6KXoBICd1o08KEQz7L5fAdsTWluuj7HjB6HOj-gXCp03BNKrtusENTuZ1nWEvwP6KAH3RSpLMd9UFNl6njDQX312VRqSLhefd0EchUgRGO-0sMtYw9-ZJ-QClPpwSQoniL6v96nhqnb8Mv",
   ninetyDay:
-    "https://lh3.googleusercontent.com/aida/ADBb0ughOyIxo83w_4u_dwr2lhsfLF2u5FwYgJHaGx-kuu71tg4BzwXwzqIPMisoDnEDwi3KgXnl68dOxRmNwnoDbon889036dwEoL19qkf0t_spnMbWWAqAVZJN7bAFB4XLJARRP2ewrT-PchNW1wzgihn6b0qgwh9qvIskfMcMwc0UDCR9xShgF9qPo_MhfRdXQhtiyHhgZTdgGBc3lkcFwH28wgOZBK5rtvlX42qO9LckNpi78L0jagLpEW3o",
+    "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80",
   localTransport:
-    "https://lh3.googleusercontent.com/aida/ADBb0ujkwgl59phPyRKVcHgCDfnp1WUrZ4gFWZQkOXCyOmsGpb_RDj2vSbE6ZWIUYQ9dSCpbDZE7f7jogtT9tp8Q8My3PiJJ7QRmX5zx524jvdXuP2fyPnNMqJTsyffxVB_HZHAO02o9VQeH1c6WLeZaZL5QSb-4PvJ3nJmGHLaOpMyKf7TvOcdBUhuW78GhzeB_agVw17q9feeJRg3SjazFYFAB6gEdsoyv8Ro9vs6TDkqP7LnlMUcy3TOSy2Y",
+    "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=800&q=80",
   safetyGuide:
-    "https://lh3.googleusercontent.com/aida/ADBb0ugjNyqjf2zlvwT4mZp1ZPH9LAehDY4UBzA2y5j0HvhYfPC_Kb1pEMzOj4PshfR-IoG1DMU-SK9_dw6Xe_xLvT7Or3_Yrmw7Gf5izU8u3DyiOJwYVBYsTfLdUkADviy9X0eM89YOTgk8zyggMhI4FWISWhsfXq5bymGGpYTxWePn6Gfiaeyf-nF3bnAOt8hy6h_yFqpLW5TJVIyC3vR1L5pUB1IjdS5BPUzkFRL1V63Q-YQWA4uQfJ1GFpN_",
+    "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
 } as const;
