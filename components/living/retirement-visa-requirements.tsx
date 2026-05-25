@@ -63,7 +63,7 @@ export function RetirementVisaRequirements() {
           return (
             <article
               key={req.title}
-              className="visa-req-card group relative overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white p-6 shadow-sm transition duration-300 hover:border-[#FF7320]/40 hover:shadow-lg"
+              className="visa-req-card group relative overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white p-6 shadow-sm transition duration-300 hover:border-[#D7CBBA] hover:shadow-lg"
               style={{ animationDelay: `${index * 60}ms` }}
             >
               <div
@@ -71,10 +71,10 @@ export function RetirementVisaRequirements() {
                 aria-hidden
               />
               <div className="relative flex items-start justify-between gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#0A192F] text-white shadow-md transition group-hover:bg-[#FF7320]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#B29475] text-white shadow-md transition group-hover:bg-[#D7CBBA]">
                   <Icon className="h-6 w-6" />
                 </div>
-                <span className="rounded-lg bg-[#0A192F] px-2.5 py-1 text-lg font-bold tabular-nums text-white">
+                <span className="rounded-lg bg-[#B29475] px-2.5 py-1 text-lg font-bold tabular-nums text-white">
                   {req.highlight}
                 </span>
               </div>

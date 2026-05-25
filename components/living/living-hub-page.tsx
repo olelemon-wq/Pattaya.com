@@ -1,40 +1,60 @@
+import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
+import {
+  Crown,
+  Footprints,
+  Hand,
+  Handshake,
+  Landmark,
+  Shirt,
+  Users,
+  VolumeX,
+  type LucideIcon,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { livingImages } from "@/lib/design/living-images";
 
-const culturalDos = [
+const culturalDos: { icon: LucideIcon; title: string; text: string }[] = [
   {
+    icon: Handshake,
     title: "The Wai Protocol",
     text: "Bow with palms together to show respect to elders, officials, and new acquaintances.",
   },
   {
+    icon: Users,
     title: "Social Hierarchy",
     text: "Acknowledge age and status with appropriate gestures and a calm, polite tone of voice.",
   },
   {
+    icon: Shirt,
     title: "Dress Codes",
     text: "Wear modest clothing (covering shoulders and knees) when visiting temples and official buildings.",
   },
   {
+    icon: Landmark,
     title: "Respect for Monks",
     text: "Give up your seat and maintain a respectful distance; women should avoid any physical contact.",
   },
 ];
 
-const culturalDonts = [
+const culturalDonts: { icon: LucideIcon; title: string; text: string }[] = [
   {
+    icon: Hand,
     title: "Touching the Head",
     text: "Considered the most sacred part of the body; avoid touching anyone's head, even children.",
   },
   {
+    icon: Footprints,
     title: "Pointing Feet",
     text: "Feet are seen as the lowest part of the body; never point them at people, monks, or images of the Buddha.",
   },
   {
+    icon: VolumeX,
     title: "Raising Voice",
     text: "Maintain a calm demeanor; losing your temper is seen as losing face and is highly counterproductive.",
   },
   {
+    icon: Crown,
     title: "Disrespecting the Monarchy",
     text: "Always show utmost respect for the Royal Family. Discussion of the monarchy is subject to strict laws.",
   },
@@ -233,6 +253,9 @@ function GridInfoCard({
 export function LivingHubPage() {
   return (
     <div data-full-bleed className="bg-[#f8f9fa] pb-16 text-[#191c1d]">
+      <div className="relative z-10 shrink-0 shadow-sm">
+        <BreakingNewsTicker variant="living" />
+      </div>
       <div className="mx-auto max-w-[1280px] px-5 py-8 md:px-16">
         {/* Hero */}
         <section className="mb-20">
@@ -294,7 +317,7 @@ export function LivingHubPage() {
                   </p>
                   <Link
                     href="/living/visa/retirement"
-                    className="mt-auto inline-flex w-fit rounded-full bg-[#455f88] px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#455f88]/20 transition-all hover:bg-[#3f5882]"
+                    className="mt-auto inline-flex w-fit rounded-full bg-[#B29475] px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#B29475]/25 transition-all hover:bg-[#B29475]/90"
                   >
                     Get Visa Quote
                   </Link>
@@ -335,7 +358,7 @@ export function LivingHubPage() {
 
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
               {/* Scam alerts */}
-              <div className="flex flex-col justify-center rounded-xl border-l-[12px] border-[#ae2f34] bg-[#fef1f1] p-8">
+              <div className="flex flex-col justify-center rounded-xl border-l-[12px] border-[#ae2f34] bg-[#D7CBBA] p-8">
                 <div className="relative mb-8 h-48 overflow-hidden rounded-lg">
                   <Image
                     src={livingImages.scamAlerts}
@@ -420,14 +443,23 @@ export function LivingHubPage() {
                         ✓ Cultural Dos
                       </h5>
                       <ul className="space-y-4">
-                        {culturalDos.map((item) => (
-                          <li key={item.title}>
-                            <p className="mb-1 text-sm font-bold">{item.title}</p>
-                            <p className="text-xs leading-relaxed text-[#444748]">
-                              {item.text}
-                            </p>
-                          </li>
-                        ))}
+                        {culturalDos.map((item) => {
+                          const Icon = item.icon;
+                          return (
+                            <li key={item.title}>
+                              <p className="mb-1 flex items-center gap-2 text-sm font-bold">
+                                <Icon
+                                  className="h-4 w-4 shrink-0 text-[#455f88]"
+                                  aria-hidden
+                                />
+                                {item.title}
+                              </p>
+                              <p className="text-xs leading-relaxed text-[#444748]">
+                                {item.text}
+                              </p>
+                            </li>
+                          );
+                        })}
                       </ul>
                     </div>
                     <div>
@@ -435,14 +467,23 @@ export function LivingHubPage() {
                         ✕ Cultural Don&apos;ts
                       </h5>
                       <ul className="space-y-4">
-                        {culturalDonts.map((item) => (
-                          <li key={item.title}>
-                            <p className="mb-1 text-sm font-bold">{item.title}</p>
-                            <p className="text-xs leading-relaxed text-[#444748]">
-                              {item.text}
-                            </p>
-                          </li>
-                        ))}
+                        {culturalDonts.map((item) => {
+                          const Icon = item.icon;
+                          return (
+                            <li key={item.title}>
+                              <p className="mb-1 flex items-center gap-2 text-sm font-bold">
+                                <Icon
+                                  className="h-4 w-4 shrink-0 text-[#ae2f34]"
+                                  aria-hidden
+                                />
+                                {item.title}
+                              </p>
+                              <p className="text-xs leading-relaxed text-[#444748]">
+                                {item.text}
+                              </p>
+                            </li>
+                          );
+                        })}
                       </ul>
                     </div>
                   </div>

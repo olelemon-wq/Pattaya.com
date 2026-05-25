@@ -4,6 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
+const ctaToneStyles = {
+  home: "bg-[#f97316] shadow-[0_8px_32px_rgba(249,115,22,0.4)] hover:bg-[#ea580c]",
+  news: "bg-[#10438f] shadow-[0_8px_32px_rgba(16,67,143,0.45)] hover:bg-[#10438f]/90",
+  living: "bg-[#B29475] shadow-[0_8px_32px_rgba(178,148,117,0.4)] hover:bg-[#B29475]/90",
+  explore: "bg-[#B52E88] shadow-[0_8px_32px_rgba(181,46,136,0.4)] hover:bg-[#B52E88]/90",
+} as const;
+
 export type FeaturedHeroCinematicProps = {
   image: string;
   imageAlt: string;
@@ -13,6 +20,8 @@ export type FeaturedHeroCinematicProps = {
   excerpt: string;
   featuredLabel?: string;
   ctaLabel?: string;
+  /** Matches breaking-news ticker accent for the section */
+  ctaTone?: keyof typeof ctaToneStyles;
   showAiSummary?: boolean;
   minHeightClass?: string;
   byline?: string;
@@ -28,6 +37,7 @@ export function FeaturedHeroCinematic({
   excerpt,
   featuredLabel = "Featured",
   ctaLabel = "Read Article",
+  ctaTone = "home",
   showAiSummary = true,
   minHeightClass = "min-h-[min(72dvh,420px)] sm:min-h-[480px] lg:min-h-[540px]",
   byline,
@@ -122,7 +132,7 @@ export function FeaturedHeroCinematic({
         )}
         <Link
           href={href}
-          className="hero-cinematic__rise hero-cinematic__rise--4 hero-cinematic__cta mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#FF7320] px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.1em] text-white shadow-[0_8px_32px_rgba(255,115,32,0.4)] transition-[transform,background-color,box-shadow] duration-300 ease-out hover:bg-[#e56518] active:scale-[0.98] sm:mt-6 sm:w-fit sm:justify-start sm:px-7 sm:py-3 sm:text-xs sm:tracking-[0.12em] sm:hover:scale-[1.03] motion-reduce:sm:hover:scale-100"
+          className={`hero-cinematic__rise hero-cinematic__rise--4 hero-cinematic__cta mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.1em] text-white transition-[transform,background-color,box-shadow] duration-300 ease-out active:scale-[0.98] sm:mt-6 sm:w-fit sm:justify-start sm:px-7 sm:py-3 sm:text-xs sm:tracking-[0.12em] sm:hover:scale-[1.03] motion-reduce:sm:hover:scale-100 ${ctaToneStyles[ctaTone]}`}
         >
           {ctaLabel}
           <span aria-hidden className="transition-transform group-hover:translate-x-0.5">

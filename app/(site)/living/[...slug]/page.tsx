@@ -7,12 +7,27 @@ import { getNavItemBySlug, getSectionById } from "@/lib/navigation/site-map";
 
 const SECTION_ID = "living";
 
+/** Handled by living/housing/[slug] or living/visa/[slug] — omit from catch-all */
+const DEDICATED_SLUGS = new Set([
+  "visa/retirement",
+  "visa/thailand-elite",
+  "visa/work-permit",
+  "visa/90-day-report",
+  "housing/condo-buying",
+  "housing/rentals",
+  "housing/ownership",
+  "culture/etiquette",
+  "culture/thai-culture",
+]);
+
 interface PageProps {
   params: Promise<{ slug: string[] }>;
 }
 
 export function generateStaticParams() {
-  return generateSectionStaticParams(SECTION_ID);
+  return generateSectionStaticParams(SECTION_ID).filter(
+    ({ slug }) => !DEDICATED_SLUGS.has(slug.join("/")),
+  );
 }
 
 export async function generateMetadata({ params }: PageProps) {

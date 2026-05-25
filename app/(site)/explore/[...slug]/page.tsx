@@ -7,12 +7,26 @@ import { getNavItemBySlug, getSectionById } from "@/lib/navigation/site-map";
 
 const SECTION_ID = "explore";
 
+/** Routes with dedicated pages — omit from catch-all to avoid Turbopack dev issues */
+const DEDICATED_SLUGS = new Set([
+  "beaches",
+  "cafes",
+  "islands/koh-larn",
+  "luxury/yacht",
+  "restaurants/fine-dining",
+  "restaurants/street-food",
+  "shopping/malls",
+  "shopping/markets",
+]);
+
 interface PageProps {
   params: Promise<{ slug: string[] }>;
 }
 
 export function generateStaticParams() {
-  return generateSectionStaticParams(SECTION_ID);
+  return generateSectionStaticParams(SECTION_ID).filter(
+    ({ slug }) => !DEDICATED_SLUGS.has(slug.join("/")),
+  );
 }
 
 export async function generateMetadata({ params }: PageProps) {

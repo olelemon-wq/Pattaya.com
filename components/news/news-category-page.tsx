@@ -66,6 +66,7 @@ export function NewsCategoryPage({ item, content }: NewsCategoryPageProps) {
               title={content.hero.title}
               excerpt={content.hero.excerpt}
               ctaLabel={content.hero.ctaLabel ?? "Read Full Story"}
+              ctaTone="news"
               showAiSummary={false}
               minHeightClass="min-h-[min(70dvh,380px)] sm:min-h-[460px] lg:min-h-[520px]"
               byline={content.hero.byline}
@@ -150,14 +151,14 @@ export function NewsCategoryPage({ item, content }: NewsCategoryPageProps) {
             <div className="mt-4 flex flex-wrap gap-3">
               <Link
                 href={content.footer.primary.href}
-                className="rounded-lg bg-[#455f88] px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                className="rounded-lg bg-[#10438f] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#10438f]/90"
               >
                 {content.footer.primary.label}
               </Link>
               {content.footer.secondary ? (
                 <Link
                   href={content.footer.secondary.href}
-                  className="rounded-lg border border-[#455f88] px-5 py-2.5 text-sm font-semibold text-[#455f88] transition-colors hover:bg-[#455f88] hover:text-white"
+                  className="rounded-lg border border-[#10438f] px-5 py-2.5 text-sm font-semibold text-[#10438f] transition-colors hover:bg-[#10438f]/5"
                 >
                   {content.footer.secondary.label}
                 </Link>

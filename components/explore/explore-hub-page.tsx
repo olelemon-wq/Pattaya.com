@@ -1,3 +1,4 @@
+import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import Image from "next/image";
 import Link from "next/link";
 import { exploreImages } from "@/lib/design/explore-images";
@@ -153,42 +154,95 @@ function DiningCard({
   return (
     <Link
       href={href}
-      className="group relative overflow-hidden rounded-[32px] border border-[#c4c7c8]/30 bg-white transition-all duration-500 hover:shadow-2xl"
+      className="group flex flex-col overflow-hidden rounded-[32px] border border-[#c4c7c8]/30 bg-white shadow-lg transition-all duration-500 hover:shadow-2xl"
     >
-      <div className="aspect-[16/10] overflow-hidden">
+      {/* Mobile: full-bleed image + overlay text */}
+      <div className="relative aspect-[4/5] overflow-hidden md:hidden">
         <Image
           src={image}
           alt={imageAlt}
           fill
           className="object-cover transition-transform duration-700 group-hover:scale-110"
-          sizes="(max-width: 768px) 100vw, 50vw"
+          sizes="100vw"
         />
-      </div>
-      <div className="relative p-8">
-        <div className="absolute -top-12 left-8 rounded-full bg-white/90 px-4 py-1.5 shadow-sm backdrop-blur-md">
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-[#191c1d]/95 via-[#191c1d]/55 to-[#191c1d]/15"
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-black/35 via-transparent to-transparent"
+          aria-hidden
+        />
+        <span className="absolute left-6 top-6 z-10 rounded-full bg-white/90 px-4 py-1.5 shadow-sm backdrop-blur-md">
           <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#ae2f34]">
             Sponsored
           </span>
-        </div>
-        <div className="mb-4 flex items-start justify-between">
-          <h4 className="text-2xl font-semibold leading-tight text-[#191c1d]">
-            {title}
-          </h4>
-          <div className="flex items-center text-[#455f88]">
-            <span className="text-sm">★</span>
-            <span className="ml-1 text-sm font-semibold">{rating}</span>
+        </span>
+        <div className="absolute inset-x-0 bottom-0 z-10 p-6">
+          <div className="mb-3 flex items-start justify-between gap-4">
+            <h4 className="text-xl font-semibold leading-tight text-white">
+              {title}
+            </h4>
+            <div className="flex shrink-0 items-center text-white">
+              <span className="text-sm text-[#b6d0ff]" aria-hidden>
+                ★
+              </span>
+              <span className="ml-1 text-sm font-semibold">{rating}</span>
+            </div>
+          </div>
+          <p className="mb-6 text-sm leading-relaxed text-white/90">
+            {excerpt}
+          </p>
+          <div className="flex items-center justify-between gap-4">
+            <span className="text-xs font-bold uppercase tracking-widest text-white/75">
+              {location}
+            </span>
+            <span className="text-sm font-semibold text-[#d6e3ff] group-hover:underline">
+              {cta} →
+            </span>
           </div>
         </div>
-        <p className="mb-8 text-base leading-relaxed text-[#444748]">
-          {excerpt}
-        </p>
-        <div className="flex items-center justify-between">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#747878]">
-            {location}
-          </span>
-          <span className="text-sm font-semibold text-[#455f88] group-hover:underline">
-            {cta} →
-          </span>
+      </div>
+
+      {/* Desktop: image on top, text panel below (Stitch layout) */}
+      <div className="hidden md:flex md:flex-col">
+        <div className="relative aspect-[16/10] overflow-hidden">
+          <Image
+            src={image}
+            alt={imageAlt}
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-110"
+            sizes="50vw"
+          />
+        </div>
+        <div className="relative p-8">
+          <div className="absolute -top-12 left-8 rounded-full bg-white/90 px-4 py-1.5 shadow-sm backdrop-blur-md">
+            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#ae2f34]">
+              Sponsored
+            </span>
+          </div>
+          <div className="mb-4 flex items-start justify-between gap-6 pt-1">
+            <h4 className="min-w-0 flex-1 text-2xl font-semibold leading-tight text-[#191c1d]">
+              {title}
+            </h4>
+            <div className="flex shrink-0 items-center text-[#455f88]">
+              <span className="text-sm" aria-hidden>
+                ★
+              </span>
+              <span className="ml-1 text-sm font-semibold">{rating}</span>
+            </div>
+          </div>
+          <p className="mb-8 text-base leading-relaxed text-[#444748]">
+            {excerpt}
+          </p>
+          <div className="flex items-center justify-between gap-4">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#747878]">
+              {location}
+            </span>
+            <span className="shrink-0 text-sm font-semibold text-[#455f88] group-hover:underline">
+              {cta} →
+            </span>
+          </div>
         </div>
       </div>
     </Link>
@@ -198,6 +252,9 @@ function DiningCard({
 export function ExploreHubPage() {
   return (
     <div data-full-bleed className="bg-[#f8f9fa] pb-16 text-[#191c1d]">
+      <div className="relative z-10 shrink-0 shadow-sm">
+        <BreakingNewsTicker variant="explore" />
+      </div>
       {/* Hero */}
       <section className="relative h-[70vh] w-full overflow-hidden md:h-[85vh]">
         <Image
@@ -226,7 +283,7 @@ export function ExploreHubPage() {
             </div>
             <button
               type="button"
-              className="rounded-full bg-[#ae2f34] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#ae2f34]/90 md:px-8 md:py-4"
+              className="rounded-full bg-[#B52E88] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#B52E88]/90 md:px-8 md:py-4"
             >
               Explore
             </button>

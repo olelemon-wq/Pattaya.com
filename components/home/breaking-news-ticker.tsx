@@ -5,6 +5,10 @@ import { useEffect, useRef, useState } from "react";
 const defaultHeadlines = {
   home: "Major infrastructure upgrade announced for Pattaya Beach Road — construction begins Q3 2025",
   news: "Pattaya Smart City: 500M THB Beach Road infrastructure overhaul begins — City Updates",
+  living:
+    "90-day reporting window opens next week — visa extensions and retirement visa updates for Pattaya expats",
+  explore:
+    "Koh Larn ferry schedules updated — new sunset dining spots and hidden beach guides for Pattaya explorers",
 } as const;
 
 type BreakingNewsTickerProps = {
@@ -15,11 +19,15 @@ type BreakingNewsTickerProps = {
 const barStyles = {
   home: "bg-[#f97316] text-white",
   news: "bg-[#10438f] text-white",
+  living: "bg-[#B29475] text-white",
+  explore: "bg-[#B52E88] text-white",
 } as const;
 
 const labelStyles = {
   home: "shrink-0",
   news: "shrink-0 text-[#FF8C00]",
+  living: "shrink-0",
+  explore: "shrink-0",
 } as const;
 
 export function BreakingNewsTicker({

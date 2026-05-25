@@ -1,47 +1,47 @@
 import {
-  Calendar,
   ClipboardCheck,
-  FileText,
-  Plane,
+  HandCoins,
+  MapPin,
+  Stamp,
   type LucideIcon,
 } from "lucide-react";
 
 const steps = [
   {
     step: 1,
-    title: "Gather Documents",
-    titleTh: "รวบรวมเอกสาร",
+    title: "Choose area & budget",
+    titleTh: "เลือกทำเลและงบ",
     duration: "1–2 weeks",
     description:
-      "Passport, photos, bank statements, insurance certificate, criminal record (if required), and Thai address proof.",
-    icon: FileText,
+      "Compare Pattaya Beach, Jomtien, Pratumnak, and Naklua for lifestyle, commute, and resale liquidity. Set all-in budget including transfer fees.",
+    icon: MapPin,
   },
   {
     step: 2,
-    title: "Enter Thailand",
-    titleTh: "เข้าประเทศไทย",
-    duration: "On arrival",
+    title: "Verify foreign quota",
+    titleTh: "ตรวจโควตาต่างชาติ",
+    duration: "Before deposit",
     description:
-      "Arrive on an appropriate visa (often Non-Immigrant O or O-A from your home country embassy, or planned conversion with expert guidance).",
-    icon: Plane,
-  },
-  {
-    step: 3,
-    title: "Apply for Non-O Extension",
-    titleTh: "ยื่นขอต่ออายุ Non-O",
-    duration: "Same day – 3 days",
-    description:
-      "Submit your retirement extension at Chonburi Immigration (Pattaya/Jomtien) with complete financial and medical evidence.",
+      "Request juristic person certificate and confirm the unit is in the 49% foreign pool at Chonburi Land Office.",
     icon: ClipboardCheck,
   },
   {
-    step: 4,
-    title: "90-Day Reporting",
-    titleTh: "รายงานตัวทุก 90 วัน",
-    duration: "Every 90 days",
+    step: 3,
+    title: "Sale & purchase agreement",
+    titleTh: "สัญญาจะซื้อจะขาย",
+    duration: "1–3 weeks",
     description:
-      "Report your address every 90 days online or in person to remain compliant for the full one-year stay.",
-    icon: Calendar,
+      "Lawyer-reviewed SPA, deposit schedule, completion date, furniture inventory, and penalty clauses for developer delay.",
+    icon: HandCoins,
+  },
+  {
+    step: 4,
+    title: "Transfer at Land Office",
+    titleTh: "โอนกรรมสิทธิ์",
+    duration: "Transfer day",
+    description:
+      "Pay transfer fees, withholding tax (if applicable), and register ownership. Update juristic person records and utilities.",
+    icon: Stamp,
   },
 ] as const;
 
@@ -53,7 +53,7 @@ function StepNode({ step }: { step: number }) {
   );
 }
 
-function TimelineCard({
+function StepCard({
   step,
   title,
   titleTh,
@@ -64,17 +64,16 @@ function TimelineCard({
 }: (typeof steps)[number] & { index: number }) {
   return (
     <li
-      className="visa-timeline-step group relative flex gap-4 lg:flex lg:h-full lg:flex-col lg:text-center"
+      className="group relative flex gap-4 lg:flex lg:h-full lg:flex-col lg:text-center"
       style={{ animationDelay: `${index * 80}ms` }}
     >
-      {/* Mobile vertical rail */}
       <div className="flex flex-col items-center lg:hidden">
         <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#B29475] text-sm font-bold text-white shadow-md">
           {step}
         </div>
         {index < steps.length - 1 && (
           <span
-            className="my-1 w-0.5 flex-1 min-h-[2rem] bg-gradient-to-b from-[#B29475] to-[#B29475]/30"
+            className="my-1 min-h-[2rem] w-0.5 flex-1 bg-gradient-to-b from-[#B29475] to-[#B29475]/30"
             aria-hidden
           />
         )}
@@ -90,7 +89,7 @@ function TimelineCard({
               {duration}
             </span>
             <h3 className="mt-2 text-base font-bold text-[#0A192F]">{title}</h3>
-            <p className="text-xs font-medium text-[#2563EB]">{titleTh}</p>
+            <p className="text-xs font-medium text-[#B29475]">{titleTh}</p>
           </div>
         </div>
         <p className="mt-3 flex-1 text-sm leading-relaxed text-[#555] lg:text-center">
@@ -101,38 +100,26 @@ function TimelineCard({
   );
 }
 
-export function RetirementVisaTimeline() {
+export function CondoBuyingSteps() {
   return (
     <section
-      aria-labelledby="timeline-title"
-      className="isolate overflow-hidden rounded-3xl border border-[#B29475]/20 bg-[#D7CBBA] p-6 shadow-xl sm:p-8 lg:p-10"
+      aria-labelledby="condo-steps-title"
+      className="overflow-hidden rounded-3xl border border-[#B29475]/20 bg-[#D7CBBA] p-6 shadow-xl sm:p-8 lg:p-10"
     >
       <div className="relative">
-        <div
-          className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#B29475]/20 blur-3xl"
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-[#B29475]/15 blur-3xl"
-          aria-hidden
-        />
+        <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#B29475]">
+          Your purchase path
+        </p>
+        <h2
+          id="condo-steps-title"
+          className="mt-1 text-2xl font-bold text-[#0A192F] sm:text-3xl"
+        >
+          Step-by-Step Buying Timeline
+        </h2>
+        <p className="mt-2 max-w-xl text-sm text-[#444748]">
+          ขั้นตอนซื้อคอนโด — จากเลือกทำเลถึงโอนที่กรมที่ดิน
+        </p>
 
-        <div className="relative">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#B29475]">
-            Your journey
-          </p>
-          <h2
-            id="timeline-title"
-            className="mt-1 text-2xl font-bold text-[#0A192F] sm:text-3xl"
-          >
-            Step-by-Step Immigration Timeline
-          </h2>
-          <p className="mt-2 max-w-xl text-sm text-[#444748]">
-            ขั้นตอนการดำเนินการ — จากเอกสารถึงรายงานตัว 90 วัน
-          </p>
-        </div>
-
-        {/* Desktop progress track */}
         <div
           className="relative mt-10 hidden lg:grid lg:grid-cols-4 lg:gap-6"
           aria-hidden
@@ -149,15 +136,9 @@ export function RetirementVisaTimeline() {
 
         <ol className="relative mt-8 space-y-0 lg:mt-4 lg:grid lg:grid-cols-4 lg:items-stretch lg:gap-6">
           {steps.map((item, index) => (
-            <TimelineCard key={item.step} {...item} index={index} />
+            <StepCard key={item.step} {...item} index={index} />
           ))}
         </ol>
-
-        <p className="relative mt-8 rounded-xl border border-[#B29475]/25 bg-white/50 px-4 py-3 text-center text-xs text-[#555]">
-          Typical full process:{" "}
-          <span className="font-semibold text-[#0A192F]">4–8 weeks</span> with
-          expert preparation · Chonburi Immigration, Pattaya
-        </p>
       </div>
     </section>
   );

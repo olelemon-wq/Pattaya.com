@@ -64,7 +64,7 @@ export function RetirementVisaPage() {
       {/* Lead gen widget */}
       <div className="relative z-10 mx-auto -mt-14 max-w-[900px] px-4 sm:-mt-16 sm:px-6">
         <aside
-          className="rounded-2xl border border-[#e2e8f0] bg-white p-6 shadow-xl ring-1 ring-[#FF7320]/20 sm:flex sm:items-center sm:justify-between sm:gap-6 sm:p-8"
+          className="rounded-2xl border border-[#e2e8f0] bg-white p-6 shadow-xl ring-1 ring-[#B29475]/20 sm:flex sm:items-center sm:justify-between sm:gap-6 sm:p-8"
           aria-label="Visa consultation"
         >
           <div className="sm:flex-1">
@@ -82,7 +82,7 @@ export function RetirementVisaPage() {
           </div>
           <Link
             href="/living"
-            className="mt-5 inline-flex w-full shrink-0 items-center justify-center rounded-lg bg-[#FF7320] px-6 py-3.5 text-center text-sm font-bold text-white shadow-md transition hover:bg-[#e56518] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF7320] sm:mt-0 sm:w-auto"
+            className="mt-5 inline-flex w-full shrink-0 items-center justify-center rounded-lg bg-[#B29475] px-6 py-3.5 text-center text-sm font-bold text-white shadow-md transition hover:bg-[#B29475]/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B29475] sm:mt-0 sm:w-auto"
           >
             Talk to a Visa Expert / Get Free Consultation
           </Link>
@@ -98,23 +98,23 @@ export function RetirementVisaPage() {
 
         {/* Secondary CTA */}
         <section
-          className="rounded-2xl border border-[#0A192F]/10 bg-[#0A192F] px-6 py-8 text-center sm:px-10 sm:py-10"
+          className="rounded-2xl border border-[#B29475]/20 bg-[#D7CBBA] px-6 py-8 text-center sm:px-10 sm:py-10"
           aria-labelledby="cta-bottom-title"
         >
           <h2
             id="cta-bottom-title"
-            className="text-xl font-bold text-white sm:text-2xl"
+            className="text-xl font-bold text-[#0A192F] sm:text-2xl"
           >
             Ready to start your retirement in Pattaya?
           </h2>
-          <p className="mx-auto mt-2 max-w-lg text-sm text-white/80">
+          <p className="mx-auto mt-2 max-w-lg text-sm text-[#444748]">
             Our visa specialists handle Chonburi Immigration appointments,
             translations, and annual extensions — so you can focus on enjoying
             your new chapter.
           </p>
           <Link
             href="/living"
-            className="mt-6 inline-flex items-center justify-center rounded-lg bg-[#FF7320] px-8 py-3.5 text-sm font-bold text-white shadow-lg transition hover:bg-[#e56518]"
+            className="mt-6 inline-flex items-center justify-center rounded-lg bg-[#B29475] px-8 py-3.5 text-sm font-bold text-white shadow-lg transition hover:bg-[#B29475]/90"
           >
             Get Free Consultation
           </Link>

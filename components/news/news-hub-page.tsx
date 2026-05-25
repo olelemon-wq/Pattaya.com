@@ -164,7 +164,7 @@ export function NewsHubPage() {
               excerpt="Commuters are advised to take alternative routes through local sois as emergency crews work to clear the scene..."
               footer="⚠ Live Update"
               footerClass="font-bold uppercase text-[#ba1a1a]"
-              borderHover="border-2 border-transparent hover:border-[#ba1a1a]"
+              borderHover="border-2 border-transparent hover:border-[#10438f]"
             />
 
             <NewsArticleCard
@@ -176,7 +176,7 @@ export function NewsHubPage() {
               title="Hidden Gems: 5 Secret Islands Near Pattaya You Must Visit This Season"
               excerpt="Escape the crowds and discover the pristine turquoise waters of Koh Rin and Koh Kram Yai..."
             >
-              <span className="flex w-full items-center justify-center gap-2 rounded-lg border border-[#ae2f34] py-2.5 text-sm font-semibold text-[#ae2f34] transition-all group-hover:bg-[#ae2f34] group-hover:text-white">
+              <span className="flex w-full items-center justify-center gap-2 rounded-lg border border-[#10438f] bg-[#10438f] py-2.5 text-sm font-semibold text-white transition-all group-hover:bg-[#10438f]/90">
                 Book Tour Now
               </span>
             </NewsArticleCard>
@@ -349,13 +349,13 @@ export function NewsHubPage() {
                 <div className="flex flex-wrap gap-4">
                   <Link
                     href="/news/tourism/promotions"
-                    className="rounded-full bg-[#455f88] px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-[#3f5882]"
+                    className="rounded-full bg-[#10438f] px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-[#10438f]/90"
                   >
                     Get Promo Code
                   </Link>
                   <Link
                     href="/news/tourism/promotions"
-                    className="rounded-full border border-[#455f88] px-6 py-2.5 text-sm font-semibold text-[#455f88] transition-all hover:bg-[#455f88]/5"
+                    className="rounded-full border border-[#10438f] px-6 py-2.5 text-sm font-semibold text-[#10438f] transition-all hover:bg-[#10438f]/5"
                   >
                     Participating Outlets
                   </Link>
@@ -422,7 +422,7 @@ export function NewsHubPage() {
               </div>
             </div>
 
-            <div className="group relative overflow-hidden rounded-xl bg-[#455f88] p-8 text-white">
+            <div className="group relative overflow-hidden rounded-xl bg-[#10438f] p-8 text-white">
               <div className="pointer-events-none absolute -right-12 -top-12 text-[200px] text-white/5 transition-colors group-hover:text-white/10">
                 🌐
               </div>
