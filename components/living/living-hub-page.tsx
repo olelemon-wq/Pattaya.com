@@ -1,11 +1,22 @@
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import {
+  Bus,
+  CalendarDays,
+  Car,
+  CreditCard,
   Crown,
   Footprints,
   Hand,
   Handshake,
+  Home,
+  Hospital,
+  IdCard,
+  Key,
   Landmark,
+  Lock,
+  Shield,
   Shirt,
+  Star,
   Users,
   VolumeX,
   type LucideIcon,
@@ -68,10 +79,28 @@ const scamAlerts = [
   "Unauthorized taxi fare overcharging.",
 ];
 
-const commercialCards = [
+type LivingHubCard = {
+  title: string;
+  icon: LucideIcon;
+  image: string;
+  imageAlt: string;
+  excerpt: string;
+  cta: string;
+  href: string;
+};
+
+function HubCardIcon({ icon: Icon }: { icon: LucideIcon }) {
+  return (
+    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#D7CBBA]/50 text-[#B29475]">
+      <Icon className="h-5 w-5" strokeWidth={2} aria-hidden />
+    </span>
+  );
+}
+
+const commercialCards: LivingHubCard[] = [
   {
     title: "Thailand Elite",
-    icon: "★",
+    icon: Star,
     image: livingImages.thailandElite,
     imageAlt: "Thailand Elite Visa",
     excerpt:
@@ -81,7 +110,7 @@ const commercialCards = [
   },
   {
     title: "Work Permit",
-    icon: "🪪",
+    icon: IdCard,
     image: livingImages.workPermit,
     imageAlt: "Work Permit Document",
     excerpt:
@@ -91,7 +120,7 @@ const commercialCards = [
   },
   {
     title: "Rentals",
-    icon: "🏠",
+    icon: Home,
     image: livingImages.rentals,
     imageAlt: "Luxury Rental Interior",
     excerpt:
@@ -101,7 +130,7 @@ const commercialCards = [
   },
   {
     title: "Medical",
-    icon: "🏥",
+    icon: Hospital,
     image: livingImages.medical,
     imageAlt: "World Class Medical Facility",
     excerpt:
@@ -111,10 +140,10 @@ const commercialCards = [
   },
 ];
 
-const infoCards = [
+const infoCards: LivingHubCard[] = [
   {
     title: "Ownership",
-    icon: "🔑",
+    icon: Key,
     image: livingImages.ownership,
     imageAlt: "Ownership",
     excerpt:
@@ -124,7 +153,7 @@ const infoCards = [
   },
   {
     title: "Utilities Cost",
-    icon: "💳",
+    icon: CreditCard,
     image: livingImages.utilities,
     imageAlt: "Utilities Cost",
     excerpt:
@@ -134,7 +163,7 @@ const infoCards = [
   },
   {
     title: "Insurance",
-    icon: "🛡️",
+    icon: Shield,
     image: livingImages.insurance,
     imageAlt: "Insurance",
     excerpt:
@@ -144,7 +173,7 @@ const infoCards = [
   },
   {
     title: "Driving",
-    icon: "🚗",
+    icon: Car,
     image: livingImages.driving,
     imageAlt: "Driving",
     excerpt:
@@ -154,7 +183,7 @@ const infoCards = [
   },
   {
     title: "Culture",
-    icon: "🛕",
+    icon: Landmark,
     image: livingImages.cultureCard,
     imageAlt: "Culture",
     excerpt:
@@ -164,7 +193,7 @@ const infoCards = [
   },
   {
     title: "90-Day Reporting",
-    icon: "📋",
+    icon: CalendarDays,
     image: livingImages.ninetyDay,
     imageAlt: "90-Day Reporting",
     excerpt:
@@ -174,7 +203,7 @@ const infoCards = [
   },
   {
     title: "Local Transport",
-    icon: "🚌",
+    icon: Bus,
     image: livingImages.localTransport,
     imageAlt: "Local Transport",
     excerpt:
@@ -184,7 +213,7 @@ const infoCards = [
   },
   {
     title: "Safety Guide",
-    icon: "🔒",
+    icon: Lock,
     image: livingImages.safetyGuide,
     imageAlt: "Safety Guide",
     excerpt:
@@ -235,9 +264,7 @@ function GridInfoCard({
       <div className="flex flex-1 flex-col p-6">
         <div className="mb-3 flex items-center justify-between">
           <h4 className="text-base font-bold text-[#191c1d]">{title}</h4>
-          <span className="text-lg" aria-hidden>
-            {icon}
-          </span>
+          <HubCardIcon icon={icon} />
         </div>
         <p className="mb-6 flex-grow text-sm leading-relaxed text-[#444748]">
           {excerpt}
@@ -529,9 +556,7 @@ export function LivingHubPage() {
                 <div className="flex flex-grow flex-col px-6">
                   <div className="mb-4 flex items-center justify-between">
                     <h4 className="font-bold text-[#191c1d]">{card.title}</h4>
-                    <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#f3f4f5] text-lg">
-                      {card.icon}
-                    </span>
+                    <HubCardIcon icon={card.icon} />
                   </div>
                   <p className="mb-6 flex-grow text-sm leading-relaxed text-[#444748]">
                     {card.excerpt}

@@ -1,4 +1,5 @@
 import { EmergencyGuidePage } from "@/components/living/emergency-guide-page";
+import { ScamAlertsPage } from "@/components/living/scam-alerts-page";
 import {
   createItemMetadata,
   SectionDetail,
@@ -11,6 +12,7 @@ const SECTION_ID = "living";
 const CATEGORY = "safety";
 
 const DEDICATED_PAGES: Record<string, () => React.JSX.Element> = {
+  "scam-alerts": () => <ScamAlertsPage />,
   "emergency-guide": () => <EmergencyGuidePage />,
 };
 
@@ -24,6 +26,17 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
+  if (slug === "scam-alerts") {
+    return {
+      title: "Scam Alerts Pattaya | การโกงนักท่องเที่ยว | Pattaya.com",
+      description:
+        "Common Pattaya scams — property fraud, visa agents, jet-ski traps, and how to report to Tourist Police 1155.",
+      openGraph: {
+        title: "Scam Alerts | การโกงนักท่องเที่ยว — Pattaya.com",
+        description: "Protect yourself as an expat or visitor in Pattaya.",
+      },
+    };
+  }
   if (slug === "emergency-guide") {
     return {
       title: "Emergency Guide Pattaya | วิธีรับมือเหตุฉุกเฉิน | Pattaya.com",

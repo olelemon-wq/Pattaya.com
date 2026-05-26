@@ -1,14 +1,7 @@
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
-import {
-  Clock,
-  Flame,
-  MapPin,
-  Soup,
-  Star,
-  Utensils,
-  Wallet,
-  type LucideIcon,
-} from "lucide-react";
+import { ExploreGuideCarousel } from "@/components/explore/explore-guide-carousel";
+import type { ExploreGuideCardData } from "@/components/explore/explore-guide-types";
+import { Clock, Flame, Star, Utensils, Wallet } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { streetFoodImages } from "@/lib/design/street-food-images";
@@ -64,6 +57,20 @@ const markets = [
   },
 ];
 
+const marketGuideCards: ExploreGuideCardData[] = markets.map((market) => ({
+  id: market.id,
+  name: market.name,
+  nameTh: market.nameTh,
+  image: market.image,
+  tags: market.tags,
+  excerpt: market.excerpt,
+  details: [
+    { icon: "clock", label: "Hours", value: market.hours },
+    { icon: "mapPin", label: "Location", value: market.location },
+    { icon: "soup", label: "Must try", value: market.mustTry },
+  ],
+}));
+
 const signatureDishes = [
   {
     name: "Pad Thai",
@@ -114,86 +121,6 @@ const eatingTips = [
   },
 ];
 
-function FoodTag({ children }: { children: string }) {
-  return (
-    <span className="rounded-full bg-[#B52E88]/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#B52E88]">
-      {children}
-    </span>
-  );
-}
-
-function FoodDetailRow({
-  icon: Icon,
-  label,
-  value,
-}: {
-  icon: LucideIcon;
-  label: string;
-  value: string;
-}) {
-  return (
-    <div className="flex gap-3">
-      <Icon className="mt-0.5 h-4 w-4 shrink-0 text-[#B52E88]" aria-hidden />
-      <div className="min-w-0">
-        <dt className="font-bold uppercase tracking-wide text-[#747878]">
-          {label}
-        </dt>
-        <dd className="mt-0.5 text-[#191c1d]">{value}</dd>
-      </div>
-    </div>
-  );
-}
-
-function MarketCard({
-  id,
-  name,
-  nameTh,
-  image,
-  tags,
-  excerpt,
-  hours,
-  location,
-  mustTry,
-}: (typeof markets)[number]) {
-  return (
-    <article
-      id={id}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-[#c4c7c8]/30 bg-white shadow-sm transition hover:shadow-lg"
-    >
-      <div className="relative aspect-[16/10] overflow-hidden">
-        <Image
-          src={image}
-          alt={name}
-          fill
-          className="object-cover transition duration-500 group-hover:scale-105"
-          sizes="(max-width: 768px) 100vw, 50vw"
-        />
-        <div
-          className="absolute inset-0 bg-gradient-to-t from-[#191c1d]/55 to-transparent"
-          aria-hidden
-        />
-        <div className="absolute bottom-4 left-4 right-4">
-          <h3 className="text-xl font-bold text-white drop-shadow-sm">{name}</h3>
-          <p className="text-sm text-white/90">{nameTh}</p>
-        </div>
-      </div>
-      <div className="flex flex-1 flex-col p-5 sm:p-6">
-        <div className="mb-3 flex flex-wrap gap-1.5">
-          {tags.map((t) => (
-            <FoodTag key={t}>{t}</FoodTag>
-          ))}
-        </div>
-        <p className="mb-4 text-sm leading-relaxed text-[#444748]">{excerpt}</p>
-        <dl className="mt-auto space-y-3 border-t border-[#e7e8e9] pt-4 text-xs">
-          <FoodDetailRow icon={Clock} label="Hours" value={hours} />
-          <FoodDetailRow icon={MapPin} label="Location" value={location} />
-          <FoodDetailRow icon={Soup} label="Must try" value={mustTry} />
-        </dl>
-      </div>
-    </article>
-  );
-}
-
 function DishCard({
   name,
   nameTh,
@@ -222,7 +149,7 @@ function DishCard({
 
 export function StreetFoodPage() {
   return (
-    <div data-full-bleed className="bg-[#f8f9fa] text-[#191c1d]">
+    <div data-full-bleed className="bg-[#fdf8fb] text-[#191c1d]">
       <div className="relative z-10 shrink-0 shadow-sm">
         <BreakingNewsTicker variant="explore" />
       </div>
@@ -266,7 +193,7 @@ export function StreetFoodPage() {
               </li>
             </ol>
           </nav>
-          <span className="mb-3 inline-flex w-fit rounded-full bg-teal-100 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-teal-800">
+          <span className="mb-3 inline-flex w-fit rounded-full bg-[#F0D4E8] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#B52E88]">
             Restaurants
           </span>
           <h1
@@ -275,7 +202,7 @@ export function StreetFoodPage() {
           >
             Street Food
           </h1>
-          <p className="mt-2 text-lg text-teal-200 md:text-xl">อาหารท้องถิ่น</p>
+          <p className="mt-2 text-lg text-[#F5D0E8] md:text-xl">อาหารท้องถิ่น</p>
           <p className="mt-4 max-w-2xl text-base text-white/90 md:text-lg">
             Best local and street food in Pattaya — night markets, morning
             vendors, and beach-road seafood you can eat like a resident.
@@ -294,20 +221,13 @@ export function StreetFoodPage() {
       </section>
 
       <div className="mx-auto max-w-[1280px] px-5 py-12 md:px-16 md:py-16">
-        <section className="mb-16">
-          <h2 className="text-2xl font-semibold md:text-3xl">
-            Markets & street eats
-          </h2>
-          <p className="mt-2 max-w-2xl text-[#444748]">
-            Start with these four staples — each suits a different time of day and
-            mood, from morning noodles to midnight skewers.
-          </p>
-          <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
-            {markets.map((market) => (
-              <MarketCard key={market.id} {...market} />
-            ))}
-          </div>
-        </section>
+        <ExploreGuideCarousel
+          title="Choose your market"
+          description="Start with these four staples — each suits a different time of day and mood, from morning noodles to midnight skewers."
+          prevLabel="Previous markets"
+          nextLabel="Next markets"
+          items={marketGuideCards}
+        />
 
         <section className="mb-16">
           <h2 className="text-2xl font-semibold md:text-3xl">
@@ -354,19 +274,19 @@ export function StreetFoodPage() {
           <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Link
               href="/explore/restaurants/fine-dining"
-              className="rounded-xl bg-[#455f88] px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-[#455f88]/90"
+              className="rounded-xl bg-[#B52E88] px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-[#B52E88]/90"
             >
               Fine dining →
             </Link>
             <Link
               href="/explore/shopping/markets"
-              className="rounded-xl border border-[#455f88]/30 px-6 py-3 text-center text-sm font-semibold text-[#455f88] transition hover:bg-[#455f88]/5"
+              className="rounded-xl border border-[#B52E88]/30 px-6 py-3 text-center text-sm font-semibold text-[#B52E88] transition hover:bg-[#B52E88]/5"
             >
               Local markets →
             </Link>
             <Link
               href="/explore/beaches"
-              className="rounded-xl border border-[#455f88]/30 px-6 py-3 text-center text-sm font-semibold text-[#455f88] transition hover:bg-[#455f88]/5"
+              className="rounded-xl border border-[#c4c7c8]/50 px-6 py-3 text-center text-sm font-semibold text-[#191c1d] transition hover:bg-[#edeeef]"
             >
               Main beaches →
             </Link>

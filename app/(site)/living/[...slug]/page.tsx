@@ -20,9 +20,11 @@ const DEDICATED_SLUGS = new Set([
   "healthcare/hospitals",
   "healthcare/insurance",
   "transportation/songthaew",
+  "transportation/ride-apps",
   "transportation/driving",
   "culture/etiquette",
   "culture/thai-culture",
+  "safety/scam-alerts",
   "safety/emergency-guide",
 ]);
 

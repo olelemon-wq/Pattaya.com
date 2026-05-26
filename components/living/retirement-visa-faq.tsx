@@ -1,3 +1,4 @@
+import { livingTheme } from "@/lib/design/living-theme";
 import { ChevronDown } from "lucide-react";
 
 const faqs = [
@@ -42,7 +43,7 @@ export function RetirementVisaFaq() {
   return (
     <section
       id="faq"
-      className="relative z-10 scroll-mt-24 rounded-2xl border border-[#e2e8f0] bg-white p-6 shadow-sm sm:p-8"
+      className={`relative z-10 scroll-mt-24 ${livingTheme.panel}`}
       aria-labelledby="faq-title"
     >
       <h2

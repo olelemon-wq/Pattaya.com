@@ -11,12 +11,15 @@ const SECTION_ID = "explore";
 const DEDICATED_SLUGS = new Set([
   "beaches",
   "cafes",
+  "family-activities",
+  "hidden-gems",
   "islands/koh-larn",
   "luxury/yacht",
   "restaurants/fine-dining",
   "restaurants/street-food",
   "shopping/malls",
   "shopping/markets",
+  "wellness",
 ]);
 
 interface PageProps {

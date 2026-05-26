@@ -39,7 +39,7 @@ export function RetirementVisaRequirements() {
     <section aria-labelledby="requirements-title">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="text-xs font-bold uppercase tracking-widest text-[#2563EB]">
+          <p className="text-xs font-bold uppercase tracking-widest text-[#B29475]">
             Eligibility
           </p>
           <h2
@@ -81,7 +81,7 @@ export function RetirementVisaRequirements() {
               <h3 className="relative mt-5 text-lg font-bold text-[#0A192F]">
                 {req.title}
               </h3>
-              <p className="relative text-xs font-medium text-[#2563EB]">
+              <p className="relative text-xs font-medium text-[#B29475]">
                 {req.titleTh}
               </p>
               <p className="relative mt-3 text-sm leading-relaxed text-[#444748]">
@@ -96,7 +96,7 @@ export function RetirementVisaRequirements() {
       </div>
 
       <p className="mt-6 flex items-start gap-2 rounded-xl bg-[#F8FAFC] px-4 py-3 text-xs text-[#777777] ring-1 ring-[#e2e8f0]">
-        <Info className="mt-0.5 h-4 w-4 shrink-0 text-[#2563EB]" aria-hidden />
+        <Info className="mt-0.5 h-4 w-4 shrink-0 text-[#B29475]" aria-hidden />
         Requirements may change per Immigration notices. Always confirm with an
         official source or our visa consultants before applying.
       </p>

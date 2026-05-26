@@ -10,9 +10,9 @@ export const streetFoodImages = {
   padThai:
     "https://images.unsplash.com/photo-1559314809-0d155014e29e?auto=format&fit=crop&w=800&q=80",
   somTam:
-    "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1648421331147-9fcfab29536e?auto=format&fit=crop&w=800&q=80",
   grilledSeafood:
-    "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1559742811-822873691df8?auto=format&fit=crop&w=800&q=80",
   mangoSticky:
-    "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1705234384751-84081009588e?auto=format&fit=crop&w=800&q=80",
 } as const;

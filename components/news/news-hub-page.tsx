@@ -1,22 +1,33 @@
-import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import { NewsFeaturedHeroCinematic } from "@/components/news/news-featured-hero-cinematic";
+import { NewsPageFrame, NewsSectionHeading } from "@/components/news/news-layout";
 import {
   NewsArticleCard,
   NewsBadge,
+  NewsLiveFooter,
+  NewsTimeFooter,
   OverlayFeaturedCard,
 } from "@/components/news/news-ui";
-import { Building2, ClipboardList, IdCard } from "lucide-react";
+import { newsOverlay } from "@/lib/data/news-category-overlays";
+import { newsImages } from "@/lib/design/news-images";
+import { newsTheme } from "@/lib/design/news-theme";
+import {
+  Building2,
+  ClipboardList,
+  Globe,
+  IdCard,
+  Moon,
+  Radio,
+  Route,
+  Swords,
+  Star,
+  UtensilsCrossed,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { newsImages } from "@/lib/design/news-images";
 
 export function NewsHubPage() {
   return (
-    <div data-full-bleed className="bg-[#f8f9fa] pb-16 text-[#191c1d]">
-      <div className="relative z-10 shrink-0 shadow-sm">
-        <BreakingNewsTicker variant="news" />
-      </div>
-      <div className="mx-auto max-w-[1280px] px-4 pt-4 pb-10 sm:px-6 sm:pt-6 md:px-16 md:pt-8">
+    <NewsPageFrame>
         {/* Featured City Updates + three cards below */}
         <section className="mb-12 flex flex-col gap-5 sm:mb-20 sm:gap-6">
           <NewsFeaturedHeroCinematic />
@@ -53,7 +64,7 @@ export function NewsHubPage() {
               </div>
               <Link
                 href="/news/business/real-estate"
-                className="mt-4 block rounded-lg border border-white/60 bg-white/10 py-2 text-center text-sm font-semibold text-white backdrop-blur-sm transition-all hover:border-white hover:bg-white hover:text-[#455f88]"
+                className={`mt-4 block py-2 text-center ${newsTheme.spotlightCta}`}
               >
                 View Property Ads
               </Link>
@@ -62,7 +73,7 @@ export function NewsHubPage() {
             <OverlayFeaturedCard
               image={newsImages.featuredVisa}
               imageAlt="Travel and visa documentation"
-              overlayClass="bg-gradient-to-t from-[#1e3a5f]/95 via-[#2563eb]/75 to-[#3b82f6]/35"
+              overlayClass={newsOverlay.blue}
             >
               <div>
                 <div className="mb-4 flex items-start justify-between">
@@ -85,7 +96,7 @@ export function NewsHubPage() {
               </div>
               <Link
                 href="/news/expat/visa"
-                className="mt-4 block rounded-lg bg-white py-2 text-center text-sm font-semibold text-[#1e3a5f] transition-opacity hover:opacity-90"
+                className="mt-4 block rounded-lg bg-white py-2 text-center text-sm font-semibold text-[#10438f] transition-opacity hover:opacity-90"
               >
                 Get Visa Quote
               </Link>
@@ -132,15 +143,14 @@ export function NewsHubPage() {
 
         {/* City Movements */}
         <section className="mb-20">
-          <div className="mb-8 flex items-center justify-between border-b border-[#c4c7c8] pb-4">
-            <h2 className="text-2xl font-semibold">City Movements</h2>
-            <Link
-              href="/news"
-              className="flex items-center gap-1 text-sm font-semibold text-[#455f88] hover:underline"
-            >
-              Explore All →
-            </Link>
-          </div>
+          <NewsSectionHeading
+            title="City Movements"
+            action={
+              <Link href="/news" className={newsTheme.link}>
+                Explore All →
+              </Link>
+            }
+          />
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             <NewsArticleCard
@@ -148,10 +158,10 @@ export function NewsHubPage() {
               image={newsImages.policeCrime}
               imageAlt="Night street with police lights"
               badge="Police & Crime"
-              badgeClass="bg-[#191c1d] text-white"
+              badgeClass={newsTheme.badgeDark}
               title="Jomtien Raids: Underground Casino Shut Down in Late-Night Operation"
               excerpt="Authorities seized over 2 million THB in cash and equipment during the 2 AM raid on a private villa..."
-              footer="🕐 45 mins ago"
+              footer={<NewsTimeFooter>45 mins ago</NewsTimeFooter>}
             />
 
             <NewsArticleCard
@@ -162,8 +172,7 @@ export function NewsHubPage() {
               badgeClass="animate-pulse bg-[#ba1a1a] text-white"
               title="Major Traffic Delay: Sukhumvit Road Blocked After Multi-Vehicle Collision"
               excerpt="Commuters are advised to take alternative routes through local sois as emergency crews work to clear the scene..."
-              footer="⚠ Live Update"
-              footerClass="font-bold uppercase text-[#ba1a1a]"
+              footer={<NewsLiveFooter>Live Update</NewsLiveFooter>}
               borderHover="border-2 border-transparent hover:border-[#10438f]"
             />
 
@@ -189,7 +198,7 @@ export function NewsHubPage() {
               badgeClass="bg-[#ae2f34] text-white"
               title="The Sanctuary of Truth: A Masterpiece of Thai Craftsmanship"
               excerpt="Explore the intricate carvings and spiritual journey behind Pattaya's most iconic wooden structure."
-              footer="🕐 3 Hours Ago"
+              footer={<NewsTimeFooter>3 Hours Ago</NewsTimeFooter>}
             />
 
             <NewsArticleCard
@@ -197,10 +206,10 @@ export function NewsHubPage() {
               image={newsImages.walkingStreet}
               imageAlt="Walking Street at night"
               badge="Nightlife Updates"
-              badgeClass="bg-[#191c1d] text-white"
+              badgeClass={newsTheme.badgeDark}
               title="Walking Street Transformation: New Smart City Infrastructure Rollout"
               excerpt="Pattaya's nightlife hub undergoes a digital and structural renaissance to enhance visitor safety and experience."
-              footer="🕐 5 Hours Ago"
+              footer={<NewsTimeFooter>5 Hours Ago</NewsTimeFooter>}
             />
 
             <NewsArticleCard
@@ -208,15 +217,15 @@ export function NewsHubPage() {
               image={newsImages.immigration}
               imageAlt="Immigration documents"
               badge="Immigration Updates"
-              badgeClass="bg-[#455f88] text-white"
+              badgeClass={newsTheme.badgeAccent}
               title="90-Day Online Reporting: System Offline for Maintenance"
               excerpt="Chonburi Immigration has announced a temporary service interruption for online reporting. Residents are advised to visit the Jomtien office or use the mobile app."
-              footer="🕐 Updated 15m ago"
+              footer={<NewsTimeFooter>Updated 15m ago</NewsTimeFooter>}
             />
 
             <Link
               href="/news/business/hotels"
-              className="group col-span-1 flex cursor-pointer overflow-hidden rounded-xl bg-[#f3f4f5] md:col-span-2"
+              className="group col-span-1 flex cursor-pointer overflow-hidden rounded-xl bg-[#eef1f5] md:col-span-2"
             >
               <div className="relative min-h-[140px] w-1/3 min-w-[120px] shrink-0 self-stretch overflow-hidden">
                 <Image
@@ -228,10 +237,8 @@ export function NewsHubPage() {
                 />
               </div>
               <div className="flex flex-1 flex-col justify-center p-6">
-                <span className="mb-2 text-[10px] font-bold uppercase tracking-widest text-[#455f88]">
-                  Hotel Industry
-                </span>
-                <h3 className="mb-2 text-xl font-semibold transition-colors group-hover:text-[#455f88]">
+                <span className={`mb-2 ${newsTheme.eyebrow}`}>Hotel Industry</span>
+                <h3 className="mb-2 text-xl font-semibold text-[#0c1a33] transition-colors group-hover:text-[#10438f]">
                   Occupancy Rates Hit 3-Year High as International Flights Return
                 </h3>
                 <p className="line-clamp-2 text-sm text-[#444748]">
@@ -245,9 +252,10 @@ export function NewsHubPage() {
               href="/news/nightlife/walking-street"
               className="group relative flex flex-col justify-between overflow-hidden rounded-xl bg-[#2e3132] p-6 text-[#f0f1f2]"
             >
-              <div className="pointer-events-none absolute -bottom-10 -right-10 text-[160px] opacity-10">
-                🌙
-              </div>
+              <Moon
+                className="pointer-events-none absolute -bottom-10 -right-10 h-40 w-40 text-white opacity-10"
+                aria-hidden
+              />
               <div>
                 <div className="mb-4 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-[#ffb3b0]">
                   <span className="h-2 w-2 animate-pulse rounded-full bg-[#ae2f34]" />
@@ -262,7 +270,8 @@ export function NewsHubPage() {
                 </p>
               </div>
               <span className="inline-flex items-center gap-2 font-semibold text-[#ffdad8] transition-all group-hover:gap-4">
-                Live Webcams 📡
+                <Radio className="h-4 w-4" aria-hidden />
+                Live Webcams
               </span>
             </Link>
           </div>
@@ -272,7 +281,7 @@ export function NewsHubPage() {
         <section className="grid grid-cols-1 gap-6 lg:grid-cols-12">
           <div className="col-span-1 flex flex-col gap-6 lg:col-span-8">
             <div className="flex items-center justify-between border-b border-[#c4c7c8] pb-2">
-              <h2 className="text-xl font-semibold">Infrastructure & Growth</h2>
+              <h2 className={newsTheme.sectionTitleSm}>Infrastructure & Growth</h2>
               <span className="rounded bg-[#e7e8e9] px-3 py-1 text-[10px] font-bold text-[#444748]">
                 Q3 UPDATE
               </span>
@@ -281,33 +290,35 @@ export function NewsHubPage() {
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               <Link
                 href="/news/local-news/infrastructure"
-                className="rounded-xl border border-[#c4c7c8]/30 bg-[#f8f9fa] p-5 transition-all hover:shadow-md"
+                className={newsTheme.cardMuted}
               >
                 <div className="mb-3 flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#d6e3ff] text-lg">
-                    🛣️
+                  <div className={newsTheme.iconBox}>
+                    <Route className="h-5 w-5" aria-hidden />
                   </div>
-                  <h4 className="font-bold text-[#191c1d]">Roads & Utilities</h4>
+                  <h4 className="font-bold text-[#0c1a33]">Roads & Utilities</h4>
                 </div>
                 <p className="mb-3 text-sm leading-relaxed text-[#444748]">
                   Scheduled maintenance in Naklua area this Sunday (Oct 14) from
                   9:00 AM to 4:00 PM. Impacted zones listed...
                 </p>
-                <span className="text-xs font-bold text-[#455f88] hover:underline">
+                <span className={`text-xs font-bold text-[#10438f] hover:underline`}>
                   Full Impact Map →
                 </span>
               </Link>
 
               <Link
                 href="/news/business/openings"
-                className="relative rounded-xl border border-[#c4c7c8]/30 bg-[#f8f9fa] p-5 transition-all hover:shadow-md"
+                className={`relative ${newsTheme.cardMuted}`}
               >
-                <span className="absolute right-4 top-4 rounded bg-[#d6e3ff] px-2 py-0.5 text-[9px] font-bold">
+                <span className="absolute right-4 top-4 rounded bg-[#d6e3ff] px-2 py-0.5 text-[9px] font-bold text-[#10438f]">
                   SPONSORED
                 </span>
                 <div className="mb-3 flex items-center gap-3">
-                  <div className="rounded-lg bg-[#ffdad8] p-2 text-lg">🍽️</div>
-                  <h4 className="font-bold text-[#191c1d]">The Glasshouse Marina</h4>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#ffdad8] text-[#ae2f34]">
+                    <UtensilsCrossed className="h-5 w-5" aria-hidden />
+                  </div>
+                  <h4 className="font-bold text-[#0c1a33]">The Glasshouse Marina</h4>
                 </div>
                 <p className="mb-3 text-sm leading-relaxed text-[#444748]">
                   Now Open: A revolutionary fine-dining experience at Ocean Marina.
@@ -315,7 +326,12 @@ export function NewsHubPage() {
                 </p>
                 <div className="flex items-center gap-2">
                   <span className="text-xs text-[#444748]">Rating:</span>
-                  <span className="text-amber-400">★★★★½</span>
+                  <span className="flex items-center gap-0.5 text-amber-500" aria-label="4.5 stars">
+                    {Array.from({ length: 4 }).map((_, i) => (
+                      <Star key={i} className="h-3.5 w-3.5 fill-current" aria-hidden />
+                    ))}
+                    <Star className="h-3.5 w-3.5 fill-current opacity-50" aria-hidden />
+                  </span>
                 </div>
               </Link>
             </div>
@@ -335,10 +351,8 @@ export function NewsHubPage() {
                 </div>
               </div>
               <div className="md:w-2/3">
-                <span className="mb-2 block text-[11px] font-bold uppercase tracking-widest text-[#455f88]">
-                  Exclusive Deals
-                </span>
-                <h3 className="mb-4 text-2xl font-semibold">
+                <span className={`mb-2 block ${newsTheme.eyebrow}`}>Exclusive Deals</span>
+                <h3 className="mb-4 text-2xl font-semibold text-[#0c1a33]">
                   Pattaya Restaurant Week: Save up to 50% on Fine Dining
                 </h3>
                 <p className="mb-6 text-[#444748]">
@@ -349,13 +363,13 @@ export function NewsHubPage() {
                 <div className="flex flex-wrap gap-4">
                   <Link
                     href="/news/tourism/promotions"
-                    className="rounded-full bg-[#10438f] px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-[#10438f]/90"
+                    className={newsTheme.btnPrimaryPill}
                   >
                     Get Promo Code
                   </Link>
                   <Link
                     href="/news/tourism/promotions"
-                    className="rounded-full border border-[#10438f] px-6 py-2.5 text-sm font-semibold text-[#10438f] transition-all hover:bg-[#10438f]/5"
+                    className={newsTheme.btnOutlinePill}
                   >
                     Participating Outlets
                   </Link>
@@ -367,8 +381,8 @@ export function NewsHubPage() {
           <div className="col-span-1 flex flex-col gap-6 lg:col-span-4">
             <div className="overflow-hidden rounded-xl border border-[#c4c7c8]/30 bg-white">
               <div className="flex items-center justify-between border-b border-[#c4c7c8] bg-[#f3f4f5] p-6">
-                <h2 className="flex items-center gap-2 text-xl font-semibold">
-                  <span className="text-[#455f88]">🥋</span>
+                <h2 className="flex items-center gap-2 text-xl font-semibold text-[#0c1a33]">
+                  <Swords className="h-5 w-5 text-[#10438f]" aria-hidden />
                   Sports & Recreation
                 </h2>
               </div>
@@ -385,7 +399,7 @@ export function NewsHubPage() {
                       MAX FIGHT
                     </span>
                   </div>
-                  <h4 className="font-bold leading-tight text-[#191c1d] transition-colors group-hover:text-[#ae2f34]">
+                  <h4 className="font-bold leading-tight text-[#0c1a33] transition-colors group-hover:text-[#ae2f34]">
                     Lumpinee Champion to Face Local Hero in Weekend Main Event
                   </h4>
                   <p className="mt-2 text-xs text-[#444748]">
@@ -405,7 +419,7 @@ export function NewsHubPage() {
                       Siam CC
                     </span>
                   </div>
-                  <h4 className="font-bold leading-tight text-[#191c1d] transition-colors group-hover:text-[#455f88]">
+                  <h4 className="font-bold leading-tight text-[#0c1a33] transition-colors group-hover:text-[#10438f]">
                     Pattaya Open: International Pro-Am Kicks off at Siam Country
                     Club
                   </h4>
@@ -423,9 +437,10 @@ export function NewsHubPage() {
             </div>
 
             <div className="group relative overflow-hidden rounded-xl bg-[#10438f] p-8 text-white">
-              <div className="pointer-events-none absolute -right-12 -top-12 text-[200px] text-white/5 transition-colors group-hover:text-white/10">
-                🌐
-              </div>
+              <Globe
+                className="pointer-events-none absolute -right-12 -top-12 h-48 w-48 text-white/5 transition-colors group-hover:text-white/10"
+                aria-hidden
+              />
               <div className="relative z-10">
                 <h3 className="mb-2 flex items-center gap-2 text-xl font-semibold">
                   Pattaya in World News
@@ -459,7 +474,6 @@ export function NewsHubPage() {
             </div>
           </div>
         </section>
-      </div>
-    </div>
+    </NewsPageFrame>
   );
 }

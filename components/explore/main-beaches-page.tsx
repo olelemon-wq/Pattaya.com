@@ -1,16 +1,8 @@
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
-import {
-  Clock,
-  MapPin,
-  Navigation,
-  Sun,
-  Umbrella,
-  Users,
-  Waves,
-  type LucideIcon,
-} from "lucide-react";
+import { Clock, MapPin, Sun, Umbrella, Users, Waves, type LucideIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { BeachShorelineCarousel } from "@/components/explore/beach-shoreline-carousel";
 import { beachesImages } from "@/lib/design/beaches-images";
 
 const beaches = [
@@ -129,86 +121,6 @@ const relatedLinks = [
   },
 ];
 
-function BeachDetailRow({
-  icon: Icon,
-  label,
-  value,
-}: {
-  icon: LucideIcon;
-  label: string;
-  value: string;
-}) {
-  return (
-    <div className="flex gap-3">
-      <Icon className="mt-0.5 h-4 w-4 shrink-0 text-[#B52E88]" aria-hidden />
-      <div className="min-w-0">
-        <dt className="font-bold uppercase tracking-wide text-[#747878]">
-          {label}
-        </dt>
-        <dd className="mt-0.5 text-[#191c1d]">{value}</dd>
-      </div>
-    </div>
-  );
-}
-
-function VibeTag({ children }: { children: string }) {
-  return (
-    <span className="rounded-full bg-[#B52E88]/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#B52E88]">
-      {children}
-    </span>
-  );
-}
-
-function BeachCard({
-  id,
-  name,
-  nameTh,
-  image,
-  vibe,
-  excerpt,
-  bestFor,
-  access,
-  water,
-}: (typeof beaches)[number]) {
-  return (
-    <article
-      id={id}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-[#c4c7c8]/30 bg-white shadow-sm transition hover:shadow-lg"
-    >
-      <div className="relative aspect-[16/10] overflow-hidden">
-        <Image
-          src={image}
-          alt={name}
-          fill
-          className="object-cover transition duration-500 group-hover:scale-105"
-          sizes="(max-width: 768px) 100vw, 50vw"
-        />
-        <div
-          className="absolute inset-0 bg-gradient-to-t from-[#191c1d]/50 to-transparent"
-          aria-hidden
-        />
-        <div className="absolute bottom-4 left-4 right-4">
-          <h3 className="text-xl font-bold text-white drop-shadow-sm">{name}</h3>
-          <p className="text-sm text-white/90">{nameTh}</p>
-        </div>
-      </div>
-      <div className="flex flex-1 flex-col p-5 sm:p-6">
-        <div className="mb-3 flex flex-wrap gap-1.5">
-          {vibe.map((v) => (
-            <VibeTag key={v}>{v}</VibeTag>
-          ))}
-        </div>
-        <p className="mb-4 text-sm leading-relaxed text-[#444748]">{excerpt}</p>
-        <dl className="mt-auto space-y-3 border-t border-[#e7e8e9] pt-4 text-xs">
-          <BeachDetailRow icon={Users} label="Best for" value={bestFor} />
-          <BeachDetailRow icon={Navigation} label="Access" value={access} />
-          <BeachDetailRow icon={Waves} label="Water" value={water} />
-        </dl>
-      </div>
-    </article>
-  );
-}
-
 function TipRow({
   icon: Icon,
   title,
@@ -233,7 +145,7 @@ function TipRow({
 
 export function MainBeachesPage() {
   return (
-    <div data-full-bleed className="bg-[#f8f9fa] text-[#191c1d]">
+    <div data-full-bleed className="bg-[#fdf8fb] text-[#191c1d]">
       <div className="relative z-10 shrink-0 shadow-sm">
         <BreakingNewsTicker variant="explore" />
       </div>
@@ -268,7 +180,7 @@ export function MainBeachesPage() {
               </li>
             </ol>
           </nav>
-          <span className="mb-3 inline-flex w-fit rounded-full bg-[#d6e3ff] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#455f88]">
+          <span className="mb-3 inline-flex w-fit rounded-full bg-[#F0D4E8] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#B52E88]">
             Beaches
           </span>
           <h1
@@ -277,7 +189,7 @@ export function MainBeachesPage() {
           >
             Main Beaches
           </h1>
-          <p className="mt-2 text-lg text-[#a3faef] md:text-xl">ชายหาดหลัก</p>
+          <p className="mt-2 text-lg text-[#F5D0E8] md:text-xl">ชายหาดหลัก</p>
           <p className="mt-4 max-w-2xl text-base text-white/90 md:text-lg">
             Pattaya&apos;s main beaches and what to expect — from the central
             promenade to quiet northern coves and family-friendly Jomtien.
@@ -295,21 +207,7 @@ export function MainBeachesPage() {
       </section>
 
       <div className="mx-auto max-w-[1280px] px-5 py-12 md:px-16 md:py-16">
-        <section className="mb-16">
-          <h2 className="text-2xl font-semibold text-[#191c1d] md:text-3xl">
-            Choose your shoreline
-          </h2>
-          <p className="mt-2 max-w-2xl text-[#444748]">
-            Each beach has a distinct rhythm. Use this guide to match vibe, crowd
-            level, and access — then dive into island trips or dining from the
-            Explore hub.
-          </p>
-          <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
-            {beaches.map((beach) => (
-              <BeachCard key={beach.id} {...beach} />
-            ))}
-          </div>
-        </section>
+        <BeachShorelineCarousel beaches={beaches} />
 
         <section className="mb-16 overflow-hidden rounded-2xl border border-[#c4c7c8]/30 bg-white shadow-sm">
           <div className="grid md:grid-cols-2">
@@ -323,7 +221,7 @@ export function MainBeachesPage() {
               />
             </div>
             <div className="flex flex-col justify-center p-6 sm:p-10">
-              <p className="text-xs font-bold uppercase tracking-widest text-[#455f88]">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#B52E88]">
                 Quick comparison
               </p>
               <h2 className="mt-2 text-xl font-bold md:text-2xl">
@@ -378,9 +276,9 @@ export function MainBeachesPage() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="rounded-xl border border-[#c4c7c8]/30 bg-white p-5 shadow-sm transition hover:border-[#455f88]/40 hover:shadow-md"
+                className="rounded-xl border border-[#c4c7c8]/30 bg-white p-5 shadow-sm transition hover:border-[#B52E88]/30 hover:shadow-md"
               >
-                <p className="font-bold text-[#455f88]">{link.label} →</p>
+                <p className="font-bold text-[#B52E88]">{link.label} →</p>
                 <p className="mt-2 text-sm text-[#444748]">{link.blurb}</p>
               </Link>
             ))}

@@ -1,13 +1,7 @@
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
-import {
-  Car,
-  Clock,
-  Film,
-  MapPin,
-  ShoppingBag,
-  Store,
-  type LucideIcon,
-} from "lucide-react";
+import { ExploreGuideCarousel } from "@/components/explore/explore-guide-carousel";
+import type { ExploreGuideCardData } from "@/components/explore/explore-guide-types";
+import { Car, Clock, MapPin, ShoppingBag, Store } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { shoppingImages } from "@/lib/design/shopping-images";
@@ -63,6 +57,20 @@ const malls = [
   },
 ];
 
+const mallGuideCards: ExploreGuideCardData[] = malls.map((mall) => ({
+  id: mall.id,
+  name: mall.name,
+  nameTh: mall.nameTh,
+  image: mall.image,
+  tags: mall.tags,
+  excerpt: mall.excerpt,
+  details: [
+    { icon: "clock", label: "Hours", value: mall.hours },
+    { icon: "mapPin", label: "Location", value: mall.location },
+    { icon: "film", label: "Highlights", value: mall.highlights },
+  ],
+}));
+
 const mallCategories = [
   {
     name: "Fashion & lifestyle",
@@ -112,86 +120,6 @@ const mallTips = [
     text: "Malls are the midday escape from heat — plan beach time early, shopping after lunch.",
   },
 ];
-
-function ShopTag({ children }: { children: string }) {
-  return (
-    <span className="rounded-full bg-[#B52E88]/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#B52E88]">
-      {children}
-    </span>
-  );
-}
-
-function ShopDetailRow({
-  icon: Icon,
-  label,
-  value,
-}: {
-  icon: LucideIcon;
-  label: string;
-  value: string;
-}) {
-  return (
-    <div className="flex gap-3">
-      <Icon className="mt-0.5 h-4 w-4 shrink-0 text-[#B52E88]" aria-hidden />
-      <div className="min-w-0">
-        <dt className="font-bold uppercase tracking-wide text-[#747878]">
-          {label}
-        </dt>
-        <dd className="mt-0.5 text-[#191c1d]">{value}</dd>
-      </div>
-    </div>
-  );
-}
-
-function MallCard({
-  id,
-  name,
-  nameTh,
-  image,
-  tags,
-  excerpt,
-  hours,
-  location,
-  highlights,
-}: (typeof malls)[number]) {
-  return (
-    <article
-      id={id}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-[#c4c7c8]/30 bg-white shadow-sm transition hover:shadow-lg"
-    >
-      <div className="relative aspect-[16/10] overflow-hidden">
-        <Image
-          src={image}
-          alt={name}
-          fill
-          className="object-cover transition duration-500 group-hover:scale-105"
-          sizes="(max-width: 768px) 100vw, 50vw"
-        />
-        <div
-          className="absolute inset-0 bg-gradient-to-t from-[#191c1d]/55 to-transparent"
-          aria-hidden
-        />
-        <div className="absolute bottom-4 left-4 right-4">
-          <h3 className="text-xl font-bold text-white drop-shadow-sm">{name}</h3>
-          <p className="text-sm text-white/90">{nameTh}</p>
-        </div>
-      </div>
-      <div className="flex flex-1 flex-col p-5 sm:p-6">
-        <div className="mb-3 flex flex-wrap gap-1.5">
-          {tags.map((t) => (
-            <ShopTag key={t}>{t}</ShopTag>
-          ))}
-        </div>
-        <p className="mb-4 text-sm leading-relaxed text-[#444748]">{excerpt}</p>
-        <dl className="mt-auto space-y-3 border-t border-[#e7e8e9] pt-4 text-xs">
-          <ShopDetailRow icon={Clock} label="Hours" value={hours} />
-          <ShopDetailRow icon={MapPin} label="Location" value={location} />
-          <ShopDetailRow icon={Film} label="Highlights" value={highlights} />
-        </dl>
-      </div>
-    </article>
-  );
-}
 
 function CategoryCard({
   name,
@@ -284,18 +212,13 @@ export function ShoppingMallsPage() {
       </section>
 
       <div className="mx-auto max-w-[1280px] px-5 py-12 md:px-16 md:py-16">
-        <section className="mb-16">
-          <h2 className="text-2xl font-semibold md:text-3xl">Major malls</h2>
-          <p className="mt-2 max-w-2xl text-[#444748]">
-            Four staples from the Explore hub — each suits a different budget and
-            vibe, from flagship beachfront to bargain southerly complexes.
-          </p>
-          <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
-            {malls.map((mall) => (
-              <MallCard key={mall.id} {...mall} />
-            ))}
-          </div>
-        </section>
+        <ExploreGuideCarousel
+          title="Choose your mall"
+          description="Four staples from the Explore hub — each suits a different budget and vibe, from flagship beachfront to bargain southerly complexes."
+          prevLabel="Previous malls"
+          nextLabel="Next malls"
+          items={mallGuideCards}
+        />
 
         <section className="mb-16">
           <h2 className="text-2xl font-semibold md:text-3xl">What to shop</h2>

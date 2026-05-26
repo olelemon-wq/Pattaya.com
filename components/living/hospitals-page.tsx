@@ -1,4 +1,5 @@
-import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
+import { LivingPageShell } from "@/components/living/living-page-shell";
+import { livingTheme } from "@/lib/design/living-theme";
 import { livingImages } from "@/lib/design/living-images";
 import {
   Ambulance,
@@ -8,8 +9,6 @@ import {
   Stethoscope,
   type LucideIcon,
 } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
 
 const hospitals = [
   {
@@ -94,7 +93,7 @@ function FaqBlock() {
   return (
     <section
       id="faq"
-      className="relative z-10 scroll-mt-24 rounded-2xl border border-[#e2e8f0] bg-white p-6 shadow-sm sm:p-8"
+      className={`relative z-10 scroll-mt-24 ${livingTheme.panel}`}
       aria-labelledby="hospitals-faq-title"
     >
       <h2 id="hospitals-faq-title" className="text-2xl font-bold text-[#0A192F] sm:text-3xl">
@@ -126,90 +125,23 @@ function FaqBlock() {
 
 export function HospitalsPage() {
   return (
-    <div data-full-bleed className="bg-[#F8FAFC] font-sans text-[#0A192F]">
-      <div className="relative z-10 shrink-0 shadow-sm">
-        <BreakingNewsTicker variant="living" />
-      </div>
-
-      <section
-        className="relative min-h-[min(72vh,560px)] overflow-hidden"
-        aria-labelledby="hospitals-hero-title"
-      >
-        <Image
-          src={livingImages.medical}
-          alt="World-class medical facility in Pattaya"
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
-        <div
-          className="absolute inset-0 bg-gradient-to-b from-[#0A192F]/90 via-[#0A192F]/75 to-[#0A192F]/92"
-          aria-hidden
-        />
-        <div className="relative mx-auto flex min-h-[min(72vh,560px)] max-w-[1280px] flex-col justify-end px-4 pb-28 pt-20 sm:px-6 sm:pb-32">
-          <nav aria-label="Breadcrumb" className="mb-4">
-            <ol className="flex flex-wrap items-center gap-2 text-xs text-white/75 sm:text-sm">
-              <li>
-                <Link href="/" className="hover:text-white">
-                  Home
-                </Link>
-              </li>
-              <li aria-hidden>/</li>
-              <li>
-                <Link href="/living" className="hover:text-white">
-                  Living
-                </Link>
-              </li>
-              <li aria-hidden>/</li>
-              <li>
-                <span className="text-white/90">Hospitals</span>
-              </li>
-            </ol>
-          </nav>
-          <span className="mb-3 inline-flex w-fit rounded-full bg-[#D7CBBA] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-[#6b5a48]">
-            Healthcare
-          </span>
-          <h1
-            id="hospitals-hero-title"
-            className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl"
-          >
-            Hospitals | โรงพยาบาล
-          </h1>
-          <p className="mt-3 max-w-2xl text-base leading-relaxed text-white/90 sm:text-lg">
-            Curated directory of international hospitals and clinics in the
-            Pattaya region for residents and visitors.
-          </p>
-        </div>
-      </section>
-
-      <div className="relative z-10 mx-auto -mt-14 max-w-[900px] px-4 sm:-mt-16 sm:px-6">
-        <aside
-          className="rounded-2xl border border-[#e2e8f0] bg-white p-6 shadow-xl ring-1 ring-[#B29475]/20 sm:flex sm:items-center sm:justify-between sm:gap-6 sm:p-8"
-          aria-label="Healthcare consultation"
-        >
-          <div className="sm:flex-1">
-            <p className="text-xs font-bold uppercase tracking-widest text-[#B29475]">
-              Medical Service
-            </p>
-            <p className="mt-2 text-base font-semibold leading-snug text-[#0A192F] sm:text-lg">
-              Match insurance with the right hospital
-            </p>
-            <p className="mt-2 text-sm leading-relaxed text-[#777777]">
-              Compare expat health plans, direct billing, and check-up packages
-              used for visa and retirement extensions.
-            </p>
-          </div>
-          <Link
-            href="/living/healthcare/insurance"
-            className="mt-5 inline-flex w-full shrink-0 items-center justify-center rounded-lg bg-[#B29475] px-6 py-3.5 text-center text-sm font-bold text-white shadow-md transition hover:bg-[#B29475]/90 sm:mt-0 sm:w-auto"
-          >
-            Health Insurance Options
-          </Link>
-        </aside>
-      </div>
-
-      <div className="mx-auto max-w-[1280px] space-y-14 px-4 py-12 sm:px-6 sm:py-16">
+    <LivingPageShell
+      heroImage={livingImages.medical}
+      heroAlt="World-class medical facility in Pattaya"
+      badge="Healthcare"
+      breadcrumbLeaf="Hospitals"
+      title="Hospitals | โรงพยาบาล"
+      subtitle="Curated directory of international hospitals and clinics in the Pattaya region for residents and visitors."
+      ctaEyebrow="Medical Service"
+      ctaTitle="Match insurance with the right hospital"
+      ctaBody="Compare expat health plans, direct billing, and check-up packages used for visa and retirement extensions."
+      ctaButton="Health Insurance Options"
+      ctaHref="/living/healthcare/insurance"
+      ctaAriaLabel="Healthcare consultation"
+      bottomTitle="Need health insurance for your visa?"
+      bottomBody="See approved plans for retirement, Elite, and long-stay residents in Thailand."
+      bottomPrimary={{ label: "View Insurance Guide", href: "/living/healthcare/insurance" }}
+    >
         <section aria-labelledby="directory-title">
           <h2 id="directory-title" className="text-2xl font-bold text-[#0A192F] sm:text-3xl">
             Hospital directory
@@ -258,27 +190,7 @@ export function HospitalsPage() {
           </div>
         </section>
 
-        <FaqBlock />
-
-        <section
-          className="rounded-2xl border border-[#B29475]/20 bg-[#D7CBBA] px-6 py-8 text-center sm:px-10 sm:py-10"
-          aria-labelledby="hospitals-cta-title"
-        >
-          <h2 id="hospitals-cta-title" className="text-xl font-bold text-[#0A192F] sm:text-2xl">
-            Need health insurance for your visa?
-          </h2>
-          <p className="mx-auto mt-2 max-w-lg text-sm text-[#444748]">
-            See approved plans for retirement, Elite, and long-stay residents in
-            Thailand.
-          </p>
-          <Link
-            href="/living/healthcare/insurance"
-            className="mt-6 inline-flex items-center justify-center rounded-lg bg-[#B29475] px-8 py-3.5 text-sm font-bold text-white shadow-lg transition hover:bg-[#B29475]/90"
-          >
-            View Insurance Guide
-          </Link>
-        </section>
-      </div>
-    </div>
+      <FaqBlock />
+    </LivingPageShell>
   );
 }

@@ -90,7 +90,7 @@ function TimelineCard({
               {duration}
             </span>
             <h3 className="mt-2 text-base font-bold text-[#0A192F]">{title}</h3>
-            <p className="text-xs font-medium text-[#2563EB]">{titleTh}</p>
+            <p className="text-xs font-medium text-[#B29475]">{titleTh}</p>
           </div>
         </div>
         <p className="mt-3 flex-1 text-sm leading-relaxed text-[#555] lg:text-center">

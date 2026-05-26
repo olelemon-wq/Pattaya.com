@@ -1,4 +1,5 @@
 import { DrivingPage } from "@/components/living/driving-page";
+import { RideAppsPage } from "@/components/living/ride-apps-page";
 import { SongthaewPage } from "@/components/living/songthaew-page";
 import {
   createItemMetadata,
@@ -13,6 +14,7 @@ const CATEGORY = "transportation";
 
 const DEDICATED_PAGES: Record<string, () => React.JSX.Element> = {
   songthaew: () => <SongthaewPage />,
+  "ride-apps": () => <RideAppsPage />,
   driving: () => <DrivingPage />,
 };
 
@@ -34,6 +36,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       openGraph: {
         title: "Songthaew | รถสองแถว — Pattaya.com",
         description: "Ride local shared transport like a Pattaya resident.",
+      },
+    };
+  }
+  if (slug === "ride-apps") {
+    return {
+      title: "Grab & Bolt Pattaya | App เดินทาง | Pattaya.com",
+      description:
+        "Grab and Bolt in Pattaya — fares, safety tips, airport rides, and when to use songthaews instead.",
+      openGraph: {
+        title: "Grab & Bolt | App เดินทาง — Pattaya.com",
+        description: "Ride-hailing guide for Pattaya residents and visitors.",
       },
     };
   }

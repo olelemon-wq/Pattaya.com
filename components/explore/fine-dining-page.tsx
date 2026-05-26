@@ -1,4 +1,5 @@
-import { Building2, ChefHat, Sunset, type LucideIcon } from "lucide-react";
+import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
+import { Building2, ChefHat, Sunset } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -108,7 +109,7 @@ const diningGuides = [
 
 function Tag({ children }: { children: ReactNode }) {
   return (
-    <span className="rounded-full bg-[#F8FAFC] px-2.5 py-1 text-xs font-medium text-[#0A192F] ring-1 ring-[#e2e8f0]">
+    <span className="rounded-full bg-[#B52E88]/10 px-2.5 py-1 text-xs font-medium text-[#B52E88] ring-1 ring-[#B52E88]/15">
       {children}
     </span>
   );
@@ -124,7 +125,7 @@ function FeaturedCard({
   href,
 }: (typeof featuredRestaurants)[number]) {
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white shadow-md transition hover:shadow-xl">
+    <article className="group flex flex-col overflow-hidden rounded-2xl border border-[#c4c7c8]/30 bg-white shadow-sm transition hover:shadow-lg">
       <div className="relative aspect-[16/10] overflow-hidden">
         <Image
           src={image}
@@ -133,13 +134,13 @@ function FeaturedCard({
           className="object-cover transition duration-500 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, 33vw"
         />
-        <span className="absolute left-3 top-3 rounded-full bg-[#0A192F]/80 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm">
+        <span className="absolute left-3 top-3 rounded-full bg-[#ae2f34] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
           Sponsored
         </span>
       </div>
       <div className="flex flex-1 flex-col p-5 sm:p-6">
-        <h3 className="text-lg font-bold text-[#0A192F]">{name}</h3>
-        <p className="text-sm text-[#777777]">{nameTh}</p>
+        <h3 className="text-lg font-bold text-[#191c1d]">{name}</h3>
+        <p className="text-sm text-[#747878]">{nameTh}</p>
         <p className="mt-3 flex-1 text-sm leading-relaxed text-[#444748]">
           {description}
         </p>
@@ -149,7 +150,7 @@ function FeaturedCard({
         </div>
         <Link
           href={href}
-          className="mt-5 inline-flex w-full items-center justify-center rounded-lg bg-[#FF7320] px-4 py-3 text-sm font-bold text-white shadow-md transition hover:bg-[#e56518] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF7320]"
+          className="mt-5 inline-flex w-full items-center justify-center rounded-xl bg-[#B52E88] px-4 py-3 text-sm font-bold text-white shadow-md transition hover:bg-[#B52E88]/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B52E88]"
         >
           Reserve a Table
         </Link>
@@ -170,7 +171,7 @@ function CollectionCard({
   return (
     <Link
       href={href}
-      className="group flex gap-4 rounded-2xl border border-[#e2e8f0] bg-white p-4 shadow-sm transition hover:border-[#2563EB]/30 hover:shadow-md sm:p-5"
+      className="group flex gap-4 rounded-2xl border border-[#c4c7c8]/30 bg-white p-4 shadow-sm transition hover:border-[#B52E88]/30 hover:shadow-md sm:p-5"
     >
       <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl sm:h-24 sm:w-24">
         <Image
@@ -181,21 +182,21 @@ function CollectionCard({
           sizes="96px"
         />
         <span
-          className="absolute inset-0 flex items-center justify-center bg-[#0A192F]/40"
+          className="absolute inset-0 flex items-center justify-center bg-[#191c1d]/40"
           aria-hidden
         >
           <Icon className="h-8 w-8 text-white sm:h-9 sm:w-9" strokeWidth={1.75} />
         </span>
       </div>
       <div className="min-w-0 flex-1">
-        <h3 className="font-bold text-[#0A192F] group-hover:text-[#2563EB]">
+        <h3 className="font-bold text-[#191c1d] group-hover:text-[#B52E88]">
           {title}
         </h3>
-        <p className="text-xs text-[#777777]">{titleTh}</p>
+        <p className="text-xs text-[#747878]">{titleTh}</p>
         <p className="mt-1 line-clamp-2 text-sm text-[#444748]">
           {description}
         </p>
-        <span className="mt-2 inline-block text-sm font-semibold text-[#2563EB]">
+        <span className="mt-2 inline-block text-sm font-semibold text-[#B52E88]">
           Browse collection →
         </span>
       </div>
@@ -212,24 +213,24 @@ function GuideCard({
   readTime,
 }: (typeof diningGuides)[number]) {
   return (
-    <article className="flex gap-4 rounded-xl border border-[#e2e8f0] bg-white p-4 shadow-sm transition hover:shadow-md sm:p-5">
+    <article className="flex gap-4 rounded-xl border border-[#c4c7c8]/30 bg-white p-4 shadow-sm transition hover:shadow-md sm:p-5">
       <div className="relative hidden h-24 w-28 shrink-0 overflow-hidden rounded-lg sm:block">
         <Image src={image} alt="" fill className="object-cover" sizes="112px" />
       </div>
       <div className="min-w-0 flex-1">
-        <p className="text-xs font-medium uppercase tracking-wide text-[#777777]">
+        <p className="text-xs font-medium uppercase tracking-wide text-[#747878]">
           {readTime} read
         </p>
-        <h3 className="mt-1 text-base font-bold leading-snug text-[#0A192F]">
-          <Link href={href} className="hover:text-[#2563EB] hover:underline">
+        <h3 className="mt-1 text-base font-bold leading-snug text-[#191c1d]">
+          <Link href={href} className="hover:text-[#B52E88] hover:underline">
             {title}
           </Link>
         </h3>
-        <p className="text-xs text-[#777777]">{titleTh}</p>
+        <p className="text-xs text-[#747878]">{titleTh}</p>
         <p className="mt-2 line-clamp-2 text-sm text-[#444748]">{excerpt}</p>
         <Link
           href={href}
-          className="mt-3 inline-block text-sm font-semibold text-[#2563EB] hover:underline"
+          className="mt-3 inline-block text-sm font-semibold text-[#B52E88] hover:underline"
         >
           Read guide →
         </Link>
@@ -240,10 +241,13 @@ function GuideCard({
 
 export function FineDiningPage() {
   return (
-    <div data-full-bleed className="bg-[#F8FAFC] font-sans text-[#0A192F]">
-      {/* Hero */}
+    <div data-full-bleed className="bg-[#fdf8fb] text-[#191c1d]">
+      <div className="relative z-10 shrink-0 shadow-sm">
+        <BreakingNewsTicker variant="explore" />
+      </div>
+
       <section
-        className="relative min-h-[min(70vh,520px)] overflow-hidden"
+        className="relative min-h-[min(65vh,480px)] overflow-hidden"
         aria-labelledby="fine-dining-hero-title"
       >
         <Image
@@ -255,18 +259,12 @@ export function FineDiningPage() {
           sizes="100vw"
         />
         <div
-          className="absolute inset-0 bg-gradient-to-b from-[#0A192F]/85 via-[#0A192F]/75 to-[#0A192F]/90"
+          className="absolute inset-0 bg-gradient-to-b from-[#191c1d]/70 via-[#191c1d]/50 to-[#191c1d]/85"
           aria-hidden
         />
-        <div className="relative mx-auto flex min-h-[min(70vh,520px)] max-w-[1280px] flex-col justify-end px-4 pb-16 pt-20 sm:px-6 sm:pb-20">
+        <div className="relative mx-auto flex min-h-[min(65vh,480px)] max-w-[1280px] flex-col justify-end px-5 pb-14 pt-20 md:px-16 md:pb-16">
           <nav aria-label="Breadcrumb" className="mb-4">
-            <ol className="flex flex-wrap items-center gap-2 text-xs text-white/75 sm:text-sm">
-              <li>
-                <Link href="/" className="hover:text-white">
-                  Home
-                </Link>
-              </li>
-              <li aria-hidden>/</li>
+            <ol className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/80">
               <li>
                 <Link href="/explore" className="hover:text-white">
                   Explore
@@ -274,40 +272,46 @@ export function FineDiningPage() {
               </li>
               <li aria-hidden>/</li>
               <li>
-                <span className="text-white/90">Restaurants</span>
+                <span className="text-white/80">Restaurants</span>
+              </li>
+              <li aria-hidden>/</li>
+              <li>
+                <span className="text-white">Fine Dining</span>
               </li>
             </ol>
           </nav>
-          <span className="mb-3 inline-flex w-fit rounded-full bg-[#a7f3d0] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-[#065f46]">
+          <span className="mb-3 inline-flex w-fit rounded-full bg-[#F0D4E8] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#B52E88]">
             Restaurants
           </span>
           <h1
             id="fine-dining-hero-title"
-            className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl"
+            className="text-3xl font-bold tracking-tight text-white md:text-5xl"
           >
-            Fine Dining | ร้านอาหารหรู
+            Fine Dining
           </h1>
-          <p className="mt-3 max-w-xl text-base text-white/90 sm:text-lg">
-            Luxury dining experiences in Pattaya
+          <p className="mt-2 text-lg text-[#F5D0E8] md:text-xl">ร้านอาหารหรู</p>
+          <p className="mt-4 max-w-2xl text-base text-white/90 md:text-lg">
+            Luxury dining experiences in Pattaya — sunset terraces, chef&apos;s
+            tables, and ocean-view reservations.
           </p>
         </div>
       </section>
 
-      <div className="mx-auto max-w-[1280px] space-y-14 px-4 py-12 sm:px-6 sm:py-16">
+      <div className="mx-auto max-w-[1280px] space-y-14 px-5 py-12 md:px-16 md:py-16">
         {/* Sponsored showcase */}
         <section aria-labelledby="sponsored-title">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-[#FF7320]">
+              <p className="text-xs font-bold uppercase tracking-widest text-[#B52E88]">
                 Sponsored Showcase
               </p>
               <h2
                 id="sponsored-title"
-                className="mt-1 text-2xl font-bold text-[#0A192F] sm:text-3xl"
+                className="mt-1 text-2xl font-semibold text-[#191c1d] md:text-3xl"
               >
                 Featured Fine Dining
               </h2>
-              <p className="mt-1 text-sm text-[#777777]">
+              <p className="mt-1 text-sm text-[#747878]">
                 Hand-picked luxury venues — reserve your table today
               </p>
             </div>
@@ -323,11 +327,11 @@ export function FineDiningPage() {
         <section aria-labelledby="collections-title">
           <h2
             id="collections-title"
-            className="text-2xl font-bold text-[#0A192F] sm:text-3xl"
+            className="text-2xl font-semibold text-[#191c1d] md:text-3xl"
           >
             Curated Collections
           </h2>
-          <p className="mt-1 text-sm text-[#777777]">
+          <p className="mt-1 text-sm text-[#747878]">
             Explore by mood, view, and dining style
           </p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -341,11 +345,11 @@ export function FineDiningPage() {
         <section aria-labelledby="guides-title">
           <h2
             id="guides-title"
-            className="text-2xl font-bold text-[#0A192F] sm:text-3xl"
+            className="text-2xl font-semibold text-[#191c1d] md:text-3xl"
           >
             Dining Guides
           </h2>
-          <p className="mt-1 text-sm text-[#777777]">
+          <p className="mt-1 text-sm text-[#747878]">
             Tips, etiquette, and editor picks for discerning diners
           </p>
           <div className="mt-8 grid gap-4 md:grid-cols-2">

@@ -65,16 +65,16 @@ export function KohLarnBeachGuide() {
   return (
     <section
       id="beach-guide"
-      className="scroll-mt-24 rounded-2xl border border-[#e2e8f0] bg-white p-6 shadow-sm sm:p-8"
+      className="scroll-mt-24 rounded-2xl border border-[#c4c7c8]/30 bg-white p-6 shadow-sm sm:p-8"
       aria-labelledby="beach-guide-title"
     >
       <h2
         id="beach-guide-title"
-        className="text-2xl font-bold tracking-tight text-[#0A192F] sm:text-3xl"
+        className="text-2xl font-semibold tracking-tight text-[#191c1d] md:text-3xl"
       >
         เที่ยวหาดไหนดี? คู่มือรวมชายหาดเกาะล้าน
       </h2>
-      <p className="mt-2 text-sm text-[#777777] sm:text-base">
+      <p className="mt-2 text-sm text-[#747878] sm:text-base">
         Beach Guide — เลือกหาดที่เหมาะกับสไตล์การเที่ยวของคุณ
       </p>
 
@@ -96,8 +96,8 @@ export function KohLarnBeachGuide() {
               onClick={() => setActiveId(beach.id)}
               className={`shrink-0 rounded-full px-4 py-2.5 text-sm font-semibold transition-colors ${
                 selected
-                  ? "bg-[#2563EB] text-white shadow-md"
-                  : "bg-[#F8FAFC] text-[#0A192F] ring-1 ring-[#e2e8f0] hover:bg-[#2563EB]/10"
+                  ? "bg-[#B52E88] text-white shadow-md ring-1 ring-[#B52E88]/15"
+                  : "bg-[#fdf8fb] text-[#191c1d] ring-1 ring-[#c4c7c8]/40 hover:bg-[#B52E88]/10"
               }`}
             >
               {beach.label}
@@ -122,9 +122,9 @@ export function KohLarnBeachGuide() {
           />
         </div>
         <div>
-          <h3 className="text-xl font-bold text-[#0A192F]">
+          <h3 className="text-xl font-bold text-[#191c1d]">
             {active.label}{" "}
-            <span className="text-base font-medium text-[#777777]">
+            <span className="text-base font-medium text-[#747878]">
               ({active.labelEn})
             </span>
           </h3>
@@ -137,9 +137,9 @@ export function KohLarnBeachGuide() {
               return (
                 <li
                   key={feature.label}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-[#F8FAFC] px-3 py-1.5 text-sm font-medium text-[#0A192F] ring-1 ring-[#e2e8f0]"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-[#B52E88]/10 px-3 py-1.5 text-sm font-medium text-[#191c1d] ring-1 ring-[#B52E88]/15"
                 >
-                  <Icon className="h-3.5 w-3.5 shrink-0 text-[#2563EB]" aria-hidden />
+                  <Icon className="h-3.5 w-3.5 shrink-0 text-[#B52E88]" aria-hidden />
                   {feature.label}
                 </li>
               );
@@ -148,7 +148,7 @@ export function KohLarnBeachGuide() {
           {active.id === "tien" && (
             <Link
               href={active.reviewHref}
-              className="mt-6 inline-flex items-center justify-center rounded-lg bg-[#FF7320] px-5 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-[#e56518] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF7320]"
+              className="mt-6 inline-flex items-center justify-center rounded-xl bg-[#B52E88] px-5 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-[#B52E88]/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B52E88]"
             >
               อ่านรีวิวเต็มหาดเทียน (Full Beach Review)
             </Link>

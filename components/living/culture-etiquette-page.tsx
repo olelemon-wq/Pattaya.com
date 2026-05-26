@@ -1,5 +1,6 @@
-import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import { CultureEtiquetteFaq } from "@/components/living/culture-etiquette-faq";
+import { LivingPageShell } from "@/components/living/living-page-shell";
+import { livingTheme } from "@/lib/design/living-theme";
 import {
   Crown,
   Footprints,
@@ -11,7 +12,10 @@ import {
   VolumeX,
   type LucideIcon,
 } from "lucide-react";
-import Image from "next/image";
+import {
+  LivingCtaActions,
+  livingCtaButtonClass,
+} from "@/components/living/living-cta-actions";
 import Link from "next/link";
 import { livingImages } from "@/lib/design/living-images";
 
@@ -129,77 +133,50 @@ function EtiquetteCard({
 
 export function CultureEtiquettePage() {
   return (
-    <div data-full-bleed className="bg-[#F8FAFC] font-sans text-[#0A192F]">
-      <div className="relative z-10 shrink-0 shadow-sm">
-        <BreakingNewsTicker variant="living" />
-      </div>
-
-      <section
-        className="relative min-h-[min(65vh,520px)] overflow-hidden"
-        aria-labelledby="culture-hero-title"
-      >
-        <Image
-          src={livingImages.cultureEtiquette}
-          alt="Thai culture and etiquette in Pattaya"
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
-        <div
-          className="absolute inset-0 bg-gradient-to-b from-[#0A192F]/85 via-[#0A192F]/70 to-[#0A192F]/90"
-          aria-hidden
-        />
-        <div className="relative mx-auto flex min-h-[min(65vh,520px)] max-w-[1280px] flex-col justify-end px-4 pb-24 pt-20 sm:px-6 sm:pb-28">
-          <nav aria-label="Breadcrumb" className="mb-4">
-            <ol className="flex flex-wrap items-center gap-2 text-xs text-white/75 sm:text-sm">
-              <li>
-                <Link href="/" className="hover:text-white">
-                  Home
-                </Link>
-              </li>
-              <li aria-hidden>/</li>
-              <li>
-                <Link href="/living" className="hover:text-white">
-                  Living
-                </Link>
-              </li>
-              <li aria-hidden>/</li>
-              <li>
-                <span className="text-white/90">Do &amp; Don&apos;t</span>
-              </li>
-            </ol>
-          </nav>
-          <span className="mb-3 inline-flex w-fit rounded-full bg-[#D7CBBA] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-[#6b5a48]">
-            Culture &amp; Etiquette
-          </span>
-          <h1
-            id="culture-hero-title"
-            className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl"
+    <LivingPageShell
+      heroImage={livingImages.cultureEtiquette}
+      heroAlt="Thai culture and etiquette in Pattaya"
+      badge="Culture & Etiquette"
+      breadcrumbLeaf="Do & Don't"
+      title="Do & Don't | สิ่งควรทำ/ไม่ควรทำ"
+      subtitle="Cultural etiquette guide for living in Pattaya — respect local values, avoid common mistakes, and integrate smoothly as a resident."
+      ctaEyebrow="Living"
+      ctaTitle="Living guides"
+      ctaBody=""
+      ctaButton="Living hub"
+      hideLeadCta
+      bottomTitle="Explore more Living guides"
+      bottomBody="Visa, housing, safety, and local culture — everything for settling in Pattaya."
+      bottomChildren={
+        <LivingCtaActions>
+          <Link href="/living" className={livingCtaButtonClass.primary}>
+            Living hub →
+          </Link>
+          <Link
+            href="/living/culture/thai-culture"
+            className={livingCtaButtonClass.outline}
           >
-            Do &amp; Don&apos;t | สิ่งควรทำ/ไม่ควรทำ
-          </h1>
-          <p className="mt-3 max-w-2xl text-base leading-relaxed text-white/90 sm:text-lg">
-            Cultural etiquette guide for living in Pattaya — respect local values,
-            avoid common mistakes, and integrate smoothly as a resident.
-          </p>
-        </div>
+            Thai culture →
+          </Link>
+          <Link
+            href="/living/safety/scam-alerts"
+            className={livingCtaButtonClass.danger}
+          >
+            Scam alerts →
+          </Link>
+        </LivingCtaActions>
+      }
+    >
+      <section className={livingTheme.accentPanel}>
+        <h2 className={livingTheme.headingSm}>The Thai Way in Pattaya</h2>
+        <p className={`mt-3 max-w-3xl sm:text-base ${livingTheme.body}`}>
+          Pattaya is an international city, but harmony still rests on traditional Thai
+          values — patience, respect, and saving face. These guidelines help expats,
+          retirees, and long-stay visitors navigate daily life without unintended offense.
+        </p>
       </section>
 
-      <div className="mx-auto max-w-[1280px] space-y-14 px-4 py-12 sm:px-6 sm:py-16">
-        <section className="rounded-2xl border border-[#B29475]/20 bg-[#D7CBBA]/40 p-6 sm:p-8">
-          <h2 className="text-xl font-bold text-[#0A192F] sm:text-2xl">
-            The Thai Way in Pattaya
-          </h2>
-          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#444748] sm:text-base">
-            Pattaya is an international city, but harmony still rests on traditional
-            Thai values — patience, respect, and saving face. These guidelines help
-            expats, retirees, and long-stay visitors navigate daily life without
-            unintended offense.
-          </p>
-        </section>
-
-        <section aria-labelledby="dos-title">
+      <section aria-labelledby="dos-title">
           <h2
             id="dos-title"
             className="flex items-center gap-2 text-2xl font-bold text-[#B29475] sm:text-3xl"
@@ -229,70 +206,23 @@ export function CultureEtiquettePage() {
           </div>
         </section>
 
-        <section aria-labelledby="pattaya-title">
-          <h2
-            id="pattaya-title"
-            className="text-2xl font-bold text-[#0A192F] sm:text-3xl"
-          >
-            Pattaya-specific tips
-          </h2>
-          <p className="mt-2 text-sm text-[#777777]">
-            สถานการณ์ที่เจอบ่อยในเมืองพัทยา
-          </p>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            {pattayaTips.map((tip) => (
-              <div
-                key={tip.title}
-                className="rounded-xl border border-[#e2e8f0] bg-white p-5 shadow-sm"
-              >
-                <h3 className="font-bold text-[#0A192F]">{tip.title}</h3>
-                <p className="text-xs font-medium text-[#B29475]">{tip.titleTh}</p>
-                <p className="mt-2 text-sm leading-relaxed text-[#444748]">
-                  {tip.text}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
+      <section aria-labelledby="pattaya-title">
+        <h2 id="pattaya-title" className={livingTheme.heading}>
+          Pattaya-specific tips
+        </h2>
+        <p className={`mt-2 ${livingTheme.muted}`}>สถานการณ์ที่เจอบ่อยในเมืองพัทยา</p>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          {pattayaTips.map((tip) => (
+            <div key={tip.title} className={`p-5 shadow-sm ${livingTheme.cardStatic}`}>
+              <h3 className="font-bold text-[#0A192F]">{tip.title}</h3>
+              <p className="text-xs font-medium text-[#B29475]">{tip.titleTh}</p>
+              <p className={`mt-2 ${livingTheme.body}`}>{tip.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
-        <CultureEtiquetteFaq />
-
-        <section
-          className="rounded-2xl border border-[#B29475]/20 bg-[#D7CBBA] px-6 py-8 text-center sm:px-10 sm:py-10"
-          aria-labelledby="culture-cta-title"
-        >
-          <h2
-            id="culture-cta-title"
-            className="text-xl font-bold text-[#0A192F] sm:text-2xl"
-          >
-            Explore more Living guides
-          </h2>
-          <p className="mx-auto mt-2 max-w-lg text-sm text-[#444748]">
-            Visa, housing, safety, and local culture — everything for settling in
-            Pattaya.
-          </p>
-          <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link
-              href="/living"
-              className="inline-flex items-center justify-center rounded-lg bg-[#B29475] px-8 py-3.5 text-sm font-bold text-white shadow-lg transition hover:bg-[#B29475]/90"
-            >
-              Living hub →
-            </Link>
-            <Link
-              href="/living/culture/thai-culture"
-              className="inline-flex items-center justify-center rounded-lg border border-[#B29475] px-8 py-3.5 text-sm font-bold text-[#B29475] transition hover:bg-[#B29475]/10"
-            >
-              Thai culture →
-            </Link>
-            <Link
-              href="/living/safety/scam-alerts"
-              className="inline-flex items-center justify-center rounded-lg border border-[#ae2f34]/40 px-8 py-3.5 text-sm font-bold text-[#ae2f34] transition hover:bg-[#ae2f34]/5"
-            >
-              Scam alerts →
-            </Link>
-          </div>
-        </section>
-      </div>
-    </div>
+      <CultureEtiquetteFaq />
+    </LivingPageShell>
   );
 }

@@ -7,12 +7,25 @@ import { getNavItemBySlug, getSectionById } from "@/lib/navigation/site-map";
 
 const SECTION_ID = "business";
 
+const DEDICATED_SLUGS = new Set([
+  "company-setup/thai-company",
+  "company-setup/boi",
+  "guide/restaurant",
+  "guide/bar",
+  "guide/hotel",
+  "investment/real-estate",
+  "investment/economy",
+  "networking/events",
+]);
+
 interface PageProps {
   params: Promise<{ slug: string[] }>;
 }
 
 export function generateStaticParams() {
-  return generateSectionStaticParams(SECTION_ID);
+  return generateSectionStaticParams(SECTION_ID).filter(
+    ({ slug }) => !DEDICATED_SLUGS.has(slug.join("/")),
+  );
 }
 
 export async function generateMetadata({ params }: PageProps) {

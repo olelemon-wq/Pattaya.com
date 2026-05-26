@@ -3,21 +3,23 @@ export const exploreImages = {
   hero:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuCK-LOxvUHxKw3nNQwbMeG_zxI-BXE5n76JrcOfpP4OtRHveNa9GTIeUham2YE2IOPziTy_DluCVTAB6MVcSEu07Yzbiiu4uvKu7DdUQgFwinJqU1P1o93dmPCh4Dw-LvEsd3h4IgZjJbHvRGyTvw9stYl3fEw7aypmDeSyDozxgAqLGDgv1TTTnkLNHQc0KzLMxB3baKjs11mx_xXH8k056URQzlMHR-kEVycEVvuOPtkfunqu1Vx7Cdh8N2MjVq4Pqs9OfF_eExB_",
   islandHopping:
-    "https://lh3.googleusercontent.com/aida/ADBb0uiHUYTaNG21cWRCZXiWaFYg57obYoUF-tpimAbBudlXb3-zwkfymJmwfbqdVw6qMpeVtpozjPC38xquzz1wJ8XnDkseo9X5-R1F9P-8FKXOZ37p4SjKPGClo7tkmu8_bEw_jJKk7IcjlF_dy37YGNJHHrq2hcUUvlVye6XGXSfVmLSwHPzknW4zEqL3iaZmGyUgjZl5FSayVrqdpP5OXKDfcvBG4bSTi8muZEW6EibruvINHtmdWuIeFh7T",
+    "https://images.unsplash.com/photo-1505142468610-359e7d316be0?auto=format&fit=crop&w=1600&q=80",
   skyGallery:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuDQ2ulLVoneBNLeyKyoWxMF0rilBglP2n3AyVfmH1IYsWhsPflauGPGH4lLPh_HDdTthyxEIfhIctLInnv7w5sZetKZCRSFFQFRpoq3vYzjJq9yV7xAnqs6lpf1oyvrS6TAzcjXfEoxU-TF_VuKJ3mvg5o_2pWl2o2fT4KJT2DX5dPYM-UTccR5IUOC4UdObWpbEnEBCzuYSHC64CtEgb7nzW5BmLrax78AsNNRfWi4bTb82i-oEx86JLRH--kYRHMV4PYBSRN5QpwM",
   caveBeachClub:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuCdCQ7xX4hDWOhumQSrarSYbt-tHWKem7S4r5B30ENlUXIu1oDTICMVxKjOqfDtxIvVNRwu3HqdWemTgr_9DR5kjsiwJex6ADRlicITaHbH4nbomEL5XLn9xmFIhuaArBOxSz-ypYA467YgKWmIEDQvQfiZ3SrP4L_JgzbQod0kfnVkQnnSpBoSavpFPVR42r-SiBMqkvQ8Umz8vUunIoOvfhU4bIWieCnz_l-MVumFfy_bMNd2m6RLGAoQUt3bumlxzZgON60wx09P",
+  /** Spa / wellness interior — verified HTTP 200 (replaces private aida URL) */
   auraSanctuary:
-    "https://lh3.googleusercontent.com/aida/ADBb0uj1wo1bjw4_P4BoDTzVRw8llKoAjrVfcyHVX555VnlQHlM_QQqxMsFIjYMzKXi61g16Vi6dVeVOkutnQrPxUpUcUx9gtaLLOVUxyI6d5gp9wiGapWLocymvAmvRssztrwJd521yLsnWv5c3FVcVkIVsizrWP2qdW_UV5OYYhRjHtEPfRmv6Yvyjk_RA2jb0glzre0d5SrJ-YxdqxoGgmWk97g9-0amt9l1Q20QVU9AG5H9oRL4nQTZH3Rg",
+    "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1600&q=80",
   cafeLifestyle:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuChFtDN2fSYC-aiNL35_yBu_Nsx6F4N4VjdjZ9KV-inPn-UQCWWQmrZUiVmGt-2-VRatwvu1vrDSFM7EIw8Wa0erXSS1_QzFGYB4-RHdo9dVDE6FHq7UksrnC423qmYOZ7EZSseCwADSzZKbEkjYgKP7ijyZUcDpQYFILrZNfXawRwn2ni-tobZKrfH58QtiUwzZIkW4o51YAbdkY1md3lyjJJEAH_n2dzh9xH95MtfvDe_dHP0nCTLlJ2JY-yrNuXpKssstZYgb-V3",
   centralFestival:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuBBvTUlsfn5qeEarbJEOnddBQ75gGaExY8eWNlkdQtRNNMprjcm-LXeZCdxXqFFEZDVOhQsIat-Rq7a4IdUwbI7WSV0bJu4vGjI7SsGWR7q1tX6--NPrz4JJmm7jmTnUEfgl7iupae-g2u7JTFEa3wDMAY8GAaCf25N7qQchaGuyvn-mY_91pYNEwnZz1_qF2Iz5oDRp483vdsP6_I2rlgSrGZiL4hVwXJkFxN8FzyAalGCvoFqkKtjKaBYRIrEDwrb7tRbPOwKdoPG",
   thepprasitMarket:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuBMYEWqYrVvLo2t35wsBjZPbzvPQbKJK9Xcixl1JOy-t4vUKsMsKheKAaEWeXmMH3T74lx3uTRywwme5meJAc5ygF-ur6CaxXJrx-AHsvcKFQDtjED0Ola6Nr8FcVEB5f1mJ0jEJKMb5UHxVr74oMTA51SFKP6hyMsfo_CmpSsv6EpUCeq6MjBH6FHiJq_l--W_2KhhQN_39Sga9KcJWtR3Rmxiu93g6raYINHqpqHVSNkxcEheOtKeZK4YKrSUkQBsnEXP8NzUw8MW",
+  /** Water park / pool — verified HTTP 200 (replaces private aida URL) */
   aquaverse:
-    "https://lh3.googleusercontent.com/aida/ADBb0uik0Bz9X3vyFyurzhBRWUxUcaiWSLzEyLRu1vF87TjO5zTHlJfYcAg8vNoj5MMZBaICVy9d5cYNDjL9NXmR5HvkrhJgPolNhCM2zb_ojN3VHVfQBsbtjmTg4Systo40pCFTGqJiq1t8dJzpEdOSGXu2lvnsXMHYYMxjVS8hQE2wZMKe6e0PIN5amnlhr6pycLtZ44hLa8LkLgAcnxujxnxthiuPCLb96zYqNmQP-wPaPLH4x5tEMrmmMXsS",
+    "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1600&q=80",
   yacht:
     "https://lh3.googleusercontent.com/aida/ADBb0uh3TEpd9izbXZnxng63VZD1k6Nr_CMSbLBud63FyVkIEcSNmulh8-5iGFBhHOAk4ccxWfT8mqf1b7qIf2HRUW7jYYu7Jp_KmzlNqyie-QckMOcOJPOCk6EQ2h830lzPgeLeckbQ30rIqihoZXiBa1InZkbFgPcDkNGVm26FBa5ZGIrprCUMkZqanwfCDj2R_DlWb4MMT4dCPlDl6RVbBk_3YZcUvh3F0YZ5iYYNyzqfthUN_G8pQ779w4I",
   hiddenSpots:

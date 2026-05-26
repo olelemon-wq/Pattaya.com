@@ -1,5 +1,8 @@
+import { newsTheme } from "@/lib/design/news-theme";
+import { AlertTriangle, Clock } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import type { ReactNode } from "react";
 
 export function NewsBadge({
   children,
@@ -12,6 +15,24 @@ export function NewsBadge({
     <span
       className={`inline-block rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider ${className}`}
     >
+      {children}
+    </span>
+  );
+}
+
+export function NewsTimeFooter({ children }: { children: string }) {
+  return (
+    <span className={`flex items-center gap-1.5 ${newsTheme.muted} text-xs`}>
+      <Clock className="h-3.5 w-3.5 shrink-0 text-[#455f88]" aria-hidden />
+      {children}
+    </span>
+  );
+}
+
+export function NewsLiveFooter({ children }: { children: string }) {
+  return (
+    <span className="flex items-center gap-1.5 text-xs font-bold uppercase text-[#ba1a1a]">
+      <AlertTriangle className="h-3.5 w-3.5 shrink-0" aria-hidden />
       {children}
     </span>
   );
@@ -87,7 +108,7 @@ export function NewsArticleCard({
   badgeClass?: string;
   title: string;
   excerpt: string;
-  footer?: React.ReactNode;
+  footer?: ReactNode;
   footerClass?: string;
   children?: React.ReactNode;
   className?: string;
@@ -96,7 +117,7 @@ export function NewsArticleCard({
   return (
     <Link
       href={href}
-      className={`group overflow-hidden rounded-xl bg-[#f3f4f5] transition-all ${borderHover ?? ""} ${className}`}
+      className={`group overflow-hidden rounded-xl bg-[#eef1f5] transition-all ${borderHover ?? "hover:ring-1 hover:ring-[#10438f]/25"} ${className}`}
     >
       <div className="relative h-48 overflow-hidden">
         <Image
@@ -107,22 +128,18 @@ export function NewsArticleCard({
           sizes="(max-width: 768px) 100vw, 33vw"
         />
         <div className="absolute left-4 top-4">
-          <NewsBadge className={badgeClass}>{badge}</NewsBadge>
+          <NewsBadge className={badgeClass ?? newsTheme.badgePrimary}>{badge}</NewsBadge>
         </div>
       </div>
       <div className="p-4 sm:p-6">
-        <h3 className="mb-3 text-base font-semibold leading-snug text-[#191c1d] transition-colors group-hover:text-[#455f88] sm:text-lg">
+        <h3 className="mb-3 text-base font-semibold leading-snug text-[#0c1a33] transition-colors group-hover:text-[#10438f] sm:text-lg">
           {title}
         </h3>
-        <p className="mb-4 text-sm leading-relaxed text-[#444748]">{excerpt}</p>
+        <p className={`mb-4 text-sm leading-relaxed text-[#444748]`}>{excerpt}</p>
         {children}
-        {footer && (
-          <p
-            className={`flex items-center gap-1 text-xs ${footerClass ?? "text-[#444748]"}`}
-          >
-            {footer}
-          </p>
-        )}
+        {footer ? (
+          <div className={`text-xs ${footerClass ?? ""}`}>{footer}</div>
+        ) : null}
       </div>
     </Link>
   );

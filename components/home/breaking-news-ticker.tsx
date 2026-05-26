@@ -9,6 +9,8 @@ const defaultHeadlines = {
     "90-day reporting window opens next week — visa extensions and retirement visa updates for Pattaya expats",
   explore:
     "Koh Larn ferry schedules updated — new sunset dining spots and hidden beach guides for Pattaya explorers",
+  business:
+    "EEC investment briefing in Pattaya — BOI incentives, company setup, and networking events for regional investors",
 } as const;
 
 type BreakingNewsTickerProps = {
@@ -21,6 +23,7 @@ const barStyles = {
   news: "bg-[#10438f] text-white",
   living: "bg-[#B29475] text-white",
   explore: "bg-[#B52E88] text-white",
+  business: "bg-[#363636] text-white",
 } as const;
 
 const labelStyles = {
@@ -28,6 +31,7 @@ const labelStyles = {
   news: "shrink-0 text-[#FF8C00]",
   living: "shrink-0",
   explore: "shrink-0",
+  business: "shrink-0 text-[#E2B04E]",
 } as const;
 
 export function BreakingNewsTicker({

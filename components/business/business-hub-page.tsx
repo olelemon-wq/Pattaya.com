@@ -1,3 +1,5 @@
+import { BusinessPageFooter } from "@/components/business/business-page-footer";
+import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import Image from "next/image";
 import Link from "next/link";
 import { businessImages } from "@/lib/design/business-images";
@@ -143,10 +145,10 @@ function SetupCard({
         />
       </div>
       <div className="flex flex-grow flex-col p-8">
-        <span className="mb-6 inline-block w-fit rounded-full border border-[#c4c7c8]/30 bg-[#edeeef] px-4 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#444748]">
+        <span className="mb-6 inline-block w-fit rounded-full border border-[#363636]/15 bg-[#363636]/8 px-4 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#363636]">
           Elite Service
         </span>
-        <h3 className="mb-6 text-2xl font-bold text-[#455f88]">{title}</h3>
+        <h3 className="mb-6 text-2xl font-bold text-[#363636]">{title}</h3>
         <p className="mb-8 text-[#444748]">{excerpt}</p>
         <ul className="mb-8 flex-grow space-y-4">
           {features.map((item) => (
@@ -163,7 +165,7 @@ function SetupCard({
         </ul>
         <Link
           href={href}
-          className="w-full rounded-xl border-2 border-[#455f88] py-4 text-center font-bold text-[#455f88] transition-all hover:bg-[#455f88] hover:text-white"
+          className="w-full rounded-xl border-2 border-[#363636] py-4 text-center font-bold text-[#363636] transition-all hover:bg-[#363636] hover:text-white"
         >
           {cta}
         </Link>
@@ -187,7 +189,7 @@ function IndustryGuideCard({
   return (
     <div className="group overflow-hidden rounded-xl border border-[#c4c7c8]/30 bg-white transition-all duration-500 hover:border-[#B8860B]/30 hover:shadow-[0_20px_50px_rgba(184,134,11,0.08)]">
       <div
-        className={`relative h-64 overflow-hidden ${variant === "dark" ? "flex items-center justify-center bg-slate-900" : ""}`}
+        className={`relative h-64 overflow-hidden ${variant === "dark" ? "flex items-center justify-center bg-[#363636]" : ""}`}
       >
         <Image
           src={image}
@@ -218,7 +220,7 @@ function IndustryGuideCard({
         </span>
       </div>
       <div className="p-10">
-        <h4 className="mb-4 text-2xl font-bold text-[#455f88]">{title}</h4>
+        <h4 className="mb-4 text-2xl font-bold text-[#363636]">{title}</h4>
         <p className="mb-10 text-sm leading-relaxed text-[#444748] opacity-80">
           {excerpt}
         </p>
@@ -226,7 +228,7 @@ function IndustryGuideCard({
           {checklist.map((item) => (
             <div
               key={item}
-              className="flex items-center gap-4 text-[13px] font-semibold text-[#455f88]"
+              className="flex items-center gap-4 text-[13px] font-semibold text-[#363636]"
             >
               <span className="text-xl text-[#B8860B]" aria-hidden>
                 ✓
@@ -237,7 +239,7 @@ function IndustryGuideCard({
         </div>
         <Link
           href={href}
-          className="flex w-full items-center justify-center gap-3 rounded-lg bg-[#455f88] py-4 text-sm font-bold uppercase tracking-widest text-white shadow-lg shadow-[#455f88]/10 transition-all hover:bg-[#455f88]/90"
+          className="flex w-full items-center justify-center gap-3 rounded-lg bg-[#363636] py-4 text-sm font-bold uppercase tracking-widest text-white shadow-lg shadow-[#363636]/10 transition-all hover:bg-[#363636]/90"
         >
           {cta}
           <span aria-hidden>{variant === "dark" ? "💬" : "⬇"}</span>
@@ -249,9 +251,13 @@ function IndustryGuideCard({
 
 export function BusinessHubPage() {
   return (
-    <div data-full-bleed className="bg-[#f8f9fa] text-[#191c1d]">
-      {/* Hero */}
-      <section className="relative flex min-h-[700px] h-[90vh] w-full items-center overflow-hidden">
+    <div data-full-bleed className="bg-[#f5f5f4] text-[#191c1d]">
+      <div className="relative z-10 shrink-0 shadow-sm">
+        <BreakingNewsTicker variant="business" />
+      </div>
+
+      {/* Hero — same height as Explore hub */}
+      <section className="relative flex h-[400px] w-full items-center overflow-hidden md:h-[500px]">
         <Image
           src={businessImages.hero}
           alt="Pattaya Business Hub"
@@ -260,37 +266,37 @@ export function BusinessHubPage() {
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#363636]/90 via-[#363636]/50 to-transparent" />
         <div className="relative z-10 mx-auto w-full max-w-[1280px] px-5 md:px-16">
-          <div className="max-w-3xl space-y-8">
+          <div className="max-w-3xl space-y-5 md:space-y-6">
             <div className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-5 py-2 text-white backdrop-blur-md">
               <span aria-hidden>🏅</span>
               <span className="text-[12px] font-bold uppercase tracking-[0.2em]">
                 Premium Business Hub
               </span>
             </div>
-            <h1 className="text-4xl font-bold leading-[1.1] text-white md:text-6xl">
+            <h1 className="text-3xl font-bold leading-[1.1] text-white md:text-5xl">
               Pattaya Business Gateway:
               <br />
               <span className="bg-gradient-to-br from-[#B8860B] to-[#E2B04E] bg-clip-text text-transparent">
                 ลงทุนและเติบโตไปกับพัทยา
               </span>
             </h1>
-            <p className="max-w-xl text-xl leading-relaxed text-white/80">
+            <p className="max-w-xl text-base leading-relaxed text-white/80 md:text-lg">
               เชื่อมต่อคุณเข้าสู่ศูนย์กลางทางธุรกิจระดับภูมิภาค
               กับโอกาสการลงทุนใน EEC และอุตสาหกรรมท่องเที่ยวระดับลักชูรี
             </p>
-            <div className="flex flex-col gap-5 pt-4 sm:flex-row">
+            <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:gap-4">
               <Link
                 href="/business/company-setup/thai-company"
-                className="flex items-center justify-center gap-3 rounded-full bg-[#ae2f34] px-8 py-5 text-lg font-semibold text-white shadow-2xl shadow-[#ae2f34]/20 transition-all hover:scale-105"
+                className="flex items-center justify-center gap-2 rounded-full bg-[#ae2f34] px-6 py-3.5 text-sm font-semibold text-white shadow-xl shadow-[#ae2f34]/20 transition-all hover:scale-[1.02] md:px-8 md:py-4 md:text-base"
               >
                 ปรึกษาผู้เชี่ยวชาญ / ขอคำแนะนำทางธุรกิจฟรี
                 <span aria-hidden>→</span>
               </Link>
               <Link
                 href="/business/investment/real-estate"
-                className="rounded-full border border-white/30 bg-white/10 px-8 py-5 text-lg font-semibold text-white backdrop-blur-md transition-all hover:bg-white/20"
+                className="rounded-full border border-white/30 bg-white/10 px-6 py-3.5 text-center text-sm font-semibold text-white backdrop-blur-md transition-all hover:bg-white/20 md:px-8 md:py-4 md:text-base"
               >
                 ดูแคตตาล็อกโครงการ
               </Link>
@@ -303,7 +309,7 @@ export function BusinessHubPage() {
       <section className="relative bg-white py-20 md:py-[100px]">
         <div className="mx-auto max-w-[1280px] px-5 md:px-16">
           <div className="mx-auto mb-16 max-w-3xl text-center">
-            <h2 className="mb-6 text-4xl font-bold text-[#455f88] md:text-5xl">
+            <h2 className="mb-6 text-4xl font-bold text-[#363636] md:text-5xl">
               ก้าวแรกสู่ความสำเร็จในพัทยา
             </h2>
             <p className="text-lg text-[#444748]">
@@ -319,14 +325,14 @@ export function BusinessHubPage() {
       </section>
 
       {/* Industry Guides */}
-      <section className="relative bg-[#f8f9fa] py-20 md:py-[100px]">
+      <section className="relative bg-[#f5f5f4] py-20 md:py-[100px]">
         <div className="mx-auto max-w-[1280px] px-5 md:px-16">
           <div className="mb-16 flex flex-col items-end justify-between gap-6 md:flex-row">
             <div className="max-w-2xl">
               <span className="mb-4 block text-sm font-bold uppercase tracking-[0.3em] text-[#B8860B]">
                 Strategic Intelligence
               </span>
-              <h2 className="mb-4 text-4xl font-bold italic text-[#455f88] md:text-5xl">
+              <h2 className="mb-4 text-4xl font-bold italic text-[#363636] md:text-5xl">
                 เจาะลึกอุตสาหกรรมดาวรุ่ง
               </h2>
               <p className="border-l-2 border-[#B8860B] pl-6 text-lg italic text-[#444748]">
@@ -336,7 +342,7 @@ export function BusinessHubPage() {
             </div>
             <Link
               href="/business/guide/restaurant"
-              className="group flex items-center gap-3 pb-1 text-sm font-bold uppercase tracking-widest text-[#455f88] transition-all hover:text-[#B8860B]"
+              className="group flex items-center gap-3 pb-1 text-sm font-bold uppercase tracking-widest text-[#363636] transition-all hover:text-[#B8860B]"
             >
               ดูคู่มือทั้งหมด
               <span className="transition-transform group-hover:translate-x-1">
@@ -353,7 +359,7 @@ export function BusinessHubPage() {
       </section>
 
       {/* Investment & Economy */}
-      <section className="relative overflow-hidden bg-[#455f88] py-20 md:py-[100px]">
+      <section className="relative overflow-hidden bg-[#363636] py-20 md:py-[100px]">
         <div className="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-white/5 blur-3xl" />
         <div className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-[#ae2f34]/10 blur-3xl" />
         <div className="relative z-10 mx-auto max-w-[1280px] px-5 md:px-16">
@@ -406,7 +412,7 @@ export function BusinessHubPage() {
                 </div>
               </div>
               <div className="px-4 pb-4">
-                <h4 className="mb-4 text-2xl font-semibold text-[#455f88]">
+                <h4 className="mb-4 text-2xl font-semibold text-[#363636]">
                   Real Estate Opportunity
                 </h4>
                 <p className="mb-10 leading-relaxed text-[#444748]">
@@ -416,7 +422,7 @@ export function BusinessHubPage() {
                 </p>
                 <Link
                   href="/business/investment/real-estate"
-                  className="block w-full rounded-2xl border-2 border-[#455f88] py-5 text-center font-bold text-[#455f88] shadow-lg transition-all hover:bg-[#455f88] hover:text-white hover:shadow-[#455f88]/20"
+                  className="block w-full rounded-2xl border-2 border-[#363636] py-5 text-center font-bold text-[#363636] shadow-lg transition-all hover:bg-[#363636] hover:text-white hover:shadow-[#363636]/20"
                 >
                   ติดต่อพาร์ทเนอร์เอเจนท์
                 </Link>
@@ -438,15 +444,15 @@ export function BusinessHubPage() {
       <section className="bg-white py-20 md:py-[100px]">
         <div className="mx-auto max-w-[1280px] px-5 md:px-16">
           <div className="mb-16 flex items-center gap-5">
-            <h2 className="text-4xl font-bold text-[#455f88]">
+            <h2 className="text-4xl font-bold text-[#363636]">
               ตารางกิจกรรมเครือข่ายธุรกิจ
             </h2>
           </div>
-          <div className="overflow-hidden rounded-2xl border border-[#c4c7c8]/30 bg-[#f3f4f5]">
+          <div className="overflow-hidden rounded-2xl border border-[#c4c7c8]/30 bg-[#ebebea]">
             {networkingEvents.map((event, i) => (
               <div
                 key={event.title}
-                className={`group flex flex-col items-center bg-white p-8 transition-all hover:bg-[#edeeef] md:flex-row ${
+                className={`group flex flex-col items-center bg-white p-8 transition-all hover:bg-[#f5f5f4] md:flex-row ${
                   i < networkingEvents.length - 1
                     ? "border-b border-[#c4c7c8]/30"
                     : ""
@@ -457,7 +463,7 @@ export function BusinessHubPage() {
                     {event.day}
                   </span>
                   <div className="mt-1 flex flex-col items-center">
-                    <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-[#455f88]">
+                    <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-[#363636]">
                       {event.month}
                     </span>
                     <span className="text-[11px] text-[#444748]">
@@ -466,7 +472,7 @@ export function BusinessHubPage() {
                   </div>
                 </div>
                 <div className="mt-6 flex-grow text-center md:mt-0 md:px-12 md:text-left">
-                  <h5 className="mb-3 text-2xl font-bold text-[#455f88]">
+                  <h5 className="mb-3 text-2xl font-bold text-[#363636]">
                     {event.title}
                   </h5>
                   <p className="flex items-center justify-center gap-2 text-sm font-medium text-[#444748] opacity-80 md:justify-start">
@@ -477,7 +483,7 @@ export function BusinessHubPage() {
                 <div className="mt-8 md:mt-0">
                   <Link
                     href={event.href}
-                    className="whitespace-nowrap rounded-full bg-[#455f88] px-10 py-3.5 text-sm font-bold tracking-wide text-white shadow-md transition-all hover:bg-[#455f88]/90 hover:shadow-lg"
+                    className="whitespace-nowrap rounded-full bg-[#363636] px-10 py-3.5 text-sm font-bold tracking-wide text-white shadow-md transition-all hover:bg-[#363636]/90 hover:shadow-lg"
                   >
                     ลงทะเบียนล่วงหน้า
                   </Link>
@@ -488,35 +494,7 @@ export function BusinessHubPage() {
         </div>
       </section>
 
-      {/* Newsletter */}
-      <section className="bg-[#002A78] px-5 py-20 md:px-16">
-        <div className="mx-auto max-w-[1280px]">
-          <div className="flex flex-col items-center justify-between gap-10 rounded-3xl p-10 shadow-2xl md:flex-row md:p-14" style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}>
-            <div className="max-w-xl text-center lg:text-left">
-              <h3 className="mb-3 text-3xl font-semibold text-white">
-                ไม่พลาดทุกโอกาสการลงทุนในพัทยา
-              </h3>
-              <p className="text-white/80">
-                รับข้อมูลข่าวสารทางธุรกิจและรายงานวิเคราะห์เศรษฐกิจพัทยารายสัปดาห์
-                ส่งตรงถึงอีเมลคุณ
-              </p>
-            </div>
-            <form className="flex w-full flex-col gap-4 sm:flex-row lg:w-auto">
-              <input
-                type="email"
-                placeholder="อีเมลของคุณ"
-                className="min-w-0 flex-1 rounded-2xl border border-white/20 bg-white/10 px-6 py-4 text-white transition-all placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-[#ae2f34] sm:min-w-[320px]"
-              />
-              <button
-                type="submit"
-                className="whitespace-nowrap rounded-2xl bg-[#ae2f34] px-10 py-4 font-bold text-white transition-all hover:bg-[#ce4749]"
-              >
-                สมัครสมาชิก
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
+      <BusinessPageFooter />
     </div>
   );
 }
