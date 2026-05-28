@@ -26,6 +26,8 @@ export type FeaturedHeroCinematicProps = {
   minHeightClass?: string;
   byline?: string;
   className?: string;
+  /** Visual overlay presets for hero photography */
+  visualTone?: "default" | "neo-smart-city" | "news-dawn";
 };
 
 export function FeaturedHeroCinematic({
@@ -42,6 +44,7 @@ export function FeaturedHeroCinematic({
   minHeightClass = "min-h-[min(72dvh,420px)] sm:min-h-[480px] lg:min-h-[540px]",
   byline,
   className = "",
+  visualTone = "default",
 }: FeaturedHeroCinematicProps) {
   const articleRef = useRef<HTMLElement>(null);
   const [active, setActive] = useState(false);
@@ -75,7 +78,7 @@ export function FeaturedHeroCinematic({
     <article
       ref={articleRef}
       data-cinematic={active ? "active" : "idle"}
-      className={`hero-cinematic group relative isolate z-0 overflow-hidden rounded-xl shadow-2xl ring-1 ring-black/10 sm:rounded-2xl ${minHeightClass} ${className}`}
+      className={`hero-cinematic group relative isolate z-0 overflow-hidden rounded-xl shadow-2xl ring-1 ring-black/10 sm:rounded-2xl ${visualTone === "neo-smart-city" ? "hero-cinematic--neo" : ""} ${visualTone === "news-dawn" ? "hero-cinematic--news-dawn" : ""} ${minHeightClass} ${className}`}
     >
       <div
         className={`hero-cinematic__bg absolute inset-[-4%] ${kenBurnsPaused ? "is-paused" : ""}`}
@@ -116,7 +119,15 @@ export function FeaturedHeroCinematic({
           )}
         </div>
 
-        <p className="hero-cinematic__rise hero-cinematic__rise--1 mb-1.5 text-[10px] font-bold uppercase tracking-[0.12em] text-[#FF7320] drop-shadow-sm sm:mb-2 sm:text-xs sm:tracking-[0.2em]">
+        <p
+          className={`hero-cinematic__rise hero-cinematic__rise--1 mb-1.5 text-[10px] font-bold uppercase tracking-[0.12em] drop-shadow-sm sm:mb-2 sm:text-xs sm:tracking-[0.2em] ${
+            visualTone === "neo-smart-city"
+              ? "text-[#67e8f9] shadow-[0_0_20px_rgba(34,211,238,0.35)]"
+              : visualTone === "news-dawn"
+                ? "text-[#93c5fd] shadow-[0_0_16px_rgba(59,130,246,0.4)]"
+                : "text-[#FF7320]"
+          }`}
+        >
           {category}
         </p>
         <h1 className="hero-cinematic__rise hero-cinematic__rise--2 max-w-3xl text-balance text-[1.25rem] font-extrabold leading-[1.2] tracking-tight text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.5)] sm:text-3xl sm:leading-[1.15] md:text-4xl lg:text-5xl">

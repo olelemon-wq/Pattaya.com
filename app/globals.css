@@ -129,6 +129,102 @@ body {
   );
 }
 
+/* Neo-Pattaya homepage — blue hour + cyan smart-grid accents */
+.hero-cinematic--neo .hero-cinematic__vignette {
+  background: linear-gradient(
+    155deg,
+    rgba(15, 23, 42, 0.35) 0%,
+    rgba(30, 58, 95, 0.2) 35%,
+    rgba(15, 23, 42, 0.75) 70%,
+    rgba(10, 15, 30, 0.94) 100%
+  );
+}
+
+@media (max-width: 639px) {
+  .hero-cinematic--neo .hero-cinematic__vignette {
+    background: linear-gradient(
+      180deg,
+      rgba(15, 23, 42, 0.25) 0%,
+      rgba(15, 23, 42, 0.55) 40%,
+      rgba(10, 15, 30, 0.96) 78%,
+      rgba(10, 15, 30, 0.98) 100%
+    );
+  }
+}
+
+.hero-cinematic--neo .hero-cinematic__glow {
+  background: linear-gradient(
+    to top,
+    rgba(34, 211, 238, 0.18) 0%,
+    rgba(251, 191, 36, 0.1) 35%,
+    transparent 100%
+  );
+}
+
+.hero-cinematic--neo .hero-cinematic__shine {
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(34, 211, 238, 0.08) 45%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 55%
+  );
+}
+
+.hero-cinematic--neo[data-cinematic="active"] .hero-cinematic__cta {
+  animation: hero-cta-glow-neo 1.2s ease-out 1.2s 1 both;
+}
+
+/* News hub — storm dawn / police editorial */
+.hero-cinematic--news-dawn .hero-cinematic__vignette {
+  background: linear-gradient(
+    160deg,
+    rgba(15, 23, 42, 0.5) 0%,
+    rgba(30, 41, 59, 0.35) 30%,
+    rgba(15, 23, 42, 0.8) 65%,
+    rgba(3, 7, 18, 0.96) 100%
+  );
+}
+
+@media (max-width: 639px) {
+  .hero-cinematic--news-dawn .hero-cinematic__vignette {
+    background: linear-gradient(
+      180deg,
+      rgba(15, 23, 42, 0.4) 0%,
+      rgba(15, 23, 42, 0.65) 45%,
+      rgba(3, 7, 18, 0.97) 80%,
+      rgba(3, 7, 18, 0.99) 100%
+    );
+  }
+}
+
+.hero-cinematic--news-dawn .hero-cinematic__glow {
+  background: linear-gradient(
+    to top,
+    rgba(59, 130, 246, 0.2) 0%,
+    rgba(239, 68, 68, 0.08) 30%,
+    transparent 100%
+  );
+}
+
+.hero-cinematic--news-dawn .hero-cinematic__grain {
+  opacity: 0.22;
+}
+
+@keyframes hero-cta-glow-neo {
+  0%,
+  100% {
+    box-shadow:
+      0 8px 32px rgba(249, 115, 22, 0.4),
+      0 0 24px rgba(34, 211, 238, 0.15);
+  }
+  50% {
+    box-shadow:
+      0 10px 42px rgba(249, 115, 22, 0.55),
+      0 0 36px rgba(34, 211, 238, 0.25);
+  }
+}
+
 .hero-cinematic__grain {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   mix-blend-mode: overlay;
@@ -192,7 +288,7 @@ body {
 }
 
 .hero-cinematic[data-cinematic="active"] .hero-cinematic__cta {
-  animation: hero-cta-glow 3s ease-in-out 1.2s infinite;
+  animation: hero-cta-glow 1.2s ease-out 1.2s 1 both;
 }
 
 @media (prefers-reduced-motion: reduce) {

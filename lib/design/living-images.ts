@@ -1,5 +1,7 @@
 /** Image URLs from Stitch: Living - Enhanced Culture & Etiquette Guide */
 export const livingImages = {
+  /** Living hub hero — smart city twilight aerial */
+  heroHub: "/images/living/living-hero-hub.jpg",
   hero:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuDeK9B8FjynFYWkNXqz2r6w_T4L9sCVHrPyuRR8dcKlHX9jsH0dkMDNMMobyPbvNMhw3X3NmRE0sSE_ug2HY4ZRLGtDJovT5b6ytCmk-iMi-wYyd3wDZJZ_BC9bdTvpqXwNuH7CCia2UYUqSP51Jm6uMbGs8Zph9o2VSzIv62N0ZTbncyaX0_hhxD2y-K5v3p_ubh1EZ6NCXZ82ATUMrt4p_vcbO37Z2ShmiQNVOc7Ann8TIIK09bfM5leW89YJ1Ha1cW5xSQIOmz2X",
   retirementVisa:

@@ -1,4 +1,5 @@
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
+import { LivingFeaturedHeroCinematic } from "@/components/living/living-featured-hero-cinematic";
 import {
   Bus,
   CalendarDays,
@@ -286,29 +287,7 @@ export function LivingHubPage() {
       <div className="mx-auto max-w-[1280px] px-5 py-8 md:px-16">
         {/* Hero */}
         <section className="mb-20">
-          <div className="relative flex h-[400px] items-end overflow-hidden rounded-xl md:h-[500px]">
-            <Image
-              src={livingImages.hero}
-              alt="Pattaya skyline"
-              fill
-              className="object-cover"
-              priority
-              sizes="100vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#191c1d]/90 via-[#191c1d]/30 to-transparent" />
-            <div className="relative w-full max-w-3xl p-8 md:p-16">
-              <span className="mb-4 inline-block rounded-sm bg-[#ae2f34] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
-                The Complete Expat Hub
-              </span>
-              <h1 className="mb-4 text-3xl font-bold text-white md:text-5xl">
-                Living the Dream in Pattaya
-              </h1>
-              <p className="max-w-2xl text-lg text-white/80">
-                The ultimate residency, business, and lifestyle resource for the
-                global citizen looking to call the City of Fun home.
-              </p>
-            </div>
-          </div>
+          <LivingFeaturedHeroCinematic />
         </section>
 
         {/* Expat Essentials */}

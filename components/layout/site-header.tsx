@@ -71,8 +71,8 @@ export function SiteHeader() {
   }, [menuOpen]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[#e2e8f0] bg-white">
-      <div className="mx-auto flex h-[72px] max-w-[1280px] items-center gap-4 px-4 lg:px-6">
+    <header className="sticky top-0 z-[120] isolate border-b border-[#e2e8f0] bg-white">
+      <div className="relative z-[121] mx-auto flex h-[72px] max-w-[1280px] items-center gap-4 px-4 lg:px-6">
         <Link
           href="/"
           className="shrink-0 text-lg font-extrabold tracking-tight text-[#0c1a33]"
@@ -82,7 +82,7 @@ export function SiteHeader() {
 
         <NavLinks
           activeHref={activeHref}
-          className="hidden flex-1 justify-center lg:flex"
+          className="pointer-events-auto hidden flex-1 justify-center lg:flex"
         />
 
         <div className="ml-auto flex items-center gap-2 sm:gap-3">
@@ -103,7 +103,7 @@ export function SiteHeader() {
           <button
             type="button"
             onClick={() => setMenuOpen((open) => !open)}
-            className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-lg border border-[#e2e8f0] text-[#0c1a33] transition-colors hover:border-[#f97316] lg:hidden"
+            className="pointer-events-auto relative z-[122] flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-lg border border-[#e2e8f0] text-[#0c1a33] transition-colors hover:border-[#f97316] lg:hidden"
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -124,7 +124,7 @@ export function SiteHeader() {
       {menuOpen && (
         <div
           id="mobile-menu"
-          className="border-t border-[#e2e8f0] bg-white px-4 py-4 lg:hidden"
+          className="relative z-[121] border-t border-[#e2e8f0] bg-white px-4 py-4 pointer-events-auto lg:hidden"
         >
           <label className="relative mb-4 block sm:hidden">
             <span className="sr-only">Search</span>
