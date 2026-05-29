@@ -1,3 +1,7 @@
+"use client";
+
+import { useLanguage } from "@/components/layout/language-provider";
+import { L, t } from "@/lib/i18n/living-helpers";
 import {
   Calendar,
   ClipboardCheck,
@@ -6,44 +10,75 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-const steps = [
-  {
-    step: 1,
-    title: "Gather Documents",
-    titleTh: "รวบรวมเอกสาร",
-    duration: "1–2 weeks",
-    description:
-      "Passport, photos, bank statements, insurance certificate, criminal record (if required), and Thai address proof.",
-    icon: FileText,
-  },
-  {
-    step: 2,
-    title: "Enter Thailand",
-    titleTh: "เข้าประเทศไทย",
-    duration: "On arrival",
-    description:
-      "Arrive on an appropriate visa (often Non-Immigrant O or O-A from your home country embassy, or planned conversion with expert guidance).",
-    icon: Plane,
-  },
-  {
-    step: 3,
-    title: "Apply for Non-O Extension",
-    titleTh: "ยื่นขอต่ออายุ Non-O",
-    duration: "Same day – 3 days",
-    description:
-      "Submit your retirement extension at Chonburi Immigration (Pattaya/Jomtien) with complete financial and medical evidence.",
-    icon: ClipboardCheck,
-  },
-  {
-    step: 4,
-    title: "90-Day Reporting",
-    titleTh: "รายงานตัวทุก 90 วัน",
-    duration: "Every 90 days",
-    description:
-      "Report your address every 90 days online or in person to remain compliant for the full one-year stay.",
-    icon: Calendar,
-  },
-] as const;
+const STEP_COUNT = 4;
+
+function getSteps(lang: import("@/lib/i18n/languages").LanguageCode) {
+  return [
+    {
+      step: 1,
+      title: t(lang, L("Gather Documents", "รวบรวมเอกสาร", "准备材料", "Документы")),
+      duration: t(lang, L("1–2 weeks", "1–2 สัปดาห์", "1–2 周", "1–2 недели")),
+      description: t(
+        lang,
+        L(
+          "Passport, photos, bank statements, insurance, and Thai address proof.",
+          "พาสปอร์ต รูป สเตทเมนต์ ประกัน และหลักฐานที่อยู่",
+          "护照、照片、银行流水、保险与泰国地址证明。",
+          "Паспорт, фото, выписки, страховка, адрес в Таиланде.",
+        ),
+      ),
+      icon: FileText,
+    },
+    {
+      step: 2,
+      title: t(lang, L("Enter Thailand", "เข้าประเทศไทย", "入境泰国", "Въезд в Таиланд")),
+      duration: t(lang, L("On arrival", "เมื่อถึง", "入境时", "По прибытии")),
+      description: t(
+        lang,
+        L(
+          "Arrive on an appropriate visa (often Non-O/O-A) or planned conversion with expert guidance.",
+          "เข้าด้วยวีซ่าที่เหมาะสม หรือแปลงสถานะตามคำแนะนำผู้เชี่ยวชาญ",
+          "持合适签证入境（常为 Non-O/O-A）或在专家指导下转换。",
+          "Въезд с подходящей визой или конвертация с экспертом.",
+        ),
+      ),
+      icon: Plane,
+    },
+    {
+      step: 3,
+      title: t(
+        lang,
+        L("Apply for Non-O Extension", "ยื่นขอต่ออายุ Non-O", "申请 Non-O 延期", "Продление Non-O"),
+      ),
+      duration: t(lang, L("Same day – 3 days", "วันเดียว – 3 วัน", "当天至 3 天", "В тот же день – 3 дня")),
+      description: t(
+        lang,
+        L(
+          "Submit at Chonburi Immigration with complete financial and medical evidence.",
+          "ยื่นที่ Immigration ชลบุรีพร้อมหลักฐานการเงินและการแพทย์",
+          "在春武里移民局提交完整资金与医疗证明。",
+          "Подача в Immigration Чонбури с финансами и медициной.",
+        ),
+      ),
+      icon: ClipboardCheck,
+    },
+    {
+      step: 4,
+      title: t(lang, L("90-Day Reporting", "รายงานตัว 90 วัน", "90 天报到", "Отчёт 90 дней")),
+      duration: t(lang, L("Every 90 days", "ทุก 90 วัน", "每 90 天", "Каждые 90 дней")),
+      description: t(
+        lang,
+        L(
+          "Report your address every 90 days online or in person to stay compliant.",
+          "รายงานที่อยู่ทุก 90 วันออนไลน์หรือด้วยตน",
+          "每 90 天网上或现场报告住址以保持合规。",
+          "Отчитывайтесь об адресе каждые 90 дней.",
+        ),
+      ),
+      icon: Calendar,
+    },
+  ];
+}
 
 function StepNode({ step }: { step: number }) {
   return (
@@ -56,25 +91,32 @@ function StepNode({ step }: { step: number }) {
 function TimelineCard({
   step,
   title,
-  titleTh,
   duration,
   description,
   icon: Icon,
   index,
-}: (typeof steps)[number] & { index: number }) {
+  isLast,
+}: {
+  step: number;
+  title: string;
+  duration: string;
+  description: string;
+  icon: LucideIcon;
+  index: number;
+  isLast: boolean;
+}) {
   return (
     <li
       className="visa-timeline-step group relative flex gap-4 lg:flex lg:h-full lg:flex-col lg:text-center"
       style={{ animationDelay: `${index * 80}ms` }}
     >
-      {/* Mobile vertical rail */}
       <div className="flex flex-col items-center lg:hidden">
         <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#B29475] text-sm font-bold text-white shadow-md">
           {step}
         </div>
-        {index < steps.length - 1 && (
+        {!isLast && (
           <span
-            className="my-1 w-0.5 flex-1 min-h-[2rem] bg-gradient-to-b from-[#B29475] to-[#B29475]/30"
+            className="my-1 min-h-[2rem] w-0.5 flex-1 bg-gradient-to-b from-[#B29475] to-[#B29475]/30"
             aria-hidden
           />
         )}
@@ -90,7 +132,6 @@ function TimelineCard({
               {duration}
             </span>
             <h3 className="mt-2 text-base font-bold text-[#0A192F]">{title}</h3>
-            <p className="text-xs font-medium text-[#B29475]">{titleTh}</p>
           </div>
         </div>
         <p className="mt-3 flex-1 text-sm leading-relaxed text-[#555] lg:text-center">
@@ -102,6 +143,9 @@ function TimelineCard({
 }
 
 export function RetirementVisaTimeline() {
+  const { language } = useLanguage();
+  const steps = getSteps(language);
+
   return (
     <section
       aria-labelledby="timeline-title"
@@ -119,20 +163,35 @@ export function RetirementVisaTimeline() {
 
         <div className="relative">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#B29475]">
-            Your journey
+            {t(language, L("Your journey", "เส้นทางของคุณ", "您的流程", "Ваш путь"))}
           </p>
           <h2
             id="timeline-title"
             className="mt-1 text-2xl font-bold text-[#0A192F] sm:text-3xl"
           >
-            Step-by-Step Immigration Timeline
+            {t(
+              language,
+              L(
+                "Step-by-Step Immigration Timeline",
+                "ไทม์ไลน์ Immigration ทีละขั้น",
+                "分步移民时间线",
+                "Пошаговый таймлайн Immigration",
+              ),
+            )}
           </h2>
           <p className="mt-2 max-w-xl text-sm text-[#444748]">
-            ขั้นตอนการดำเนินการ — จากเอกสารถึงรายงานตัว 90 วัน
+            {t(
+              language,
+              L(
+                "From documents to 90-day reporting.",
+                "จากเอกสารถึงรายงานตัว 90 วัน",
+                "从材料到 90 天报到。",
+                "От документов до отчёта 90 дней.",
+              ),
+            )}
           </p>
         </div>
 
-        {/* Desktop progress track */}
         <div
           className="relative mt-10 hidden lg:grid lg:grid-cols-4 lg:gap-6"
           aria-hidden
@@ -149,14 +208,25 @@ export function RetirementVisaTimeline() {
 
         <ol className="relative mt-8 space-y-0 lg:mt-4 lg:grid lg:grid-cols-4 lg:items-stretch lg:gap-6">
           {steps.map((item, index) => (
-            <TimelineCard key={item.step} {...item} index={index} />
+            <TimelineCard
+              key={item.step}
+              {...item}
+              index={index}
+              isLast={index === STEP_COUNT - 1}
+            />
           ))}
         </ol>
 
         <p className="relative mt-8 rounded-xl border border-[#B29475]/25 bg-white/50 px-4 py-3 text-center text-xs text-[#555]">
-          Typical full process:{" "}
-          <span className="font-semibold text-[#0A192F]">4–8 weeks</span> with
-          expert preparation · Chonburi Immigration, Pattaya
+          {t(
+            language,
+            L(
+              "Typical full process: 4–8 weeks with expert prep · Chonburi Immigration, Pattaya",
+              "โดยทั่วไป 4–8 สัปดาห์เมื่อเตรียมเอกสารครบ · Immigration ชลบุรี พัทยา",
+              "全程通常 4–8 周（专家协助）· 春武里移民局芭提雅",
+              "Обычно 4–8 недель с подготовкой · Immigration Чонбури, Паттайя",
+            ),
+          )}
         </p>
       </div>
     </section>

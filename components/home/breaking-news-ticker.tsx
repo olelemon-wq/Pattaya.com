@@ -1,20 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-
-const defaultHeadlines = {
-  home: "Major infrastructure upgrade announced for Pattaya Beach Road — construction begins Q3 2025",
-  news: "Pattaya Smart City: 500M THB Beach Road infrastructure overhaul begins — City Updates",
-  living:
-    "90-day reporting window opens next week — visa extensions and retirement visa updates for Pattaya expats",
-  explore:
-    "Koh Larn ferry schedules updated — new sunset dining spots and hidden beach guides for Pattaya explorers",
-  business:
-    "EEC investment briefing in Pattaya — BOI incentives, company setup, and networking events for regional investors",
-} as const;
+import { useLanguage } from "@/components/layout/language-provider";
+import {
+  tBreakingLabel,
+  tTickerHeadline,
+  type TickerVariant,
+} from "@/lib/i18n/messages/ticker";
 
 type BreakingNewsTickerProps = {
-  variant?: keyof typeof defaultHeadlines;
+  variant?: TickerVariant;
   headline?: string;
 };
 
@@ -38,9 +33,11 @@ export function BreakingNewsTicker({
   variant = "home",
   headline,
 }: BreakingNewsTickerProps) {
+  const { language } = useLanguage();
   const rootRef = useRef<HTMLDivElement>(null);
   const [paused, setPaused] = useState(false);
-  const text = headline ?? defaultHeadlines[variant];
+  const text = headline ?? tTickerHeadline(language, variant);
+  const breakingLabel = tBreakingLabel(language);
 
   useEffect(() => {
     const node = rootRef.current;
@@ -61,7 +58,7 @@ export function BreakingNewsTicker({
       role="region"
       aria-label="Breaking news"
     >
-      <span className={labelStyles[variant]}>Breaking</span>
+      <span className={labelStyles[variant]}>{breakingLabel}</span>
       <div
         className="relative ml-4 min-w-0 flex-1 overflow-hidden"
         style={{

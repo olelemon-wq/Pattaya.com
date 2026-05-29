@@ -1,17 +1,24 @@
+"use client";
+
 import { FeaturedHeroCinematic } from "@/components/cinematic/featured-hero-cinematic";
+import { useLanguage } from "@/components/layout/language-provider";
+import { livingHero } from "@/lib/i18n/messages/living/hub";
+import { t } from "@/lib/i18n/living-helpers";
 import { livingImages } from "@/lib/design/living-images";
 
 export function LivingFeaturedHeroCinematic() {
+  const { language } = useLanguage();
+
   return (
     <FeaturedHeroCinematic
       image={livingImages.heroHub}
-      imageAlt="Pattaya smart city skyline and coastline at twilight with glowing Beach Road transit"
+      imageAlt="Pattaya smart city skyline and coastline at twilight"
       href="/living/visa/retirement"
-      category="The Complete Expat Hub"
-      featuredLabel="Featured"
-      title="Living the Dream in Pattaya"
-      excerpt="The ultimate residency, business, and lifestyle resource for the global citizen looking to call the City of Fun home."
-      ctaLabel="Explore Living Guides"
+      category={t(language, livingHero.category)}
+      featuredLabel={t(language, livingHero.featured)}
+      title={t(language, livingHero.title)}
+      excerpt={t(language, livingHero.excerpt)}
+      ctaLabel={t(language, livingHero.cta)}
       ctaTone="living"
       visualTone="neo-smart-city"
       showAiSummary={false}

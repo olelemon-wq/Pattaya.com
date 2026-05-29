@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {
       title: "Condo Buying Guide Pattaya | ซื้อคอนโด | Pattaya.com",
       description:
-        "Guide to buying a condo in Pattaya — 49% foreign quota, due diligence, step-by-step timeline, costs, and FAQ for expat buyers.",
+        "Pattaya condo buying guide — 49% foreign quota, FET form, due diligence checklist, transfer fees, Land Office steps, and FAQ for foreign freehold buyers.",
       openGraph: {
         title: "Condo Buying | ซื้อคอนโด — Pattaya.com",
         description:

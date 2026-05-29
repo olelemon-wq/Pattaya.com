@@ -1,9 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useLanguage } from "@/components/layout/language-provider";
+import { getHomeBusinesses } from "@/lib/i18n/messages/home-hub";
 
 type FeaturedBusiness = {
   name: string;
-  badge: string;
+  badgeKey: "verified" | "featured";
   badgeStyle: string;
   logoSrc: string;
   logoAlt: string;
@@ -13,7 +17,7 @@ type FeaturedBusiness = {
 const businesses: FeaturedBusiness[] = [
   {
     name: "Royal Cliff Hotels",
-    badge: "Verified",
+    badgeKey: "verified",
     badgeStyle: "bg-[#fff7ed] text-[#f97316]",
     logoSrc: "/logos/royal-cliff.png",
     logoAlt: "Royal Cliff Hotels",
@@ -22,7 +26,7 @@ const businesses: FeaturedBusiness[] = [
   },
   {
     name: "Siam Yacht Club",
-    badge: "Featured",
+    badgeKey: "featured",
     badgeStyle: "bg-[#eff6ff] text-[#2563eb]",
     logoSrc: "/logos/siam-yacht-club.png",
     logoAlt: "Siam Yacht Club",
@@ -30,7 +34,7 @@ const businesses: FeaturedBusiness[] = [
   },
   {
     name: "Bangkok Hospital",
-    badge: "Featured",
+    badgeKey: "featured",
     badgeStyle: "bg-[#eff6ff] text-[#2563eb]",
     logoSrc: "/logos/bangkok-hospital.png",
     logoAlt: "Bangkok Hospital Pattaya",
@@ -58,10 +62,13 @@ function BusinessMark({ biz }: { biz: FeaturedBusiness }) {
 }
 
 export function FeaturedBusinesses() {
+  const { language } = useLanguage();
+  const copy = getHomeBusinesses(language);
+
   return (
     <section className="mx-auto max-w-[1280px] px-4 py-10 lg:px-6">
       <h2 className="mb-6 text-center text-sm font-extrabold uppercase tracking-[0.2em] text-[#0c1a33]">
-        Featured Businesses
+        {copy.title}
       </h2>
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
@@ -75,7 +82,7 @@ export function FeaturedBusinesses() {
             <span
               className={`mb-2 rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide ${biz.badgeStyle}`}
             >
-              {biz.badge}
+              {copy[biz.badgeKey]}
             </span>
             <span className="text-xs font-bold text-[#0c1a33]">{biz.name}</span>
           </Link>
@@ -88,7 +95,7 @@ export function FeaturedBusinesses() {
           >
             <span className="mb-2 text-2xl text-[#cbd5e1]">+</span>
             <span className="text-[10px] font-bold uppercase tracking-wide text-[#94a3b8]">
-              Add Branch
+              {copy.addBranch}
             </span>
           </div>
         ))}

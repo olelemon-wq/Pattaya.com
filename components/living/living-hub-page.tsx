@@ -1,84 +1,21 @@
+"use client";
+
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import { LivingFeaturedHeroCinematic } from "@/components/living/living-featured-hero-cinematic";
+import { useLanguage } from "@/components/layout/language-provider";
 import {
-  Bus,
-  CalendarDays,
-  Car,
-  CreditCard,
-  Crown,
-  Footprints,
-  Hand,
-  Handshake,
-  Home,
-  Hospital,
-  IdCard,
-  Key,
-  Landmark,
-  Lock,
-  Shield,
-  Shirt,
-  Star,
-  Users,
-  VolumeX,
-  type LucideIcon,
-} from "lucide-react";
+  getCommercialCards,
+  getCostBars,
+  getCulturalDonts,
+  getCulturalDos,
+  getInfoCards,
+  getScamAlerts,
+  tLivingHub,
+} from "@/lib/i18n/messages/living/hub";
+import type { LucideIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { livingImages } from "@/lib/design/living-images";
-
-const culturalDos: { icon: LucideIcon; title: string; text: string }[] = [
-  {
-    icon: Handshake,
-    title: "The Wai Protocol",
-    text: "Bow with palms together to show respect to elders, officials, and new acquaintances.",
-  },
-  {
-    icon: Users,
-    title: "Social Hierarchy",
-    text: "Acknowledge age and status with appropriate gestures and a calm, polite tone of voice.",
-  },
-  {
-    icon: Shirt,
-    title: "Dress Codes",
-    text: "Wear modest clothing (covering shoulders and knees) when visiting temples and official buildings.",
-  },
-  {
-    icon: Landmark,
-    title: "Respect for Monks",
-    text: "Give up your seat and maintain a respectful distance; women should avoid any physical contact.",
-  },
-];
-
-const culturalDonts: { icon: LucideIcon; title: string; text: string }[] = [
-  {
-    icon: Hand,
-    title: "Touching the Head",
-    text: "Considered the most sacred part of the body; avoid touching anyone's head, even children.",
-  },
-  {
-    icon: Footprints,
-    title: "Pointing Feet",
-    text: "Feet are seen as the lowest part of the body; never point them at people, monks, or images of the Buddha.",
-  },
-  {
-    icon: VolumeX,
-    title: "Raising Voice",
-    text: "Maintain a calm demeanor; losing your temper is seen as losing face and is highly counterproductive.",
-  },
-  {
-    icon: Crown,
-    title: "Disrespecting the Monarchy",
-    text: "Always show utmost respect for the Royal Family. Discussion of the monarchy is subject to strict laws.",
-  },
-];
-
-const scamAlerts = [
-  "Unsecured bank deposits via offshore accounts.",
-  'Unofficial agents promising "Express" stamps.',
-  "Unauthorized crypto ATM exchanges in walking street.",
-  "Fake property listings on social media.",
-  "Unauthorized taxi fare overcharging.",
-];
 
 type LivingHubCard = {
   title: string;
@@ -97,132 +34,6 @@ function HubCardIcon({ icon: Icon }: { icon: LucideIcon }) {
     </span>
   );
 }
-
-const commercialCards: LivingHubCard[] = [
-  {
-    title: "Thailand Elite",
-    icon: Star,
-    image: livingImages.thailandElite,
-    imageAlt: "Thailand Elite Visa",
-    excerpt:
-      "The ultimate 5 to 20 year visa solution designed for high-net-worth residents seeking concierge-level service and exclusive privileges.",
-    cta: "Apply Now",
-    href: "/living/visa/thailand-elite",
-  },
-  {
-    title: "Work Permit",
-    icon: IdCard,
-    image: livingImages.workPermit,
-    imageAlt: "Work Permit Document",
-    excerpt:
-      "Comprehensive legal frameworks for professional employment, business setup, and the specialized Digital Nomad LTR visa category.",
-    cta: "Legal Compliance",
-    href: "/living/visa/work-permit",
-  },
-  {
-    title: "Rentals",
-    icon: Home,
-    image: livingImages.rentals,
-    imageAlt: "Luxury Rental Interior",
-    excerpt:
-      "Navigating rental contracts for condos and houses, security deposits, and the mandatory TM30 reporting duties for tenants.",
-    cta: "View Listings",
-    href: "/living/housing/rentals",
-  },
-  {
-    title: "Medical",
-    icon: Hospital,
-    image: livingImages.medical,
-    imageAlt: "World Class Medical Facility",
-    excerpt:
-      "Access world-class healthcare with our curated directory of international hospitals and specialized clinics in the Pattaya region.",
-    cta: "Hospital List",
-    href: "/living/healthcare/hospitals",
-  },
-];
-
-const infoCards: LivingHubCard[] = [
-  {
-    title: "Ownership",
-    icon: Key,
-    image: livingImages.ownership,
-    imageAlt: "Ownership",
-    excerpt:
-      "Understand the legal frameworks for foreign property ownership and title deed transfers in Thailand.",
-    cta: "Legal Guide",
-    href: "/living/housing/ownership",
-  },
-  {
-    title: "Utilities Cost",
-    icon: CreditCard,
-    image: livingImages.utilities,
-    imageAlt: "Utilities Cost",
-    excerpt:
-      "Manage your monthly overheads including electricity, water, and high-speed fiber internet logistics.",
-    cta: "Budget Tools",
-    href: "/living/cost-of-living/utilities",
-  },
-  {
-    title: "Insurance",
-    icon: Shield,
-    image: livingImages.insurance,
-    imageAlt: "Insurance",
-    excerpt:
-      "Secure your future with premium international health insurance plans tailored for long-term expats.",
-    cta: "View Policies",
-    href: "/living/healthcare/insurance",
-  },
-  {
-    title: "Driving",
-    icon: Car,
-    image: livingImages.driving,
-    imageAlt: "Driving",
-    excerpt:
-      "Step-by-step guide to obtaining your Thai driving license and navigating local traffic laws.",
-    cta: "License Guide",
-    href: "/living/transportation/driving",
-  },
-  {
-    title: "Culture",
-    icon: Landmark,
-    image: livingImages.cultureCard,
-    imageAlt: "Culture",
-    excerpt:
-      "Master the social nuances of Pattaya, from traditional etiquette to modern business networking.",
-    cta: "Learn More",
-    href: "/living/culture/thai-culture",
-  },
-  {
-    title: "90-Day Reporting",
-    icon: CalendarDays,
-    image: livingImages.ninetyDay,
-    imageAlt: "90-Day Reporting",
-    excerpt:
-      "Automate your immigration compliance with our simplified guide to the mandatory 90-day reporting.",
-    cta: "Process Guide",
-    href: "/living/visa/90-day-report",
-  },
-  {
-    title: "Local Transport",
-    icon: Bus,
-    image: livingImages.localTransport,
-    imageAlt: "Local Transport",
-    excerpt:
-      "Expert tips for using Songthaews, ferries, and inter-city bus systems efficiently and safely.",
-    cta: "Transit Map",
-    href: "/living/transportation/songthaew",
-  },
-  {
-    title: "Safety Guide",
-    icon: Lock,
-    image: livingImages.safetyGuide,
-    imageAlt: "Safety Guide",
-    excerpt:
-      "Complete directory of emergency services, tourist police contacts, and safe-living protocols.",
-    cta: "Emergency Info",
-    href: "/living/safety/emergency-guide",
-  },
-];
 
 function SectionIntro({
   title,
@@ -247,7 +58,7 @@ function GridInfoCard({
   excerpt,
   cta,
   href,
-}: (typeof infoCards)[number]) {
+}: LivingHubCard) {
   return (
     <Link
       href={href}
@@ -279,6 +90,14 @@ function GridInfoCard({
 }
 
 export function LivingHubPage() {
+  const { language } = useLanguage();
+  const scamAlerts = getScamAlerts(language);
+  const culturalDos = getCulturalDos(language);
+  const culturalDonts = getCulturalDonts(language);
+  const commercialCards = getCommercialCards(language);
+  const infoCards = getInfoCards(language);
+  const costBars = getCostBars(language);
+
   return (
     <div data-full-bleed className="bg-[#f8f9fa] pb-16 text-[#191c1d]">
       <div className="relative z-10 shrink-0 shadow-sm">
@@ -293,8 +112,8 @@ export function LivingHubPage() {
         {/* Expat Essentials */}
         <section className="mb-20">
           <SectionIntro
-            title="Expat Essentials"
-            description="High-priority residency and security guides for seamless relocation."
+            title={tLivingHub(language, "expatTitle")}
+            description={tLivingHub(language, "expatDesc")}
           />
 
           <div className="flex flex-col gap-6">
@@ -311,21 +130,19 @@ export function LivingHubPage() {
                 </div>
                 <div className="flex flex-grow flex-col p-8">
                   <span className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#ae2f34]">
-                    Visa & Immigration
+                    {tLivingHub(language, "visaBadge")}
                   </span>
                   <h3 className="mb-4 text-xl font-semibold">
-                    Retirement Visa (Non-O / OA) Guide
+                    {tLivingHub(language, "retirementTitle")}
                   </h3>
                   <p className="mb-8 flex-grow leading-relaxed text-[#444748]">
-                    Our premium guide covers step-by-step documentation, financial
-                    seasoning requirements, and hassle-free renewal strategies for
-                    expats over 50.
+                    {tLivingHub(language, "retirementExcerpt")}
                   </p>
                   <Link
                     href="/living/visa/retirement"
                     className="mt-auto inline-flex w-fit rounded-full bg-[#B29475] px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#B29475]/25 transition-all hover:bg-[#B29475]/90"
                   >
-                    Get Visa Quote
+                    {tLivingHub(language, "retirementCta")}
                   </Link>
                 </div>
               </article>
@@ -342,21 +159,19 @@ export function LivingHubPage() {
                 </div>
                 <div className="flex flex-grow flex-col p-8">
                   <span className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#455f88]">
-                    Real Estate
+                    {tLivingHub(language, "realEstateBadge")}
                   </span>
                   <h3 className="mb-4 text-xl font-semibold">
-                    Mastering Pattaya&apos;s Condo Market
+                    {tLivingHub(language, "condoTitle")}
                   </h3>
                   <p className="mb-8 flex-grow leading-relaxed text-[#444748]">
-                    Navigate investment, Freehold vs Leasehold, and the critical
-                    49% Foreigner Ownership Quota rules with our verified legal
-                    framework.
+                    {tLivingHub(language, "condoExcerpt")}
                   </p>
                   <Link
                     href="/living/housing/condo-buying"
                     className="mt-auto text-sm font-bold text-[#455f88] hover:underline"
                   >
-                    View Property Ads →
+                    {tLivingHub(language, "condoCta")}
                   </Link>
                 </div>
               </article>
@@ -379,7 +194,7 @@ export function LivingHubPage() {
                     ⚠
                   </div>
                   <h4 className="text-sm font-bold uppercase tracking-widest text-[#ae2f34]">
-                    Urgent: Scam Alerts
+                    {tLivingHub(language, "scamTitle")}
                   </h4>
                 </div>
                 <ul className="mb-10 space-y-4">
@@ -394,25 +209,25 @@ export function LivingHubPage() {
                 </ul>
                 <div className="mb-8">
                   <h5 className="mb-4 text-xs font-bold uppercase tracking-widest text-[#ae2f34]">
-                    Safety Essentials
+                    {tLivingHub(language, "safetyEssentials")}
                   </h5>
                   <ul className="space-y-2 text-sm text-[#8c1520]">
-                    <li>✓ Use only licensed real estate agencies</li>
-                    <li>✓ Verify credentials at the Immigration Office</li>
+                    <li>✓ {tLivingHub(language, "safety1")}</li>
+                    <li>✓ {tLivingHub(language, "safety2")}</li>
                   </ul>
                 </div>
                 <div className="mt-auto rounded-lg border border-[#ae2f34]/10 bg-white/50 p-6">
                   <h5 className="mb-2 font-bold text-[#191c1d]">
-                    Emergency Resources
+                    {tLivingHub(language, "emergencyTitle")}
                   </h5>
                   <p className="mb-4 text-xs text-[#444748]">
-                    Access immediate help and local protocols.
+                    {tLivingHub(language, "emergencyBody")}
                   </p>
                   <Link
                     href="/living/safety/scam-alerts"
                     className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#ae2f34] py-3 text-xs font-bold text-white transition-colors hover:bg-[#8c1520]"
                   >
-                    Download Safety Guide PDF
+                    {tLivingHub(language, "downloadSafety")}
                   </Link>
                 </div>
               </div>
@@ -430,23 +245,21 @@ export function LivingHubPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-6 left-8">
                     <span className="mb-1 block text-xs font-bold uppercase tracking-widest text-white/80">
-                      Guide for Expats
+                      {tLivingHub(language, "cultureEyebrow")}
                     </span>
                     <h4 className="text-2xl font-semibold text-white">
-                      The Thai Way
+                      {tLivingHub(language, "cultureTitle")}
                     </h4>
                   </div>
                 </div>
                 <div className="flex-grow p-8">
                   <p className="mb-8 text-sm leading-relaxed text-[#444748]">
-                    Pattaya is a vibrant international city, but social harmony
-                    remains rooted in traditional Thai values. Mastering these
-                    cultural nuances ensures a respectful and rewarding residency.
+                    {tLivingHub(language, "cultureIntro")}
                   </p>
                   <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
                     <div>
                       <h5 className="mb-4 flex items-center gap-2 border-b border-[#455f88]/10 pb-2 text-sm font-bold uppercase tracking-widest text-[#455f88]">
-                        ✓ Cultural Dos
+                        ✓ {tLivingHub(language, "culturalDos")}
                       </h5>
                       <ul className="space-y-4">
                         {culturalDos.map((item) => {
@@ -470,7 +283,7 @@ export function LivingHubPage() {
                     </div>
                     <div>
                       <h5 className="mb-4 flex items-center gap-2 border-b border-[#ae2f34]/10 pb-2 text-sm font-bold uppercase tracking-widest text-[#ae2f34]">
-                        ✕ Cultural Don&apos;ts
+                        ✕ {tLivingHub(language, "culturalDonts")}
                       </h5>
                       <ul className="space-y-4">
                         {culturalDonts.map((item) => {
@@ -496,13 +309,13 @@ export function LivingHubPage() {
                 </div>
                 <div className="flex items-center justify-between border-t border-[#c4c7c8]/30 bg-[#f3f4f5] px-8 py-6">
                   <span className="text-xs italic text-[#444748]">
-                    Learn more about local customs and integration.
+                    {tLivingHub(language, "cultureFooter")}
                   </span>
                   <Link
                     href="/living/culture/etiquette"
                     className="text-xs font-bold uppercase tracking-widest text-[#455f88] hover:underline"
                   >
-                    Detailed Protocol Guide →
+                    {tLivingHub(language, "protocolGuide")}
                   </Link>
                 </div>
               </div>
@@ -513,8 +326,8 @@ export function LivingHubPage() {
         {/* Commercial Potential */}
         <section className="mb-20">
           <SectionIntro
-            title="Commercial Potential"
-            description="Your professional directory for seamless daily living and administrative logistics."
+            title={tLivingHub(language, "commercialTitle")}
+            description={tLivingHub(language, "commercialDesc")}
           />
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
             {commercialCards.map((card) => (
@@ -552,8 +365,8 @@ export function LivingHubPage() {
         {/* Steady Traffic & Informational */}
         <section className="mb-20">
           <SectionIntro
-            title="Steady Traffic & Informational"
-            description="Essential guides for your long-term success and daily lifestyle integration."
+            title={tLivingHub(language, "steadyTitle")}
+            description={tLivingHub(language, "steadyDesc")}
           />
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
             {infoCards.map((card) => (
@@ -568,21 +381,16 @@ export function LivingHubPage() {
             <div className="flex flex-col items-center gap-10 rounded-xl border border-[#c4c7c8]/30 bg-white p-10 shadow-sm transition-shadow hover:shadow-md lg:col-span-8 md:flex-row">
               <div className="flex-1">
                 <span className="mb-2 block text-xs font-bold uppercase tracking-widest text-[#ae2f34]">
-                  Finance Analytics
+                  {tLivingHub(language, "financeBadge")}
                 </span>
                 <h3 className="mb-6 text-2xl font-semibold">
-                  Pattaya Cost of Living 2024
+                  {tLivingHub(language, "costTitle")}
                 </h3>
                 <p className="mb-8 leading-relaxed text-[#444748]">
-                  A professional breakdown of monthly expenses for a high-fidelity
-                  Urban Hybrid lifestyle in Pattaya&apos;s premium districts.
+                  {tLivingHub(language, "costDesc")}
                 </p>
                 <div className="space-y-6">
-                  {[
-                    { label: "Housing & Luxury Utilities", pct: 45, color: "bg-[#455f88]" },
-                    { label: "Gourmet Dining & Food", pct: 25, color: "bg-[#ae2f34]" },
-                    { label: "Leisure & Wellness", pct: 15, color: "bg-[#adc7f7]" },
-                  ].map((bar) => (
+                  {costBars.map((bar) => (
                     <div key={bar.label}>
                       <div className="mb-2 flex justify-between text-sm font-bold">
                         <span className="uppercase tracking-wider text-[#444748]">
@@ -602,31 +410,30 @@ export function LivingHubPage() {
               </div>
               <div className="w-full rounded-xl border border-[#c4c7c8]/20 bg-[#edeeef] p-8 text-center md:w-72">
                 <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#444748]">
-                  Avg. Monthly Budget
+                  {tLivingHub(language, "avgBudget")}
                 </p>
                 <p className="mb-6 text-5xl font-bold tracking-tighter text-[#455f88]">
                   $1,850
                 </p>
                 <p className="px-4 text-xs italic leading-relaxed text-[#444748]">
-                  Calculated for a premium high-rise residence with modern amenities.
+                  {tLivingHub(language, "budgetNote")}
                 </p>
                 <hr className="my-6 border-[#c4c7c8]/30" />
                 <Link
                   href="/living/cost-of-living/food"
                   className="flex w-full items-center justify-center gap-2 text-sm font-bold text-[#455f88] hover:text-[#3f5882]"
                 >
-                  View Full Analysis →
+                  {tLivingHub(language, "fullAnalysis")}
                 </Link>
               </div>
             </div>
 
             <div className="flex flex-col justify-center rounded-xl border border-[#455f88]/10 bg-[#D7CBBA] p-10 lg:col-span-4">
               <h3 className="mb-4 text-xl font-semibold text-[#3f5882]">
-                Elite Mobility
+                {tLivingHub(language, "mobilityTitle")}
               </h3>
               <p className="mb-10 text-sm leading-relaxed text-[#3f5882]/80">
-                Verified ride-hailing platforms for transparent, safe, and
-                professional transportation across the city.
+                {tLivingHub(language, "mobilityDesc")}
               </p>
               <div className="space-y-4">
                 <Link
@@ -638,9 +445,9 @@ export function LivingHubPage() {
                       G
                     </div>
                     <div>
-                      <p className="text-sm font-bold">Grab Premium</p>
+                      <p className="text-sm font-bold">{tLivingHub(language, "grabTitle")}</p>
                       <p className="text-xs text-[#444748]">
-                        Priority Transport & Delivery
+                        {tLivingHub(language, "grabSub")}
                       </p>
                     </div>
                   </div>
@@ -657,8 +464,8 @@ export function LivingHubPage() {
                       B
                     </div>
                     <div>
-                      <p className="text-sm font-bold">Bolt</p>
-                      <p className="text-xs text-[#444748]">Optimized City Travel</p>
+                      <p className="text-sm font-bold">{tLivingHub(language, "boltTitle")}</p>
+                      <p className="text-xs text-[#444748]">{tLivingHub(language, "boltSub")}</p>
                     </div>
                   </div>
                   <span className="text-[#444748] group-hover:text-[#455f88]">

@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {
       title: "Retirement Visa Guide Pattaya | วีซ่าเกษียณ | Pattaya.com",
       description:
-        "Comprehensive retirement visa guide for Pattaya — age, financial, and insurance requirements, application timeline, FAQ, and expert visa consultation.",
+        "Thailand retirement visa (Non-O / O-A) for Pattaya — financial proof, document checklist, embassy vs in-country routes, annual renewal, insurance, and FAQ.",
       openGraph: {
         title: "Retirement Visa | วีซ่าเกษียณ — Pattaya.com",
         description:

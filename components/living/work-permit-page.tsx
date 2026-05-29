@@ -1,10 +1,16 @@
-import { LivingPageShell } from "@/components/living/living-page-shell";
+"use client";
+
+import { LivingFaqSection } from "@/components/living/living-faq-section";
+import { LocalizedLivingPageShell } from "@/components/living/localized-living-page-shell";
+import { useLanguage } from "@/components/layout/language-provider";
 import { livingTheme } from "@/lib/design/living-theme";
 import { livingImages } from "@/lib/design/living-images";
+import { faqEnTh, L, t } from "@/lib/i18n/living-helpers";
+import { faqSubtitle } from "@/lib/i18n/messages/living/shells";
+import type { LocalizedText } from "@/lib/i18n/text";
 import {
   BadgeCheck,
   Building2,
-  ChevronDown,
   FileCheck,
   Laptop,
   Stethoscope,
@@ -12,131 +18,157 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-const requirements: { icon: LucideIcon; title: string; titleTh: string; body: string }[] =
-  [
+function getRequirements(): { icon: LucideIcon; title: LocalizedText; body: LocalizedText }[] {
+  return [
     {
       icon: Building2,
-      title: "Registered employer",
-      titleTh: "นายจ้างจดทะเบียน",
-      body: "A Thai company with paid-up capital, tax filings, and a valid office address that can sponsor your permit.",
+      title: L("Registered employer", "นายจ้างจดทะเบียน", "注册雇主", "Работодатель"),
+      body: L(
+        "Thai company with paid-up capital, tax filings, and valid office that can sponsor your permit.",
+        "บริษัทไทยมีทุนจดทะเบียน ยื่นภาษี และที่ตั้งสำนักงานที่รับรอง work permit",
+        "泰资公司须实缴资本、报税并有可担保的办公地址。",
+        "Тайская компания с уставным капиталом и офисом для спонсорства.",
+      ),
     },
     {
       icon: FileCheck,
-      title: "Valid non-immigrant visa",
-      titleTh: "วีซ่าที่ถูกต้อง",
-      body: "Typically Non-Immigrant B (or eligible category) obtained before work permit application at Labour Department.",
+      title: L("Valid non-immigrant visa", "วีซ่าที่ถูกต้อง", "有效非移民签证", "Виза Non-Immigrant"),
+      body: L(
+        "Typically Non-Immigrant B before work permit application at Labour Department.",
+        "มักเป็น Non-Immigrant B ก่อนยื่น work permit ที่กรมแรงงาน",
+        "通常需先有 Non-Immigrant B 再向劳工部申请工作证。",
+        "Обычно Non-Immigrant B до подачи в Department of Labour.",
+      ),
     },
     {
       icon: BadgeCheck,
-      title: "Role & qualifications",
-      titleTh: "ตำแหน่งและคุณสมบัติ",
-      body: "Job description, education, and experience must match Labour Office standards for the position.",
+      title: L("Role & qualifications", "ตำแหน่งและคุณสมบัติ", "职位与资质", "Должность"),
+      body: L(
+        "Job description, education, and experience must match Labour Office standards.",
+        "ลักษณะงาน การศึกษา และประสบการณ์ต้องตรงมาตรฐานกรมแรงงาน",
+        "职位描述、学历与经验须符合劳工厅标准。",
+        "Описание должности и квалификация по нормам Labour Office.",
+      ),
     },
     {
       icon: Stethoscope,
-      title: "Medical certificate",
-      titleTh: "ใบรับรองแพทย์",
-      body: "Thai clinic or hospital medical form issued within the required timeframe.",
+      title: L("Medical certificate", "ใบรับรองแพทย์", "体检证明", "Медсправка"),
+      body: L(
+        "Thai clinic or hospital medical form within the required timeframe.",
+        "ใบตรวจจากคลินิกหรือโรงพยาบาลไทยภายในระยะเวลาที่กำหนด",
+        "须在有效期内由泰国诊所或医院出具。",
+        "Медформу из тайской клиники в срок.",
+      ),
     },
   ];
-
-const steps = [
-  { step: 1, title: "Secure job offer", titleTh: "ได้ข้อเสนองาน", note: "Signed employment contract in Thai/English." },
-  { step: 2, title: "Non-B visa", titleTh: "วีซ่า Non-B", note: "Apply at Thai embassy or convert with legal support." },
-  { step: 3, title: "Work permit", titleTh: "ใบอนุญาตทำงาน", note: "Submit at Chonburi Labour Office with company documents." },
-  { step: 4, title: "Annual renewal", titleTh: "ต่ออายุรายปี", note: "Sync visa extension, 90-day report, and permit renewal." },
-];
-
-const faqs = [
-  {
-    id: "nomad",
-    question: "Can digital nomads use a standard work permit?",
-    questionTh: "Digital Nomad ใช้ work permit ปกติได้ไหม?",
-    answer:
-      "Remote work for foreign employers may qualify under LTR (Long-Term Resident) or specific BOI schemes — not a classic employer-sponsored permit. We map your income source and nationality to the correct route.",
-  },
-  {
-    id: "ratio",
-    question: "What is the Thai-to-foreign employee ratio?",
-    questionTh: "อัตราส่วนคนไทยต่อต่างชาติ?",
-    answer:
-      "Many companies must employ four Thai staff per foreign work permit holder (with exceptions for BOI-promoted firms). Your HR or our legal partners verify the ratio before filing.",
-  },
-  {
-    id: "change",
-    question: "Can I change employers on the same permit?",
-    questionTh: "เปลี่ยนนายจ้างได้ไหม?",
-    answer:
-      "A new employer requires a new work permit application and often a fresh visa alignment. Plan 2–4 weeks for handover; working without an updated permit is a serious violation.",
-  },
-];
-
-function FaqBlock() {
-  return (
-    <section
-      id="faq"
-      className={`relative z-10 scroll-mt-24 ${livingTheme.panel}`}
-      aria-labelledby="wp-faq-title"
-    >
-      <h2 id="wp-faq-title" className={livingTheme.heading}>
-        Frequently Asked Questions
-      </h2>
-      <p className={`mt-1 ${livingTheme.muted}`}>คำถามที่พบบ่อย — Work Permit</p>
-      <div className="mt-6 divide-y divide-[#e2e8f0]">
-        {faqs.map((faq, index) => (
-          <details key={faq.id} className="group py-4 first:pt-0 last:pb-0" open={index === 0}>
-            <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left [&::-webkit-details-marker]:hidden">
-              <span className="min-w-0 pr-2">
-                <span className="block font-semibold text-[#0A192F]">{faq.question}</span>
-                <span className="mt-0.5 block text-xs text-[#777777]">{faq.questionTh}</span>
-              </span>
-              <span
-                className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#e2e8f0] bg-[#F8FAFC] transition duration-200 group-open:rotate-180 group-open:border-[#B29475] group-open:bg-[#B29475] group-open:text-white"
-                aria-hidden
-              >
-                <ChevronDown className="h-4 w-4" strokeWidth={2.5} />
-              </span>
-            </summary>
-            <p className={`mt-3 ${livingTheme.body}`}>{faq.answer}</p>
-          </details>
-        ))}
-      </div>
-    </section>
-  );
 }
 
+function getSteps(lang: import("@/lib/i18n/languages").LanguageCode) {
+  return [
+    {
+      step: 1,
+      title: t(lang, L("Secure job offer", "ได้ข้อเสนองาน", "获得工作 offer", "Оффер")),
+      note: t(
+        lang,
+        L("Signed employment contract in Thai/English.", "สัญญาจ้างสองภาษา", "泰英双语雇佣合同。", "Контракт на двух языках."),
+      ),
+    },
+    {
+      step: 2,
+      title: t(lang, L("Non-B visa", "วีซ่า Non-B", "Non-B 签证", "Виза Non-B")),
+      note: t(
+        lang,
+        L("Apply at Thai embassy or convert with legal support.", "ยื่นสถานทูตหรือแปลงวีซ่าผ่านทนาย", "在使馆申请或依法转换。", "В посольстве или конвертация."),
+      ),
+    },
+    {
+      step: 3,
+      title: t(lang, L("Work permit", "ใบอนุญาตทำงาน", "工作证", "Work permit"),
+      ),
+      note: t(
+        lang,
+        L("Submit at Chonburi Labour Office with company documents.", "ยื่นที่กรมแรงงานชลบุรีพร้อมเอกสารบริษัท", "向春武里劳工部提交公司文件。", "Подача в Labour Office Chonburi."),
+      ),
+    },
+    {
+      step: 4,
+      title: t(lang, L("Annual renewal", "ต่ออายุรายปี", "年度续签", "Ежегодное продление"),
+      ),
+      note: t(
+        lang,
+        L("Sync visa extension, 90-day report, and permit renewal.", "ประสานต่อวีซ่า รายงาน 90 วัน และ work permit", "同步签证延签、90 天报到与工作证续期。", "Виза, 90 дней и permit вместе."),
+      ),
+    },
+  ];
+}
+
+const faqs = [
+  faqEnTh(
+    "nomad",
+    "Can digital nomads use a standard work permit?",
+    "Digital Nomad ใช้ work permit ปกติได้ไหม?",
+    "Remote work may qualify under LTR or BOI schemes — not a classic employer-sponsored permit.",
+    "ทำงานรีโมตอาจใช้ LTR หรือ BOI ไม่ใช่ work permit แบบนายจ้างสponsor ทั่วไป",
+    "数字游民能用普通工作证吗？",
+    "Digital nomad и work permit?",
+  ),
+  faqEnTh(
+    "ratio",
+    "What is the Thai-to-foreign employee ratio?",
+    "อัตราส่วนคนไทยต่อต่างชาติ?",
+    "Often four Thai staff per foreign permit (BOI firms may differ). HR verifies before filing.",
+    "มัก 4 คนไทยต่อ 1 ต่างชาติ (บริษัท BOI อาจต่าง) HR ตรวจก่อนยื่น",
+    "泰外籍员工比例？",
+    "Соотношение тайцев и иностранцев?",
+  ),
+  faqEnTh(
+    "change",
+    "Can I change employers on the same permit?",
+    "เปลี่ยนนายจ้างได้ไหม?",
+    "New employer requires a new permit and often visa alignment. Working without update is a serious violation.",
+    "นายจ้างใหม่ต้องยื่น work permit ใหม่ มักต้องจัดวีซ่าให้สอดคล้อง",
+    "能换雇主不换证吗？",
+    "Смена работодателя?",
+  ),
+];
+
 export function WorkPermitPage() {
+  const { language } = useLanguage();
+  const h = {
+    req: t(language, L("Core requirements", "เงื่อนไขหลัก", "核心要求", "Требования")),
+    steps: t(language, L("Application process", "ขั้นตอน", "申请流程", "Процесс")),
+    ltr: t(language, L("LTR & Digital Nomad pathway", "เส้นทาง LTR / Digital Nomad", "LTR 与数字游民通道", "LTR и digital nomad")),
+    ltrBody: t(
+      language,
+      L(
+        "Remote workers and wealthy global citizens may qualify for LTR with 10-year stay — separate from a classic employer work permit.",
+        "ผู้มีรายได้สูงหรือทำงานรีโมตอาจใช้ LTR พำนัก 10 ปี แยกจาก work permit แบบนายจ้าง",
+        "远程工作者与高净值人士可申请 LTR 十年居留，不同于雇主担保工作证。",
+        "LTR на 10 лет — отдельно от классического work permit.",
+      ),
+    ),
+    compare: t(language, L("Compare with Retirement Visa →", "เปรียบเทียบวีซ่าเกษียณ →", "对比退休签证 →", "Сравнить с retirement →")),
+  };
+
   return (
-    <LivingPageShell
+    <LocalizedLivingPageShell
+      shellKey="workPermit"
       heroImage={livingImages.workPermit}
-      heroAlt="Work permit documents and professional employment"
-      badge="Visa & Immigration"
-      breadcrumbLeaf="Work Permit"
-      title="Work Permit | ใบอนุญาตทำงาน"
-      subtitle="Legal frameworks for employment, business setup, and LTR options for professionals based in Pattaya and Chonburi."
-      ctaEyebrow="Legal Service"
-      ctaTitle="Employer sponsorship & compliance review"
-      ctaBody="Pattaya law firms on our network handle Non-B visas, work permits, and BOI/LTR screening for hospitality, tech, and remote workers."
-      ctaButton="Legal Compliance Consultation"
+      heroAlt="Work permit documents"
       ctaAriaLabel="Work permit legal consultation"
-      bottomTitle="Need a compliant work permit in Chonburi?"
-      bottomBody="Our legal partners review company ratio, contracts, and Labour Office filings before you submit."
-      bottomPrimary={{ label: "Get Free Consultation", href: "/living" }}
     >
       <section aria-labelledby="wp-req-title">
         <h2 id="wp-req-title" className={livingTheme.heading}>
-          Core requirements
+          {h.req}
         </h2>
-        <p className={`mt-1 ${livingTheme.muted}`}>เอกสารและเงื่อนไขหลัก</p>
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          {requirements.map(({ icon: Icon, title, titleTh, body }) => (
-            <article key={title} className={`p-5 ${livingTheme.card}`}>
+          {getRequirements().map((req) => (
+            <article key={req.title.en} className={`p-5 ${livingTheme.card}`}>
               <div className={livingTheme.iconBox}>
-                <Icon className="h-5 w-5" />
+                <req.icon className="h-5 w-5" />
               </div>
-              <h3 className="mt-4 font-bold text-[#0A192F]">{title}</h3>
-              <p className="text-xs font-medium text-[#B29475]">{titleTh}</p>
-              <p className={`mt-2 ${livingTheme.body}`}>{body}</p>
+              <h3 className="mt-4 font-bold text-[#0A192F]">{t(language, req.title)}</h3>
+              <p className={`mt-2 ${livingTheme.body}`}>{t(language, req.body)}</p>
             </article>
           ))}
         </div>
@@ -144,17 +176,15 @@ export function WorkPermitPage() {
 
       <section aria-labelledby="wp-steps-title">
         <h2 id="wp-steps-title" className={livingTheme.heading}>
-          Application process
+          {h.steps}
         </h2>
-        <p className={`mt-1 ${livingTheme.muted}`}>ขั้นตอนโดยสรุป</p>
         <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((s) => (
+          {getSteps(language).map((s) => (
             <li key={s.step} className={`flex flex-col p-5 ${livingTheme.cardStatic}`}>
               <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#B29475] text-sm font-bold text-white">
                 {s.step}
               </span>
               <h3 className="mt-3 font-bold text-[#0A192F]">{s.title}</h3>
-              <p className="text-xs text-[#B29475]">{s.titleTh}</p>
               <p className={`mt-2 flex-1 ${livingTheme.body}`}>{s.note}</p>
             </li>
           ))}
@@ -168,24 +198,24 @@ export function WorkPermitPage() {
           </div>
           <div>
             <h2 id="ltr-title" className={livingTheme.headingSm}>
-              LTR &amp; Digital Nomad pathway
+              {h.ltr}
             </h2>
-            <p className={`mt-2 ${livingTheme.body}`}>
-              Remote workers and wealthy global citizens may qualify for the Long-Term Resident
-              (LTR) visa with 10-year stay permission and simplified work rules — separate from a
-              classic employer work permit. Income thresholds and industry categories apply.
-            </p>
+            <p className={`mt-2 ${livingTheme.body}`}>{h.ltrBody}</p>
             <Link
               href="/living/visa/retirement"
               className="mt-4 inline-flex text-sm font-bold text-[#B29475] hover:underline"
             >
-              Compare with Retirement Visa →
+              {h.compare}
             </Link>
           </div>
         </div>
       </section>
 
-      <FaqBlock />
-    </LivingPageShell>
+      <LivingFaqSection
+        faqs={faqs}
+        subtitle={faqSubtitle(language, "Work permit", "ใบอนุญาตทำงาน", "工作证", "Work permit")}
+        titleId="wp-faq-title"
+      />
+    </LocalizedLivingPageShell>
   );
 }

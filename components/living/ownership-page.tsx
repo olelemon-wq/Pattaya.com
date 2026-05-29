@@ -1,124 +1,159 @@
+"use client";
+
 import { LivingFaqSection } from "@/components/living/living-faq-section";
 import { LivingIconCards } from "@/components/living/living-icon-cards";
-import { LivingPageShell } from "@/components/living/living-page-shell";
+import { LocalizedLivingPageShell } from "@/components/living/localized-living-page-shell";
+import { useLanguage } from "@/components/layout/language-provider";
 import { livingImages } from "@/lib/design/living-images";
+import { faqEnTh, iconEnTh, L, t } from "@/lib/i18n/living-helpers";
+import { faqSubtitle } from "@/lib/i18n/messages/living/shells";
 import { Building, FileKey, Home, LandPlot } from "lucide-react";
 import Link from "next/link";
 
-const options = [
-  {
-    icon: Home,
-    title: "Freehold condo",
-    titleTh: "คอนโดกรรมสิทธิ์",
-    text: "Foreigners may own up to 49% of sellable area in a qualified condominium — check the quota letter before signing.",
-  },
-  {
-    icon: FileKey,
-    title: "Leasehold",
-    titleTh: "สิทธิเช่า",
-    text: "30-year registered leases (often +30+30) are common for villas, houses, and land-backed projects.",
-  },
-  {
-    icon: LandPlot,
-    title: "Land",
-    titleTh: "ที่ดิน",
-    text: "Direct foreign land ownership is restricted; structures typically use Thai nominee structures (high legal risk) or leasehold.",
-  },
-  {
-    icon: Building,
-    title: "Company structures",
-    titleTh: "นิติบุคคล",
-    text: "Buying via Thai majority companies requires FBA compliance and ongoing accounting — not a casual purchase route.",
-  },
-];
+function getOptions() {
+  return [
+    iconEnTh(
+      Home,
+      "Freehold condo",
+      "คอนโดกรรมสิทธิ์",
+      "Foreigners may own up to 49% of sellable area — check quota letter before signing.",
+      "ต่างชาติถือกรรมสิทธิ์ได้ไม่เกิน 49% — ตรวจหนังสือโควตาก่อนเซ็น",
+      "公寓永久产权",
+      "Freehold кондо",
+    ),
+    iconEnTh(
+      FileKey,
+      "Leasehold",
+      "สิทธิเช่า",
+      "30-year registered leases (+ renewals) common for villas and land projects.",
+      "สิทธิเช่า 30 ปี (ต่ออายุ) ใช้กับวิลล่าและโครงการที่ดิน",
+      "租赁权",
+      "Leasehold",
+    ),
+    iconEnTh(
+      LandPlot,
+      "Land",
+      "ที่ดิน",
+      "Direct foreign land ownership is restricted; leasehold or company structures apply.",
+      "ต่างชาติถือที่ดินโดยตรงจำกัด ใช้เช่าหรือโครงสร้างนิติบุคคล",
+      "土地",
+      "Земля",
+    ),
+    iconEnTh(
+      Building,
+      "Company structures",
+      "นิติบุคคล",
+      "Thai majority companies need FBA compliance — not a casual purchase route.",
+      "บริษัทไทยส่วนใหญ่ต้องผ่าน FBA ไม่ใช่ทางซื้อแบบสบายๆ",
+      "公司结构",
+      "Через компанию",
+    ),
+  ];
+}
+
+function getTableRows(lang: import("@/lib/i18n/languages").LanguageCode) {
+  return [
+    {
+      type: t(lang, L("Condo freehold", "คอนโดกรรมสิทธิ์", "公寓永久产权", "Freehold кондо")),
+      access: t(lang, L("Yes, within 49% quota", "ได้ภายในโควตา 49%", "可以，在 49% 配额内", "Да, в квоте 49%")),
+      use: t(lang, L("Beach / city apartments", "คอนโดชายหาด/เมือง", "海滨/市区公寓", "Квартиры у моря")),
+    },
+    {
+      type: t(lang, L("Registered lease", "สิทธิเช่าจดทะเบียน", "登记租赁", "Аренда с регистрацией")),
+      access: t(lang, L("Yes, up to 30+30 years", "ได้สูงสุด 30+30 ปี", "可以，最长 30+30 年", "Да, до 30+30 лет")),
+      use: t(lang, L("Houses, villas, land", "บ้าน วิลล่า ที่ดิน", "别墅、土地项目", "Дома, виллы")),
+    },
+    {
+      type: t(lang, L("Direct land", "ที่ดินโดยตรง", "直接持有土地", "Земля напрямую")),
+      access: t(lang, L("Generally no", "โดยทั่วไปไม่ได้", "通常不可以", "Как правило нет")),
+      use: t(lang, L("Requires Thai structure", "ต้องใช้โครงสร้างไทย", "需泰方结构", "Тайская структура")),
+    },
+  ];
+}
 
 const faqs = [
-  {
-    id: "quota",
-    question: "How do I verify foreign quota?",
-    questionTh: "ตรวจโควต้าต่างชาติอย่างไร?",
-    answer:
-      "Request a juristic person letter showing foreign ownership ratio and unit count. Your lawyer should match the Chanote title and house registration before transfer day.",
-  },
-  {
-    id: "lease",
-    question: "Is leasehold safe for 90 years?",
-    questionTh: "เช่า 90 ปีปลอดภัยไหม?",
-    answer:
-      "Renewal clauses must be registered at the Land Office. Unregistered side agreements are not enforceable — always register extensions.",
-  },
+  faqEnTh(
+    "quota",
+    "How do I verify foreign quota?",
+    "ตรวจโควตาต่างชาติอย่างไร?",
+    "Request juristic person letter and match Chanote title before transfer day.",
+    "ขอหนังสือนิติบุคคลและตรวจโฉนดก่อนวันโอน",
+    "如何核实外资配额？",
+    "Проверка квоты?",
+  ),
+  faqEnTh(
+    "lease",
+    "Is leasehold safe for 90 years?",
+    "เช่า 90 ปีปลอดภัยไหม?",
+    "Renewals must be registered at Land Office — unregistered side deals are not enforceable.",
+    "ต่ออายุต้องจดทะเบียนที่ดิน ข้อตกลงนอกระบบใช้ไม่ได้",
+    "90 年租赁安全吗？",
+    "Leasehold на 90 лет?",
+  ),
 ];
 
 export function OwnershipPage() {
+  const { language } = useLanguage();
+  const h = {
+    options: t(language, L("Ownership options", "ทางเลือกกรรมสิทธิ์", "产权选择", "Варианты владения")),
+    compare: t(language, L("Quick comparison", "เปรียบเทียบสั้นๆ", "快速对比", "Сравнение")),
+    type: t(language, L("Type", "ประเภท", "类型", "Тип")),
+    access: t(language, L("Foreign access", "ต่างชาติ", "外籍准入", "Для иностранцев")),
+    use: t(language, L("Typical use", "การใช้ทั่วไป", "典型用途", "Применение")),
+    disclaimer: t(
+      language,
+      L("Not legal advice —", "ไม่ใช่คำแนะนำทางกฎหมาย —", "非法律意见 —", "Не юридическая консультация —"),
+    ),
+    guide: t(language, L("condo buying guide", "คู่มือซื้อคอนโด", "购房指南", "гид по покупке кондо")),
+  };
+
   return (
-    <LivingPageShell
-      heroImage={livingImages.ownership}
-      heroAlt="Property ownership and keys"
-      badge="Housing"
-      breadcrumbLeaf="Ownership"
-      title="Leasehold vs Freehold | สิทธิการถือครอง"
-      subtitle="Understand foreign property ownership frameworks and title transfers in Thailand."
-      ctaEyebrow="Legal Service"
-      ctaTitle="Get a title & quota review"
-      ctaBody="Pattaya lawyers verify Chanote, foreign quota, and lease registration before you transfer funds."
-      ctaButton="Legal Guide Consultation"
-      bottomTitle="Buying a condo instead?"
-      bottomBody="See the full Pattaya buyer checklist and Land Office steps."
-      bottomPrimary={{ label: "Condo buying guide", href: "/living/housing/condo-buying" }}
-      bottomSecondary={{ label: "Rentals guide →", href: "/living/housing/rentals" }}
-    >
+    <LocalizedLivingPageShell shellKey="ownership" heroImage={livingImages.ownership} heroAlt="Property ownership">
       <section aria-labelledby="ownership-options">
         <h2 id="ownership-options" className="text-2xl font-bold text-[#0A192F] sm:text-3xl">
-          Ownership options
+          {h.options}
         </h2>
-        <p className="mt-1 text-sm text-[#777777]">ทางเลือกสำหรับชาวต่างชาติ</p>
         <div className="mt-6">
-          <LivingIconCards items={options} />
+          <LivingIconCards items={getOptions()} />
         </div>
       </section>
 
       <section aria-labelledby="ownership-compare">
         <h2 id="ownership-compare" className="text-2xl font-bold text-[#0A192F] sm:text-3xl">
-          Quick comparison
+          {h.compare}
         </h2>
         <div className="mt-6 overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white">
           <table className="w-full text-left text-sm">
             <thead className="bg-[#D7CBBA]/60 text-xs font-bold uppercase tracking-wide text-[#6b5a48]">
               <tr>
-                <th className="px-4 py-3 sm:px-6">Type</th>
-                <th className="px-4 py-3 sm:px-6">Foreign access</th>
-                <th className="hidden px-4 py-3 sm:table-cell sm:px-6">Typical use</th>
+                <th className="px-4 py-3 sm:px-6">{h.type}</th>
+                <th className="px-4 py-3 sm:px-6">{h.access}</th>
+                <th className="hidden px-4 py-3 sm:table-cell sm:px-6">{h.use}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[#e2e8f0] text-[#444748]">
-              <tr>
-                <td className="px-4 py-3 font-medium text-[#0A192F] sm:px-6">Condo freehold</td>
-                <td className="px-4 py-3 sm:px-6">Yes, within 49% quota</td>
-                <td className="hidden px-4 py-3 sm:table-cell sm:px-6">Beach / city apartments</td>
-              </tr>
-              <tr>
-                <td className="px-4 py-3 font-medium text-[#0A192F] sm:px-6">Registered lease</td>
-                <td className="px-4 py-3 sm:px-6">Yes, up to 30+30 years</td>
-                <td className="hidden px-4 py-3 sm:table-cell sm:px-6">Houses, villas, land projects</td>
-              </tr>
-              <tr>
-                <td className="px-4 py-3 font-medium text-[#0A192F] sm:px-6">Direct land</td>
-                <td className="px-4 py-3 sm:px-6">Generally no</td>
-                <td className="hidden px-4 py-3 sm:table-cell sm:px-6">Requires Thai structure</td>
-              </tr>
+              {getTableRows(language).map((row) => (
+                <tr key={row.type}>
+                  <td className="px-4 py-3 font-medium text-[#0A192F] sm:px-6">{row.type}</td>
+                  <td className="px-4 py-3 sm:px-6">{row.access}</td>
+                  <td className="hidden px-4 py-3 sm:table-cell sm:px-6">{row.use}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
         <p className="mt-4 text-xs text-[#777777]">
-          Not legal advice —{" "}
+          {h.disclaimer}{" "}
           <Link href="/living/housing/condo-buying" className="font-semibold text-[#B29475] hover:underline">
-            condo buying guide
-          </Link>{" "}
-          for transfer steps.
+            {h.guide}
+          </Link>
         </p>
       </section>
 
-      <LivingFaqSection faqs={faqs} subtitle="คำถามที่พบบ่อย — Ownership" />
-    </LivingPageShell>
+      <LivingFaqSection
+        faqs={faqs}
+        subtitle={faqSubtitle(language, "Ownership", "กรรมสิทธิ์", "产权", "Владение")}
+      />
+    </LocalizedLivingPageShell>
   );
 }

@@ -1,7 +1,6 @@
 /** Image URLs from Stitch: Explore Pattaya - Softened Newsletter Style */
 export const exploreImages = {
-  hero:
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuCK-LOxvUHxKw3nNQwbMeG_zxI-BXE5n76JrcOfpP4OtRHveNa9GTIeUham2YE2IOPziTy_DluCVTAB6MVcSEu07Yzbiiu4uvKu7DdUQgFwinJqU1P1o93dmPCh4Dw-LvEsd3h4IgZjJbHvRGyTvw9stYl3fEw7aypmDeSyDozxgAqLGDgv1TTTnkLNHQc0KzLMxB3baKjs11mx_xXH8k056URQzlMHR-kEVycEVvuOPtkfunqu1Vx7Cdh8N2MjVq4Pqs9OfF_eExB_",
+  hero: "/images/explore/explore-hero-cinematic.png",
   islandHopping:
     "https://images.unsplash.com/photo-1505142468610-359e7d316be0?auto=format&fit=crop&w=1600&q=80",
   skyGallery:
@@ -20,8 +19,9 @@ export const exploreImages = {
   /** Water park / pool — verified HTTP 200 (replaces private aida URL) */
   aquaverse:
     "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1600&q=80",
+  /** Yacht hero — verified HTTP 200 (replaces private aida URL) */
   yacht:
-    "https://lh3.googleusercontent.com/aida/ADBb0uh3TEpd9izbXZnxng63VZD1k6Nr_CMSbLBud63FyVkIEcSNmulh8-5iGFBhHOAk4ccxWfT8mqf1b7qIf2HRUW7jYYu7Jp_KmzlNqyie-QckMOcOJPOCk6EQ2h830lzPgeLeckbQ30rIqihoZXiBa1InZkbFgPcDkNGVm26FBa5ZGIrprCUMkZqanwfCDj2R_DlWb4MMT4dCPlDl6RVbBk_3YZcUvh3F0YZ5iYYNyzqfthUN_G8pQ779w4I",
+    "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1600&q=80",
   hiddenSpots:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuAFJ7X4CdEv2oYq_PXJBLXveq2Xbzjtg1UGMUcYnk1OtNpdqM3y7gY44E5YibzP3Tp97A2XCPVA6_HVkR5Nck_4UgHktTMAddnK0glfXroBUYaQe7wgcfDr8ticmZCAjAJBaeoiuqi_-9RzbdJbKHoxfny9ERl8lK7pwQ-Wf75w63cV9G4P4_oVaphUDQZtxyjZH1Sm_ZGk7-z1VuzmjsygiGQrgkuIEmQaO3BaH8rK15uCGg4v969v_8JwnHnpoHArjrXrIHQKbhmt",
   weekendGuide:

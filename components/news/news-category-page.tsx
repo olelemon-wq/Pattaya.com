@@ -1,4 +1,7 @@
+"use client";
+
 import { FeaturedHeroCinematic } from "@/components/cinematic/featured-hero-cinematic";
+import { useLanguage } from "@/components/layout/language-provider";
 import {
   NewsCategoryHeader,
   NewsPageFrame,
@@ -11,6 +14,9 @@ import {
   OverlayFeaturedCard,
 } from "@/components/news/news-ui";
 import type { NewsCategoryContent } from "@/lib/data/news-category-types";
+import { resolveNewsCategoryContent } from "@/lib/i18n/resolve-news-category";
+import { localizeNewsNavItem } from "@/lib/i18n/messages/news-nav";
+import { tNewsCategoryUi } from "@/lib/i18n/messages/news-category-ui";
 import { newsTheme } from "@/lib/design/news-theme";
 import type { NavItem } from "@/lib/navigation/types";
 import { buildBreadcrumbs } from "@/lib/navigation/utils";
@@ -34,20 +40,27 @@ function formatArticleFooter(footer: string) {
   return footer.replace(/^🕐\s*/, "").replace(/^⚠\s*/, "");
 }
 
-export function NewsCategoryPage({ item, content }: NewsCategoryPageProps) {
-  const breadcrumbs = buildBreadcrumbs("News", "/news", item.label, item.href);
-  const headlinesTitle =
-    content.headlinesTitle ?? `Latest ${item.label} Headlines`;
+export function NewsCategoryPage({ item, content: baseContent }: NewsCategoryPageProps) {
+  const { language } = useLanguage();
+  const itemLocalized = localizeNewsNavItem(language, item);
+  const content = resolveNewsCategoryContent(language, item.slug, baseContent);
+
+  const breadcrumbs = buildBreadcrumbs(
+    language === "th" ? "ข่าวสาร" : language === "zh" ? "新闻" : language === "ru" ? "Новости" : "News",
+    "/news",
+    itemLocalized.label,
+    item.href,
+  );
+
   const footerVariant = content.footer?.variant ?? "default";
 
   return (
     <NewsPageFrame>
       <NewsCategoryHeader
         breadcrumbs={breadcrumbs}
-        category={item.category}
-        title={item.label}
-        titleTh={item.labelTh}
-        description={item.description}
+        category={itemLocalized.category}
+        title={itemLocalized.label}
+        description={itemLocalized.description}
       />
 
       <section className="relative mb-12 flex flex-col gap-5 sm:mb-16 sm:gap-6">
@@ -56,11 +69,11 @@ export function NewsCategoryPage({ item, content }: NewsCategoryPageProps) {
             image={content.hero.image}
             imageAlt={content.hero.imageAlt}
             href="#latest"
-            category={item.subcategory}
-            featuredLabel={content.hero.featuredLabel ?? "Featured"}
+            category={itemLocalized.subcategory}
+            featuredLabel={content.hero.featuredLabel ?? tNewsCategoryUi(language, "featured")}
             title={content.hero.title}
             excerpt={content.hero.excerpt}
-            ctaLabel={content.hero.ctaLabel ?? "Read Full Story"}
+            ctaLabel={content.hero.ctaLabel ?? tNewsCategoryUi(language, "readFullStory")}
             ctaTone="news"
             showAiSummary={false}
             minHeightClass="min-h-[min(70dvh,380px)] sm:min-h-[460px] lg:min-h-[520px]"
@@ -85,18 +98,12 @@ export function NewsCategoryPage({ item, content }: NewsCategoryPageProps) {
                     <NewsBadge className="bg-white/15 text-white backdrop-blur-sm">
                       {spotlight.badge}
                     </NewsBadge>
-                    <Icon
-                      className="h-5 w-5 text-white/90"
-                      strokeWidth={2}
-                      aria-hidden
-                    />
+                    <Icon className="h-5 w-5 text-white/90" strokeWidth={2} aria-hidden />
                   </div>
                   <h2 className="mb-2 text-lg font-semibold leading-snug text-white sm:text-xl">
                     {spotlight.title}
                   </h2>
-                  <p className="line-clamp-3 text-sm text-white/85">
-                    {spotlight.excerpt}
-                  </p>
+                  <p className="line-clamp-3 text-sm text-white/85">{spotlight.excerpt}</p>
                 </div>
                 <span className={newsTheme.spotlightCta}>{spotlight.cta}</span>
               </OverlayFeaturedCard>
@@ -107,10 +114,10 @@ export function NewsCategoryPage({ item, content }: NewsCategoryPageProps) {
 
       <section id="latest" className="mb-12 scroll-mt-24 sm:mb-16">
         <NewsSectionHeading
-          title={headlinesTitle}
+          title={content.headlinesTitle ?? itemLocalized.label}
           action={
             <Link href="/news" className={newsTheme.link}>
-              News Hub →
+              {tNewsCategoryUi(language, "newsHub")}
             </Link>
           }
         />
@@ -134,12 +141,8 @@ export function NewsCategoryPage({ item, content }: NewsCategoryPageProps) {
 
       {content.footer ? (
         <section className={footerStyles[footerVariant]}>
-          <h2 className={`text-lg font-semibold text-[#0c1a33]`}>
-            {content.footer.title}
-          </h2>
-          <p className={`mt-2 text-sm leading-relaxed ${newsTheme.muted}`}>
-            {content.footer.body}
-          </p>
+          <h2 className="text-lg font-semibold text-[#0c1a33]">{content.footer.title}</h2>
+          <p className={`mt-2 text-sm leading-relaxed ${newsTheme.muted}`}>{content.footer.body}</p>
           <div className="mt-4 flex flex-wrap gap-3">
             <Link href={content.footer.primary.href} className={newsTheme.btnPrimary}>
               {content.footer.primary.label}

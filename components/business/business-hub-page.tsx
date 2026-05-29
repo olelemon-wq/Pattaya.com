@@ -1,128 +1,23 @@
+"use client";
+
 import { BusinessPageFooter } from "@/components/business/business-page-footer";
+import { FeaturedHeroCinematic } from "@/components/cinematic/featured-hero-cinematic";
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import Image from "next/image";
 import Link from "next/link";
+import { useLanguage } from "@/components/layout/language-provider";
+import { commonUi } from "@/lib/i18n/messages/common";
+import {
+  getEconomyStats,
+  getIndustryGuides,
+  getNetworkingEvents,
+  getSetupCards,
+  tBusiness,
+  type IndustryGuideItem,
+} from "@/lib/i18n/messages/business-hub";
+import { pickText } from "@/lib/i18n/text";
 import { businessImages } from "@/lib/design/business-images";
-
-const setupCards = [
-  {
-    title: "Pattaya Company Incorporation",
-    excerpt:
-      "Your gateway to the Eastern Economic Corridor (EEC). Complete legal frameworks for local and international entities with full regulatory compliance.",
-    image: businessImages.incorporation,
-    imageAlt: "Pattaya Company Incorporation",
-    cta: "ติดต่อสำนักงานกฎหมาย",
-    href: "/business/company-setup/thai-company",
-    features: [
-      "จดทะเบียนนิติบุคคลและใบอนุญาตทำงาน (Work Permit)",
-      "บริการจัดหาสำนักงานเสมือนและพื้นที่ทำงาน",
-      "ที่ปรึกษากฎหมายและการบัญชีสากล",
-    ],
-  },
-  {
-    title: "สิทธิประโยชน์ BOI & EEC",
-    excerpt:
-      "ยกระดับความสามารถในการแข่งขันและสิทธิพิเศษทางภาษีสำหรับการลงทุนในโครงการยุทธศาสตร์ชาติ พร้อมสิทธิประโยชน์ในการถือครองอสังหาริมทรัพย์",
-    image: businessImages.boiEec,
-    imageAlt: "สิทธิประโยชน์ BOI & EEC",
-    cta: "บริการปรึกษาด้านการขอสิทธิ BOI",
-    href: "/business/company-setup/boi",
-    features: [
-      "จดทะเบียนนิติบุคคลและใบอนุญาตทำงาน (Work Permit)",
-      "บริการจัดหาสำนักงานเสมือนและพื้นที่ทำงาน",
-      "ที่ปรึกษากฎหมายและการบัญชีสากล",
-    ],
-  },
-];
-
-type IndustryGuide = {
-  title: string;
-  badge: string;
-  excerpt: string;
-  image: string;
-  imageAlt: string;
-  checklist: string[];
-  cta: string;
-  href: string;
-  variant: "light" | "dark";
-  badgePosition?: "top" | "bottom";
-};
-
-const industryGuides: IndustryGuide[] = [
-  {
-    title: "Restaurant Guide",
-    badge: "Hot Industry",
-    excerpt:
-      "การเปิดร้านอาหารและคาเฟ่ลักชูรี: การเลือกทำเล และมาตรฐานความปลอดภัยทางอาหารระดับสากล",
-    image: businessImages.restaurant,
-    imageAlt: "Luxury Restaurant",
-    checklist: ["Health Permit Checklist", "Alcohol License Guide"],
-    cta: "ดาวน์โหลดคู่มือฉบับเต็ม",
-    href: "/business/guide/restaurant",
-    variant: "light",
-  },
-  {
-    title: "Bar & Nightlife",
-    badge: "Elite Zone",
-    excerpt:
-      "การบริหารจัดการสถานบันเทิง: ข้อกำหนดทางกฎหมายด้านเสียงและเวลาเปิด-ปิดตามกฎหมายใหม่",
-    image: businessImages.nightlife,
-    imageAlt: "Nightlife",
-    checklist: ["Zoning Regulations", "Music Copyright Info"],
-    cta: "นัดคุยที่ปรึกษา",
-    href: "/business/guide/bar",
-    variant: "dark",
-  },
-  {
-    title: "Hotel Industry",
-    badge: "High ROI",
-    excerpt:
-      "การลงทุนในอสังหาริมทรัพย์เพื่อการท่องเที่ยว: ใบอนุญาตโรงแรมและมาตรฐานการบริการระดับ 5 ดาว",
-    image: businessImages.hotel,
-    imageAlt: "Luxury Hotel Lobby",
-    checklist: ["EIA Standards", "Hotel License Flow"],
-    cta: "ดาวน์โหลดคู่มือฉบับเต็ม",
-    href: "/business/guide/hotel",
-    variant: "light",
-    badgePosition: "bottom",
-  },
-];
-
-const economyStats = [
-  { icon: "👥", value: "12M+", label: "Annual Visitors" },
-  { icon: "📈", value: "+18%", label: "Real Estate Growth (YoY)" },
-  { icon: "💰", value: "฿1.3T", label: "EEC Investment Value" },
-  { icon: "🏗️", value: "200+", label: "Infrastructure Projects" },
-  { icon: "📊", value: "14%", label: "EEC GDP Share (Thailand)" },
-  { icon: "🏭", value: "30+", label: "Industrial Estates Zones" },
-];
-
-const networkingEvents = [
-  {
-    day: "24",
-    month: "OCT",
-    year: "2024",
-    title: "Pattaya EEC Investment Summit",
-    location: "Royal Cliff Grand Hotel, Pattaya",
-    href: "/business/networking/events",
-  },
-  {
-    day: "12",
-    month: "NOV",
-    year: "2024",
-    title: "Business After Hours: Networking Night",
-    location: "Hilton Pattaya - Horizon Rooftop",
-    href: "/business/networking/events",
-  },
-  {
-    day: "05",
-    month: "DEC",
-    year: "2024",
-    title: "Digital Nomad & Tech Hub Conference",
-    location: "Pattaya City Hall - Convention Center",
-    href: "/business/networking/events",
-  },
-];
+type SetupCardProps = ReturnType<typeof getSetupCards>[number];
 
 function SetupCard({
   title,
@@ -132,7 +27,9 @@ function SetupCard({
   features,
   cta,
   href,
-}: (typeof setupCards)[number]) {
+}: SetupCardProps) {
+  const { language } = useLanguage();
+
   return (
     <div className="flex h-full flex-col overflow-hidden rounded-xl border border-[#c4c7c8]/30 bg-white shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)]">
       <div className="aspect-[16/10] overflow-hidden">
@@ -146,7 +43,7 @@ function SetupCard({
       </div>
       <div className="flex flex-grow flex-col p-8">
         <span className="mb-6 inline-block w-fit rounded-full border border-[#363636]/15 bg-[#363636]/8 px-4 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#363636]">
-          Elite Service
+          {pickText(language, commonUi.eliteService)}
         </span>
         <h3 className="mb-6 text-2xl font-bold text-[#363636]">{title}</h3>
         <p className="mb-8 text-[#444748]">{excerpt}</p>
@@ -185,7 +82,7 @@ function IndustryGuideCard({
   href,
   variant,
   badgePosition = "top",
-}: IndustryGuide) {
+}: IndustryGuideItem) {
   return (
     <div className="group overflow-hidden rounded-xl border border-[#c4c7c8]/30 bg-white transition-all duration-500 hover:border-[#B8860B]/30 hover:shadow-[0_20px_50px_rgba(184,134,11,0.08)]">
       <div
@@ -250,59 +147,58 @@ function IndustryGuideCard({
 }
 
 export function BusinessHubPage() {
+  const { language } = useLanguage();
+  const setupCards = getSetupCards(language);
+  const industryGuides = getIndustryGuides(language);
+  const economyStats = getEconomyStats(language);
+  const networkingEvents = getNetworkingEvents(language);
+
   return (
     <div data-full-bleed className="bg-[#f5f5f4] text-[#191c1d]">
       <div className="relative z-10 shrink-0 shadow-sm">
         <BreakingNewsTicker variant="business" />
       </div>
 
-      {/* Hero — same height as Explore hub */}
-      <section className="relative flex h-[400px] w-full items-center overflow-hidden md:h-[500px]">
-        <Image
-          src={businessImages.hero}
-          alt="Pattaya Business Hub"
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
+      <section aria-label="Business hero">
+        <FeaturedHeroCinematic
+          image={businessImages.hero}
+          imageAlt="Pattaya Business Hub"
+          href="/business/company-setup/thai-company"
+          category={pickText(language, {
+            en: "Premium Business Hub",
+            th: "ศูนย์กลางธุรกิจพรีเมียม",
+            zh: "高端商业枢纽",
+            ru: "Премиальный бизнес-хаб",
+          })}
+          featuredLabel={pickText(language, {
+            en: "Featured",
+            th: "แนะนำ",
+            zh: "精选",
+            ru: "Рекомендуем",
+          })}
+          title={pickText(language, {
+            en: "Pattaya Business Gateway: Invest and Scale in Pattaya",
+            th: "Pattaya Business Gateway: ลงทุนและเติบโตไปกับพัทยา",
+            zh: "芭提雅商业门户：在芭提雅投资与增长",
+            ru: "Бизнес-шлюз Паттайи: инвестируйте и масштабируйтесь",
+          })}
+          excerpt={pickText(language, {
+            en: "Connect to a regional business hub with EEC investment opportunities and luxury tourism growth sectors.",
+            th: "เชื่อมต่อคุณเข้าสู่ศูนย์กลางทางธุรกิจระดับภูมิภาค กับโอกาสการลงทุนใน EEC และอุตสาหกรรมท่องเที่ยวระดับลักชูรี",
+            zh: "连接区域商业中心，把握 EEC 投资机会与高端旅游增长赛道。",
+            ru: "Подключитесь к региональному бизнес-хабу с инвестициями EEC и ростом люксового туризма.",
+          })}
+          ctaLabel={pickText(language, {
+            en: "Consult an Expert",
+            th: "ปรึกษาผู้เชี่ยวชาญ",
+            zh: "咨询专家",
+            ru: "Консультация эксперта",
+          })}
+          ctaTone="news"
+          visualTone="news-dawn"
+          showAiSummary={false}
+          minHeightClass="min-h-[min(70dvh,400px)] sm:min-h-[500px] lg:min-h-[560px]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#363636]/90 via-[#363636]/50 to-transparent" />
-        <div className="relative z-10 mx-auto w-full max-w-[1280px] px-5 md:px-16">
-          <div className="max-w-3xl space-y-5 md:space-y-6">
-            <div className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-5 py-2 text-white backdrop-blur-md">
-              <span aria-hidden>🏅</span>
-              <span className="text-[12px] font-bold uppercase tracking-[0.2em]">
-                Premium Business Hub
-              </span>
-            </div>
-            <h1 className="text-3xl font-bold leading-[1.1] text-white md:text-5xl">
-              Pattaya Business Gateway:
-              <br />
-              <span className="bg-gradient-to-br from-[#B8860B] to-[#E2B04E] bg-clip-text text-transparent">
-                ลงทุนและเติบโตไปกับพัทยา
-              </span>
-            </h1>
-            <p className="max-w-xl text-base leading-relaxed text-white/80 md:text-lg">
-              เชื่อมต่อคุณเข้าสู่ศูนย์กลางทางธุรกิจระดับภูมิภาค
-              กับโอกาสการลงทุนใน EEC และอุตสาหกรรมท่องเที่ยวระดับลักชูรี
-            </p>
-            <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:gap-4">
-              <Link
-                href="/business/company-setup/thai-company"
-                className="flex items-center justify-center gap-2 rounded-full bg-[#ae2f34] px-6 py-3.5 text-sm font-semibold text-white shadow-xl shadow-[#ae2f34]/20 transition-all hover:scale-[1.02] md:px-8 md:py-4 md:text-base"
-              >
-                ปรึกษาผู้เชี่ยวชาญ / ขอคำแนะนำทางธุรกิจฟรี
-                <span aria-hidden>→</span>
-              </Link>
-              <Link
-                href="/business/investment/real-estate"
-                className="rounded-full border border-white/30 bg-white/10 px-6 py-3.5 text-center text-sm font-semibold text-white backdrop-blur-md transition-all hover:bg-white/20 md:px-8 md:py-4 md:text-base"
-              >
-                ดูแคตตาล็อกโครงการ
-              </Link>
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* Company Setup */}
@@ -310,10 +206,20 @@ export function BusinessHubPage() {
         <div className="mx-auto max-w-[1280px] px-5 md:px-16">
           <div className="mx-auto mb-16 max-w-3xl text-center">
             <h2 className="mb-6 text-4xl font-bold text-[#363636] md:text-5xl">
-              ก้าวแรกสู่ความสำเร็จในพัทยา
+              {pickText(language, {
+                en: "Your First Step to Success in Pattaya",
+                th: "ก้าวแรกสู่ความสำเร็จในพัทยา",
+                zh: "迈向芭提雅成功的第一步",
+                ru: "Ваш первый шаг к успеху в Паттайе",
+              })}
             </h2>
             <p className="text-lg text-[#444748]">
-              บริการที่ปรึกษาแบบครบวงจร ตั้งแต่การจดทะเบียนบริษัทไปจนถึงการขอรับสิทธิประโยชน์ทางภาษีสูงสุดในเขตพัฒนาพิเศษภาคตะวันออก
+              {pickText(language, {
+                en: "End-to-end advisory services from company setup to maximum tax incentives in the Eastern Economic Corridor.",
+                th: "บริการที่ปรึกษาแบบครบวงจร ตั้งแต่การจดทะเบียนบริษัทไปจนถึงการขอรับสิทธิประโยชน์ทางภาษีสูงสุดในเขตพัฒนาพิเศษภาคตะวันออก",
+                zh: "从公司设立到申请东部经济走廊最高税收优惠的一站式咨询服务。",
+                ru: "Комплексный консалтинг: от регистрации компании до максимальных налоговых льгот в EEC.",
+              })}
             </p>
           </div>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
@@ -330,21 +236,40 @@ export function BusinessHubPage() {
           <div className="mb-16 flex flex-col items-end justify-between gap-6 md:flex-row">
             <div className="max-w-2xl">
               <span className="mb-4 block text-sm font-bold uppercase tracking-[0.3em] text-[#B8860B]">
-                Strategic Intelligence
+                {pickText(language, {
+                  en: "Strategic Intelligence",
+                  th: "ข้อมูลเชิงกลยุทธ์",
+                  zh: "战略洞察",
+                  ru: "Стратегическая аналитика",
+                })}
               </span>
               <h2 className="mb-4 text-4xl font-bold italic text-[#363636] md:text-5xl">
-                เจาะลึกอุตสาหกรรมดาวรุ่ง
+                {pickText(language, {
+                  en: "Deep Dive into High-Growth Industries",
+                  th: "เจาะลึกอุตสาหกรรมดาวรุ่ง",
+                  zh: "深入高增长行业",
+                  ru: "Разбор быстрорастущих отраслей",
+                })}
               </h2>
               <p className="border-l-2 border-[#B8860B] pl-6 text-lg italic text-[#444748]">
-                คู่มือบริหารจัดการธุรกิจเฉพาะทาง
-                พร้อมเช็คลิสต์ใบอนุญาตที่จำเป็นสำหรับนักลงทุนในพื้นที่พัทยา
+                {pickText(language, {
+                  en: "Sector-specific operating guides with licensing checklists for Pattaya investors.",
+                  th: "คู่มือบริหารจัดการธุรกิจเฉพาะทาง พร้อมเช็คลิสต์ใบอนุญาตที่จำเป็นสำหรับนักลงทุนในพื้นที่พัทยา",
+                  zh: "面向芭提雅投资者的行业运营指南与牌照清单。",
+                  ru: "Отраслевые руководства и чек-листы лицензий для инвесторов в Паттайе.",
+                })}
               </p>
             </div>
             <Link
               href="/business/guide/restaurant"
               className="group flex items-center gap-3 pb-1 text-sm font-bold uppercase tracking-widest text-[#363636] transition-all hover:text-[#B8860B]"
             >
-              ดูคู่มือทั้งหมด
+              {pickText(language, {
+                en: "View all guides",
+                th: "ดูคู่มือทั้งหมด",
+                zh: "查看全部指南",
+                ru: "Смотреть все гайды",
+              })}
               <span className="transition-transform group-hover:translate-x-1">
                 →
               </span>
@@ -366,9 +291,21 @@ export function BusinessHubPage() {
           <div className="grid grid-cols-1 items-center gap-20 lg:grid-cols-2">
             <div>
               <h2 className="mb-10 text-4xl font-bold leading-tight text-white">
-                สถิติและความเติบโต
+                {pickText(language, {
+                  en: "Pattaya Economic",
+                  th: "สถิติและความเติบโต",
+                  zh: "芭提雅经济",
+                  ru: "Экономика Паттайи",
+                })}
                 <br />
-                <span className="text-[#ffb3b0]">ทางเศรษฐกิจพัทยา</span>
+                <span className="text-[#ffb3b0]">
+                  {pickText(language, {
+                    en: "Growth Metrics",
+                    th: "ทางเศรษฐกิจพัทยา",
+                    zh: "增长指标",
+                    ru: "Показатели роста",
+                  })}
+                </span>
               </h2>
               <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur-sm">
                 <div className="grid grid-cols-2 gap-8">
@@ -403,28 +340,26 @@ export function BusinessHubPage() {
                 <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/80 via-transparent to-transparent p-8">
                   <div className="space-y-1">
                     <span className="mb-2 inline-block rounded-full bg-[#ae2f34] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
-                      Special Project
+                      {tBusiness(language, "specialProject")}
                     </span>
                     <h4 className="text-xl font-bold text-white">
-                      EEC Investment Spotlight: Laem Chabang Phase 3
+                      {tBusiness(language, "investmentSpotlightTitle")}
                     </h4>
                   </div>
                 </div>
               </div>
               <div className="px-4 pb-4">
                 <h4 className="mb-4 text-2xl font-semibold text-[#363636]">
-                  Real Estate Opportunity
+                  {tBusiness(language, "realEstateTitle")}
                 </h4>
                 <p className="mb-10 leading-relaxed text-[#444748]">
-                  เข้าถึงพอร์ตการลงทุนอสังหาริมทรัพย์ระดับพรีเมียม
-                  ทั้งคอนโดมิเนียมติดทะเลและวิลล่าตากอากาศหรู
-                  พร้อมผลตอบแทนที่มั่นคง
+                  {tBusiness(language, "realEstateExcerpt")}
                 </p>
                 <Link
                   href="/business/investment/real-estate"
                   className="block w-full rounded-2xl border-2 border-[#363636] py-5 text-center font-bold text-[#363636] shadow-lg transition-all hover:bg-[#363636] hover:text-white hover:shadow-[#363636]/20"
                 >
-                  ติดต่อพาร์ทเนอร์เอเจนท์
+                  {tBusiness(language, "contactAgent")}
                 </Link>
               </div>
             </div>
@@ -434,7 +369,7 @@ export function BusinessHubPage() {
               href="/business/investment/economy"
               className="text-sm font-bold uppercase tracking-widest text-white/80 transition-colors hover:text-white"
             >
-              ดูภาพรวมเศรษฐกิจพัทยา →
+              {tBusiness(language, "viewEconomyOverview")}
             </Link>
           </div>
         </div>
@@ -445,7 +380,12 @@ export function BusinessHubPage() {
         <div className="mx-auto max-w-[1280px] px-5 md:px-16">
           <div className="mb-16 flex items-center gap-5">
             <h2 className="text-4xl font-bold text-[#363636]">
-              ตารางกิจกรรมเครือข่ายธุรกิจ
+              {pickText(language, {
+                en: "Business Networking Events",
+                th: "ตารางกิจกรรมเครือข่ายธุรกิจ",
+                zh: "商业社交活动",
+                ru: "Бизнес-мероприятия и нетворкинг",
+              })}
             </h2>
           </div>
           <div className="overflow-hidden rounded-2xl border border-[#c4c7c8]/30 bg-[#ebebea]">
@@ -485,7 +425,7 @@ export function BusinessHubPage() {
                     href={event.href}
                     className="whitespace-nowrap rounded-full bg-[#363636] px-10 py-3.5 text-sm font-bold tracking-wide text-white shadow-md transition-all hover:bg-[#363636]/90 hover:shadow-lg"
                   >
-                    ลงทะเบียนล่วงหน้า
+                    {pickText(language, commonUi.registerEarly)}
                   </Link>
                 </div>
               </div>

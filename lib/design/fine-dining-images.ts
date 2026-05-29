@@ -11,7 +11,7 @@ export const fineDiningImages = {
   collectionRooftop: images.heroCityNight,
   collectionChefsTable: images.guideDining,
   guideDressCode: images.guideInterior,
-  guideSunset: exploreImages.yacht,
+  guideSunset: exploreImages.skyGallery,
   guideEtiquette: exploreImages.cafeLifestyle,
   guideOccasion: exploreImages.hiddenSpots,
 } as const;

@@ -1,3 +1,5 @@
+"use client";
+
 import { NewsFeaturedHeroCinematic } from "@/components/news/news-featured-hero-cinematic";
 import { NewsPageFrame, NewsSectionHeading } from "@/components/news/news-layout";
 import {
@@ -7,6 +9,18 @@ import {
   NewsTimeFooter,
   OverlayFeaturedCard,
 } from "@/components/news/news-ui";
+import { useLanguage } from "@/components/layout/language-provider";
+import {
+  getCitySpotlights,
+  getInfrastructureBlock,
+  getMoreCityArticles,
+  getNewsArticles,
+  getNewsFeaturedCards,
+  getNewsSections,
+  getSportsBlock,
+  getWorldNewsBlock,
+  tNewsHero,
+} from "@/lib/i18n/messages/news-hub";
 import { newsOverlay } from "@/lib/data/news-category-overlays";
 import { newsImages } from "@/lib/design/news-images";
 import { newsTheme } from "@/lib/design/news-theme";
@@ -26,15 +40,26 @@ import Image from "next/image";
 import Link from "next/link";
 
 export function NewsHubPage() {
+  const { language } = useLanguage();
+  const featured = getNewsFeaturedCards(language);
+  const sections = getNewsSections(language);
+  const articles = getNewsArticles(language);
+  const moreArticles = getMoreCityArticles(language);
+  const spotlights = getCitySpotlights(language);
+  const infra = getInfrastructureBlock(language);
+  const sports = getSportsBlock(language);
+  const worldNews = getWorldNewsBlock(language);
+  const [propertyCard, visaCard, immigrationCard] = featured;
+  const [crimeArticle, accidentArticle, gemsArticle] = articles;
+  const [sanctuaryArticle, walkingArticle, immigrationArticle] = moreArticles;
+
   return (
     <NewsPageFrame>
         {/* Featured City Updates + three cards below */}
         <section className="mb-12 flex flex-col gap-5 sm:mb-20 sm:gap-6">
           <NewsFeaturedHeroCinematic />
           <p className="hidden flex-wrap items-center gap-3 px-1 text-sm text-[#777777] sm:flex">
-            <span>By Editor-in-Chief</span>
-            <span className="h-1 w-1 rounded-full bg-[#c4c7c8]" aria-hidden />
-            <span>2 Hours Ago</span>
+            {tNewsHero(language, "byline")}
           </p>
 
           <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-3">
@@ -46,7 +71,7 @@ export function NewsHubPage() {
               <div>
                 <div className="mb-4 flex items-start justify-between">
                   <NewsBadge className="bg-white/15 text-white backdrop-blur-sm">
-                    Property Market
+                    {propertyCard.badge}
                   </NewsBadge>
                   <Building2
                     className="h-5 w-5 text-white/90"
@@ -55,18 +80,17 @@ export function NewsHubPage() {
                   />
                 </div>
                 <h3 className="mb-2 text-lg font-semibold leading-snug text-white sm:text-xl">
-                  Wongamat Riviera: New Luxury Penthouse Units Released
+                  {propertyCard.title}
                 </h3>
                 <p className="line-clamp-2 text-sm text-white/85">
-                  Exclusive preview of the highest-floor residences starting at 25M
-                  THB with panoramic sea views.
+                  {propertyCard.excerpt}
                 </p>
               </div>
               <Link
-                href="/news/business/real-estate"
+                href={propertyCard.href}
                 className={`mt-4 block py-2 text-center ${newsTheme.spotlightCta}`}
               >
-                View Property Ads
+                {propertyCard.cta}
               </Link>
             </OverlayFeaturedCard>
 
@@ -78,7 +102,7 @@ export function NewsHubPage() {
               <div>
                 <div className="mb-4 flex items-start justify-between">
                   <NewsBadge className="bg-white/20 text-white backdrop-blur-sm">
-                    Visa News
+                    {visaCard.badge}
                   </NewsBadge>
                   <IdCard
                     className="h-5 w-5 text-white/90"
@@ -87,18 +111,15 @@ export function NewsHubPage() {
                   />
                 </div>
                 <h3 className="mb-2 text-lg font-semibold leading-snug text-white sm:text-xl">
-                  New &apos;Destination Thailand&apos; Visa: Expert Guide
+                  {visaCard.title}
                 </h3>
-                <p className="text-sm text-white/85">
-                  Everything you need to know about the new 5-year visa for digital
-                  nomads and remote workers.
-                </p>
+                <p className="text-sm text-white/85">{visaCard.excerpt}</p>
               </div>
               <Link
-                href="/news/expat/visa"
+                href={visaCard.href}
                 className="mt-4 block rounded-lg bg-white py-2 text-center text-sm font-semibold text-[#10438f] transition-opacity hover:opacity-90"
               >
-                Get Visa Quote
+                {visaCard.cta}
               </Link>
             </OverlayFeaturedCard>
 
@@ -106,7 +127,7 @@ export function NewsHubPage() {
               image={newsImages.immigration}
               imageAlt="Immigration office and official documents in Thailand"
               overlayClass="bg-gradient-to-t from-[#0c1a33]/95 via-[#455f88]/70 to-[#455f88]/25"
-              href="/news/expat/immigration"
+              href={immigrationCard.href}
             >
               <div className="mb-2 flex items-center justify-between gap-2">
                 <div className="flex items-center gap-3">
@@ -114,27 +135,24 @@ export function NewsHubPage() {
                     <ClipboardList className="h-5 w-5" aria-hidden />
                   </div>
                   <h4 className="font-bold uppercase tracking-wide text-white">
-                    Immigration Updates
+                    {immigrationCard.heading}
                   </h4>
                 </div>
                 <span className="shrink-0 text-xs font-medium text-white/75">
-                  Updated 15m ago
+                  {immigrationCard.updated}
                 </span>
               </div>
               <div className="space-y-3">
                 <h5 className="text-sm font-bold text-[#b6d0ff]">
-                  90-Day Online Reporting System
+                  {immigrationCard.subheading}
                 </h5>
                 <p className="text-sm leading-relaxed text-white/85">
-                  Temporary maintenance scheduled for{" "}
-                  <span className="font-semibold text-white">Oct 14–16</span>.
-                  Residents are advised to visit the Jomtien office or use the
-                  mobile app for alternative filings.
+                  {immigrationCard.excerpt}
                 </p>
               </div>
               <div className="border-t border-white/20 pt-2">
                 <span className="text-xs font-bold text-white group-hover:underline">
-                  View Detailed Advisory →
+                  {immigrationCard.cta}
                 </span>
               </div>
             </OverlayFeaturedCard>
@@ -144,87 +162,87 @@ export function NewsHubPage() {
         {/* City Movements */}
         <section className="mb-20">
           <NewsSectionHeading
-            title="City Movements"
+            title={sections.cityMovements}
             action={
               <Link href="/news" className={newsTheme.link}>
-                Explore All →
+                {sections.exploreAll}
               </Link>
             }
           />
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             <NewsArticleCard
-              href="/news/local-news/crime"
+              href={crimeArticle.href}
               image={newsImages.policeCrime}
               imageAlt="Night street with police lights"
-              badge="Police & Crime"
+              badge={crimeArticle.badge}
               badgeClass={newsTheme.badgeDark}
-              title="Jomtien Raids: Underground Casino Shut Down in Late-Night Operation"
-              excerpt="Authorities seized over 2 million THB in cash and equipment during the 2 AM raid on a private villa..."
-              footer={<NewsTimeFooter>45 mins ago</NewsTimeFooter>}
+              title={crimeArticle.title}
+              excerpt={crimeArticle.excerpt}
+              footer={<NewsTimeFooter>{crimeArticle.footer ?? ""}</NewsTimeFooter>}
             />
 
             <NewsArticleCard
-              href="/news/local-news/accidents"
+              href={accidentArticle.href}
               image={newsImages.breakingAccident}
               imageAlt="Pattaya highway at night"
-              badge="Breaking"
+              badge={accidentArticle.badge}
               badgeClass="animate-pulse bg-[#ba1a1a] text-white"
-              title="Major Traffic Delay: Sukhumvit Road Blocked After Multi-Vehicle Collision"
-              excerpt="Commuters are advised to take alternative routes through local sois as emergency crews work to clear the scene..."
-              footer={<NewsLiveFooter>Live Update</NewsLiveFooter>}
+              title={accidentArticle.title}
+              excerpt={accidentArticle.excerpt}
+              footer={<NewsLiveFooter>{sections.liveUpdate}</NewsLiveFooter>}
               borderHover="border-2 border-transparent hover:border-[#10438f]"
             />
 
             <NewsArticleCard
-              href="/news/tourism/attractions"
+              href={gemsArticle.href}
               image={newsImages.hiddenGems}
               imageAlt="Hidden islands near Pattaya"
-              badge="Experiences"
+              badge={gemsArticle.badge}
               badgeClass="bg-[#ae2f34] text-white"
-              title="Hidden Gems: 5 Secret Islands Near Pattaya You Must Visit This Season"
-              excerpt="Escape the crowds and discover the pristine turquoise waters of Koh Rin and Koh Kram Yai..."
+              title={gemsArticle.title}
+              excerpt={gemsArticle.excerpt}
             >
               <span className="flex w-full items-center justify-center gap-2 rounded-lg border border-[#10438f] bg-[#10438f] py-2.5 text-sm font-semibold text-white transition-all group-hover:bg-[#10438f]/90">
-                Book Tour Now
+                {sections.bookTour}
               </span>
             </NewsArticleCard>
 
             <NewsArticleCard
-              href="/news/tourism/attractions"
+              href={sanctuaryArticle.href}
               image={newsImages.sanctuary}
               imageAlt="Sanctuary of Truth"
-              badge="Attractions"
+              badge={sanctuaryArticle.badge}
               badgeClass="bg-[#ae2f34] text-white"
-              title="The Sanctuary of Truth: A Masterpiece of Thai Craftsmanship"
-              excerpt="Explore the intricate carvings and spiritual journey behind Pattaya's most iconic wooden structure."
-              footer={<NewsTimeFooter>3 Hours Ago</NewsTimeFooter>}
+              title={sanctuaryArticle.title}
+              excerpt={sanctuaryArticle.excerpt}
+              footer={<NewsTimeFooter>{sanctuaryArticle.footer}</NewsTimeFooter>}
             />
 
             <NewsArticleCard
-              href="/news/nightlife/walking-street"
+              href={walkingArticle.href}
               image={newsImages.walkingStreet}
               imageAlt="Walking Street at night"
-              badge="Nightlife Updates"
+              badge={walkingArticle.badge}
               badgeClass={newsTheme.badgeDark}
-              title="Walking Street Transformation: New Smart City Infrastructure Rollout"
-              excerpt="Pattaya's nightlife hub undergoes a digital and structural renaissance to enhance visitor safety and experience."
-              footer={<NewsTimeFooter>5 Hours Ago</NewsTimeFooter>}
+              title={walkingArticle.title}
+              excerpt={walkingArticle.excerpt}
+              footer={<NewsTimeFooter>{walkingArticle.footer}</NewsTimeFooter>}
             />
 
             <NewsArticleCard
-              href="/news/expat/immigration"
+              href={immigrationArticle.href}
               image={newsImages.immigration}
               imageAlt="Immigration documents"
-              badge="Immigration Updates"
+              badge={immigrationArticle.badge}
               badgeClass={newsTheme.badgeAccent}
-              title="90-Day Online Reporting: System Offline for Maintenance"
-              excerpt="Chonburi Immigration has announced a temporary service interruption for online reporting. Residents are advised to visit the Jomtien office or use the mobile app."
-              footer={<NewsTimeFooter>Updated 15m ago</NewsTimeFooter>}
+              title={immigrationArticle.title}
+              excerpt={immigrationArticle.excerpt}
+              footer={<NewsTimeFooter>{immigrationArticle.footer}</NewsTimeFooter>}
             />
 
             <Link
-              href="/news/business/hotels"
+              href={spotlights.hotel.href}
               className="group col-span-1 flex cursor-pointer overflow-hidden rounded-xl bg-[#eef1f5] md:col-span-2"
             >
               <div className="relative min-h-[140px] w-1/3 min-w-[120px] shrink-0 self-stretch overflow-hidden">
@@ -237,19 +255,16 @@ export function NewsHubPage() {
                 />
               </div>
               <div className="flex flex-1 flex-col justify-center p-6">
-                <span className={`mb-2 ${newsTheme.eyebrow}`}>Hotel Industry</span>
+                <span className={`mb-2 ${newsTheme.eyebrow}`}>{spotlights.hotel.eyebrow}</span>
                 <h3 className="mb-2 text-xl font-semibold text-[#0c1a33] transition-colors group-hover:text-[#10438f]">
-                  Occupancy Rates Hit 3-Year High as International Flights Return
+                  {spotlights.hotel.title}
                 </h3>
-                <p className="line-clamp-2 text-sm text-[#444748]">
-                  Pattaya&apos;s luxury hotel sector sees a significant rebound with
-                  Chinese and European tourists leading the charge...
-                </p>
+                <p className="line-clamp-2 text-sm text-[#444748]">{spotlights.hotel.excerpt}</p>
               </div>
             </Link>
 
             <Link
-              href="/news/nightlife/walking-street"
+              href={spotlights.walkingStreet.href}
               className="group relative flex flex-col justify-between overflow-hidden rounded-xl bg-[#2e3132] p-6 text-[#f0f1f2]"
             >
               <Moon
@@ -259,19 +274,16 @@ export function NewsHubPage() {
               <div>
                 <div className="mb-4 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-[#ffb3b0]">
                   <span className="h-2 w-2 animate-pulse rounded-full bg-[#ae2f34]" />
-                  Walking Street News
+                  {spotlights.walkingStreet.badge}
                 </div>
                 <h3 className="mb-4 text-xl font-semibold transition-colors group-hover:text-[#ffb3b0]">
-                  Walking Street: New &apos;Neon Garden&apos; Zone Unveiled
+                  {spotlights.walkingStreet.title}
                 </h3>
-                <p className="mb-6 text-sm text-white/60">
-                  A first look at the futuristic redevelopment project aimed at
-                  transforming the iconic street into a world-class pedestrian hub.
-                </p>
+                <p className="mb-6 text-sm text-white/60">{spotlights.walkingStreet.body}</p>
               </div>
               <span className="inline-flex items-center gap-2 font-semibold text-[#ffdad8] transition-all group-hover:gap-4">
                 <Radio className="h-4 w-4" aria-hidden />
-                Live Webcams
+                {spotlights.walkingStreet.cta}
               </span>
             </Link>
           </div>
@@ -281,51 +293,39 @@ export function NewsHubPage() {
         <section className="grid grid-cols-1 gap-6 lg:grid-cols-12">
           <div className="col-span-1 flex flex-col gap-6 lg:col-span-8">
             <div className="flex items-center justify-between border-b border-[#c4c7c8] pb-2">
-              <h2 className={newsTheme.sectionTitleSm}>Infrastructure & Growth</h2>
+              <h2 className={newsTheme.sectionTitleSm}>{sections.infrastructure}</h2>
               <span className="rounded bg-[#e7e8e9] px-3 py-1 text-[10px] font-bold text-[#444748]">
-                Q3 UPDATE
+                {sections.q3Update}
               </span>
             </div>
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <Link
-                href="/news/local-news/infrastructure"
-                className={newsTheme.cardMuted}
-              >
+              <Link href={infra.roads.href} className={newsTheme.cardMuted}>
                 <div className="mb-3 flex items-center gap-3">
                   <div className={newsTheme.iconBox}>
                     <Route className="h-5 w-5" aria-hidden />
                   </div>
-                  <h4 className="font-bold text-[#0c1a33]">Roads & Utilities</h4>
+                  <h4 className="font-bold text-[#0c1a33]">{infra.roads.title}</h4>
                 </div>
-                <p className="mb-3 text-sm leading-relaxed text-[#444748]">
-                  Scheduled maintenance in Naklua area this Sunday (Oct 14) from
-                  9:00 AM to 4:00 PM. Impacted zones listed...
-                </p>
-                <span className={`text-xs font-bold text-[#10438f] hover:underline`}>
-                  Full Impact Map →
+                <p className="mb-3 text-sm leading-relaxed text-[#444748]">{infra.roads.excerpt}</p>
+                <span className="text-xs font-bold text-[#10438f] hover:underline">
+                  {infra.roads.cta}
                 </span>
               </Link>
 
-              <Link
-                href="/news/business/openings"
-                className={`relative ${newsTheme.cardMuted}`}
-              >
+              <Link href={infra.sponsored.href} className={`relative ${newsTheme.cardMuted}`}>
                 <span className="absolute right-4 top-4 rounded bg-[#d6e3ff] px-2 py-0.5 text-[9px] font-bold text-[#10438f]">
-                  SPONSORED
+                  {sections.sponsored}
                 </span>
                 <div className="mb-3 flex items-center gap-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#ffdad8] text-[#ae2f34]">
                     <UtensilsCrossed className="h-5 w-5" aria-hidden />
                   </div>
-                  <h4 className="font-bold text-[#0c1a33]">The Glasshouse Marina</h4>
+                  <h4 className="font-bold text-[#0c1a33]">{infra.sponsored.title}</h4>
                 </div>
-                <p className="mb-3 text-sm leading-relaxed text-[#444748]">
-                  Now Open: A revolutionary fine-dining experience at Ocean Marina.
-                  Sunset cocktails and fresh Mediterranean...
-                </p>
+                <p className="mb-3 text-sm leading-relaxed text-[#444748]">{infra.sponsored.excerpt}</p>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-[#444748]">Rating:</span>
+                  <span className="text-xs text-[#444748]">{infra.sponsored.rating}</span>
                   <span className="flex items-center gap-0.5 text-amber-500" aria-label="4.5 stars">
                     {Array.from({ length: 4 }).map((_, i) => (
                       <Star key={i} className="h-3.5 w-3.5 fill-current" aria-hidden />
@@ -351,27 +351,15 @@ export function NewsHubPage() {
                 </div>
               </div>
               <div className="md:w-2/3">
-                <span className={`mb-2 block ${newsTheme.eyebrow}`}>Exclusive Deals</span>
-                <h3 className="mb-4 text-2xl font-semibold text-[#0c1a33]">
-                  Pattaya Restaurant Week: Save up to 50% on Fine Dining
-                </h3>
-                <p className="mb-6 text-[#444748]">
-                  Join over 40 award-winning restaurants for an 11-day celebration
-                  of Pattaya&apos;s culinary diversity. Limited table bookings
-                  available.
-                </p>
+                <span className={`mb-2 block ${newsTheme.eyebrow}`}>{infra.promo.eyebrow}</span>
+                <h3 className="mb-4 text-2xl font-semibold text-[#0c1a33]">{infra.promo.title}</h3>
+                <p className="mb-6 text-[#444748]">{infra.promo.body}</p>
                 <div className="flex flex-wrap gap-4">
-                  <Link
-                    href="/news/tourism/promotions"
-                    className={newsTheme.btnPrimaryPill}
-                  >
-                    Get Promo Code
+                  <Link href={infra.promo.href} className={newsTheme.btnPrimaryPill}>
+                    {infra.promo.primary}
                   </Link>
-                  <Link
-                    href="/news/tourism/promotions"
-                    className={newsTheme.btnOutlinePill}
-                  >
-                    Participating Outlets
+                  <Link href={infra.promo.href} className={newsTheme.btnOutlinePill}>
+                    {infra.promo.secondary}
                   </Link>
                 </div>
               </div>
@@ -383,45 +371,41 @@ export function NewsHubPage() {
               <div className="flex items-center justify-between border-b border-[#c4c7c8] bg-[#f3f4f5] p-6">
                 <h2 className="flex items-center gap-2 text-xl font-semibold text-[#0c1a33]">
                   <Swords className="h-5 w-5 text-[#10438f]" aria-hidden />
-                  Sports & Recreation
+                  {sports.title}
                 </h2>
               </div>
               <div>
                 <Link
-                  href="/news/sports/muay-thai"
+                  href={sports.muayThai.href}
                   className="group block cursor-pointer border-b border-[#c4c7c8]/30 p-6 transition-colors hover:bg-[#f3f4f5]"
                 >
                   <div className="mb-2 flex items-start justify-between">
                     <span className="text-[10px] font-bold uppercase text-[#ae2f34]">
-                      Muay Thai News
+                      {sports.muayThai.badge}
                     </span>
                     <span className="rounded bg-gray-200 px-1 text-[8px] font-bold italic text-gray-500">
-                      MAX FIGHT
+                      {sports.muayThai.tag}
                     </span>
                   </div>
                   <h4 className="font-bold leading-tight text-[#0c1a33] transition-colors group-hover:text-[#ae2f34]">
-                    Lumpinee Champion to Face Local Hero in Weekend Main Event
+                    {sports.muayThai.title}
                   </h4>
-                  <p className="mt-2 text-xs text-[#444748]">
-                    Max Muay Thai Stadium prepares for a sold-out crowd as local
-                    favorite &apos;Iron Knee&apos; returns...
-                  </p>
+                  <p className="mt-2 text-xs text-[#444748]">{sports.muayThai.excerpt}</p>
                 </Link>
                 <Link
-                  href="/news/sports/golf"
+                  href={sports.golf.href}
                   className="group block cursor-pointer p-6 transition-colors hover:bg-[#f3f4f5]"
                 >
                   <div className="mb-2 flex items-start justify-between">
                     <span className="text-[10px] font-bold uppercase text-[#455f88]">
-                      Golf & Leisure News
+                      {sports.golf.badge}
                     </span>
                     <span className="rounded bg-gray-200 px-1 text-[8px] font-bold italic text-gray-500">
-                      Siam CC
+                      {sports.golf.tag}
                     </span>
                   </div>
                   <h4 className="font-bold leading-tight text-[#0c1a33] transition-colors group-hover:text-[#10438f]">
-                    Pattaya Open: International Pro-Am Kicks off at Siam Country
-                    Club
+                    {sports.golf.title}
                   </h4>
                   <div className="relative mt-4 h-24 overflow-hidden rounded-lg">
                     <Image
@@ -443,32 +427,18 @@ export function NewsHubPage() {
               />
               <div className="relative z-10">
                 <h3 className="mb-2 flex items-center gap-2 text-xl font-semibold">
-                  Pattaya in World News
+                  {worldNews.title}
                 </h3>
-                <p className="mb-6 text-sm text-white/70">
-                  See how global media outlets are reporting on Thailand&apos;s
-                  primary tourist destination.
-                </p>
+                <p className="mb-6 text-sm text-white/70">{worldNews.body}</p>
                 <ul className="space-y-4">
-                  <li className="flex items-start gap-3">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/20" />
-                    <Link
-                      href="/news/international/global"
-                      className="text-sm font-semibold italic hover:underline"
-                    >
-                      &quot;The Future of Retirement: Why Pattaya is Winning&quot; —
-                      NY Times
-                    </Link>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/20" />
-                    <Link
-                      href="/news/international/global"
-                      className="text-sm font-semibold italic hover:underline"
-                    >
-                      &quot;Pattaya&apos;s Digital Renaissance&quot; — BBC Travel
-                    </Link>
-                  </li>
+                  {worldNews.links.map((link) => (
+                    <li key={link.href + link.label} className="flex items-start gap-3">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/20" />
+                      <Link href={link.href} className="text-sm font-semibold italic hover:underline">
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>

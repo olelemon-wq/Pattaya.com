@@ -20,7 +20,6 @@ export function NewsPageFrame({ children }: { children: ReactNode }) {
 type NewsCategoryHeaderProps = {
   category: string;
   title: string;
-  titleTh: string;
   description: string;
   breadcrumbs: BreadcrumbItem[];
 };
@@ -28,7 +27,6 @@ type NewsCategoryHeaderProps = {
 export function NewsCategoryHeader({
   category,
   title,
-  titleTh,
   description,
   breadcrumbs,
 }: NewsCategoryHeaderProps) {
@@ -38,7 +36,6 @@ export function NewsCategoryHeader({
       <header className="mb-6 mt-4 sm:mb-8">
         <p className={newsTheme.eyebrow}>{category}</p>
         <h1 className={newsTheme.title}>{title}</h1>
-        <p className={newsTheme.titleTh}>{titleTh}</p>
         <p className={newsTheme.description}>{description}</p>
       </header>
     </>

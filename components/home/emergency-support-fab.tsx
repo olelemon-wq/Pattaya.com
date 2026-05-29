@@ -4,10 +4,14 @@ import {
   emergencyContacts,
   emergencyTelHref,
 } from "@/lib/data/emergency-contacts";
+import { useLanguage } from "@/components/layout/language-provider";
+import { getHomeEmergency } from "@/lib/i18n/messages/home-hub";
 import { Asterisk, Phone, X } from "lucide-react";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 
 export function EmergencySupportFab() {
+  const { language } = useLanguage();
+  const copy = getHomeEmergency(language);
   const [open, setOpen] = useState(false);
   const titleId = useId();
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -47,7 +51,7 @@ export function EmergencySupportFab() {
         aria-controls={open ? titleId : undefined}
       >
         <Asterisk className="h-7 w-7" strokeWidth={2.25} aria-hidden />
-        <span className="sr-only">Emergency support phone numbers</span>
+        <span className="sr-only">{copy.srOnly}</span>
       </button>
 
       {open ? (
@@ -58,7 +62,7 @@ export function EmergencySupportFab() {
           <button
             type="button"
             className="absolute inset-0 bg-[#0A192F]/60 backdrop-blur-sm motion-reduce:backdrop-blur-none"
-            aria-label="Close emergency support dialog"
+            aria-label={copy.closeOverlay}
             onClick={close}
           />
 
@@ -72,16 +76,14 @@ export function EmergencySupportFab() {
           >
             <div className="relative bg-[#FF7320] px-5 py-5 pr-14 text-white sm:px-6 sm:py-6">
               <h2 id={titleId} className="text-xl font-bold tracking-tight sm:text-2xl">
-                Emergency Support
+                {copy.title}
               </h2>
-              <p className="mt-1 text-sm text-white/90">
-                Available 24/7 in Pattaya City
-              </p>
+              <p className="mt-1 text-sm text-white/90">{copy.subtitle}</p>
               <button
                 type="button"
                 onClick={close}
                 className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-white transition-colors hover:bg-white/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                aria-label="Close"
+                aria-label={copy.close}
               >
                 <X className="h-4 w-4" aria-hidden />
               </button>
@@ -114,7 +116,7 @@ export function EmergencySupportFab() {
                         className="flex shrink-0 items-center gap-1.5 rounded-lg bg-[#0A192F] px-3 py-2.5 text-[11px] font-bold uppercase tracking-wide text-white transition-colors hover:bg-[#132f52] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0A192F] sm:px-4"
                       >
                         <Phone className="h-3.5 w-3.5" aria-hidden />
-                        Call
+                        {copy.call}
                       </a>
                     </div>
                   </li>
@@ -123,7 +125,7 @@ export function EmergencySupportFab() {
             </ul>
 
             <p className="border-t border-[#F1F5F9] px-4 py-3 text-center text-[10px] font-medium uppercase tracking-[0.14em] text-[#94A3B8] sm:px-5">
-              Always verify locations for rapid response
+              {copy.footer}
             </p>
           </div>
         </div>

@@ -16,6 +16,11 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useLanguage } from "@/components/layout/language-provider";
+import {
+  exploreCategoryNavItems,
+  tExploreCategory,
+} from "@/lib/i18n/messages/explore-categories";
 
 const categoryIcons = {
   waves: Waves,
@@ -33,33 +38,6 @@ const categoryIcons = {
 
 type CategoryIconName = keyof typeof categoryIcons;
 
-const categories: {
-  label: string;
-  href: string;
-  icon: CategoryIconName;
-  active?: boolean;
-}[] = [
-  { label: "Beaches", href: "/explore/beaches", icon: "waves", active: true },
-  { label: "Islands", href: "/explore/islands/koh-larn", icon: "ship" },
-  {
-    label: "Luxury Dining",
-    href: "/explore/restaurants/fine-dining",
-    icon: "chefHat",
-  },
-  {
-    label: "Local Food",
-    href: "/explore/restaurants/street-food",
-    icon: "soup",
-  },
-  { label: "Cafes", href: "/explore/cafes", icon: "coffee" },
-  { label: "Shopping", href: "/explore/shopping/malls", icon: "shoppingBag" },
-  { label: "Markets", href: "/explore/shopping/markets", icon: "store" },
-  { label: "Family", href: "/explore/family-activities", icon: "users" },
-  { label: "Yacht", href: "/explore/luxury/yacht", icon: "anchor" },
-  { label: "Hidden Gems", href: "/explore/hidden-gems", icon: "gem" },
-  { label: "Wellness", href: "/explore/wellness", icon: "sparkles" },
-];
-
 function cn(...classes: (string | false | undefined)[]) {
   return classes.filter(Boolean).join(" ");
 }
@@ -67,6 +45,7 @@ function cn(...classes: (string | false | undefined)[]) {
 const DRAG_CLICK_THRESHOLD = 6;
 
 export function ExploreCategoryNav() {
+  const { language } = useLanguage();
   const scrollRef = useRef<HTMLDivElement>(null);
   const dragRef = useRef({ active: false, startX: 0, scrollLeft: 0 });
   const didDragRef = useRef(false);
@@ -183,8 +162,9 @@ export function ExploreCategoryNav() {
           )}
         >
           <div className="flex min-w-max items-start justify-start gap-6 px-1 py-2 md:mx-auto md:min-w-0 md:justify-center md:gap-10">
-            {categories.map((cat) => {
+            {exploreCategoryNavItems.map((cat) => {
               const Icon: LucideIcon = categoryIcons[cat.icon];
+              const label = tExploreCategory(language, cat.id);
               return (
                 <Link
                   key={cat.href}
@@ -216,7 +196,7 @@ export function ExploreCategoryNav() {
                         : "text-[#444748] group-hover:text-[#B52E88]",
                     )}
                   >
-                    {cat.label}
+                    {label}
                   </span>
                 </Link>
               );
@@ -228,7 +208,7 @@ export function ExploreCategoryNav() {
           <div
             className="mt-3 flex items-center justify-center gap-2 md:hidden"
             role="tablist"
-            aria-label="Category pages"
+            aria-label={tExploreCategory(language, "categoryPages")}
           >
             {Array.from({ length: pageCount }, (_, index) => (
               <button

@@ -1,16 +1,22 @@
+"use client";
+
 import { FeaturedHeroCinematic as CinematicHero } from "@/components/cinematic/featured-hero-cinematic";
+import { useLanguage } from "@/components/layout/language-provider";
+import { getHomeHero } from "@/lib/i18n/messages/home-hub";
 import { homeImages } from "@/lib/design/home-images";
 
-/** Homepage featured hero — Neo-Pattaya smart city aerial */
 export function FeaturedHeroCinematic() {
+  const { language } = useLanguage();
+  const hero = getHomeHero(language);
+
   return (
     <CinematicHero
       image={homeImages.neoPattayaHero}
-      imageAlt="Aerial view of Pattaya at blue hour with smart-city light grids, transit pods, and illuminated skyscrapers along the bay"
+      imageAlt="Aerial view of Pattaya at blue hour"
       href="/news/local-news/infrastructure"
-      category="City Development"
-      title="The Neo-Pattaya Transformation: A Smart City Vision 2025"
-      excerpt="Infrastructure investments and digital city initiatives reshape Pattaya into Southeast Asia's premier hybrid hub for tourism and long-term residency."
+      category={hero.category}
+      title={hero.title}
+      excerpt={hero.excerpt}
       visualTone="neo-smart-city"
       minHeightClass="min-h-[min(78dvh,440px)] sm:min-h-[520px] lg:min-h-[580px]"
     />

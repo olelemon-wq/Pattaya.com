@@ -1,0 +1,136 @@
+import type { LocalizedText } from "@/lib/i18n/text";
+
+export const commonUi = {
+  seeMap: {
+    en: "See Map",
+    th: "ดูแผนที่",
+    zh: "查看地图",
+    ru: "На карте",
+  },
+  bookTour: {
+    en: "Book Tour",
+    th: "จองทัวร์",
+    zh: "预订行程",
+    ru: "Забронировать тур",
+  },
+  sponsored: {
+    en: "Sponsored",
+    th: "สปอนเซอร์",
+    zh: "赞助",
+    ru: "Спонсор",
+  },
+  exploreMenu: {
+    en: "Explore Menu",
+    th: "ดูเมนู",
+    zh: "查看菜单",
+    ru: "Меню",
+  },
+  bookTable: {
+    en: "Book Table",
+    th: "จองโต๊ะ",
+    zh: "预订座位",
+    ru: "Забронировать стол",
+  },
+  minRead: {
+    en: "min read",
+    th: "นาทีในการอ่าน",
+    zh: "分钟阅读",
+    ru: "мин чтения",
+  },
+  eliteService: {
+    en: "Elite Service",
+    th: "บริการพรีเมียม",
+    zh: "尊享服务",
+    ru: "Премиум-сервис",
+  },
+  perSession: {
+    en: "/ session",
+    th: "/ ครั้ง",
+    zh: "/ 次",
+    ru: "/ сеанс",
+  },
+  registerEarly: {
+    en: "Register early",
+    th: "ลงทะเบียนล่วงหน้า",
+    zh: "提前报名",
+    ru: "Ранняя регистрация",
+  },
+  downloadGuide: {
+    en: "Download full guide",
+    th: "ดาวน์โหลดคู่มือฉบับเต็ม",
+    zh: "下载完整指南",
+    ru: "Скачать полный гайд",
+  },
+  bookConsultation: {
+    en: "Book a consultation",
+    th: "นัดคุยที่ปรึกษา",
+    zh: "预约咨询",
+    ru: "Записаться на консультацию",
+  },
+  contactLawFirm: {
+    en: "Contact law firm",
+    th: "ติดต่อสำนักงานกฎหมาย",
+    zh: "联系律师事务所",
+    ru: "Связаться с юрфирмой",
+  },
+  boiConsulting: {
+    en: "BOI advisory services",
+    th: "บริการปรึกษาด้านการขอสิทธิ BOI",
+    zh: "BOI 咨询服务",
+    ru: "Консультации по BOI",
+  },
+  viewDirectory: {
+    en: "View Directory",
+    th: "ดูรายชื่อร้าน",
+    zh: "查看目录",
+    ru: "Каталог",
+  },
+  exploreStalls: {
+    en: "Explore Stalls",
+    th: "สำรวจร้านค้า",
+    zh: "逛摊位",
+    ru: "Обойти лавки",
+  },
+  buyTickets: {
+    en: "Buy Tickets",
+    th: "ซื้อตั๋ว",
+    zh: "购票",
+    ru: "Купить билеты",
+  },
+  contactCharter: {
+    en: "Contact for Charter",
+    th: "ติดต่อจองเรือ",
+    zh: "联系包船",
+    ru: "Забронировать чартер",
+  },
+  readGuide: {
+    en: "Read guide →",
+    th: "อ่านคู่มือ →",
+    zh: "阅读指南 →",
+    ru: "Читать гайд →",
+  },
+  joinNow: {
+    en: "Join Now →",
+    th: "สมัครเลย →",
+    zh: "立即加入 →",
+    ru: "Подписаться →",
+  },
+  emailPlaceholder: {
+    en: "Your Email Address",
+    th: "อีเมลของคุณ",
+    zh: "您的邮箱",
+    ru: "Ваш email",
+  },
+  magazine: {
+    en: "Magazine",
+    th: "นิตยสาร",
+    zh: "杂志",
+    ru: "Журнал",
+  },
+  guide: {
+    en: "Guide",
+    th: "คู่มือ",
+    zh: "指南",
+    ru: "Гайд",
+  },
+} satisfies Record<string, LocalizedText>;
