@@ -1,146 +1,51 @@
+"use client";
+
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import { ExploreGuideCarousel } from "@/components/explore/explore-guide-carousel";
 import type { ExploreGuideCardData } from "@/components/explore/explore-guide-types";
+import { useLanguage } from "@/components/layout/language-provider";
+import { cafesImages } from "@/lib/design/cafes-images";
+import { getExploreCommon } from "@/lib/i18n/messages/explore-common";
+import { getCafesPage } from "@/lib/i18n/messages/explore-cafes";
 import { Coffee, MapPin, Sun, Wifi, Wind } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { cafesImages } from "@/lib/design/cafes-images";
 
-const cafes = [
-  {
-    id: "coco-lounge",
-    name: "Coco Lounge & Bar",
-    nameTh: "โคโค่ เลาจน์ แอนด์ บาร์",
-    image: cafesImages.cocoLounge,
-    tags: ["Ocean front", "Sunset", "Cocktails"],
-    hours: "Daily · ~10:00–23:00",
-    location: "Jomtien Beach Rd",
-    mustTry: "Iced latte, fresh coconut, beachfront seating",
-    excerpt:
-      "Relaxed beach-club energy with coffee by day and drinks at golden hour. Ideal for long chats facing the Gulf.",
-  },
-  {
-    id: "horizon-terrace",
-    name: "Horizon Terrace",
-    nameTh: "ฮอไรซัน เทอร์เรส",
-    image: cafesImages.horizonTerrace,
-    tags: ["Sunset view", "Pattaya Beach", "Evening"],
-    hours: "Daily · ~11:00–02:00",
-    location: "Pattaya Beach Rd",
-    mustTry: "Espresso tonic, sunset mocktails, light bites",
-    excerpt:
-      "Elevated terrace vibes above the central bay — come before dusk for the best light and breeze.",
-  },
-  {
-    id: "bake-bloom",
-    name: "Bake & Bloom",
-    nameTh: "เบค แอนด์ บลูม",
-    image: cafesImages.bakeBloom,
-    tags: ["Artisan", "Brunch", "Pratumnak"],
-    hours: "Daily · ~08:00–18:00",
-    location: "Pratumnak Hill",
-    mustTry: "Pour-over single origin, house pastries, avocado toast",
-    excerpt:
-      "Specialty roasts and bakery-forward brunch in a leafy hill setting — a favourite for slow mornings.",
-  },
-  {
-    id: "pratumnak-view",
-    name: "Clifftop Coffee Corners",
-    nameTh: "คาเฟ่ริมหน้าผา พระตำหนัก",
-    image: cafesImages.pratumnakView,
-    tags: ["Viewpoint", "Photo spot", "Quiet"],
-    hours: "Daily · ~09:00–20:00",
-    location: "Pratumnak / Cosy Beach area",
-    mustTry: "Cappuccino, Thai tea soft-serve, cliff panoramas",
-    excerpt:
-      "Small footprint cafés tucked into the hill with big views — perfect between beach time and dinner plans.",
-  },
+const cafeImages: Record<string, string> = {
+  "coco-lounge": cafesImages.cocoLounge,
+  "horizon-terrace": cafesImages.horizonTerrace,
+  "bake-bloom": cafesImages.bakeBloom,
+  "pratumnak-view": cafesImages.pratumnakView,
+};
+
+const styleImages = [
+  cafesImages.latteArt,
+  cafesImages.coldBrew,
+  cafesImages.brunch,
+  cafesImages.dessert,
 ];
 
-const cafeGuideCards: ExploreGuideCardData[] = cafes.map((cafe) => ({
-  id: cafe.id,
-  name: cafe.name,
-  nameTh: cafe.nameTh,
-  image: cafe.image,
-  tags: cafe.tags,
-  excerpt: cafe.excerpt,
-  details: [
-    { icon: "clock", label: "Hours", value: cafe.hours },
-    { icon: "mapPin", label: "Location", value: cafe.location },
-    { icon: "coffee", label: "Must try", value: cafe.mustTry },
-  ],
-}));
-
-const coffeeStyles = [
-  {
-    name: "Single-origin pour-over",
-    nameTh: "พูรโอเวอร์",
-    image: cafesImages.latteArt,
-    note: "Ask which beans are on rotation; light roasts suit Pattaya’s heat.",
-  },
-  {
-    name: "Thai tea & coffee",
-    nameTh: "ชาไทย / กาแฟโบราณ",
-    image: cafesImages.coldBrew,
-    note: "Sweetened classics over ice — specify less sugar (‘mai wan’).",
-  },
-  {
-    name: "Brunch plates",
-    nameTh: "บรันช์",
-    image: cafesImages.brunch,
-    note: "Weekends fill 10:00–12:00; reserve if the venue offers booking.",
-  },
-  {
-    name: "Dessert & bakery",
-    nameTh: "เบเกอรี่",
-    image: cafesImages.dessert,
-    note: "Croissants, basque cheesecake, and local fruit tarts pair well with flat whites.",
-  },
-];
-
-const cafeTips = [
-  {
-    icon: Sun,
-    title: "Best hours",
-    text: "Morning for quiet laptop sessions; 17:00–19:00 for sunset terraces and photo light.",
-  },
-  {
-    icon: Wifi,
-    title: "Work-friendly",
-    text: "Check power outlets and AC — hill cafés cool faster; beach spots can be breezy and loud.",
-  },
-  {
-    icon: Wind,
-    title: "Seating choice",
-    text: "Indoor for midday heat; outdoor decks for golden hour — bring light layers after dark.",
-  },
-  {
-    icon: Coffee,
-    title: "Order like a local",
-    text: "‘Kafe yen’ (iced coffee), ‘kafe ron’ (hot), ‘mai wan’ (less sweet). Plant milk varies by shop.",
-  },
-];
+const tipIcons = [Sun, Wifi, Wind, Coffee] as const;
 
 function StyleCard({
   name,
   nameTh,
   image,
   note,
-}: (typeof coffeeStyles)[number]) {
+}: {
+  name: string;
+  nameTh: string;
+  image: string;
+  note: string;
+}) {
   return (
     <article className="overflow-hidden rounded-xl border border-[#c4c7c8]/30 bg-white shadow-sm">
       <div className="relative aspect-[4/3]">
-        <Image
-          src={image}
-          alt={name}
-          fill
-          className="object-cover"
-          sizes="(max-width: 640px) 50vw, 25vw"
-        />
+        <Image src={image} alt={name} fill className="object-cover" sizes="(max-width: 640px) 50vw, 25vw" />
       </div>
       <div className="p-4">
         <h4 className="font-bold text-[#191c1d]">{name}</h4>
-        <p className="text-sm text-[#B52E88]">{nameTh}</p>
+        {nameTh ? <p className="text-sm text-[#B52E88]">{nameTh}</p> : null}
         <p className="mt-2 text-xs leading-relaxed text-[#444748]">{note}</p>
       </div>
     </article>
@@ -148,6 +53,24 @@ function StyleCard({
 }
 
 export function CafesPage() {
+  const { language } = useLanguage();
+  const c = getExploreCommon(language);
+  const page = getCafesPage(language);
+
+  const cafeGuideCards: ExploreGuideCardData[] = page.cafes.map((cafe) => ({
+    id: cafe.id,
+    name: cafe.name,
+    nameTh: cafe.nameTh,
+    image: cafeImages[cafe.id] ?? cafesImages.hero,
+    tags: cafe.tags,
+    excerpt: cafe.excerpt,
+    details: [
+      { icon: "clock", label: c.hours, value: cafe.hours },
+      { icon: "mapPin", label: c.location, value: cafe.location },
+      { icon: "coffee", label: c.mustTry, value: cafe.mustTry },
+    ],
+  }));
+
   return (
     <div data-full-bleed className="bg-[#fdf8fb] text-[#191c1d]">
       <div className="relative z-10 shrink-0 shadow-sm">
@@ -160,7 +83,7 @@ export function CafesPage() {
       >
         <Image
           src={cafesImages.hero}
-          alt="Beach cafe in Pattaya at sunset"
+          alt={page.hero.title}
           fill
           priority
           className="object-cover"
@@ -175,37 +98,31 @@ export function CafesPage() {
             <ol className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/80">
               <li>
                 <Link href="/explore" className="hover:text-white">
-                  Explore
+                  {page.breadcrumb.explore}
                 </Link>
               </li>
               <li aria-hidden>/</li>
               <li>
-                <span className="text-white">Cafes</span>
+                <span className="text-white">{page.breadcrumb.current}</span>
               </li>
             </ol>
           </nav>
           <span className="mb-3 inline-flex w-fit rounded-full bg-[#F0D4E8] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#B52E88]">
-            Cafes
+            {page.hero.badge}
           </span>
-          <h1
-            id="cafes-hero-title"
-            className="text-3xl font-bold tracking-tight text-white md:text-5xl"
-          >
-            Specialty Coffee
+          <h1 id="cafes-hero-title" className="text-3xl font-bold tracking-tight text-white md:text-5xl">
+            {page.hero.title}
           </h1>
-          <p className="mt-2 text-lg text-[#F5D0E8] md:text-xl">คาเฟ่</p>
-          <p className="mt-4 max-w-2xl text-base text-white/90 md:text-lg">
-            Cafes and specialty coffee spots across Pattaya — from beach-club
-            terraces to hilltop brunch and slow pour-over mornings.
-          </p>
+          <p className="mt-2 text-lg text-[#F5D0E8] md:text-xl">{page.hero.subtitle}</p>
+          <p className="mt-4 max-w-2xl text-base text-white/90 md:text-lg">{page.hero.body}</p>
           <div className="mt-5 flex flex-wrap gap-2">
             <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1.5 text-sm text-white ring-1 ring-white/25">
               <Coffee className="h-4 w-4" aria-hidden />
-              Sunset & brunch
+              {page.hero.badgeSunset}
             </span>
             <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1.5 text-sm text-white ring-1 ring-white/25">
               <MapPin className="h-4 w-4" aria-hidden />
-              Jomtien · Beach Rd · Pratumnak
+              {page.hero.badgeAreas}
             </span>
           </div>
         </div>
@@ -213,33 +130,29 @@ export function CafesPage() {
 
       <div className="mx-auto max-w-[1280px] px-5 py-12 md:px-16 md:py-16">
         <ExploreGuideCarousel
-          title="Choose your café"
-          description="Hand-picked venues from the Explore hub — match your mood to the coastline, central bay, or the hill."
-          prevLabel="Previous cafés"
-          nextLabel="Next cafés"
+          title={page.carousel.title}
+          description={page.carousel.description}
+          prevLabel={page.carousel.prev}
+          nextLabel={page.carousel.next}
           items={cafeGuideCards}
         />
 
         <section className="mb-16">
-          <h2 className="text-2xl font-semibold md:text-3xl">What to order</h2>
-          <p className="mt-2 text-[#444748]">
-            Four coffee-house styles you will see again and again in Pattaya.
-          </p>
+          <h2 className="text-2xl font-semibold md:text-3xl">{page.styles.title}</h2>
+          <p className="mt-2 text-[#444748]">{page.styles.subtitle}</p>
           <div className="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
-            {coffeeStyles.map((style) => (
-              <StyleCard key={style.name} {...style} />
+            {page.styles.items.map((style, i) => (
+              <StyleCard key={style.name} {...style} image={styleImages[i] ?? cafesImages.latteArt} />
             ))}
           </div>
         </section>
 
         <section className="mb-16">
-          <h2 className="text-2xl font-semibold md:text-3xl">Café tips</h2>
-          <p className="mt-2 text-[#444748]">
-            Small habits that make mornings and sunsets smoother.
-          </p>
+          <h2 className="text-2xl font-semibold md:text-3xl">{page.tips.title}</h2>
+          <p className="mt-2 text-[#444748]">{page.tips.subtitle}</p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            {cafeTips.map((tip) => {
-              const Icon = tip.icon;
+            {page.tips.items.map((tip, i) => {
+              const Icon = tipIcons[i] ?? Sun;
               return (
                 <div
                   key={tip.title}
@@ -250,9 +163,7 @@ export function CafesPage() {
                   </div>
                   <div>
                     <h4 className="font-bold text-[#191c1d]">{tip.title}</h4>
-                    <p className="mt-1 text-sm leading-relaxed text-[#444748]">
-                      {tip.text}
-                    </p>
+                    <p className="mt-1 text-sm leading-relaxed text-[#444748]">{tip.text}</p>
                   </div>
                 </div>
               );
@@ -261,25 +172,25 @@ export function CafesPage() {
         </section>
 
         <section className="rounded-2xl border border-[#c4c7c8]/30 bg-white p-6 sm:p-8">
-          <h2 className="text-xl font-bold md:text-2xl">Also explore</h2>
+          <h2 className="text-xl font-bold md:text-2xl">{page.alsoExplore.title}</h2>
           <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Link
               href="/explore/restaurants/fine-dining"
               className="rounded-xl bg-[#B52E88] px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-[#B52E88]/90"
             >
-              Fine dining →
+              {page.alsoExplore.fineDining}
             </Link>
             <Link
               href="/explore/restaurants/street-food"
               className="rounded-xl border border-[#B52E88]/30 px-6 py-3 text-center text-sm font-semibold text-[#B52E88] transition hover:bg-[#B52E88]/5"
             >
-              Street food →
+              {page.alsoExplore.streetFood}
             </Link>
             <Link
               href="/explore/beaches"
               className="rounded-xl border border-[#c4c7c8]/50 px-6 py-3 text-center text-sm font-semibold text-[#191c1d] transition hover:bg-[#edeeef]"
             >
-              Main beaches →
+              {page.alsoExplore.mainBeaches}
             </Link>
           </div>
         </section>

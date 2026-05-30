@@ -12,6 +12,8 @@ export function LanguageSelector({ className = "" }: { className?: string }) {
   const current = LANGUAGES.find((lang) => lang.code === language) ?? LANGUAGES[1];
 
   useEffect(() => {
+    if (!open) return;
+
     function handleClickOutside(event: MouseEvent) {
       if (rootRef.current && !rootRef.current.contains(event.target as Node)) {
         setOpen(false);
@@ -20,13 +22,13 @@ export function LanguageSelector({ className = "" }: { className?: string }) {
     function handleEscape(event: KeyboardEvent) {
       if (event.key === "Escape") setOpen(false);
     }
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
     document.addEventListener("keydown", handleEscape);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
       document.removeEventListener("keydown", handleEscape);
     };
-  }, []);
+  }, [open]);
 
   return (
     <div ref={rootRef} className={`relative ${className}`}>
@@ -52,7 +54,7 @@ export function LanguageSelector({ className = "" }: { className?: string }) {
         <ul
           role="listbox"
           aria-label="Languages"
-          className="absolute right-0 top-full z-[60] mt-2 min-w-[168px] overflow-hidden rounded-xl border border-[#e2e8f0] bg-white py-1 shadow-lg"
+          className="absolute right-0 top-full z-[200] mt-2 min-w-[168px] overflow-hidden rounded-xl border border-[#e2e8f0] bg-white py-1 shadow-lg"
         >
           {LANGUAGES.map((lang) => {
             const selected = lang.code === language;
@@ -60,7 +62,8 @@ export function LanguageSelector({ className = "" }: { className?: string }) {
               <li key={lang.code} role="option" aria-selected={selected}>
                 <button
                   type="button"
-                  onClick={() => {
+                  onClick={(event) => {
+                    event.stopPropagation();
                     setLanguage(lang.code);
                     setOpen(false);
                   }}

@@ -5,6 +5,7 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useLayoutEffect,
   useMemo,
   useState,
 } from "react";
@@ -26,10 +27,14 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<LanguageCode>(DEFAULT_LANGUAGE);
   const [ready, setReady] = useState(false);
 
-  useEffect(() => {
-    const stored = localStorage.getItem(LANGUAGE_STORAGE_KEY);
-    if (stored && getLanguageByCode(stored).code === stored) {
-      setLanguageState(stored as LanguageCode);
+  useLayoutEffect(() => {
+    try {
+      const stored = localStorage.getItem(LANGUAGE_STORAGE_KEY);
+      if (stored && getLanguageByCode(stored).code === stored) {
+        setLanguageState(stored as LanguageCode);
+      }
+    } catch {
+      // private mode / blocked storage
     }
     setReady(true);
   }, []);

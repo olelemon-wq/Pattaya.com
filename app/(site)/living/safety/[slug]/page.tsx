@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {
       title: "Scam Alerts Pattaya | การโกงนักท่องเที่ยว | Pattaya.com",
       description:
-        "Common Pattaya scams — property fraud, visa agents, jet-ski traps, and how to report to Tourist Police 1155.",
+        "Pattaya scam alerts — jet-ski, bar bills, fake police, property fraud, red flags, emergency numbers 1155, and reporting steps.",
       openGraph: {
         title: "Scam Alerts | การโกงนักท่องเที่ยว — Pattaya.com",
         description: "Protect yourself as an expat or visitor in Pattaya.",

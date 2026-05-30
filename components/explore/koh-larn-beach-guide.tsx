@@ -11,56 +11,30 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { useLanguage } from "@/components/layout/language-provider";
 import { kohLarnImages } from "@/lib/design/koh-larn-images";
+import { getKohLarnPage } from "@/lib/i18n/messages/explore-koh-larn";
 
-const beaches = [
-  {
-    id: "tawaen",
-    label: "หาดตาแหวน",
-    labelEn: "Ta Waen Beach",
-    image: kohLarnImages.beachTaWan,
-    description:
-      "หาดยอดนิยมสุดของเกาะล้าน — น้ำใส หาดทรายละเอียด ร้านอาหารและกิจกรรมทางน้ำครบ เหมาะกับครอบครัวและกลุ่มเพื่อน",
-    features: [
-      { icon: Waves, label: "ว่ายน้ำได้" },
-      { icon: UtensilsCrossed, label: "มีอาหาร" },
-      { icon: Ship, label: "กิจกรรมทางน้ำ" },
-    ],
-    reviewHref: "/explore/beaches",
-  },
-  {
-    id: "nual",
-    label: "หาดนวล",
-    labelEn: "Nual Beach",
-    image: kohLarnImages.beachNual,
-    description:
-      "บรรยากาศเงียบสงบกว่าหาดหลัก — ชายหาดกว้าง น้ำทะเลใส เหมาะสำหรับพักผ่อน ถ่ายรูป และว่ายน้ำแบบไม่พลุกพล่าน",
-    features: [
-      { icon: Waves, label: "ว่ายน้ำได้" },
-      { icon: Camera, label: "จุดถ่ายรูป" },
-      { icon: Palmtree, label: "เงียบสงบ" },
-    ],
-    reviewHref: "/explore/beaches",
-  },
-  {
-    id: "tien",
-    label: "หาดเทียน",
-    labelEn: "Tien Beach",
-    image: kohLarnImages.beachTien,
-    description:
-      "หาดโค้งสวยงาม น้ำใสมากในช่วงฤดูท่องเที่ยว — มีร้านอาหารริมทะเลและจุดชมวิว พระอาทิตย์ตกที่สวยที่สุดแห่งหนึ่งบนเกาะ",
-    features: [
-      { icon: Waves, label: "ว่ายน้ำได้" },
-      { icon: UtensilsCrossed, label: "มีอาหาร" },
-      { icon: Camera, label: "จุดถ่ายรูป" },
-    ],
-    reviewHref: "/explore/beaches",
-  },
-] as const;
+const beachImages = {
+  tawaen: kohLarnImages.beachTaWan,
+  nual: kohLarnImages.beachNual,
+  tien: kohLarnImages.beachTien,
+} as const;
+
+const featureIcons: Record<string, LucideIcon[]> = {
+  tawaen: [Waves, UtensilsCrossed, Ship],
+  nual: [Waves, Camera, Palmtree],
+  tien: [Waves, UtensilsCrossed, Camera],
+};
 
 export function KohLarnBeachGuide() {
-  const [activeId, setActiveId] = useState<(typeof beaches)[number]["id"]>("tawaen");
+  const { language } = useLanguage();
+  const page = getKohLarnPage(language);
+  const beaches = page.beachGuide.beaches;
+
+  const [activeId, setActiveId] = useState<(typeof beaches)[number]["id"]>(beaches[0]?.id ?? "tawaen");
   const active = beaches.find((b) => b.id === activeId) ?? beaches[0];
+  const icons = featureIcons[active.id] ?? [Waves, Camera, Palmtree];
 
   return (
     <section
@@ -72,15 +46,13 @@ export function KohLarnBeachGuide() {
         id="beach-guide-title"
         className="text-2xl font-semibold tracking-tight text-[#191c1d] md:text-3xl"
       >
-        เที่ยวหาดไหนดี? คู่มือรวมชายหาดเกาะล้าน
+        {page.beachGuide.title}
       </h2>
-      <p className="mt-2 text-sm text-[#747878] sm:text-base">
-        Beach Guide — เลือกหาดที่เหมาะกับสไตล์การเที่ยวของคุณ
-      </p>
+      <p className="mt-2 text-sm text-[#747878] sm:text-base">{page.beachGuide.subtitle}</p>
 
       <div
         role="tablist"
-        aria-label="ชายหาดเกาะล้าน"
+        aria-label={page.beachGuide.tablistLabel}
         className="mt-6 flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {beaches.map((beach) => {
@@ -114,33 +86,26 @@ export function KohLarnBeachGuide() {
       >
         <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
           <Image
-            src={active.image}
-            alt={active.labelEn}
+            src={beachImages[active.id]}
+            alt={active.label}
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 50vw"
           />
         </div>
         <div>
-          <h3 className="text-xl font-bold text-[#191c1d]">
-            {active.label}{" "}
-            <span className="text-base font-medium text-[#747878]">
-              ({active.labelEn})
-            </span>
-          </h3>
-          <p className="mt-3 leading-relaxed text-[#444748]">
-            {active.description}
-          </p>
+          <h3 className="text-xl font-bold text-[#191c1d]">{active.label}</h3>
+          <p className="mt-3 leading-relaxed text-[#444748]">{active.description}</p>
           <ul className="mt-4 flex flex-wrap gap-2">
-            {active.features.map((feature) => {
-              const Icon = feature.icon;
+            {active.features.map((feature, i) => {
+              const Icon = icons[i] ?? Waves;
               return (
                 <li
-                  key={feature.label}
+                  key={feature}
                   className="inline-flex items-center gap-1.5 rounded-full bg-[#B52E88]/10 px-3 py-1.5 text-sm font-medium text-[#191c1d] ring-1 ring-[#B52E88]/15"
                 >
                   <Icon className="h-3.5 w-3.5 shrink-0 text-[#B52E88]" aria-hidden />
-                  {feature.label}
+                  {feature}
                 </li>
               );
             })}
@@ -150,7 +115,7 @@ export function KohLarnBeachGuide() {
               href={active.reviewHref}
               className="mt-6 inline-flex items-center justify-center rounded-xl bg-[#B52E88] px-5 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-[#B52E88]/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B52E88]"
             >
-              อ่านรีวิวเต็มหาดเทียน (Full Beach Review)
+              {page.beachGuide.fullReview}
             </Link>
           )}
         </div>

@@ -95,7 +95,7 @@ export function FeaturedHeroCinematic({
       </div>
 
       <div className="hero-cinematic__shine pointer-events-none absolute inset-0" aria-hidden />
-      <div className="hero-cinematic__vignette absolute inset-0" aria-hidden />
+      <div className="hero-cinematic__vignette pointer-events-none absolute inset-0" aria-hidden />
       <div className="hero-cinematic__glow pointer-events-none absolute inset-x-0 bottom-0 h-2/5" aria-hidden />
       <div className="hero-cinematic__grain pointer-events-none absolute inset-0 opacity-[0.14]" aria-hidden />
 

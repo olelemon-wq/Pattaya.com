@@ -1,100 +1,44 @@
+"use client";
+
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import { ExploreGuideCarousel } from "@/components/explore/explore-guide-carousel";
 import type { ExploreGuideCardData } from "@/components/explore/explore-guide-types";
+import { useLanguage } from "@/components/layout/language-provider";
+import { exploreImages } from "@/lib/design/explore-images";
+import { getExploreCommon } from "@/lib/i18n/messages/explore-common";
+import { getWellnessPage } from "@/lib/i18n/messages/explore-wellness";
 import { Clock, MapPin, Sparkles, Sun } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { exploreImages } from "@/lib/design/explore-images";
 
-const spas = [
-  {
-    id: "aura-sanctuary",
-    name: "Aura Sanctuary",
-    nameTh: "ออร่า แซงชัวรี่",
-    image: exploreImages.auraSanctuary,
-    tags: ["Premium", "Skyline", "Thai massage"],
-    hours: "Daily · ~10:00–22:00",
-    location: "Central Pattaya · skyline views",
-    session: "Signature 90-min · from ฿2,400",
-    excerpt:
-      "World-class Thai massage and aromatherapy in a glass-front sanctuary — the Explore hub’s top wellness pick.",
-  },
-  {
-    id: "cliff-spa",
-    name: "Pratumnak Cliff Spa",
-    nameTh: "สปาริมหน้าผา พระตำหนัก",
-    image: exploreImages.skyGallery,
-    tags: ["Clifftop", "Couples", "Sunset"],
-    hours: "Daily · ~11:00–21:00",
-    location: "Pratumnak Hill",
-    session: "Couples package · from ฿3,200",
-    excerpt:
-      "Oil and herbal compress treatments with bay views — book the last slot for golden-hour calm.",
-  },
-  {
-    id: "jomtien-retreat",
-    name: "Jomtien Beach Retreat",
-    nameTh: "จอมเทียน บีช รีทรีต",
-    image: exploreImages.cafeLifestyle,
-    tags: ["Beachfront", "Relax", "Foot massage"],
-    hours: "Daily · ~10:00–23:00",
-    location: "Jomtien Beach Rd",
-    session: "Foot + shoulder · from ฿800",
-    excerpt:
-      "Casual beach-road spa for post-swim recovery — walk-ins welcome, quieter weekday afternoons.",
-  },
-  {
-    id: "naklua-herbal",
-    name: "Naklua Herbal House",
-    nameTh: "น้ำมันสมุนไพร นาเกลือ",
-    image: exploreImages.caveBeachClub,
-    tags: ["Traditional", "Herbal", "Local"],
-    hours: "Daily · ~09:00–20:00",
-    location: "Naklua, north Pattaya",
-    session: "Herbal ball massage · from ฿1,200",
-    excerpt:
-      "Old-school Thai techniques and warm herbal compresses — authentic, unhurried atmosphere away from the core.",
-  },
-];
+const spaImages: Record<string, string> = {
+  "aura-sanctuary": exploreImages.auraSanctuary,
+  "cliff-spa": exploreImages.skyGallery,
+  "jomtien-retreat": exploreImages.cafeLifestyle,
+  "naklua-herbal": exploreImages.caveBeachClub,
+};
 
-const spaGuideCards: ExploreGuideCardData[] = spas.map((spa) => ({
-  id: spa.id,
-  name: spa.name,
-  nameTh: spa.nameTh,
-  image: spa.image,
-  tags: spa.tags,
-  excerpt: spa.excerpt,
-  details: [
-    { icon: "clock", label: "Hours", value: spa.hours },
-    { icon: "mapPin", label: "Location", value: spa.location },
-    { icon: "sparkles", label: "From", value: spa.session },
-  ],
-}));
-
-const wellnessTips = [
-  {
-    icon: Clock,
-    title: "Book ahead",
-    text: "Weekends fill for couples rooms — reserve 24–48 hours ahead for skyline slots at premium spas.",
-  },
-  {
-    icon: Sun,
-    title: "Before & after sun",
-    text: "Avoid deep massage on fresh sunburn. Hydrate before aromatherapy sessions.",
-  },
-  {
-    icon: Sparkles,
-    title: "Communicate pressure",
-    text: "Say ‘bao bao’ (light) or ‘nak’ (firm). Tip 10–15% only when service exceeds expectations.",
-  },
-  {
-    icon: MapPin,
-    title: "Arrive early",
-    text: "Check in 15 minutes early for consultation — late arrivals may shorten treatment time.",
-  },
-];
+const tipIcons = [Clock, Sun, Sparkles, MapPin] as const;
 
 export function WellnessPage() {
+  const { language } = useLanguage();
+  const c = getExploreCommon(language);
+  const page = getWellnessPage(language);
+
+  const spaGuideCards: ExploreGuideCardData[] = page.spas.map((spa) => ({
+    id: spa.id,
+    name: spa.name,
+    nameTh: spa.nameTh,
+    image: spaImages[spa.id] ?? exploreImages.auraSanctuary,
+    tags: spa.tags,
+    excerpt: spa.excerpt,
+    details: [
+      { icon: "clock", label: c.hours, value: spa.hours },
+      { icon: "mapPin", label: c.location, value: spa.location },
+      { icon: "sparkles", label: c.from, value: spa.session },
+    ],
+  }));
+
   return (
     <div data-full-bleed className="bg-[#fdf8fb] text-[#191c1d]">
       <div className="relative z-10 shrink-0 shadow-sm">
@@ -107,7 +51,7 @@ export function WellnessPage() {
       >
         <Image
           src={exploreImages.auraSanctuary}
-          alt="Luxury spa interior in Pattaya"
+          alt={page.hero.title}
           fill
           priority
           className="object-cover"
@@ -122,49 +66,44 @@ export function WellnessPage() {
             <ol className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/80">
               <li>
                 <Link href="/explore" className="hover:text-white">
-                  Explore
+                  {page.breadcrumb.explore}
                 </Link>
               </li>
               <li aria-hidden>/</li>
               <li>
-                <span className="text-white">Wellness</span>
+                <span className="text-white">{page.breadcrumb.current}</span>
               </li>
             </ol>
           </nav>
           <span className="mb-3 inline-flex w-fit rounded-full bg-[#F0D4E8] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#B52E88]">
-            Wellness
+            {page.hero.badge}
           </span>
           <h1
             id="wellness-hero-title"
             className="text-3xl font-bold tracking-tight text-white md:text-5xl"
           >
-            Relax & Wellness
+            {page.hero.title}
           </h1>
-          <p className="mt-2 text-lg text-[#F5D0E8] md:text-xl">สปา & นวด</p>
-          <p className="mt-4 max-w-2xl text-base text-white/90 md:text-lg">
-            Premium spas and traditional Thai massage across Pattaya — from
-            skyline sanctuaries to quiet herbal houses in Naklua.
-          </p>
+          <p className="mt-2 text-lg text-[#F5D0E8] md:text-xl">{page.hero.subtitle}</p>
+          <p className="mt-4 max-w-2xl text-base text-white/90 md:text-lg">{page.hero.body}</p>
         </div>
       </section>
 
       <div className="mx-auto max-w-[1280px] px-5 py-12 md:px-16 md:py-16">
         <ExploreGuideCarousel
-          title="Choose your sanctuary"
-          description="Hand-picked spas from the Explore hub — match skyline luxury, beach recovery, or traditional herbal treatments."
-          prevLabel="Previous spas"
-          nextLabel="Next spas"
+          title={page.carousel.title}
+          description={page.carousel.description}
+          prevLabel={page.carousel.prev}
+          nextLabel={page.carousel.next}
           items={spaGuideCards}
         />
 
         <section className="mb-16">
-          <h2 className="text-2xl font-semibold md:text-3xl">Spa tips</h2>
-          <p className="mt-2 text-[#444748]">
-            Get the most from your treatment without surprises.
-          </p>
+          <h2 className="text-2xl font-semibold md:text-3xl">{page.tips.title}</h2>
+          <p className="mt-2 text-[#444748]">{page.tips.subtitle}</p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            {wellnessTips.map((tip) => {
-              const Icon = tip.icon;
+            {page.tips.items.map((tip, i) => {
+              const Icon = tipIcons[i] ?? Clock;
               return (
                 <div
                   key={tip.title}
@@ -175,9 +114,7 @@ export function WellnessPage() {
                   </div>
                   <div>
                     <h4 className="font-bold text-[#191c1d]">{tip.title}</h4>
-                    <p className="mt-1 text-sm leading-relaxed text-[#444748]">
-                      {tip.text}
-                    </p>
+                    <p className="mt-1 text-sm leading-relaxed text-[#444748]">{tip.text}</p>
                   </div>
                 </div>
               );
@@ -186,25 +123,25 @@ export function WellnessPage() {
         </section>
 
         <section className="rounded-2xl border border-[#c4c7c8]/30 bg-white p-6 sm:p-8">
-          <h2 className="text-xl font-bold md:text-2xl">Also explore</h2>
+          <h2 className="text-xl font-bold md:text-2xl">{page.alsoExplore.title}</h2>
           <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Link
               href="/explore/beaches"
               className="rounded-xl bg-[#B52E88] px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-[#B52E88]/90"
             >
-              Main beaches →
+              {page.alsoExplore.mainBeaches}
             </Link>
             <Link
               href="/explore/restaurants/fine-dining"
               className="rounded-xl border border-[#B52E88]/30 px-6 py-3 text-center text-sm font-semibold text-[#B52E88] transition hover:bg-[#B52E88]/5"
             >
-              Fine dining →
+              {page.alsoExplore.fineDining}
             </Link>
             <Link
               href="/explore/islands/koh-larn"
               className="rounded-xl border border-[#c4c7c8]/50 px-6 py-3 text-center text-sm font-semibold text-[#191c1d] transition hover:bg-[#edeeef]"
             >
-              Koh Larn →
+              {page.alsoExplore.kohLarn}
             </Link>
           </div>
         </section>

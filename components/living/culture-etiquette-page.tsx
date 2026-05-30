@@ -1,167 +1,77 @@
 "use client";
 
 import { CultureEtiquetteFaq } from "@/components/living/culture-etiquette-faq";
-import { LocalizedLivingPageShell } from "@/components/living/localized-living-page-shell";
 import {
   LivingCtaActions,
   livingCtaButtonClass,
 } from "@/components/living/living-cta-actions";
+import { LocalizedLivingPageShell } from "@/components/living/localized-living-page-shell";
 import { useLanguage } from "@/components/layout/language-provider";
 import { livingTheme } from "@/lib/design/living-theme";
 import { livingImages } from "@/lib/design/living-images";
-import { iconEnTh, L, t } from "@/lib/i18n/living-helpers";
-import type { LocalizedText } from "@/lib/i18n/text";
 import {
+  getCultureDos,
+  getCultureDonts,
+  getCultureEtiquettePage,
+  getDontDeepDives,
+  getPattayaTips,
+  getSocialTips,
+  getTempleChecklist,
+  type EtiquetteItemId,
+} from "@/lib/i18n/messages/living/culture-etiquette";
+import {
+  Briefcase,
+  Bus,
+  Camera,
+  Check,
   Crown,
   Footprints,
   Hand,
   Handshake,
+  Heart,
+  HardHat,
   Landmark,
+  Languages,
+  ListOrdered,
+  MapPin,
+  Music,
+  Shield,
   Shirt,
+  Smile,
+  Sparkles,
+  Sun,
+  Trash2,
   Users,
   VolumeX,
   type LucideIcon,
 } from "lucide-react";
 import Link from "next/link";
 
-function getCulturalDos() {
-  return [
-    iconEnTh(
-      Handshake,
-      "The Wai Protocol",
-      "การไหว้",
-      "Bow with palms together to show respect to elders, officials, and new acquaintances.",
-      "ไหว้แสดงความเคารพต่อผู้ใหญ่ เจ้าหน้าที่ และคนที่เพิ่งรู้จัก",
-      "合十礼",
-      "Протокол вай",
-      "双手合十鞠躬，向长辈、官员及新识表示尊重。",
-      "Сложите ладони и поклонитесь старшим и должностным лицам.",
-    ),
-    iconEnTh(
-      Users,
-      "Social Hierarchy",
-      "ลำดับชั้นทางสังคม",
-      "Acknowledge age and status with appropriate gestures and a calm, polite tone.",
-      "ยอมรับอายุและสถานะด้วยท่าทีสุภาพและน้ำเสียงสงบ",
-      "社会层级",
-      "Социальная иерархия",
-      "以适当举止与平和语气体现对年龄与地位的尊重。",
-      "Учитывайте возраст и статус в жестах и тоне.",
-    ),
-    iconEnTh(
-      Shirt,
-      "Dress Codes",
-      "การแต่งกาย",
-      "Wear modest clothing (covering shoulders and knees) at temples and official buildings.",
-      "แต่งกายสุภาพ (ปิดไหล่และเข่า) เมื่อเข้าวัดและสถานที่ราชการ",
-      "着装规范",
-      "Дресс-код",
-      "进寺庙与官方场所需衣着得体，遮肩盖膝。",
-      "В храмах и госучреждениях — скромная одежда.",
-    ),
-    iconEnTh(
-      Landmark,
-      "Respect for Monks",
-      "ความเคารพต่อพระ",
-      "Give up your seat and maintain distance; women should avoid physical contact.",
-      "ให้ที่นั่งพระและรักษาระยะห่าง ผู้หญิงไม่สัมผัสพระ",
-      "尊重僧侣",
-      "Уважение к монахам",
-      "让座并保持距离；女性避免与僧侣有身体接触。",
-      "Уступайте место; женщинам избегать прикосновений.",
-    ),
-  ];
-}
+const doIcons: Partial<Record<EtiquetteItemId, LucideIcon>> = {
+  wai: Handshake,
+  hierarchy: Users,
+  dress: Shirt,
+  monks: Landmark,
+  shoes: Footprints,
+  "thai-phrases": Languages,
+  "right-hand": Hand,
+  smile: Smile,
+  queue: ListOrdered,
+};
 
-function getCulturalDonts() {
-  return [
-    iconEnTh(
-      Hand,
-      "Touching the Head",
-      "จับหัว",
-      "The head is sacred; avoid touching anyone's head, even children.",
-      "หัวเป็นที่ศักดิ์สิทธิ์ อย่าจับหัวใคร แม้เด็ก",
-      "勿摸头",
-      "Не трогать голову",
-      "头部被视为神圣，勿触摸他人头部。",
-      "Голова священна — не трогайте её.",
-    ),
-    iconEnTh(
-      Footprints,
-      "Pointing Feet",
-      "ชี้เท้า",
-      "Never point feet at people, monks, or images of the Buddha.",
-      "อย่าชี้เท้าไปที่คน พระ หรือพระพุทธรูป",
-      "勿用足指向人",
-      "Не направлять ступни",
-      "勿将脚指向他人、僧侣或佛像。",
-      "Не направляйте ступни на людей или изображения Будды.",
-    ),
-    iconEnTh(
-      VolumeX,
-      "Raising Your Voice",
-      "พูดเสียงดัง",
-      "Maintain calm; losing temper is losing face and counterproductive.",
-      "ใจเย็น การโกรธคือการเสียหน้าและไม่ได้ผล",
-      "勿高声",
-      "Не повышать голос",
-      "保持冷静；发脾气即失面子且适得其反。",
-      "Сохраняйте спокойствие — гнев = потеря лица.",
-    ),
-    iconEnTh(
-      Crown,
-      "Disrespecting the Monarchy",
-      "ไม่เคารพสถาบัน",
-      "Show utmost respect for the Royal Family. Discussion is subject to strict laws.",
-      "แสดงความเคารพต่อสถาบันกษัตริย์ มีกฎหมายเข้มงวด",
-      "尊重王室",
-      "Уважение к монархии",
-        "对王室须充分尊重，相关讨论受严格法律约束。",
-      "Проявляйте уважение; обсуждение строго регламентировано.",
-    ),
-  ];
-}
+const dontIcons: Partial<Record<EtiquetteItemId, LucideIcon>> = {
+  head: Hand,
+  feet: Footprints,
+  voice: VolumeX,
+  monarchy: Crown,
+  pda: Heart,
+  "beach-dress": Sun,
+  "photos-monks": Camera,
+  "public-argue": Users,
+  litter: Trash2,
+};
 
-function getPattayaTips(): { title: LocalizedText; text: LocalizedText }[] {
-  return [
-    {
-      title: L("Temples & shrines", "วัดและศาลเจ้า", "寺庙与神龛", "Храмы и святилища"),
-      text: L(
-        "Big Buddha, Wat Yansangwararam — dress modestly and remove shoes.",
-        "พระใหญ่ วัดญาณสังวราราม — แต่งกายสุภาพ ถอดรองเท้า",
-        "大佛像、Yansangwararam 寺 — 衣着得体并脱鞋。",
-        "Big Buddha, Wat Yansangwararam — скромная одежда, снимите обувь.",
-      ),
-    },
-    {
-      title: L("Beach & nightlife", "ชายหาดและไนท์ไลฟ์", "海滩与夜生活", "Пляж и ночная жизнь"),
-      text: L(
-        "Swimwear stays at the beach. In town and Walking Street, cover up more.",
-        "ชุดว่ายน้ำอยู่ที่หาด ในเมืองและ Walking Street แต่งตัวมิดชิดกว่า",
-        "泳装限海滩；市区与 Walking Street 需多遮盖。",
-        "Купальники только на пляже; в городе одевайтесь скромнее.",
-      ),
-    },
-    {
-      title: L("Business & networking", "ธุรกิจ", "商务社交", "Бизнес"),
-      text: L(
-        "Exchange cards with both hands, arrive on time, open with small talk.",
-        "ส่งนามบัตรด้วยสองมือ ตรงเวลา เริ่มด้วยบทสนทนาเบาๆ",
-        "双手递名片、准时到场、先寒暄再谈正事。",
-        "Визитки двумя руками, пунктуальность, лёгкая беседа в начале.",
-      ),
-    },
-    {
-      title: L("Songthaews & queues", "สองแถวและคิว", "双条车与排队", "Сонгthaew и очереди"),
-      text: L(
-        "Patience and a smile help. Press the buzzer, agree fares, queue politely.",
-        "อดทนและยิ้มช่วยได้ กดกริ่ง ตกลงค่าโดยสาร ต่อคิวสุภาพ",
-        "耐心与微笑很重要；按铃、讲价、礼貌排队。",
-        "Терпение и улыбка; договаривайтесь о цене, соблюдайте очередь.",
-      ),
-    },
-  ];
-}
+const pattayaIcons = [Landmark, Sun, Music, Shield, Briefcase, Bus, HardHat] as const;
 
 function EtiquetteCard({
   icon: Icon,
@@ -176,14 +86,20 @@ function EtiquetteCard({
 }) {
   const accent = variant === "do" ? "#B29475" : "#ae2f34";
   return (
-    <article className="flex gap-4 rounded-xl border border-[#e2e8f0] bg-white p-5 shadow-sm transition hover:border-[#D7CBBA]">
+    <article
+      className={`group flex gap-4 rounded-2xl border bg-white p-5 shadow-sm transition hover:shadow-md ${
+        variant === "do"
+          ? "border-[#e2e8f0] hover:border-[#D7CBBA]"
+          : "border-[#f0e0e0] hover:border-[#ae2f34]/40"
+      }`}
+    >
       <div
-        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-white shadow-md"
+        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-white shadow-md transition group-hover:scale-105"
         style={{ backgroundColor: accent }}
       >
         <Icon className="h-5 w-5" aria-hidden />
       </div>
-      <div>
+      <div className="min-w-0">
         <h3 className="font-bold text-[#0A192F]">{title}</h3>
         <p className="mt-2 text-sm leading-relaxed text-[#444748]">{text}</p>
       </div>
@@ -193,36 +109,13 @@ function EtiquetteCard({
 
 export function CultureEtiquettePage() {
   const { language } = useLanguage();
-  const intro = {
-    title: t(
-      language,
-      L("The Thai Way in Pattaya", "วิถีไทยในพัทยา", "芭提雅的泰国之道", "Тайский образ жизни в Паттайе"),
-    ),
-    body: t(
-      language,
-      L(
-        "Pattaya is international, but harmony rests on Thai values — patience, respect, and saving face. These guidelines help expats navigate daily life without unintended offense.",
-        "พัทยาเป็นเมืองนานาชาติ แต่ความกลมกลืนยังอาศัยค่านิยมไทย — อดทน เคารพ และรักษาหน้า คู่มือนี้ช่วยชาวต่างชาติใช้ชีวิตโดยไม่ล่วงเกิน",
-        "芭提雅虽国际化，和谐仍靠泰国价值观——耐心、尊重与给面子。本指南帮助外籍人士避免无意冒犯。",
-        "Паттайя космополитична, но гармония держится на терпении, уважении и «сохранении лица».",
-      ),
-    ),
-    dos: t(language, L("Cultural Dos", "สิ่งที่ควรทำ", "文化宜做", "Что следует делать")),
-    donts: t(language, L("Cultural Don'ts", "สิ่งที่ไม่ควรทำ", "文化忌做", "Чего избегать")),
-    tips: t(language, L("Pattaya-specific tips", "เคล็ดลับเฉพาะพัทยา", "芭提雅贴士", "Советы для Паттайи")),
-    tipsSub: t(
-      language,
-      L(
-        "Common situations in the city",
-        "สถานการณ์ที่เจอบ่อยในเมืองพัทยา",
-        "城中常见场景",
-        "Типичные ситуации в городе",
-      ),
-    ),
-    livingHub: t(language, L("Living hub →", "Living hub →", "生活中心 →", "Раздел «Жизнь» →")),
-    thaiCulture: t(language, L("Thai culture →", "วัฒนธรรมไทย →", "泰国文化 →", "Культура →")),
-    scamAlerts: t(language, L("Scam alerts →", "แจ้งเตือนมิจฉาชีพ →", "诈骗提醒 →", "Мошенничество →")),
-  };
+  const copy = getCultureEtiquettePage(language);
+  const dos = getCultureDos(language);
+  const donts = getCultureDonts(language);
+  const templeItems = getTempleChecklist(language);
+  const pattayaTips = getPattayaTips(language);
+  const socialTips = getSocialTips(language);
+  const deepDives = getDontDeepDives(language);
 
   return (
     <LocalizedLivingPageShell
@@ -233,75 +126,264 @@ export function CultureEtiquettePage() {
       bottomChildren={
         <LivingCtaActions>
           <Link href="/living" className={livingCtaButtonClass.primary}>
-            {intro.livingHub}
+            {copy.livingHub}
           </Link>
           <Link href="/living/culture/thai-culture" className={livingCtaButtonClass.outline}>
-            {intro.thaiCulture}
+            {copy.thaiCulture}
           </Link>
           <Link href="/living/safety/scam-alerts" className={livingCtaButtonClass.danger}>
-            {intro.scamAlerts}
+            {copy.scamAlerts}
           </Link>
         </LivingCtaActions>
       }
     >
-      <section className={livingTheme.accentPanel}>
-        <h2 className={livingTheme.headingSm}>{intro.title}</h2>
-        <p className={`mt-3 max-w-3xl sm:text-base ${livingTheme.body}`}>{intro.body}</p>
+      {/* Intro */}
+      <section
+        className="relative overflow-hidden rounded-2xl border border-[#D7CBBA]/60 bg-gradient-to-br from-[#faf7f2] via-white to-[#f5efe6] p-6 sm:p-8"
+        aria-labelledby="intro-title"
+      >
+        <div
+          className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full opacity-20"
+          style={{ background: "radial-gradient(circle, #B29475 0%, transparent 70%)" }}
+          aria-hidden
+        />
+        <div className="relative flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
+          <div
+            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-white shadow-lg"
+            style={{ backgroundColor: "#B29475" }}
+          >
+            <Sparkles className="h-7 w-7" aria-hidden />
+          </div>
+          <div>
+            <h2 id="intro-title" className="text-2xl font-bold text-[#0A192F] sm:text-3xl">
+              {copy.introTitle}
+            </h2>
+            <p className={`mt-3 max-w-3xl text-base leading-relaxed ${livingTheme.body}`}>
+              {copy.introBody}
+            </p>
+          </div>
+        </div>
       </section>
 
-      <section aria-labelledby="dos-title">
-        <h2
-          id="dos-title"
-          className="flex items-center gap-2 text-2xl font-bold text-[#B29475] sm:text-3xl"
-        >
-          ✓ {intro.dos}
+      {/* Three pillars */}
+      <section aria-labelledby="pillars-title">
+        <h2 id="pillars-title" className={livingTheme.heading}>
+          {copy.pillarsTitle}
         </h2>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          {getCulturalDos().map((item) => (
-            <EtiquetteCard
-              key={item.title.en}
-              icon={item.icon}
-              title={t(language, item.title)}
-              text={t(language, item.text)}
-              variant="do"
-            />
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
+          {copy.pillars.map((pillar) => (
+            <article
+              key={pillar.title}
+              className="rounded-2xl border border-[#D7CBBA]/50 bg-white p-5 shadow-sm"
+            >
+              <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-[#B29475]/15 text-[#B29475]">
+                <Heart className="h-5 w-5" aria-hidden />
+              </div>
+              <h3 className="font-bold text-[#0A192F]">{pillar.title}</h3>
+              <p className={`mt-2 text-sm leading-relaxed ${livingTheme.body}`}>{pillar.body}</p>
+            </article>
           ))}
         </div>
       </section>
 
-      <section aria-labelledby="donts-title">
-        <h2
-          id="donts-title"
-          className="flex items-center gap-2 text-2xl font-bold text-[#ae2f34] sm:text-3xl"
-        >
-          ✕ {intro.donts}
+      {/* Wai guide */}
+      <section
+        className="rounded-2xl border border-[#0A192F]/10 bg-[#0A192F] p-6 text-white sm:p-8"
+        aria-labelledby="wai-title"
+      >
+        <h2 id="wai-title" className="text-xl font-bold text-[#D7CBBA] sm:text-2xl">
+          {copy.waiTitle}
         </h2>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          {getCulturalDonts().map((item) => (
-            <EtiquetteCard
-              key={item.title.en}
-              icon={item.icon}
-              title={t(language, item.title)}
-              text={t(language, item.text)}
-              variant="dont"
-            />
-          ))}
-        </div>
-      </section>
-
-      <section aria-labelledby="pattaya-title">
-        <h2 id="pattaya-title" className={livingTheme.heading}>
-          {intro.tips}
-        </h2>
-        <p className={`mt-2 ${livingTheme.muted}`}>{intro.tipsSub}</p>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          {getPattayaTips().map((tip) => (
-            <div key={tip.title.en} className={`p-5 shadow-sm ${livingTheme.cardStatic}`}>
-              <h3 className="font-bold text-[#0A192F]">{t(language, tip.title)}</h3>
-              <p className={`mt-2 ${livingTheme.body}`}>{t(language, tip.text)}</p>
+        <p className="mt-2 text-sm text-white/80 sm:text-base">{copy.waiSubtitle}</p>
+        <div className="mt-6 grid gap-3 sm:grid-cols-3">
+          {copy.waiSteps.map((step, i) => (
+            <div
+              key={step.level}
+              className="rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm"
+            >
+              <span className="text-xs font-semibold uppercase tracking-wide text-[#B29475]">
+                {i === 0 ? "①" : i === 1 ? "②" : "③"} {step.level}
+              </span>
+              <p className="mt-2 text-sm leading-relaxed text-white/90">{step.who}</p>
             </div>
           ))}
         </div>
+      </section>
+
+      {/* High & low */}
+      <section
+        className="rounded-2xl border border-[#0A192F]/10 bg-[#0A192F]/[0.03] p-5 sm:p-6"
+        aria-labelledby="high-low-title"
+      >
+        <h2 id="high-low-title" className="text-lg font-bold text-[#0A192F] sm:text-xl">
+          {copy.highLowTitle}
+        </h2>
+        <p className={`mt-2 ${livingTheme.body}`}>{copy.highLowBody}</p>
+      </section>
+
+      {/* Dos & Don'ts side by side */}
+      <section aria-labelledby="dos-donts-compare">
+        <h2 id="dos-donts-compare" className="sr-only">
+          {copy.dosDontsIntro}
+        </h2>
+        <p className={`mb-6 max-w-3xl ${livingTheme.muted}`}>{copy.dosDontsIntro}</p>
+        <div className="grid gap-8 xl:grid-cols-2 xl:gap-10">
+          <div aria-labelledby="dos-title">
+            <h3
+              id="dos-title"
+              className="flex items-center gap-2 text-xl font-bold text-[#B29475] sm:text-2xl"
+            >
+              <span
+                className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#B29475] text-sm text-white"
+                aria-hidden
+              >
+                ✓
+              </span>
+              {copy.dosTitle}
+            </h3>
+            <div className="mt-5 grid gap-4">
+              {dos.map((item) => (
+                <EtiquetteCard
+                  key={item.id}
+                  icon={doIcons[item.id] ?? Handshake}
+                  title={item.title}
+                  text={item.text}
+                  variant="do"
+                />
+              ))}
+            </div>
+          </div>
+          <div aria-labelledby="donts-title">
+            <h3
+              id="donts-title"
+              className="flex items-center gap-2 text-xl font-bold text-[#ae2f34] sm:text-2xl"
+            >
+              <span
+                className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#ae2f34] text-sm text-white"
+                aria-hidden
+              >
+                ✕
+              </span>
+              {copy.dontsTitle}
+            </h3>
+            <div className="mt-5 grid gap-4">
+              {donts.map((item) => (
+                <EtiquetteCard
+                  key={item.id}
+                  icon={dontIcons[item.id] ?? VolumeX}
+                  title={item.title}
+                  text={item.text}
+                  variant="dont"
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Deep dives */}
+      <section aria-labelledby="deep-dive-title">
+        <h2 id="deep-dive-title" className={livingTheme.heading}>
+          {copy.deepDiveTitle}
+        </h2>
+        <p className={`mt-2 ${livingTheme.muted}`}>{copy.deepDiveSubtitle}</p>
+        <div className="mt-6 grid gap-4 lg:grid-cols-2">
+          {deepDives.map((block) => (
+            <article
+              key={block.id}
+              className="rounded-2xl border border-[#e2e8f0] bg-white p-5 shadow-sm"
+            >
+              <h3 className="font-bold text-[#ae2f34]">{block.title}</h3>
+              <p className={`mt-2 text-sm font-medium text-[#0A192F] ${livingTheme.body}`}>
+                {block.why}
+              </p>
+              <ul className="mt-3 space-y-2">
+                {block.tips.map((tip) => (
+                  <li
+                    key={tip}
+                    className="flex gap-2 text-sm leading-relaxed text-[#444748]"
+                  >
+                    <span className="text-[#B29475]" aria-hidden>
+                      →
+                    </span>
+                    {tip}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* Temple checklist */}
+      <section
+        className="grid gap-6 lg:grid-cols-2 lg:items-start"
+        aria-labelledby="temple-title"
+      >
+        <div>
+          <h2 id="temple-title" className={livingTheme.heading}>
+            {copy.templeTitle}
+          </h2>
+          <p className={`mt-2 ${livingTheme.muted}`}>{copy.templeSubtitle}</p>
+        </div>
+        <ul className="space-y-3 rounded-2xl border border-[#D7CBBA]/60 bg-[#faf7f2] p-5 sm:p-6">
+          {templeItems.map((line) => (
+            <li key={line} className="flex gap-3 text-sm leading-relaxed text-[#444748] sm:text-base">
+              <span
+                className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#B29475] text-white"
+                aria-hidden
+              >
+                <Check className="h-3.5 w-3.5" />
+              </span>
+              {line}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* Pattaya tips */}
+      <section aria-labelledby="pattaya-title">
+        <h2 id="pattaya-title" className={livingTheme.heading}>
+          {copy.pattayaTitle}
+        </h2>
+        <p className={`mt-2 ${livingTheme.muted}`}>{copy.pattayaSubtitle}</p>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {pattayaTips.map((tip, i) => {
+            const Icon = pattayaIcons[i] ?? MapPin;
+            return (
+              <article
+                key={tip.title}
+                className={`flex flex-col gap-3 p-5 shadow-sm transition hover:shadow-md ${livingTheme.cardStatic}`}
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0A192F] text-[#D7CBBA]">
+                  <Icon className="h-5 w-5" aria-hidden />
+                </div>
+                <h3 className="font-bold text-[#0A192F]">{tip.title}</h3>
+                <p className={`flex-1 text-sm leading-relaxed ${livingTheme.body}`}>{tip.text}</p>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Social tips */}
+      <section aria-labelledby="social-title" className={livingTheme.accentPanel}>
+        <h2 id="social-title" className={livingTheme.headingSm}>
+          {copy.socialTitle}
+        </h2>
+        <ul className="mt-4 space-y-3">
+          {socialTips.map((line) => (
+            <li
+              key={line}
+              className="flex gap-3 border-b border-[#D7CBBA]/40 pb-3 text-sm leading-relaxed text-[#444748] last:border-0 last:pb-0 sm:text-base"
+            >
+              <span className="font-bold text-[#B29475]" aria-hidden>
+                •
+              </span>
+              {line}
+            </li>
+          ))}
+        </ul>
       </section>
 
       <CultureEtiquetteFaq />

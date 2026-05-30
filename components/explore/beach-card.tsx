@@ -12,7 +12,16 @@ export type BeachCardData = {
   excerpt: string;
 };
 
-export function beachToGuideCard(beach: BeachCardData): ExploreGuideCardData {
+export type BeachDetailLabels = {
+  bestFor: string;
+  access: string;
+  water: string;
+};
+
+export function beachToGuideCard(
+  beach: BeachCardData,
+  labels: BeachDetailLabels,
+): ExploreGuideCardData {
   return {
     id: beach.id,
     name: beach.name,
@@ -21,9 +30,9 @@ export function beachToGuideCard(beach: BeachCardData): ExploreGuideCardData {
     tags: beach.vibe,
     excerpt: beach.excerpt,
     details: [
-      { icon: "users", label: "Best for", value: beach.bestFor },
-      { icon: "navigation", label: "Access", value: beach.access },
-      { icon: "waves", label: "Water", value: beach.water },
+      { icon: "users", label: labels.bestFor, value: beach.bestFor },
+      { icon: "navigation", label: labels.access, value: beach.access },
+      { icon: "waves", label: labels.water, value: beach.water },
     ],
   };
 }

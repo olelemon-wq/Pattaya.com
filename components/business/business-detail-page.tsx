@@ -1,17 +1,25 @@
+"use client";
+
 import { BusinessPageFooter } from "@/components/business/business-page-footer";
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
+import { useLanguage } from "@/components/layout/language-provider";
 import {
   businessPages,
   type BusinessPageId,
 } from "@/lib/data/business-page-content";
+import { getBusinessDetailUi } from "@/lib/i18n/messages/business-detail-ui";
+import { resolveBusinessPage } from "@/lib/i18n/resolve-business-page";
 import { Check } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export function BusinessDetailPage({ pageId }: { pageId: BusinessPageId }) {
-  const page = businessPages[pageId];
-  if (!page) notFound();
+  const { language } = useLanguage();
+  const ui = getBusinessDetailUi(language);
+
+  if (!businessPages[pageId]) notFound();
+  const page = resolveBusinessPage(language, pageId);
 
   const heroTitleId = `business-${pageId}-hero`;
 
@@ -39,7 +47,7 @@ export function BusinessDetailPage({ pageId }: { pageId: BusinessPageId }) {
             <ol className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/80">
               <li>
                 <Link href="/business" className="hover:text-white">
-                  Business
+                  {ui.business}
                 </Link>
               </li>
               <li aria-hidden>/</li>
@@ -57,7 +65,6 @@ export function BusinessDetailPage({ pageId }: { pageId: BusinessPageId }) {
           >
             {page.title}
           </h1>
-          <p className="mt-2 text-lg text-[#E2B04E] md:text-xl">{page.titleTh}</p>
           <p className="mt-4 max-w-2xl text-base text-white/90 md:text-lg">
             {page.description}
           </p>
@@ -67,7 +74,7 @@ export function BusinessDetailPage({ pageId }: { pageId: BusinessPageId }) {
       <div className="relative z-10 mx-auto -mt-12 max-w-[900px] px-5 md:-mt-14 md:px-16">
         <aside
           className="rounded-2xl border border-[#c4c7c8]/30 bg-white p-6 shadow-xl md:flex md:items-center md:justify-between md:gap-8 md:p-8"
-          aria-label="Business consultation"
+          aria-label={ui.consultationAria}
         >
           <div className="md:flex-1">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#B8860B]">
@@ -103,7 +110,7 @@ export function BusinessDetailPage({ pageId }: { pageId: BusinessPageId }) {
           <section className="relative overflow-hidden rounded-2xl bg-[#363636] p-6 sm:p-10">
             <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-white/5 blur-3xl" />
             <h2 className="relative text-2xl font-semibold text-white md:text-3xl">
-              สถิติและความเติบโตทางเศรษฐกิจพัทยา
+              {ui.economyStatsTitle}
             </h2>
             <div className="relative mt-8 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm sm:p-8">
               <div className="grid grid-cols-2 gap-6 md:grid-cols-3">
@@ -131,7 +138,7 @@ export function BusinessDetailPage({ pageId }: { pageId: BusinessPageId }) {
         {page.networkingEvents && page.networkingEvents.length > 0 && (
           <section>
             <h2 className="text-2xl font-semibold text-[#363636] md:text-3xl">
-              ตารางกิจกรรมเครือข่ายธุรกิจ
+              {ui.networkingEventsTitle}
             </h2>
             <div className="mt-6 overflow-hidden rounded-2xl border border-[#c4c7c8]/30 bg-[#ebebea]">
               {page.networkingEvents.map((event, i) => (
@@ -169,7 +176,7 @@ export function BusinessDetailPage({ pageId }: { pageId: BusinessPageId }) {
                     href="/business"
                     className="mt-8 whitespace-nowrap rounded-full bg-[#363636] px-10 py-3.5 text-sm font-bold tracking-wide text-white shadow-md transition-all hover:bg-[#363636]/90 md:mt-0"
                   >
-                    ลงทะเบียนล่วงหน้า
+                    {ui.registerEarly}
                   </Link>
                 </div>
               ))}
@@ -240,7 +247,7 @@ export function BusinessDetailPage({ pageId }: { pageId: BusinessPageId }) {
 
         <section>
           <h2 className="text-2xl font-semibold text-[#363636] md:text-3xl">
-            Explore more
+            {ui.exploreMore}
           </h2>
           <div className="mt-6 grid gap-4 sm:grid-cols-3">
             {page.related.map((link) => (
@@ -255,7 +262,6 @@ export function BusinessDetailPage({ pageId }: { pageId: BusinessPageId }) {
             ))}
           </div>
         </section>
-
       </div>
 
       <BusinessPageFooter />

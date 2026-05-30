@@ -25,6 +25,24 @@ export function getHomeHero(lang: LanguageCode) {
   };
 }
 
+const LOCALE_BY_LANG: Record<LanguageCode, string> = {
+  th: "th-TH",
+  en: "en-US",
+  zh: "zh-CN",
+  ru: "ru-RU",
+};
+
+export function getHomeWeather(lang: LanguageCode) {
+  return {
+    title: t(lang, L("Pattaya Weather", "สภาพอากาศพัทยา", "芭提雅天气", "Погода в Паттайе")),
+    feelsLike: t(lang, L("Feels like", "รู้สึกเหมือน", "体感", "Ощущается")),
+    seaUv: t(lang, L("Sea & UV", "ทะเล & UV", "海水与紫外线", "Море и UV")),
+    high: t(lang, L("High", "สูง", "高", "Высокий")),
+    wind: t(lang, L("Wind", "ลม", "风力", "Ветер")),
+    locale: LOCALE_BY_LANG[lang],
+  };
+}
+
 export function getHomeSidebar(lang: LanguageCode) {
   return {
     eventsToday: t(lang, L("Events Today", "อีเวนต์วันนี้", "今日活动", "События сегодня")),

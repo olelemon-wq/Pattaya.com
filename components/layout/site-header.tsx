@@ -99,8 +99,8 @@ export function SiteHeader() {
   }, [menuOpen]);
 
   return (
-    <header className="sticky top-0 z-[120] isolate border-b border-[#e2e8f0] bg-white">
-      <div className="relative z-[121] mx-auto flex h-[72px] max-w-[1280px] items-center gap-4 px-4 lg:px-6">
+    <header className="sticky top-0 z-[120] isolate overflow-visible border-b border-[#e2e8f0] bg-white">
+      <div className="relative z-[121] mx-auto flex h-[72px] max-w-[1280px] items-center gap-4 overflow-visible px-4 lg:px-6">
         <Link
           href="/"
           className="shrink-0 text-lg font-extrabold tracking-tight text-[#0c1a33]"
@@ -111,10 +111,10 @@ export function SiteHeader() {
         <NavLinks
           activeHref={activeHref}
           language={language}
-          className="pointer-events-auto hidden flex-1 justify-center lg:flex"
+          className="pointer-events-auto hidden min-w-0 flex-1 justify-center overflow-hidden lg:flex"
         />
 
-        <div className="ml-auto flex items-center gap-2 sm:gap-3">
+        <div className="relative z-[200] ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
           <label className="relative hidden sm:block">
             <span className="sr-only">Search</span>
             <input
@@ -132,12 +132,14 @@ export function SiteHeader() {
             </span>
           </label>
 
-          <LanguageSelector className="hidden sm:block" />
+          <div className="relative z-[130] hidden sm:block">
+            <LanguageSelector />
+          </div>
 
           <button
             type="button"
             onClick={() => setMenuOpen((open) => !open)}
-            className="pointer-events-auto relative z-[122] flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-lg border border-[#e2e8f0] text-[#0c1a33] transition-colors hover:border-[#f97316] lg:hidden"
+            className="pointer-events-auto flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-lg border border-[#e2e8f0] text-[#0c1a33] transition-colors hover:border-[#f97316] lg:hidden"
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             aria-label={
@@ -197,7 +199,7 @@ export function SiteHeader() {
             onNavigate={() => setMenuOpen(false)}
           />
 
-          <div className="mt-4 border-t border-[#e2e8f0] pt-4 sm:hidden">
+          <div className="relative z-[130] mt-4 border-t border-[#e2e8f0] pt-4 sm:hidden">
             <LanguageSelector />
           </div>
         </div>

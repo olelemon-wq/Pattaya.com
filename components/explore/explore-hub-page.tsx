@@ -221,10 +221,13 @@ export function ExploreHubPage() {
             />
           </div>
           <div className="hero-cinematic__shine pointer-events-none absolute inset-0" aria-hidden />
-          <div className="hero-cinematic__vignette absolute inset-0" aria-hidden />
+          <div className="hero-cinematic__vignette pointer-events-none absolute inset-0" aria-hidden />
           <div className="hero-cinematic__glow pointer-events-none absolute inset-x-0 bottom-0 h-2/5" aria-hidden />
           <div className="hero-cinematic__grain pointer-events-none absolute inset-0 opacity-[0.14]" aria-hidden />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#B52E88]/30 via-transparent to-black/20" />
+          <div
+            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#B52E88]/30 via-transparent to-black/20"
+            aria-hidden
+          />
 
           <div className="relative z-10 mx-auto flex min-h-[min(70dvh,400px)] w-full max-w-[1280px] flex-col items-center justify-center px-5 text-center sm:min-h-[500px] md:px-16 lg:min-h-[560px]">
             <h1 className="hero-cinematic__rise hero-cinematic__rise--2 mb-8 text-3xl font-bold tracking-tight text-white drop-shadow-lg md:text-5xl">

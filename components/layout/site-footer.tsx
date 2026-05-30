@@ -96,7 +96,7 @@ export function SiteFooter() {
           </h3>
           <ul className="space-y-2.5">
             {networkLinks.map((link) => (
-              <li key={link.href}>
+              <li key={link.label.en}>
                 <Link
                   href={link.href}
                   className="text-sm text-white/70 transition-colors hover:text-[#f97316]"
@@ -119,7 +119,7 @@ export function SiteFooter() {
           </h3>
           <ul className="space-y-2.5">
             {connectLinks.map((link) => (
-              <li key={link.href}>
+              <li key={link.label.en}>
                 <Link
                   href={link.href}
                   className="text-sm text-white/70 transition-colors hover:text-[#f97316]"

@@ -1,8 +1,24 @@
 import type { NewsCategoryContent } from "@/lib/data/news-category-types";
 import type { LanguageCode } from "@/lib/i18n/languages";
 import { L, t } from "@/lib/i18n/living-helpers";
+import {
+  localizeCityUpdatesArticle,
+  localizeCityUpdatesSpotlight,
+} from "@/lib/i18n/messages/news-city-updates-bodies";
+import {
+  localizeImmigrationArticle,
+  localizeImmigrationSpotlight,
+} from "@/lib/i18n/messages/news-immigration-bodies";
 import { tNewsCategoryUi } from "@/lib/i18n/messages/news-category-ui";
 import { getNewsNavCopy } from "@/lib/i18n/messages/news-nav";
+import {
+  localizePropertyArticle,
+  localizePropertySpotlight,
+} from "@/lib/i18n/messages/news-property-bodies";
+import {
+  localizeVisaArticle,
+  localizeVisaSpotlight,
+} from "@/lib/i18n/messages/news-visa-bodies";
 import type { LocalizedText } from "@/lib/i18n/text";
 import { pickText } from "@/lib/i18n/text";
 
@@ -388,6 +404,47 @@ function loc(lang: LanguageCode, text: LocalizedText): string {
   return pickText(lang, text);
 }
 
+type SpotlightItem = NewsCategoryContent["spotlights"][number];
+type ArticleItem = NewsCategoryContent["articles"][number];
+
+function localizeSpotlights(
+  lang: LanguageCode,
+  slug: string,
+  items: SpotlightItem[],
+): SpotlightItem[] {
+  switch (slug) {
+    case "local-news/city-updates":
+      return items.map((item) => localizeCityUpdatesSpotlight(lang, item));
+    case "business/real-estate":
+      return items.map((item) => localizePropertySpotlight(lang, item));
+    case "expat/visa":
+      return items.map((item) => localizeVisaSpotlight(lang, item));
+    case "expat/immigration":
+      return items.map((item) => localizeImmigrationSpotlight(lang, item));
+    default:
+      return items;
+  }
+}
+
+function localizeArticles(
+  lang: LanguageCode,
+  slug: string,
+  items: ArticleItem[],
+): ArticleItem[] {
+  switch (slug) {
+    case "local-news/city-updates":
+      return items.map((item) => localizeCityUpdatesArticle(lang, item));
+    case "business/real-estate":
+      return items.map((item) => localizePropertyArticle(lang, item));
+    case "expat/visa":
+      return items.map((item) => localizeVisaArticle(lang, item));
+    case "expat/immigration":
+      return items.map((item) => localizeImmigrationArticle(lang, item));
+    default:
+      return items;
+  }
+}
+
 function localizeFooter(
   lang: LanguageCode,
   base: NonNullable<NewsCategoryContent["footer"]>,
@@ -454,7 +511,7 @@ export function resolveNewsCategoryContent(
     hero,
     headlinesTitle,
     footer,
-    spotlights: base.spotlights,
-    articles: base.articles,
+    spotlights: localizeSpotlights(lang, slug, base.spotlights),
+    articles: localizeArticles(lang, slug, base.articles),
   };
 }

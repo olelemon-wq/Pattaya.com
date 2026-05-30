@@ -1,97 +1,83 @@
 "use client";
 
 import { LivingFaqSection } from "@/components/living/living-faq-section";
+import {
+  LivingCtaActions,
+  livingCtaButtonClass,
+} from "@/components/living/living-cta-actions";
 import { LocalizedLivingPageShell } from "@/components/living/localized-living-page-shell";
 import { useLanguage } from "@/components/layout/language-provider";
 import { livingTheme } from "@/lib/design/living-theme";
 import { livingImages } from "@/lib/design/living-images";
-import { faqEnTh, L, t } from "@/lib/i18n/living-helpers";
+import { faqEnTh } from "@/lib/i18n/living-helpers";
 import { faqSubtitle } from "@/lib/i18n/messages/living/shells";
-import type { LocalizedText } from "@/lib/i18n/text";
-import { Crown, Globe, Plane, Sparkles, Star, type LucideIcon } from "lucide-react";
+import {
+  getEliteCaveats,
+  getElitePerks,
+  getEliteSteps,
+  getEliteTiers,
+  getEliteWhyBenefits,
+  getThailandElitePage,
+} from "@/lib/i18n/messages/living/thailand-elite";
+import {
+  Briefcase,
+  CalendarRange,
+  ClipboardList,
+  Crown,
+  FileText,
+  MapPin,
+  Plane,
+  Sparkles,
+  Wallet,
+  type LucideIcon,
+} from "lucide-react";
 
-function getTiers(lang: import("@/lib/i18n/languages").LanguageCode) {
-  return [
-    {
-      name: "Easy Access",
-      term: t(lang, L("5 years", "5 ปี", "5 年", "5 лет")),
-      fee: t(lang, L("From ฿600,000", "จาก ฿600,000", "起 60 万泰铢", "от 600 000 бат")),
-      perks: t(
-        lang,
-        L("Airport fast track, government liaison, annual health check", "Fast track สนามบิน ประสานงานราชการ ตรวจสุขภาพประจำปี", "机场快速通道、政务协调、年度体检", "Fast track, liaison, check-up"),
-      ),
-    },
-    {
-      name: "Exclusive",
-      term: t(lang, L("10 years", "10 ปี", "10 年", "10 лет")),
-      fee: t(lang, L("From ฿1,000,000", "จาก ฿1,000,000", "起 100 万泰铢", "от 1 млн бат")),
-      perks: t(
-        lang,
-        L("Priority lanes, golf & spa privileges, dedicated Elite staff", "ช่องพิเศษ กอล์ฟ สปา ทีม Elite เฉพาะ", "优先通道、高尔夫与水疗、专属团队", "Приоритет, гольф, spa, персонал"),
-      ),
-    },
-    {
-      name: "Ultimate",
-      term: t(lang, L("20 years", "20 ปี", "20 年", "20 лет")),
-      fee: t(lang, L("From ฿2,000,000", "จาก ฿2,000,000", "起 200 万泰铢", "от 2 млн бат")),
-      perks: t(
-        lang,
-        L("Maximum privileges, family options, premium concierge", "สิทธิ์สูงสุด ครอบครัว คอนเซียร์จพรีเมียม", "最高权益、家属选项、高端礼宾", "Максимум привилегий, семья, concierge"),
-      ),
-    },
-  ];
-}
-
-function getBenefits(): { icon: LucideIcon; title: LocalizedText; text: LocalizedText }[] {
-  return [
-    {
-      icon: Plane,
-      title: L("Airport VIP", "บริการสนามบิน", "机场 VIP", "VIP в аэропорту"),
-      text: L("Fast-track immigration and lounge access at major Thai airports.", "Fast track ตม. และเลานจ์สนามบินหลัก", "主要机场快速入境与休息室。", "Fast track и лаунжи."),
-    },
-    {
-      icon: Globe,
-      title: L("Long-stay visa", "วีซ่าพำนักระยะยาว", "长期居留", "Долгосрочная виза"),
-      text: L("Multi-year stay with simplified 90-day reporting support.", "พำนักหลายปี รองรับรายงาน 90 วัน", "多年居留，简化 90 天报到。", "Многолетнее пребывание, 90 дней."),
-    },
-    {
-      icon: Crown,
-      title: L("Concierge", "คอนเซียร์จ", "礼宾", "Консьерж"),
-      text: L("Dedicated Elite team for government services and lifestyle requests.", "ทีม Elite ประสานงานราชการและไลฟ์สไตล์", "专属团队协调政务与生活需求。", "Команда Elite для госуслуг."),
-    },
-    {
-      icon: Sparkles,
-      title: L("Lifestyle perks", "สิทธิพิเศษ", "生活方式权益", "Привилегии"),
-      text: L("Partner discounts on hotels, golf, spas, and medical networks.", "ส่วนลดโรงแรม กอล์ฟ สปา และเครือข่ายการแพทย์", "酒店、高尔夫、水疗与医疗合作折扣。", "Скидки партнёров."),
-    },
-  ];
-}
+const whyIcons: LucideIcon[] = [CalendarRange, FileText, Plane, ClipboardList];
+import Link from "next/link";
 
 const faqs = [
   faqEnTh(
     "who",
     "Who is Thailand Elite best for?",
     "เหมาะกับใคร?",
-    "High-net-worth individuals and frequent visitors who want premium long-stay without managing standard extensions.",
-    "ผู้มีทรัพย์สินสูงและมาไทยบ่อย ต้องการพำนักระยะยาวแบบพรีเมียม",
+    "High-net-worth individuals and frequent visitors who want premium long-stay without complex financial proofs or queuing at Immigration.",
+    "ผู้มีทรัพย์สินสูงและมาไทยบ่อย ต้องการพำนักระยะยาวแบบพรีเมียม ไม่ยุ่งกับเอกสารการเงินซับซ้อน",
     "适合谁？",
     "Для кого Elite?",
   ),
   faqEnTh(
-    "quota",
-    "Can I work or buy property on Elite?",
-    "ทำงานหรือซื้อคอนโดได้ไหม?",
-    "Elite is membership — employment still needs work permit. Property follows standard foreign rules.",
-    "Elite เป็นสมาชิกภาพ ทำงานต้องมี work permit ซื้ออสังหาตามกฎต่างชาติ",
-    "能工作或买房吗？",
-    "Работа и недвижимость?",
+    "work",
+    "Can I work on Thailand Elite?",
+    "ทำงานบน Elite ได้ไหม?",
+    "No — you need a separate work permit for employment or running a business. Elite is a long-stay privilege, not a work visa.",
+    "ไม่ได้ — ต้องมี Work Permit แยก Elite เป็นสิทธิพำนัก ไม่ใช่วีซ่าทำงาน",
+    "能工作吗？",
+    "Можно ли работать?",
+  ),
+  faqEnTh(
+    "refund",
+    "Is the membership fee refundable?",
+    "ค่าสมาชิกคืนได้ไหม?",
+    "No. Fees are prepaid and non-refundable if you cancel or leave early.",
+    "ไม่คืน — เป็นค่าบริการล่วงหน้าแบบจ่ายขาด",
+    "会费可退吗？",
+    "Возврат взноса?",
+  ),
+  faqEnTh(
+    "pattaya",
+    "Can Elite help with 90-day reporting in Pattaya?",
+    "Elite ช่วยรายงาน 90 วันที่พัทยาได้ไหม?",
+    "Yes — assistants can coordinate with Immigration Pattaya (Jomtien) so you avoid long queues.",
+    "ได้ — ผู้ช่วยประสาน ตม. พัทยา (จอมเทียน) แทนการยืนคิวเอง",
+    "芭提雅90天报到？",
+    "90 дней в Паттайе?",
   ),
   faqEnTh(
     "family",
     "Can family members join?",
     "ครอบครัวเข้าร่วมได้ไหม?",
-    "Dependent add-ons on higher tiers — separate applications and fees.",
-    "เพิ่มผู้อยู่ในอุปการณ์ในแพ็กเกจสูง ยื่นและจ่ายแยก",
+    "Higher tiers allow dependent add-ons — separate applications and fees apply.",
+    "แพ็กเกจสูงเพิ่มผู้อยู่ในอุปการณ์ได้ ยื่นและจ่ายแยก",
     "家属能加入吗？",
     "Семья?",
   ),
@@ -99,6 +85,12 @@ const faqs = [
 
 export function ThailandElitePage() {
   const { language } = useLanguage();
+  const copy = getThailandElitePage(language);
+  const why = getEliteWhyBenefits(language);
+  const tiers = getEliteTiers(language);
+  const caveats = getEliteCaveats(language);
+  const steps = getEliteSteps(language);
+  const perks = getElitePerks(language);
 
   return (
     <LocalizedLivingPageShell
@@ -106,50 +98,228 @@ export function ThailandElitePage() {
       heroImage={livingImages.thailandElite}
       heroAlt="Thailand Elite"
       ctaAriaLabel="Elite membership consultation"
+      hideLeadCta
+      bottomChildren={
+        <LivingCtaActions>
+          <Link href="/living" className={livingCtaButtonClass.primary}>
+            {copy.livingHub}
+          </Link>
+          <Link href="/living/visa/retirement" className={livingCtaButtonClass.outline}>
+            {copy.retirementVisa}
+          </Link>
+          <Link href="/living/visa/work-permit" className={livingCtaButtonClass.outline}>
+            {copy.workPermit}
+          </Link>
+        </LivingCtaActions>
+      }
     >
-      <section aria-labelledby="tiers-title">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <p className={livingTheme.eyebrow}>
-              {t(language, L("Membership", "สมาชิกภาพ", "会员", "Членство"))}
-            </p>
-            <h2 id="tiers-title" className={`mt-1 ${livingTheme.heading}`}>
-              {t(language, L("Popular tiers", "แพ็กเกจยอดนิยม", "热门档位", "Популярные пакеты"))}
-            </h2>
+      {/* Intro */}
+      <section
+        className="relative overflow-hidden rounded-2xl border border-[#D7CBBA]/60 bg-gradient-to-br from-[#faf7f2] via-white to-[#f5efe6] p-6 sm:p-8"
+        aria-labelledby="elite-intro-title"
+      >
+        <div
+          className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full opacity-20"
+          style={{ background: "radial-gradient(circle, #B29475 0%, transparent 70%)" }}
+          aria-hidden
+        />
+        <div className="relative flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
+          <div
+            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-white shadow-lg"
+            style={{ backgroundColor: "#B29475" }}
+          >
+            <Crown className="h-7 w-7" aria-hidden />
           </div>
-          <Star className="h-8 w-8 text-[#B29475]" aria-hidden />
+          <div>
+            <h2 id="elite-intro-title" className="text-2xl font-bold text-[#0A192F] sm:text-3xl">
+              {copy.introTitle}
+            </h2>
+            <p className={`mt-3 max-w-3xl text-base leading-relaxed ${livingTheme.body}`}>
+              {copy.introBody}
+            </p>
+          </div>
         </div>
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
-          {getTiers(language).map((tier) => (
+      </section>
+
+      {/* Why Elite */}
+      <section aria-labelledby="why-elite-title">
+        <h2 id="why-elite-title" className={livingTheme.heading}>
+          {copy.whyTitle}
+        </h2>
+        <p className={`mt-2 ${livingTheme.muted}`}>{copy.whySubtitle}</p>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          {why.map((item, i) => {
+            const Icon = whyIcons[i] ?? FileText;
+            return (
             <article
-              key={tier.name}
-              className="rounded-2xl border border-[#e2e8f0] bg-white p-6 shadow-sm transition hover:border-[#D7CBBA] hover:shadow-lg"
+              key={item.title}
+              className="flex gap-4 rounded-2xl border border-[#e2e8f0] bg-white p-5 shadow-sm"
             >
-              <h3 className="text-lg font-bold text-[#0A192F]">{tier.name}</h3>
-              <p className="mt-1 text-sm font-semibold text-[#B29475]">{tier.term}</p>
-              <p className="mt-3 text-2xl font-bold tabular-nums text-[#0A192F]">{tier.fee}</p>
-              <p className={`mt-3 ${livingTheme.body}`}>{tier.perks}</p>
+              <div className={livingTheme.iconBox}>
+                <Icon className="h-5 w-5" aria-hidden />
+              </div>
+              <div>
+                <h3 className="font-bold text-[#0A192F]">{item.title}</h3>
+                <p className={`mt-2 text-sm leading-relaxed ${livingTheme.body}`}>{item.text}</p>
+              </div>
+            </article>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Tier table */}
+      <section aria-labelledby="tiers-title">
+        <h2 id="tiers-title" className={livingTheme.heading}>
+          {copy.tiersTitle}
+        </h2>
+        <p className={`mt-2 ${livingTheme.muted}`}>{copy.tiersSubtitle}</p>
+        <div className="mt-6 overflow-x-auto rounded-2xl border border-[#e2e8f0] bg-white shadow-sm">
+          <table className="w-full min-w-[32rem] text-left text-sm">
+            <thead>
+              <tr className="border-b border-[#e2e8f0] bg-[#faf7f2] text-xs font-semibold uppercase tracking-wide text-[#0A192F]">
+                <th className="px-4 py-3 sm:px-6">{copy.tableTier}</th>
+                <th className="px-4 py-3 sm:px-6">{copy.tableTerm}</th>
+                <th className="px-4 py-3 sm:px-6">{copy.tableFee}</th>
+                <th className="hidden px-4 py-3 sm:table-cell sm:px-6">{copy.tableBestFor}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tiers.map((tier) => (
+                <tr
+                  key={tier.id}
+                  className={`border-b border-[#e2e8f0] last:border-0 ${
+                    tier.highlight ? "bg-[#B29475]/5" : ""
+                  }`}
+                >
+                  <td className="px-4 py-4 font-bold text-[#0A192F] sm:px-6">
+                    {tier.name}
+                    {"inviteOnly" in tier && tier.inviteOnly ? (
+                      <span className="ml-2 rounded-full bg-[#0A192F] px-2 py-0.5 text-xs font-medium text-[#D7CBBA]">
+                        {copy.inviteOnly}
+                      </span>
+                    ) : null}
+                  </td>
+                  <td className="px-4 py-4 text-[#444748] sm:px-6">{tier.term}</td>
+                  <td className="px-4 py-4 font-semibold tabular-nums text-[#B29475] sm:px-6">
+                    ฿{tier.fee}
+                  </td>
+                  <td className="hidden px-4 py-4 text-[#444748] sm:table-cell sm:px-6">
+                    {tier.bestFor}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:hidden">
+          {tiers.map((tier) => (
+            <article
+              key={`card-${tier.id}`}
+              className={`rounded-xl border p-4 ${
+                tier.highlight ? "border-[#B29475] bg-[#faf7f2]" : "border-[#e2e8f0] bg-white"
+              }`}
+            >
+              <p className="font-bold text-[#0A192F]">{tier.name}</p>
+              <p className="mt-1 text-sm text-[#B29475]">
+                {tier.term} · ฿{tier.fee}
+              </p>
+              <p className={`mt-2 text-sm ${livingTheme.body}`}>{tier.bestFor}</p>
             </article>
           ))}
         </div>
       </section>
 
-      <section aria-labelledby="benefits-title">
-        <h2 id="benefits-title" className={livingTheme.heading}>
-          {t(language, L("Key benefits", "สิทธิประโยชน์หลัก", "核心权益", "Преимущества"))}
+      {/* Caveats */}
+      <section aria-labelledby="caveats-title">
+        <h2 id="caveats-title" className={livingTheme.heading}>
+          {copy.beforeTitle}
         </h2>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          {getBenefits().map((b) => (
-            <div key={b.title.en} className={`flex gap-4 p-5 ${livingTheme.card}`}>
-              <div className={livingTheme.iconBox}>
-                <b.icon className="h-5 w-5" />
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          {caveats.map((item, i) => (
+            <article
+              key={item.title}
+              className="flex gap-4 rounded-2xl border border-amber-200/80 bg-amber-50/50 p-5"
+            >
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-600 text-white">
+                {i === 0 ? (
+                  <Briefcase className="h-5 w-5" aria-hidden />
+                ) : (
+                  <Wallet className="h-5 w-5" aria-hidden />
+                )}
               </div>
               <div>
-                <h3 className="font-bold text-[#0A192F]">{t(language, b.title)}</h3>
-                <p className={`mt-2 ${livingTheme.body}`}>{t(language, b.text)}</p>
+                <h3 className="font-bold text-[#0A192F]">{item.title}</h3>
+                <p className={`mt-2 text-sm leading-relaxed ${livingTheme.body}`}>{item.text}</p>
               </div>
-            </div>
+            </article>
           ))}
+        </div>
+      </section>
+
+      {/* Steps */}
+      <section aria-labelledby="steps-title">
+        <h2 id="steps-title" className={livingTheme.heading}>
+          {copy.stepsTitle}
+        </h2>
+        <p className={`mt-2 ${livingTheme.muted}`}>{copy.stepsSubtitle}</p>
+        <ol className="mt-6 space-y-4">
+          {steps.map((step) => (
+            <li
+              key={step.step}
+              className="flex gap-4 rounded-2xl border border-[#0A192F]/10 bg-white p-5 shadow-sm"
+            >
+              <span
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#0A192F] text-lg font-bold text-[#D7CBBA]"
+                aria-hidden
+              >
+                {step.step}
+              </span>
+              <div>
+                <h3 className="font-bold text-[#0A192F]">{step.title}</h3>
+                <p className={`mt-2 text-sm leading-relaxed ${livingTheme.body}`}>{step.text}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      {/* Extra perks */}
+      <section aria-labelledby="perks-title">
+        <h2 id="perks-title" className={livingTheme.headingSm}>
+          {copy.perksTitle}
+        </h2>
+        <div className="mt-4 grid gap-4 sm:grid-cols-3">
+          {perks.map((p, i) => {
+            const Icon = [Plane, FileText, Sparkles][i] ?? Sparkles;
+            return (
+              <article key={p.title} className={`p-5 ${livingTheme.cardStatic}`}>
+                <div className={livingTheme.iconBox}>
+                  <Icon className="h-5 w-5" aria-hidden />
+                </div>
+                <h3 className="mt-3 font-bold text-[#0A192F]">{p.title}</h3>
+                <p className={`mt-2 text-sm ${livingTheme.body}`}>{p.text}</p>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Pattaya */}
+      <section
+        className="flex gap-4 rounded-2xl border border-[#D7CBBA]/60 bg-[#0A192F] p-6 text-white sm:p-8"
+        aria-labelledby="pattaya-elite-title"
+      >
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#B29475]">
+          <MapPin className="h-6 w-6" aria-hidden />
+        </div>
+        <div>
+          <h2 id="pattaya-elite-title" className="text-xl font-bold text-[#D7CBBA]">
+            {copy.pattayaTitle}
+          </h2>
+          <p className="mt-3 text-sm leading-relaxed text-white/90 sm:text-base">
+            {copy.pattayaBody}
+          </p>
         </div>
       </section>
 

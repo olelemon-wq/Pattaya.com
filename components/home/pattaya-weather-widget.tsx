@@ -1,13 +1,10 @@
 "use client";
 
+import { useLanguage } from "@/components/layout/language-provider";
+import { getHomeWeather } from "@/lib/i18n/messages/home-hub";
 import { CloudSun, Sun, Wind } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
-const stats = [
-  { label: "Sea & UV", value: "High", icon: Sun },
-  { label: "Wind", value: "12 km/h", icon: Wind },
-] as const;
 
 function formatDateLabel(date: Date, locale: string) {
   const weekday = date.toLocaleDateString(locale, { weekday: "short" });
@@ -17,14 +14,20 @@ function formatDateLabel(date: Date, locale: string) {
 }
 
 export function PattayaWeatherWidget() {
+  const { language } = useLanguage();
+  const copy = getHomeWeather(language);
   const [dateLabel, setDateLabel] = useState<{ weekday: string; dayMonth: string } | null>(
     null,
   );
 
   useEffect(() => {
-    const now = new Date();
-    setDateLabel(formatDateLabel(now, "th-TH"));
-  }, []);
+    setDateLabel(formatDateLabel(new Date(), copy.locale));
+  }, [copy.locale]);
+
+  const stats = [
+    { label: copy.seaUv, value: copy.high, icon: Sun },
+    { label: copy.wind, value: "12 km/h", icon: Wind },
+  ] as const;
 
   return (
     <Link
@@ -38,9 +41,7 @@ export function PattayaWeatherWidget() {
         />
 
         <div className="relative flex items-start justify-between gap-3">
-          <h2 className="text-sm font-bold tracking-tight text-[#0A192F]">
-            Pattaya Weather
-          </h2>
+          <h2 className="text-sm font-bold tracking-tight text-[#0A192F]">{copy.title}</h2>
           <div className="text-right">
             {dateLabel ? (
               <>
@@ -64,7 +65,7 @@ export function PattayaWeatherWidget() {
               <span className="text-2xl font-bold text-[#10438f]/90 sm:text-3xl">°C</span>
             </p>
             <p className="mt-1.5 text-xs font-medium text-[#475569]">
-              Feels like <span className="font-bold text-[#0A192F]">34°</span>
+              {copy.feelsLike} <span className="font-bold text-[#0A192F]">34°</span>
             </p>
           </div>
 

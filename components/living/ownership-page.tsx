@@ -1,138 +1,250 @@
 "use client";
 
 import { LivingFaqSection } from "@/components/living/living-faq-section";
-import { LivingIconCards } from "@/components/living/living-icon-cards";
+import {
+  LivingCtaActions,
+  livingCtaButtonClass,
+} from "@/components/living/living-cta-actions";
 import { LocalizedLivingPageShell } from "@/components/living/localized-living-page-shell";
 import { useLanguage } from "@/components/layout/language-provider";
+import { livingTheme } from "@/lib/design/living-theme";
 import { livingImages } from "@/lib/design/living-images";
-import { faqEnTh, iconEnTh, L, t } from "@/lib/i18n/living-helpers";
+import { faqEnTh } from "@/lib/i18n/living-helpers";
 import { faqSubtitle } from "@/lib/i18n/messages/living/shells";
-import { Building, FileKey, Home, LandPlot } from "lucide-react";
+import {
+  getOwnershipDueDiligence,
+  getOwnershipFetChecklist,
+  getOwnershipPage,
+  getOwnershipTableRows,
+} from "@/lib/i18n/messages/living/ownership";
+import {
+  Building2,
+  Check,
+  FileText,
+  Home,
+  KeyRound,
+  LandPlot,
+  Scale,
+} from "lucide-react";
 import Link from "next/link";
-
-function getOptions() {
-  return [
-    iconEnTh(
-      Home,
-      "Freehold condo",
-      "คอนโดกรรมสิทธิ์",
-      "Foreigners may own up to 49% of sellable area — check quota letter before signing.",
-      "ต่างชาติถือกรรมสิทธิ์ได้ไม่เกิน 49% — ตรวจหนังสือโควตาก่อนเซ็น",
-      "公寓永久产权",
-      "Freehold кондо",
-    ),
-    iconEnTh(
-      FileKey,
-      "Leasehold",
-      "สิทธิเช่า",
-      "30-year registered leases (+ renewals) common for villas and land projects.",
-      "สิทธิเช่า 30 ปี (ต่ออายุ) ใช้กับวิลล่าและโครงการที่ดิน",
-      "租赁权",
-      "Leasehold",
-    ),
-    iconEnTh(
-      LandPlot,
-      "Land",
-      "ที่ดิน",
-      "Direct foreign land ownership is restricted; leasehold or company structures apply.",
-      "ต่างชาติถือที่ดินโดยตรงจำกัด ใช้เช่าหรือโครงสร้างนิติบุคคล",
-      "土地",
-      "Земля",
-    ),
-    iconEnTh(
-      Building,
-      "Company structures",
-      "นิติบุคคล",
-      "Thai majority companies need FBA compliance — not a casual purchase route.",
-      "บริษัทไทยส่วนใหญ่ต้องผ่าน FBA ไม่ใช่ทางซื้อแบบสบายๆ",
-      "公司结构",
-      "Через компанию",
-    ),
-  ];
-}
-
-function getTableRows(lang: import("@/lib/i18n/languages").LanguageCode) {
-  return [
-    {
-      type: t(lang, L("Condo freehold", "คอนโดกรรมสิทธิ์", "公寓永久产权", "Freehold кондо")),
-      access: t(lang, L("Yes, within 49% quota", "ได้ภายในโควตา 49%", "可以，在 49% 配额内", "Да, в квоте 49%")),
-      use: t(lang, L("Beach / city apartments", "คอนโดชายหาด/เมือง", "海滨/市区公寓", "Квартиры у моря")),
-    },
-    {
-      type: t(lang, L("Registered lease", "สิทธิเช่าจดทะเบียน", "登记租赁", "Аренда с регистрацией")),
-      access: t(lang, L("Yes, up to 30+30 years", "ได้สูงสุด 30+30 ปี", "可以，最长 30+30 年", "Да, до 30+30 лет")),
-      use: t(lang, L("Houses, villas, land", "บ้าน วิลล่า ที่ดิน", "别墅、土地项目", "Дома, виллы")),
-    },
-    {
-      type: t(lang, L("Direct land", "ที่ดินโดยตรง", "直接持有土地", "Земля напрямую")),
-      access: t(lang, L("Generally no", "โดยทั่วไปไม่ได้", "通常不可以", "Как правило нет")),
-      use: t(lang, L("Requires Thai structure", "ต้องใช้โครงสร้างไทย", "需泰方结构", "Тайская структура")),
-    },
-  ];
-}
 
 const faqs = [
   faqEnTh(
     "quota",
-    "How do I verify foreign quota?",
-    "ตรวจโควตาต่างชาติอย่างไร?",
-    "Request juristic person letter and match Chanote title before transfer day.",
-    "ขอหนังสือนิติบุคคลและตรวจโฉนดก่อนวันโอน",
-    "如何核实外资配额？",
-    "Проверка квоты?",
+    "How do I verify the 49% foreign quota?",
+    "ตรวจโควตา 49% อย่างไร?",
+    "Request a juristic person letter before deposit. On transfer day, match total foreign ownership on the Chanote.",
+    "ขอหนังสือนิติบุคคลก่อนมัดจำ วันโอนตรวจสัดส่วนต่างชาติบนโฉนด",
+    "如何核实49%外资配额？",
+    "Как проверить квоту 49%?",
+  ),
+  faqEnTh(
+    "fet",
+    "What is FET and do I need it?",
+    "FET คืออะไร ต้องมีไหม?",
+    "Yes for condo freehold. Funds must come from abroad; the bank issues FET (or Thor Tor 3) for the Land Department.",
+    "ต้องมีสำหรับคอนโดกรรมสิทธิ์ เงินต้องโอนจากต่างประเทศ ธนาคารออก FET ให้กรมที่ดิน",
+    "什么是FET？",
+    "Что такое FET?",
   ),
   faqEnTh(
     "lease",
-    "Is leasehold safe for 90 years?",
+    "Is a 90-year leasehold safe?",
     "เช่า 90 ปีปลอดภัยไหม?",
-    "Renewals must be registered at Land Office — unregistered side deals are not enforceable.",
-    "ต่ออายุต้องจดทะเบียนที่ดิน ข้อตกลงนอกระบบใช้ไม่ได้",
-    "90 年租赁安全吗？",
+    "Only registered 30-year terms are guaranteed by law. Renewals must be registered at Pattaya Land Office — side letters alone are not enforceable.",
+    "กฎหมายรับประกันเช่าจดทะเบียน 30 ปี ต่ออายุต้องจดที่ดิน ข้อตกลงนอกระบบใช้ไม่ได้",
+    "90年租赁安全吗？",
     "Leasehold на 90 лет?",
+  ),
+  faqEnTh(
+    "villa",
+    "Can I own a villa 100% as a foreigner?",
+    "ต่างชาติถือวิลล่า 100% ได้ไหม?",
+    "You can own the house structure in your name. The land is normally held via a registered lease, not freehold.",
+    "เป็นเจ้าของตัวบ้านได้ ที่ดินมักเช่าจดทะเบียน ไม่ใช่กรรมสิทธิ์",
+    "外籍能100%拥有别墅吗？",
+    "Вилла на 100%?",
+  ),
+  faqEnTh(
+    "rent-first",
+    "Should I rent before buying?",
+    "ควรเช่าก่อนซื้อไหม?",
+    "Many expats rent 6–12 months to learn neighborhoods, then buy a condo if quota and FET are clear.",
+    "หลายคนเช่า 6–12 เดือนก่อน แล้วซื้อคอนโดเมื่อโควตาและ FET พร้อม",
+    "应该先租再买吗？",
+    "Сначала аренда?",
   ),
 ];
 
 export function OwnershipPage() {
   const { language } = useLanguage();
-  const h = {
-    options: t(language, L("Ownership options", "ทางเลือกกรรมสิทธิ์", "产权选择", "Варианты владения")),
-    compare: t(language, L("Quick comparison", "เปรียบเทียบสั้นๆ", "快速对比", "Сравнение")),
-    type: t(language, L("Type", "ประเภท", "类型", "Тип")),
-    access: t(language, L("Foreign access", "ต่างชาติ", "外籍准入", "Для иностранцев")),
-    use: t(language, L("Typical use", "การใช้ทั่วไป", "典型用途", "Применение")),
-    disclaimer: t(
-      language,
-      L("Not legal advice —", "ไม่ใช่คำแนะนำทางกฎหมาย —", "非法律意见 —", "Не юридическая консультация —"),
-    ),
-    guide: t(language, L("condo buying guide", "คู่มือซื้อคอนโด", "购房指南", "гид по покупке кондо")),
-  };
+  const copy = getOwnershipPage(language);
+  const fetChecklist = getOwnershipFetChecklist(language);
+  const dueDiligence = getOwnershipDueDiligence(language);
+  const tableRows = getOwnershipTableRows(language);
 
   return (
-    <LocalizedLivingPageShell shellKey="ownership" heroImage={livingImages.ownership} heroAlt="Property ownership">
-      <section aria-labelledby="ownership-options">
-        <h2 id="ownership-options" className="text-2xl font-bold text-[#0A192F] sm:text-3xl">
-          {h.options}
-        </h2>
-        <div className="mt-6">
-          <LivingIconCards items={getOptions()} />
+    <LocalizedLivingPageShell
+      shellKey="ownership"
+      heroImage={livingImages.ownership}
+      heroAlt="Property ownership in Pattaya"
+      hideLeadCta
+      bottomChildren={
+        <LivingCtaActions>
+          <Link href="/living" className={livingCtaButtonClass.primary}>
+            {copy.livingHub}
+          </Link>
+          <Link href="/living/housing/condo-buying" className={livingCtaButtonClass.outline}>
+            {copy.condoGuide}
+          </Link>
+          <Link href="/living/housing/rentals" className={livingCtaButtonClass.outline}>
+            {copy.rentals}
+          </Link>
+        </LivingCtaActions>
+      }
+    >
+      {/* Intro */}
+      <section
+        className="relative overflow-hidden rounded-2xl border border-[#D7CBBA]/60 bg-gradient-to-br from-[#faf7f2] via-white to-[#f5efe6] p-6 sm:p-8"
+        aria-labelledby="ownership-intro-title"
+      >
+        <div className="relative flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
+          <div
+            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-white shadow-lg"
+            style={{ backgroundColor: "#B29475" }}
+          >
+            <Scale className="h-7 w-7" aria-hidden />
+          </div>
+          <div>
+            <h2 id="ownership-intro-title" className="text-2xl font-bold text-[#0A192F] sm:text-3xl">
+              {copy.introTitle}
+            </h2>
+            <p className={`mt-3 max-w-3xl text-base leading-relaxed ${livingTheme.body}`}>
+              {copy.introBody}
+            </p>
+          </div>
         </div>
       </section>
 
-      <section aria-labelledby="ownership-compare">
-        <h2 id="ownership-compare" className="text-2xl font-bold text-[#0A192F] sm:text-3xl">
-          {h.compare}
+      {/* Foreign ownership — two main paths */}
+      <section aria-labelledby="foreign-ownership-title">
+        <h2 id="foreign-ownership-title" className={livingTheme.heading}>
+          {copy.foreignTitle}
         </h2>
-        <div className="mt-6 overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white">
+        <p className={`mt-2 ${livingTheme.muted}`}>{copy.foreignSubtitle}</p>
+
+        <div className="mt-6 grid gap-5 lg:grid-cols-2">
+          {/* Condo freehold */}
+          <article className="flex flex-col rounded-2xl border border-[#D7CBBA]/60 bg-white p-6 shadow-sm">
+            <div className="flex items-center gap-3">
+              <div className={livingTheme.iconBox}>
+                <Building2 className="h-5 w-5" aria-hidden />
+              </div>
+              <h3 className="text-lg font-bold text-[#0A192F]">{copy.condoTitle}</h3>
+            </div>
+            <p className={`mt-4 text-sm leading-relaxed ${livingTheme.body}`}>{copy.condoLead}</p>
+            <div className="mt-5 space-y-4">
+              <div className="rounded-xl bg-[#faf7f2] p-4 ring-1 ring-[#D7CBBA]/40">
+                <h4 className="text-sm font-bold text-[#6b5a48]">{copy.condoQuotaTitle}</h4>
+                <p className="mt-2 text-sm leading-relaxed text-[#444748]">{copy.condoQuotaBody}</p>
+              </div>
+              <div className="rounded-xl bg-[#faf7f2] p-4 ring-1 ring-[#D7CBBA]/40">
+                <h4 className="text-sm font-bold text-[#6b5a48]">{copy.condoFetTitle}</h4>
+                <p className="mt-2 text-sm leading-relaxed text-[#444748]">{copy.condoFetBody}</p>
+              </div>
+            </div>
+          </article>
+
+          {/* Landed / leasehold */}
+          <article className="flex flex-col rounded-2xl border border-[#e2e8f0] bg-white p-6 shadow-sm">
+            <div className="flex items-center gap-3">
+              <div className={livingTheme.iconBox}>
+                <Home className="h-5 w-5" aria-hidden />
+              </div>
+              <h3 className="text-lg font-bold text-[#0A192F]">{copy.landedTitle}</h3>
+            </div>
+            <p className={`mt-4 text-sm leading-relaxed ${livingTheme.body}`}>{copy.landedLead}</p>
+            <div className="mt-5 space-y-4">
+              <div className="rounded-xl bg-[#F8FAFC] p-4 ring-1 ring-[#e2e8f0]">
+                <div className="flex items-center gap-2">
+                  <KeyRound className="h-4 w-4 text-[#475569]" aria-hidden />
+                  <h4 className="text-sm font-bold text-[#0A192F]">{copy.leaseTitle}</h4>
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-[#444748]">{copy.leaseBody}</p>
+              </div>
+              <div className="rounded-xl bg-[#F8FAFC] p-4 ring-1 ring-[#e2e8f0]">
+                <div className="flex items-center gap-2">
+                  <LandPlot className="h-4 w-4 text-[#475569]" aria-hidden />
+                  <h4 className="text-sm font-bold text-[#0A192F]">{copy.structureTitle}</h4>
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-[#444748]">{copy.structureBody}</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      {/* FET checklist + due diligence */}
+      <section
+        className="grid gap-6 lg:grid-cols-2"
+        aria-labelledby="ownership-docs-title"
+      >
+        <div className="rounded-2xl border border-[#D7CBBA]/60 bg-white p-6 shadow-sm sm:p-8">
+          <div className="flex items-center gap-3">
+            <FileText className="h-6 w-6 text-[#B29475]" aria-hidden />
+            <div>
+              <h2 id="ownership-docs-title" className="text-lg font-bold text-[#0A192F]">
+                {copy.fetTitle}
+              </h2>
+              <p className="text-sm text-[#777777]">{copy.fetSubtitle}</p>
+            </div>
+          </div>
+          <ul className="mt-5 space-y-3">
+            {fetChecklist.map((line) => (
+              <li key={line} className="flex gap-3 text-sm leading-relaxed text-[#444748]">
+                <span
+                  className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#B29475] text-white"
+                  aria-hidden
+                >
+                  <Check className="h-3.5 w-3.5" />
+                </span>
+                {line}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="rounded-2xl border border-amber-200 bg-amber-50/80 p-6 sm:p-8">
+          <h2 className="text-lg font-bold text-amber-950">{copy.checklistTitle}</h2>
+          <p className="mt-1 text-sm text-amber-900/80">{copy.checklistSubtitle}</p>
+          <ul className="mt-5 space-y-3">
+            {dueDiligence.map((line) => (
+              <li key={line} className="flex gap-3 text-sm leading-relaxed text-amber-950/90">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-700" aria-hidden />
+                {line}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Comparison table */}
+      <section aria-labelledby="ownership-compare">
+        <h2 id="ownership-compare" className={livingTheme.heading}>
+          {copy.compareTitle}
+        </h2>
+        <p className={`mt-2 ${livingTheme.muted}`}>{copy.compareSubtitle}</p>
+        <div className="mt-6 overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white shadow-sm">
           <table className="w-full text-left text-sm">
             <thead className="bg-[#D7CBBA]/60 text-xs font-bold uppercase tracking-wide text-[#6b5a48]">
               <tr>
-                <th className="px-4 py-3 sm:px-6">{h.type}</th>
-                <th className="px-4 py-3 sm:px-6">{h.access}</th>
-                <th className="hidden px-4 py-3 sm:table-cell sm:px-6">{h.use}</th>
+                <th className="px-4 py-3 sm:px-6">{copy.tableType}</th>
+                <th className="px-4 py-3 sm:px-6">{copy.tableAccess}</th>
+                <th className="hidden px-4 py-3 sm:table-cell sm:px-6">{copy.tableUse}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[#e2e8f0] text-[#444748]">
-              {getTableRows(language).map((row) => (
+              {tableRows.map((row) => (
                 <tr key={row.type}>
                   <td className="px-4 py-3 font-medium text-[#0A192F] sm:px-6">{row.type}</td>
                   <td className="px-4 py-3 sm:px-6">{row.access}</td>
@@ -143,9 +255,9 @@ export function OwnershipPage() {
           </table>
         </div>
         <p className="mt-4 text-xs text-[#777777]">
-          {h.disclaimer}{" "}
+          {copy.disclaimer}{" "}
           <Link href="/living/housing/condo-buying" className="font-semibold text-[#B29475] hover:underline">
-            {h.guide}
+            {copy.condoGuide}
           </Link>
         </p>
       </section>
@@ -153,6 +265,7 @@ export function OwnershipPage() {
       <LivingFaqSection
         faqs={faqs}
         subtitle={faqSubtitle(language, "Ownership", "กรรมสิทธิ์", "产权", "Владение")}
+        titleId="ownership-faq-title"
       />
     </LocalizedLivingPageShell>
   );

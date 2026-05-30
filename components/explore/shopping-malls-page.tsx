@@ -1,146 +1,51 @@
+"use client";
+
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import { ExploreGuideCarousel } from "@/components/explore/explore-guide-carousel";
 import type { ExploreGuideCardData } from "@/components/explore/explore-guide-types";
+import { useLanguage } from "@/components/layout/language-provider";
+import { shoppingImages } from "@/lib/design/shopping-images";
+import { getExploreCommon } from "@/lib/i18n/messages/explore-common";
+import { getShoppingMallsPage } from "@/lib/i18n/messages/explore-shopping-malls";
 import { Car, Clock, MapPin, ShoppingBag, Store } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { shoppingImages } from "@/lib/design/shopping-images";
 
-const malls = [
-  {
-    id: "central-festival",
-    name: "Central Festival Pattaya Beach",
-    nameTh: "เซ็นทรัล เฟสติวัล พัทยา บีช",
-    image: shoppingImages.centralFestival,
-    tags: ["Oceanfront", "Luxury brands", "Cinema"],
-    hours: "Daily · ~10:00–22:00",
-    location: "Pattaya Beach Rd (Beach Rd end)",
-    highlights: "Flagship mall with sea views, international fashion, and rooftop dining.",
-    excerpt:
-      "Pattaya’s largest beach-road mall — air-conditioned comfort, brand-name stores, and easy access from Walking Street and the bay.",
-  },
-  {
-    id: "terminal-21",
-    name: "Terminal 21 Pattaya",
-    nameTh: "เทอร์มินอล 21 พัทยา",
-    image: shoppingImages.terminal21,
-    tags: ["Themed floors", "Food court", "Central"],
-    hours: "Daily · ~10:00–22:00",
-    location: "Pattaya 2 Rd, near Bali Hai Pier",
-    highlights: "City-themed levels, wide food court, and mid-range fashion under one roof.",
-    excerpt:
-      "Distinct airport-terminal concept with photo-friendly décor — popular for families and rainy-day shopping.",
-  },
-  {
-    id: "royal-garden",
-    name: "Royal Garden Plaza",
-    nameTh: "รอยัล การ์เด้น พลาซ่า",
-    image: shoppingImages.royalGarden,
-    tags: ["Ripley’s", "Dining", "South Pattaya"],
-    hours: "Daily · ~11:00–22:00",
-    location: "2nd Rd, south Pattaya",
-    highlights: "Ripley’s Believe It or Not!, restaurants, and souvenir-friendly mid-size mall.",
-    excerpt:
-      "Compact mall with entertainment attractions — handy base before an evening on Walking Street.",
-  },
-  {
-    id: "harbor-mall",
-    name: "Harbor Mall & Mike Shopping Mall",
-    nameTh: "ฮาร์เบอร์ / ไมค์ ช็อปปิ้ง",
-    image: shoppingImages.harborMall,
-    tags: ["Budget", "Souvenirs", "South Pattaya"],
-    hours: "Daily · ~10:00–21:00",
-    location: "South Pattaya, near Bali Hai",
-    highlights: "Value fashion, luggage, and tourist souvenirs at lower price points.",
-    excerpt:
-      "Pair these adjacent complexes for bargain hunting — expect negotiation at smaller independent stalls.",
-  },
+const mallImages: Record<string, string> = {
+  "central-festival": shoppingImages.centralFestival,
+  "terminal-21": shoppingImages.terminal21,
+  "royal-garden": shoppingImages.royalGarden,
+  "harbor-mall": shoppingImages.harborMall,
+};
+
+const categoryImages = [
+  shoppingImages.souvenirs,
+  shoppingImages.nightStalls,
+  shoppingImages.terminal21,
+  shoppingImages.centralFestival,
 ];
 
-const mallGuideCards: ExploreGuideCardData[] = malls.map((mall) => ({
-  id: mall.id,
-  name: mall.name,
-  nameTh: mall.nameTh,
-  image: mall.image,
-  tags: mall.tags,
-  excerpt: mall.excerpt,
-  details: [
-    { icon: "clock", label: "Hours", value: mall.hours },
-    { icon: "mapPin", label: "Location", value: mall.location },
-    { icon: "film", label: "Highlights", value: mall.highlights },
-  ],
-}));
-
-const mallCategories = [
-  {
-    name: "Fashion & lifestyle",
-    nameTh: "แฟชั่น",
-    image: shoppingImages.souvenirs,
-    note: "International chains mix with local boutiques; sales peak holiday weekends.",
-  },
-  {
-    name: "Electronics",
-    nameTh: "อิเล็กทรอนิกส์",
-    image: shoppingImages.nightStalls,
-    note: "Compare prices online before big purchases; ask about Thai warranty.",
-  },
-  {
-    name: "Cinema & entertainment",
-    nameTh: "โรงภาพยนตร์",
-    image: shoppingImages.terminal21,
-    note: "Major malls run English-subtitled films; book ahead on Friday nights.",
-  },
-  {
-    name: "Dining courts",
-    nameTh: "ฟู้ดคอร์ท",
-    image: shoppingImages.centralFestival,
-    note: "Food courts are card/cash friendly — load a stored-value card where offered.",
-  },
-];
-
-const mallTips = [
-  {
-    icon: Car,
-    title: "Parking & taxis",
-    text: "Beach-road malls fill at sunset. Use mall parking or drop-off; Grab works well after 22:00.",
-  },
-  {
-    icon: Clock,
-    title: "Best times",
-    text: "Weekday mornings are quietest. Weekends 17:00–20:00 are busiest near cinema and dining.",
-  },
-  {
-    icon: ShoppingBag,
-    title: "Tax & receipts",
-    text: "Tourist VAT refund applies at participating stores — keep receipts and passport handy.",
-  },
-  {
-    icon: Store,
-    title: "Air-con breaks",
-    text: "Malls are the midday escape from heat — plan beach time early, shopping after lunch.",
-  },
-];
+const tipIcons = [Car, Clock, ShoppingBag, Store] as const;
 
 function CategoryCard({
   name,
   nameTh,
   image,
   note,
-}: (typeof mallCategories)[number]) {
+}: {
+  name: string;
+  nameTh: string;
+  image: string;
+  note: string;
+}) {
   return (
     <article className="overflow-hidden rounded-xl border border-[#c4c7c8]/30 bg-white shadow-sm">
       <div className="relative aspect-[4/3]">
-        <Image
-          src={image}
-          alt={name}
-          fill
-          className="object-cover"
-          sizes="(max-width: 640px) 50vw, 25vw"
-        />
+        <Image src={image} alt={name} fill className="object-cover" sizes="(max-width: 640px) 50vw, 25vw" />
       </div>
       <div className="p-4">
         <h4 className="font-bold text-[#191c1d]">{name}</h4>
-        <p className="text-sm text-[#B52E88]">{nameTh}</p>
+        {nameTh ? <p className="text-sm text-[#B52E88]">{nameTh}</p> : null}
         <p className="mt-2 text-xs leading-relaxed text-[#444748]">{note}</p>
       </div>
     </article>
@@ -148,6 +53,24 @@ function CategoryCard({
 }
 
 export function ShoppingMallsPage() {
+  const { language } = useLanguage();
+  const c = getExploreCommon(language);
+  const page = getShoppingMallsPage(language);
+
+  const mallGuideCards: ExploreGuideCardData[] = page.malls.map((mall) => ({
+    id: mall.id,
+    name: mall.name,
+    nameTh: mall.nameTh,
+    image: mallImages[mall.id] ?? shoppingImages.mallsHero,
+    tags: mall.tags,
+    excerpt: mall.excerpt,
+    details: [
+      { icon: "clock", label: c.hours, value: mall.hours },
+      { icon: "mapPin", label: c.location, value: mall.location },
+      { icon: "film", label: c.highlights, value: mall.highlights },
+    ],
+  }));
+
   return (
     <div data-full-bleed className="bg-[#f8f9fa] text-[#191c1d]">
       <div className="relative z-10 shrink-0 shadow-sm">
@@ -160,7 +83,7 @@ export function ShoppingMallsPage() {
       >
         <Image
           src={shoppingImages.mallsHero}
-          alt="Central Festival Pattaya Beach mall"
+          alt={page.hero.title}
           fill
           priority
           className="object-cover"
@@ -175,37 +98,31 @@ export function ShoppingMallsPage() {
             <ol className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/80">
               <li>
                 <Link href="/explore" className="hover:text-white">
-                  Explore
+                  {page.breadcrumb.explore}
                 </Link>
               </li>
               <li aria-hidden>/</li>
               <li>
-                <span className="text-white">Shopping Malls</span>
+                <span className="text-white">{page.breadcrumb.current}</span>
               </li>
             </ol>
           </nav>
           <span className="mb-3 inline-flex w-fit rounded-full bg-teal-100 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-teal-800">
-            Shopping
+            {page.hero.badge}
           </span>
-          <h1
-            id="malls-hero-title"
-            className="text-3xl font-bold tracking-tight text-white md:text-5xl"
-          >
-            Shopping Malls
+          <h1 id="malls-hero-title" className="text-3xl font-bold tracking-tight text-white md:text-5xl">
+            {page.hero.title}
           </h1>
-          <p className="mt-2 text-lg text-teal-200 md:text-xl">ห้างสรรพสินค้า</p>
-          <p className="mt-4 max-w-2xl text-base text-white/90 md:text-lg">
-            Air-conditioned malls along Pattaya Beach Road and central Pattaya —
-            international brands, cinemas, and food courts for hot afternoons.
-          </p>
+          <p className="mt-2 text-lg text-teal-200 md:text-xl">{page.hero.subtitle}</p>
+          <p className="mt-4 max-w-2xl text-base text-white/90 md:text-lg">{page.hero.body}</p>
           <div className="mt-5 flex flex-wrap gap-2">
             <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1.5 text-sm text-white ring-1 ring-white/25">
               <ShoppingBag className="h-4 w-4" aria-hidden />
-              Luxury & mid-range
+              {page.hero.badgeLuxury}
             </span>
             <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1.5 text-sm text-white ring-1 ring-white/25">
               <MapPin className="h-4 w-4" aria-hidden />
-              Beach Rd · 2nd Rd
+              {page.hero.badgeAreas}
             </span>
           </div>
         </div>
@@ -213,33 +130,29 @@ export function ShoppingMallsPage() {
 
       <div className="mx-auto max-w-[1280px] px-5 py-12 md:px-16 md:py-16">
         <ExploreGuideCarousel
-          title="Choose your mall"
-          description="Four staples from the Explore hub — each suits a different budget and vibe, from flagship beachfront to bargain southerly complexes."
-          prevLabel="Previous malls"
-          nextLabel="Next malls"
+          title={page.carousel.title}
+          description={page.carousel.description}
+          prevLabel={page.carousel.prev}
+          nextLabel={page.carousel.next}
           items={mallGuideCards}
         />
 
         <section className="mb-16">
-          <h2 className="text-2xl font-semibold md:text-3xl">What to shop</h2>
-          <p className="mt-2 text-[#444748]">
-            Categories you will find across Pattaya&apos;s larger malls.
-          </p>
+          <h2 className="text-2xl font-semibold md:text-3xl">{page.categories.title}</h2>
+          <p className="mt-2 text-[#444748]">{page.categories.subtitle}</p>
           <div className="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
-            {mallCategories.map((cat) => (
-              <CategoryCard key={cat.name} {...cat} />
+            {page.categories.items.map((cat, i) => (
+              <CategoryCard key={cat.name} {...cat} image={categoryImages[i] ?? shoppingImages.souvenirs} />
             ))}
           </div>
         </section>
 
         <section className="mb-16">
-          <h2 className="text-2xl font-semibold md:text-3xl">Mall tips</h2>
-          <p className="mt-2 text-[#444748]">
-            Practical notes for smoother shopping days.
-          </p>
+          <h2 className="text-2xl font-semibold md:text-3xl">{page.tips.title}</h2>
+          <p className="mt-2 text-[#444748]">{page.tips.subtitle}</p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            {mallTips.map((tip) => {
-              const Icon = tip.icon;
+            {page.tips.items.map((tip, i) => {
+              const Icon = tipIcons[i] ?? Car;
               return (
                 <div
                   key={tip.title}
@@ -250,9 +163,7 @@ export function ShoppingMallsPage() {
                   </div>
                   <div>
                     <h4 className="font-bold text-[#191c1d]">{tip.title}</h4>
-                    <p className="mt-1 text-sm leading-relaxed text-[#444748]">
-                      {tip.text}
-                    </p>
+                    <p className="mt-1 text-sm leading-relaxed text-[#444748]">{tip.text}</p>
                   </div>
                 </div>
               );
@@ -261,25 +172,25 @@ export function ShoppingMallsPage() {
         </section>
 
         <section className="rounded-2xl border border-[#c4c7c8]/30 bg-white p-6 sm:p-8">
-          <h2 className="text-xl font-bold md:text-2xl">Also explore</h2>
+          <h2 className="text-xl font-bold md:text-2xl">{page.alsoExplore.title}</h2>
           <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Link
               href="/explore/shopping/markets"
               className="rounded-xl bg-[#B52E88] px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-[#B52E88]/90"
             >
-              Local markets →
+              {page.alsoExplore.localMarkets}
             </Link>
             <Link
               href="/explore/restaurants/street-food"
               className="rounded-xl border border-[#B52E88]/30 px-6 py-3 text-center text-sm font-semibold text-[#B52E88] transition hover:bg-[#B52E88]/5"
             >
-              Street food →
+              {page.alsoExplore.streetFood}
             </Link>
             <Link
               href="/explore/cafes"
               className="rounded-xl border border-[#455f88]/30 px-6 py-3 text-center text-sm font-semibold text-[#455f88] transition hover:bg-[#455f88]/5"
             >
-              Cafes →
+              {page.alsoExplore.cafesLink}
             </Link>
           </div>
         </section>

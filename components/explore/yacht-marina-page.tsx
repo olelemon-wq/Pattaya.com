@@ -1,58 +1,24 @@
+"use client";
+
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import { ExploreGuideCarousel } from "@/components/explore/explore-guide-carousel";
 import type { ExploreGuideCardData } from "@/components/explore/explore-guide-types";
-import {
-  Anchor,
-  Building2,
-  Palmtree,
-  Sunset,
-  Users,
-} from "lucide-react";
+import { useLanguage } from "@/components/layout/language-provider";
+import { getExploreCommon } from "@/lib/i18n/messages/explore-common";
+import { getYachtPage } from "@/lib/i18n/messages/explore-yacht";
+import { yachtImages } from "@/lib/design/yacht-images";
+import { Anchor, Building2, Palmtree, Sunset } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { yachtImages } from "@/lib/design/yacht-images";
 
-const featuredCharters = [
-  {
-    id: "azure-catamaran",
-    name: "Azure Spirit Catamaran",
-    nameTh: "อาซัวร์ สปิริต คาตามารัน",
-    type: "Catamaran",
-    guests: "Max 15 guests",
-    price: "From THB 45,000 / charter",
-    image: yachtImages.charterCatamaran,
-    tags: ["Featured", "Catamaran", "Sunset"],
-    excerpt:
-      "Spacious twin-hull sailing with shaded decks — ideal for groups, celebrations, and calm Gulf afternoons.",
-  },
-  {
-    id: "pearl-motor",
-    name: "Pattaya Pearl Motor Yacht",
-    nameTh: "พัทยา เพิร์ล มอเตอร์ยอร์ช",
-    type: "Motor yacht",
-    guests: "Max 12 guests",
-    price: "From THB 68,000 / charter",
-    image: yachtImages.charterMotor,
-    tags: ["Motor yacht", "Speed", "Islands"],
-    excerpt:
-      "Fast island hops with air-conditioned saloon — cover Koh Larn and nearby bays in a single day.",
-  },
-  {
-    id: "royal-horizon",
-    name: "Royal Horizon Superyacht",
-    nameTh: "รอยัล ฮอไรซัน ซูเปอร์ยอร์ช",
-    type: "Superyacht",
-    guests: "Max 20 guests",
-    price: "From THB 120,000 / charter",
-    image: yachtImages.charterSuperyacht,
-    tags: ["Superyacht", "VIP", "Catering"],
-    excerpt:
-      "Full-service crew, premium catering, and private cabins for corporate events and milestone trips.",
-  },
-];
+const routeIcons = [Sunset, Palmtree, Anchor] as const;
 
-const charterGuideCards: ExploreGuideCardData[] = featuredCharters.map(
-  (charter) => ({
+export function YachtMarinaPage() {
+  const { language } = useLanguage();
+  const c = getExploreCommon(language);
+  const page = getYachtPage(language);
+
+  const charterGuideCards: ExploreGuideCardData[] = page.charters.map((charter) => ({
     id: charter.id,
     name: charter.name,
     nameTh: charter.nameTh,
@@ -60,52 +26,12 @@ const charterGuideCards: ExploreGuideCardData[] = featuredCharters.map(
     tags: charter.tags,
     excerpt: charter.excerpt,
     details: [
-      { icon: "anchor", label: "Vessel", value: charter.type },
-      { icon: "users", label: "Capacity", value: charter.guests },
-      { icon: "sparkles", label: "Price", value: charter.price },
+      { icon: "anchor", label: c.vessel, value: charter.type },
+      { icon: "users", label: c.capacity, value: charter.guests },
+      { icon: "sparkles", label: c.price, value: charter.price },
     ],
-  }),
-);
+  }));
 
-const cruiseRoutes = [
-  {
-    title: "Sunset Cruise",
-    titleTh: "ล่องเรือชมพระอาทิตย์ตก",
-    duration: "3 hours",
-    description:
-      "Golden-hour sailing along Pattaya Bay with champagne service and optional live DJ.",
-    href: "/explore/beaches",
-    icon: Sunset,
-  },
-  {
-    title: "Koh Khram Private Escape",
-    titleTh: "ทริปส่วนตัวเกาะคราม",
-    duration: "Full day",
-    description:
-      "Secluded anchorage, snorkeling, and beach picnic — ideal for VIP groups.",
-    href: "/explore/islands/koh-larn",
-    icon: Palmtree,
-  },
-  {
-    title: "Koh Larn Adventure",
-    titleTh: "ผจญภัยเกาะล้าน",
-    duration: "6–8 hours",
-    description:
-      "Island-hopping with water toys, lunch at sea, and flexible beach stops.",
-    href: "/explore/islands/koh-larn",
-    icon: Anchor,
-  },
-];
-
-const marinaAmenities = [
-  "Deep-water berths up to 45m",
-  "24/7 security & concierge",
-  "Fuel dock & technical services",
-  "Crew lounge & provisioning",
-  "Luxury retail & waterfront dining",
-];
-
-export function YachtMarinaPage() {
   return (
     <div data-full-bleed className="bg-[#fdf8fb] text-[#191c1d]">
       <div className="relative z-10 shrink-0 shadow-sm">
@@ -118,7 +44,7 @@ export function YachtMarinaPage() {
       >
         <Image
           src={yachtImages.hero}
-          alt="Luxury yacht sailing in Pattaya Bay"
+          alt={page.hero.title}
           fill
           priority
           className="object-cover"
@@ -133,55 +59,48 @@ export function YachtMarinaPage() {
             <ol className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/80">
               <li>
                 <Link href="/explore" className="hover:text-white">
-                  Explore
+                  {page.breadcrumb.explore}
                 </Link>
               </li>
               <li aria-hidden>/</li>
               <li>
-                <span className="text-white/80">Luxury</span>
+                <span className="text-white/80">{page.breadcrumb.luxury}</span>
               </li>
               <li aria-hidden>/</li>
               <li>
-                <span className="text-white">Yacht & Marina</span>
+                <span className="text-white">{page.breadcrumb.current}</span>
               </li>
             </ol>
           </nav>
           <span className="mb-3 inline-flex w-fit rounded-full bg-[#F0D4E8] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#B52E88]">
-            Luxury
+            {page.hero.badge}
           </span>
           <h1
             id="yacht-hero-title"
             className="text-3xl font-bold tracking-tight text-white md:text-5xl"
           >
-            Yacht & Marina
+            {page.hero.title}
           </h1>
-          <p className="mt-2 text-lg text-[#F5D0E8] md:text-xl">เรือยอร์ช</p>
-          <p className="mt-4 max-w-2xl text-base text-white/90 md:text-lg">
-            Yacht charters and marina experiences in Pattaya — curated for
-            discerning travelers and private celebrations at sea.
-          </p>
+          <p className="mt-2 text-lg text-[#F5D0E8] md:text-xl">{page.hero.subtitle}</p>
+          <p className="mt-4 max-w-2xl text-base text-white/90 md:text-lg">{page.hero.body}</p>
         </div>
       </section>
 
       <div className="mx-auto max-w-[1280px] px-5 py-12 md:px-16 md:py-16">
         <ExploreGuideCarousel
-          title="Featured charters"
-          description="Premium yacht rentals in Pattaya Bay — catamaran afternoons to full-day superyacht itineraries."
-          prevLabel="Previous charters"
-          nextLabel="Next charters"
+          title={page.carousel.title}
+          description={page.carousel.description}
+          prevLabel={page.carousel.prev}
+          nextLabel={page.carousel.next}
           items={charterGuideCards}
         />
 
         <section className="mb-16 rounded-2xl border border-[#c4c7c8]/30 bg-white p-6 sm:p-8">
-          <h2 className="text-2xl font-semibold md:text-3xl">
-            Popular cruise routes
-          </h2>
-          <p className="mt-1 text-sm text-[#747878]">
-            เส้นทางยอดนิยม — curated sailing experiences
-          </p>
+          <h2 className="text-2xl font-semibold md:text-3xl">{page.routes.title}</h2>
+          <p className="mt-1 text-sm text-[#747878]">{page.routes.subtitle}</p>
           <div className="mt-8 grid gap-4 lg:grid-cols-3">
-            {cruiseRoutes.map((route) => {
-              const Icon = route.icon;
+            {page.routes.items.map((route, i) => {
+              const Icon = routeIcons[i] ?? Anchor;
               return (
                 <Link
                   key={route.title}
@@ -200,7 +119,6 @@ export function YachtMarinaPage() {
                         {route.duration}
                       </span>
                     </div>
-                    <p className="text-xs text-[#747878]">{route.titleTh}</p>
                     <p className="mt-2 text-sm leading-relaxed text-[#444748]">
                       {route.description}
                     </p>
@@ -216,7 +134,7 @@ export function YachtMarinaPage() {
             <div className="relative min-h-[280px] lg:min-h-[420px]">
               <Image
                 src={yachtImages.marina}
-                alt="Pattaya marina and luxury yachts at dock"
+                alt={page.marina.title}
                 fill
                 className="object-cover"
                 sizes="50vw"
@@ -227,19 +145,14 @@ export function YachtMarinaPage() {
                 <Building2 className="h-7 w-7" aria-hidden />
               </div>
               <p className="mt-4 text-xs font-bold uppercase tracking-[0.2em] text-[#B52E88]">
-                Marina Infrastructure
+                {page.marina.eyebrow}
               </p>
               <h2 className="mt-2 text-2xl font-semibold text-[#191c1d] md:text-3xl">
-                World-class marina facilities
+                {page.marina.title}
               </h2>
-              <p className="mt-4 leading-relaxed text-[#444748]">
-                Pattaya&apos;s premier marinas combine deep-water berths,
-                white-glove concierge, and waterfront dining — designed for
-                charter guests and long-stay cruisers exploring the Gulf of
-                Thailand.
-              </p>
+              <p className="mt-4 leading-relaxed text-[#444748]">{page.marina.body}</p>
               <ul className="mt-6 space-y-3">
-                {marinaAmenities.map((item) => (
+                {page.marina.amenities.map((item) => (
                   <li
                     key={item}
                     className="flex items-start gap-3 text-sm text-[#444748]"
@@ -255,7 +168,7 @@ export function YachtMarinaPage() {
               <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-xl">
                 <Image
                   src={yachtImages.marinaLifestyle}
-                  alt="Marina lifestyle and waterfront amenities"
+                  alt={page.marina.title}
                   fill
                   className="object-cover"
                   sizes="40vw"
@@ -266,18 +179,13 @@ export function YachtMarinaPage() {
         </section>
 
         <section className="rounded-2xl bg-[#191c1d] px-6 py-10 text-center sm:px-12 sm:py-12">
-          <h2 className="text-xl font-bold text-white md:text-2xl">
-            Plan your private charter
-          </h2>
-          <p className="mx-auto mt-2 max-w-lg text-sm text-white/75">
-            Corporate events, weddings, and bespoke itineraries — luxury
-            partners respond within 24 hours.
-          </p>
+          <h2 className="text-xl font-bold text-white md:text-2xl">{page.cta.title}</h2>
+          <p className="mx-auto mt-2 max-w-lg text-sm text-white/75">{page.cta.body}</p>
           <Link
-            href="/explore"
+            href={page.cta.href}
             className="mt-6 inline-flex items-center justify-center rounded-xl bg-[#B52E88] px-8 py-3.5 text-sm font-bold text-white shadow-lg transition hover:bg-[#B52E88]/90"
           >
-            Contact for charter
+            {page.cta.button}
           </Link>
         </section>
       </div>

@@ -1,96 +1,44 @@
+"use client";
+
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import { ExploreGuideCarousel } from "@/components/explore/explore-guide-carousel";
 import type { ExploreGuideCardData } from "@/components/explore/explore-guide-types";
+import { useLanguage } from "@/components/layout/language-provider";
+import { exploreImages } from "@/lib/design/explore-images";
+import { getExploreCommon } from "@/lib/i18n/messages/explore-common";
+import { getHiddenGemsPage } from "@/lib/i18n/messages/explore-hidden-gems";
 import { BookOpen, Clock, MapPin, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { exploreImages } from "@/lib/design/explore-images";
 
-const stories = [
-  {
-    id: "hidden-spots",
-    name: "10 Hidden Spots Only Locals Know",
-    nameTh: "10 จุดลับที่คนท้องถิ่นรู้",
-    image: exploreImages.hiddenSpots,
-    tags: ["Magazine", "Viewpoints", "Local"],
-    readTime: "5 min read",
-    location: "Naklua · Pratumnak · backstreets",
-    excerpt:
-      "Secret viewpoints, quiet cafés, and street stalls beyond Walking Street — our editors map the authentic soul of the city.",
-  },
-  {
-    id: "weekend-guide",
-    name: "The Ultimate Weekend Guide",
-    nameTh: "คู่มือสุดสัปดาห์",
-    image: exploreImages.weekendGuide,
-    tags: ["Guide", "Luxury", "48 hours"],
-    readTime: "8 min read",
-    location: "Central Pattaya · Jomtien",
-    excerpt:
-      "How to spend 48 hours in style — high-end dining, exclusive stays, and the most vibrant nightlife without the tourist traps.",
-  },
-  {
-    id: "naklua-morning",
-    name: "Naklua Morning Rituals",
-    nameTh: "เช้าที่นาเกลือ",
-    image: exploreImages.thepprasitMarket,
-    tags: ["Markets", "Food", "Authentic"],
-    readTime: "6 min read",
-    location: "Naklua fishing village",
-    excerpt:
-      "Start at the wet market, grab boat noodles, then walk the quieter sand before the buses arrive from Bangkok.",
-  },
-  {
-    id: "pratumnak-sunsets",
-    name: "Pratumnak Sunset Trail",
-    nameTh: "เส้นทางพระอาทิตย์ตกพระตำหนัก",
-    image: exploreImages.skyGallery,
-    tags: ["Sunset", "Clifftop", "Photos"],
-    readTime: "4 min read",
-    location: "Pratumnak Hill",
-    excerpt:
-      "A short hill loop linking cliff cafés and lookouts — best light 17:30–18:30 on clear evenings.",
-  },
-];
+const storyImages: Record<string, string> = {
+  "hidden-spots": exploreImages.hiddenSpots,
+  "weekend-guide": exploreImages.weekendGuide,
+  "naklua-morning": exploreImages.thepprasitMarket,
+  "pratumnak-sunsets": exploreImages.skyGallery,
+};
 
-const storyGuideCards: ExploreGuideCardData[] = stories.map((story) => ({
-  id: story.id,
-  name: story.name,
-  nameTh: story.nameTh,
-  image: story.image,
-  tags: story.tags,
-  excerpt: story.excerpt,
-  details: [
-    { icon: "clock", label: "Read time", value: story.readTime },
-    { icon: "mapPin", label: "Areas", value: story.location },
-    { icon: "gem", label: "Vibe", value: story.tags.join(" · ") },
-  ],
-}));
-
-const editorTips = [
-  {
-    icon: MapPin,
-    title: "Go off-peak",
-    text: "Hidden viewpoints empty out on weekday mornings — avoid sunset crowds at famous cliffs.",
-  },
-  {
-    icon: BookOpen,
-    title: "Save for offline",
-    text: "Screenshot maps and Thai names for taxi drivers — some lanes have no English signage.",
-  },
-  {
-    icon: Sparkles,
-    title: "Respect locals",
-    text: "Residential sois are not photo studios — ask before shooting homes, temples, or fishing boats.",
-  },
-  {
-    icon: Clock,
-    title: "Combine with food",
-    text: "Pair Naklua mornings with street-food guides; Pratumnak evenings with fine-dining reservations.",
-  },
-];
+const tipIcons = [MapPin, BookOpen, Sparkles, Clock] as const;
 
 export function HiddenGemsPage() {
+  const { language } = useLanguage();
+  const c = getExploreCommon(language);
+  const page = getHiddenGemsPage(language);
+
+  const storyGuideCards: ExploreGuideCardData[] = page.stories.map((story) => ({
+    id: story.id,
+    name: story.name,
+    nameTh: story.nameTh,
+    image: storyImages[story.id] ?? exploreImages.hiddenSpots,
+    tags: story.tags,
+    excerpt: story.excerpt,
+    details: [
+      { icon: "clock", label: c.readTime, value: story.readTime },
+      { icon: "mapPin", label: c.areas, value: story.location },
+      { icon: "gem", label: c.vibe, value: story.tags.join(" · ") },
+    ],
+  }));
+
   return (
     <div data-full-bleed className="bg-[#fdf8fb] text-[#191c1d]">
       <div className="relative z-10 shrink-0 shadow-sm">
@@ -103,7 +51,7 @@ export function HiddenGemsPage() {
       >
         <Image
           src={exploreImages.hiddenSpots}
-          alt="Hidden viewpoint in Pattaya"
+          alt={page.hero.title}
           fill
           priority
           className="object-cover"
@@ -118,49 +66,41 @@ export function HiddenGemsPage() {
             <ol className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/80">
               <li>
                 <Link href="/explore" className="hover:text-white">
-                  Explore
+                  {page.breadcrumb.explore}
                 </Link>
               </li>
               <li aria-hidden>/</li>
               <li>
-                <span className="text-white">Hidden Gems</span>
+                <span className="text-white">{page.breadcrumb.current}</span>
               </li>
             </ol>
           </nav>
           <span className="mb-3 inline-flex w-fit rounded-full bg-[#F0D4E8] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#B52E88]">
-            Hidden Gems
+            {page.hero.badge}
           </span>
-          <h1
-            id="gems-hero-title"
-            className="text-3xl font-bold tracking-tight text-white md:text-5xl"
-          >
-            Hidden Gems
+          <h1 id="gems-hero-title" className="text-3xl font-bold tracking-tight text-white md:text-5xl">
+            {page.hero.title}
           </h1>
-          <p className="mt-2 text-lg text-[#F5D0E8] md:text-xl">จุดลับ & บทความ</p>
-          <p className="mt-4 max-w-2xl text-base text-white/90 md:text-lg">
-            Curated stories and local-only spots for travelers who want Pattaya
-            beyond the postcard — viewpoints, markets, and slow evenings.
-          </p>
+          <p className="mt-2 text-lg text-[#F5D0E8] md:text-xl">{page.hero.subtitle}</p>
+          <p className="mt-4 max-w-2xl text-base text-white/90 md:text-lg">{page.hero.body}</p>
         </div>
       </section>
 
       <div className="mx-auto max-w-[1280px] px-5 py-12 md:px-16 md:py-16">
         <ExploreGuideCarousel
-          title="Stories & secret spots"
-          description="Editor picks from the Explore hub — read online or save for your next walk through Naklua, Pratumnak, and the quieter bays."
-          prevLabel="Previous stories"
-          nextLabel="Next stories"
+          title={page.carousel.title}
+          description={page.carousel.description}
+          prevLabel={page.carousel.prev}
+          nextLabel={page.carousel.next}
           items={storyGuideCards}
         />
 
         <section className="mb-16">
-          <h2 className="text-2xl font-semibold md:text-3xl">Explorer tips</h2>
-          <p className="mt-2 text-[#444748]">
-            How to enjoy off-path Pattaya respectfully and comfortably.
-          </p>
+          <h2 className="text-2xl font-semibold md:text-3xl">{page.tips.title}</h2>
+          <p className="mt-2 text-[#444748]">{page.tips.subtitle}</p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            {editorTips.map((tip) => {
-              const Icon = tip.icon;
+            {page.tips.items.map((tip, i) => {
+              const Icon = tipIcons[i] ?? MapPin;
               return (
                 <div
                   key={tip.title}
@@ -171,9 +111,7 @@ export function HiddenGemsPage() {
                   </div>
                   <div>
                     <h4 className="font-bold text-[#191c1d]">{tip.title}</h4>
-                    <p className="mt-1 text-sm leading-relaxed text-[#444748]">
-                      {tip.text}
-                    </p>
+                    <p className="mt-1 text-sm leading-relaxed text-[#444748]">{tip.text}</p>
                   </div>
                 </div>
               );
@@ -182,41 +120,36 @@ export function HiddenGemsPage() {
         </section>
 
         <section className="rounded-2xl border border-[#B52E88]/20 bg-[#FCE8F4] p-6 sm:p-8">
-          <h2 className="text-xl font-bold text-[#B52E88] md:text-2xl">
-            Want more exclusive insights?
-          </h2>
-          <p className="mt-2 text-sm text-[#444748]">
-            Subscribe on the Explore hub newsletter card for new hidden-gem
-            stories each month.
-          </p>
+          <h2 className="text-xl font-bold text-[#B52E88] md:text-2xl">{page.newsletter.title}</h2>
+          <p className="mt-2 text-sm text-[#444748]">{page.newsletter.body}</p>
           <Link
             href="/explore"
             className="mt-4 inline-flex rounded-xl bg-[#B52E88] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#B52E88]/90"
           >
-            Back to Explore hub →
+            {page.newsletter.cta}
           </Link>
         </section>
 
         <section className="mt-8 rounded-2xl border border-[#c4c7c8]/30 bg-white p-6 sm:p-8">
-          <h2 className="text-xl font-bold md:text-2xl">Also explore</h2>
+          <h2 className="text-xl font-bold md:text-2xl">{page.alsoExplore.title}</h2>
           <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Link
               href="/explore/beaches"
               className="rounded-xl bg-[#B52E88] px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-[#B52E88]/90"
             >
-              Main beaches →
+              {page.alsoExplore.mainBeaches}
             </Link>
             <Link
               href="/explore/shopping/markets"
               className="rounded-xl border border-[#B52E88]/30 px-6 py-3 text-center text-sm font-semibold text-[#B52E88] transition hover:bg-[#B52E88]/5"
             >
-              Local markets →
+              {page.alsoExplore.localMarkets}
             </Link>
             <Link
               href="/explore/cafes"
               className="rounded-xl border border-[#c4c7c8]/50 px-6 py-3 text-center text-sm font-semibold text-[#191c1d] transition hover:bg-[#edeeef]"
             >
-              Cafes →
+              {page.alsoExplore.cafesLink}
             </Link>
           </div>
         </section>

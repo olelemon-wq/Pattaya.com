@@ -1,16 +1,48 @@
 "use client";
 
 import { ExploreGuideCarousel } from "@/components/explore/explore-guide-carousel";
-import { beachToGuideCard, type BeachCardData } from "@/components/explore/beach-card";
+import {
+  beachToGuideCard,
+  type BeachCardData,
+  type BeachDetailLabels,
+} from "@/components/explore/beach-card";
+import { useLanguage } from "@/components/layout/language-provider";
+import { getExploreCommon } from "@/lib/i18n/messages/explore-common";
+import { getMainBeachesPage } from "@/lib/i18n/messages/explore-beaches";
 
-export function BeachShorelineCarousel({ beaches }: { beaches: BeachCardData[] }) {
+type BeachShorelineCarouselProps = {
+  beaches: BeachCardData[];
+  title?: string;
+  description?: string;
+  prevLabel?: string;
+  nextLabel?: string;
+  detailLabels?: BeachDetailLabels;
+};
+
+export function BeachShorelineCarousel({
+  beaches,
+  title,
+  description,
+  prevLabel,
+  nextLabel,
+  detailLabels,
+}: BeachShorelineCarouselProps) {
+  const { language } = useLanguage();
+  const page = getMainBeachesPage(language);
+  const c = getExploreCommon(language);
+  const labels = detailLabels ?? {
+    bestFor: c.bestFor,
+    access: c.access,
+    water: c.water,
+  };
+
   return (
     <ExploreGuideCarousel
-      title="Choose your shoreline"
-      description="Each beach has a distinct rhythm. Use this guide to match vibe, crowd level, and access — then dive into island trips or dining from the Explore hub."
-      prevLabel="Previous beaches"
-      nextLabel="Next beaches"
-      items={beaches.map(beachToGuideCard)}
+      title={title ?? page.carousel.title}
+      description={description ?? page.carousel.description}
+      prevLabel={prevLabel ?? page.carousel.prev}
+      nextLabel={nextLabel ?? page.carousel.next}
+      items={beaches.map((beach) => beachToGuideCard(beach, labels))}
     />
   );
 }

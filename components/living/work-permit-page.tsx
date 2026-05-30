@@ -1,108 +1,69 @@
 "use client";
 
 import { LivingFaqSection } from "@/components/living/living-faq-section";
+import {
+  LivingCtaActions,
+  livingCtaButtonClass,
+} from "@/components/living/living-cta-actions";
 import { LocalizedLivingPageShell } from "@/components/living/localized-living-page-shell";
 import { useLanguage } from "@/components/layout/language-provider";
 import { livingTheme } from "@/lib/design/living-theme";
 import { livingImages } from "@/lib/design/living-images";
-import { faqEnTh, L, t } from "@/lib/i18n/living-helpers";
+import { faqEnTh } from "@/lib/i18n/living-helpers";
 import { faqSubtitle } from "@/lib/i18n/messages/living/shells";
-import type { LocalizedText } from "@/lib/i18n/text";
 import {
-  BadgeCheck,
+  getWorkPermitApplicantReqs,
+  getWorkPermitChecklist,
+  getWorkPermitCompanyReqs,
+  getWorkPermitPage,
+  getWorkPermitRules,
+  getWorkPermitSteps,
+} from "@/lib/i18n/messages/living/work-permit";
+import {
+  AlertTriangle,
   Building2,
+  Check,
   FileCheck,
   Laptop,
-  Stethoscope,
-  type LucideIcon,
+  MapPin,
+  Scale,
+  ShieldAlert,
+  Users,
+  Wallet,
 } from "lucide-react";
 import Link from "next/link";
 
-function getRequirements(): { icon: LucideIcon; title: LocalizedText; body: LocalizedText }[] {
-  return [
-    {
-      icon: Building2,
-      title: L("Registered employer", "นายจ้างจดทะเบียน", "注册雇主", "Работодатель"),
-      body: L(
-        "Thai company with paid-up capital, tax filings, and valid office that can sponsor your permit.",
-        "บริษัทไทยมีทุนจดทะเบียน ยื่นภาษี และที่ตั้งสำนักงานที่รับรอง work permit",
-        "泰资公司须实缴资本、报税并有可担保的办公地址。",
-        "Тайская компания с уставным капиталом и офисом для спонсорства.",
-      ),
-    },
-    {
-      icon: FileCheck,
-      title: L("Valid non-immigrant visa", "วีซ่าที่ถูกต้อง", "有效非移民签证", "Виза Non-Immigrant"),
-      body: L(
-        "Typically Non-Immigrant B before work permit application at Labour Department.",
-        "มักเป็น Non-Immigrant B ก่อนยื่น work permit ที่กรมแรงงาน",
-        "通常需先有 Non-Immigrant B 再向劳工部申请工作证。",
-        "Обычно Non-Immigrant B до подачи в Department of Labour.",
-      ),
-    },
-    {
-      icon: BadgeCheck,
-      title: L("Role & qualifications", "ตำแหน่งและคุณสมบัติ", "职位与资质", "Должность"),
-      body: L(
-        "Job description, education, and experience must match Labour Office standards.",
-        "ลักษณะงาน การศึกษา และประสบการณ์ต้องตรงมาตรฐานกรมแรงงาน",
-        "职位描述、学历与经验须符合劳工厅标准。",
-        "Описание должности и квалификация по нормам Labour Office.",
-      ),
-    },
-    {
-      icon: Stethoscope,
-      title: L("Medical certificate", "ใบรับรองแพทย์", "体检证明", "Медсправка"),
-      body: L(
-        "Thai clinic or hospital medical form within the required timeframe.",
-        "ใบตรวจจากคลินิกหรือโรงพยาบาลไทยภายในระยะเวลาที่กำหนด",
-        "须在有效期内由泰国诊所或医院出具。",
-        "Медформу из тайской клиники в срок.",
-      ),
-    },
-  ];
-}
-
-function getSteps(lang: import("@/lib/i18n/languages").LanguageCode) {
-  return [
-    {
-      step: 1,
-      title: t(lang, L("Secure job offer", "ได้ข้อเสนองาน", "获得工作 offer", "Оффер")),
-      note: t(
-        lang,
-        L("Signed employment contract in Thai/English.", "สัญญาจ้างสองภาษา", "泰英双语雇佣合同。", "Контракт на двух языках."),
-      ),
-    },
-    {
-      step: 2,
-      title: t(lang, L("Non-B visa", "วีซ่า Non-B", "Non-B 签证", "Виза Non-B")),
-      note: t(
-        lang,
-        L("Apply at Thai embassy or convert with legal support.", "ยื่นสถานทูตหรือแปลงวีซ่าผ่านทนาย", "在使馆申请或依法转换。", "В посольстве или конвертация."),
-      ),
-    },
-    {
-      step: 3,
-      title: t(lang, L("Work permit", "ใบอนุญาตทำงาน", "工作证", "Work permit"),
-      ),
-      note: t(
-        lang,
-        L("Submit at Chonburi Labour Office with company documents.", "ยื่นที่กรมแรงงานชลบุรีพร้อมเอกสารบริษัท", "向春武里劳工部提交公司文件。", "Подача в Labour Office Chonburi."),
-      ),
-    },
-    {
-      step: 4,
-      title: t(lang, L("Annual renewal", "ต่ออายุรายปี", "年度续签", "Ежегодное продление"),
-      ),
-      note: t(
-        lang,
-        L("Sync visa extension, 90-day report, and permit renewal.", "ประสานต่อวีซ่า รายงาน 90 วัน และ work permit", "同步签证延签、90 天报到与工作证续期。", "Виза, 90 дней и permit вместе."),
-      ),
-    },
-  ];
-}
+const companyIcons = [Wallet, Users, Building2] as const;
+const ruleIcons = [ShieldAlert, Scale, FileCheck] as const;
 
 const faqs = [
+  faqEnTh(
+    "illegal",
+    "Can I volunteer or work part-time without a permit?",
+    "อาสาหรือพาร์ทไทม์ไม่มีใบอนุญาตได้ไหม?",
+    "No — any paid or unpaid work without a valid work permit is illegal in Thailand.",
+    "ไม่ได้ — งานมีค่าจ้างหรืออาสาสมัครโดยไม่มีใบอนุญาตผิดกฎหมาย",
+    "无许可能否兼职或志愿？",
+    "Работа без permit?",
+  ),
+  faqEnTh(
+    "ratio",
+    "What is the Thai-to-foreign employee ratio?",
+    "อัตราส่วนคนไทยต่อต่างชาติ?",
+    "Typically four Thai employees per one foreign work permit, verified via social security (BOI firms may differ).",
+    "มัก 4 คนไทยต่อ work permit ต่างชาติ 1 ใบ ตรวจจากประกันสังคม (บริษัท BOI อาจต่าง)",
+    "泰外籍员工比例？",
+    "Соотношение 4:1?",
+  ),
+  faqEnTh(
+    "change",
+    "Can I change employers on the same permit?",
+    "เปลี่ยนนายจ้างได้ไหม?",
+    "A new employer requires a new work permit and visa alignment. Working elsewhere without updating is a serious violation.",
+    "นายจ้างใหม่ต้องยื่น work permit ใหม่และจัดวีซ่าให้สอดคล้อง",
+    "能换雇主不换证吗？",
+    "Смена работодателя?",
+  ),
   faqEnTh(
     "nomad",
     "Can digital nomads use a standard work permit?",
@@ -110,45 +71,27 @@ const faqs = [
     "Remote work may qualify under LTR or BOI schemes — not a classic employer-sponsored permit.",
     "ทำงานรีโมตอาจใช้ LTR หรือ BOI ไม่ใช่ work permit แบบนายจ้างสponsor ทั่วไป",
     "数字游民能用普通工作证吗？",
-    "Digital nomad и work permit?",
+    "Digital nomad?",
   ),
   faqEnTh(
-    "ratio",
-    "What is the Thai-to-foreign employee ratio?",
-    "อัตราส่วนคนไทยต่อต่างชาติ?",
-    "Often four Thai staff per foreign permit (BOI firms may differ). HR verifies before filing.",
-    "มัก 4 คนไทยต่อ 1 ต่างชาติ (บริษัท BOI อาจต่าง) HR ตรวจก่อนยื่น",
-    "泰外籍员工比例？",
-    "Соотношение тайцев и иностранцев?",
-  ),
-  faqEnTh(
-    "change",
-    "Can I change employers on the same permit?",
-    "เปลี่ยนนายจ้างได้ไหม?",
-    "New employer requires a new permit and often visa alignment. Working without update is a serious violation.",
-    "นายจ้างใหม่ต้องยื่น work permit ใหม่ มักต้องจัดวีซ่าให้สอดคล้อง",
-    "能换雇主不换证吗？",
-    "Смена работодателя?",
+    "90day",
+    "Do I still need 90-day reporting with a work permit?",
+    "มี work permit ยังต้องรายงาน 90 วันไหม?",
+    "Yes — Immigration 90-day reporting is separate and still required in Pattaya (Jomtien) or online.",
+    "ต้อง — รายงาน 90 วันกับ ตม. แยกจาก work permit",
+    "有工作证还要90天报到吗？",
+    "90 дней с work permit?",
   ),
 ];
 
 export function WorkPermitPage() {
   const { language } = useLanguage();
-  const h = {
-    req: t(language, L("Core requirements", "เงื่อนไขหลัก", "核心要求", "Требования")),
-    steps: t(language, L("Application process", "ขั้นตอน", "申请流程", "Процесс")),
-    ltr: t(language, L("LTR & Digital Nomad pathway", "เส้นทาง LTR / Digital Nomad", "LTR 与数字游民通道", "LTR и digital nomad")),
-    ltrBody: t(
-      language,
-      L(
-        "Remote workers and wealthy global citizens may qualify for LTR with 10-year stay — separate from a classic employer work permit.",
-        "ผู้มีรายได้สูงหรือทำงานรีโมตอาจใช้ LTR พำนัก 10 ปี แยกจาก work permit แบบนายจ้าง",
-        "远程工作者与高净值人士可申请 LTR 十年居留，不同于雇主担保工作证。",
-        "LTR на 10 лет — отдельно от классического work permit.",
-      ),
-    ),
-    compare: t(language, L("Compare with Retirement Visa →", "เปรียบเทียบวีซ่าเกษียณ →", "对比退休签证 →", "Сравнить с retirement →")),
-  };
+  const copy = getWorkPermitPage(language);
+  const companyReqs = getWorkPermitCompanyReqs(language);
+  const checklist = getWorkPermitChecklist(language);
+  const steps = getWorkPermitSteps(language);
+  const rules = getWorkPermitRules(language);
+  const applicantReqs = getWorkPermitApplicantReqs(language);
 
   return (
     <LocalizedLivingPageShell
@@ -156,57 +99,188 @@ export function WorkPermitPage() {
       heroImage={livingImages.workPermit}
       heroAlt="Work permit documents"
       ctaAriaLabel="Work permit legal consultation"
+      hideLeadCta
+      bottomChildren={
+        <LivingCtaActions>
+          <Link href="/living" className={livingCtaButtonClass.primary}>
+            {copy.livingHub}
+          </Link>
+          <Link href="/living/visa/retirement" className={livingCtaButtonClass.outline}>
+            {copy.retirementVisa}
+          </Link>
+          <Link href="/living/visa/thailand-elite" className={livingCtaButtonClass.outline}>
+            {copy.thailandElite}
+          </Link>
+        </LivingCtaActions>
+      }
     >
-      <section aria-labelledby="wp-req-title">
-        <h2 id="wp-req-title" className={livingTheme.heading}>
-          {h.req}
-        </h2>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          {getRequirements().map((req) => (
-            <article key={req.title.en} className={`p-5 ${livingTheme.card}`}>
-              <div className={livingTheme.iconBox}>
-                <req.icon className="h-5 w-5" />
-              </div>
-              <h3 className="mt-4 font-bold text-[#0A192F]">{t(language, req.title)}</h3>
-              <p className={`mt-2 ${livingTheme.body}`}>{t(language, req.body)}</p>
-            </article>
-          ))}
+      {/* Intro */}
+      <section
+        className="relative overflow-hidden rounded-2xl border border-[#D7CBBA]/60 bg-gradient-to-br from-[#faf7f2] via-white to-[#f5efe6] p-6 sm:p-8"
+        aria-labelledby="wp-intro-title"
+      >
+        <div
+          className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full opacity-20"
+          style={{ background: "radial-gradient(circle, #B29475 0%, transparent 70%)" }}
+          aria-hidden
+        />
+        <div className="relative flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
+          <div
+            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#ae2f34] text-white shadow-lg"
+          >
+            <AlertTriangle className="h-7 w-7" aria-hidden />
+          </div>
+          <div>
+            <h2 id="wp-intro-title" className="text-2xl font-bold text-[#0A192F] sm:text-3xl">
+              {copy.introTitle}
+            </h2>
+            <p className={`mt-3 max-w-3xl text-base leading-relaxed ${livingTheme.body}`}>
+              {copy.introBody}
+            </p>
+          </div>
         </div>
       </section>
 
+      {/* Company requirements */}
+      <section aria-labelledby="wp-company-title">
+        <h2 id="wp-company-title" className={livingTheme.heading}>
+          {copy.companyTitle}
+        </h2>
+        <p className={`mt-2 ${livingTheme.muted}`}>{copy.companySubtitle}</p>
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
+          {companyReqs.map((item, i) => {
+            const Icon = companyIcons[i] ?? Building2;
+            return (
+              <article
+                key={item.title}
+                className="flex flex-col gap-3 rounded-2xl border border-[#e2e8f0] bg-white p-5 shadow-sm"
+              >
+                <div className={livingTheme.iconBox}>
+                  <Icon className="h-5 w-5" aria-hidden />
+                </div>
+                <h3 className="font-bold text-[#0A192F]">{item.title}</h3>
+                <p className={`flex-1 text-sm leading-relaxed ${livingTheme.body}`}>{item.text}</p>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Applicant quick reqs + checklist */}
+      <section
+        className="grid gap-8 lg:grid-cols-2 lg:items-start"
+        aria-labelledby="wp-checklist-title"
+      >
+        <div>
+          <h2 id="wp-checklist-title" className={livingTheme.heading}>
+            {copy.checklistTitle}
+          </h2>
+          <p className={`mt-2 ${livingTheme.muted}`}>{copy.checklistSubtitle}</p>
+          <div className="mt-6 grid gap-3">
+            {applicantReqs.map((item) => (
+              <article
+                key={item.title}
+                className="rounded-xl border border-[#D7CBBA]/50 bg-[#faf7f2] p-4"
+              >
+                <h3 className="text-sm font-bold text-[#0A192F]">{item.title}</h3>
+                <p className={`mt-1 text-sm ${livingTheme.body}`}>{item.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+        <ul className="space-y-3 rounded-2xl border border-[#D7CBBA]/60 bg-white p-5 shadow-sm sm:p-6">
+          {checklist.map((line) => (
+            <li key={line} className="flex gap-3 text-sm leading-relaxed text-[#444748] sm:text-base">
+              <span
+                className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#B29475] text-white"
+                aria-hidden
+              >
+                <Check className="h-3.5 w-3.5" />
+              </span>
+              {line}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* Timeline */}
       <section aria-labelledby="wp-steps-title">
         <h2 id="wp-steps-title" className={livingTheme.heading}>
-          {h.steps}
+          {copy.processTitle}
         </h2>
+        <p className={`mt-2 ${livingTheme.muted}`}>{copy.processSubtitle}</p>
         <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {getSteps(language).map((s) => (
-            <li key={s.step} className={`flex flex-col p-5 ${livingTheme.cardStatic}`}>
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#B29475] text-sm font-bold text-white">
+          {steps.map((s) => (
+            <li
+              key={s.step}
+              className="flex flex-col rounded-2xl border border-[#e2e8f0] bg-white p-5 shadow-sm transition hover:border-[#D7CBBA] hover:shadow-md"
+            >
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#B29475] text-sm font-bold text-white">
                 {s.step}
               </span>
               <h3 className="mt-3 font-bold text-[#0A192F]">{s.title}</h3>
-              <p className={`mt-2 flex-1 ${livingTheme.body}`}>{s.note}</p>
+              <p className={`mt-2 flex-1 text-sm leading-relaxed ${livingTheme.body}`}>{s.text}</p>
             </li>
           ))}
         </ol>
       </section>
 
+      {/* Crucial rules */}
+      <section aria-labelledby="wp-rules-title">
+        <h2 id="wp-rules-title" className={livingTheme.heading}>
+          {copy.rulesTitle}
+        </h2>
+        <p className={`mt-2 ${livingTheme.muted}`}>{copy.rulesSubtitle}</p>
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
+          {rules.map((item, i) => {
+            const Icon = ruleIcons[i] ?? AlertTriangle;
+            return (
+              <article
+                key={item.title}
+                className="flex gap-4 rounded-2xl border border-[#ae2f34]/20 bg-[#fdf8f8] p-5"
+              >
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#ae2f34] text-white">
+                  <Icon className="h-5 w-5" aria-hidden />
+                </div>
+                <div>
+                  <h3 className="font-bold text-[#0A192F]">{item.title}</h3>
+                  <p className={`mt-2 text-sm leading-relaxed ${livingTheme.body}`}>{item.text}</p>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Pattaya office */}
+      <section
+        className="flex gap-4 rounded-2xl border border-[#D7CBBA]/60 bg-[#0A192F] p-6 text-white sm:p-8"
+        aria-labelledby="wp-pattaya-title"
+      >
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#B29475]">
+          <MapPin className="h-6 w-6" aria-hidden />
+        </div>
+        <div>
+          <h2 id="wp-pattaya-title" className="text-xl font-bold text-[#D7CBBA]">
+            {copy.pattayaTitle}
+          </h2>
+          <p className="mt-3 text-sm leading-relaxed text-white/90 sm:text-base">
+            {copy.pattayaBody}
+          </p>
+        </div>
+      </section>
+
+      {/* LTR pathway */}
       <section className={livingTheme.accentPanel} aria-labelledby="ltr-title">
         <div className="flex items-start gap-4 text-left">
           <div className={livingTheme.iconBox}>
-            <Laptop className="h-6 w-6" />
+            <Laptop className="h-6 w-6" aria-hidden />
           </div>
           <div>
             <h2 id="ltr-title" className={livingTheme.headingSm}>
-              {h.ltr}
+              {copy.ltrTitle}
             </h2>
-            <p className={`mt-2 ${livingTheme.body}`}>{h.ltrBody}</p>
-            <Link
-              href="/living/visa/retirement"
-              className="mt-4 inline-flex text-sm font-bold text-[#B29475] hover:underline"
-            >
-              {h.compare}
-            </Link>
+            <p className={`mt-2 ${livingTheme.body}`}>{copy.ltrBody}</p>
           </div>
         </div>
       </section>

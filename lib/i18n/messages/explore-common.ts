@@ -1,0 +1,42 @@
+import type { LanguageCode } from "@/lib/i18n/languages";
+import { L, t } from "@/lib/i18n/living-helpers";
+
+export function getExploreCommon(lang: LanguageCode) {
+  return {
+    explore: t(lang, L("Explore", "สำรวจ", "探索", "Explore")),
+    prev: t(lang, L("Previous", "ก่อนหน้า", "上一项", "Назад")),
+    next: t(lang, L("Next", "ถัดไป", "下一项", "Далее")),
+    hours: t(lang, L("Hours", "เวลาเปิด", "营业时间", "Часы")),
+    location: t(lang, L("Location", "ที่ตั้ง", "位置", "Локация")),
+    from: t(lang, L("From", "เริ่มต้น", "起价", "От")),
+    vessel: t(lang, L("Vessel", "เรือ", "船型", "Судно")),
+    capacity: t(lang, L("Capacity", "ความจุ", "容量", "Вместимость")),
+    price: t(lang, L("Price", "ราคา", "价格", "Цена")),
+    alsoExplore: t(lang, L("Also explore", "สำรวจเพิ่ม", "更多探索", "Также")),
+    mainBeaches: t(lang, L("Main beaches →", "ชายหาดหลัก →", "主要海滩 →", "Пляжи →")),
+    fineDining: t(lang, L("Fine dining →", "ไฟน์ไดนิ่ง →", "精致餐饮 →", "Fine dining →")),
+    kohLarn: t(lang, L("Koh Larn →", "เกาะล้าน →", "格兰岛 →", "Ко Лан →")),
+    luxury: t(lang, L("Luxury", "หรู", "奢华", "Люкс")),
+    wellness: t(lang, L("Wellness", "สุขภาพ", "康养", "Wellness")),
+    bestFor: t(lang, L("Best for", "เหมาะกับ", "适合", "Лучше для")),
+    access: t(lang, L("Access", "การเดินทาง", "交通", "Добраться")),
+    water: t(lang, L("Water", "น้ำทะเล", "海水", "Вода")),
+    mustTry: t(lang, L("Must try", "ต้องลอง", "必试", "Попробуйте")),
+    highlights: t(lang, L("Highlights", "ไฮไลท์", "亮点", "Особенности")),
+    mustBuy: t(lang, L("Must buy", "ต้องซื้อ", "必买", "Купить")),
+    readTime: t(lang, L("Read time", "เวลาอ่าน", "阅读时间", "Читать")),
+    areas: t(lang, L("Areas", "พื้นที่", "区域", "Районы")),
+    vibe: t(lang, L("Vibe", "บรรยากาศ", "氛围", "Атмосфера")),
+    restaurants: t(lang, L("Restaurants", "ร้านอาหาร", "餐厅", "Рестораны")),
+    shopping: t(lang, L("Shopping", "ช้อปปิ้ง", "购物", "Шопинг")),
+    beaches: t(lang, L("Beaches", "ชายหาด", "海滩", "Пляжи")),
+    islands: t(lang, L("Islands", "เกาะ", "岛屿", "Острова")),
+    family: t(lang, L("Family", "ครอบครัว", "亲子", "Семья")),
+    streetFood: t(lang, L("Street food →", "สตรีทฟู้ด →", "街头美食 →", "Стритфуд →")),
+    localMarkets: t(lang, L("Local markets →", "ตลาดท้องถิ่น →", "本地市场 →", "Рынки →")),
+    shoppingMalls: t(lang, L("Shopping malls →", "ห้าง →", "商场 →", "ТРЦ →")),
+    cafesLink: t(lang, L("Cafes →", "คาเฟ่ →", "咖啡馆 →", "Кафе →")),
+    kohLarnDayTrip: t(lang, L("Koh Larn day trip →", "ทริปเกาะล้าน →", "格兰岛一日游 →", "Ко Лан →")),
+    bookNow: t(lang, L("Book Now", "จองเลย", "立即预订", "Забронировать")),
+  };
+}
