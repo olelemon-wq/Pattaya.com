@@ -19,6 +19,7 @@ import {
   localizeVisaArticle,
   localizeVisaSpotlight,
 } from "@/lib/i18n/messages/news-visa-bodies";
+import { remainingNewsBodyLocalizers } from "@/lib/i18n/messages/news-remaining-bodies";
 import type { LocalizedText } from "@/lib/i18n/text";
 import { pickText } from "@/lib/i18n/text";
 
@@ -422,7 +423,9 @@ function localizeSpotlights(
     case "expat/immigration":
       return items.map((item) => localizeImmigrationSpotlight(lang, item));
     default:
-      return items;
+      return items.map((item) =>
+        remainingNewsBodyLocalizers.localizeSpotlight(lang, slug, item),
+      );
   }
 }
 
@@ -441,7 +444,9 @@ function localizeArticles(
     case "expat/immigration":
       return items.map((item) => localizeImmigrationArticle(lang, item));
     default:
-      return items;
+      return items.map((item) =>
+        remainingNewsBodyLocalizers.localizeArticle(lang, slug, item),
+      );
   }
 }
 

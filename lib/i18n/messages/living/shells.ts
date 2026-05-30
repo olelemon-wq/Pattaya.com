@@ -63,10 +63,10 @@ const shells = {
       "Коммунальные услуги",
     ),
     subtitle: L(
-      "Electricity, water, and high-speed internet for Pattaya residents.",
-      "ค่าไฟ น้ำ และอินเทอร์เน็ตความเร็วสูงในพัทยา",
-      "芭提雅居民的电费、水费与高速网络。",
-      "Электричество, вода и интернет в Паттайе.",
+      "Government vs condo rates, AC seasons, drinking water, trash, gas, and fiber in Pattaya.",
+      "เรทหลวง vs คอนโด ค่าแอร์ตามฤดูกาล น้ำดื่ม ขยะ แก๊ส และไฟเบอร์ในพัทยา",
+      "政府与公寓电价、空调季节、饮用水、垃圾、燃气与光纤。",
+      "Гостариф vs кондо, AC, вода, мусор, газ и оптика.",
     ),
     ctaEyebrow: L("Budget Tools", "เครื่องมืองบประมาณ", "预算工具", "Бюджет"),
     ctaTitle: L(
