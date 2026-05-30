@@ -1,29 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Breadcrumb } from "@/components/layout/breadcrumb";
-import { PageHero } from "@/components/content/page-hero";
-import { buildBreadcrumbs } from "@/lib/navigation/utils";
+import { UtilityPageContent } from "@/components/pages/standalone-pages";
 
-const utilities: Record<
-  string,
-  { title: string; titleTh: string; description: string }
-> = {
-  weather: {
-    title: "Weather",
-    titleTh: "สภาพอากาศ",
-    description: "Current weather conditions and forecast for Pattaya.",
-  },
-  transport: {
-    title: "Traffic & Transport",
-    titleTh: "การเดินทาง",
-    description: "Road conditions, local transport, and U-Tapao airport info.",
-  },
-  currency: {
-    title: "Currency Rates",
-    titleTh: "ค่าเงิน",
-    description: "Live exchange rates for major currencies in Thailand.",
-  },
-};
+const utilities = new Set(["weather", "transport", "currency"]);
 
 interface PageProps {
   params: Promise<{ utility: string }>;
@@ -31,38 +10,26 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { utility } = await params;
-  const data = utilities[utility];
-  if (!data) return { title: "Not Found | Pattaya.com" };
+  if (!utilities.has(utility)) return { title: "Not Found | Pattaya.com" };
+
+  const titles: Record<string, string> = {
+    weather: "Weather",
+    transport: "Traffic & Transport",
+    currency: "Currency Rates",
+  };
 
   return {
-    title: `${data.title} | Pattaya.com`,
-    description: data.description,
+    title: `${titles[utility]} | Pattaya.com`,
   };
 }
 
 export function generateStaticParams() {
-  return Object.keys(utilities).map((utility) => ({ utility }));
+  return [...utilities].map((utility) => ({ utility }));
 }
 
 export default async function UtilityPage({ params }: PageProps) {
   const { utility } = await params;
-  const data = utilities[utility];
-  if (!data) notFound();
+  if (!utilities.has(utility)) notFound();
 
-  return (
-    <>
-      <Breadcrumb
-        items={buildBreadcrumbs(data.title, `/utilities/${utility}`)}
-      />
-      <PageHero
-        title={data.title}
-        titleTh={data.titleTh}
-        description={data.description}
-        badge="Utility Widget"
-      />
-      <div className="rounded-xl border border-dashed border-zinc-300 bg-zinc-50 p-8 text-center text-sm text-zinc-600">
-        API widget integration coming soon.
-      </div>
-    </>
-  );
+  return <UtilityPageContent utility={utility} />;
 }

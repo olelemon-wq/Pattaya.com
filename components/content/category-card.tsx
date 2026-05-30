@@ -1,12 +1,18 @@
+"use client";
+
 import Link from "next/link";
 import type { NavItem } from "@/lib/navigation/types";
-import { formatPriority, priorityColor } from "@/lib/navigation/utils";
+import { useLanguage } from "@/components/layout/language-provider";
+import { formatPriorityLocalized } from "@/lib/i18n/messages/site-ui";
+import { priorityColor } from "@/lib/navigation/utils";
 
 interface CategoryCardProps {
   item: NavItem;
 }
 
 export function CategoryCard({ item }: CategoryCardProps) {
+  const { language } = useLanguage();
+
   return (
     <Link
       href={item.href}
@@ -19,14 +25,13 @@ export function CategoryCard({ item }: CategoryCardProps) {
         <span
           className={`shrink-0 rounded-full px-2 py-0.5 text-xs font-medium ${priorityColor(item.priority)}`}
         >
-          {formatPriority(item.priority)}
+          {formatPriorityLocalized(language, item.priority)}
         </span>
       </div>
 
       <h3 className="text-base font-semibold text-zinc-900 group-hover:text-teal-700">
         {item.label}
       </h3>
-      <p className="mt-0.5 text-sm text-teal-600">{item.labelTh}</p>
       <p className="mt-2 flex-1 text-sm leading-6 text-zinc-600">
         {item.description}
       </p>

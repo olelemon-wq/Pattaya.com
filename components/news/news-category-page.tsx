@@ -15,11 +15,11 @@ import {
 } from "@/components/news/news-ui";
 import type { NewsCategoryContent } from "@/lib/data/news-category-types";
 import { resolveNewsCategoryContent } from "@/lib/i18n/resolve-news-category";
+import { buildLocalizedBreadcrumbs } from "@/lib/i18n/resolve-site-nav";
 import { localizeNewsNavItem } from "@/lib/i18n/messages/news-nav";
 import { tNewsCategoryUi } from "@/lib/i18n/messages/news-category-ui";
 import { newsTheme } from "@/lib/design/news-theme";
 import type { NavItem } from "@/lib/navigation/types";
-import { buildBreadcrumbs } from "@/lib/navigation/utils";
 import { Building2, MapPin, TrendingUp } from "lucide-react";
 import Link from "next/link";
 
@@ -45,8 +45,9 @@ export function NewsCategoryPage({ item, content: baseContent }: NewsCategoryPag
   const itemLocalized = localizeNewsNavItem(language, item);
   const content = resolveNewsCategoryContent(language, item.slug, baseContent);
 
-  const breadcrumbs = buildBreadcrumbs(
-    language === "th" ? "ข่าวสาร" : language === "zh" ? "新闻" : language === "ru" ? "Новости" : "News",
+  const breadcrumbs = buildLocalizedBreadcrumbs(
+    language,
+    "news",
     "/news",
     itemLocalized.label,
     item.href,

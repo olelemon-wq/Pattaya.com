@@ -54,7 +54,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {
       title: "Driving in Thailand Pattaya | ขับรถในไทย | Pattaya.com",
       description:
-        "Thai driving license steps, Pattaya traffic tips, insurance, and FAQ for expat drivers.",
+        "Thai driving license conversion, Chonburi DLT checklist, motorcycle vs car, insurance, Pattaya hotspots, and FAQ.",
       openGraph: {
         title: "Driving in Thailand | ขับรถในไทย — Pattaya.com",
         description: "License guide and road rules for Chonburi residents.",
