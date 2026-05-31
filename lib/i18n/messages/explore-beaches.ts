@@ -83,7 +83,7 @@ export function getMainBeachesPage(lang: LanguageCode) {
       },
       {
         id: "dongtan",
-        name: t(lang, L("Dongtan Beach", "หาดดองตาล", "Dongtan Beach", "Dongtan")),
+        name: t(lang, L("Dongtan Beach", "หาดดงตาล", "Dongtan Beach", "Dongtan")),
         nameTh: "",
         vibe: [
           t(lang, L("Inclusive", "หลากหลาย", "包容", "Инклюзив")),
@@ -91,7 +91,7 @@ export function getMainBeachesPage(lang: LanguageCode) {
           t(lang, L("Local", "ท้องถิ่น", "本地", "Местное")),
         ],
         bestFor: t(lang, L("Inclusive beach culture, casual day trips", "วัฒนธรรมชายหาด ทริปวันเดียว", "包容海滩文化", "Непринуждённый отдых")),
-        access: t(lang, L("End of Jomtien Beach Rd · near Dongtan roundabout", "ปลาย Jomtien Beach Rd · วงเวียนดองตาล", "Jomtien 路尽头", "Конец Jomtien Beach Rd")),
+        access: t(lang, L("End of Jomtien Beach Rd · near Dongtan roundabout", "ปลาย Jomtien Beach Rd · วงเวียนดงตาล", "Jomtien 路尽头", "Конец Jomtien Beach Rd")),
         water: t(lang, L("Shallow sections suitable for wading", "ตื้น เหมาะเดินเล่นน้ำ", "浅水区适合涉水", "Мелководье")),
         excerpt: t(
           lang,
@@ -127,7 +127,7 @@ export function getMainBeachesPage(lang: LanguageCode) {
       },
       {
         id: "wongamat",
-        name: t(lang, L("Wong Amat Beach", "หาดวงอามาด", "Wong Amat Beach", "Wong Amat")),
+        name: t(lang, L("Wong Amat Beach", "หาดวงอมาตย์", "Wong Amat Beach", "Wong Amat")),
         nameTh: "",
         vibe: [
           t(lang, L("Upscale", "หรู", "高端", "Премиум")),
@@ -179,11 +179,11 @@ export function getMainBeachesPage(lang: LanguageCode) {
           text: t(lang, L("busiest, best for first visits and nightlife proximity.", "คนเยอะสุด เหมาะครั้งแรก ใกล้ไนท์ไลฟ์", "最热闹，首次到访首选", "самый оживлённый")),
         },
         {
-          name: t(lang, L("Jomtien & Dongtan", "จอมเทียน & ดองตาล", "Jomtien & Dongtan", "Jomtien & Dongtan")),
+          name: t(lang, L("Jomtien & Dongtan", "จอมเทียน & ดงตาล", "Jomtien & Dongtan", "Jomtien & Dongtan")),
           text: t(lang, L("longer sand, calmer swim, strong dining scene.", "หาดยาว ว่ายสบาย อาหารเยอะ", "更长沙滩，游泳更静", "длинный пляж, спокойнее")),
         },
         {
-          name: t(lang, L("Naklua & Wong Amat", "นาเกลือ & วงอามาด", "Naklua & Wong Amat", "Naklua & Wong Amat")),
+          name: t(lang, L("Naklua & Wong Amat", "นาเกลือ & วงอมาตย์", "Naklua & Wong Amat", "Naklua & Wong Amat")),
           text: t(lang, L("quieter mornings, upscale stays, local markets north.", "เช้าเงียบ ที่พักหรู ตลาดเหนือ", "清晨安静，北部市场", "тихие утра, рынки")),
         },
         {

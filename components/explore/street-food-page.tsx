@@ -1,22 +1,13 @@
 "use client";
 
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
-import { ExploreGuideCarousel } from "@/components/explore/explore-guide-carousel";
-import type { ExploreGuideCardData } from "@/components/explore/explore-guide-types";
 import { useLanguage } from "@/components/layout/language-provider";
 import { streetFoodImages } from "@/lib/design/street-food-images";
-import { getExploreCommon } from "@/lib/i18n/messages/explore-common";
 import { getStreetFoodPage } from "@/lib/i18n/messages/explore-street-food";
-import { Clock, Flame, Star, Utensils, Wallet } from "lucide-react";
+import { tSiteUi } from "@/lib/i18n/messages/site-ui";
+import { Clock, MapPin, Soup, Wallet } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
-const marketImages: Record<string, string> = {
-  thepprasit: streetFoodImages.thepprasit,
-  naklua: streetFoodImages.naklua,
-  jomtien: streetFoodImages.jomtienSeafood,
-  "walking-street": streetFoodImages.walkingStreet,
-};
 
 const dishImages = [
   streetFoodImages.padThai,
@@ -25,7 +16,121 @@ const dishImages = [
   streetFoodImages.mangoSticky,
 ];
 
-const tipIcons = [Clock, Wallet, Flame, Utensils] as const;
+function MarketCard({
+  name,
+  hours,
+  hoursLabel,
+  mustTry,
+  mustTryLabel,
+  text,
+  priceRange,
+  priceRangeLabel,
+  href,
+  linkLabel,
+  image,
+  external,
+}: {
+  name: string;
+  hours: string;
+  hoursLabel: string;
+  mustTry: string;
+  mustTryLabel: string;
+  text: string;
+  priceRange: string;
+  priceRangeLabel: string;
+  href: string;
+  linkLabel: string;
+  image: string;
+  external: boolean;
+}) {
+  const className =
+    "group flex h-full w-full flex-col overflow-hidden rounded-xl border border-[#e7e8e9] bg-[#fdf8fb] shadow-sm transition hover:border-[#B52E88]/30 hover:shadow-md";
+
+  const body = (
+    <>
+      <div className="relative aspect-[4/3] w-full shrink-0 bg-[#e7e8e9]">
+        <Image
+          src={image}
+          alt={name}
+          fill
+          className="object-cover transition duration-500 group-hover:scale-105"
+          sizes="(max-width: 640px) 100vw, 400px"
+        />
+      </div>
+      <div className="flex flex-1 flex-col p-4 sm:p-5">
+        <p className="flex items-start gap-2 font-bold text-[#191c1d]">
+          <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#B52E88]" aria-hidden />
+          {name}
+        </p>
+        <p className="mt-2 flex items-start gap-2 pl-6 text-xs font-medium text-[#747878]">
+          <Clock className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#B52E88]" aria-hidden />
+          <span>
+            {hoursLabel}: <span className="text-[#191c1d]">{hours}</span>
+          </span>
+        </p>
+        <p className="mt-2 flex items-start gap-2 pl-6 text-xs font-medium text-[#747878]">
+          <Soup className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#B52E88]" aria-hidden />
+          <span>
+            {mustTryLabel}: <span className="text-[#191c1d]">{mustTry}</span>
+          </span>
+        </p>
+        <p className="mt-2 pl-6 text-sm">
+          <span className="font-medium text-[#747878]">{priceRangeLabel}: </span>
+          <span className="font-semibold text-[#B52E88]">{priceRange}</span>
+        </p>
+        <p className="mt-2 flex-1 pl-6 text-sm leading-relaxed text-[#444748]">{text}</p>
+        <span className="mt-4 pl-6 text-sm font-semibold text-[#B52E88] group-hover:underline">
+          {linkLabel}
+        </span>
+      </div>
+    </>
+  );
+
+  if (external) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+        {body}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={href} className={className}>
+      {body}
+    </Link>
+  );
+}
+
+function TipCard({
+  id,
+  title,
+  paragraphs,
+  image,
+}: {
+  id: string;
+  title: string;
+  paragraphs: string[];
+  image: string;
+}) {
+  return (
+    <article
+      id={`tip-${id}`}
+      className="scroll-mt-24 flex h-full flex-col overflow-hidden rounded-xl border border-[#e7e8e9] bg-[#fdf8fb] shadow-sm"
+    >
+      <div className="relative aspect-[21/9] w-full shrink-0 bg-[#e7e8e9] sm:aspect-[2/1]">
+        <Image src={image} alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+      </div>
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        <h3 className="text-base font-bold text-[#191c1d] sm:text-lg">{title}</h3>
+        <div className="mt-3 space-y-3 text-sm leading-relaxed text-[#444748]">
+          {paragraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+      </div>
+    </article>
+  );
+}
 
 function DishCard({
   name,
@@ -54,22 +159,7 @@ function DishCard({
 
 export function StreetFoodPage() {
   const { language } = useLanguage();
-  const c = getExploreCommon(language);
   const page = getStreetFoodPage(language);
-
-  const marketGuideCards: ExploreGuideCardData[] = page.markets.map((market) => ({
-    id: market.id,
-    name: market.name,
-    nameTh: market.nameTh,
-    image: marketImages[market.id] ?? streetFoodImages.hero,
-    tags: market.tags,
-    excerpt: market.excerpt,
-    details: [
-      { icon: "clock", label: c.hours, value: market.hours },
-      { icon: "mapPin", label: c.location, value: market.location },
-      { icon: "soup", label: c.mustTry, value: market.mustTry },
-    ],
-  }));
 
   return (
     <div data-full-bleed className="bg-[#fdf8fb] text-[#191c1d]">
@@ -94,7 +184,7 @@ export function StreetFoodPage() {
           aria-hidden
         />
         <div className="relative mx-auto flex min-h-[min(65vh,480px)] max-w-[1280px] flex-col justify-end px-5 pb-14 pt-20 md:px-16 md:pb-16">
-          <nav aria-label="Breadcrumb" className="mb-4">
+          <nav aria-label={tSiteUi(language, "breadcrumb")} className="mb-4">
             <ol className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/80">
               <li>
                 <Link href="/explore" className="hover:text-white">
@@ -103,9 +193,7 @@ export function StreetFoodPage() {
               </li>
               <li aria-hidden>/</li>
               <li>
-                <Link href="/explore/restaurants/fine-dining" className="hover:text-white">
-                  {page.breadcrumb.restaurants}
-                </Link>
+                <span className="text-white/80">{page.breadcrumb.restaurants}</span>
               </li>
               <li aria-hidden>/</li>
               <li>
@@ -123,28 +211,53 @@ export function StreetFoodPage() {
           <p className="mt-4 max-w-2xl text-base text-white/90 md:text-lg">{page.hero.body}</p>
           <div className="mt-5 flex flex-wrap gap-2">
             <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1.5 text-sm text-white ring-1 ring-white/25">
-              <Star className="h-4 w-4 fill-[#FBBF24] text-[#FBBF24]" aria-hidden />
+              <MapPin className="h-4 w-4" aria-hidden />
               {page.hero.badgePicks}
             </span>
             <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1.5 text-sm text-white ring-1 ring-white/25">
-              <Utensils className="h-4 w-4" aria-hidden />
+              <Wallet className="h-4 w-4" aria-hidden />
               {page.hero.badgeBudget}
             </span>
           </div>
         </div>
       </section>
 
-      <div className="mx-auto max-w-[1280px] px-5 py-12 md:px-16 md:py-16">
-        <ExploreGuideCarousel
-          title={page.carousel.title}
-          description={page.carousel.description}
-          prevLabel={page.carousel.prev}
-          nextLabel={page.carousel.next}
-          items={marketGuideCards}
-        />
+      <div className="mx-auto max-w-[1280px] space-y-14 px-5 py-12 md:px-16 md:py-16">
+        <section id="markets" className="scroll-mt-24" aria-labelledby="markets-title">
+          <div>
+            <h2 id="markets-title" className="text-2xl font-semibold text-[#191c1d] md:text-3xl">
+              {page.markets.title}
+            </h2>
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[#747878] sm:text-base">
+              {page.markets.subtitle}
+            </p>
+          </div>
+          <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-2 sm:items-stretch xl:grid-cols-4">
+            {page.markets.items.map((market) => (
+              <li key={market.id} id={`market-${market.id}`} className="flex min-h-0 scroll-mt-24">
+                <MarketCard
+                  name={market.name}
+                  hours={market.hours}
+                  hoursLabel={page.markets.hoursLabel}
+                  mustTry={market.mustTry}
+                  mustTryLabel={page.markets.mustTryLabel}
+                  text={market.text}
+                  priceRange={market.priceRange}
+                  priceRangeLabel={page.markets.priceRangeLabel}
+                  href={market.href}
+                  linkLabel={market.linkLabel}
+                  image={market.image}
+                  external={market.external}
+                />
+              </li>
+            ))}
+          </ul>
+        </section>
 
-        <section className="mb-16">
-          <h2 className="text-2xl font-semibold md:text-3xl">{page.dishes.title}</h2>
+        <section id="dishes" className="scroll-mt-24" aria-labelledby="dishes-title">
+          <h2 id="dishes-title" className="text-2xl font-semibold md:text-3xl">
+            {page.dishes.title}
+          </h2>
           <p className="mt-2 text-[#444748]">{page.dishes.subtitle}</p>
           <div className="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
             {page.dishes.items.map((dish, i) => (
@@ -153,26 +266,19 @@ export function StreetFoodPage() {
           </div>
         </section>
 
-        <section className="mb-16">
-          <h2 className="text-2xl font-semibold md:text-3xl">{page.tips.title}</h2>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            {page.tips.items.map((tip, i) => {
-              const Icon = tipIcons[i] ?? Clock;
-              return (
-                <div
-                  key={tip.title}
-                  className="flex gap-4 rounded-xl border border-[#c4c7c8]/30 bg-white p-4 sm:p-5"
-                >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#B52E88]/10">
-                    <Icon className="h-5 w-5 text-[#B52E88]" aria-hidden />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-[#191c1d]">{tip.title}</h4>
-                    <p className="mt-1 text-sm leading-relaxed text-[#444748]">{tip.text}</p>
-                  </div>
-                </div>
-              );
-            })}
+        <section id="eating-guides" className="scroll-mt-24" aria-labelledby="tips-title">
+          <div>
+            <h2 id="tips-title" className="text-2xl font-semibold text-[#191c1d] md:text-3xl">
+              {page.tips.title}
+            </h2>
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[#747878] sm:text-base">
+              {page.tips.subtitle}
+            </p>
+          </div>
+          <div className="mt-8 grid gap-5 md:grid-cols-2 md:items-stretch">
+            {page.tips.items.map((tip) => (
+              <TipCard key={tip.id} id={tip.id} title={tip.title} paragraphs={tip.paragraphs} image={tip.image} />
+            ))}
           </div>
         </section>
 

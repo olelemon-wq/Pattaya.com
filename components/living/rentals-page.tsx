@@ -97,8 +97,6 @@ export function RentalsPage() {
     <LocalizedLivingPageShell
       shellKey="rentals"
       heroImage={livingImages.rentals}
-      heroAlt="Luxury rental interior in Pattaya"
-      ctaAriaLabel="Rental listings consultation"
       hideLeadCta
       bottomChildren={
         <LivingCtaActions>

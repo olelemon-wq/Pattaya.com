@@ -6,6 +6,7 @@ import {
   getEmergencyMoreNumbers,
   type EmergencySosId,
 } from "@/lib/i18n/messages/living/emergency-hub";
+import { tSiteUiTemplate } from "@/lib/i18n/messages/site-ui";
 import { Ambulance, MapPin, Phone, Shield } from "lucide-react";
 import { useCallback, useState } from "react";
 
@@ -70,13 +71,21 @@ export function PattayaEmergencyHub() {
         <div className="emergency-hub__section">
           <h3 className="emergency-hub__section-title">{copy.callTitle}</h3>
           <div className="emergency-hub__call-grid">
-            <a href="tel:1155" className="emergency-hub__call-btn emergency-hub__call-btn--police">
+            <a
+              href="tel:1155"
+              aria-label={tSiteUiTemplate(language, "callNumber", { number: "1155" })}
+              className="emergency-hub__call-btn emergency-hub__call-btn--police"
+            >
               <Shield className="emergency-hub__call-icon" aria-hidden />
               <span className="emergency-hub__call-label">{copy.touristPolice}</span>
               <span className="emergency-hub__call-number">1155</span>
               <span className="emergency-hub__call-note">{copy.touristPoliceNote}</span>
             </a>
-            <a href="tel:1669" className="emergency-hub__call-btn emergency-hub__call-btn--ambulance">
+            <a
+              href="tel:1669"
+              aria-label={tSiteUiTemplate(language, "callNumber", { number: "1669" })}
+              className="emergency-hub__call-btn emergency-hub__call-btn--ambulance"
+            >
               <Ambulance className="emergency-hub__call-icon" aria-hidden />
               <span className="emergency-hub__call-label">{copy.ambulance}</span>
               <span className="emergency-hub__call-number">1669</span>
@@ -159,7 +168,11 @@ export function PattayaEmergencyHub() {
           <ul className="emergency-hub__more-list">
             {moreNumbers.map((item) => (
               <li key={item.number + item.label} className="emergency-hub__more-item">
-                <a href={item.href} className="emergency-hub__more-link">
+                <a
+                  href={item.href}
+                  aria-label={tSiteUiTemplate(language, "callNumber", { number: item.number })}
+                  className="emergency-hub__more-link"
+                >
                   <span className="emergency-hub__more-row">
                     <span className="emergency-hub__more-label">{item.label}</span>
                     <span className="emergency-hub__more-number">{item.number}</span>

@@ -328,3 +328,33 @@ export function getHospitalAlternatives(lang: LanguageCode) {
     },
   ];
 }
+
+export function getHospitalsMapCopy(lang: LanguageCode) {
+  return {
+    title: t(lang, L("Hospital map", "แผนที่โรงพยาบาล", "医院地图", "Карта больниц")),
+    subtitle: t(
+      lang,
+      L(
+        "Five hospital pins — tap a pin or name below for Google Maps directions.",
+        "หมุดโรงพยาบาล 5 แห่ง — แตะหมุดหรือชื่อด้านล่างเพื่อนำทางใน Google Maps",
+        "五个医院标记——点击标记或下方名称打开 Google 地图导航。",
+        "5 меток больниц — нажмите для маршрута в Google Maps.",
+      ),
+    ),
+    openAll: t(
+      lang,
+      L(
+        "Open all in Google Maps →",
+        "เปิดทั้งหมดใน Google Maps →",
+        "在 Google 地图中打开全部 →",
+        "Открыть все в Google Maps →",
+      ),
+    ),
+    directions: t(
+      lang,
+      L("Directions in Google Maps", "นำทางใน Google Maps", "Google 地图导航", "Маршрут"),
+    ),
+    legendPremium: t(lang, L("Private hospitals", "โรงพยาบาลเอกชน", "私立医院", "Частные")),
+    legendPublic: t(lang, L("Public hospitals", "โรงพยาบาลรัฐ", "公立医院", "Государственные")),
+  };
+}

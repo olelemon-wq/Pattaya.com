@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { LANGUAGES } from "@/lib/i18n/languages";
+import { tSiteUi } from "@/lib/i18n/messages/site-ui";
 import { useLanguage } from "./language-provider";
 
 export function LanguageSelector({ className = "" }: { className?: string }) {
@@ -37,7 +38,7 @@ export function LanguageSelector({ className = "" }: { className?: string }) {
         onClick={() => setOpen((value) => !value)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        aria-label="Select language"
+        aria-label={tSiteUi(language, "selectLanguage")}
         className="flex items-center gap-1.5 rounded-full border border-[#e2e8f0] bg-white px-3 py-2 text-xs font-semibold text-[#0c1a33] transition-colors hover:border-[#f97316] hover:text-[#f97316]"
       >
         <span aria-hidden="true">🌐</span>
@@ -53,7 +54,7 @@ export function LanguageSelector({ className = "" }: { className?: string }) {
       {open && (
         <ul
           role="listbox"
-          aria-label="Languages"
+          aria-label={tSiteUi(language, "languages")}
           className="absolute right-0 top-full z-[200] mt-2 min-w-[168px] overflow-hidden rounded-xl border border-[#e2e8f0] bg-white py-1 shadow-lg"
         >
           {LANGUAGES.map((lang) => {

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { LanguageCode } from "@/lib/i18n/languages";
 import { pickText } from "@/lib/i18n/text";
+import { tSiteUi } from "@/lib/i18n/messages/site-ui";
 import { LanguageSelector } from "./language-selector";
 import { useLanguage } from "./language-provider";
 
@@ -52,7 +53,7 @@ function NavLinks({
   className?: string;
 }) {
   return (
-    <nav aria-label="Main navigation" className={className}>
+    <nav aria-label={tSiteUi(language, "mainNav")} className={className}>
       <ul className="flex flex-col gap-1 lg:flex-row lg:items-center lg:gap-8">
         {navItems.map((item) => {
           const isActive = item.href === activeHref;
@@ -116,7 +117,7 @@ export function SiteHeader() {
 
         <div className="relative z-[200] ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
           <label className="relative hidden sm:block">
-            <span className="sr-only">Search</span>
+            <span className="sr-only">{tSiteUi(language, "search")}</span>
             <input
               type="search"
               placeholder={pickText(language, {
@@ -177,7 +178,7 @@ export function SiteHeader() {
           className="relative z-[121] border-t border-[#e2e8f0] bg-white px-4 py-4 pointer-events-auto lg:hidden"
         >
           <label className="relative mb-4 block sm:hidden">
-            <span className="sr-only">Search</span>
+            <span className="sr-only">{tSiteUi(language, "search")}</span>
             <input
               type="search"
               placeholder={pickText(language, {

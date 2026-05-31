@@ -21,6 +21,7 @@ import {
   exploreCategoryNavItems,
   tExploreCategory,
 } from "@/lib/i18n/messages/explore-categories";
+import { tSiteUiTemplate } from "@/lib/i18n/messages/site-ui";
 
 const categoryIcons = {
   waves: Waves,
@@ -216,7 +217,10 @@ export function ExploreCategoryNav() {
                 type="button"
                 role="tab"
                 aria-selected={index === activePage}
-                aria-label={`Categories page ${index + 1} of ${pageCount}`}
+                aria-label={tSiteUiTemplate(language, "categoryPage", {
+                  current: index + 1,
+                  total: pageCount,
+                })}
                 onClick={() => scrollToPage(index)}
                 className={cn(
                   "rounded-full transition-all",

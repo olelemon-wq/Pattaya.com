@@ -4,6 +4,7 @@ import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import { ExploreGuideCarousel } from "@/components/explore/explore-guide-carousel";
 import type { ExploreGuideCardData } from "@/components/explore/explore-guide-types";
 import { useLanguage } from "@/components/layout/language-provider";
+import { tSiteUi } from "@/lib/i18n/messages/site-ui";
 import { exploreImages } from "@/lib/design/explore-images";
 import { getExploreCommon } from "@/lib/i18n/messages/explore-common";
 import { getWellnessPage } from "@/lib/i18n/messages/explore-wellness";
@@ -62,7 +63,7 @@ export function WellnessPage() {
           aria-hidden
         />
         <div className="relative mx-auto flex min-h-[min(65vh,480px)] max-w-[1280px] flex-col justify-end px-5 pb-14 pt-20 md:px-16 md:pb-16">
-          <nav aria-label="Breadcrumb" className="mb-4">
+          <nav aria-label={tSiteUi(language, "breadcrumb")} className="mb-4">
             <ol className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/80">
               <li>
                 <Link href="/explore" className="hover:text-white">

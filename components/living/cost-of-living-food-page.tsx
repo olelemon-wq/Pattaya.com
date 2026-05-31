@@ -10,6 +10,7 @@ import { LivingFaqSection } from "@/components/living/living-faq-section";
 import { LifestyleSegmentedControl } from "@/components/living/lifestyle-segmented-control";
 import { LocalizedLivingPageShell } from "@/components/living/localized-living-page-shell";
 import { useLanguage } from "@/components/layout/language-provider";
+import { tSiteUi } from "@/lib/i18n/messages/site-ui";
 import { useAnimatedAmount } from "@/hooks/use-animated-amount";
 import { useCostData } from "@/hooks/use-cost-data";
 import { formatCostAmount } from "@/hooks/use-cost-calculator";
@@ -44,7 +45,6 @@ function CostFoodPlannerInner() {
     <LocalizedLivingPageShell
       shellKey="food"
       heroImage={livingImages.food}
-      heroAlt="Pattaya street food and local dining"
       ctaHref="#col-planner"
       hideLeadCta
     >
@@ -74,7 +74,7 @@ function CostFoodPlannerInner() {
               onChange={(e) =>
                 setCurrency(e.target.value as typeof currency)
               }
-              aria-label="Currency"
+              aria-label={tSiteUi(language, "currency")}
             >
               {currencyOptions.map((c) => (
                 <option key={c.value} value={c.value}>

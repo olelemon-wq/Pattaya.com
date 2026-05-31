@@ -38,5 +38,11 @@ export function getExploreCommon(lang: LanguageCode) {
     cafesLink: t(lang, L("Cafes →", "คาเฟ่ →", "咖啡馆 →", "Кафе →")),
     kohLarnDayTrip: t(lang, L("Koh Larn day trip →", "ทริปเกาะล้าน →", "格兰岛一日游 →", "Ко Лан →")),
     bookNow: t(lang, L("Book Now", "จองเลย", "立即预订", "Забронировать")),
+    viewDetails: t(lang, L("View details", "ดูรายละเอียด", "查看详情", "Подробнее")),
+    carouselPages: t(lang, L("Carousel pages", "หน้าสไลด์", "轮播页", "Страницы карусели")),
+    carouselPage: t(
+      lang,
+      L("Page {current} of {total}", "หน้า {current} จาก {total}", "第 {current} 页，共 {total} 页", "Стр. {current} из {total}"),
+    ),
   };
 }

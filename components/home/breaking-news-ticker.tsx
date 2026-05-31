@@ -7,6 +7,7 @@ import {
   tTickerHeadline,
   type TickerVariant,
 } from "@/lib/i18n/messages/ticker";
+import { tSiteUi } from "@/lib/i18n/messages/site-ui";
 
 type BreakingNewsTickerProps = {
   variant?: TickerVariant;
@@ -56,7 +57,7 @@ export function BreakingNewsTicker({
       ref={rootRef}
       className={`flex h-8 items-center overflow-hidden px-4 text-[11px] font-bold uppercase tracking-[0.15em] lg:px-6 ${barStyles[variant]}`}
       role="region"
-      aria-label="Breaking news"
+      aria-label={tSiteUi(language, "breakingNews")}
     >
       <span className={labelStyles[variant]}>{breakingLabel}</span>
       <div

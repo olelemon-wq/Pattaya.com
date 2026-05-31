@@ -120,7 +120,7 @@ export function LivingHubPage() {
                 <div className="relative h-64 overflow-hidden">
                   <Image
                     src={livingImages.retirementVisa}
-                    alt="Retirement lifestyle in Pattaya"
+                    alt={tLivingHub(language, "retirementImageAlt")}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -149,7 +149,7 @@ export function LivingHubPage() {
                 <div className="relative h-64 overflow-hidden">
                   <Image
                     src={livingImages.realEstate}
-                    alt="Luxury real estate in Pattaya"
+                    alt={tLivingHub(language, "realEstateImageAlt")}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -181,7 +181,7 @@ export function LivingHubPage() {
                 <div className="relative mb-8 h-48 overflow-hidden rounded-lg">
                   <Image
                     src={livingImages.scamAlerts}
-                    alt="Pattaya tourist police kiosk"
+                    alt={tLivingHub(language, "scamAlertsImageAlt")}
                     fill
                     className="object-cover"
                     sizes="400px"
@@ -235,7 +235,7 @@ export function LivingHubPage() {
                 <div className="relative h-48 overflow-hidden md:h-56">
                   <Image
                     src={livingImages.cultureEtiquette}
-                    alt="Thai culture and etiquette"
+                    alt={tLivingHub(language, "cultureImageAlt")}
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"

@@ -71,7 +71,6 @@ export function SongthaewPage() {
     <LocalizedLivingPageShell
       shellKey="songthaew"
       heroImage={livingImages.songthaewHero}
-      heroAlt="Blue songthaew on Pattaya Beach Road"
       ctaHref="#songthaew-content"
       bottomChildren={
         <LivingCtaActions>

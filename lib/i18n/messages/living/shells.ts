@@ -6,10 +6,12 @@ export type LivingShellStrings = {
   breadcrumbLeaf: string;
   title: string;
   subtitle: string;
+  heroAlt: string;
   ctaEyebrow: string;
   ctaTitle: string;
   ctaBody: string;
   ctaButton: string;
+  ctaAriaLabel: string;
   bottomTitle?: string;
   bottomBody?: string;
   bottomPrimary?: { label: string; href: string };
@@ -21,15 +23,24 @@ type ShellDef = {
   breadcrumbLeaf: ReturnType<typeof L>;
   title: ReturnType<typeof L>;
   subtitle: ReturnType<typeof L>;
+  heroAlt: ReturnType<typeof L>;
   ctaEyebrow: ReturnType<typeof L>;
   ctaTitle: ReturnType<typeof L>;
   ctaBody: ReturnType<typeof L>;
   ctaButton: ReturnType<typeof L>;
+  ctaAriaLabel?: ReturnType<typeof L>;
   bottomTitle?: ReturnType<typeof L>;
   bottomBody?: ReturnType<typeof L>;
   bottomPrimary?: { label: ReturnType<typeof L>; href: string };
   bottomSecondary?: { label: ReturnType<typeof L>; href: string };
 };
+
+const defaultLivingCtaAria = L(
+  "Living consultation",
+  "ปรึกษาเรื่องไลฟ์สไตล์",
+  "生活咨询",
+  "Консультация по жизни",
+);
 
 function resolveShell(lang: LanguageCode, def: ShellDef): LivingShellStrings {
   return {
@@ -37,10 +48,12 @@ function resolveShell(lang: LanguageCode, def: ShellDef): LivingShellStrings {
     breadcrumbLeaf: t(lang, def.breadcrumbLeaf),
     title: t(lang, def.title),
     subtitle: t(lang, def.subtitle),
+    heroAlt: t(lang, def.heroAlt),
     ctaEyebrow: t(lang, def.ctaEyebrow),
     ctaTitle: t(lang, def.ctaTitle),
     ctaBody: t(lang, def.ctaBody),
     ctaButton: t(lang, def.ctaButton),
+    ctaAriaLabel: t(lang, def.ctaAriaLabel ?? defaultLivingCtaAria),
     bottomTitle: def.bottomTitle ? t(lang, def.bottomTitle) : undefined,
     bottomBody: def.bottomBody ? t(lang, def.bottomBody) : undefined,
     bottomPrimary: def.bottomPrimary
@@ -67,6 +80,12 @@ const shells = {
       "เรทหลวง vs คอนโด ค่าแอร์ตามฤดูกาล น้ำดื่ม ขยะ แก๊ส และไฟเบอร์ในพัทยา",
       "政府与公寓电价、空调季节、饮用水、垃圾、燃气与光纤。",
       "Гостариф vs кондо, AC, вода, мусор, газ и оптика.",
+    ),
+    heroAlt: L(
+      "Utilities in Pattaya",
+      "สาธารณูปโภคในพัทยา",
+      "芭提雅公用事业",
+      "Коммуналка в Паттайе",
     ),
     ctaEyebrow: L("Budget Tools", "เครื่องมืองบประมาณ", "预算工具", "Бюджет"),
     ctaTitle: L(
@@ -118,6 +137,12 @@ const shells = {
       "互动月度规划——按生活档次估算餐饮、住房与交通。",
       "Планировщик: еда, жильё, транспорт по уровню.",
     ),
+    heroAlt: L(
+      "Pattaya street food and local dining",
+      "อาหารข้างทางและร้านอาหารท้องถิ่นในพัทยา",
+      "芭提雅街头美食与本地餐饮",
+      "Уличная еда и местные рестораны Паттайи",
+    ),
     ctaEyebrow: L("Budget planner", "วางแผนงบ", "预算规划", "Планировщик"),
     ctaTitle: L(
       "Adjust your lifestyle tier",
@@ -163,6 +188,12 @@ const shells = {
       "芭提雅退休签证要求与申请流程。",
       "Требования и процесс в Паттайе.",
     ),
+    heroAlt: L(
+      "Happy expat couple enjoying retirement life in Pattaya",
+      "คู่ชาวต่างชาติที่เกษียณอย่างมีความสุขในพัทยา",
+      "在芭提雅享受退休生活的外籍夫妇",
+      "Счастливая пара экспатов на пенсии в Паттайе",
+    ),
     ctaEyebrow: L("Visa Service", "บริการวีซ่า", "签证服务", "Визовый сервис"),
     ctaTitle: L(
       "Need help with your application?",
@@ -181,6 +212,12 @@ const shells = {
       "เปิดเครื่องมือวีซ่า",
       "打开签证工具",
       "Открыть набор",
+    ),
+    ctaAriaLabel: L(
+      "Open retirement visa toolkit",
+      "เปิดเครื่องมือวีซ่าเกษียณ",
+      "打开退休签证工具",
+      "Открыть набор для пенсионной визы",
     ),
     bottomTitle: L(
       "Ready to retire in Pattaya?",
@@ -208,6 +245,12 @@ const shells = {
       "โควตาคอนโด 49% FET สิทธิเช่าวิลล่า และกฎที่ดินในพัทยา",
       "公寓49%配额、FET、别墅租赁权与芭提雅土地规则。",
       "Квота 49%, FET, leasehold и правила земли в Паттайе.",
+    ),
+    heroAlt: L(
+      "Property ownership in Pattaya",
+      "กรรมสิทธิ์อสังหาในพัทยา",
+      "芭提雅房产产权",
+      "Владение недвижимостью в Паттайе",
     ),
     ctaEyebrow: L("Legal Guide", "คู่มือกฎหมาย", "法律指南", "Правовой гид"),
     ctaTitle: L("Understand freehold vs leasehold", "ทำความเข้าใจกรรมสิทธิ์ vs เช่า", "了解永久产权与租赁权", "Freehold vs leasehold"),
@@ -244,6 +287,12 @@ const shells = {
       "租约、押金与 TM30 报备。",
       "Договоры, депозиты и TM30.",
     ),
+    heroAlt: L(
+      "Luxury rental interior in Pattaya",
+      "ห้องเช่าหรูในพัทยา",
+      "芭提雅精品租赁公寓内景",
+      "Интерьер арендного жилья в Паттайе",
+    ),
     ctaEyebrow: L("Property Service", "บริการอสังหา", "房产服务", "Недвижимость"),
     ctaTitle: L("Find verified rentals", "หาที่เช่าที่ตรวจสอบแล้ว", "寻找可靠房源", "Проверенная аренда"),
     ctaBody: L(
@@ -253,6 +302,12 @@ const shells = {
       "Английские договоры и TM30.",
     ),
     ctaButton: L("View Listings", "ดูประกาศ", "查看房源", "Объявления"),
+    ctaAriaLabel: L(
+      "Rental listings consultation",
+      "ปรึกษารายการเช่าที่พัก",
+      "租房房源咨询",
+      "Консультация по аренде",
+    ),
     bottomTitle: L("Ready to tour rentals?", "พร้อมดูห้องเช่า?", "准备看房？", "Смотреть объекты?"),
     bottomBody: L(
       "Compare lease terms or explore buying for long stays.",
@@ -279,6 +334,12 @@ const shells = {
       "外资配额、尽职调查与土地厅过户。",
       "Квота, due diligence и переход права.",
     ),
+    heroAlt: L(
+      "Condominium towers in Pattaya",
+      "ตึกคอนโดในพัทยา",
+      "芭提雅公寓楼群",
+      "Condominium-башни в Паттайе",
+    ),
     ctaEyebrow: L("Property Service", "บริการอสังหา", "房产服务", "Недвижимость"),
     ctaTitle: L("Quota & contract review", "ตรวจโควตาและสัญญา", "配额与合同审核", "Квота и договор"),
     ctaBody: L(
@@ -288,6 +349,12 @@ const shells = {
       "Юристы для сделок и перехода права.",
     ),
     ctaButton: L("Free consultation", "ปรึกษาฟรี", "免费咨询", "Консультация"),
+    ctaAriaLabel: L(
+      "Property consultation",
+      "ปรึกษาเรื่องอสังหา",
+      "房产咨询",
+      "Консультация по недвижимости",
+    ),
     bottomTitle: L("Shortlist condos?", "คัดรายการคอนโด?", "筛选公寓？", "Подбор кондо?"),
     bottomBody: L(
       "Compare quota buildings and book a lawyer-backed viewing.",
@@ -314,6 +381,12 @@ const shells = {
       "芭提雅地区国际医院与诊所。",
       "Международные клиники региона.",
     ),
+    heroAlt: L(
+      "World-class medical facility in Pattaya",
+      "โรงพยาบาลระดับโลกในพัทยา",
+      "芭提雅世界级医疗设施",
+      "Медучреждение мирового уровня в Паттайе",
+    ),
     ctaEyebrow: L("Medical Service", "บริการการแพทย์", "医疗服务", "Медицина"),
     ctaTitle: L("Match insurance to hospitals", "จับคู่ประกันกับโรงพยาบาล", "匹配保险与医院", "Страховка и клиники"),
     ctaBody: L(
@@ -323,6 +396,12 @@ const shells = {
       "Страховки, прямой биллинг, check-up.",
     ),
     ctaButton: L("Health insurance", "ประกันสุขภาพ", "健康保险", "Страхование"),
+    ctaAriaLabel: L(
+      "Healthcare consultation",
+      "ปรึกษาเรื่องสุขภาพ",
+      "医疗健康咨询",
+      "Медицинская консультация",
+    ),
     bottomTitle: L("Need visa insurance?", "ต้องการประกันวีซ่า?", "需要签证保险？", "Страховка для визы?"),
     bottomBody: L(
       "Approved plans for retirement and long-stay residents.",
@@ -344,6 +423,12 @@ const shells = {
       "เคลมตรง แผนที่ตม.รับรอง โรงพยาบาลพัทยา และข้อผิดพลาดที่ควรหลีกเลี่ยง",
       "直付、签证认可方案、芭提雅医院与常见误区。",
       "Direct billing, визовые планы, клиники Паттайи.",
+    ),
+    heroAlt: L(
+      "Health insurance in Pattaya",
+      "ประกันสุขภาพในพัทยา",
+      "芭提雅健康保险",
+      "Медстрахование в Паттайе",
     ),
     ctaEyebrow: L("Insurance", "ประกัน", "保险", "Страхование"),
     ctaTitle: L("Compare approved plans", "เปรียบเทียบแผนที่รับรอง", "比较认可方案", "Сравнить планы"),
@@ -376,6 +461,12 @@ const shells = {
       "泰国驾照流程、春武里陆运厅、保险、芭提雅路况与常见问题。",
       "Права, DLT Чонбури, страховка, дороги Паттайи и FAQ.",
     ),
+    heroAlt: L(
+      "Driving in Thailand",
+      "การขับขี่ในประเทศไทย",
+      "在泰国驾驶",
+      "Вождение в Таиланде",
+    ),
     ctaEyebrow: L("License Guide", "คู่มือใบขับขี่", "驾照指南", "Права"),
     ctaTitle: L("Plan your DLT visit", "วางแผนไปกรมขนส่ง", "规划陆运厅行程", "Визит в DLT"),
     ctaBody: L(
@@ -407,6 +498,12 @@ const shells = {
       "芭提雅网约车与配送——票价、安全与使用场景。",
       "Такси и доставка в Паттайе.",
     ),
+    heroAlt: L(
+      "Ride-hailing app",
+      "แอปเรียกรถ",
+      "网约车应用",
+      "Приложение для заказа такси",
+    ),
     ctaEyebrow: L("Ride Apps", "แอปเรียกรถ", "出行应用", "Приложения"),
     ctaTitle: L("Compare fares before you ride", "เปรียบเทียบราคาก่อนเรียก", "出发前比价", "Сравните цены"),
     ctaBody: L(
@@ -416,6 +513,12 @@ const shells = {
       "Сравните Grab и Bolt в одной точке.",
     ),
     ctaButton: L("Download Grab", "ดาวน์โหลด Grab", "下载 Grab", "Скачать Grab"),
+    ctaAriaLabel: L(
+      "Grab app download",
+      "ดาวน์โหลดแอป Grab",
+      "下载 Grab 应用",
+      "Скачать приложение Grab",
+    ),
     bottomTitle: L("Local transport?", "ขนส่งท้องถิ่น?", "本地交通？", "Местный транспорт?"),
     bottomBody: L(
       "Songthaews are cheapest on main roads; apps win at night.",
@@ -437,6 +540,12 @@ const shells = {
       "ใช้สองแถวบนถนนหลักในพัทยาอย่างปลอดภัย",
       "安全经济地使用芭提雅主干道双条车。",
       "Безопасное использование songthaew.",
+    ),
+    heroAlt: L(
+      "Blue songthaew on Pattaya Beach Road",
+      "สองแถวสีน้ำเงินบนถนนชายหาดพัทยา",
+      "芭提雅海滩路的蓝色双条车",
+      "Синий songthaew на Beach Road в Паттайе",
     ),
     ctaEyebrow: L("Local Transport", "ขนส่งท้องถิ่น", "本地交通", "Транспорт"),
     ctaTitle: L("Learn routes & fares", "เรียนรู้เส้นทางและราคา", "了解路线与票价", "Маршруты и цены"),
@@ -469,6 +578,12 @@ const shells = {
       "长期签证持有人须每90天报到地址。",
       "Обязательная отчётность каждые 90 дней.",
     ),
+    heroAlt: L(
+      "Immigration documents",
+      "เอกสารตรวจคนเข้าเมือง",
+      "移民文件",
+      "Иммиграционные документы",
+    ),
     ctaEyebrow: L("Process Guide", "คู่มือขั้นตอน", "流程指南", "Процесс"),
     ctaTitle: L("Never miss a deadline", "ไม่พลาดกำหนด", "不错过截止日期", "Не пропустите срок"),
     ctaBody: L(
@@ -500,6 +615,12 @@ const shells = {
       "5–20年会籍与礼宾级特权。",
       "Членство 5–20 лет с привилегиями.",
     ),
+    heroAlt: L(
+      "Thailand Elite",
+      "Thailand Elite",
+      "泰国精英签",
+      "Thailand Elite",
+    ),
     ctaEyebrow: L("Elite Service", "บริการ Elite", "精英服务", "Elite"),
     ctaTitle: L("Compare tiers & apply", "เปรียบเทียบแพ็กเกจและสมัคร", "比较等级并申请", "Сравнить тарифы"),
     ctaBody: L(
@@ -509,6 +630,12 @@ const shells = {
       "Подготовка документов и Privilege Card.",
     ),
     ctaButton: L("Free consultation", "ปรึกษาฟรี", "免费咨询", "Консультация"),
+    ctaAriaLabel: L(
+      "Elite membership consultation",
+      "ปรึกษาสมาชิก Elite",
+      "精英会籍咨询",
+      "Консультация по Elite",
+    ),
     bottomTitle: L("Concierge residency?", "พำนักแบบคอนเซียร์จ?", "礼宾式居留？", "Консьерж-резиденция?"),
     bottomBody: L(
       "Tier comparison for U-Tapao and Suvarnabhumi frequent travelers.",
@@ -531,6 +658,12 @@ const shells = {
       "芭提雅与春武里的就业、创业与 LTR。",
       "Работа, бизнес и LTR в регионе.",
     ),
+    heroAlt: L(
+      "Work permit documents",
+      "เอกสารใบอนุญาตทำงาน",
+      "工作许可文件",
+      "Документы на разрешение на работу",
+    ),
     ctaEyebrow: L("Legal Service", "บริการกฎหมาย", "法律服务", "Юристы"),
     ctaTitle: L("Employer sponsorship review", "ตรวจนายจ้างสปอนเซอร์", "雇主担保审核", "Спонсорство"),
     ctaBody: L(
@@ -540,6 +673,12 @@ const shells = {
       "Non-B, work permit и BOI/LTR.",
     ),
     ctaButton: L("Legal consultation", "ปรึกษากฎหมาย", "法律咨询", "Консультация"),
+    ctaAriaLabel: L(
+      "Work permit legal consultation",
+      "ปรึกษากฎหมายใบอนุญาตทำงาน",
+      "工作许可法律咨询",
+      "Юридическая консультация по work permit",
+    ),
     bottomTitle: L("Chonburi work permit?", "ใบอนุญาตในชลบุรี?", "春武里工签？", "Work permit в Чонбури?"),
     bottomBody: L(
       "Review company ratio, contracts, and Labour Office filings first.",
@@ -562,6 +701,12 @@ const shells = {
       "芭提雅常见骗局——识别与报案。",
       "Распространённые схемы в Паттайе.",
     ),
+    heroAlt: L(
+      "Pattaya tourist police and safety advisory",
+      "ตำรวจท่องเที่ยวพัทยาและคำแนะนำความปลอดภัย",
+      "芭提雅旅游警察与安全提示",
+      "Туристическая полиция и советы по безопасности в Паттайе",
+    ),
     ctaEyebrow: L("Safety Alert", "แจ้งเตือนความปลอดภัย", "安全提示", "Безопасность"),
     ctaTitle: L("Save Tourist Police 1155", "บันทึกตำรวจท่องเที่ยว 1155", "保存旅游警察 1155", "Туристическая полиция 1155"),
     ctaBody: L(
@@ -571,6 +716,12 @@ const shells = {
       "Сохраните 1155 и 191 заранее.",
     ),
     ctaButton: L("Emergency contacts", "เบอร์ฉุกเฉิน", "紧急联系", "Экстренные номера"),
+    ctaAriaLabel: L(
+      "Emergency safety contacts",
+      "เบอร์ติดต่อความปลอดภัยฉุกเฉิน",
+      "紧急安全联系方式",
+      "Экстренные контакты безопасности",
+    ),
     bottomTitle: L("Need emergency numbers?", "ต้องการเบอร์ฉุกเฉิน?", "需要紧急号码？", "Экстренные номера?"),
     bottomBody: L(
       "Hospital ER, fire, ambulance, and crisis protocols.",
@@ -592,6 +743,12 @@ const shells = {
       "ตำรวจท่องเที่ยว โรงพยาบาล และขั้นตอนวิกฤต",
       "旅游警察、医院与危机处理步骤。",
       "Полиция, больницы и действия при ЧС.",
+    ),
+    heroAlt: L(
+      "Emergency guide",
+      "คู่มือฉุกเฉิน",
+      "紧急指南",
+      "Экстренный гид",
     ),
     ctaEyebrow: L("Emergency", "ฉุกเฉิน", "紧急", "SOS"),
     ctaTitle: L("Save key numbers now", "บันทึกเบอร์สำคัญตอนนี้", "立即保存关键号码", "Сохраните номера"),
@@ -624,6 +781,12 @@ const shells = {
       "互动合十礼、文化翻转卡、节日与芭提雅生活。",
       "Wai, карточки, праздники и Паттайя.",
     ),
+    heroAlt: L(
+      "Thai culture",
+      "วัฒนธรรมไทย",
+      "泰国文化",
+      "Тайская культура",
+    ),
     ctaEyebrow: L("Culture", "วัฒนธรรม", "文化", "Культура"),
     ctaTitle: L("Integrate with confidence", "ปรับตัวอย่างมั่นใจ", "自信融入", "Интеграция"),
     ctaBody: L(
@@ -654,6 +817,12 @@ const shells = {
       "เคารพค่านิยมท้องถิ่นและอยู่ร่วมกันอย่างกลมกลืน",
       "尊重本地价值观，顺利融入芭提雅。",
       "Уважайте местные ценности.",
+    ),
+    heroAlt: L(
+      "Thai culture and etiquette in Pattaya",
+      "วัฒนธรรมและมารยาทไทยในพัทยา",
+      "芭提雅的泰国文化与礼仪",
+      "Тайская культура и этикет в Паттайе",
     ),
     ctaEyebrow: L("Living", "ไลฟ์สไตล์", "生活", "Жизнь"),
     ctaTitle: L("Living guides", "คู่มือไลฟ์สไตล์", "生活指南", "Гайды"),

@@ -52,7 +52,6 @@ export function NinetyDayReportPage() {
     <LocalizedLivingPageShell
       shellKey="ninetyDay"
       heroImage={livingImages.ninetyDay}
-      heroAlt="Immigration documents"
       hideLeadCta
     >
       <div className="rounded-2xl border border-[#D7CBBA]/60 bg-[#f5f5f7] p-4 sm:p-6">

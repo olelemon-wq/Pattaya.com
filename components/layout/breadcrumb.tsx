@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import { useLanguage } from "@/components/layout/language-provider";
+import { tSiteUi } from "@/lib/i18n/messages/site-ui";
 
 export interface BreadcrumbItem {
   label: string;
@@ -10,8 +14,10 @@ interface BreadcrumbProps {
 }
 
 export function Breadcrumb({ items }: BreadcrumbProps) {
+  const { language } = useLanguage();
+
   return (
-    <nav aria-label="Breadcrumb" className="mb-6">
+    <nav aria-label={tSiteUi(language, "breadcrumb")} className="mb-6">
       <ol className="flex flex-wrap items-center gap-2 text-sm text-zinc-500">
         {items.map((item, index) => {
           const isLast = index === items.length - 1;

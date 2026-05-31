@@ -3,6 +3,7 @@
 import { BusinessPageFooter } from "@/components/business/business-page-footer";
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import { useLanguage } from "@/components/layout/language-provider";
+import { tSiteUi } from "@/lib/i18n/messages/site-ui";
 import {
   businessPages,
   type BusinessPageId,
@@ -43,7 +44,7 @@ export function BusinessDetailPage({ pageId }: { pageId: BusinessPageId }) {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#363636]/90 via-[#363636]/55 to-[#363636]/25" />
         <div className="relative z-10 mx-auto w-full max-w-[1280px] px-5 md:px-16">
-          <nav aria-label="Breadcrumb" className="mb-4">
+          <nav aria-label={tSiteUi(language, "breadcrumb")} className="mb-4">
             <ol className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/80">
               <li>
                 <Link href="/business" className="hover:text-white">

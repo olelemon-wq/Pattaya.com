@@ -102,3 +102,30 @@ export function getEmergencyServiceName(
 ): string {
   return t(lang, emergencyServices[id]);
 }
+
+export function getStandalonePlaceholderLinks(
+  lang: LanguageCode,
+  key: "guide" | "directory/featured" | "forum/trending",
+) {
+  const explore = t(lang, L("Explore Pattaya", "สำรวจพัทยา", "探索芭提雅", "Обзор Паттайи"));
+  const living = t(lang, L("Living guides", "คู่มือไลฟ์สไตล์", "生活指南", "Гайды по жизни"));
+  const business = t(lang, L("Business hub", "ศูนย์ธุรกิจ", "商业中心", "Бизнес-хаб"));
+  const homeForum = t(lang, L("Home forum widget", "ฟอรัมหน้าแรก", "首页论坛", "Форум на главной"));
+
+  if (key === "guide") {
+    return [
+      { href: "/explore", label: explore },
+      { href: "/living", label: living },
+    ];
+  }
+  if (key === "directory/featured") {
+    return [
+      { href: "/business", label: business },
+      { href: "/explore", label: explore },
+    ];
+  }
+  return [
+    { href: "/", label: homeForum },
+    { href: "/news", label: t(lang, L("News", "ข่าวสาร", "新闻", "Новости")) },
+  ];
+}

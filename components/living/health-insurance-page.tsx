@@ -95,7 +95,6 @@ export function HealthInsurancePage() {
     <LocalizedLivingPageShell
       shellKey="healthInsurance"
       heroImage={livingImages.insurance}
-      heroAlt="Health insurance in Pattaya"
       hideLeadCta
       bottomChildren={
         <LivingCtaActions>

@@ -120,8 +120,6 @@ export function CondoBuyingPage() {
     <LocalizedLivingPageShell
       shellKey="condoBuying"
       heroImage={condoBuyingImages.hero}
-      heroAlt="Condominium towers in Pattaya"
-      ctaAriaLabel="Property consultation"
     >
       <CondoBuyingRequirements />
       <CondoBuyingQuotaDetail />

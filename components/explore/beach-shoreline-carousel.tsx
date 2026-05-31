@@ -42,7 +42,7 @@ export function BeachShorelineCarousel({
       description={description ?? page.carousel.description}
       prevLabel={prevLabel ?? page.carousel.prev}
       nextLabel={nextLabel ?? page.carousel.next}
-      items={beaches.map((beach) => beachToGuideCard(beach, labels))}
+      items={beaches.map((beach) => beachToGuideCard(beach, labels, c.viewDetails))}
     />
   );
 }

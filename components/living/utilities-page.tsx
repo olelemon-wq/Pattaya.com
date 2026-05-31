@@ -126,7 +126,6 @@ export function UtilitiesPage() {
     <LocalizedLivingPageShell
       shellKey="utilities"
       heroImage={livingImages.utilities}
-      heroAlt="Utilities in Pattaya"
       hideLeadCta
       bottomChildren={
         <LivingCtaActions>

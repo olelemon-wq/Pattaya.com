@@ -12,7 +12,7 @@ export function LivingFeaturedHeroCinematic() {
   return (
     <FeaturedHeroCinematic
       image={livingImages.heroHub}
-      imageAlt="Pattaya smart city skyline and coastline at twilight"
+      imageAlt={t(language, livingHero.imageAlt)}
       href="/living/visa/retirement"
       category={t(language, livingHero.category)}
       featuredLabel={t(language, livingHero.featured)}

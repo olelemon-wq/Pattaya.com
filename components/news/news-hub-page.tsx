@@ -16,11 +16,13 @@ import {
   getMoreCityArticles,
   getNewsArticles,
   getNewsFeaturedCards,
+  getNewsHubImageAlts,
   getNewsSections,
   getSportsBlock,
   getWorldNewsBlock,
   tNewsHero,
 } from "@/lib/i18n/messages/news-hub";
+import { tSiteUi } from "@/lib/i18n/messages/site-ui";
 import { newsOverlay } from "@/lib/data/news-category-overlays";
 import { newsImages } from "@/lib/design/news-images";
 import { newsTheme } from "@/lib/design/news-theme";
@@ -49,6 +51,7 @@ export function NewsHubPage() {
   const infra = getInfrastructureBlock(language);
   const sports = getSportsBlock(language);
   const worldNews = getWorldNewsBlock(language);
+  const imageAlts = getNewsHubImageAlts(language);
   const [propertyCard, visaCard, immigrationCard] = featured;
   const [crimeArticle, accidentArticle, gemsArticle] = articles;
   const [sanctuaryArticle, walkingArticle, immigrationArticle] = moreArticles;
@@ -65,7 +68,7 @@ export function NewsHubPage() {
           <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-3">
             <OverlayFeaturedCard
               image={newsImages.featuredProperty}
-              imageAlt="Luxury penthouse property in Wongamat, Pattaya"
+              imageAlt={imageAlts.featuredProperty}
               overlayClass="bg-gradient-to-t from-[#0c1a33]/95 via-[#0c1a33]/65 to-[#0c1a33]/30"
             >
               <div>
@@ -96,7 +99,7 @@ export function NewsHubPage() {
 
             <OverlayFeaturedCard
               image={newsImages.featuredVisa}
-              imageAlt="Travel and visa documentation"
+              imageAlt={imageAlts.featuredVisa}
               overlayClass={newsOverlay.blue}
             >
               <div>
@@ -125,7 +128,7 @@ export function NewsHubPage() {
 
             <OverlayFeaturedCard
               image={newsImages.immigration}
-              imageAlt="Immigration office and official documents in Thailand"
+              imageAlt={imageAlts.featuredImmigration}
               overlayClass="bg-gradient-to-t from-[#0c1a33]/95 via-[#455f88]/70 to-[#455f88]/25"
               href={immigrationCard.href}
             >
@@ -174,7 +177,7 @@ export function NewsHubPage() {
             <NewsArticleCard
               href={crimeArticle.href}
               image={newsImages.policeCrime}
-              imageAlt="Night street with police lights"
+              imageAlt={imageAlts.crimeArticle}
               badge={crimeArticle.badge}
               badgeClass={newsTheme.badgeDark}
               title={crimeArticle.title}
@@ -185,7 +188,7 @@ export function NewsHubPage() {
             <NewsArticleCard
               href={accidentArticle.href}
               image={newsImages.breakingAccident}
-              imageAlt="Pattaya highway at night"
+              imageAlt={imageAlts.accidentArticle}
               badge={accidentArticle.badge}
               badgeClass="animate-pulse bg-[#ba1a1a] text-white"
               title={accidentArticle.title}
@@ -197,7 +200,7 @@ export function NewsHubPage() {
             <NewsArticleCard
               href={gemsArticle.href}
               image={newsImages.hiddenGems}
-              imageAlt="Hidden islands near Pattaya"
+              imageAlt={imageAlts.gemsArticle}
               badge={gemsArticle.badge}
               badgeClass="bg-[#ae2f34] text-white"
               title={gemsArticle.title}
@@ -211,7 +214,7 @@ export function NewsHubPage() {
             <NewsArticleCard
               href={sanctuaryArticle.href}
               image={newsImages.sanctuary}
-              imageAlt="Sanctuary of Truth"
+              imageAlt={imageAlts.sanctuaryArticle}
               badge={sanctuaryArticle.badge}
               badgeClass="bg-[#ae2f34] text-white"
               title={sanctuaryArticle.title}
@@ -222,7 +225,7 @@ export function NewsHubPage() {
             <NewsArticleCard
               href={walkingArticle.href}
               image={newsImages.walkingStreet}
-              imageAlt="Walking Street at night"
+              imageAlt={imageAlts.walkingStreetArticle}
               badge={walkingArticle.badge}
               badgeClass={newsTheme.badgeDark}
               title={walkingArticle.title}
@@ -233,7 +236,7 @@ export function NewsHubPage() {
             <NewsArticleCard
               href={immigrationArticle.href}
               image={newsImages.immigration}
-              imageAlt="Immigration documents"
+              imageAlt={imageAlts.immigrationArticle}
               badge={immigrationArticle.badge}
               badgeClass={newsTheme.badgeAccent}
               title={immigrationArticle.title}
@@ -248,7 +251,7 @@ export function NewsHubPage() {
               <div className="relative min-h-[140px] w-1/3 min-w-[120px] shrink-0 self-stretch overflow-hidden">
                 <Image
                   src={newsImages.hotels}
-                  alt="Luxury hotel pool overlooking Pattaya coast"
+                  alt={imageAlts.hotelSpotlight}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                   sizes="200px"
@@ -326,7 +329,7 @@ export function NewsHubPage() {
                 <p className="mb-3 text-sm leading-relaxed text-[#444748]">{infra.sponsored.excerpt}</p>
                 <div className="flex items-center gap-2">
                   <span className="text-xs text-[#444748]">{infra.sponsored.rating}</span>
-                  <span className="flex items-center gap-0.5 text-amber-500" aria-label="4.5 stars">
+                  <span className="flex items-center gap-0.5 text-amber-500" aria-label={tSiteUi(language, "ratingFourHalfStars")}>
                     {Array.from({ length: 4 }).map((_, i) => (
                       <Star key={i} className="h-3.5 w-3.5 fill-current" aria-hidden />
                     ))}
@@ -342,7 +345,7 @@ export function NewsHubPage() {
                   <div className="relative h-full w-full">
                     <Image
                       src={newsImages.promotions}
-                      alt="Elegant tropical cocktail"
+                      alt={imageAlts.promoCocktail}
                       fill
                       className="object-cover"
                       sizes="300px"
@@ -410,7 +413,7 @@ export function NewsHubPage() {
                   <div className="relative mt-4 h-24 overflow-hidden rounded-lg">
                     <Image
                       src={newsImages.golf}
-                      alt="Golf course in Pattaya"
+                      alt={imageAlts.golfCourse}
                       fill
                       className="object-cover"
                       sizes="400px"

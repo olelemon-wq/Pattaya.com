@@ -15,6 +15,14 @@ const hero = {
     "基建与数字化举措将芭提雅打造为东南亚混合枢纽。",
     "Инфраструктура и цифра превращают Паттайю в гибридный хаб.",
   ),
+  featured: L("Featured", "แนะนำ", "精选", "Рекомендуем"),
+  cta: L("Read Article", "อ่านบทความ", "阅读文章", "Читать"),
+  imageAlt: L(
+    "Aerial view of Pattaya at blue hour",
+    "มุมสูงพัทยายามพลบค่ำ",
+    "蓝调时刻芭提雅航拍",
+    "Паттайя с высоты на закате",
+  ),
 };
 
 export function getHomeHero(lang: LanguageCode) {
@@ -22,6 +30,9 @@ export function getHomeHero(lang: LanguageCode) {
     category: t(lang, hero.category),
     title: t(lang, hero.title),
     excerpt: t(lang, hero.excerpt),
+    featured: t(lang, hero.featured),
+    cta: t(lang, hero.cta),
+    imageAlt: t(lang, hero.imageAlt),
   };
 }
 

@@ -12,11 +12,13 @@ export function FeaturedHeroCinematic() {
   return (
     <CinematicHero
       image={homeImages.neoPattayaHero}
-      imageAlt="Aerial view of Pattaya at blue hour"
+      imageAlt={hero.imageAlt}
       href="/news/local-news/infrastructure"
       category={hero.category}
+      featuredLabel={hero.featured}
       title={hero.title}
       excerpt={hero.excerpt}
+      ctaLabel={hero.cta}
       visualTone="neo-smart-city"
       minHeightClass="min-h-[min(78dvh,440px)] sm:min-h-[520px] lg:min-h-[580px]"
     />

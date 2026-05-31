@@ -8,17 +8,17 @@ import {
   hospitalMarkerColor,
   hospitalsMapOpenHref,
 } from "@/lib/design/hospitals-map";
-import { L, t } from "@/lib/i18n/living-helpers";
-import { getHospitalDirectory } from "@/lib/i18n/messages/living/hospitals";
+import { getHospitalDirectory, getHospitalsMapCopy } from "@/lib/i18n/messages/living/hospitals";
+import { tSiteUi } from "@/lib/i18n/messages/site-ui";
 import type { Map as LeafletMap } from "leaflet";
 import Leaflet from "leaflet";
 import { ExternalLink, MapPin } from "lucide-react";
 import { useEffect, useMemo, useRef } from "react";
 
-function createHospitalIcon(tier: "premium" | "public") {
+function createHospitalIcon(tier: "premium" | "public", hospitalLabel: string, pinAbbr: string) {
   const color = hospitalMarkerColor(tier);
   return `
-    <div class="hospital-pin" role="img" aria-label="Hospital">
+    <div class="hospital-pin" role="img" aria-label="${hospitalLabel}">
       <div class="hospital-pin__head" style="background-color:${color}">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
           <path d="M12 6v12M6 12h12"/>
@@ -26,7 +26,7 @@ function createHospitalIcon(tier: "premium" | "public") {
         </svg>
       </div>
       <div class="hospital-pin__point" style="border-top-color:${color}"></div>
-      <span class="hospital-pin__label">รพ.</span>
+      <span class="hospital-pin__label">${pinAbbr}</span>
     </div>
   `;
 }
@@ -34,6 +34,7 @@ function createHospitalIcon(tier: "premium" | "public") {
 export function HospitalsMap() {
   const { language } = useLanguage();
   const hospitals = useMemo(() => getHospitalDirectory(language), [language]);
+  const mapCopy = useMemo(() => getHospitalsMapCopy(language), [language]);
   const pinById = useMemo(
     () => Object.fromEntries(hospitalMapPins.map((p) => [p.id, p])),
     [],
@@ -42,26 +43,10 @@ export function HospitalsMap() {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<LeafletMap | null>(null);
 
-  const title = t(language, L("Hospital map", "แผนที่โรงพยาบาล", "医院地图", "Карта больниц"));
-  const subtitle = t(
-    language,
-    L(
-      "Five hospital pins — tap a pin or name below for Google Maps directions.",
-      "หมุดโรงพยาบาล 5 แห่ง — แตะหมุดหรือชื่อด้านล่างเพื่อนำทางใน Google Maps",
-      "五个医院标记——点击标记或下方名称打开 Google 地图导航。",
-      "5 меток больниц — нажмите для маршрута в Google Maps.",
-    ),
-  );
-  const openAll = t(
-    language,
-    L("Open all in Google Maps →", "เปิดทั้งหมดใน Google Maps →", "在 Google 地图中打开 →", "Открыть в Google Maps →"),
-  );
-  const directionsLabel = t(
-    language,
-    L("Directions in Google Maps", "นำทางใน Google Maps", "Google 地图导航", "Маршрут"),
-  );
-  const legendPremium = t(language, L("Private hospitals", "โรงพยาบาลเอกชน", "私立医院", "Частные"));
-  const legendPublic = t(language, L("Public hospitals", "โรงพยาบาลรัฐ", "公立医院", "Государственные"));
+  const { title, subtitle, openAll, directions: directionsLabel, legendPremium, legendPublic } =
+    mapCopy;
+  const hospitalLabel = tSiteUi(language, "hospital");
+  const pinAbbr = tSiteUi(language, "hospitalPinAbbr");
 
   useEffect(() => {
     const container = mapContainerRef.current;
@@ -90,7 +75,7 @@ export function HospitalsMap() {
 
       const icon = Leaflet.divIcon({
         className: "hospital-map-marker",
-        html: createHospitalIcon(pin.tier),
+        html: createHospitalIcon(pin.tier, hospitalLabel, pinAbbr),
         iconSize: [52, 62],
         iconAnchor: [26, 62],
         popupAnchor: [0, -62],
@@ -126,7 +111,7 @@ export function HospitalsMap() {
       map.remove();
       mapRef.current = null;
     };
-  }, [hospitals, pinById, directionsLabel]);
+  }, [hospitals, pinById, directionsLabel, hospitalLabel, pinAbbr]);
 
   return (
     <section

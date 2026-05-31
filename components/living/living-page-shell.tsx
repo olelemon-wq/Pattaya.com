@@ -24,7 +24,7 @@ export type LivingPageShellProps = {
   ctaBody: string;
   ctaButton: string;
   ctaHref?: string;
-  ctaAriaLabel?: string;
+  ctaAriaLabel: string;
   children: ReactNode;
   bottomTitle?: string;
   bottomBody?: string;
@@ -48,7 +48,7 @@ export function LivingPageShell({
   ctaBody,
   ctaButton,
   ctaHref = "/living",
-  ctaAriaLabel = "Living consultation",
+  ctaAriaLabel,
   children,
   bottomTitle,
   bottomBody,

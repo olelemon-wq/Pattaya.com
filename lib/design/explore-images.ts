@@ -3,6 +3,9 @@ export const exploreImages = {
   hero: "/images/explore/explore-hero-cinematic.png",
   islandHopping:
     "https://images.unsplash.com/photo-1505142468610-359e7d316be0?auto=format&fit=crop&w=1600&q=80",
+  /** Beach clubs & coral coast — verified HTTP 200 */
+  coralCoast:
+    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80",
   skyGallery:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuDQ2ulLVoneBNLeyKyoWxMF0rilBglP2n3AyVfmH1IYsWhsPflauGPGH4lLPh_HDdTthyxEIfhIctLInnv7w5sZetKZCRSFFQFRpoq3vYzjJq9yV7xAnqs6lpf1oyvrS6TAzcjXfEoxU-TF_VuKJ3mvg5o_2pWl2o2fT4KJT2DX5dPYM-UTccR5IUOC4UdObWpbEnEBCzuYSHC64CtEgb7nzW5BmLrax78AsNNRfWi4bTb82i-oEx86JLRH--kYRHMV4PYBSRN5QpwM",
   caveBeachClub:

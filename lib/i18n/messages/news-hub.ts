@@ -18,10 +18,130 @@ export const newsHero = {
   ),
   cta: L("Read Full Story", "อ่านฉบับเต็ม", "阅读全文", "Читать"),
   byline: L("By Editor-in-Chief · 2 Hours Ago", "บรรณาธิการ · 2 ชม.ที่แล้ว", "主编 · 2 小时前", "Главред · 2 ч назад"),
+  imageAlt: L(
+    "Thai police patrol on wet Beach Road at dawn",
+    "ตำรวจลาดตระเวน Beach Road ยามรุ่ง",
+    "清晨潮湿海滩路上的泰国警察巡逻",
+    "Патруль на Beach Road на рассвете",
+  ),
 };
 
 export function tNewsHero(lang: LanguageCode, key: keyof typeof newsHero): string {
   return t(lang, newsHero[key]);
+}
+
+export function getNewsHubImageAlts(lang: LanguageCode) {
+  return {
+    hero: t(lang, newsHero.imageAlt),
+    featuredProperty: t(
+      lang,
+      L(
+        "Luxury penthouse property in Wongamat, Pattaya",
+        "คอนโด penthouse หรูวงอามาด พัทยา",
+        "芭提雅 Wongamat 豪华顶层",
+        "Пентхаус Wongamat, Паттайя",
+      ),
+    ),
+    featuredVisa: t(
+      lang,
+      L(
+        "Travel and visa documentation",
+        "เอกสารเดินทางและวีซ่า",
+        "旅行与签证文件",
+        "Документы для визы и поездки",
+      ),
+    ),
+    featuredImmigration: t(
+      lang,
+      L(
+        "Immigration office and official documents in Thailand",
+        "สำนักงานตม.และเอกสารราชการในไทย",
+        "泰国移民局与官方文件",
+        "Immigration и документы в Таиланде",
+      ),
+    ),
+    crimeArticle: t(
+      lang,
+      L(
+        "Night street with police lights",
+        "ถนนกลางคืนมีไฟตำรวจ",
+        "夜间警灯闪烁的街道",
+        "Ночная улица с мигалками",
+      ),
+    ),
+    accidentArticle: t(
+      lang,
+      L(
+        "Pattaya highway at night",
+        "ทางหลวงพัทยายามค่ำ",
+        "芭提雅夜间公路",
+        "Шоссе Паттайи ночью",
+      ),
+    ),
+    gemsArticle: t(
+      lang,
+      L(
+        "Hidden islands near Pattaya",
+        "เกาะลับใกล้พัทยา",
+        "芭提雅附近秘境岛屿",
+        "Секретные острова у Паттайи",
+      ),
+    ),
+    sanctuaryArticle: t(
+      lang,
+      L(
+        "Sanctuary of Truth wooden temple",
+        "ปราสาทสัจธรรม",
+        "真理寺木构建筑",
+        "Sanctuary of Truth",
+      ),
+    ),
+    walkingStreetArticle: t(
+      lang,
+      L(
+        "Walking Street at night",
+        "Walking Street ยามค่ำ",
+        "Walking Street 夜景",
+        "Walking Street ночью",
+      ),
+    ),
+    immigrationArticle: t(
+      lang,
+      L(
+        "Immigration documents",
+        "เอกสารตรวจคนเข้าเมือง",
+        "移民文件",
+        "Документы Immigration",
+      ),
+    ),
+    hotelSpotlight: t(
+      lang,
+      L(
+        "Luxury hotel pool overlooking Pattaya coast",
+        "สระโรงแรมหรูวิวชายฝั่งพัทยา",
+        "俯瞰芭提雅海岸的豪华酒店泳池",
+        "Бассейн отеля с видом на побережье",
+      ),
+    ),
+    promoCocktail: t(
+      lang,
+      L(
+        "Elegant tropical cocktail",
+        "ค็อกเทลสไตล์เขตร้อนสวยงาม",
+        "精致热带鸡尾酒",
+        "Тропический коктейль",
+      ),
+    ),
+    golfCourse: t(
+      lang,
+      L(
+        "Golf course in Pattaya",
+        "สนามกอล์ฟในพัทยา",
+        "芭提雅高尔夫球场",
+        "Поле для гольфа в Паттайе",
+      ),
+    ),
+  };
 }
 
 export function getNewsFeaturedCards(lang: LanguageCode) {

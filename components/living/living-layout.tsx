@@ -1,6 +1,11 @@
+"use client";
+
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import { LivingLeadCtaLink } from "@/components/living/living-lead-cta-link";
+import { useLanguage } from "@/components/layout/language-provider";
 import { livingTheme } from "@/lib/design/living-theme";
+import { getSiteSectionCopy } from "@/lib/i18n/messages/site-sections";
+import { tSiteUi } from "@/lib/i18n/messages/site-ui";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -35,6 +40,9 @@ export function LivingHeroSection({
   subtitle,
   titleId = "living-page-hero-title",
 }: LivingHeroProps) {
+  const { language } = useLanguage();
+  const livingSection = getSiteSectionCopy(language, "living");
+
   return (
     <section
       className={`relative ${livingTheme.heroHeight} overflow-hidden`}
@@ -52,17 +60,17 @@ export function LivingHeroSection({
       <div
         className={`relative mx-auto flex ${livingTheme.heroHeight} max-w-[1280px] flex-col justify-end px-4 pb-28 pt-20 sm:px-6 sm:pb-32`}
       >
-        <nav aria-label="Breadcrumb" className="mb-4">
+        <nav aria-label={tSiteUi(language, "breadcrumb")} className="mb-4">
           <ol className="flex flex-wrap items-center gap-2 text-xs text-white/75 sm:text-sm">
             <li>
               <Link href="/" className="hover:text-white">
-                Home
+                {tSiteUi(language, "home")}
               </Link>
             </li>
             <li aria-hidden>/</li>
             <li>
               <Link href="/living" className="hover:text-white">
-                Living
+                {livingSection?.label ?? "Living"}
               </Link>
             </li>
             <li aria-hidden>/</li>

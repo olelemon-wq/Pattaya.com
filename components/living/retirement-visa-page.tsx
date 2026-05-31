@@ -13,8 +13,6 @@ export function RetirementVisaPage() {
     <LocalizedLivingPageShell
       shellKey="retirement"
       heroImage={retirementVisaImages.hero}
-      heroAlt="Happy expat couple enjoying retirement life in Pattaya"
-      ctaAriaLabel="Open retirement visa toolkit"
       ctaHref="#retirement-toolkit"
     >
       <RetirementVisaToolkit />

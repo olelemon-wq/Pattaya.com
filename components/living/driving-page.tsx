@@ -91,7 +91,6 @@ export function DrivingPage() {
     <LocalizedLivingPageShell
       shellKey="driving"
       heroImage={livingImages.driving}
-      heroAlt="Driving in Thailand"
       hideLeadCta
       bottomChildren={
         <LivingCtaActions>

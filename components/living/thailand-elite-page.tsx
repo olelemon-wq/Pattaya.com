@@ -96,8 +96,6 @@ export function ThailandElitePage() {
     <LocalizedLivingPageShell
       shellKey="thailandElite"
       heroImage={livingImages.thailandElite}
-      heroAlt="Thailand Elite"
-      ctaAriaLabel="Elite membership consultation"
       hideLeadCta
       bottomChildren={
         <LivingCtaActions>

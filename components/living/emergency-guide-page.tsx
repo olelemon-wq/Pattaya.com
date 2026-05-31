@@ -48,7 +48,6 @@ export function EmergencyGuidePage() {
     <LocalizedLivingPageShell
       shellKey="emergencyGuide"
       heroImage={livingImages.safetyGuide}
-      heroAlt="Emergency guide"
       ctaHref="#emergency-hub"
       bottomChildren={
         <LivingCtaActions>

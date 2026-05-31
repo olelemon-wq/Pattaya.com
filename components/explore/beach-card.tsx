@@ -1,4 +1,5 @@
 import type { ExploreGuideCardData } from "@/components/explore/explore-guide-types";
+import { beachDetailHref } from "@/lib/explore/beach-detail-slugs";
 
 export type BeachCardData = {
   id: string;
@@ -21,7 +22,9 @@ export type BeachDetailLabels = {
 export function beachToGuideCard(
   beach: BeachCardData,
   labels: BeachDetailLabels,
+  ctaLabel?: string,
 ): ExploreGuideCardData {
+  const href = beachDetailHref(beach.id);
   return {
     id: beach.id,
     name: beach.name,
@@ -34,5 +37,6 @@ export function beachToGuideCard(
       { icon: "navigation", label: labels.access, value: beach.access },
       { icon: "waves", label: labels.water, value: beach.water },
     ],
+    ...(href && ctaLabel ? { href, ctaLabel } : href ? { href } : {}),
   };
 }

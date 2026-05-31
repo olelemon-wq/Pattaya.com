@@ -199,9 +199,7 @@ export function RideAppsPage() {
     <LocalizedLivingPageShell
       shellKey="rideApps"
       heroImage={livingImages.rideApps}
-      heroAlt="Ride-hailing app"
       ctaHref="https://www.grab.com/th/download/"
-      ctaAriaLabel="Grab app download"
     >
       <section aria-labelledby="apps-title">
         <h2 id="apps-title" className={livingTheme.heading}>

@@ -8,6 +8,8 @@ import {
 } from "@/lib/i18n/messages/living/shells";
 import { resolveBusinessPage } from "@/lib/i18n/resolve-business-page";
 import { getMainBeachesPage } from "@/lib/i18n/messages/explore-beaches";
+import { getBeachDetailPage } from "@/lib/i18n/messages/explore-beach-detail";
+import { isBeachDetailSlug } from "@/lib/explore/beach-detail-slugs";
 import { getCafesPage } from "@/lib/i18n/messages/explore-cafes";
 import { getFamilyActivitiesPage } from "@/lib/i18n/messages/explore-family";
 import { getHiddenGemsPage } from "@/lib/i18n/messages/explore-hidden-gems";
@@ -137,6 +139,15 @@ export async function createExploreDedicatedMetadata(
   if (!resolver) return { title: `Not Found | ${SITE}` };
   const { title, description } = resolver(lang);
   return buildSectionMetadata(lang, "explore", title, description);
+}
+
+export async function createBeachDetailMetadata(slug: string): Promise<Metadata> {
+  if (!isBeachDetailSlug(slug)) {
+    return { title: `Not Found | ${SITE}`, description: "" };
+  }
+  const lang = await getRequestLanguage();
+  const page = getBeachDetailPage(lang, slug);
+  return buildSectionMetadata(lang, "explore", page.hero.title, page.hero.description);
 }
 
 export async function createBusinessPageMetadata(

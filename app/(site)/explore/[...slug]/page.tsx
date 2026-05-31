@@ -9,6 +9,12 @@ const SECTION_ID = "explore";
 /** Routes with dedicated pages — omit from catch-all to avoid Turbopack dev issues */
 const DEDICATED_SLUGS = new Set([
   "beaches",
+  "beaches/pattaya-beach",
+  "beaches/jomtien",
+  "beaches/dongtan",
+  "beaches/naklua",
+  "beaches/wongamat",
+  "beaches/pratumnak",
   "cafes",
   "family-activities",
   "hidden-gems",

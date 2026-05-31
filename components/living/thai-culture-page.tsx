@@ -120,7 +120,6 @@ export function ThaiCulturePage() {
     <LocalizedLivingPageShell
       shellKey="thaiCulture"
       heroImage={livingImages.cultureCard}
-      heroAlt="Thai culture"
       hideLeadCta
       bottomChildren={
         <LivingCtaActions>

@@ -128,9 +128,7 @@ export function ScamAlertsPage() {
     <LocalizedLivingPageShell
       shellKey="scamAlerts"
       heroImage={livingImages.scamAlerts}
-      heroAlt="Pattaya tourist police and safety advisory"
       ctaHref="/living/safety/emergency-guide"
-      ctaAriaLabel="Emergency safety contacts"
     >
       <section
         className="overflow-hidden rounded-2xl border border-[#ae2f34]/30 bg-gradient-to-br from-[#ae2f34]/10 via-white to-white p-6 shadow-sm sm:p-8"

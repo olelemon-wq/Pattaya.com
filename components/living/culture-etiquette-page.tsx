@@ -122,7 +122,6 @@ export function CultureEtiquettePage() {
     <LocalizedLivingPageShell
       shellKey="cultureEtiquette"
       heroImage={livingImages.cultureEtiquette}
-      heroAlt="Thai culture and etiquette in Pattaya"
       hideLeadCta
       bottomChildren={
         <LivingCtaActions>

@@ -821,6 +821,7 @@ body {
   object-fit: contain;
   object-position: center center;
   margin: 0 auto;
+  text-align: center;
 }
 
 .culture-survival__dos-donts-rules {

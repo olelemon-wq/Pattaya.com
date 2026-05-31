@@ -26,4 +26,6 @@ export type ExploreGuideCardData = {
   tags: string[];
   excerpt: string;
   details: ExploreGuideDetail[];
+  href?: string;
+  ctaLabel?: string;
 };

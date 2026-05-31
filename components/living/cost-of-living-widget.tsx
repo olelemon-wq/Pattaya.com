@@ -1,6 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/components/layout/language-provider";
+import { tSiteUi } from "@/lib/i18n/messages/site-ui";
 import { formatCostAmount, useCostCalculator } from "@/hooks/use-cost-calculator";
 import { getCostLivingWidgetCopy } from "@/lib/i18n/messages/living/cost-of-living-widget";
 import type { LifestyleTier } from "@/lib/cost-of-living/cost-data";
@@ -128,7 +129,7 @@ export function CostOfLivingWidget({
                 onChange={(e) =>
                   setCurrency(e.target.value as typeof currency)
                 }
-                aria-label="Currency"
+                aria-label={tSiteUi(language, "currency")}
               >
                 {currencyOptions.map((c) => (
                   <option key={c.value} value={c.value}>

@@ -205,7 +205,7 @@ export function ExploreHubPage() {
         <BreakingNewsTicker variant="explore" />
       </div>
 
-      <section aria-label="Explore Pattaya">
+      <section aria-label={tExplore(language, "heroTitle")}>
         <article
           data-cinematic="active"
           className="hero-cinematic group relative isolate z-0 overflow-hidden min-h-[min(70dvh,400px)] sm:min-h-[500px] lg:min-h-[560px]"
@@ -213,7 +213,7 @@ export function ExploreHubPage() {
           <div className="hero-cinematic__bg absolute inset-[-4%]">
             <Image
               src={exploreImages.hero}
-              alt="Pattaya coastline at deep-blue twilight with boats, skyline, and futuristic waterfront transit"
+              alt={tExplore(language, "heroImageAlt")}
               fill
               className="object-cover"
               priority
@@ -292,7 +292,7 @@ export function ExploreHubPage() {
                     badgeClass="bg-[#B52E88] text-white"
                     title={tExplore(language, "booking2Title")}
                     excerpt={tExplore(language, "booking2Excerpt")}
-                    image={exploreImages.islandHopping}
+                    image={exploreImages.coralCoast}
                     imageAlt={tExplore(language, "booking2Title")}
                     mapHref="/explore/beaches"
                     bookHref="/explore/beaches"
@@ -359,7 +359,7 @@ export function ExploreHubPage() {
                 <div className="relative h-[400px] shrink-0 overflow-hidden">
                   <Image
                     src={exploreImages.auraSanctuary}
-                    alt="Aura Sanctuary Luxury Interior"
+                    alt={tExplore(language, "wellnessName")}
                     fill
                     className="object-cover transition-transform duration-[2s] group-hover:scale-110"
                     sizes="400px"
@@ -520,7 +520,7 @@ export function ExploreHubPage() {
               >
                 <Image
                   src={exploreImages.centralFestival}
-                  alt="Central Festival Pattaya Beach"
+                  alt={tExplore(language, "centralFestivalTitle")}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                   sizes="50vw"
@@ -547,7 +547,7 @@ export function ExploreHubPage() {
               >
                 <Image
                   src={exploreImages.thepprasitMarket}
-                  alt="Thepprasit Night Market"
+                  alt={tExplore(language, "thepprasitTitle")}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                   sizes="50vw"
@@ -579,7 +579,7 @@ export function ExploreHubPage() {
               <div className="relative aspect-square shrink-0 overflow-hidden rounded-2xl md:aspect-auto md:h-auto md:w-1/2 md:self-stretch lg:min-h-[240px]">
                 <Image
                   src={exploreImages.aquaverse}
-                  alt="Columbia Pictures Aquaverse"
+                  alt={tExplore(language, "aquaverseTitle")}
                   fill
                   className="object-cover"
                   sizes="50vw"
@@ -611,7 +611,7 @@ export function ExploreHubPage() {
           <div className="group relative mb-12 h-[500px] overflow-hidden rounded-[40px] md:h-[600px]">
             <Image
               src={exploreImages.yacht}
-              alt="Luxury yacht on the Gulf of Thailand"
+              alt={tExplore(language, "yachtTitle")}
               fill
               className="object-cover transition-transform duration-[3s] group-hover:scale-105"
               sizes="100vw"
@@ -663,7 +663,7 @@ export function ExploreHubPage() {
               <div className="relative mb-6 aspect-[4/3] overflow-hidden rounded-xl shadow-lg">
                 <Image
                   src={exploreImages.hiddenSpots}
-                  alt="10 Hidden Spots Only Locals Know"
+                  alt={tExplore(language, "article1Title")}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   sizes="33vw"
@@ -690,7 +690,7 @@ export function ExploreHubPage() {
               <div className="relative mb-6 aspect-[4/3] overflow-hidden rounded-xl shadow-lg">
                 <Image
                   src={exploreImages.weekendGuide}
-                  alt="The Ultimate Weekend Guide"
+                  alt={tExplore(language, "article2Title")}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   sizes="33vw"

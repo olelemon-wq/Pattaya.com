@@ -12,7 +12,7 @@ export function NewsFeaturedHeroCinematic() {
   return (
     <FeaturedHeroCinematic
       image={newsImages.newsHubHero}
-      imageAlt="Thai police patrol on wet Beach Road at dawn"
+      imageAlt={t(language, newsHero.imageAlt)}
       href="/news/local-news/city-updates"
       category={tNewsHero(language, "category")}
       featuredLabel={t(language, newsHero.featured)}

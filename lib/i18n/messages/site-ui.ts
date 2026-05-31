@@ -4,6 +4,8 @@ import type { Priority } from "@/lib/navigation/types";
 
 export const siteUi = {
   home: L("Home", "หน้าแรก", "首页", "Главная"),
+  search: L("Search", "ค้นหา", "搜索", "Поиск"),
+  mainNav: L("Main navigation", "เมนูหลัก", "主导航", "Главное меню"),
   comingSoon: L("Coming Soon", "เร็วๆ นี้", "即将推出", "Скоро"),
   placeholderBody: L(
     "Content for this section is planned for Phase 1. The route and metadata are ready — add articles, guides, or API integrations here.",
@@ -40,6 +42,34 @@ export const siteUi = {
     "论坛集成计划在后续阶段。",
     "Форум запланирован на следующую фазу.",
   ),
+  breadcrumb: L("Breadcrumb", "เส้นทางนำทาง", "面包屑导航", "Навигационная цепочка"),
+  breakingNews: L("Breaking news", "ข่าวด่วน", "突发新闻", "Срочные новости"),
+  businessHero: L("Business hero", "ไฮไลท์ธุรกิจ", "商业焦点", "Бизнес-блок"),
+  exploreSection: L("Explore Pattaya", "สำรวจพัทยา", "探索芭提雅", "Обзор Паттайи"),
+  selectLanguage: L("Select language", "เลือกภาษา", "选择语言", "Выбор языка"),
+  languages: L("Languages", "ภาษา", "语言", "Языки"),
+  currency: L("Currency", "สกุลเงิน", "货币", "Валюта"),
+  hospital: L("Hospital", "โรงพยาบาล", "医院", "Больница"),
+  hospitalPinAbbr: L("Hosp.", "รพ.", "医院", "РП"),
+  categoryPage: L(
+    "Page {current} of {total}",
+    "หน้า {current} จาก {total}",
+    "第 {current} 页，共 {total} 页",
+    "Стр. {current} из {total}",
+  ),
+  ratingFourHalfStars: L(
+    "4.5 out of 5 stars",
+    "4.5 จาก 5 ดาว",
+    "4.5 星（满分 5 星）",
+    "4,5 из 5 звёзд",
+  ),
+  callNumber: L("Call {number}", "โทร {number}", "拨打 {number}", "Позвонить {number}"),
+  exploreWhileWaiting: L(
+    "While you wait, explore these sections:",
+    "ระหว่างรอ ลองสำรวจส่วนเหล่านี้:",
+    "等待期间，可先浏览这些栏目：",
+    "Пока ждёте, загляните сюда:",
+  ),
 } as const;
 
 const priorityLabels: Record<Priority, ReturnType<typeof L>> = {
@@ -50,6 +80,18 @@ const priorityLabels: Record<Priority, ReturnType<typeof L>> = {
 
 export function tSiteUi(lang: LanguageCode, key: keyof typeof siteUi): string {
   return t(lang, siteUi[key]);
+}
+
+export function tSiteUiTemplate(
+  lang: LanguageCode,
+  key: "categoryPage" | "callNumber",
+  vars: Record<string, string | number>,
+): string {
+  let text = tSiteUi(lang, key);
+  for (const [name, value] of Object.entries(vars)) {
+    text = text.replace(`{${name}}`, String(value));
+  }
+  return text;
 }
 
 export function formatPriorityLocalized(

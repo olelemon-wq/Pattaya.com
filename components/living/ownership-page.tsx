@@ -87,7 +87,6 @@ export function OwnershipPage() {
     <LocalizedLivingPageShell
       shellKey="ownership"
       heroImage={livingImages.ownership}
-      heroAlt="Property ownership in Pattaya"
       hideLeadCta
       bottomChildren={
         <LivingCtaActions>

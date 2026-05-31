@@ -159,10 +159,10 @@ export function BusinessHubPage() {
         <BreakingNewsTicker variant="business" />
       </div>
 
-      <section aria-label="Business hero">
+      <section aria-label={tBusiness(language, "heroTitle")}>
         <FeaturedHeroCinematic
           image={businessImages.hero}
-          imageAlt="Pattaya Business Hub"
+          imageAlt={tBusiness(language, "heroImageAlt")}
           href="/business/company-setup/thai-company"
           category={pickText(language, {
             en: "Premium Business Hub",
@@ -332,7 +332,7 @@ export function BusinessHubPage() {
               <div className="group relative mb-8 overflow-hidden rounded-2xl">
                 <Image
                   src={businessImages.investment}
-                  alt="Investment Spotlight"
+                  alt={tBusiness(language, "investmentSpotlightAlt")}
                   width={800}
                   height={320}
                   className="h-80 w-full object-cover transition-transform duration-1000 group-hover:scale-110"

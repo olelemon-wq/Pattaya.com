@@ -22,6 +22,18 @@ const copy = {
     zh: "浏览服务",
     ru: "Все услуги",
   },
+  heroImageAlt: {
+    en: "Pattaya Business Hub skyline and waterfront",
+    th: "เส้นขอบฟ้าธุรกิจพัทยาและริมน้ำ",
+    zh: "芭提雅商务中心天际线与海滨",
+    ru: "Панорама бизнес-хаба Паттайи",
+  },
+  investmentSpotlightAlt: {
+    en: "Investment spotlight in Pattaya",
+    th: "ไฮไลท์การลงทุนในพัทยา",
+    zh: "芭提雅投资聚焦",
+    ru: "Инвестиционный фокус Паттайи",
+  },
   setupTitle: {
     en: "Company Setup & Legal",
     th: "จัดตั้งบริษัท & กฎหมาย",

@@ -8,6 +8,12 @@ const copy = {
     zh: "探索你的芭提雅",
     ru: "Откройте свою Паттайю",
   },
+  heroImageAlt: {
+    en: "Pattaya coastline at twilight with boats, skyline, and waterfront",
+    th: "ชายฝั่งพัทยายามพลบค่ำ เรือ เส้นขอบฟ้า และริมน้ำ",
+    zh: "暮光时分的芭提雅海岸、船只与城市天际线",
+    ru: "Побережье Паттайи на закате с лодками и skyline",
+  },
   searchPlaceholder: {
     en: "Search experiences, places, or tours...",
     th: "ค้นหาประสบการณ์ สถานที่ หรือทัวร์...",

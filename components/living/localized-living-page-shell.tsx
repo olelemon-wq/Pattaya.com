@@ -11,10 +11,8 @@ import type { ReactNode } from "react";
 type Props = {
   shellKey: LivingShellKey;
   heroImage: string;
-  heroAlt: string;
   children: ReactNode;
   ctaHref?: string;
-  ctaAriaLabel?: string;
   hideLeadCta?: boolean;
   bottomChildren?: ReactNode;
 };
@@ -22,10 +20,8 @@ type Props = {
 export function LocalizedLivingPageShell({
   shellKey,
   heroImage,
-  heroAlt,
   children,
   ctaHref,
-  ctaAriaLabel,
   hideLeadCta,
   bottomChildren,
 }: Props) {
@@ -35,7 +31,7 @@ export function LocalizedLivingPageShell({
   return (
     <LivingPageShell
       heroImage={heroImage}
-      heroAlt={heroAlt}
+      heroAlt={shell.heroAlt}
       badge={shell.badge}
       breadcrumbLeaf={shell.breadcrumbLeaf}
       title={shell.title}
@@ -45,7 +41,7 @@ export function LocalizedLivingPageShell({
       ctaBody={shell.ctaBody}
       ctaButton={shell.ctaButton}
       ctaHref={ctaHref}
-      ctaAriaLabel={ctaAriaLabel}
+      ctaAriaLabel={shell.ctaAriaLabel}
       bottomTitle={shell.bottomTitle}
       bottomBody={shell.bottomBody}
       bottomPrimary={shell.bottomPrimary}

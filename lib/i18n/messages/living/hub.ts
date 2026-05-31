@@ -51,6 +51,12 @@ export const livingHero = {
     "浏览生活指南",
     "Смотреть гайды",
   ),
+  imageAlt: L(
+    "Pattaya smart city skyline and coastline at twilight",
+    "เส้นขอบฟ้าพัทยาและชายฝั่งยามพลบค่ำ",
+    "暮光时分的芭提雅智慧城市天际线与海岸",
+    "Панорама Паттайи на закате",
+  ),
 };
 
 const hub = {
@@ -120,6 +126,30 @@ const hub = {
     "ดาวน์โหลดคู่มือความปลอดภัย",
     "下载安全指南 PDF",
     "Скачать PDF по безопасности",
+  ),
+  retirementImageAlt: L(
+    "Retirement lifestyle in Pattaya",
+    "ไลฟ์สไตล์เกษียณในพัทยา",
+    "芭提雅退休生活",
+    "Пенсионная жизнь в Паттайе",
+  ),
+  realEstateImageAlt: L(
+    "Luxury real estate in Pattaya",
+    "อสังหาหรูในพัทยา",
+    "芭提雅豪华房产",
+    "Элитная недвижимость Паттайи",
+  ),
+  scamAlertsImageAlt: L(
+    "Pattaya tourist police kiosk",
+    "บูธ Tourist Police พัทยา",
+    "芭提雅旅游警察岗亭",
+    "Tourist Police в Паттайе",
+  ),
+  cultureImageAlt: L(
+    "Thai culture and etiquette",
+    "วัฒนธรรมและมารยาทไทย",
+    "泰国文化与礼仪",
+    "Тайская культура и этикет",
   ),
   cultureEyebrow: L("Guide for Expats", "คู่มือชาวต่างชาติ", "外籍指南", "Гид для экспатов"),
   cultureTitle: L("The Thai Way", "วิถีไทย", "泰国之道", "Тайский образ жизни"),

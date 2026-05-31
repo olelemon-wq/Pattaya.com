@@ -2,14 +2,15 @@
 
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import { useLanguage } from "@/components/layout/language-provider";
+import { tSiteUi } from "@/lib/i18n/messages/site-ui";
 import { fineDiningImages } from "@/lib/design/fine-dining-images";
 import {
   getCollections,
-  getDiningGuides,
-  getFeaturedRestaurants,
+  getDiningTips,
+  getDiningZones,
   tFineDining,
 } from "@/lib/i18n/messages/fine-dining";
-import { Building2, ChefHat, Sunset } from "lucide-react";
+import { Building2, ChefHat, MapPin, Sunset, type LucideIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -19,86 +20,157 @@ const collectionIcons = {
   chef: ChefHat,
 } as const;
 
-function FeaturedCard({
-  nameLocalized,
-  description,
-  cuisine,
-  location,
-  image,
-  href,
-  sponsoredLabel,
-  reserveLabel,
-}: {
-  nameLocalized: string;
-  description: string;
-  cuisine: string;
-  location: string;
-  image: string;
+type ZoneCardProps = {
+  name: string;
+  style: string;
+  styleLabel: string;
+  text: string;
+  priceRange: string;
+  priceRangeLabel: string;
   href: string;
-  sponsoredLabel: string;
-  reserveLabel: string;
-}) {
+  linkLabel: string;
+  image: string;
+};
+
+function ZoneCard({
+  name,
+  style,
+  styleLabel,
+  text,
+  priceRange,
+  priceRangeLabel,
+  href,
+  linkLabel,
+  image,
+}: ZoneCardProps) {
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl border border-[#c4c7c8]/30 bg-white shadow-sm transition hover:shadow-lg">
-      <div className="relative aspect-[16/10] overflow-hidden">
+    <Link
+      href={href}
+      className="group flex h-full w-full flex-col overflow-hidden rounded-xl border border-[#e7e8e9] bg-[#fdf8fb] shadow-sm transition hover:border-[#B52E88]/30 hover:shadow-md"
+    >
+      <div className="relative aspect-[4/3] w-full shrink-0 bg-[#e7e8e9]">
         <Image
           src={image}
-          alt={nameLocalized}
+          alt={name}
           fill
           className="object-cover transition duration-500 group-hover:scale-105"
-          sizes="(max-width: 768px) 100vw, 33vw"
+          sizes="(max-width: 640px) 100vw, 400px"
         />
-        <span className="absolute left-3 top-3 rounded-full bg-[#ae2f34] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
-          {sponsoredLabel}
+      </div>
+      <div className="flex flex-1 flex-col p-4 sm:p-5">
+        <p className="flex items-start gap-2 font-bold text-[#191c1d]">
+          <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#B52E88]" aria-hidden />
+          {name}
+        </p>
+        <p className="mt-2 pl-6 text-xs font-medium text-[#747878]">
+          {styleLabel}: <span className="text-[#191c1d]">{style}</span>
+        </p>
+        <p className="mt-2 pl-6 text-sm">
+          <span className="font-medium text-[#747878]">{priceRangeLabel}: </span>
+          <span className="font-semibold text-[#B52E88]">{priceRange}</span>
+        </p>
+        <p className="mt-2 flex-1 pl-6 text-sm leading-relaxed text-[#444748]">{text}</p>
+        <span className="mt-4 pl-6 text-sm font-semibold text-[#B52E88] group-hover:underline">
+          {linkLabel}
         </span>
       </div>
+    </Link>
+  );
+}
+
+function TipCard({
+  id,
+  title,
+  paragraphs,
+  image,
+}: {
+  id: string;
+  title: string;
+  paragraphs: string[];
+  image: string;
+}) {
+  return (
+    <article
+      id={`tip-${id}`}
+      className="scroll-mt-24 flex h-full flex-col overflow-hidden rounded-xl border border-[#e7e8e9] bg-[#fdf8fb] shadow-sm"
+    >
+      <div className="relative aspect-[21/9] w-full shrink-0 bg-[#e7e8e9] sm:aspect-[2/1]">
+        <Image src={image} alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+      </div>
       <div className="flex flex-1 flex-col p-5 sm:p-6">
-        <h3 className="text-lg font-bold text-[#191c1d]">{nameLocalized}</h3>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-[#444748]">{description}</p>
-        <div className="mt-4 flex flex-wrap gap-2">
-          <span className="rounded-full bg-[#B52E88]/10 px-2.5 py-1 text-xs font-medium text-[#B52E88] ring-1 ring-[#B52E88]/15">
-            {cuisine}
-          </span>
-          <span className="rounded-full bg-[#B52E88]/10 px-2.5 py-1 text-xs font-medium text-[#B52E88] ring-1 ring-[#B52E88]/15">
-            📍 {location}
-          </span>
+        <h3 className="text-base font-bold text-[#191c1d] sm:text-lg">{title}</h3>
+        <div className="mt-3 space-y-3 text-sm leading-relaxed text-[#444748]">
+          {paragraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
         </div>
-        <Link
-          href={href}
-          className="mt-5 inline-flex w-full items-center justify-center rounded-xl bg-[#B52E88] px-4 py-3 text-sm font-bold text-white shadow-md transition hover:bg-[#B52E88]/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B52E88]"
-        >
-          {reserveLabel}
-        </Link>
       </div>
     </article>
   );
 }
 
+function CollectionCard({
+  title,
+  description,
+  href,
+  linkLabel,
+  image,
+  icon: Icon,
+}: {
+  title: string;
+  description: string;
+  href: string;
+  linkLabel: string;
+  image: string;
+  icon: LucideIcon;
+}) {
+  return (
+    <Link
+      href={href}
+      className="group flex h-full w-full flex-col overflow-hidden rounded-xl border border-[#e7e8e9] bg-white shadow-sm transition hover:border-[#B52E88]/30 hover:shadow-md"
+    >
+      <div className="relative aspect-[4/3] w-full shrink-0 bg-[#e7e8e9]">
+        <Image
+          src={image}
+          alt=""
+          fill
+          className="object-cover transition duration-500 group-hover:scale-105"
+          sizes="(max-width: 640px) 100vw, 400px"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-[#191c1d]/75 via-[#191c1d]/25 to-[#191c1d]/10"
+          aria-hidden
+        />
+        <span
+          className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#F0D4E8]/95 text-[#B52E88] shadow-sm backdrop-blur-sm"
+          aria-hidden
+        >
+          <Icon className="h-5 w-5" strokeWidth={1.75} />
+        </span>
+        <h3 className="absolute bottom-4 left-4 right-4 text-lg font-bold leading-snug text-white drop-shadow-sm sm:text-xl">
+          {title}
+        </h3>
+      </div>
+      <div className="flex flex-1 flex-col p-4 sm:p-5">
+        <p className="flex-1 text-sm leading-relaxed text-[#444748]">{description}</p>
+        <span className="mt-4 text-sm font-semibold text-[#B52E88] group-hover:underline">
+          {linkLabel}
+        </span>
+      </div>
+    </Link>
+  );
+}
+
 export function FineDiningPage() {
   const { language } = useLanguage();
-  const featured = getFeaturedRestaurants(language).map((r, i) => ({
-    ...r,
-    image: [
-      fineDiningImages.featuredMantra,
-      fineDiningImages.featuredSkyGallery,
-      fineDiningImages.featuredHorizon,
-    ][i],
-  }));
+  const zones = getDiningZones(language);
+  const tips = getDiningTips(language);
   const collections = getCollections(language).map((c, i) => ({
     ...c,
     image: [
       fineDiningImages.collectionSunset,
       fineDiningImages.collectionRooftop,
       fineDiningImages.collectionChefsTable,
-    ][i],
-  }));
-  const guides = getDiningGuides(language).map((g, i) => ({
-    ...g,
-    image: [
-      fineDiningImages.guideDressCode,
-      fineDiningImages.guideSunset,
-      fineDiningImages.guideEtiquette,
-      fineDiningImages.guideOccasion,
     ][i],
   }));
 
@@ -114,7 +186,7 @@ export function FineDiningPage() {
       >
         <Image
           src={fineDiningImages.hero}
-          alt="Luxury fine dining in Pattaya"
+          alt={tFineDining(language, "heroImageAlt")}
           fill
           priority
           className="object-cover"
@@ -125,7 +197,7 @@ export function FineDiningPage() {
           aria-hidden
         />
         <div className="relative mx-auto flex min-h-[min(65vh,480px)] max-w-[1280px] flex-col justify-end px-5 pb-14 pt-20 md:px-16 md:pb-16">
-          <nav aria-label="Breadcrumb" className="mb-4">
+          <nav aria-label={tSiteUi(language, "breadcrumb")} className="mb-4">
             <ol className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/80">
               <li>
                 <Link href="/explore" className="hover:text-white">
@@ -161,116 +233,77 @@ export function FineDiningPage() {
       </section>
 
       <div className="mx-auto max-w-[1280px] space-y-14 px-5 py-12 md:px-16 md:py-16">
-        <section aria-labelledby="sponsored-title">
+        <section id="dining-zones" className="scroll-mt-24" aria-labelledby="zones-title">
           <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-[#B52E88]">
-              {tFineDining(language, "sponsoredShowcase")}
-            </p>
-            <h2
-              id="sponsored-title"
-              className="mt-1 text-2xl font-semibold text-[#191c1d] md:text-3xl"
-            >
-              {tFineDining(language, "featuredTitle")}
+            <h2 id="zones-title" className="text-2xl font-semibold text-[#191c1d] md:text-3xl">
+              {zones.title}
             </h2>
-            <p className="mt-1 text-sm text-[#747878]">
-              {tFineDining(language, "featuredSub")}
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[#747878] sm:text-base">
+              {zones.subtitle}
             </p>
           </div>
-          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {featured.map((restaurant) => (
-              <FeaturedCard
-                key={restaurant.name}
-                {...restaurant}
-                sponsoredLabel={tFineDining(language, "sponsored")}
-                reserveLabel={tFineDining(language, "reserve")}
-              />
+          <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 sm:items-stretch">
+            {zones.items.map((zone) => (
+              <li key={zone.id} id={`zone-${zone.id}`} className="flex min-h-0 scroll-mt-24">
+                <ZoneCard
+                  {...zone}
+                  styleLabel={zones.styleLabel}
+                  priceRangeLabel={zones.priceRangeLabel}
+                />
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
 
         <section aria-labelledby="collections-title">
-          <h2
-            id="collections-title"
-            className="text-2xl font-semibold text-[#191c1d] md:text-3xl"
-          >
-            {tFineDining(language, "collections")}
-          </h2>
-          <p className="mt-1 text-sm text-[#747878]">
-            {tFineDining(language, "collectionsSub")}
-          </p>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div>
+            <h2
+              id="collections-title"
+              className="text-2xl font-semibold text-[#191c1d] md:text-3xl"
+            >
+              {tFineDining(language, "collections")}
+            </h2>
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[#747878] sm:text-base">
+              {tFineDining(language, "collectionsSub")}
+            </p>
+          </div>
+          <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 sm:items-stretch">
             {collections.map((collection) => {
               const Icon = collectionIcons[collection.icon];
               return (
-                <Link
-                  key={collection.title}
-                  href={collection.href}
-                  className="group flex gap-4 rounded-2xl border border-[#c4c7c8]/30 bg-white p-4 shadow-sm transition hover:border-[#B52E88]/30 hover:shadow-md sm:p-5"
-                >
-                  <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl sm:h-24 sm:w-24">
-                    <Image
-                      src={collection.image}
-                      alt=""
-                      fill
-                      className="object-cover transition duration-300 group-hover:scale-105"
-                      sizes="96px"
-                    />
-                    <span
-                      className="absolute inset-0 flex items-center justify-center bg-[#191c1d]/40"
-                      aria-hidden
-                    >
-                      <Icon className="h-8 w-8 text-white sm:h-9 sm:w-9" strokeWidth={1.75} />
-                    </span>
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <h3 className="font-bold text-[#191c1d] group-hover:text-[#B52E88]">
-                      {collection.title}
-                    </h3>
-                    <p className="mt-1 line-clamp-2 text-sm text-[#444748]">
-                      {collection.description}
-                    </p>
-                    <span className="mt-2 inline-block text-sm font-semibold text-[#B52E88]">
-                      {tFineDining(language, "browseCollection")}
-                    </span>
-                  </div>
-                </Link>
+                <li key={collection.title} className="flex min-h-0">
+                  <CollectionCard
+                    title={collection.title}
+                    description={collection.description}
+                    href={collection.href}
+                    linkLabel={collection.linkLabel}
+                    image={collection.image}
+                    icon={Icon}
+                  />
+                </li>
               );
             })}
-          </div>
+          </ul>
         </section>
 
-        <section aria-labelledby="guides-title">
-          <h2 id="guides-title" className="text-2xl font-semibold text-[#191c1d] md:text-3xl">
-            {tFineDining(language, "guides")}
-          </h2>
-          <p className="mt-1 text-sm text-[#747878]">{tFineDining(language, "guidesSub")}</p>
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-            {guides.map((guide) => (
-              <article
-                key={guide.title}
-                className="flex gap-4 rounded-xl border border-[#c4c7c8]/30 bg-white p-4 shadow-sm transition hover:shadow-md sm:p-5"
-              >
-                <div className="relative hidden h-24 w-28 shrink-0 overflow-hidden rounded-lg sm:block">
-                  <Image src={guide.image} alt="" fill className="object-cover" sizes="112px" />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <p className="text-xs font-medium uppercase tracking-wide text-[#747878]">
-                    {guide.readTime}
-                  </p>
-                  <h3 className="mt-1 text-base font-bold leading-snug text-[#191c1d]">
-                    <Link href={guide.href} className="hover:text-[#B52E88] hover:underline">
-                      {guide.title}
-                    </Link>
-                  </h3>
-                  <p className="mt-2 line-clamp-2 text-sm text-[#444748]">{guide.excerpt}</p>
-                  <Link
-                    href={guide.href}
-                    className="mt-3 inline-block text-sm font-semibold text-[#B52E88] hover:underline"
-                  >
-                    {tFineDining(language, "readGuide")}
-                  </Link>
-                </div>
-              </article>
+        <section id="dining-guides" className="scroll-mt-24" aria-labelledby="guides-title">
+          <div>
+            <h2 id="guides-title" className="text-2xl font-semibold text-[#191c1d] md:text-3xl">
+              {tips.title}
+            </h2>
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[#747878] sm:text-base">
+              {tips.subtitle}
+            </p>
+          </div>
+          <div className="mt-8 grid gap-5 md:grid-cols-2 md:items-stretch">
+            {tips.items.map((tip) => (
+              <TipCard
+                key={tip.id}
+                id={tip.id}
+                title={tip.title}
+                paragraphs={tip.paragraphs}
+                image={tip.image}
+              />
             ))}
           </div>
         </section>

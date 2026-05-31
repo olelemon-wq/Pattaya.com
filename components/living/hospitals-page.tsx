@@ -173,9 +173,7 @@ export function HospitalsPage() {
     <LocalizedLivingPageShell
       shellKey="hospitals"
       heroImage={livingImages.medical}
-      heroAlt="World-class medical facility in Pattaya"
       ctaHref="/living/healthcare/insurance"
-      ctaAriaLabel="Healthcare consultation"
       hideLeadCta
       bottomChildren={
         <LivingCtaActions>

@@ -97,8 +97,6 @@ export function WorkPermitPage() {
     <LocalizedLivingPageShell
       shellKey="workPermit"
       heroImage={livingImages.workPermit}
-      heroAlt="Work permit documents"
-      ctaAriaLabel="Work permit legal consultation"
       hideLeadCta
       bottomChildren={
         <LivingCtaActions>

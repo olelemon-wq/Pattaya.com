@@ -4,6 +4,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { ExploreGuideCard } from "@/components/explore/explore-guide-card";
 import type { ExploreGuideCardData } from "@/components/explore/explore-guide-types";
+import { useLanguage } from "@/components/layout/language-provider";
+import { getExploreCommon } from "@/lib/i18n/messages/explore-common";
 
 const GAP_PX = 24;
 
@@ -24,10 +26,17 @@ export function ExploreGuideCarousel({
   title,
   description,
   items,
-  prevLabel = "Previous",
-  nextLabel = "Next",
+  prevLabel,
+  nextLabel,
   className,
 }: ExploreGuideCarouselProps) {
+  const { language } = useLanguage();
+  const c = getExploreCommon(language);
+  const resolvedPrev = prevLabel ?? c.prev;
+  const resolvedNext = nextLabel ?? c.next;
+  const resolvedItems = items.map((item) =>
+    item.href && !item.ctaLabel ? { ...item, ctaLabel: c.viewDetails } : item,
+  );
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
@@ -95,7 +104,7 @@ export function ExploreGuideCarousel({
         <div className="hidden shrink-0 gap-2 md:flex">
           <button
             type="button"
-            aria-label={prevLabel}
+            aria-label={resolvedPrev}
             disabled={!canScrollPrev}
             onClick={() => scrollByStep(-1)}
             className={cn(
@@ -109,7 +118,7 @@ export function ExploreGuideCarousel({
           </button>
           <button
             type="button"
-            aria-label={nextLabel}
+            aria-label={resolvedNext}
             disabled={!canScrollNext}
             onClick={() => scrollByStep(1)}
             className={cn(
@@ -124,14 +133,10 @@ export function ExploreGuideCarousel({
 
       <div
         ref={scrollRef}
-        className="mt-8 flex items-stretch gap-6 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory [&::-webkit-scrollbar]:hidden"
+        className="mt-8 grid auto-cols-[min(100%,340px)] grid-flow-col gap-6 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory sm:auto-cols-[calc((100%-1.5rem)/2)] lg:auto-cols-[calc((100%-3rem)/3)] [&::-webkit-scrollbar]:hidden"
       >
-        {items.map((item) => (
-          <div
-            key={item.id}
-            data-guide-slide
-            className="w-[min(100%,340px)] shrink-0 snap-start sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)]"
-          >
+        {resolvedItems.map((item) => (
+          <div key={item.id} data-guide-slide className="flex h-full min-h-0 snap-start flex-col">
             <ExploreGuideCard {...item} />
           </div>
         ))}
@@ -141,7 +146,7 @@ export function ExploreGuideCarousel({
         <div
           className="mt-4 flex items-center justify-center gap-2 md:hidden"
           role="tablist"
-          aria-label="Carousel pages"
+          aria-label={c.carouselPages}
         >
           {Array.from({ length: pageCount }, (_, index) => (
             <button
@@ -149,7 +154,9 @@ export function ExploreGuideCarousel({
               type="button"
               role="tab"
               aria-selected={index === activePage}
-              aria-label={`Page ${index + 1} of ${pageCount}`}
+              aria-label={c.carouselPage
+                .replace("{current}", String(index + 1))
+                .replace("{total}", String(pageCount))}
               onClick={() => scrollToPage(index)}
               className={cn(
                 "rounded-full transition-all",
