@@ -1,4 +1,5 @@
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
+import { LivingLeadCtaLink } from "@/components/living/living-lead-cta-link";
 import { livingTheme } from "@/lib/design/living-theme";
 import Image from "next/image";
 import Link from "next/link";
@@ -112,12 +113,7 @@ export function LivingLeadCtaCard({
           </p>
           <p className={`mt-2 ${livingTheme.muted}`}>{body}</p>
         </div>
-        <Link
-          href={href}
-          className={`mt-5 w-full shrink-0 sm:mt-0 sm:w-auto ${livingTheme.btnPrimary}`}
-        >
-          {button}
-        </Link>
+        <LivingLeadCtaLink href={href}>{button}</LivingLeadCtaLink>
       </aside>
     </div>
   );

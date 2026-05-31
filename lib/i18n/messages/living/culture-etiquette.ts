@@ -23,6 +23,23 @@ export type EtiquetteItemId =
 
 export type DontDeepDiveId = "head" | "feet" | "voice" | "monarchy";
 
+/** Covered by illustrated panels on thai-culture & etiquette — omit from icon lists */
+const VISUAL_DO_IDS = new Set<EtiquetteItemId>(["wai", "shoes", "smile"]);
+const VISUAL_DONT_IDS = new Set<EtiquetteItemId>([
+  "head",
+  "feet",
+  "voice",
+  "public-argue",
+]);
+
+export function getExtendedCultureDos(lang: LanguageCode) {
+  return getCultureDos(lang).filter((item) => !VISUAL_DO_IDS.has(item.id));
+}
+
+export function getExtendedCultureDonts(lang: LanguageCode) {
+  return getCultureDonts(lang).filter((item) => !VISUAL_DONT_IDS.has(item.id));
+}
+
 export function getCultureEtiquettePage(lang: LanguageCode) {
   return {
     introTitle: t(
@@ -32,10 +49,10 @@ export function getCultureEtiquettePage(lang: LanguageCode) {
     introBody: t(
       lang,
       L(
-        "Pattaya welcomes millions of visitors, but daily harmony still runs on Thai values — respect, patience, and saving face. These guidelines help you integrate without unintended offense.",
-        "พัทยาต้อนรับนักท่องเที่ยวนับล้าน แต่ความกลมกลืนในชีวิตประจำวันยังอยู่บนค่านิยมไทย — เคารพ อดทน และรักษาหน้า คู่มือนี้ช่วยให้อยู่ร่วมกันโดยไม่ล่วงเกิน",
-        "芭提雅欢迎全球访客，但日常和谐仍建立在尊重、耐心与给面子之上。",
-        "Паттайя открыта миру, но гармония держится на уважении и «сохранении лица».",
+        "Pattaya welcomes millions of visitors, but daily harmony still runs on Thai values — respect, patience, and saving face. Start with the illustrated do's and don'ts (same as the Thai culture page), then use the extended lists for temples, monarchy, and local life.",
+        "พัทยาต้อนรับนักท่องเที่ยวนับล้าน ความกลมกลืนอยู่บนเคารพ อดทน และรักษาหน้า เริ่มจากภาพควรทำ/ไม่ควรทำ (เหมือนหน้าวัฒนธรรมไทย) แล้วอ่านรายการเพิ่มเรื่องวัด สถาบัน และชีวิตในพัทยา",
+        "芭提雅日常和谐建立在尊重与给面子之上。先看插图版宜忌（与泰国文化页相同），再读寺庙、王室与本地生活细则。",
+        "Начните с иллюстраций (как на странице культуры), затем — храмы и Pattaya.",
       ),
     ),
     pillarsTitle: t(lang, L("Three values to remember", "สามค่านิยมที่ควรจำ", "三个核心观念", "Три ценности")),
@@ -103,13 +120,49 @@ export function getCultureEtiquettePage(lang: LanguageCode) {
     ],
     dosTitle: t(lang, L("Cultural dos", "สิ่งที่ควรทำ", "文化宜做", "Что делать")),
     dontsTitle: t(lang, L("Cultural don'ts", "สิ่งที่ไม่ควรทำ", "文化忌做", "Чего избегать")),
+    illustratedTitle: t(
+      lang,
+      L("Do's & don'ts (illustrated)", "ควรทำ / ไม่ควรทำ (ภาพประกอบ)", "该做与不该做（插图）", "Do & Don't (иллюстрации)"),
+    ),
+    illustratedIntro: t(
+      lang,
+      L(
+        "Three everyday topics with matching visuals — the same layout as the Thai culture page.",
+        "สามหัวข้อในชีวิตประจำวันพร้อมภาพประกอบ — รูปแบบเดียวกับหน้าวัฒนธรรมไทย",
+        "三个日常主题配图说明——与泰国文化页相同版式。",
+        "Три темы с иллюстрациями — как на странице культуры.",
+      ),
+    ),
+    waiPromoTitle: t(lang, L("Interactive wai visualizer", "จำลองท่าไหว้แบบโต้ตอบ", "互动合十礼示意", "Интерактивный wai")),
+    waiPromoBody: t(
+      lang,
+      L(
+        "Photos, thumb height, and bow depth for monks, elders, and peers — on the Thai culture page (not duplicated here).",
+        "ภาพ ระดับนิ้วโป้ง และการโค้งสำหรับพระ ผู้ใหญ่ และเพื่อน — อยู่หน้าวัฒนธรรมไทย (ไม่ซ้ำที่นี่)",
+        "僧侣、长辈、同辈的参考图与拇指高度——见泰国文化页（此处不重复）。",
+        "Фото и уровень wai — на странице культуры.",
+      ),
+    ),
+    waiPromoCta: t(
+      lang,
+      L("Open wai visualizer →", "เปิดจำลองไหว้ →", "打开合十礼示意 →", "Открыть wai →"),
+    ),
+    extendedDosDontsIntro: t(
+      lang,
+      L(
+        "More rules beyond the three illustrated topics — dress, monks, monarchy, beaches, and Pattaya nightlife.",
+        "กฎเพิ่มเติมนอกสามหัวข้อภาพประกอบ — การแต่งกาย พระ สถาบัน ชายหาด และไนต์ไลฟ์พัทยา",
+        "插图三组之外的更多规矩——着装、僧侣、王室、海滩与芭提雅夜生活。",
+        "Правила помимо трёх иллюстраций.",
+      ),
+    ),
     dosDontsIntro: t(
       lang,
       L(
-        "Compare what to do and what to avoid — the fastest way to blend in without cultural missteps.",
-        "เปรียบเทียบสิ่งที่ควรทำกับสิ่งที่ห้ามทำ — วิธีที่เร็วที่สุดในการอยู่ร่วมกันโดยไม่ล่วงเกิน",
-        "对照宜做与忌做，最快避免文化误会。",
-        "Сравните «можно» и «нельзя».",
+        "Extended do's and don'ts — icon cards for topics not shown in the illustrations above.",
+        "ควรทำ/ไม่ควรทำเพิ่มเติม — การ์ดสำหรับหัวข้อที่ไม่มีในภาพด้านบน",
+        "延伸宜忌——上图未涵盖的主题。",
+        "Дополнительные do/don't.",
       ),
     ),
     highLowTitle: t(lang, L("High & low: head and feet", "ของสูงและของต่ำ: ศีรษะและเท้า", "高与低：头与脚", "Высокое и низкое")),

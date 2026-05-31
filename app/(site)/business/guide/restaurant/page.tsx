@@ -1,7 +1,10 @@
 import { BusinessDetailPage } from "@/components/business/business-detail-page";
-import { businessPages } from "@/lib/data/business-page-content";
+import { createBusinessPageMetadata } from "@/lib/i18n/dedicated-page-metadata";
+import type { Metadata } from "next";
 
-export const metadata = businessPages.restaurant.metadata;
+export async function generateMetadata(): Promise<Metadata> {
+  return createBusinessPageMetadata("restaurant");
+}
 
 export default function RestaurantGuidePage() {
   return <BusinessDetailPage pageId="restaurant" />;

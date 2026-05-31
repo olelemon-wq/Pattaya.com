@@ -67,14 +67,16 @@ export function LivingPageShell({
         title={title}
         subtitle={subtitle}
       />
-      <LivingLeadCtaCard
-        ariaLabel={ctaAriaLabel}
-        eyebrow={ctaEyebrow}
-        title={ctaTitle}
-        body={ctaBody}
-        button={ctaButton}
-        href={ctaHref}
-      />
+      {!hideLeadCta ? (
+        <LivingLeadCtaCard
+          ariaLabel={ctaAriaLabel}
+          eyebrow={ctaEyebrow}
+          title={ctaTitle}
+          body={ctaBody}
+          button={ctaButton}
+          href={ctaHref}
+        />
+      ) : null}
       <LivingMainContent>
         {children}
         {bottomTitle ? (

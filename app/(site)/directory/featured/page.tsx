@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { FeaturedDirectoryPageContent } from "@/components/pages/standalone-pages";
+import { createStandalonePageMetadata } from "@/lib/i18n/localized-metadata";
 
-export const metadata: Metadata = {
-  title: "Featured Businesses | Pattaya.com",
-  description: "Sponsored business listings in Pattaya",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return createStandalonePageMetadata("directory/featured");
+}
 
 export default function FeaturedBusinessesPage() {
   return <FeaturedDirectoryPageContent />;

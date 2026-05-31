@@ -5,76 +5,22 @@ import {
   LivingCtaActions,
   livingCtaButtonClass,
 } from "@/components/living/living-cta-actions";
-import { LivingIconCards } from "@/components/living/living-icon-cards";
 import { PattayaTransportToolkit } from "@/components/living/pattaya-transport-toolkit";
 import { LocalizedLivingPageShell } from "@/components/living/localized-living-page-shell";
 import { useLanguage } from "@/components/layout/language-provider";
 import { livingTheme } from "@/lib/design/living-theme";
 import { livingImages } from "@/lib/design/living-images";
-import { faqEnTh, iconEnTh, L, t } from "@/lib/i18n/living-helpers";
+import { faqEnTh } from "@/lib/i18n/living-helpers";
 import {
-  getDrivingDocuments,
   getDrivingHotspots,
   getDrivingInsuranceRows,
   getDrivingPage,
   getDrivingPoliceTips,
-  getDrivingRentalTips,
-  getDrivingSteps,
   getDrivingVehicleCompare,
 } from "@/lib/i18n/messages/living/driving";
 import { faqSubtitle } from "@/lib/i18n/messages/living/shells";
-import {
-  AlertTriangle,
-  Bike,
-  Car,
-  Check,
-  FileText,
-  MapPin,
-  Shield,
-  ShieldCheck,
-} from "lucide-react";
+import { AlertTriangle, Bike, Car, FileText, MapPin, Shield, ShieldCheck } from "lucide-react";
 import Link from "next/link";
-
-function getTips() {
-  return [
-    iconEnTh(
-      MapPin,
-      "Pattaya traffic",
-      "การจราจรพัทยา",
-      "Motorbikes dominate; watch U-turns on Beach Road and sudden songthaew stops.",
-      "มอไซค์เยอะ ระวังกลับรถ Beach Road และสองแถวจอดกะทันหัน",
-      "芭提雅交通",
-      "Движение",
-    ),
-    iconEnTh(
-      Shield,
-      "Insurance",
-      "ประกันรถ",
-      "Por Ror Bor is mandatory; class 1+ strongly advised for owned or long-term rental cars.",
-      "พ.ร.บ. บังคับ ประกันชั้น 1+ แนะนำสำหรับรถที่เป็นเจ้าของหรือเช่าระยะยาว",
-      "车险",
-      "Страховка",
-    ),
-    iconEnTh(
-      FileText,
-      "International permit",
-      "ใบขับขี่สากล",
-      "IDP is for short visits only — residents should get a Thai license at Chonburi DLT.",
-      "IDP สำหรับท่องเที่ยวระยะสั้น ผู้อยู่ระยะยาวควรขอใบไทยที่กรมขนส่งชลบุรี",
-      "国际驾照",
-      "IDP",
-    ),
-    iconEnTh(
-      Car,
-      "Rental cars",
-      "เช่ารถ",
-      "Carry passport, Thai license, and card hold. Photo all damage before you drive away.",
-      "พกพาสปอร์ต ใบขับขี่ไทย และมัดจำบัตร ถ่ายรูความเสียหายก่อนออก",
-      "租车",
-      "Аренда авто",
-    ),
-  ];
-}
 
 const faqs = [
   faqEnTh(
@@ -136,12 +82,9 @@ const faqs = [
 export function DrivingPage() {
   const { language } = useLanguage();
   const copy = getDrivingPage(language);
-  const steps = getDrivingSteps(language);
-  const documents = getDrivingDocuments(language);
   const insuranceRows = getDrivingInsuranceRows(language);
   const hotspots = getDrivingHotspots(language);
   const vehicles = getDrivingVehicleCompare(language);
-  const rentalTips = getDrivingRentalTips(language);
   const policeTips = getDrivingPoliceTips(language);
 
   return (
@@ -195,6 +138,7 @@ export function DrivingPage() {
           {copy.pathwaysTitle}
         </h2>
         <p className={`mt-2 ${livingTheme.muted}`}>{copy.pathwaysSubtitle}</p>
+        <p className={`mt-2 text-sm ${livingTheme.body}`}>{copy.pathwaysToolkitNote}</p>
         <div className="mt-6 grid gap-5 lg:grid-cols-2">
           <article className="rounded-2xl border border-[#D7CBBA]/60 bg-white p-6 shadow-sm">
             <div className="flex items-center gap-3">
@@ -215,48 +159,6 @@ export function DrivingPage() {
             <p className={`mt-4 text-sm leading-relaxed ${livingTheme.body}`}>{copy.newBody}</p>
           </article>
         </div>
-      </section>
-
-      <section aria-labelledby="driving-steps">
-        <h2 id="driving-steps" className={livingTheme.heading}>
-          {copy.stepsTitle}
-        </h2>
-        <p className={`mt-2 ${livingTheme.muted}`}>{copy.stepsSubtitle}</p>
-        <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {steps.map((s) => (
-            <li
-              key={s.step}
-              className="rounded-xl border border-[#D7CBBA]/60 bg-white p-5 shadow-sm"
-            >
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#B29475] text-sm font-bold text-white">
-                {s.step}
-              </span>
-              <h3 className="mt-3 font-bold text-[#0A192F]">{s.title}</h3>
-              <p className={`mt-2 text-sm ${livingTheme.body}`}>{s.note}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      <section aria-labelledby="driving-docs-title">
-        <h2 id="driving-docs-title" className={livingTheme.heading}>
-          {copy.docsTitle}
-        </h2>
-        <p className={`mt-2 ${livingTheme.muted}`}>{copy.docsSubtitle}</p>
-        <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-          {documents.map((doc) => (
-            <li
-              key={doc.id}
-              className="flex gap-3 rounded-xl border border-[#e2e8f0] bg-white p-4"
-            >
-              <Check className="mt-0.5 h-5 w-5 shrink-0 text-[#B29475]" aria-hidden />
-              <div>
-                <h3 className="font-bold text-[#0A192F]">{doc.title}</h3>
-                <p className={`mt-1 text-sm ${livingTheme.body}`}>{doc.detail}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
       </section>
 
       <section
@@ -309,15 +211,6 @@ export function DrivingPage() {
         </div>
       </section>
 
-      <section aria-labelledby="driving-tips">
-        <h2 id="driving-tips" className={livingTheme.heading}>
-          {copy.quickTips}
-        </h2>
-        <div className="mt-6">
-          <LivingIconCards items={getTips()} />
-        </div>
-      </section>
-
       <section aria-labelledby="driving-pattaya-title">
         <h2 id="driving-pattaya-title" className={livingTheme.heading}>
           {copy.pattayaTitle}
@@ -363,24 +256,6 @@ export function DrivingPage() {
                   </li>
                 ))}
               </ul>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section aria-labelledby="driving-rental-title">
-        <h2 id="driving-rental-title" className={livingTheme.heading}>
-          {copy.rentalTitle}
-        </h2>
-        <p className={`mt-2 ${livingTheme.muted}`}>{copy.rentalSubtitle}</p>
-        <div className="mt-6 grid gap-4 lg:grid-cols-3">
-          {rentalTips.map((tip) => (
-            <article
-              key={tip.title}
-              className="rounded-xl border border-[#e2e8f0] bg-white p-5 shadow-sm"
-            >
-              <h3 className="font-bold text-[#0A192F]">{tip.title}</h3>
-              <p className={`mt-2 text-sm ${livingTheme.body}`}>{tip.body}</p>
             </article>
           ))}
         </div>

@@ -3,6 +3,7 @@ import { localizeBusinessNavItem } from "@/lib/i18n/messages/business-nav";
 import { localizeExploreNavItem } from "@/lib/i18n/messages/explore-nav";
 import { localizeLivingNavItem } from "@/lib/i18n/messages/living-nav";
 import { localizeNewsNavItem } from "@/lib/i18n/messages/news-nav";
+import { applyNavTags } from "@/lib/i18n/messages/nav-tags";
 import { getSiteSectionCopy } from "@/lib/i18n/messages/site-sections";
 import { tSiteUi } from "@/lib/i18n/messages/site-ui";
 import type { NavItem } from "@/lib/navigation/types";
@@ -13,18 +14,24 @@ export function localizeNavItem(
   sectionId: string,
   item: NavItem,
 ): NavItem {
+  let localized: NavItem;
   switch (sectionId) {
     case "news":
-      return localizeNewsNavItem(lang, item);
+      localized = localizeNewsNavItem(lang, item);
+      break;
     case "living":
-      return localizeLivingNavItem(lang, item);
+      localized = localizeLivingNavItem(lang, item);
+      break;
     case "explore":
-      return localizeExploreNavItem(lang, item);
+      localized = localizeExploreNavItem(lang, item);
+      break;
     case "business":
-      return localizeBusinessNavItem(lang, item);
+      localized = localizeBusinessNavItem(lang, item);
+      break;
     default:
-      return item;
+      localized = item;
   }
+  return applyNavTags(lang, localized);
 }
 
 export function buildLocalizedBreadcrumbs(

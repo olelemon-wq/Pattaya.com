@@ -32,6 +32,14 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       const stored = localStorage.getItem(LANGUAGE_STORAGE_KEY);
       if (stored && getLanguageByCode(stored).code === stored) {
         setLanguageState(stored as LanguageCode);
+      } else {
+        const match = document.cookie.match(
+          new RegExp(`(?:^|; )${LANGUAGE_STORAGE_KEY}=([^;]*)`),
+        );
+        const fromCookie = match?.[1];
+        if (fromCookie && getLanguageByCode(fromCookie).code === fromCookie) {
+          setLanguageState(fromCookie as LanguageCode);
+        }
       }
     } catch {
       // private mode / blocked storage
@@ -43,6 +51,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     if (!ready) return;
     document.documentElement.lang = language;
     localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
+    document.cookie = `${LANGUAGE_STORAGE_KEY}=${language};path=/;max-age=31536000;SameSite=Lax`;
   }, [language, ready]);
 
   const setLanguage = useCallback((code: LanguageCode) => {

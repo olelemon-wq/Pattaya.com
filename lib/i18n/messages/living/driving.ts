@@ -15,10 +15,19 @@ export function getDrivingPage(lang: LanguageCode) {
     introBody: t(
       lang,
       L(
-        "Many expats rent scooters or cars in Chonburi. A valid Thai license (or properly used IDP) plus compulsory insurance keeps you legal, insurable, and calm when police checkpoints appear on Beach Road or Sukhumvit.",
-        "ชาวต่างชาติหลายคนเช่ามอเตอร์ไซค์หรือรถในชลบุรี ใบขับขี่ไทย (หรือ IDP ที่ใช้ถูกต้อง) และ พ.ร.บ. ช่วยให้ขับถูกกฎ ประกันใช้ได้ และสบายใจเมื่อเจอด่านตำรวจ",
-        "许多外籍人士在春武里租车或摩托。有效泰国驾照（或合规使用 IDP）加强制险，才能在检查站与事故时合法理赔。",
-        "Многие expat арендуют байк или авто в Чонбури; тайские права или IDP и обязательная страховка — основа законности.",
+        "Many expats rent scooters or cars in Chonburi. Use the interactive toolkit below to compare transport costs, complete a pre-rental checklist, and walk through license steps — then read insurance, road hotspots, and police tips on this page.",
+        "ชาวต่างชาติหลายคนเช่ามอเตอร์ไซค์หรือรถในชลบุรี ใช้เครื่องมือด้านล่างเปรียบเทียบค่าเดินทาง เช็กลิสต์ก่อนเช่า และดูขั้นตอนใบขับขี่ — จากนั้นอ่านประกัน จุดเสี่ยงบนถนน และด่านตำรวจในหน้านี้",
+        "许多外籍人士在春武里租车或摩托。请先用下方工具对比费用、完成租车清单并查看驾照步骤，再阅读本页的保险、路况与警察拦停说明。",
+        "Сравните расходы и чеклист ниже, затем страховка и дороги на странице.",
+      ),
+    ),
+    pathwaysToolkitNote: t(
+      lang,
+      L(
+        "License steps and rental checks are in the toolkit above — this section explains convert vs new-applicant routes only.",
+        "ขั้นตอนใบขับขี่และเช็กลิสต์เช่ารถอยู่ในเครื่องมือด้านบน — ส่วนนี้อธิบายเฉพาะเส้นทางแปลงใบเดิมกับสมัครใหม่",
+        "驾照步骤与租车清单见上方工具——本节仅说明转换与新申请路径。",
+        "Шаги прав и чеклист — в блоке выше; здесь только конвертация vs новый заявитель.",
       ),
     ),
     pathwaysTitle: t(lang, L("Two common paths", "สองเส้นทางหลัก", "两条常见路径", "Два пути")),
@@ -57,25 +66,6 @@ export function getDrivingPage(lang: LanguageCode) {
         "Тесты зрения, реакции, теория; классы A (мото) и B (авто) отдельно.",
       ),
     ),
-    stepsTitle: t(lang, L("Step-by-step at DLT", "ขั้นตอนที่กรมขนส่ง", "陆运厅办理步骤", "Шаги в DLT")),
-    stepsSubtitle: t(
-      lang,
-      L(
-        "Allow a full morning; weekday mornings are busiest at Chonburi Land Transport Office.",
-        "เผื่อเวลาครึ่งวัน เช้าวันธรรมดามักคนเยอะที่กรมขนส่งชลบุรี",
-        "预留半天；春武里陆运厅工作日上午最忙。",
-        "Заложите полдня; утро будней — пик в DLT Чонбури.",
-      ),
-    ),
-    docsTitle: t(lang, L("Documents checklist", "เอกสารที่ต้องเตรียม", "材料清单", "Документы")),
-    docsSubtitle: t(
-      lang,
-      L("Bring originals plus copies; requirements can change — confirm on the DLT website before you go.",
-        "นำต้นฉบับและสำเนา เงื่อนไขอาจเปลี่ยน — ตรวจเว็บกรมขนส่งก่อนไป",
-        "携带原件与复印件；要求可能变动——出行前查阅陆运厅网站。",
-        "Оригиналы и копии; уточните на сайте DLT.",
-      ),
-    ),
     dltTitle: t(lang, L("Where to go from Pattaya", "ไปที่ไหนจากพัทยา", "从芭提雅去哪办", "Куда ехать")),
     dltBody: t(
       lang,
@@ -101,7 +91,6 @@ export function getDrivingPage(lang: LanguageCode) {
     tableNotes: t(lang, L("Notes", "หมายเหตุ", "说明", "Примечание")),
     yes: t(lang, L("Yes", "ใช่", "是", "Да")),
     optional: t(lang, L("Optional", "ไม่บังคับ", "可选", "Нет")),
-    quickTips: t(lang, L("Quick tips", "เคล็ดลับสั้น ๆ", "快速贴士", "Краткие советы")),
     pattayaTitle: t(
       lang,
       L("Pattaya road realities",
@@ -128,15 +117,6 @@ export function getDrivingPage(lang: LanguageCode) {
         "Класс прав = тот транспорт, которым пользуетесь.",
       ),
     ),
-    rentalTitle: t(lang, L("Renting & buying", "เช่าและซื้อรถ", "租车与购车", "Аренда и покупка")),
-    rentalSubtitle: t(
-      lang,
-      L("Licensed dealers and international chains are safer than informal Facebook listings.",
-        "ดีลเลอร์ที่มีใบอนุญาตและแบรนด์สากลปลอดภัยกว่าประกาศ Facebook",
-        "持证经销商比脸书私下租车更稳妥。",
-        "Лицензированные дилеры надёжнее объявлений в Facebook.",
-      ),
-    ),
     policeTitle: t(lang, L("Police stops & fines", "ด่านตำรวจและค่าปรับ", "警察拦停与罚款", "Остановки полиции")),
     policeSubtitle: t(
       lang,
@@ -155,9 +135,18 @@ export function getDrivingPage(lang: LanguageCode) {
   };
 }
 
+export type DrivingStepId =
+  | "step-1"
+  | "step-2"
+  | "step-3"
+  | "step-4"
+  | "step-5"
+  | "step-6";
+
 export function getDrivingSteps(lang: LanguageCode) {
   return [
     {
+      id: "step-1" as DrivingStepId,
       step: 1,
       title: t(lang, L("Confirm eligibility", "ตรวจสิทธิ์สมัคร", "确认资格", "Проверка")),
       note: t(
@@ -171,6 +160,7 @@ export function getDrivingSteps(lang: LanguageCode) {
       ),
     },
     {
+      id: "step-2" as DrivingStepId,
       step: 2,
       title: t(lang, L("Medical certificate", "ใบตรวจสุขภาพ", "体检证明", "Медсправка")),
       note: t(
@@ -184,6 +174,7 @@ export function getDrivingSteps(lang: LanguageCode) {
       ),
     },
     {
+      id: "step-3" as DrivingStepId,
       step: 3,
       title: t(lang, L("Prepare documents", "เตรียมเอกสาร", "准备材料", "Документы")),
       note: t(
@@ -197,6 +188,7 @@ export function getDrivingSteps(lang: LanguageCode) {
       ),
     },
     {
+      id: "step-4" as DrivingStepId,
       step: 4,
       title: t(lang, L("DLT tests", "สอบที่กรมขนส่ง", "陆运厅考试", "Тесты DLT")),
       note: t(
@@ -210,6 +202,7 @@ export function getDrivingSteps(lang: LanguageCode) {
       ),
     },
     {
+      id: "step-5" as DrivingStepId,
       step: 5,
       title: t(lang, L("Pay fees & photo", "ชำระค่าธรรมเนียม", "缴费拍照", "Оплата")),
       note: t(
@@ -223,6 +216,7 @@ export function getDrivingSteps(lang: LanguageCode) {
       ),
     },
     {
+      id: "step-6" as DrivingStepId,
       step: 6,
       title: t(lang, L("Receive Thai license", "รับใบขับขี่ไทย", "领取泰国驾照", "Получение прав")),
       note: t(
@@ -232,71 +226,6 @@ export function getDrivingSteps(lang: LanguageCode) {
           "ใบรถยนต์มัก 5 ปี มอเตอร์ไซค์แยกชั้น พกใบขับขี่และ พ.ร.บ. ตอนขับ",
           "汽车驾照通常5年；摩托另考。驾车时携带驾照与强制险。",
           "Авто — 5 лет; мото отдельно; всегда с พ.ร.บ.",
-        ),
-      ),
-    },
-  ];
-}
-
-export function getDrivingDocuments(lang: LanguageCode) {
-  return [
-    {
-      id: "passport",
-      title: t(lang, L("Passport & visa", "พาสปอร์ตและวีซ่า", "护照与签证", "Паспорт")),
-      detail: t(
-        lang,
-        L("Original plus copies of photo page and latest visa stamp or extension.",
-          "ต้นฉบับและสำเนาหน้าแรกกับตราประทับ/ต่ออายุล่าสุด",
-          "原件+复印件（照片页与最新签证章/延期）。",
-          "Оригинал и копии страницы с фото и визы.",
-        ),
-      ),
-    },
-    {
-      id: "residence",
-      title: t(lang, L("Residence proof", "หลักฐานที่อยู่", "居住证明", "Адрес")),
-      detail: t(
-        lang,
-        L("TM30 receipt, condo juristic letter, or lease registered with immigration.",
-          "ใบ TM30 หนังสือนิติบุคคล หรือสัญญาเช่าที่แจ้งตม.",
-          "TM30回执、公寓管理处证明或已向移民局登记的租约。",
-          "TM30, письмо юрлица кондо или аренда.",
-        ),
-      ),
-    },
-    {
-      id: "medical",
-      title: t(lang, L("Medical certificate", "ใบตรวจสุขภาพ", "体检证明", "Медсправка")),
-      detail: t(
-        lang,
-        L("Form from DLT-approved clinic, dated within 30 days.",
-          "แบบฟอร์มจากคลินิกที่อนุมัติ อายุไม่เกิน 30 วัน",
-          "陆运厅认可诊所表格，30天内有效。",
-          "Из одобренной клиники, не старше 30 дней.",
-        ),
-      ),
-    },
-    {
-      id: "foreign",
-      title: t(lang, L("Home license + translation", "ใบเดิมและแปล", "本国驾照+翻译", "Иностранные права")),
-      detail: t(
-        lang,
-        L("Only for conversion: valid license, embassy or certified translation, some nationalities exempt from practical test.",
-          "สำหรับแปลงเท่านั้น: ใบเดิมยังไม่หมด แปลสถานทูต บางสัญชาติข้ามสอบขับ",
-          "仅转换用：有效本国驾照、使馆或认证翻译；部分国籍免路考。",
-          "Для конвертации: действующие права и перевод.",
-        ),
-      ),
-    },
-    {
-      id: "photos",
-      title: t(lang, L("Passport photos", "รูปถ่าย", "证件照", "Фото")),
-      detail: t(
-        lang,
-        L("Usually 2 photos (some offices take on site — bring spares).",
-          "มัก 2 รูป (บางแห่งถ่ายที่สำนักงาน — เตรียมสำรอง)",
-          "通常2张（部分现场拍摄——建议备用）。",
-          "Обычно 2 фото; иногда снимают на месте.",
         ),
       ),
     },
@@ -428,48 +357,16 @@ export function getDrivingVehicleCompare(lang: LanguageCode) {
         t(lang, L("Class B license; IDP alone is not enough long-term.", "ใบชั้น B IDP ใช้ระยะสั้น อยู่ยาวต้องใบไทย", "B类驾照；长期不能仅靠IDP", "Класс B; IDP — краткосрочно")),
         t(lang, L("Parking scarce on Beach Road — use condo or mall lots.", "จอด Beach Road ยาก ใช้ที่จอดคอนโดหรือห้าง", "Beach Road 难停车", "Парковка — кондо/ТЦ")),
         t(lang, L("International chains at U-Tapao and city — book ahead in high season.", "สาขาสากลที่อู่ตะเภาและในเมือง — จองล่วงหน้าช่วงไฮซีซัน", "旺季提前预订租车", "Бронируйте в сезон")),
+        t(
+          lang,
+          L(
+            "Buying used? Transfer at DLT with the seller and check finance liens — get legal advice for foreign ownership structures.",
+            "ซื้อมือสอง? โอนที่กรมขนส่งกับผู้ขาย ตรวจภาระผูกพัน — ปรึกษากฎหมายถ้าโครงสร้างต่างชาติ",
+            "购二手车须在陆运厅与卖方过户并查抵押；外籍结构建议咨询律师。",
+            "Покупка б/у — переоформление в DLT и проверка обременений.",
+          ),
+        ),
       ],
-    },
-  ];
-}
-
-export function getDrivingRentalTips(lang: LanguageCode) {
-  return [
-    {
-      title: t(lang, L("Before you sign", "ก่อนเซ็นสัญญา", "签约前", "До подписи")),
-      body: t(
-        lang,
-        L(
-          "Photograph every scratch, fuel level, and dashboard warning lights; note mileage and emergency hotline.",
-          "ถ่ายรอยขีดข่วน น้ำมัน ไฟเตือนหน้าปัด บันทึกเลขไมล์และเบอร์ฉุกเฉิน",
-          "拍摄所有划痕、油量、仪表警告灯；记录里程与紧急电话。",
-          "Фото царапин, топлива, ламп; пробег и hotline.",
-        ),
-      ),
-    },
-    {
-      title: t(lang, L("Deposit & passport", "มัดจำและพาสปอร์ต", "押金与护照", "Депозит")),
-      body: t(
-        lang,
-        L(
-          "Never leave your passport as collateral — use cash deposit or card hold only at licensed shops.",
-          "อย่าฝากพาสปอร์ตเป็นหลักประกัน — ใช้เงินมัดจำหรือกันวงเงินบัตรที่ร้านมีใบอนุญาต",
-          "勿押护照——仅在持证店用现金押金或信用卡预授权。",
-          "Не оставляйте паспорт; только депозит/холд карты.",
-        ),
-      ),
-    },
-    {
-      title: t(lang, L("Buying a used car", "ซื้อรถมือสอง", "购买二手车", "Б/у авто")),
-      body: t(
-        lang,
-        L(
-          "Transfer at DLT with seller; check finance liens at Land Transport; expats often use Thai friend or company structures — get legal advice.",
-          "โอนที่กรมขนส่งกับผู้ขาย ตรวจภาระผูกพัน ต่างชาติมักใช้โครงสร้างบริษัท — ปรึกษากฎหมาย",
-          "与卖方在陆运厅过户；查抵押；外籍购车结构建议咨询律师。",
-          "Переоформление в DLT; проверка обременений; юрист.",
-        ),
-      ),
     },
   ];
 }

@@ -24,18 +24,24 @@ export const livingImages = {
     "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80",
   utilities:
     "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80",
+  food:
+    "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80",
   insurance:
     "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80",
-  driving:
-    "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=800&q=80",
+  driving: "/images/living/driving-license.png",
   cultureCard:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuDgHRHTs44RnWQGUGkcQhs44nPAdKqu3s56UY9ZVig37OexggLa1AV4IkJ3MD9j2zmcNUOaDDFm0p07t3wqmJhUVwfFd3BVRpfpsenjm9s07Xh4pjIDwNsnxUENmqzTWa6KXoBICd1o08KEQz7L5fAdsTWluuj7HjB6HOj-gXCp03BNKrtusENTuZ1nWEvwP6KAH3RSpLMd9UFNl6njDQX312VRqSLhefd0EchUgRGO-0sMtYw9-ZJ-QClPpwSQoniL6v96nhqnb8Mv",
   ninetyDay:
     "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80",
-  localTransport:
-    "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=800&q=80",
+  /** Songthaew on Pattaya Beach Road — local hero */
+  localTransport: "/images/living/songthaew-hero.png",
+  songthaewHero: "/images/living/songthaew-hero.png",
   rideApps:
     "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80",
+  /** Grab — food delivery & ride-hail (local for reliable loading) */
+  grabApp: "/images/living/ride-grab.png",
+  /** Bolt — city rides */
+  boltApp: "/images/living/ride-bolt.png",
   safetyGuide:
     "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
 } as const;

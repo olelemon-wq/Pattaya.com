@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { BusinessHubPage } from "@/components/business/business-hub-page";
+import { createLocalizedSectionMetadata } from "@/lib/i18n/localized-metadata";
 
-export const metadata: Metadata = {
-  title: "Business | Pattaya.com",
-  description:
-    "Pattaya business gateway — company setup, BOI incentives, industry guides, investment insights, and networking events.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return createLocalizedSectionMetadata("business");
+}
 
 export default function BusinessPage() {
   return <BusinessHubPage />;

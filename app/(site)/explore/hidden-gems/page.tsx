@@ -1,16 +1,10 @@
 import { HiddenGemsPage } from "@/components/explore/hidden-gems-page";
+import { createExploreDedicatedMetadata } from "@/lib/i18n/dedicated-page-metadata";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Hidden Gems | จุดลับ | Pattaya.com",
-  description:
-    "Hidden gems and local-only spots in Pattaya — secret viewpoints, Naklua mornings, and editor stories.",
-  openGraph: {
-    title: "Hidden Gems — Pattaya.com",
-    description:
-      "Curated off-path guides for travelers who want Pattaya beyond the postcard.",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return createExploreDedicatedMetadata("hidden-gems");
+}
 
 export default function HiddenGemsRoutePage() {
   return <HiddenGemsPage />;

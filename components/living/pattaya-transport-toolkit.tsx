@@ -8,11 +8,10 @@ import {
 } from "@/lib/transportation/cost-comparer-logic";
 import {
   getDrivingInteractiveCopy,
-  getLicenseStepperSteps,
   getRentalChecklistItems,
   type ChecklistItemId,
-  type LicenseStepId,
 } from "@/lib/i18n/messages/living/driving-interactive";
+import { getDrivingSteps, type DrivingStepId } from "@/lib/i18n/messages/living/driving";
 import { Bike, Bus, ChevronDown, Smartphone } from "lucide-react";
 import { useMemo, useState } from "react";
 
@@ -73,12 +72,12 @@ export function PattayaTransportToolkit() {
   const { language } = useLanguage();
   const copy = getDrivingInteractiveCopy(language);
   const checklistItems = getRentalChecklistItems(language);
-  const licenseSteps = getLicenseStepperSteps(language);
+  const licenseSteps = getDrivingSteps(language);
   const locale = LOCALE_MAP[language];
 
   const [trips, setTrips] = useState(4);
   const [checked, setChecked] = useState<Set<ChecklistItemId>>(new Set());
-  const [openStep, setOpenStep] = useState<LicenseStepId | null>("residence");
+  const [openStep, setOpenStep] = useState<DrivingStepId | null>("step-1");
 
   const costs = useMemo(() => compareTransportCosts(trips), [trips]);
 
@@ -105,7 +104,7 @@ export function PattayaTransportToolkit() {
     });
   };
 
-  const toggleStep = (id: LicenseStepId) => {
+  const toggleStep = (id: DrivingStepId) => {
     setOpenStep((prev) => (prev === id ? null : id));
   };
 
@@ -225,7 +224,7 @@ export function PattayaTransportToolkit() {
         <hr className="transport-toolkit__divider" />
 
         {/* ——— 3. License stepper ——— */}
-        <div className="transport-toolkit__section">
+        <div id="transport-toolkit-license" className="transport-toolkit__section">
           <h3 className="transport-toolkit__section-title">{copy.sectionLicense}</h3>
           <p className="transport-toolkit__hint">{copy.licenseHint}</p>
           <ol className="transport-toolkit__stepper">
@@ -259,12 +258,7 @@ export function PattayaTransportToolkit() {
                     aria-labelledby={`license-step-btn-${step.id}`}
                   >
                     <div className="transport-toolkit__step-panel-inner">
-                      <p className="transport-toolkit__step-body">{step.body}</p>
-                      <ul className="transport-toolkit__step-bullets">
-                        {step.bullets.map((b) => (
-                          <li key={b}>{b}</li>
-                        ))}
-                      </ul>
+                      <p className="transport-toolkit__step-body">{step.note}</p>
                     </div>
                   </div>
                   {!isLast && <span className="transport-toolkit__step-line" aria-hidden />}

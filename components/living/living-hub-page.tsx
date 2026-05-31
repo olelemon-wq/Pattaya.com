@@ -3,9 +3,9 @@
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import { LivingFeaturedHeroCinematic } from "@/components/living/living-featured-hero-cinematic";
 import { useLanguage } from "@/components/layout/language-provider";
+import { CostOfLivingWidget } from "@/components/living/cost-of-living-widget";
 import {
   getCommercialCards,
-  getCostBars,
   getCulturalDonts,
   getCulturalDos,
   getInfoCards,
@@ -96,8 +96,6 @@ export function LivingHubPage() {
   const culturalDonts = getCulturalDonts(language);
   const commercialCards = getCommercialCards(language);
   const infoCards = getInfoCards(language);
-  const costBars = getCostBars(language);
-
   return (
     <div data-full-bleed className="bg-[#f8f9fa] pb-16 text-[#191c1d]">
       <div className="relative z-10 shrink-0 shadow-sm">
@@ -377,103 +375,98 @@ export function LivingHubPage() {
 
         {/* Lifestyle & Convenience */}
         <section className="mb-20">
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-            <div className="flex flex-col items-center gap-10 rounded-xl border border-[#c4c7c8]/30 bg-white p-10 shadow-sm transition-shadow hover:shadow-md lg:col-span-8 md:flex-row">
-              <div className="flex-1">
-                <span className="mb-2 block text-xs font-bold uppercase tracking-widest text-[#ae2f34]">
-                  {tLivingHub(language, "financeBadge")}
-                </span>
-                <h3 className="mb-6 text-2xl font-semibold">
-                  {tLivingHub(language, "costTitle")}
-                </h3>
-                <p className="mb-8 leading-relaxed text-[#444748]">
-                  {tLivingHub(language, "costDesc")}
-                </p>
-                <div className="space-y-6">
-                  {costBars.map((bar) => (
-                    <div key={bar.label}>
-                      <div className="mb-2 flex justify-between text-sm font-bold">
-                        <span className="uppercase tracking-wider text-[#444748]">
-                          {bar.label}
-                        </span>
-                        <span>{bar.pct}%</span>
-                      </div>
-                      <div className="h-2.5 w-full overflow-hidden rounded-full bg-[#edeeef]">
-                        <div
-                          className={`h-full ${bar.color}`}
-                          style={{ width: `${bar.pct}%` }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="w-full rounded-xl border border-[#c4c7c8]/20 bg-[#edeeef] p-8 text-center md:w-72">
-                <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#444748]">
-                  {tLivingHub(language, "avgBudget")}
-                </p>
-                <p className="mb-6 text-5xl font-bold tracking-tighter text-[#455f88]">
-                  $1,850
-                </p>
-                <p className="px-4 text-xs italic leading-relaxed text-[#444748]">
-                  {tLivingHub(language, "budgetNote")}
-                </p>
-                <hr className="my-6 border-[#c4c7c8]/30" />
-                <Link
-                  href="/living/cost-of-living/food"
-                  className="flex w-full items-center justify-center gap-2 text-sm font-bold text-[#455f88] hover:text-[#3f5882]"
-                >
-                  {tLivingHub(language, "fullAnalysis")}
-                </Link>
-              </div>
+          <div className="hub-lifestyle-row grid grid-cols-1 gap-6 lg:grid-cols-12">
+            <div className="hub-lifestyle-row__cost lg:col-span-8">
+              <CostOfLivingWidget />
             </div>
 
-            <div className="flex flex-col justify-center rounded-xl border border-[#455f88]/10 bg-[#D7CBBA] p-10 lg:col-span-4">
-              <h3 className="mb-4 text-xl font-semibold text-[#3f5882]">
-                {tLivingHub(language, "mobilityTitle")}
-              </h3>
-              <p className="mb-10 text-sm leading-relaxed text-[#3f5882]/80">
-                {tLivingHub(language, "mobilityDesc")}
-              </p>
-              <div className="space-y-4">
-                <Link
-                  href="/living/transportation/ride-apps"
-                  className="group flex items-center justify-between rounded-xl border border-transparent bg-white/90 p-5 transition-all hover:border-[#455f88]/20 hover:bg-white"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#00B14F] text-lg font-bold text-white shadow-sm">
-                      G
-                    </div>
-                    <div>
-                      <p className="text-sm font-bold">{tLivingHub(language, "grabTitle")}</p>
-                      <p className="text-xs text-[#444748]">
-                        {tLivingHub(language, "grabSub")}
-                      </p>
-                    </div>
-                  </div>
-                  <span className="text-[#444748] group-hover:text-[#455f88]">
-                    ↓
-                  </span>
-                </Link>
-                <Link
-                  href="/living/transportation/ride-apps"
-                  className="group flex items-center justify-between rounded-xl border border-transparent bg-white/90 p-5 transition-all hover:border-[#455f88]/20 hover:bg-white"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#0047FF] text-lg font-bold text-white shadow-sm">
-                      B
-                    </div>
-                    <div>
-                      <p className="text-sm font-bold">{tLivingHub(language, "boltTitle")}</p>
-                      <p className="text-xs text-[#444748]">{tLivingHub(language, "boltSub")}</p>
-                    </div>
-                  </div>
-                  <span className="text-[#444748] group-hover:text-[#455f88]">
-                    ↓
-                  </span>
-                </Link>
+            <aside className="hub-mobility lg:col-span-4">
+              <div className="relative h-[4.5rem] w-full shrink-0 overflow-hidden rounded-t-xl sm:h-20">
+                <Image
+                  src={livingImages.boltApp}
+                  alt={tLivingHub(language, "mobilityTitle")}
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                />
+                <div
+                  className="absolute inset-0 bg-gradient-to-t from-[#D7CBBA] via-[#D7CBBA]/50 to-transparent"
+                  aria-hidden
+                />
               </div>
-            </div>
+
+              <div className="hub-mobility__body">
+                <h3 className="text-lg font-semibold leading-snug text-[#3f5882]">
+                  {tLivingHub(language, "mobilityTitle")}
+                </h3>
+                <p className="mt-1.5 text-xs leading-relaxed text-[#3f5882]/80 line-clamp-2">
+                  {tLivingHub(language, "mobilityDesc")}
+                </p>
+
+                <div className="hub-mobility__links">
+                  <Link
+                    href="/living/transportation/ride-apps"
+                    className="hub-mobility__link hub-mobility__link--grab group"
+                  >
+                    <div className="hub-mobility__link-visual">
+                      <Image
+                        src={livingImages.grabApp}
+                        alt={tLivingHub(language, "grabTitle")}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                        sizes="(max-width: 1023px) 44px, (min-width: 1024px) 280px"
+                      />
+                      <span className="hub-mobility__link-badge" style={{ backgroundColor: "#00B14F" }}>
+                        G
+                      </span>
+                    </div>
+                    <div className="hub-mobility__link-content">
+                      <div className="hub-mobility__link-text">
+                        <p className="hub-mobility__link-title">
+                          {tLivingHub(language, "grabTitle")}
+                        </p>
+                        <p className="hub-mobility__link-sub">
+                          {tLivingHub(language, "grabSub")}
+                        </p>
+                      </div>
+                      <span className="hub-mobility__link-arrow" aria-hidden>
+                        →
+                      </span>
+                    </div>
+                  </Link>
+                  <Link
+                    href="/living/transportation/ride-apps"
+                    className="hub-mobility__link hub-mobility__link--bolt group"
+                  >
+                    <div className="hub-mobility__link-visual">
+                      <Image
+                        src={livingImages.boltApp}
+                        alt={tLivingHub(language, "boltTitle")}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                        sizes="(max-width: 1023px) 44px, (min-width: 1024px) 280px"
+                      />
+                      <span className="hub-mobility__link-badge" style={{ backgroundColor: "#0047FF" }}>
+                        B
+                      </span>
+                    </div>
+                    <div className="hub-mobility__link-content">
+                      <div className="hub-mobility__link-text">
+                        <p className="hub-mobility__link-title">
+                          {tLivingHub(language, "boltTitle")}
+                        </p>
+                        <p className="hub-mobility__link-sub">
+                          {tLivingHub(language, "boltSub")}
+                        </p>
+                      </div>
+                      <span className="hub-mobility__link-arrow" aria-hidden>
+                        →
+                      </span>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            </aside>
           </div>
         </section>
       </div>

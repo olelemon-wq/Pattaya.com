@@ -1,11 +1,18 @@
 "use client";
 
 import { LivingFaqSection } from "@/components/living/living-faq-section";
+import {
+  LivingCtaActions,
+  livingCtaButtonClass,
+} from "@/components/living/living-cta-actions";
 import { LivingIconCards } from "@/components/living/living-icon-cards";
+import { ThaiCultureSurvivalGuide } from "@/components/living/thai-culture-survival-guide";
 import { LocalizedLivingPageShell } from "@/components/living/localized-living-page-shell";
 import { useLanguage } from "@/components/layout/language-provider";
+import { livingTheme } from "@/lib/design/living-theme";
 import { livingImages } from "@/lib/design/living-images";
 import { faqEnTh, iconEnTh, L, t } from "@/lib/i18n/living-helpers";
+import { getThaiCulturePageCopy } from "@/lib/i18n/messages/living/thai-culture-survival";
 import { faqSubtitle } from "@/lib/i18n/messages/living/shells";
 import type { LocalizedText } from "@/lib/i18n/text";
 import { Calendar, HandHeart, Languages, Sparkles } from "lucide-react";
@@ -96,23 +103,65 @@ const faqs = [
   ),
   faqEnTh(
     "etiquette",
-    "Where is the full do & don't list?",
-    "มารยาทละเอียดอยู่ที่ไหน?",
-    "See our etiquette guide for wai, temples, monks, and monarchy respect.",
-    "ดูคู่มือมารยาทสำหรับไหว้ วัด พระ และสถาบัน",
-    "完整礼仪清单在哪？",
-    "Где полный этикет?",
+    "Where is the full etiquette guide?",
+    "คู่มือมารยาทฉบับเต็มอยู่ที่ไหน?",
+    "The etiquette page adds temples, monarchy, dress, and Pattaya tips — with the same illustrated shoes, wai, and calm-behavior panels as this page.",
+    "หน้ามารยาทมีเรื่องวัด สถาบัน การแต่งกาย และพัทยา — พร้อมภาพรองเท้า ไหว้ และใจเย็นแบบเดียวกับหน้านี้",
+    "完整礼仪见礼仪专页，插图与本页相同。",
+    "Полный этикет — отдельная страница с теми же иллюстрациями.",
   ),
 ];
 
 export function ThaiCulturePage() {
   const { language } = useLanguage();
+  const copy = getThaiCulturePageCopy(language);
 
   return (
-    <LocalizedLivingPageShell shellKey="thaiCulture" heroImage={livingImages.cultureCard} heroAlt="Thai culture">
+    <LocalizedLivingPageShell
+      shellKey="thaiCulture"
+      heroImage={livingImages.cultureCard}
+      heroAlt="Thai culture"
+      hideLeadCta
+      bottomChildren={
+        <LivingCtaActions>
+          <Link href="/living" className={livingCtaButtonClass.primary}>
+            {copy.livingHub}
+          </Link>
+          <Link href="/living/culture/etiquette" className={livingCtaButtonClass.outline}>
+            {copy.etiquette}
+          </Link>
+        </LivingCtaActions>
+      }
+    >
+      <section
+        className="relative overflow-hidden rounded-2xl border border-[#D7CBBA]/60 bg-gradient-to-br from-[#faf7f2] via-white to-[#f5efe6] p-6 sm:p-8"
+        aria-labelledby="culture-intro-title"
+      >
+        <div className="relative flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
+          <div
+            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-white shadow-lg"
+            style={{ backgroundColor: "#B29475" }}
+          >
+            <HandHeart className="h-7 w-7" aria-hidden />
+          </div>
+          <div>
+            <h2 id="culture-intro-title" className="text-2xl font-bold text-[#0A192F] sm:text-3xl">
+              {copy.introTitle}
+            </h2>
+            <p className={`mt-3 max-w-3xl text-base leading-relaxed ${livingTheme.body}`}>
+              {copy.introBody}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div className="rounded-2xl border border-[#D7CBBA]/60 bg-[#f5f5f7] p-4 sm:p-6">
+        <ThaiCultureSurvivalGuide />
+      </div>
+
       <section aria-labelledby="culture-pillars">
-        <h2 id="culture-pillars" className="text-2xl font-bold text-[#0A192F] sm:text-3xl">
-          {t(language, L("Cultural pillars", "หัวใจวัฒนธรรม", "文化支柱", "Столпы культуры"))}
+        <h2 id="culture-pillars" className={livingTheme.heading}>
+          {copy.pillarsTitle}
         </h2>
         <div className="mt-6">
           <LivingIconCards items={getPillars()} />
@@ -120,23 +169,28 @@ export function ThaiCulturePage() {
       </section>
 
       <section aria-labelledby="culture-pattaya">
-        <h2 id="culture-pattaya" className="text-2xl font-bold text-[#0A192F] sm:text-3xl">
-          {t(language, L("Living in Pattaya", "ใช้ชีวิตในพัทยา", "在芭提雅生活", "Жизнь в Паттайе"))}
+        <h2 id="culture-pattaya" className={livingTheme.heading}>
+          {copy.pattayaTitle}
         </h2>
         <div className="mt-6 grid gap-4 sm:grid-cols-3">
           {getPattayaNotes().map((n) => (
             <article
               key={n.title.en}
-              className="rounded-xl border border-[#e2e8f0] bg-white p-5 transition hover:border-[#D7CBBA]"
+              className="rounded-xl border border-[#D7CBBA]/60 bg-white p-5 transition hover:border-[#B29475]/50"
             >
               <h3 className="font-bold text-[#0A192F]">{t(language, n.title)}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-[#444748]">{t(language, n.text)}</p>
+              <p className={`mt-2 text-sm leading-relaxed ${livingTheme.body}`}>
+                {t(language, n.text)}
+              </p>
             </article>
           ))}
         </div>
-        <p className="mt-4 text-sm">
-          <Link href="/living/culture/etiquette" className="font-bold text-[#B29475] hover:underline">
-            {t(language, L("Full etiquette guide →", "คู่มือมารยาทฉบับเต็ม →", "完整礼仪指南 →", "Этикет →"))}
+        <p className="mt-4">
+          <Link
+            href="/living/culture/etiquette"
+            className="text-sm font-bold text-[#B29475] hover:underline"
+          >
+            {copy.etiquetteLink}
           </Link>
         </p>
       </section>

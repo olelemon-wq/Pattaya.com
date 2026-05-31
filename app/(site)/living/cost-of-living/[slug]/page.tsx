@@ -1,9 +1,10 @@
+import { CostOfLivingFoodPage } from "@/components/living/cost-of-living-food-page";
 import { UtilitiesPage } from "@/components/living/utilities-page";
 import {
-  createItemMetadata,
   SectionDetail,
 } from "@/lib/navigation/section-pages";
-import { getNavItemBySlug, getSectionById } from "@/lib/navigation/site-map";
+import { createLivingCategoryMetadata } from "@/lib/i18n/dedicated-page-metadata";
+import { getNavItemBySlug } from "@/lib/navigation/site-map";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -12,6 +13,7 @@ const CATEGORY = "cost-of-living";
 
 const DEDICATED_PAGES: Record<string, () => React.JSX.Element> = {
   utilities: () => <UtilitiesPage />,
+  food: () => <CostOfLivingFoodPage />,
 };
 
 interface PageProps {
@@ -24,23 +26,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  if (slug === "utilities") {
-    return {
-      title: "Utilities Cost Pattaya | ค่าไฟ น้ำ Internet | Pattaya.com",
-      description:
-        "Electricity, water, and internet costs in Pattaya — condo rates, monthly estimates, and budget tips.",
-      openGraph: {
-        title: "Utilities Cost | ค่าไฟ น้ำ Internet — Pattaya.com",
-        description: "Manage monthly overheads for expat living in Pattaya.",
-      },
-    };
-  }
-
-  const section = getSectionById(SECTION_ID)!;
-  const item = getNavItemBySlug(SECTION_ID, [CATEGORY, slug]);
-  if (!item) return { title: "Not Found | Pattaya.com" };
-
-  return createItemMetadata(section, item.label, item.description);
+  return createLivingCategoryMetadata(CATEGORY, slug);
 }
 
 export default async function LivingCostOfLivingPage({ params }: PageProps) {

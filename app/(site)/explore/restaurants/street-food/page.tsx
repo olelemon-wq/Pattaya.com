@@ -1,16 +1,10 @@
 import { StreetFoodPage } from "@/components/explore/street-food-page";
+import { createExploreDedicatedMetadata } from "@/lib/i18n/dedicated-page-metadata";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Street Food | อาหารท้องถิ่น | Pattaya Local Food | Pattaya.com",
-  description:
-    "Best local and street food in Pattaya — night markets, seafood stalls, signature Thai dishes, and practical tips for eating like a local.",
-  openGraph: {
-    title: "Street Food | อาหารท้องถิ่น — Pattaya.com",
-    description:
-      "Thepprasit Night Market, Naklua morning market, Jomtien seafood, and must-try Thai street dishes.",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return createExploreDedicatedMetadata("restaurants/street-food");
+}
 
 export default function StreetFoodRoutePage() {
   return <StreetFoodPage />;

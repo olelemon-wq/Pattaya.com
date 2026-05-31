@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { EmergencyPageContent } from "@/components/pages/standalone-pages";
+import { createStandalonePageMetadata } from "@/lib/i18n/localized-metadata";
 
-export const metadata: Metadata = {
-  title: "Emergency Contacts | Pattaya.com",
-  description: "Important emergency phone numbers in Pattaya",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return createStandalonePageMetadata("emergency");
+}
 
 export default function EmergencyPage() {
   return <EmergencyPageContent />;

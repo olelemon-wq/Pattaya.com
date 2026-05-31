@@ -4,11 +4,16 @@ import {
   LocalizedSectionHub,
 } from "@/components/navigation/localized-section-pages";
 import {
+  createLocalizedItemMetadata,
+  createLocalizedSectionMetadata,
+} from "@/lib/i18n/localized-metadata";
+import {
   getNavItemBySlug,
   getSectionById,
 } from "@/lib/navigation/site-map";
 import type { MainSection } from "@/lib/navigation/types";
 
+/** @deprecated Use createLocalizedSectionMetadata for generateMetadata */
 export function createSectionMetadata(section: MainSection): Metadata {
   return {
     title: `${section.label} | Pattaya.com`,
@@ -16,6 +21,7 @@ export function createSectionMetadata(section: MainSection): Metadata {
   };
 }
 
+/** @deprecated Use createLocalizedItemMetadata for generateMetadata */
 export function createItemMetadata(
   section: MainSection,
   label: string,
@@ -26,6 +32,8 @@ export function createItemMetadata(
     description,
   };
 }
+
+export { createLocalizedItemMetadata, createLocalizedSectionMetadata };
 
 interface SectionHubProps {
   sectionId: string;

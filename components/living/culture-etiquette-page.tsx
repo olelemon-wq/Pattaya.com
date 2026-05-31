@@ -1,5 +1,6 @@
 "use client";
 
+import { CultureDosDontsIllustrated } from "@/components/living/culture-dos-donts-illustrated";
 import { CultureEtiquetteFaq } from "@/components/living/culture-etiquette-faq";
 import {
   LivingCtaActions,
@@ -10,10 +11,10 @@ import { useLanguage } from "@/components/layout/language-provider";
 import { livingTheme } from "@/lib/design/living-theme";
 import { livingImages } from "@/lib/design/living-images";
 import {
-  getCultureDos,
-  getCultureDonts,
   getCultureEtiquettePage,
   getDontDeepDives,
+  getExtendedCultureDos,
+  getExtendedCultureDonts,
   getPattayaTips,
   getSocialTips,
   getTempleChecklist,
@@ -110,8 +111,8 @@ function EtiquetteCard({
 export function CultureEtiquettePage() {
   const { language } = useLanguage();
   const copy = getCultureEtiquettePage(language);
-  const dos = getCultureDos(language);
-  const donts = getCultureDonts(language);
+  const dos = getExtendedCultureDos(language);
+  const donts = getExtendedCultureDonts(language);
   const templeItems = getTempleChecklist(language);
   const pattayaTips = getPattayaTips(language);
   const socialTips = getSocialTips(language);
@@ -186,27 +187,49 @@ export function CultureEtiquettePage() {
         </div>
       </section>
 
-      {/* Wai guide */}
+      {/* Illustrated do & don't — same layout as thai-culture */}
       <section
-        className="rounded-2xl border border-[#0A192F]/10 bg-[#0A192F] p-6 text-white sm:p-8"
-        aria-labelledby="wai-title"
+        id="illustrated-dos-donts"
+        aria-labelledby="illustrated-dos-donts-title"
+        className="culture-survival rounded-2xl border border-[#D7CBBA]/60 bg-[#f5f5f7] p-4 sm:p-6"
       >
-        <h2 id="wai-title" className="text-xl font-bold text-[#D7CBBA] sm:text-2xl">
-          {copy.waiTitle}
+        <h2 id="illustrated-dos-donts-title" className="culture-survival__section-title">
+          {copy.illustratedTitle}
         </h2>
-        <p className="mt-2 text-sm text-white/80 sm:text-base">{copy.waiSubtitle}</p>
-        <div className="mt-6 grid gap-3 sm:grid-cols-3">
-          {copy.waiSteps.map((step, i) => (
+        <p className={`mt-2 max-w-3xl text-sm ${livingTheme.muted}`}>{copy.illustratedIntro}</p>
+        <div className="mt-4">
+          <CultureDosDontsIllustrated />
+        </div>
+      </section>
+
+      {/* Wai visualizer — link to thai-culture (no duplicate text grid) */}
+      <section
+        className="rounded-2xl border border-[#D7CBBA]/60 bg-gradient-to-br from-[#faf7f2] via-white to-[#f5efe6] p-6 sm:p-8"
+        aria-labelledby="wai-promo-title"
+      >
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex gap-4">
             <div
-              key={step.level}
-              className="rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm"
+              className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-white shadow-md"
+              style={{ backgroundColor: "#B29475" }}
             >
-              <span className="text-xs font-semibold uppercase tracking-wide text-[#B29475]">
-                {i === 0 ? "①" : i === 1 ? "②" : "③"} {step.level}
-              </span>
-              <p className="mt-2 text-sm leading-relaxed text-white/90">{step.who}</p>
+              <Hand className="h-6 w-6" aria-hidden />
             </div>
-          ))}
+            <div>
+              <h2 id="wai-promo-title" className="text-lg font-bold text-[#0A192F] sm:text-xl">
+                {copy.waiPromoTitle}
+              </h2>
+              <p className={`mt-2 max-w-xl text-sm leading-relaxed ${livingTheme.body}`}>
+                {copy.waiPromoBody}
+              </p>
+            </div>
+          </div>
+          <Link
+            href="/living/culture/thai-culture#thai-culture-survival"
+            className="inline-flex shrink-0 items-center justify-center rounded-full bg-[#B29475] px-5 py-2.5 text-sm font-bold text-white shadow-md transition hover:bg-[#9a8268]"
+          >
+            {copy.waiPromoCta}
+          </Link>
         </div>
       </section>
 
@@ -221,13 +244,14 @@ export function CultureEtiquettePage() {
         <p className={`mt-2 ${livingTheme.body}`}>{copy.highLowBody}</p>
       </section>
 
-      {/* Dos & Don'ts side by side */}
+      {/* Extended dos & don'ts — icon cards */}
       <section aria-labelledby="dos-donts-compare">
-        <h2 id="dos-donts-compare" className="sr-only">
-          {copy.dosDontsIntro}
+        <h2 id="dos-donts-compare" className={livingTheme.heading}>
+          {copy.dosTitle} / {copy.dontsTitle}
         </h2>
-        <p className={`mb-6 max-w-3xl ${livingTheme.muted}`}>{copy.dosDontsIntro}</p>
-        <div className="grid gap-8 xl:grid-cols-2 xl:gap-10">
+        <p className={`mt-2 max-w-3xl ${livingTheme.muted}`}>{copy.extendedDosDontsIntro}</p>
+        <p className={`mt-1 max-w-3xl text-sm ${livingTheme.muted}`}>{copy.dosDontsIntro}</p>
+        <div className="mt-6 grid gap-8 xl:grid-cols-2 xl:gap-10">
           <div aria-labelledby="dos-title">
             <h3
               id="dos-title"

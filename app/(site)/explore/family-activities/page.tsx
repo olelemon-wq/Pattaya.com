@@ -1,16 +1,10 @@
 import { FamilyActivitiesPage } from "@/components/explore/family-activities-page";
+import { createExploreDedicatedMetadata } from "@/lib/i18n/dedicated-page-metadata";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Family Activities | กิจกรรมครอบครัว | Pattaya.com",
-  description:
-    "Family-friendly activities in Pattaya — water parks, gardens, Mini Siam, and day trips for kids and parents.",
-  openGraph: {
-    title: "Family Activities — Pattaya.com",
-    description:
-      "Kid-friendly days out including Aquaverse, Cartoon Network Amazone, and Nong Nooch Garden.",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return createExploreDedicatedMetadata("family-activities");
+}
 
 export default function FamilyActivitiesRoutePage() {
   return <FamilyActivitiesPage />;

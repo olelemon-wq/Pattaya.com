@@ -70,14 +70,15 @@ export function getDrivingInteractiveCopy(lang: LanguageCode) {
     ),
     sectionLicense: t(
       lang,
-      L("Thai driving license steps", "ขั้นตอนใบขับขี่ไทย", "泰国驾照步骤", "Шаги прав"),
+      L("Thai driving license — 6 steps", "ใบขับขี่ไทย — 6 ขั้นตอน", "泰国驾照六步", "Права — 6 шагов"),
     ),
     licenseHint: t(
       lang,
-      L("Tap a step to expand documents and details.",
-        "แตะแต่ละขั้นเพื่อดูรายละเอียด",
-        "点击步骤展开详情。",
-        "Нажмите шаг для деталей.",
+      L(
+        "Allow a full morning at Chonburi DLT. Tap each step for details.",
+        "เผื่อเวลาครึ่งวันที่กรมขนส่งชลบุรี แตะแต่ละขั้นเพื่อดูรายละเอียด",
+        "预留半天前往春武里陆运厅。点击各步查看详情。",
+        "Полдня в DLT Чонбури. Нажмите шаг.",
       ),
     ),
     disclaimer: t(
@@ -98,7 +99,8 @@ export type ChecklistItemId =
   | "brakes"
   | "insurance"
   | "fuel"
-  | "contract";
+  | "contract"
+  | "dealer";
 
 export function getRentalChecklistItems(lang: LanguageCode) {
   return [
@@ -180,83 +182,18 @@ export function getRentalChecklistItems(lang: LanguageCode) {
       ),
       warning: false,
     },
-  ];
-}
-
-export type LicenseStepId = "residence" | "medical" | "dlt";
-
-export function getLicenseStepperSteps(lang: LanguageCode) {
-  return [
     {
-      id: "residence" as LicenseStepId,
-      step: 1,
-      title: t(
-        lang,
-        L("Residence certificate", "ขอใบรับรองถิ่นที่อยู่", "居住证明", "Подтверждение адреса"),
-      ),
-      body: t(
+      id: "dealer" as ChecklistItemId,
+      label: t(
         lang,
         L(
-          "TM30 from your landlord or condo juristic office, house registration copy, or lease registered with immigration — must show your Chonburi/Pattaya address.",
-          "ใบ TM30 จากเจ้าของบ้านหรือนิติบุคคลคอนโด สำเนาทะเบียนบ้าน หรือสัญญาเช่าที่แจ้งตม. — ต้องแสดงที่อยู่ในชลบุรี/พัทยา",
-          "房东或公寓管理处 TM30、户口复印件或已向移民局登记的租约——须显示春武里/芭提雅地址。",
-          "TM30, house book или аренда с адресом Чонбури/Паттайи.",
+          "Use a licensed rental shop or international chain — avoid informal Facebook-only listings",
+          "ใช้ร้านเช่าที่มีใบอนุญาตหรือแบรนด์สากล — หลีกเลี่ยงประกาศ Facebook อย่างเดียว",
+          "选择持证租车行或国际连锁——避免仅脸书私下交易",
+          "Лицензированная аренда, не только Facebook",
         ),
       ),
-      bullets: [
-        t(lang, L("Passport + visa page copies", "สำเนาพาสปอร์ตและหน้าวีซ่า", "护照与签证页复印件", "Копии паспорта и визы")),
-        t(lang, L("2 passport photos", "รูปถ่าย 2 รูป", "证件照2张", "2 фото")),
-      ],
-    },
-    {
-      id: "medical" as LicenseStepId,
-      step: 2,
-      title: t(lang, L("Medical certificate", "ใบตรวจสุขภาพขับขี่", "驾驶体检证明", "Медсправка")),
-      body: t(
-        lang,
-        L(
-          "Visit a DLT-approved clinic in Pattaya — same-day certificates are common on Sukhumvit and North Pattaya. Valid within 30 days.",
-          "ไปคลินิกที่กรมขนส่งอนุมัติในพัทยา — หลายแห่งออกใบได้ในวันเดียวบนสุขุมวิทและพัทยาเหนือ ใช้ได้ภายใน 30 วัน",
-          "前往芭提雅认可的陆运厅体检诊所——Sukhumvit 与北芭多可当日出证，30天内有效。",
-          "Клиника, одобренная DLT; часто в тот же день; 30 дней.",
-        ),
-      ),
-      bullets: [
-        t(lang, L("Vision & basic fitness test", "ตรวจสายตาและสุขภาพพื้นฐาน", "视力与基本健康检查", "Зрение и базовый осмотр")),
-        t(lang, L("Fee roughly ฿100–300", "ค่าธรรมเนียมประมาณ 100–300 บาท", "费用约100–300泰铢", "~100–300 бат")),
-      ],
-    },
-    {
-      id: "dlt" as LicenseStepId,
-      step: 3,
-      title: t(
-        lang,
-        L("DLT Chonburi — tests & license", "กรมขนส่งชลบุรี — สอบและรับใบขับขี่", "春武里陆运厅考试领证", "DLT Чонбури"),
-      ),
-      body: t(
-        lang,
-        L(
-          "Department of Land Transport, Chonburi Province. Colour-blindness plate, reaction test, and computer theory. Car (class B) and motorcycle (class A) are separate.",
-          "กรมการขนส่งทางบก จังหวัดชลบุรี ทดสอบตาบอดสี ปฏิกิริยา และทฤษฎีคอมพิวเตอร์ รถยนต์ (ชั้น B) และมอเตอร์ไซค์ (ชั้น A) แยกกัน",
-          "春武里府陆运厅：色盲检测、反应测试、机考理论；汽车B类与摩托A类分开考取。",
-          "DLT Чонбури: зрение, реакция, теория; классы B и A отдельно.",
-        ),
-      ),
-      bullets: [
-        t(
-          lang,
-          L(
-            "Converting? Bring home license + embassy translation",
-            "แปลงใบเดิม? นำใบขับขี่เดิม + แปลสถานทูต",
-            "转换？携带本国驾照+使馆翻译",
-            "Конвертация: права + перевод",
-          ),
-        ),
-        t(
-          lang,
-          L("Car license valid 5 years; pay fees on site", "ใบรถยนต์มัก 5 ปี ชำระค่าธรรมเนียมที่สำนักงาน", "汽车驾照通常5年，现场缴费", "Авто — 5 лет, оплата на месте"),
-        ),
-      ],
+      warning: false,
     },
   ];
 }

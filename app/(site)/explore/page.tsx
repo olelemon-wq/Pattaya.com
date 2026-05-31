@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { ExploreHubPage } from "@/components/explore/explore-hub-page";
+import { createLocalizedSectionMetadata } from "@/lib/i18n/localized-metadata";
 
-export const metadata: Metadata = {
-  title: "Explore | Pattaya.com",
-  description:
-    "Discover Pattaya — beaches, islands, dining, cafes, shopping, family activities, yacht charters, and hidden gems.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return createLocalizedSectionMetadata("explore");
+}
 
 export default function ExplorePage() {
   return <ExploreHubPage />;

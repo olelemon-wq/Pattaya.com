@@ -1,10 +1,10 @@
 import { HealthInsurancePage } from "@/components/living/health-insurance-page";
 import { HospitalsPage } from "@/components/living/hospitals-page";
 import {
-  createItemMetadata,
   SectionDetail,
 } from "@/lib/navigation/section-pages";
-import { getNavItemBySlug, getSectionById } from "@/lib/navigation/site-map";
+import { createLivingCategoryMetadata } from "@/lib/i18n/dedicated-page-metadata";
+import { getNavItemBySlug } from "@/lib/navigation/site-map";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -26,35 +26,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  if (slug === "hospitals") {
-    return {
-      title: "Hospitals Pattaya | โรงพยาบาล | Pattaya.com",
-      description:
-        "International hospitals and clinics in Pattaya — ER, health check-ups, insurance billing, and expat healthcare directory.",
-      openGraph: {
-        title: "Hospitals | โรงพยาบาล — Pattaya.com",
-        description:
-          "Bangkok Hospital Pattaya, Phyathai, and more — curated guide for residents.",
-      },
-    };
-  }
-  if (slug === "insurance") {
-    return {
-      title: "Health Insurance Pattaya | ประกันสุขภาพ | Pattaya.com",
-      description:
-        "Expat health insurance — international vs local plans, visa compliance, and hospital direct billing in Pattaya.",
-      openGraph: {
-        title: "Health Insurance | ประกันสุขภาพ — Pattaya.com",
-        description: "Compare approved plans for long-stay residents.",
-      },
-    };
-  }
-
-  const section = getSectionById(SECTION_ID)!;
-  const item = getNavItemBySlug(SECTION_ID, [CATEGORY, slug]);
-  if (!item) return { title: "Not Found | Pattaya.com" };
-
-  return createItemMetadata(section, item.label, item.description);
+  return createLivingCategoryMetadata(CATEGORY, slug);
 }
 
 export default async function LivingHealthcarePage({ params }: PageProps) {

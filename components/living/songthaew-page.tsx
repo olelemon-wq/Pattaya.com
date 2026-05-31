@@ -1,80 +1,63 @@
 "use client";
 
 import { LivingFaqSection } from "@/components/living/living-faq-section";
+import {
+  LivingCtaActions,
+  livingCtaButtonClass,
+} from "@/components/living/living-cta-actions";
 import { LocalizedLivingPageShell } from "@/components/living/localized-living-page-shell";
+import { SongthaewGuide } from "@/components/living/songthaew-guide";
 import { useLanguage } from "@/components/layout/language-provider";
 import { livingImages } from "@/lib/design/living-images";
-import { faqEnTh, L, t } from "@/lib/i18n/living-helpers";
+import { faqEnTh } from "@/lib/i18n/living-helpers";
+import { getSongthaewPage } from "@/lib/i18n/messages/living/songthaew";
 import { faqSubtitle } from "@/lib/i18n/messages/living/shells";
-import type { LocalizedText } from "@/lib/i18n/text";
-
-function getRoutes(lang: import("@/lib/i18n/languages").LanguageCode) {
-  return [
-    {
-      route: t(lang, L("Beach Road ↔ Sukhumvit loop", "Beach Road ↔ สุขุมวิท", "海滩路 ↔ 素坤逸环线", "Beach Road ↔ Sukhumvit")),
-      fare: "฿10 / ฿20",
-      tip: t(
-        lang,
-        L("Press buzzer to stop; say destination when boarding.", "กดกริ่งลง บอกปลายทางตอนขึ้น", "按铃下车；上车时报目的地。", "Звонок; назовите пункт."),
-      ),
-    },
-    {
-      route: t(lang, L("Jomtien ↔ Pattaya Second Road", "จอมเทียน ↔ ถนนพัทยา 2", "仲天 ↔ 芭提雅二路", "Jomtien ↔ 2nd Road")),
-      fare: "฿10–20",
-      tip: t(
-        lang,
-        L("Shared ride — wait until full or negotiate charter.", "รถร่วม — รอเต็มหรือเช่าเหมา", "合乘 — 坐满或包车。", "Попутно или чартер."),
-      ),
-    },
-    {
-      route: t(lang, L("Naklua / Wong Amat", "นาเกลือ / วงอามาด", "那库拉 / Wong Amat", "Naklua")),
-      fare: "฿10–30",
-      tip: t(lang, L("Fewer vehicles after 22:00 — use Grab backup.", "รถน้อยหลัง 22:00 ใช้ Grab สำรอง", "22 点后车少 — 备 Grab。", "После 22:00 мало машин."),
-      ),
-    },
-    {
-      route: t(lang, L("Charter (private hire)", "เช่าเหมา", "包车", "Чартер")),
-      fare: "฿100–300+",
-      tip: t(lang, L("Agree price before departure.", "ตกลงราคาก่อนออก", "出发前讲价。", "Договоритесь о цене заранее."),
-      ),
-    },
-  ];
-}
-
-function getEtiquette(lang: import("@/lib/i18n/languages").LanguageCode): string[] {
-  return [
-    t(lang, L("Enter from the back; offer seats to monks and elderly.", "ขึ้นท้ายรถ ให้ที่นั่งพระและผู้สูงอายุ", "从后方上车；为僧侣与老人让座。", "Садитесь сзади; уступайте место.")),
-    t(lang, L("Keep voices low at night.", "พูดเบาตอนกลางคืน", "夜间轻声。", "Тихо ночью.")),
-    t(lang, L("Do not eat messy food; water is fine.", "อย่ากินอาหารเลอะ น้ำได้", "勿吃易脏食物；可带水。", "Не ешьте messy food.")),
-    t(lang, L("Say khop khun when paying.", "ขอบคุณตอนจ่ายเงิน", "付款时说谢谢。", "Khop khun при оплате.")),
-  ];
-}
+import { Bus } from "lucide-react";
+import Link from "next/link";
 
 const faqs = [
   faqEnTh(
     "stop",
     "How do I stop a songthaew?",
     "ลงรถอย่างไร?",
-    "Ring the buzzer or tap the roof. Have small notes ready.",
+    "Press the buzzer or tap the roof. Have small notes ready.",
     "กดกริ่งหรือเคาะหลังคา เตรียมเงินย่อย",
     "如何下车？",
     "Как выйти?",
   ),
   faqEnTh(
+    "overpay",
+    "How do I use a Pattaya songthaew without overpaying?",
+    "ขึ้นสองแถวพัทยาไม่ให้โดนแพง?",
+    'Wave on the normal route — do not ask "Can you go to…?" Press the buzzer and pay 10–20 THB in small notes at the driver.',
+    "โบกขึ้นเส้นทางปกติ อย่าถาม “ไป...ได้ไหม” กดกริ่งลง จ่าย 10–20 บาทที่คนขับ",
+    "芭提雅双条车怎样不被多收钱？",
+    "Как ехать на сонгтхэу?",
+  ),
+  faqEnTh(
     "grab",
     "Songthaew vs Grab?",
     "สองแถวหรือ Grab?",
-    "Songthaews cheapest on fixed corridors. Grab wins for AC and late night.",
-    "สองแถวถูกบนเส้นทางคงที่ Grab ดีกลางคืนและแอร์",
+    "Songthaews are cheapest on fixed corridors. Grab wins after ~22:00, for airports, and door-to-door Soi drops.",
+    "สองแถวถูกบนเส้นทางคงที่ Grab ดีหลัง 22:00 สนามบิน และซอยคอนโด",
     "双条车还是 Grab？",
     "Songthaew или Grab?",
+  ),
+  faqEnTh(
+    "queue",
+    "Do I need to queue?",
+    "ต้องต่อคิวไหม?",
+    "Yes at busy stops like Wat Chaimongkol — cutting in line is considered very rude.",
+    "ใช่ที่ป้ายหลัก เช่น วัดชัยมงคล การแซงคิวหยาบคายมาก",
+    "需要排队吗？",
+    "Очередь?",
   ),
   faqEnTh(
     "safety",
     "Are songthaews safe?",
     "ปลอดภัยไหม?",
-    "Generally yes on main routes. Hold handrails and agree charter fare.",
-    "โดยทั่วไปปลอดภัยบนเส้นหลัก จับราวและตกลงราคาเช่าเหมา",
+    "Generally yes on main routes. Hold handrails, pay shared fare only unless you agreed a charter price.",
+    "โดยทั่วไปปลอดภัยบนเส้นหลัก จับราว จ่ายราคารถร่วมเว้นแต่ตกลงเช่าเหมาแล้ว",
     "安全吗？",
     "Безопасно?",
   ),
@@ -82,40 +65,94 @@ const faqs = [
 
 export function SongthaewPage() {
   const { language } = useLanguage();
+  const copy = getSongthaewPage(language);
 
   return (
-    <LocalizedLivingPageShell shellKey="songthaew" heroImage={livingImages.localTransport} heroAlt="Songthaew">
-      <section aria-labelledby="songthaew-routes">
-        <h2 id="songthaew-routes" className="text-2xl font-bold text-[#0A192F] sm:text-3xl">
-          {t(language, L("Common routes & fares", "เส้นทางและค่าโดยสาร", "常见路线与票价", "Маршруты и тарифы"))}
-        </h2>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          {getRoutes(language).map((r) => (
-            <article
-              key={r.route}
-              className="rounded-xl border border-[#e2e8f0] bg-white p-5 transition hover:border-[#D7CBBA]"
-            >
-              <h3 className="font-bold text-[#0A192F]">{r.route}</h3>
-              <p className="mt-1 text-sm font-semibold text-[#B29475]">{r.fare}</p>
-              <p className="mt-2 text-sm text-[#444748]">{r.tip}</p>
-            </article>
-          ))}
+    <LocalizedLivingPageShell
+      shellKey="songthaew"
+      heroImage={livingImages.songthaewHero}
+      heroAlt="Blue songthaew on Pattaya Beach Road"
+      ctaHref="#songthaew-content"
+      bottomChildren={
+        <LivingCtaActions>
+          <Link href="/living/transportation/ride-apps" className={livingCtaButtonClass.primary}>
+            {copy.rideApps}
+          </Link>
+          <Link href="/living/culture/etiquette" className={livingCtaButtonClass.outline}>
+            {copy.cultureLink}
+          </Link>
+          <Link href="/living/transportation/driving" className={livingCtaButtonClass.outline}>
+            {copy.driving}
+          </Link>
+        </LivingCtaActions>
+      }
+    >
+      <section
+        id="songthaew-content"
+        className="relative scroll-mt-28 overflow-hidden rounded-2xl border border-[#D7CBBA]/60 bg-gradient-to-br from-[#faf7f2] via-white to-[#f5efe6] p-6 sm:p-8"
+        aria-labelledby="songthaew-intro-title"
+      >
+        <div className="relative flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
+          <div
+            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-white shadow-lg"
+            style={{ backgroundColor: "#B29475" }}
+          >
+            <Bus className="h-7 w-7" aria-hidden />
+          </div>
+          <div>
+            <h2 id="songthaew-intro-title" className="text-xl font-bold text-[#0A192F] sm:text-2xl">
+              {copy.introTitle}
+            </h2>
+            <p className="mt-2 text-sm leading-relaxed text-[#444748] sm:text-base">
+              {copy.introBody}
+            </p>
+          </div>
         </div>
       </section>
 
-      <section
-        className="rounded-2xl border border-[#B29475]/20 bg-[#D7CBBA] p-6 sm:p-8"
-        aria-labelledby="songthaew-etiquette"
-      >
-        <h2 id="songthaew-etiquette" className="text-xl font-bold text-[#0A192F]">
-          {t(language, L("Rider etiquette", "มารยาทผู้โดยสาร", "乘车礼仪", "Этикет"))}
-        </h2>
-        <ul className="mt-4 list-inside list-disc space-y-2 text-sm text-[#444748]">
-          {getEtiquette(language).map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </section>
+      <div className="rounded-2xl border border-[#D7CBBA]/60 bg-[#f5f5f7] p-4 sm:p-6">
+        <SongthaewGuide />
+      </div>
+
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:items-stretch md:gap-8">
+        <section
+          className="flex h-full flex-col rounded-2xl border border-[#B29475]/20 bg-[#D7CBBA] p-6 sm:p-8"
+          aria-labelledby="songthaew-etiquette"
+        >
+          <h2 id="songthaew-etiquette" className="text-xl font-bold text-[#0A192F]">
+            {copy.etiquetteTitle}
+          </h2>
+          <ul className="mt-4 list-inside list-disc space-y-2 text-sm text-[#444748]">
+            {copy.etiquetteItems.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </section>
+
+        <section
+          className="flex h-full flex-col rounded-2xl border border-[#e2e8f0] bg-white p-6 sm:p-8"
+          aria-labelledby="songthaew-grab-alt"
+        >
+          <h2 id="songthaew-grab-alt" className="text-xl font-bold text-[#0A192F]">
+            {copy.whenGrabTitle}
+          </h2>
+          <ul className="mt-4 space-y-2 text-sm text-[#444748]">
+            {copy.whenGrabItems.map((item) => (
+              <li key={item} className="flex gap-2">
+                <span className="text-[#B29475]" aria-hidden>
+                  •
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-auto pt-4 text-sm">
+            <Link href="/living/safety/scam-alerts" className="font-semibold text-[#B29475] hover:underline">
+              {copy.scamLink}
+            </Link>
+          </p>
+        </section>
+      </div>
 
       <LivingFaqSection
         faqs={faqs}

@@ -2,10 +2,10 @@ import { DrivingPage } from "@/components/living/driving-page";
 import { RideAppsPage } from "@/components/living/ride-apps-page";
 import { SongthaewPage } from "@/components/living/songthaew-page";
 import {
-  createItemMetadata,
   SectionDetail,
 } from "@/lib/navigation/section-pages";
-import { getNavItemBySlug, getSectionById } from "@/lib/navigation/site-map";
+import { createLivingCategoryMetadata } from "@/lib/i18n/dedicated-page-metadata";
+import { getNavItemBySlug } from "@/lib/navigation/site-map";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -28,45 +28,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  if (slug === "songthaew") {
-    return {
-      title: "Songthaew Pattaya | รถสองแถว | Pattaya.com",
-      description:
-        "Using songthaew baht buses in Pattaya — routes, fares, etiquette, and when to use Grab instead.",
-      openGraph: {
-        title: "Songthaew | รถสองแถว — Pattaya.com",
-        description: "Ride local shared transport like a Pattaya resident.",
-      },
-    };
-  }
-  if (slug === "ride-apps") {
-    return {
-      title: "Grab & Bolt Pattaya | App เดินทาง | Pattaya.com",
-      description:
-        "Grab and Bolt in Pattaya — fares, safety tips, airport rides, and when to use songthaews instead.",
-      openGraph: {
-        title: "Grab & Bolt | App เดินทาง — Pattaya.com",
-        description: "Ride-hailing guide for Pattaya residents and visitors.",
-      },
-    };
-  }
-  if (slug === "driving") {
-    return {
-      title: "Driving in Thailand Pattaya | ขับรถในไทย | Pattaya.com",
-      description:
-        "Thai driving license conversion, Chonburi DLT checklist, motorcycle vs car, insurance, Pattaya hotspots, and FAQ.",
-      openGraph: {
-        title: "Driving in Thailand | ขับรถในไทย — Pattaya.com",
-        description: "License guide and road rules for Chonburi residents.",
-      },
-    };
-  }
-
-  const section = getSectionById(SECTION_ID)!;
-  const item = getNavItemBySlug(SECTION_ID, [CATEGORY, slug]);
-  if (!item) return { title: "Not Found | Pattaya.com" };
-
-  return createItemMetadata(section, item.label, item.description);
+  return createLivingCategoryMetadata(CATEGORY, slug);
 }
 
 export default async function LivingTransportationPage({ params }: PageProps) {

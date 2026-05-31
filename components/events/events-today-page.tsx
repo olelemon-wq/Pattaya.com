@@ -3,8 +3,8 @@
 import { Breadcrumb } from "@/components/layout/breadcrumb";
 import { useLanguage } from "@/components/layout/language-provider";
 import type { EventsHubEvent } from "@/lib/i18n/messages/events-hub";
+import { buildStandaloneBreadcrumbs } from "@/lib/i18n/resolve-site-nav";
 import { getEventsHub } from "@/lib/i18n/messages/events-hub";
-import { buildBreadcrumbs } from "@/lib/navigation/utils";
 import { Calendar, Clock, MapPin, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -107,7 +107,11 @@ function WeekCard({ event, cta }: { event: EventsHubEvent; cta: string }) {
 export function EventsTodayPage() {
   const { language } = useLanguage();
   const hub = getEventsHub(language);
-  const breadcrumbs = buildBreadcrumbs(hub.hero.title, "/events");
+  const breadcrumbs = buildStandaloneBreadcrumbs(
+    language,
+    hub.hero.title,
+    "/events",
+  );
 
   return (
     <>
@@ -120,7 +124,9 @@ export function EventsTodayPage() {
         <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
           {hub.hero.title}
         </h1>
-        <p className="mt-1 text-lg text-teal-700">{hub.hero.titleTh}</p>
+        {language === "th" && hub.hero.titleTh ? (
+          <p className="mt-1 text-lg text-teal-700">{hub.hero.titleTh}</p>
+        ) : null}
         <p className="mt-3 max-w-2xl text-base leading-7 text-zinc-600">
           {hub.hero.description}
         </p>
