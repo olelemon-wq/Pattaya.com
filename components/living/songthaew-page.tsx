@@ -9,59 +9,12 @@ import { LocalizedLivingPageShell } from "@/components/living/localized-living-p
 import { SongthaewGuide } from "@/components/living/songthaew-guide";
 import { useLanguage } from "@/components/layout/language-provider";
 import { livingImages } from "@/lib/design/living-images";
-import { faqEnTh } from "@/lib/i18n/living-helpers";
 import { getSongthaewPage } from "@/lib/i18n/messages/living/songthaew";
 import { faqSubtitle } from "@/lib/i18n/messages/living/shells";
+import { songthaewFaqs } from "@/lib/i18n/messages/living/living-page-faqs";
 import { Bus } from "lucide-react";
 import Link from "next/link";
 
-const faqs = [
-  faqEnTh(
-    "stop",
-    "How do I stop a songthaew?",
-    "ลงรถอย่างไร?",
-    "Press the buzzer or tap the roof. Have small notes ready.",
-    "กดกริ่งหรือเคาะหลังคา เตรียมเงินย่อย",
-    "如何下车？",
-    "Как выйти?",
-  ),
-  faqEnTh(
-    "overpay",
-    "How do I use a Pattaya songthaew without overpaying?",
-    "ขึ้นสองแถวพัทยาไม่ให้โดนแพง?",
-    'Wave on the normal route — do not ask "Can you go to…?" Press the buzzer and pay 10–20 THB in small notes at the driver.',
-    "โบกขึ้นเส้นทางปกติ อย่าถาม “ไป...ได้ไหม” กดกริ่งลง จ่าย 10–20 บาทที่คนขับ",
-    "芭提雅双条车怎样不被多收钱？",
-    "Как ехать на сонгтхэу?",
-  ),
-  faqEnTh(
-    "grab",
-    "Songthaew vs Grab?",
-    "สองแถวหรือ Grab?",
-    "Songthaews are cheapest on fixed corridors. Grab wins after ~22:00, for airports, and door-to-door Soi drops.",
-    "สองแถวถูกบนเส้นทางคงที่ Grab ดีหลัง 22:00 สนามบิน และซอยคอนโด",
-    "双条车还是 Grab？",
-    "Songthaew или Grab?",
-  ),
-  faqEnTh(
-    "queue",
-    "Do I need to queue?",
-    "ต้องต่อคิวไหม?",
-    "Yes at busy stops like Wat Chaimongkol — cutting in line is considered very rude.",
-    "ใช่ที่ป้ายหลัก เช่น วัดชัยมงคล การแซงคิวหยาบคายมาก",
-    "需要排队吗？",
-    "Очередь?",
-  ),
-  faqEnTh(
-    "safety",
-    "Are songthaews safe?",
-    "ปลอดภัยไหม?",
-    "Generally yes on main routes. Hold handrails, pay shared fare only unless you agreed a charter price.",
-    "โดยทั่วไปปลอดภัยบนเส้นหลัก จับราว จ่ายราคารถร่วมเว้นแต่ตกลงเช่าเหมาแล้ว",
-    "安全吗？",
-    "Безопасно?",
-  ),
-];
 
 export function SongthaewPage() {
   const { language } = useLanguage();
@@ -154,7 +107,7 @@ export function SongthaewPage() {
       </div>
 
       <LivingFaqSection
-        faqs={faqs}
+        faqs={songthaewFaqs}
         subtitle={faqSubtitle(language, "Songthaew", "สองแถว", "双条车", "Songthaew")}
       />
     </LocalizedLivingPageShell>

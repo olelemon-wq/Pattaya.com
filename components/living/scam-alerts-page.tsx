@@ -4,8 +4,8 @@ import { LivingFaqSection } from "@/components/living/living-faq-section";
 import { LocalizedLivingPageShell } from "@/components/living/localized-living-page-shell";
 import { useLanguage } from "@/components/layout/language-provider";
 import { livingImages } from "@/lib/design/living-images";
-import { faqEnTh } from "@/lib/i18n/living-helpers";
 import { faqSubtitle } from "@/lib/i18n/messages/living/shells";
+import { scamAlertsFaqs } from "@/lib/i18n/messages/living/living-page-faqs";
 import {
   getScamAlertsPage,
   getScamContacts,
@@ -67,53 +67,6 @@ const severityStyles: Record<
   },
 };
 
-const faqs = [
-  faqEnTh(
-    "report",
-    "Where do I report a scam in Pattaya?",
-    "แจ้งความที่ไหน?",
-    "Tourist Police 1155 (24/7, English). Pattaya office: +66 38 429 371. Dial 191 for immediate threats.",
-    "Tourist Police 1155 24 ชม. สำนักงาน +66 38 429 371 191 ฉุกเฉิน",
-    "在芭提雅如何报案？",
-    "Куда сообщить?",
-  ),
-  faqEnTh(
-    "money",
-    "Can I recover money sent to a scammer?",
-    "ขอเงินคืนได้ไหม?",
-    "Recovery is difficult once transferred overseas. Report within 24 hours with bank receipts and chat logs.",
-    "ยากเมื่อโอนต่างประเทศแล้ว แจ้งภายใน 24 ชม.พร้อมสลิป",
-    "转给骗子后能追回吗？",
-    "Можно ли вернуть деньги?",
-  ),
-  faqEnTh(
-    "rental",
-    "How do I avoid rental deposit fraud?",
-    "หลีกเลี่ยงโกงค่ามัดจำเช่า?",
-    "Sign bilingual leases, photograph move-in condition, confirm TM30, never wire a full year to personal accounts.",
-    "สัญญาสองภาษา ถ่ายรูปสภาพห้อง TM30 อย่าโอนปีเต็มเข้าบัญชีส่วนตัว",
-    "如何避免租房押金诈骗？",
-    "Как избежать мошенничества с залогом?",
-  ),
-  faqEnTh(
-    "jetski",
-    "Should I rent a jet-ski in Pattaya?",
-    "ควรเช่าเจ็ทสกีไหม?",
-    "The jet-ski damage scam is extremely common. If you rent, video every angle and never leave your passport.",
-    "เจ็ทสกีโกงบ่อยมาก ถ้าเช่าต้องถ่ายวิดีโอและอย่าฝากพาสปอร์ต",
-    "应该在芭提雅租摩托艇吗？",
-    "Арендовать jet-ski?",
-  ),
-  faqEnTh(
-    "app",
-    "Is there an app for tourist police?",
-    "มีแอปตำรวจท่องเที่ยวไหม?",
-    'Yes — "Tourist Police I Lert U" with SOS button and English chat. Search on App Store or Google Play.',
-    "มี — Tourist Police I Lert U มี SOS และแชทภาษาอังกฤษ",
-    "有旅游警察应用吗？",
-    "Приложение полиции?",
-  ),
-];
 
 export function ScamAlertsPage() {
   const { language } = useLanguage();
@@ -329,7 +282,7 @@ export function ScamAlertsPage() {
       </section>
 
       <LivingFaqSection
-        faqs={faqs}
+        faqs={scamAlertsFaqs}
         subtitle={faqSubtitle(language, "Scam alerts", "มิจฉาชีพ", "诈骗提醒", "Мошенничество")}
         titleId="scam-faq-title"
       />

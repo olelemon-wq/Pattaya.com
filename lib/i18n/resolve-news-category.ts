@@ -9,6 +9,7 @@ import {
   localizeImmigrationArticle,
   localizeImmigrationSpotlight,
 } from "@/lib/i18n/messages/news-immigration-bodies";
+import { getNewsArticleHrefForCard } from "@/lib/data/news-article-index";
 import { tNewsCategoryUi } from "@/lib/i18n/messages/news-category-ui";
 import { getNewsNavCopy } from "@/lib/i18n/messages/news-nav";
 import {
@@ -496,14 +497,14 @@ export function resolveNewsCategoryContent(
         byline: patch.hero.byline ? loc(lang, patch.hero.byline) : base.hero.byline,
         ctaLabel: patch.hero.ctaLabel
           ? loc(lang, patch.hero.ctaLabel)
-          : base.hero.ctaLabel ?? tNewsCategoryUi(lang, "readFullStory"),
+          : base.hero.ctaLabel ?? tNewsCategoryUi(lang, "browseHeadlines"),
         featuredLabel: patch.hero.featuredLabel
           ? loc(lang, patch.hero.featuredLabel)
           : base.hero.featuredLabel ?? tNewsCategoryUi(lang, "featured"),
       }
     : {
         ...base.hero,
-        ctaLabel: base.hero.ctaLabel ?? tNewsCategoryUi(lang, "readFullStory"),
+        ctaLabel: base.hero.ctaLabel ?? tNewsCategoryUi(lang, "browseHeadlines"),
         featuredLabel: base.hero.featuredLabel ?? tNewsCategoryUi(lang, "featured"),
       };
 
@@ -517,6 +518,9 @@ export function resolveNewsCategoryContent(
     headlinesTitle,
     footer,
     spotlights: localizeSpotlights(lang, slug, base.spotlights),
-    articles: localizeArticles(lang, slug, base.articles),
+    articles: localizeArticles(lang, slug, base.articles).map((article, index) => {
+      const articleHref = getNewsArticleHrefForCard(slug, base.articles[index]);
+      return articleHref ? { ...article, href: articleHref } : article;
+    }),
   };
 }

@@ -1,6 +1,276 @@
 import type { LanguageCode } from "@/lib/i18n/languages";
+import {
+  shoppingMarketImages,
+  shoppingMarketTipImages,
+} from "@/lib/design/shopping-market-images";
 import { L, t } from "@/lib/i18n/living-helpers";
 import { getExploreCommon } from "@/lib/i18n/messages/explore-common";
+
+export function getShoppingMarketsList(lang: LanguageCode) {
+  const c = getExploreCommon(lang);
+  const openInMaps = t(
+    lang,
+    L("Open in Google Maps →", "เปิดใน Google Maps →", "在 Google 地图中打开 →", "Google Maps →"),
+  );
+  const streetFoodGuide = t(
+    lang,
+    L("Street food guide →", "คู่มือของกิน →", "街头美食指南 →", "Стритфуд →"),
+  );
+  const nakluaGuide = t(lang, L("Naklua beach guide →", "คู่มือหาดนาเกลือ →", "那库拉海滩指南 →", "Гид Naklua →"));
+
+  return {
+    title: t(lang, L("Choose your market", "เลือกตลาด", "选择市场", "Выберите рынок")),
+    subtitle: t(
+      lang,
+      L(
+        "Real markets across Pattaya — price ranges are guides only; no paid listings on this page.",
+        "ตลาดจริงในพัทยา — ราคาเป็นคร่าวๆ ไม่มีรายการโฆษณาในหน้านี้",
+        "芭提雅真实市场 — 价格为参考，本页无商业推广。",
+        "Реальные рынки — цены ориентировочные.",
+      ),
+    ),
+    hoursLabel: c.hours,
+    mustBuyLabel: c.mustBuy,
+    priceRangeLabel: t(lang, L("Typical prices", "ราคาโดยประมาณ", "参考价位", "Примерные цены")),
+    items: [
+      {
+        id: "thepprasit" as const,
+        name: t(lang, L("Thepprasit Night Market", "ตลาดเทพประสิทธิ์", "Thepprasit 夜市", "Thepprasit")),
+        hours: t(lang, L("Fri–Sun · ~17:00–23:00", "ศ–อา · ~17:00–23:00", "周五至日 · 约17:00–23:00", "Пт–Вс · ~17:00–23:00")),
+        mustBuy: t(
+          lang,
+          L(
+            "Street snacks, printed tees, souvenirs, phone accessories",
+            "ของกิน เสื้อยืด ของฝาก อุปกรณ์มือถือ",
+            "街头小吃、T恤、纪念品",
+            "Снеки, футболки, сувениры",
+          ),
+        ),
+        text: t(
+          lang,
+          L(
+            "Pattaya's best-known night market — eat first, then browse stalls for bargains and gifts. Same spot as our street-food guide, but this page focuses on shopping.",
+            "ตลาดกลางคืนดังสุด — กินก่อน แล้วค่อยเดินช้อป ที่เดียวกับหน้าของกิน แต่โฟกัสเรื่องช้อป",
+            "最著名的夜市 — 先吃再逛；与街头美食页同一地点，本页侧重购物。",
+            "Самый известный ночной рынок — сначала еда, потом шопинг.",
+          ),
+        ),
+        priceRange: t(
+          lang,
+          L("~50–500 THB / item", "~50–500 บาท/ชิ้น", "约50–500泰铢/件", "~50–500 бат/шт."),
+        ),
+        href: "https://www.google.com/maps/search/?api=1&query=Thepprasit+Night+Market+Pattaya+Thailand",
+        linkLabel: openInMaps,
+        secondaryHref: "/explore/restaurants/street-food#market-thepprasit",
+        secondaryLinkLabel: streetFoodGuide,
+        image: shoppingMarketImages[0],
+      },
+      {
+        id: "naklua" as const,
+        name: t(lang, L("Naklua Market", "ตลาดนาเกลือ", "Naklua 市场", "Naklua")),
+        hours: t(lang, L("Daily · ~06:00–11:00", "ทุกวัน · ~06:00–11:00", "每日 · 约6:00–11:00", "Ежедн. · ~6:00–11:00")),
+        mustBuy: t(
+          lang,
+          L(
+            "Spices, dried seafood, fruit, household goods",
+            "เครื่องเทศ อาหารทะเลแห้ง ผลไม้ ของใช้",
+            "香料、干货、水果",
+            "Специи, сухие морепродукты, фрукты",
+          ),
+        ),
+        text: t(
+          lang,
+          L(
+            "Where locals shop before the sun gets harsh — real market prices on spices, dried goods, and fruit you can take back to your room.",
+            "คนท้องถิ่นช้อปก่อนแดดแรง — ราคาตลาดจริง เครื่องเทศ ของแห้ง ผลไม้ ซื้อกลับที่พักได้",
+            "本地人早市 — 香料、干货、水果，价格地道。",
+            "Утренний рынок для местных — специи и сухие продукты.",
+          ),
+        ),
+        priceRange: t(lang, L("~30–300 THB / item", "~30–300 บาท/ชิ้น", "约30–300泰铢/件", "~30–300 бат")),
+        href: "https://www.google.com/maps/search/?api=1&query=Naklua+Market+Pattaya+Thailand",
+        linkLabel: openInMaps,
+        secondaryHref: "/explore/beaches/naklua",
+        secondaryLinkLabel: nakluaGuide,
+        image: shoppingMarketImages[1],
+      },
+      {
+        id: "floating" as const,
+        name: t(lang, L("Pattaya Floating Market", "ตลาดน้ำ 4 ภาค", "芭提雅水上市场", "Плавучий рынок")),
+        hours: t(lang, L("Daily · ~09:00–20:00", "ทุกวัน · ~09:00–20:00", "每日 · 约9:00–20:00", "Ежедн. · ~9:00–20:00")),
+        mustBuy: t(
+          lang,
+          L(
+            "Regional snacks, handicrafts, photo-friendly river setting",
+            "ของกินภูมิภาค หัตถกรรม ถ่ายรูปริมน้ำ",
+            "地方小吃、手工艺品",
+            "Региональные снеки и ремёсла",
+          ),
+        ),
+        text: t(
+          lang,
+          L(
+            "Four Thai regions in one place — boats, snack stalls, and crafts. Plan half a day; entry fees apply — check the official rate before you go.",
+            "4 ภาคใน 1 ที่ — ล่องเรือ ของกิน หัตถกรรม ใช้เวลาครึ่งวัน มีค่าเข้า — เช็คราคาหน้างานก่อนไป",
+            "四区合一 — 建议留半天；有门票，出发前查官方票价。",
+            "Четыре региона — полдня; есть входной билет.",
+          ),
+        ),
+        priceRange: t(lang, L("~100–800 THB / item", "~100–800 บาท/ชิ้น", "约100–800泰铢/件", "~100–800 бат")),
+        href: "https://www.google.com/maps/search/?api=1&query=Pattaya+Floating+Market+Four+Regions+Thailand",
+        linkLabel: openInMaps,
+        image: shoppingMarketImages[2],
+      },
+      {
+        id: "made-in-thailand" as const,
+        name: t(lang, L("Made in Thailand Market", "เมดอินไทยแลนด์", "Made in Thailand", "Made in Thailand")),
+        hours: t(
+          lang,
+          L("Wed–Sun · ~17:00–23:00", "พ–อา · ~17:00–23:00", "周三至日 · 约17:00–23:00", "Ср–Вс · ~17:00–23:00"),
+        ),
+        mustBuy: t(
+          lang,
+          L(
+            "Handmade bags, art, local design gifts",
+            "กระเป๋าทำมือ ศิลปะ ของขวัญดีไซน์",
+            "手工包、艺术礼品",
+            "Сумки ручной работы, арт",
+          ),
+        ),
+        text: t(
+          lang,
+          L(
+            "More curated than the usual souvenir rows — handmade bags, art prints, and design gifts. Hours can shift by season, so check before you make the trip.",
+            "คัดสรรกว่าแผงของฝากทั่วไป — กระเป๋าทำมือ งานศิลป์ ของขวัญดีไซน์ เวลาเปลี่ยนตามฤดู โทร/เช็คก่อนไป",
+            "比普通纪念品摊更精选 — 手工包与艺术礼品；营业时间随季节变化，出发前请确认。",
+            "Кураторский рынок ремёсел — уточняйте часы работы.",
+          ),
+        ),
+        priceRange: t(lang, L("~150–1,500 THB / item", "~150–1,500 บาท/ชิ้น", "约150–1500泰铢/件", "~150–1500 бат")),
+        href: "https://www.google.com/maps/search/?api=1&query=Made+in+Thailand+Market+Pattaya+Thailand",
+        linkLabel: openInMaps,
+        image: shoppingMarketImages[3],
+      },
+    ],
+  };
+}
+
+export function getMarketTips(lang: LanguageCode) {
+  return {
+    title: t(lang, L("Market tips", "เคล็ดลับตลาด", "市场贴士", "Советы")),
+    subtitle: t(
+      lang,
+      L(
+        "Straightforward tips for bargaining, timing, and checking goods — nothing sponsored on this page.",
+        "Tips ตรงๆ เรื่องต่อราคา เวลา เช็คของ — หน้านี้ไม่มีโฆษณา",
+        "议价、时间与验货实用建议，本页无商业推广。",
+        "Простые советы без рекламы.",
+      ),
+    ),
+    items: [
+      {
+        id: "bargain" as const,
+        title: t(lang, L("Bargaining", "ต่อราคา", "议价", "Торг")),
+        paragraphs: [
+          t(
+            lang,
+            L(
+              "At independent stalls, smile and try 'lod dai mai?' (can you reduce the price?) — a friendly no is normal. Malls and fixed-price souvenir chains rarely budge.",
+              "แผงอิสระ ยิ้มแล้วถาม 'ลดได้ไหม' ได้ — ไม่ลดก็ปกติ ห้างหรือร้านราคาตายตัวแทบไม่ต่อ",
+              "独立摊位可微笑问「ลดได้ไหม」；商场固定价店通常不能讲价。",
+              "На лавках спросите «lod dai mai?» — в ТРЦ цена фиксирована.",
+            ),
+          ),
+          t(
+            lang,
+            L(
+              "Walk two or three stalls before you buy the same item — prices on tees, bags, and magnets vary more than you would expect.",
+              "เดินดู 2–3 ร้านก่อนซื้อของชิ้นเดียวกัน — เสื้อ กระเป๋า แม่เหล็ก ราคาต่างกันมาก",
+              "同类商品先逛两三摊再下手 — T恤、包、磁贴价差可能很大。",
+              "Сравните 2–3 лавки — цены сильно различаются.",
+            ),
+          ),
+        ],
+        image: shoppingMarketTipImages[0],
+      },
+      {
+        id: "timing" as const,
+        title: t(lang, L("When to go", "ไปกี่โมงดี", "何时去", "Когда идти")),
+        paragraphs: [
+          t(
+            lang,
+            L(
+              "Morning markets (Naklua) wrap up by ~11:00 — go before 09:00 if you want the fullest stalls. Night markets peak 19:00–21:00 Fri–Sun.",
+              "ตลาดเช้า (นาเกลือ) เลิก ~11:00 น. มาก่อน 9 โมงของครบ ตลาดกลางคืนคนเยอะ 19–21 น. ศ–อา",
+              "早市约11:00收摊，9:00前到选择最多；周五至周日夜市19–21点最挤。",
+              "Утром до 11:00; ночной рынок 19–21 в выходные.",
+            ),
+          ),
+          t(
+            lang,
+            L(
+              "Arrive by 17:30 at Thepprasit for easier parking and the best food selection before the crowds build.",
+              "เทพประสิทธิ์ มา 17:30 จอดง่าย ของกินครบก่อนคนแน่น",
+              "Thepprasit 建议17:30前到，停车和食物选择更好。",
+              "Thepprasit — к 17:30 проще с парковкой и едой.",
+            ),
+          ),
+        ],
+        image: shoppingMarketTipImages[1],
+      },
+      {
+        id: "cash" as const,
+        title: t(lang, L("Cash & bags", "เงินสด & ถุง", "现金与袋子", "Наличные")),
+        paragraphs: [
+          t(
+            lang,
+            L(
+              "Most stalls are cash-only — break larger notes at a 7-Eleven first. Small bills (20–100 baht) speed things up at busy counters.",
+              "ส่วนใหญ่เงินสด — แบ่งแบงก์ที่ 7-Eleven ก่อน แบงก์ 20–100 จ่ายเร็วตอนคนเยอะ",
+              "多数摊位只收现金 — 先在7-Eleven换零钱；20–100泰铢面额更方便。",
+              "Чаще наличные — разменяйте в 7-Eleven.",
+            ),
+          ),
+          t(
+            lang,
+            L(
+              "Bring a foldable bag — many vendors skip plastic now. Wet-market mornings can be muddy near the entrance; wear shoes you do not mind getting dusty.",
+              "เอาถุงพก — หลายร้านไม่ให้ถุงแล้ว ตลาดเช้าหน้าทางอาจโคลน ใส่รองเท้าที่ไม่เสียดาย",
+              "自备折叠袋 — 许多摊位不再提供塑料袋；早市入口可能较脏，穿不怕弄脏的鞋。",
+              "Складная сумка; утром у входа может быть грязно.",
+            ),
+          ),
+        ],
+        image: shoppingMarketTipImages[2],
+      },
+      {
+        id: "quality" as const,
+        title: t(lang, L("Checking before you pay", "เช็คก่อนจ่าย", "付款前检查", "Проверка товара")),
+        paragraphs: [
+          t(
+            lang,
+            L(
+              "Quick-test electronics if the stall allows it — chargers, cables, and earbuds vary a lot in quality. For clothes, check seams and zippers on the spot.",
+              "ลองอิเล็กฯ สั้นๆ ถ้าร้านให้ — สายชาร์จ หูฟัง คุณภาพต่างกันมาก เสื้อผ้าเช็ครอยเย็บ ซิป ต่อหน้า",
+              "允许的话快速试电子产品；衣服当场检查缝线和拉链。",
+              "Проверьте электронику и швы на одежде.",
+            ),
+          ),
+          t(
+            lang,
+            L(
+              "Ask if it is made in Thailand on crafts you care about — some 'local' items are imported. Keep receipts for anything over ~1,000 baht.",
+              "ถาม 'ของไทยไหม' งานฝีมือที่สนใจ — บางชิ้นนำเข้า เก็บใบเสร็จของราคา ~1,000+",
+              "手工艺品可问是否泰国制造；千元以上保留收据。",
+              "Спросите про происхождение; сохраняйте чеки от 1000+ бат.",
+            ),
+          ),
+        ],
+        image: shoppingMarketTipImages[3],
+      },
+    ],
+  };
+}
 
 export function getShoppingMarketsPage(lang: LanguageCode) {
   const c = getExploreCommon(lang);
@@ -28,148 +298,7 @@ export function getShoppingMarketsPage(lang: LanguageCode) {
         L("Naklua · Thepprasit · east Pattaya", "นาเกลือ · เทพประสิทธิ์ · ตะวันออก", "Naklua · Thepprasit · 东芭提雅", "Naklua · Thepprasit · восток"),
       ),
     },
-    carousel: {
-      title: t(lang, L("Choose your market", "เลือกตลาด", "选择市场", "Выберите рынок")),
-      description: t(
-        lang,
-        L(
-          "From weekend night bazaars to morning local runs — match the market to your schedule and shopping list.",
-          "จากตลาดกลางคืนสุดสัปดาห์ถึงตลาดเช้า — จับคู่กับตารางและลิสต์ช้อป",
-          "从周末夜市到早市，按行程选择。",
-          "От ночных базаров до утренних рынков.",
-        ),
-      ),
-      prev: t(lang, L("Previous markets", "ตลาดก่อนหน้า", "上一项", "Назад")),
-      next: t(lang, L("Next markets", "ตลาดถัดไป", "下一项", "Далее")),
-    },
-    markets: [
-      {
-        id: "thepprasit",
-        name: t(lang, L("Thepprasit Night Market", "ตลาดเทพประสิทธิ์", "Thepprasit 夜市", "Thepprasit")),
-        nameTh: "",
-        tags: [
-          t(lang, L("Night market", "ตลาดกลางคืน", "夜市", "Ночной рынок")),
-          t(lang, L("Food & fashion", "อาหาร & แฟชั่น", "美食与时尚", "Еда и мода")),
-          t(lang, L("Weekend", "สุดสัปดาห์", "周末", "Выходные")),
-        ],
-        hours: t(lang, L("Fri–Sun · ~17:00–23:00", "ศ–อา · ~17:00–23:00", "周五至日 · 约17:00–23:00", "Пт–Вс · ~17:00–23:00")),
-        location: t(lang, L("Thepprasit Rd, south Pattaya", "ถ.เทพประสิทธิ์ ใต้พัทยา", "Thepprasit 路", "Thepprasit Rd")),
-        mustBuy: t(
-          lang,
-          L(
-            "Street snacks, printed tees, souvenirs, phone accessories",
-            "ของกิน เสื้อยืด ของฝาก อุปกรณ์มือถือ",
-            "街头小吃、T恤、纪念品",
-            "Снеки, футболки, сувениры",
-          ),
-        ),
-        excerpt: t(
-          lang,
-          L(
-            "Pattaya's best-known night market — eat first, then browse stalls for bargains and gifts.",
-            "ตลาดกลางคืนดังสุด — กินก่อน แล้วเดินช้อปของฝาก",
-            "芭提雅最知名夜市，先吃再逛。",
-            "Самый известный ночной рынок — сначала еда, потом шопинг.",
-          ),
-        ),
-      },
-      {
-        id: "naklua",
-        name: t(lang, L("Naklua Market", "ตลาดนาเกลือ", "Naklua 市场", "Naklua")),
-        nameTh: "",
-        tags: [
-          t(lang, L("Morning", "เช้า", "早市", "Утро")),
-          t(lang, L("Local", "ท้องถิ่น", "本地", "Местное")),
-          t(lang, L("Fresh produce", "ของสด", "新鲜食材", "Свежие продукты")),
-        ],
-        hours: t(lang, L("Daily · ~06:00–11:00", "ทุกวัน · ~06:00–11:00", "每日 · 约6:00–11:00", "Ежедн. · ~6:00–11:00")),
-        location: t(lang, L("Naklua, north Pattaya", "นาเกลือ เหนือพัทยา", "北芭提雅 Naklua", "Naklua")),
-        mustBuy: t(
-          lang,
-          L(
-            "Spices, dried seafood, fruit, household goods",
-            "เครื่องเทศ อาหารทะเลแห้ง ผลไม้ ของใช้",
-            "香料、干货、水果",
-            "Специи, сухие морепродукты, фрукты",
-          ),
-        ),
-        excerpt: t(
-          lang,
-          L(
-            "Where residents shop before the heat — authentic prices and takeaway ingredients for self-catering.",
-            "คนท้องถิ่นช้อปก่อนแดด — ราคาแท้ วัตถุดิบกลับบ้าน",
-            "居民早市，价格地道。",
-            "Где местные покупают до жары.",
-          ),
-        ),
-      },
-      {
-        id: "floating",
-        name: t(lang, L("Pattaya Floating Market", "ตลาดน้ำ 4 ภาค", "芭提雅水上市场", "Плавучий рынок")),
-        nameTh: "",
-        tags: [
-          t(lang, L("Cultural", "วัฒนธรรม", "文化", "Культура")),
-          t(lang, L("Boat rides", "ล่องเรือ", "游船", "Лодки")),
-          t(lang, L("Souvenirs", "ของฝาก", "纪念品", "Сувениры")),
-        ],
-        hours: t(lang, L("Daily · ~09:00–20:00", "ทุกวัน · ~09:00–20:00", "每日 · 约9:00–20:00", "Ежедн. · ~9:00–20:00")),
-        location: t(lang, L("Sukhumvit Rd (east Pattaya)", "ถ.สukhumvit ตะวันออก", "Sukhumvit 路东", "Sukhumvit Rd")),
-        mustBuy: t(
-          lang,
-          L(
-            "Regional snacks, handicrafts, photo-friendly river setting",
-            "ของกินภูมิภาค หัตถกรรม ถ่ายรูปริมน้ำ",
-            "地方小吃、手工艺品",
-            "Региональные снеки и ремёсла",
-          ),
-        ),
-        excerpt: t(
-          lang,
-          L(
-            "Themed zones representing four regions — plan half a day for boats, shows, and snack sampling.",
-            "4 ภาคใน 1 ที่ — ใช้ครึ่งวัน ล่องเรือ โชว์ ชิมของ",
-            "四区主题，建议半天。",
-            "Четыре региона — планируйте полдня.",
-          ),
-        ),
-      },
-      {
-        id: "made-in-thailand",
-        name: t(lang, L("Made in Thailand Market", "เมดอินไทยแลนด์", "Made in Thailand", "Made in Thailand")),
-        nameTh: "",
-        tags: [
-          t(lang, L("Evening", "เย็น", "傍晚", "Вечер")),
-          t(lang, L("Handicrafts", "หัตถกรรม", "手工艺", "Ремёсла")),
-          t(lang, L("Tourist-friendly", "นักท่องเที่ยว", "游客友好", "Для туристов")),
-        ],
-        hours: t(
-          lang,
-          L("Wed–Sun · ~17:00–23:00", "พ–อา · ~17:00–23:00", "周三至日 · 约17:00–23:00", "Ср–Вс · ~17:00–23:00"),
-        ),
-        location: t(
-          lang,
-          L("Thepprasit area (check seasonal hours)", "แถวเทพประสิทธิ์ (เช็คเวลาตามฤดู)", "Thepprasit 区", "Thepprasit"),
-        ),
-        mustBuy: t(
-          lang,
-          L(
-            "Handmade bags, art, local design gifts",
-            "กระเป๋าทำมือ ศิลปะ ของขวัญดีไซน์",
-            "手工包、艺术礼品",
-            "Сумки ручной работы, арт",
-          ),
-        ),
-        excerpt: t(
-          lang,
-          L(
-            "Craft-forward market with a more curated feel than generic souvenir rows — good for unique gifts.",
-            "ตลาดครaft คัดสรร — ของฝากไม่ซ้ำใคร",
-            "精选手工艺，独特礼物。",
-            "Кураторский рынок ремёсел.",
-          ),
-        ),
-      },
-    ],
+    markets: getShoppingMarketsList(lang),
     finds: {
       title: t(lang, L("What to buy", "ซื้ออะไร", "买什么", "Что купить")),
       subtitle: t(
@@ -227,72 +356,16 @@ export function getShoppingMarketsPage(lang: LanguageCode) {
           note: t(
             lang,
             L(
-              "Eat at busy stalls; pair shopping with our street-food guide for dish ideas.",
-              "กินร้านคนต่อ ดู street-food guide สำหรับเมนู",
-              "选人气摊，配合街头美食指南。",
-              "Ешьте там, где очередь.",
+              "Eat at busy stalls — see our street-food guide for dish ideas.",
+              "กินร้านคนต่อ — ดูคู่มือของกินสำหรับเมนู",
+              "选人气摊，详见街头美食指南。",
+              "Ешьте там, где очередь; см. стритфуд.",
             ),
           ),
         },
       ],
     },
-    tips: {
-      title: t(lang, L("Market tips", "เคล็ดลับตลาด", "市场贴士", "Советы")),
-      subtitle: t(
-        lang,
-        L("Habits that save money and hassle while you browse.", "ประหยัดและสบายขณะเดินชม", "逛市省钱省心。", "Экономия и комфорт."),
-      ),
-      items: [
-        {
-          title: t(lang, L("Bargaining", "ต่อราคา", "议价", "Торг")),
-          text: t(
-            lang,
-            L(
-              "Smile and ask 'lod dai mai?' at independent stalls — fixed prices are common in mall kiosks only.",
-              "ยิ้มถาม 'ลดได้ไหม' ที่แผงอิสระ — ห้างราคาตายตัว",
-              "独立摊位可微笑议价。",
-              "Спросите «lod dai mai?» на лавках.",
-            ),
-          ),
-        },
-        {
-          title: t(lang, L("Timing", "เวลา", "时间", "Время")),
-          text: t(
-            lang,
-            L(
-              "Night markets peak 19:00–21:00. Arrive by 17:30 for parking and the fullest food selection.",
-              "ตลาดกลางคืน 19–21 คนเยอะ มา 17:30 จอดง่าย อาหารครบ",
-              "夜市19–21点最挤，17:30前到。",
-              "Пик 19–21, приходите к 17:30.",
-            ),
-          ),
-        },
-        {
-          title: t(lang, L("Cash & bags", "เงินสด & ถุง", "现金与袋子", "Наличные")),
-          text: t(
-            lang,
-            L(
-              "Carry smaller notes; bring a foldable bag — many vendors add no extra packaging.",
-              "แบ่งเงินย่อย เอาถุงพับ — หลายร้านไม่ใส่ถุง",
-              "备零钱与折叠袋。",
-              "Мелкие купюры и складная сумка.",
-            ),
-          ),
-        },
-        {
-          title: t(lang, L("Quality checks", "เช็คคุณภาพ", "质量检查", "Качество")),
-          text: t(
-            lang,
-            L(
-              "Test electronics briefly, inspect seams on apparel, and keep receipts for higher-ticket items.",
-              "ลองอิเล็กฯ สั้นๆ เช็ครอยเย็ด เก็บใบเสร็จของแพง",
-              "试电子产品，查缝线，留收据。",
-              "Проверяйте электронику и швы.",
-            ),
-          ),
-        },
-      ],
-    },
+    tips: getMarketTips(lang),
     alsoExplore: {
       title: c.alsoExplore,
       shoppingMalls: c.shoppingMalls,

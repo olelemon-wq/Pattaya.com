@@ -1,12 +1,12 @@
 "use client";
 
-import { FeaturedHeroCinematic } from "@/components/cinematic/featured-hero-cinematic";
 import { useLanguage } from "@/components/layout/language-provider";
 import {
   NewsCategoryHeader,
   NewsPageFrame,
   NewsSectionHeading,
 } from "@/components/news/news-layout";
+import { NewsCategoryLead } from "@/components/news/news-category-lead";
 import {
   NewsArticleCard,
   NewsBadge,
@@ -17,6 +17,7 @@ import type { NewsCategoryContent } from "@/lib/data/news-category-types";
 import { resolveNewsCategoryContent } from "@/lib/i18n/resolve-news-category";
 import { buildLocalizedBreadcrumbs } from "@/lib/i18n/resolve-site-nav";
 import { localizeNewsNavItem } from "@/lib/i18n/messages/news-nav";
+import { getNewsLinkLabel } from "@/lib/i18n/news-link-label";
 import { tNewsCategoryUi } from "@/lib/i18n/messages/news-category-ui";
 import { newsTheme } from "@/lib/design/news-theme";
 import type { NavItem } from "@/lib/navigation/types";
@@ -31,14 +32,14 @@ const footerStyles = {
   property: newsTheme.footerProperty,
 } as const;
 
+function formatArticleFooter(footer: string) {
+  return footer.replace(/^🕐\s*/, "").replace(/^⚠\s*/, "");
+}
+
 type NewsCategoryPageProps = {
   item: NavItem;
   content: NewsCategoryContent;
 };
-
-function formatArticleFooter(footer: string) {
-  return footer.replace(/^🕐\s*/, "").replace(/^⚠\s*/, "");
-}
 
 export function NewsCategoryPage({ item, content: baseContent }: NewsCategoryPageProps) {
   const { language } = useLanguage();
@@ -54,6 +55,7 @@ export function NewsCategoryPage({ item, content: baseContent }: NewsCategoryPag
   );
 
   const footerVariant = content.footer?.variant ?? "default";
+  const viewCategory = tNewsCategoryUi(language, "viewCategory");
 
   return (
     <NewsPageFrame>
@@ -62,60 +64,60 @@ export function NewsCategoryPage({ item, content: baseContent }: NewsCategoryPag
         category={itemLocalized.category}
         title={itemLocalized.label}
         description={itemLocalized.description}
+        categoryBadge={tNewsCategoryUi(language, "categoryBadge")}
+        categoryIntro={tNewsCategoryUi(language, "categoryIntro")}
       />
 
-      <section className="relative mb-12 flex flex-col gap-5 sm:mb-16 sm:gap-6">
-        <div className="relative z-0">
-          <FeaturedHeroCinematic
-            image={content.hero.image}
-            imageAlt={content.hero.imageAlt}
-            href="#latest"
-            category={itemLocalized.subcategory}
-            featuredLabel={content.hero.featuredLabel ?? tNewsCategoryUi(language, "featured")}
-            title={content.hero.title}
-            excerpt={content.hero.excerpt}
-            ctaLabel={content.hero.ctaLabel ?? tNewsCategoryUi(language, "readFullStory")}
-            ctaTone="news"
-            showAiSummary={false}
-            minHeightClass="min-h-[min(70dvh,380px)] sm:min-h-[460px] lg:min-h-[520px]"
-            byline={content.hero.byline}
-          />
-        </div>
+      <section className="relative mb-10 flex flex-col gap-5 sm:mb-12 sm:gap-6">
+        <NewsCategoryLead
+          image={content.hero.image}
+          imageAlt={content.hero.imageAlt}
+          categoryLabel={itemLocalized.subcategory}
+          title={content.hero.title}
+          excerpt={content.hero.excerpt}
+          byline={content.hero.byline}
+          browseLabel={tNewsCategoryUi(language, "browseHeadlines")}
+        />
 
-        <div className="relative z-10 grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-3">
-          {content.spotlights.map((spotlight, index) => {
-            const Icon = spotlightIcons[index] ?? Building2;
+        {content.spotlights.length > 0 ? (
+          <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-3">
+            {content.spotlights.map((spotlight, index) => {
+              const Icon = spotlightIcons[index] ?? Building2;
+              const spotlightCta = spotlight.href.startsWith("/news/")
+                ? viewCategory
+                : tNewsCategoryUi(language, "relatedGuide");
 
-            return (
-              <OverlayFeaturedCard
-                key={spotlight.id}
-                image={spotlight.image}
-                imageAlt={spotlight.imageAlt}
-                overlayClass={spotlight.overlayClass}
-                href={spotlight.href}
-              >
-                <div>
-                  <div className="mb-4 flex items-start justify-between">
-                    <NewsBadge className="bg-white/15 text-white backdrop-blur-sm">
-                      {spotlight.badge}
-                    </NewsBadge>
-                    <Icon className="h-5 w-5 text-white/90" strokeWidth={2} aria-hidden />
+              return (
+                <OverlayFeaturedCard
+                  key={spotlight.id}
+                  image={spotlight.image}
+                  imageAlt={spotlight.imageAlt}
+                  overlayClass={spotlight.overlayClass}
+                  href={spotlight.href}
+                >
+                  <div>
+                    <div className="mb-4 flex items-start justify-between">
+                      <NewsBadge className="bg-white/15 text-white backdrop-blur-sm">
+                        {spotlight.badge}
+                      </NewsBadge>
+                      <Icon className="h-5 w-5 text-white/90" strokeWidth={2} aria-hidden />
+                    </div>
+                    <h2 className="mb-2 text-lg font-semibold leading-snug text-white sm:text-xl">
+                      {spotlight.title}
+                    </h2>
+                    <p className="line-clamp-3 text-sm text-white/85">{spotlight.excerpt}</p>
                   </div>
-                  <h2 className="mb-2 text-lg font-semibold leading-snug text-white sm:text-xl">
-                    {spotlight.title}
-                  </h2>
-                  <p className="line-clamp-3 text-sm text-white/85">{spotlight.excerpt}</p>
-                </div>
-                <span className={newsTheme.spotlightCta}>{spotlight.cta}</span>
-              </OverlayFeaturedCard>
-            );
-          })}
-        </div>
+                  <span className={newsTheme.spotlightCta}>{spotlightCta}</span>
+                </OverlayFeaturedCard>
+              );
+            })}
+          </div>
+        ) : null}
       </section>
 
       <section id="latest" className="mb-12 scroll-mt-24 sm:mb-16">
         <NewsSectionHeading
-          title={content.headlinesTitle ?? itemLocalized.label}
+          title={content.headlinesTitle ?? tNewsCategoryUi(language, "latestHeadlines")}
           action={
             <Link href="/news" className={newsTheme.link}>
               {tNewsCategoryUi(language, "newsHub")}
@@ -123,7 +125,7 @@ export function NewsCategoryPage({ item, content: baseContent }: NewsCategoryPag
           }
         />
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
           {content.articles.map((article) => (
             <NewsArticleCard
               key={article.title}
@@ -134,6 +136,7 @@ export function NewsCategoryPage({ item, content: baseContent }: NewsCategoryPag
               badgeClass={article.badgeClass}
               title={article.title}
               excerpt={article.excerpt}
+              linkLabel={getNewsLinkLabel(language, article.href)}
               footer={<NewsTimeFooter>{formatArticleFooter(article.footer)}</NewsTimeFooter>}
             />
           ))}

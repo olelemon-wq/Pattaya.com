@@ -28,6 +28,29 @@ export async function createLocalizedSectionMetadata(
   };
 }
 
+export async function createLocalizedNewsArticleMetadata(
+  sectionId: string,
+  categorySlug: string,
+  articleTitle: string,
+): Promise<Metadata> {
+  const lang = await getRequestLanguage();
+  const section = getSectionById(sectionId);
+  const item = getNavItemBySlug(sectionId, categorySlug.split("/"));
+
+  if (!section || !item) {
+    return { title: `${articleTitle} | ${SITE}` };
+  }
+
+  const localized = localizeNavItem(lang, sectionId, item);
+  const sectionCopy = getSiteSectionCopy(lang, sectionId);
+  const sectionLabel = sectionCopy?.label ?? section.label;
+
+  return {
+    title: `${articleTitle} | ${localized.label} | ${sectionLabel} | ${SITE}`,
+    description: localized.description,
+  };
+}
+
 export async function createLocalizedItemMetadata(
   sectionId: string,
   slug: string[],

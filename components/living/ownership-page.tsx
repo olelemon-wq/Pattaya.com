@@ -9,8 +9,8 @@ import { LocalizedLivingPageShell } from "@/components/living/localized-living-p
 import { useLanguage } from "@/components/layout/language-provider";
 import { livingTheme } from "@/lib/design/living-theme";
 import { livingImages } from "@/lib/design/living-images";
-import { faqEnTh } from "@/lib/i18n/living-helpers";
 import { faqSubtitle } from "@/lib/i18n/messages/living/shells";
+import { ownershipFaqs } from "@/lib/i18n/messages/living/living-page-faqs";
 import {
   getOwnershipDueDiligence,
   getOwnershipFetChecklist,
@@ -28,53 +28,6 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-const faqs = [
-  faqEnTh(
-    "quota",
-    "How do I verify the 49% foreign quota?",
-    "ตรวจโควตา 49% อย่างไร?",
-    "Request a juristic person letter before deposit. On transfer day, match total foreign ownership on the Chanote.",
-    "ขอหนังสือนิติบุคคลก่อนมัดจำ วันโอนตรวจสัดส่วนต่างชาติบนโฉนด",
-    "如何核实49%外资配额？",
-    "Как проверить квоту 49%?",
-  ),
-  faqEnTh(
-    "fet",
-    "What is FET and do I need it?",
-    "FET คืออะไร ต้องมีไหม?",
-    "Yes for condo freehold. Funds must come from abroad; the bank issues FET (or Thor Tor 3) for the Land Department.",
-    "ต้องมีสำหรับคอนโดกรรมสิทธิ์ เงินต้องโอนจากต่างประเทศ ธนาคารออก FET ให้กรมที่ดิน",
-    "什么是FET？",
-    "Что такое FET?",
-  ),
-  faqEnTh(
-    "lease",
-    "Is a 90-year leasehold safe?",
-    "เช่า 90 ปีปลอดภัยไหม?",
-    "Only registered 30-year terms are guaranteed by law. Renewals must be registered at Pattaya Land Office — side letters alone are not enforceable.",
-    "กฎหมายรับประกันเช่าจดทะเบียน 30 ปี ต่ออายุต้องจดที่ดิน ข้อตกลงนอกระบบใช้ไม่ได้",
-    "90年租赁安全吗？",
-    "Leasehold на 90 лет?",
-  ),
-  faqEnTh(
-    "villa",
-    "Can I own a villa 100% as a foreigner?",
-    "ต่างชาติถือวิลล่า 100% ได้ไหม?",
-    "You can own the house structure in your name. The land is normally held via a registered lease, not freehold.",
-    "เป็นเจ้าของตัวบ้านได้ ที่ดินมักเช่าจดทะเบียน ไม่ใช่กรรมสิทธิ์",
-    "外籍能100%拥有别墅吗？",
-    "Вилла на 100%?",
-  ),
-  faqEnTh(
-    "rent-first",
-    "Should I rent before buying?",
-    "ควรเช่าก่อนซื้อไหม?",
-    "Many expats rent 6–12 months to learn neighborhoods, then buy a condo if quota and FET are clear.",
-    "หลายคนเช่า 6–12 เดือนก่อน แล้วซื้อคอนโดเมื่อโควตาและ FET พร้อม",
-    "应该先租再买吗？",
-    "Сначала аренда?",
-  ),
-];
 
 export function OwnershipPage() {
   const { language } = useLanguage();
@@ -262,7 +215,7 @@ export function OwnershipPage() {
       </section>
 
       <LivingFaqSection
-        faqs={faqs}
+        faqs={ownershipFaqs}
         subtitle={faqSubtitle(language, "Ownership", "กรรมสิทธิ์", "产权", "Владение")}
         titleId="ownership-faq-title"
       />

@@ -205,13 +205,13 @@ const articleBodies = {
   },
 } as const;
 
-const articleIdByHref: Record<string, keyof typeof articleBodies> = {
-  "/news/business/real-estate": "real-estate",
-  "/news/business/hotels": "hotels",
-  "/living/housing/rentals": "rentals",
-  "/news/local-news/infrastructure": "infrastructure",
-  "/business/investment/real-estate": "investment",
-  "/directory/featured": "featured",
+const articleKeyByTitle: Record<string, keyof typeof articleBodies> = {
+  "Royal Cliff Residences: Branded Villas Back on Market": "real-estate",
+  "Beach Road Hotel Plot Trades at Record 420M THB Per Rai": "hotels",
+  "Long-Stay Leases: Jomtien Studios See 12% More Inquiries": "rentals",
+  "Naklua Land Parcels Rezoned for Low-Rise Residential": "infrastructure",
+  "Off-Plan Incentives: 0% Transfer Fees on Select Naklua Projects": "investment",
+  "Eastern Seaboard Golf Estates: Second-Home Demand Surges": "featured",
 };
 
 export function localizePropertySpotlight<
@@ -238,7 +238,6 @@ export function localizePropertySpotlight<
 
 export function localizePropertyArticle<
   T extends {
-    href: string;
     badge: string;
     title: string;
     excerpt: string;
@@ -246,7 +245,7 @@ export function localizePropertyArticle<
     imageAlt: string;
   },
 >(lang: LanguageCode, item: T): T {
-  const key = articleIdByHref[item.href];
+  const key = articleKeyByTitle[item.title];
   if (!key) return item;
   const patch = articleBodies[key];
   return {

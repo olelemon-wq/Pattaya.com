@@ -27,6 +27,16 @@ export type BusinessNetworkingEvent = {
   location: string;
 };
 
+export type BusinessReadingPathItem = {
+  step: string;
+  href: string;
+};
+
+export type BusinessServicePoint = {
+  name: string;
+  note: string;
+};
+
 export type BusinessPageConfig = {
   metadata: Metadata;
   heroImage: string;
@@ -43,6 +53,7 @@ export type BusinessPageConfig = {
     button: string;
     href: string;
   };
+  ctaSecondary?: { button: string; href: string };
   overview: { title: string; body: string };
   steps: { title: string; items: BusinessStep[] };
   checklist: { title: string; items: string[] };
@@ -50,6 +61,8 @@ export type BusinessPageConfig = {
   related: { label: string; href: string; blurb: string }[];
   economyStats?: BusinessEconomyStat[];
   networkingEvents?: BusinessNetworkingEvent[];
+  readingPath?: { items: BusinessReadingPathItem[] };
+  servicePoints?: { items: BusinessServicePoint[] };
 };
 
 const baseMeta = (title: string, description: string): Metadata => ({
@@ -78,6 +91,26 @@ export const businessPages: Record<BusinessPageId, BusinessPageConfig> = {
       body: "Document review, shareholder structure, VAT registration, and work-permit pathways — matched to your investment timeline.",
       button: "ขอคำปรึกษาฟรี",
       href: "/business",
+    },
+    ctaSecondary: {
+      button: "See reading order",
+      href: "#reading-path",
+    },
+    readingPath: {
+      items: [
+        { step: "1", href: "#registration-roadmap" },
+        { step: "2", href: "/business/company-setup/boi" },
+        { step: "3", href: "/business/guide/restaurant" },
+        { step: "4", href: "/living/visa/work-permit" },
+        { step: "5", href: "/news/expat/immigration" },
+      ],
+    },
+    servicePoints: {
+      items: [
+        { name: "DBD Chonburi", note: "Company registration and amendments" },
+        { name: "Revenue Department — Pattaya area", note: "Tax ID and VAT" },
+        { name: "Pattaya City Hall", note: "Municipal licenses" },
+      ],
     },
     overview: {
       title: "Why register in Chonburi",
@@ -158,6 +191,21 @@ export const businessPages: Record<BusinessPageId, BusinessPageConfig> = {
         href: "/business",
         blurb: "Networking events and economy stats",
       },
+      {
+        label: "Work permit guide",
+        href: "/living/visa/work-permit",
+        blurb: "Non-B visa and staffing ratio after your company is active",
+      },
+      {
+        label: "Immigration updates",
+        href: "/news/expat/immigration",
+        blurb: "90-day reporting and extension headlines for operators",
+      },
+      {
+        label: "Tax & legal news",
+        href: "/news/expat/tax-legal",
+        blurb: "Rule changes affecting foreign-owned operators in Chonburi",
+      },
     ],
   },
   boi: {
@@ -179,6 +227,26 @@ export const businessPages: Record<BusinessPageId, BusinessPageConfig> = {
       body: "Activity code mapping, feasibility narratives, and coordination with BOI Bangkok — plus post-approval compliance.",
       button: "นัดที่ปรึกษา BOI",
       href: "/business",
+    },
+    ctaSecondary: {
+      button: "See reading order",
+      href: "#reading-path",
+    },
+    readingPath: {
+      items: [
+        { step: "1", href: "#registration-roadmap" },
+        { step: "2", href: "/business/company-setup/thai-company" },
+        { step: "3", href: "/business/guide/hotel" },
+        { step: "4", href: "/business/investment/economy" },
+        { step: "5", href: "/news/expat/tax-legal" },
+      ],
+    },
+    servicePoints: {
+      items: [
+        { name: "BOI Head Office — Bangkok", note: "Applications and interviews" },
+        { name: "EEC Office", note: "Zone incentives in Chonburi corridor" },
+        { name: "DBD Chonburi", note: "Company registration aligned with BOI" },
+      ],
     },
     overview: {
       title: "What BOI can unlock",
@@ -259,6 +327,26 @@ export const businessPages: Record<BusinessPageId, BusinessPageConfig> = {
         href: "/business/investment/economy",
         blurb: "Macro stats for your investment memo",
       },
+      {
+        label: "Work permit guide",
+        href: "/living/visa/work-permit",
+        blurb: "Expert visas after BOI approval",
+      },
+      {
+        label: "Immigration updates",
+        href: "/news/expat/immigration",
+        blurb: "Reporting rules for promoted-project staff",
+      },
+      {
+        label: "Tax & legal news",
+        href: "/news/expat/tax-legal",
+        blurb: "Changes affecting EEC investors",
+      },
+      {
+        label: "Real estate & investment",
+        href: "/business/investment/real-estate",
+        blurb: "Land and project structures tied to BOI promotions",
+      },
     ],
   },
   restaurant: {
@@ -280,6 +368,26 @@ export const businessPages: Record<BusinessPageId, BusinessPageConfig> = {
       body: "Health permit checklist, alcohol licensing paths, and lease negotiation tips for Beach Rd, Jomtien, and Naklua.",
       button: "ขอคู่มือ F&B",
       href: "/business",
+    },
+    ctaSecondary: {
+      button: "See reading order",
+      href: "#reading-path",
+    },
+    readingPath: {
+      items: [
+        { step: "1", href: "#registration-roadmap" },
+        { step: "2", href: "/business/company-setup/thai-company" },
+        { step: "3", href: "/business/guide/bar" },
+        { step: "4", href: "/living/visa/work-permit" },
+        { step: "5", href: "/news/expat/tax-legal" },
+      ],
+    },
+    servicePoints: {
+      items: [
+        { name: "Pattaya City Hall", note: "Trade and local permits" },
+        { name: "Provincial Public Health (อย.)", note: "Food establishment inspections" },
+        { name: "Excise Department", note: "Alcohol licenses" },
+      ],
     },
     overview: {
       title: "F&B in Pattaya’s tourism cycle",
@@ -360,6 +468,21 @@ export const businessPages: Record<BusinessPageId, BusinessPageConfig> = {
         href: "/explore/restaurants/fine-dining",
         blurb: "See how premium venues position in Pattaya",
       },
+      {
+        label: "BOI Promotion",
+        href: "/business/company-setup/boi",
+        blurb: "Large F&B investments with promoted activities",
+      },
+      {
+        label: "Work permit guide",
+        href: "/living/visa/work-permit",
+        blurb: "Chef and manager visas",
+      },
+      {
+        label: "Immigration updates",
+        href: "/news/expat/immigration",
+        blurb: "Staff compliance for foreign hires",
+      },
     ],
   },
   bar: {
@@ -381,6 +504,26 @@ export const businessPages: Record<BusinessPageId, BusinessPageConfig> = {
       body: "Zoning review, entertainment license timeline, and music copyright (MCT) guidance for live DJs and venues.",
       button: "ปรึกษาเปิดบาร์",
       href: "/business",
+    },
+    ctaSecondary: {
+      button: "See reading order",
+      href: "#reading-path",
+    },
+    readingPath: {
+      items: [
+        { step: "1", href: "#registration-roadmap" },
+        { step: "2", href: "/business/company-setup/thai-company" },
+        { step: "3", href: "/business/guide/restaurant" },
+        { step: "4", href: "/business/guide/hotel" },
+        { step: "5", href: "/living/visa/work-permit" },
+      ],
+    },
+    servicePoints: {
+      items: [
+        { name: "Pattaya City Hall", note: "Trade and entertainment permits" },
+        { name: "Excise Department", note: "Alcohol licenses" },
+        { name: "MCT", note: "Music copyright registration" },
+      ],
     },
     overview: {
       title: "Operating after regulatory updates",
@@ -461,6 +604,21 @@ export const businessPages: Record<BusinessPageId, BusinessPageConfig> = {
         href: "/business",
         blurb: "Networking nights for operators",
       },
+      {
+        label: "Company Registration",
+        href: "/business/company-setup/thai-company",
+        blurb: "Entity before nightlife filings",
+      },
+      {
+        label: "Immigration updates",
+        href: "/news/expat/immigration",
+        blurb: "Manager and performer visas",
+      },
+      {
+        label: "Tax & legal news",
+        href: "/news/expat/tax-legal",
+        blurb: "Entertainment tax and compliance",
+      },
     ],
   },
   hotel: {
@@ -482,6 +640,26 @@ export const businessPages: Record<BusinessPageId, BusinessPageConfig> = {
       body: "EIA triggers, hotel license flow, and operator agreements for condo-hotel and full-service assets.",
       button: "ขอคู่มือโรงแรม",
       href: "/business",
+    },
+    ctaSecondary: {
+      button: "See reading order",
+      href: "#reading-path",
+    },
+    readingPath: {
+      items: [
+        { step: "1", href: "#registration-roadmap" },
+        { step: "2", href: "/business/company-setup/thai-company" },
+        { step: "3", href: "/business/company-setup/boi" },
+        { step: "4", href: "/business/investment/real-estate" },
+        { step: "5", href: "/business/investment/economy" },
+      ],
+    },
+    servicePoints: {
+      items: [
+        { name: "Provincial Tourism Office", note: "Hotel registration" },
+        { name: "EIA authority", note: "Large project environmental review" },
+        { name: "Local building control", note: "Construction and occupancy" },
+      ],
     },
     overview: {
       title: "Hospitality asset classes",
@@ -562,6 +740,21 @@ export const businessPages: Record<BusinessPageId, BusinessPageConfig> = {
         href: "/explore/beaches",
         blurb: "Location context for beachfront assets",
       },
+      {
+        label: "Restaurant Guide",
+        href: "/business/guide/restaurant",
+        blurb: "F&B outlets inside the property",
+      },
+      {
+        label: "Bar Business Guide",
+        href: "/business/guide/bar",
+        blurb: "Lobby bars and event venues",
+      },
+      {
+        label: "Work permit guide",
+        href: "/living/visa/work-permit",
+        blurb: "GM and executive team visas",
+      },
     ],
   },
   "real-estate": {
@@ -583,6 +776,26 @@ export const businessPages: Record<BusinessPageId, BusinessPageConfig> = {
       body: "Off-plan vs resale, foreign quota checks, and rental management introductions for Jomtien, Pratumnak, and Wong Amat.",
       button: "ขอพอร์ตโครงการ",
       href: "/business",
+    },
+    ctaSecondary: {
+      button: "See reading order",
+      href: "#reading-path",
+    },
+    readingPath: {
+      items: [
+        { step: "1", href: "#registration-roadmap" },
+        { step: "2", href: "/business/investment/economy" },
+        { step: "3", href: "/business/company-setup/thai-company" },
+        { step: "4", href: "/business/company-setup/boi" },
+        { step: "5", href: "/business/guide/hotel" },
+      ],
+    },
+    servicePoints: {
+      items: [
+        { name: "Chonburi Land Office", note: "Title transfer and registration" },
+        { name: "Condominium juristic person", note: "Foreign quota certificate" },
+        { name: "Revenue Department (local)", note: "Transfer fees and withholding" },
+      ],
     },
     overview: {
       title: "Pattaya property market snapshot",
@@ -662,6 +875,21 @@ export const businessPages: Record<BusinessPageId, BusinessPageConfig> = {
         label: "Property News",
         href: "/news/business/real-estate",
         blurb: "Latest market headlines",
+      },
+      {
+        label: "Company Registration",
+        href: "/business/company-setup/thai-company",
+        blurb: "Thai entity for leases and company-held assets",
+      },
+      {
+        label: "BOI Promotion",
+        href: "/business/company-setup/boi",
+        blurb: "EEC commercial land and promoted projects",
+      },
+      {
+        label: "Retirement Visa Guide",
+        href: "/living/visa/retirement",
+        blurb: "Long-stay options for second-home buyers",
       },
     ],
   },

@@ -9,8 +9,8 @@ import { LocalizedLivingPageShell } from "@/components/living/localized-living-p
 import { useLanguage } from "@/components/layout/language-provider";
 import { livingTheme } from "@/lib/design/living-theme";
 import { livingImages } from "@/lib/design/living-images";
-import { faqEnTh } from "@/lib/i18n/living-helpers";
 import { faqSubtitle } from "@/lib/i18n/messages/living/shells";
+import { rentalsFaqs } from "@/lib/i18n/messages/living/living-page-faqs";
 import {
   getRentalDocuments,
   getRentalFinancials,
@@ -35,53 +35,6 @@ import Link from "next/link";
 
 const financialIcons = [Wallet, Zap, Building2] as const;
 
-const faqs = [
-  faqEnTh(
-    "deposit",
-    "How do I get my deposit back?",
-    "ขอเงินประกันคืนอย่างไร?",
-    "Give notice per contract, clean professionally, joint move-out inspection with photos. Deposit must be returned within 30 days if no damage.",
-    "แจ้งล่วงหน้าตามสัญญา ทำความสะอาด ตรวจร่วมตอนย้ายออก พร้อมรูป มัดจำคืนภายใน 30 วันหากไม่เสียหาย",
-    "如何退回押金？",
-    "Как вернуть залог?",
-  ),
-  faqEnTh(
-    "tm30",
-    "What if my landlord refuses TM.30?",
-    "เจ้าของไม่ยื่น TM.30 ทำอย่างไร?",
-    "Do not sign until they agree in writing. Without TM.30 you may fail visa extensions and bank KYC in Pattaya.",
-    "อย่าเซ็นจนกว่าจะตกลงเป็นหน้าเขียน ไม่มี TM.30 อาจต่อวีซ่าและเปิดบัญชีไม่ได้",
-    "房东不办 TM.30？",
-    "TM.30 отказ?",
-  ),
-  faqEnTh(
-    "utilities",
-    "Can the landlord charge extra for electricity?",
-    "เจ้าของเก็บค่าไฟแพงกว่าหลวงได้ไหม?",
-    "Yes, some units surcharge 2–3×. Insist on MEA/PEA government billing or a fair per-unit rate in the contract.",
-    "ได้บางแห่งบวก 2–3 เท่า ควรจ่ายตามบิลหลวงหรือระบุเรทในสัญญา",
-    "电费能加价吗？",
-    "Наценка на свет?",
-  ),
-  faqEnTh(
-    "agent",
-    "Should I use a rental agent?",
-    "ควรใช้เอเจนต์ไหม?",
-    "Agents save time and know foreign-friendly buildings. Confirm who pays the fee before viewing.",
-    "เอเจนต์ช่วยประหยัดเวลา ยืนยันผู้จ่ายค่านายหน้าก่อนดูห้อง",
-    "要不要用中介？",
-    "Нужен ли агент?",
-  ),
-  faqEnTh(
-    "buy",
-    "Rent first or buy a condo?",
-    "เช่าก่อนหรือซื้อเลย?",
-    "Most expats rent 6–12 months to learn areas, then buy if foreign quota is available.",
-    "ส่วนใหญ่เช่า 6–12 เดือนก่อน แล้วค่อยซื้อถ้าโควตาพร้อม",
-    "先租还是先买？",
-    "Сначала аренда или покупка?",
-  ),
-];
 
 export function RentalsPage() {
   const { language } = useLanguage();
@@ -299,7 +252,7 @@ export function RentalsPage() {
       </section>
 
       <LivingFaqSection
-        faqs={faqs}
+        faqs={rentalsFaqs}
         subtitle={faqSubtitle(language, "Rentals", "เช่าที่พัก", "租房", "Аренда")}
         titleId="rentals-faq-title"
       />

@@ -9,13 +9,7 @@ import { LocalizedLivingPageShell } from "@/components/living/localized-living-p
 import { useLanguage } from "@/components/layout/language-provider";
 import { livingTheme } from "@/lib/design/living-theme";
 import { livingImages } from "@/lib/design/living-images";
-import { faqEnTh } from "@/lib/i18n/living-helpers";
-import { faqSubtitle } from "@/lib/i18n/messages/living/shells";
-import { UtilitiesCostCalculator } from "@/components/living/utilities-cost-calculator";
-import {
-  getUtilitiesEstimates,
-  getUtilitiesPage,
-} from "@/lib/i18n/messages/living/utilities";
+import { getUtilitiesEstimates, getUtilitiesPage, utilitiesFaqs } from "@/lib/i18n/messages/living/utilities";
 import {
   AlertTriangle,
   Droplets,
@@ -29,54 +23,8 @@ import {
   Zap,
 } from "lucide-react";
 import Link from "next/link";
-
-const faqs = [
-  faqEnTh(
-    "high-bill",
-    "Why is my electric bill so high?",
-    "ค่าไฟแพงผิดปกติ?",
-    "Condo markups (฿7–10/unit), old AC, and Mar–May heat can nearly double costs vs government PEA rates.",
-    "เรทคอนโด แอร์เก่า และหน้าร้อน — อาจแพงเกือบเท่าตัวเทียบเรท PEA",
-    "电费为何很高？",
-    "Почему счёт высокий?",
-  ),
-  faqEnTh(
-    "government-rate",
-    "Can I insist on government utility rates?",
-    "บังคับเรทหลวงได้ไหม?",
-    "Only if the landlord agrees in the lease. Many buildings bill through juristic meters — negotiate before deposit.",
-    "ได้ถ้าเจ้าของตกลงในสัญญา หลายตึกคิดผ่านมิเตอร์นิติบุคคล — ต่อรองก่อนมัดจำ",
-    "能要求政府电价吗？",
-    "Гостариф в договоре?",
-  ),
-  faqEnTh(
-    "drinking",
-    "Is tap water safe if boiled?",
-    "น้ำก๊อกต้มแล้วดื่มได้ไหม?",
-    "Expats in Pattaya budget bottled delivery or coin machines — not tap, even boiled.",
-    "ชาวต่างชาติใช้น้ำถังหรือตู้หยอดเหรียญ — ไม่ใช่ก๊อกแม้ต้ม",
-    "自来水烧开能喝吗？",
-    "Кипячённая вода из крана?",
-  ),
-  faqEnTh(
-    "fiber",
-    "How do I get fiber in my condo?",
-    "ติดไฟเบอร์ในคอนโดอย่างไร?",
-    "Ask juristic person which ISPs run to your floor. Older buildings may only offer VDSL or shared Wi‑Fi.",
-    "ถามนิติบุคคลว่า ISP ไหนเข้าถึงชั้น ตึกเก่าอาจมีแค่ VDSL",
-    "公寓如何装光纤？",
-    "Оптика в кондо?",
-  ),
-  faqEnTh(
-    "transfer",
-    "Should utilities be in my name?",
-    "ควรโอนมิเตอร์เป็นชื่อเราไหม?",
-    "Long-term renters usually pay via the landlord’s meter. Rare to transfer PEA/PWA unless you own.",
-    "ผู้เช่าระยะยาวมักจ่ายผ่านเจ้าของ ไม่ค่อยโอน PEA/PWA ยกเว้นเป็นเจ้าของ",
-    "水电要过户吗？",
-    "Оформление на имя?",
-  ),
-];
+import { faqSubtitle } from "@/lib/i18n/messages/living/shells";
+import { UtilitiesCostCalculator } from "@/components/living/utilities-cost-calculator";
 
 function RateCompareCard({
   icon: Icon,
@@ -323,7 +271,7 @@ export function UtilitiesPage() {
       <UtilitiesCostCalculator />
 
       <LivingFaqSection
-        faqs={faqs}
+        faqs={utilitiesFaqs}
         subtitle={faqSubtitle(language, "Utilities", "สาธารณูปโภค", "公用事业", "Коммуналка")}
         titleId="utilities-faq-title"
       />

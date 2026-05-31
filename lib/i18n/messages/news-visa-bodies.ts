@@ -205,13 +205,13 @@ const articleBodies = {
   },
 } as const;
 
-const articleIdByHref: Record<string, keyof typeof articleBodies> = {
-  "/living/visa/thailand-elite": "thailand-elite",
-  "/living/visa/work-permit": "work-permit",
-  "/news/expat/immigration": "immigration",
-  "/living/housing/ownership": "ownership",
-  "/living/visa/retirement": "retirement-article",
-  "/news/expat/tax-legal": "tax-legal",
+const articleKeyByTitle: Record<string, keyof typeof articleBodies> = {
+  "Thailand Elite Visa: Pattaya Privilege Card Benefits": "thailand-elite",
+  "BOI Work Permits: Faster Processing for EEC Companies": "work-permit",
+  "Chonburi Immigration: Extended Hours for Tourist Season": "immigration",
+  "Condo Foreign Quota: What Visa Holders Should Verify": "ownership",
+  "Retirement Visa Insurance: Approved Plans for 2026": "retirement-article",
+  "Tax Residency Rules: Remote Workers in Pattaya": "tax-legal",
 };
 
 export function localizeVisaSpotlight<
@@ -238,7 +238,6 @@ export function localizeVisaSpotlight<
 
 export function localizeVisaArticle<
   T extends {
-    href: string;
     badge: string;
     title: string;
     excerpt: string;
@@ -246,7 +245,7 @@ export function localizeVisaArticle<
     imageAlt: string;
   },
 >(lang: LanguageCode, item: T): T {
-  const key = articleIdByHref[item.href];
+  const key = articleKeyByTitle[item.title];
   if (!key) return item;
   const patch = articleBodies[key];
   return {

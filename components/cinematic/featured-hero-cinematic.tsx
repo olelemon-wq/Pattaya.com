@@ -90,7 +90,7 @@ export function FeaturedHeroCinematic({
           unoptimized={isLocalAsset}
           className="object-cover"
           priority
-          sizes="100vw"
+          sizes="(max-width: 1280px) 100vw, 1280px"
         />
       </div>
 

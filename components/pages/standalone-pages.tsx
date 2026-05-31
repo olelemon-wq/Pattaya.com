@@ -11,6 +11,7 @@ import {
   type EmergencyServiceId,
 } from "@/lib/i18n/messages/standalone-pages";
 import { tSiteUi, tSiteUiTemplate } from "@/lib/i18n/messages/site-ui";
+import { PattayaWeatherPage } from "@/components/utilities/pattaya-weather-page";
 import { emergencyContacts, emergencyTelHref } from "@/lib/data/emergency-contacts";
 import Link from "next/link";
 
@@ -182,7 +183,11 @@ export function UtilityPageContent({ utility }: { utility: string }) {
         description={copy.description}
         badge={copy.badge}
       />
-      <ComingSoonPanel messageKey="apiWidgetSoon" />
+      {utility === "weather" ? (
+        <PattayaWeatherPage />
+      ) : (
+        <ComingSoonPanel messageKey="apiWidgetSoon" />
+      )}
     </>
   );
 }

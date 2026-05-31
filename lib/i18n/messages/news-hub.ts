@@ -16,7 +16,7 @@ export const newsHero = {
     "市政厅公布 5 亿泰铢计划，2024 年第四季度前完成海滨与通信改造。",
     "План 500 млн бат на набережную и связь к Q4 2024.",
   ),
-  cta: L("Read Full Story", "อ่านฉบับเต็ม", "阅读全文", "Читать"),
+  cta: L("View category", "เข้าหมวดข่าว", "进入类别", "В раздел"),
   byline: L("By Editor-in-Chief · 2 Hours Ago", "บรรณาธิการ · 2 ชม.ที่แล้ว", "主编 · 2 小时前", "Главред · 2 ч назад"),
   imageAlt: L(
     "Thai police patrol on wet Beach Road at dawn",
@@ -166,7 +166,7 @@ export function getNewsFeaturedCards(lang: LanguageCode) {
           "Резиденции от 25 млн бат с видом на море.",
         ),
       ),
-      cta: t(lang, L("View Property Ads", "ดูประกาศอสังหา", "查看房源", "Объявления")),
+      cta: t(lang, L("View category →", "เข้าหมวดข่าว →", "进入类别 →", "В раздел →")),
       href: "/news/business/real-estate",
     },
     {
@@ -189,7 +189,7 @@ export function getNewsFeaturedCards(lang: LanguageCode) {
           "5-летняя виза для digital nomads.",
         ),
       ),
-      cta: t(lang, L("Get Visa Quote", "ขอใบเสนอวีซ่า", "获取签证报价", "Запросить визу")),
+      cta: t(lang, L("View category →", "เข้าหมวดข่าว →", "进入类别 →", "В раздел →")),
       href: "/news/expat/visa",
     },
     {
@@ -205,20 +205,40 @@ export function getNewsFeaturedCards(lang: LanguageCode) {
         ),
       ),
       updated: t(lang, L("Updated 15m ago", "อัปเดต 15 นาทีที่แล้ว", "15 分钟前更新", "15 мин назад")),
-      cta: t(lang, L("View Detailed Advisory →", "ดูคำแนะนำฉบับเต็ม →", "查看详细公告 →", "Подробнее →")),
+      cta: t(lang, L("View category →", "เข้าหมวดข่าว →", "进入类别 →", "В раздел →")),
       href: "/news/expat/immigration",
     },
   ];
 }
 
+export function getNewsHubLabels(lang: LanguageCode) {
+  return {
+    featuredTopics: t(
+      lang,
+      L("Featured topics", "หมวดข่าวแนะนำ", "精选主题", "Темы"),
+    ),
+    viewCategory: t(lang, L("View category →", "เข้าหมวดข่าว →", "进入类别 →", "В раздел →")),
+    relatedGuide: t(lang, L("Related guide →", "คู่มือที่เกี่ยวข้อง →", "相关指南 →", "См. гайд →")),
+    categoryNote: t(
+      lang,
+      L(
+        "Each card opens a news category with headline summaries.",
+        "แต่ละการ์ดเปิดหมวดข่าวพร้อมสรุปหัวข้อ",
+        "每张卡片打开对应新闻类别与要闻摘要。",
+        "Каждая карточка — раздел с краткими сводками.",
+      ),
+    ),
+  };
+}
+
 export function getNewsSections(lang: LanguageCode) {
   return {
     cityMovements: t(lang, L("City Movements", "ข่าวเคลื่อนไหวในเมือง", "城市动态", "Городские новости")),
-    exploreAll: t(lang, L("Explore All →", "ดูทั้งหมด →", "查看全部 →", "Все →")),
+    exploreAll: t(lang, L("Browse categories →", "ดูหมวดข่าว →", "浏览类别 →", "Разделы →")),
     infrastructure: t(lang, L("Infrastructure & Growth", "โครงสร้างพื้นฐาน & การเติบบโต", "基建与增长", "Инфраструктура")),
     q3Update: t(lang, L("Q3 UPDATE", "อัปเดต Q3", "第三季度", "Q3")),
     liveUpdate: t(lang, L("Live Update", "อัปเดตสด", "实时更新", "Live")),
-    bookTour: t(lang, L("Book Tour Now", "จองทัวร์เลย", "立即预订", "Забронировать")),
+    bookTour: t(lang, L("View category →", "เข้าหมวดข่าว →", "进入类别 →", "В раздел →")),
     liveWebcams: t(lang, L("Live Webcams", "กล้องสด", "直播摄像头", "Веб-камеры")),
     sponsored: t(lang, L("SPONSORED", "สปอนเซอร์", "赞助", "Спонсор")),
     walkingStreetNews: t(lang, L("Walking Street News", "ข่าว Walking Street", "Walking Street 新闻", "Walking Street")),
@@ -269,27 +289,27 @@ export function getCitySpotlights(lang: LanguageCode) {
       ),
     },
     walkingStreet: {
-      href: "/news/nightlife/walking-street",
-      badge: t(lang, L("Walking Street News", "ข่าว Walking Street", "Walking Street 新闻", "Walking Street")),
+      href: "/news/nightlife/clubs-bars",
+      badge: t(lang, L("Nightlife", "ไนท์ไลฟ์", "夜生活", "Ночная жизнь")),
       title: t(
         lang,
         L(
-          "Walking Street: New 'Neon Garden' Zone Unveiled",
-          "Walking Street: เปิดโซน 'Neon Garden'",
-          "Walking Street：全新「霓虹花园」区",
-          "Walking Street: Neon Garden",
+          "Clubs & Bars: Late-Night Venue Roundup",
+          "คลับ & บาร์: สรุปสถานที่ยามค่ำ",
+          "俱乐部与酒吧：深夜场所一览",
+          "Клубы и бары: обзор площадок",
         ),
       ),
       body: t(
         lang,
         L(
-          "A first look at the futuristic redevelopment aimed at transforming the iconic street into a world-class pedestrian hub.",
-          "ภาพแรกของการปรับโฉมอนาคต เปลี่ยนถนนในตำนานเป็นทางเดินระดับโลก",
-          "一睹未来感改造，将标志性街道变为世界级步行街。",
-          "Футуристическая реконструкция легендарной улицы.",
+          "What's open, sound limits, and safety notes for Pattaya's nightlife districts this weekend.",
+          "สรุปสถานที่เปิด ข้อกำหนดเสียง และความปลอดภัยในย่านไนท์ไลฟ์พัทยาสุดสัปดาห์นี้",
+          "本周芭提雅夜生活区营业场所、音量规定与安全提示。",
+          "Что открыто, лимиты шума и безопасность в районах ночной жизни.",
         ),
       ),
-      cta: t(lang, L("Live Webcams", "กล้องสด", "直播摄像头", "Веб-камеры")),
+      cta: t(lang, L("View category →", "เข้าหมวดข่าว →", "进入类别 →", "В раздел →")),
     },
   };
 }
@@ -297,8 +317,8 @@ export function getCitySpotlights(lang: LanguageCode) {
 export function getMoreCityArticles(lang: LanguageCode) {
   return [
     {
-      href: "/news/tourism/attractions",
-      badge: t(lang, L("Attractions", "สถานที่ท่องเที่ยว", "景点", "Достопримечательности")),
+      href: "/news/tourism/promotions",
+      badge: t(lang, L("Tourism", "ท่องเที่ยว", "旅游", "Туризм")),
       title: t(
         lang,
         L(
@@ -315,6 +335,15 @@ export function getMoreCityArticles(lang: LanguageCode) {
           "สำรวจงานแกะสลักและเส้นทางจิตวิญญาณของสถาปัตยกรรมไม้ในตำนาน",
           "探索芭提雅标志性木构建筑背后的精雕与精神旅程。",
           "Резьба и духовный путь легендарной деревянной постройки.",
+        ),
+      ),
+      detail: t(
+        lang,
+        L(
+          "Rising 105 metres on the coast north of Pattaya, the all-teak temple has been hand-carved for decades. Guided tours reveal Buddhist, Hindu, and mythological scenes—each panel reflects truth, craftsmanship, and patience. Plan a morning visit for softer light and fewer crowds.",
+          "ตั้งริมชายหาดเหนือพัทยา สูง 105 เมตร สร้างจากไม้สักทั้งหลัง แกะสลักด้วยมือมาหลายทศวรรษ ไกด์พาชมศิลปะพุทธ ฮินดู และตำนาน—ทุกแผ่นไม้สะท้อนสัจธรรม ฝีมือ และความอดทน แนะนำมาช่วงเช้า แสงนุ่มและคนน้อยกว่า",
+          "芭提雅以北海滨，全木结构高 105 米，数十年来手工雕刻。导览讲解佛教、印度教与神话主题——每一块木板都体现真理、工艺与耐心。建议上午参观，光线柔和、人流较少。",
+          "На побережье к северу от Паттайи — 105 м, кругом тик. Десятилетия ручной резьбы; экскурсии по буддийским, индуистским и мифологическим сюжетам. Лучше утром — мягкий свет и меньше людей.",
         ),
       ),
       footer: t(lang, L("3 Hours Ago", "3 ชม.ที่แล้ว", "3 小时前", "3 ч назад")),
@@ -343,8 +372,8 @@ export function getMoreCityArticles(lang: LanguageCode) {
       footer: t(lang, L("5 Hours Ago", "5 ชม.ที่แล้ว", "5 小时前", "5 ч назад")),
     },
     {
-      href: "/news/expat/immigration",
-      badge: t(lang, L("Immigration Updates", "อัปเดตตรวจคนเข้าเมือง", "移民动态", "Immigration")),
+      href: "/news/expat/tax-legal",
+      badge: t(lang, L("Tax & Legal", "ภาษี & กฎหมาย", "税务与法律", "Налоги и право")),
       title: t(
         lang,
         L(

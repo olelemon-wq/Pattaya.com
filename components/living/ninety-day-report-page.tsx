@@ -5,39 +5,11 @@ import { NinetyDayReportAssistant } from "@/components/living/ninety-day-report-
 import { LocalizedLivingPageShell } from "@/components/living/localized-living-page-shell";
 import { useLanguage } from "@/components/layout/language-provider";
 import { livingImages } from "@/lib/design/living-images";
-import { faqEnTh, L, t } from "@/lib/i18n/living-helpers";
+import { L, t } from "@/lib/i18n/living-helpers";
 import { faqSubtitle } from "@/lib/i18n/messages/living/shells";
+import { ninetyDayFaqs } from "@/lib/i18n/messages/living/living-page-faqs";
 import Link from "next/link";
 
-const faqs = [
-  faqEnTh(
-    "tm30",
-    "How is TM30 related?",
-    "TM30 เกี่ยวอะไร?",
-    "Landlords file TM30 when you check in. Mismatches cause delays — keep copies.",
-    "เจ้าของแจ้ง TM30 ตอนเข้าพัก ที่อยู่ไม่ตรงทำให้ล่าช้า เก็บสำเนา",
-    "TM30 有何关系？",
-    "TM30?",
-  ),
-  faqEnTh(
-    "travel",
-    "Does leaving Thailand reset the clock?",
-    "ออกนอกประเทศแล้วนับใหม่ไหม?",
-    "Re-entry on a new stamp starts a new 90-day period. Track passport stamps.",
-    "เข้าใหม่ด้วยตราประทับใหม่ เริ่มนับ 90 วันใหม่ ดูตราในพาสปอร์ต",
-    "离境会重置吗？",
-    "Сброс при выезде?",
-  ),
-  faqEnTh(
-    "agent",
-    "Can someone report for me?",
-    "ให้คนอื่นยื่นแทนได้ไหม?",
-    "Power of attorney possible in person; online must be your account.",
-    "มอบอำนาจยื่นแทนได้ที่สำนักงาน ออนไลน์ต้องใช้บัญชีตัวเอง",
-    "能代报吗？",
-    "Подать за меня?",
-  ),
-];
 
 export function NinetyDayReportPage() {
   const { language } = useLanguage();
@@ -67,7 +39,7 @@ export function NinetyDayReportPage() {
       </p>
 
       <LivingFaqSection
-        faqs={faqs}
+        faqs={ninetyDayFaqs}
         subtitle={faqSubtitle(language, "90-day report", "รายงาน 90 วัน", "90 天报到", "Отчёт 90 дней")}
       />
     </LocalizedLivingPageShell>

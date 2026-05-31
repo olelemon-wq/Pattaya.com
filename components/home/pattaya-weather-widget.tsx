@@ -32,11 +32,23 @@ export function PattayaWeatherWidget() {
   return (
     <Link
       href="/utilities/weather"
-      className="group block overflow-hidden rounded-2xl bg-gradient-to-br from-[#dbeafe] via-[#bfdbfe] to-[#93c5fd] p-[1px] shadow-sm transition-shadow hover:shadow-md"
+      className="group flex h-full overflow-hidden rounded-2xl border border-[#e2e8f0]/90 bg-white shadow-sm transition-shadow hover:border-[#bae6fd]/80 hover:shadow-md"
     >
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#f0f9ff] to-[#e0f2fe] px-4 py-4 sm:px-5 sm:py-5">
+      <div className="relative flex min-h-full flex-1 flex-col overflow-hidden px-4 py-4 sm:px-5 sm:py-5">
         <div
-          className="pointer-events-none absolute -right-6 -top-6 h-32 w-32 rounded-full bg-[#FBBF24]/15 blur-2xl"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#fafcff] via-[#f4f9ff] to-[#eef6fc]"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute -right-4 -top-4 h-36 w-36 bg-[radial-gradient(circle,rgba(251,191,36,0.14)_0%,transparent_68%)]"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute -bottom-10 -left-6 h-32 w-32 bg-[radial-gradient(circle,rgba(125,211,252,0.12)_0%,transparent_70%)]"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/90 to-transparent"
           aria-hidden
         />
 
@@ -69,9 +81,13 @@ export function PattayaWeatherWidget() {
             </p>
           </div>
 
-          <div className="flex shrink-0 items-center justify-center pr-0.5 sm:pr-1">
+          <div className="relative flex shrink-0 items-center justify-center pr-0.5 sm:pr-1">
+            <span
+              className="absolute h-16 w-16 rounded-full bg-white/50 ring-1 ring-white/80 sm:h-20 sm:w-20"
+              aria-hidden
+            />
             <CloudSun
-              className="h-[4.5rem] w-[4.5rem] stroke-[1.25] text-[#0A192F] drop-shadow-sm transition-transform duration-300 group-hover:scale-105 sm:h-24 sm:w-24"
+              className="relative h-[4.5rem] w-[4.5rem] stroke-[1.15] text-[#0c4a6e] transition-transform duration-300 group-hover:scale-105 sm:h-24 sm:w-24"
               aria-hidden
             />
           </div>
@@ -83,7 +99,7 @@ export function PattayaWeatherWidget() {
             return (
               <span
                 key={item.label}
-                className="inline-flex items-center gap-1.5 rounded-full border border-white/70 bg-white/60 px-2.5 py-1 text-[10px] font-semibold text-[#0A192F] backdrop-blur-sm sm:text-[11px]"
+                className="inline-flex items-center gap-1.5 rounded-full border border-[#e2e8f0]/60 bg-white/75 px-2.5 py-1 text-[10px] font-semibold text-[#0A192F] shadow-[0_1px_2px_rgba(15,23,42,0.04)] backdrop-blur-sm sm:text-[11px]"
               >
                 <Icon className="h-3.5 w-3.5 shrink-0 text-[#10438f]" aria-hidden />
                 <span className="text-[#64748b]">{item.label}</span>

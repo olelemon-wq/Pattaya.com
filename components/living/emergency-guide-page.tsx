@@ -9,35 +9,15 @@ import { PattayaEmergencyHub } from "@/components/living/pattaya-emergency-hub";
 import { LocalizedLivingPageShell } from "@/components/living/localized-living-page-shell";
 import { useLanguage } from "@/components/layout/language-provider";
 import { livingImages } from "@/lib/design/living-images";
-import { faqEnTh } from "@/lib/i18n/living-helpers";
 import {
   getEmergencyGuidePage,
   getEmergencyScenarios,
 } from "@/lib/i18n/messages/living/emergency-hub";
 import { faqSubtitle } from "@/lib/i18n/messages/living/shells";
+import { emergencyGuideFaqs } from "@/lib/i18n/messages/living/living-page-faqs";
 import { ShieldAlert } from "lucide-react";
 import Link from "next/link";
 
-const faqs = [
-  faqEnTh(
-    "embassy",
-    "When should I contact my embassy?",
-    "เมื่อไหร่ควรติดต่อสถานทูต?",
-    "Serious injury, death, arrest, or lost passport warrant consular help. Keep digital passport scans secure.",
-    "บาดเจ็บสาหัส เสียชีวิต ถูกจับ หรือพาสปอร์ตหาย ติดต่อสถานทูต เก็บสำเนาพาสปอร์ตในคลาวด์",
-    "何时联系使馆？",
-    "Посольство?",
-  ),
-  faqEnTh(
-    "insurance",
-    "Will hospitals treat me without insurance?",
-    "ไม่มีประกันรักษาได้ไหม?",
-    "Emergency care is provided; deposit may be required for admission. Carry policy hotlines.",
-    "รักษาฉุกเฉินได้ อาจต้องมัดจำเมื่อรับเข้า พกเบอร์ประกัน",
-    "无保险能就医吗？",
-    "Без страховки?",
-  ),
-];
 
 export function EmergencyGuidePage() {
   const { language } = useLanguage();
@@ -90,7 +70,7 @@ export function EmergencyGuidePage() {
       </p>
 
       <LivingFaqSection
-        faqs={faqs}
+        faqs={emergencyGuideFaqs}
         subtitle={faqSubtitle(language, "Emergency", "ฉุกเฉิน", "紧急", "Экстренная помощь")}
       />
     </LocalizedLivingPageShell>

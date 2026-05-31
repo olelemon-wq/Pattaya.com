@@ -19,8 +19,11 @@ export function FeaturedHeroCinematic() {
       title={hero.title}
       excerpt={hero.excerpt}
       ctaLabel={hero.cta}
-      visualTone="neo-smart-city"
-      minHeightClass="min-h-[min(78dvh,440px)] sm:min-h-[520px] lg:min-h-[580px]"
+      ctaTone="news"
+      visualTone="news-dawn"
+      showAiSummary={false}
+      byline={hero.byline}
+      minHeightClass="min-h-[min(56dvh,360px)] sm:min-h-[420px] lg:min-h-[480px]"
     />
   );
 }

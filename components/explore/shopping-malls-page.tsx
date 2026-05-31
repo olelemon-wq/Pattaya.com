@@ -1,32 +1,122 @@
 "use client";
 
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
-import { ExploreGuideCarousel } from "@/components/explore/explore-guide-carousel";
-import type { ExploreGuideCardData } from "@/components/explore/explore-guide-types";
 import { useLanguage } from "@/components/layout/language-provider";
-import { tSiteUi } from "@/lib/i18n/messages/site-ui";
 import { shoppingImages } from "@/lib/design/shopping-images";
-import { getExploreCommon } from "@/lib/i18n/messages/explore-common";
 import { getShoppingMallsPage } from "@/lib/i18n/messages/explore-shopping-malls";
-import { Car, Clock, MapPin, ShoppingBag, Store } from "lucide-react";
+import { tSiteUi } from "@/lib/i18n/messages/site-ui";
+import { Clock, MapPin, ShoppingBag, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-const mallImages: Record<string, string> = {
-  "central-festival": shoppingImages.centralFestival,
-  "terminal-21": shoppingImages.terminal21,
-  "royal-garden": shoppingImages.royalGarden,
-  "harbor-mall": shoppingImages.harborMall,
-};
-
 const categoryImages = [
-  shoppingImages.souvenirs,
-  shoppingImages.nightStalls,
-  shoppingImages.terminal21,
-  shoppingImages.centralFestival,
+  shoppingImages.mallCategoryFashion,
+  shoppingImages.mallCategoryElectronics,
+  shoppingImages.mallCategoryCinema,
+  shoppingImages.mallCategoryFoodCourt,
 ];
 
-const tipIcons = [Car, Clock, ShoppingBag, Store] as const;
+function MallCard({
+  name,
+  hours,
+  hoursLabel,
+  highlights,
+  highlightsLabel,
+  text,
+  priceLevel,
+  priceLevelLabel,
+  href,
+  linkLabel,
+  image,
+}: {
+  name: string;
+  hours: string;
+  hoursLabel: string;
+  highlights: string;
+  highlightsLabel: string;
+  text: string;
+  priceLevel: string;
+  priceLevelLabel: string;
+  href: string;
+  linkLabel: string;
+  image: string;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group flex h-full w-full flex-col overflow-hidden rounded-xl border border-[#e7e8e9] bg-white shadow-sm transition hover:border-[#B52E88]/30 hover:shadow-md"
+    >
+      <div className="relative aspect-[4/3] w-full shrink-0 bg-[#e7e8e9]">
+        <Image
+          src={image}
+          alt={name}
+          fill
+          className="object-cover transition duration-500 group-hover:scale-105"
+          sizes="(max-width: 640px) 100vw, 400px"
+        />
+      </div>
+      <div className="flex flex-1 flex-col p-4 sm:p-5">
+        <p className="flex items-start gap-2 font-bold text-[#191c1d]">
+          <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#B52E88]" aria-hidden />
+          {name}
+        </p>
+        <p className="mt-2 flex items-start gap-2 pl-6 text-xs font-medium text-[#747878]">
+          <Clock className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#B52E88]" aria-hidden />
+          <span>
+            {hoursLabel}: <span className="text-[#191c1d]">{hours}</span>
+          </span>
+        </p>
+        <p className="mt-2 flex items-start gap-2 pl-6 text-xs font-medium text-[#747878]">
+          <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#B52E88]" aria-hidden />
+          <span>
+            {highlightsLabel}: <span className="text-[#191c1d]">{highlights}</span>
+          </span>
+        </p>
+        <p className="mt-2 pl-6 text-sm">
+          <span className="font-medium text-[#747878]">{priceLevelLabel}: </span>
+          <span className="font-semibold text-[#B52E88]">{priceLevel}</span>
+        </p>
+        <p className="mt-2 flex-1 pl-6 text-sm leading-relaxed text-[#444748]">{text}</p>
+        <span className="mt-4 pl-6 text-sm font-semibold text-[#B52E88] group-hover:underline">
+          {linkLabel}
+        </span>
+      </div>
+    </a>
+  );
+}
+
+function TipCard({
+  id,
+  title,
+  paragraphs,
+  image,
+}: {
+  id: string;
+  title: string;
+  paragraphs: string[];
+  image: string;
+}) {
+  return (
+    <article
+      id={`tip-${id}`}
+      className="scroll-mt-24 flex h-full flex-col overflow-hidden rounded-xl border border-[#e7e8e9] bg-white shadow-sm"
+    >
+      <div className="relative aspect-[21/9] w-full shrink-0 bg-[#e7e8e9] sm:aspect-[2/1]">
+        <Image src={image} alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+      </div>
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        <h3 className="text-base font-bold text-[#191c1d] sm:text-lg">{title}</h3>
+        <div className="mt-3 space-y-3 text-sm leading-relaxed text-[#444748]">
+          {paragraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+      </div>
+    </article>
+  );
+}
 
 function CategoryCard({
   name,
@@ -55,22 +145,7 @@ function CategoryCard({
 
 export function ShoppingMallsPage() {
   const { language } = useLanguage();
-  const c = getExploreCommon(language);
   const page = getShoppingMallsPage(language);
-
-  const mallGuideCards: ExploreGuideCardData[] = page.malls.map((mall) => ({
-    id: mall.id,
-    name: mall.name,
-    nameTh: mall.nameTh,
-    image: mallImages[mall.id] ?? shoppingImages.mallsHero,
-    tags: mall.tags,
-    excerpt: mall.excerpt,
-    details: [
-      { icon: "clock", label: c.hours, value: mall.hours },
-      { icon: "mapPin", label: c.location, value: mall.location },
-      { icon: "film", label: c.highlights, value: mall.highlights },
-    ],
-  }));
 
   return (
     <div data-full-bleed className="bg-[#f8f9fa] text-[#191c1d]">
@@ -129,46 +204,62 @@ export function ShoppingMallsPage() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-[1280px] px-5 py-12 md:px-16 md:py-16">
-        <ExploreGuideCarousel
-          title={page.carousel.title}
-          description={page.carousel.description}
-          prevLabel={page.carousel.prev}
-          nextLabel={page.carousel.next}
-          items={mallGuideCards}
-        />
+      <div className="mx-auto max-w-[1280px] space-y-14 px-5 py-12 md:px-16 md:py-16">
+        <section id="malls" className="scroll-mt-24" aria-labelledby="malls-title">
+          <div>
+            <h2 id="malls-title" className="text-2xl font-semibold text-[#191c1d] md:text-3xl">
+              {page.malls.title}
+            </h2>
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[#747878] sm:text-base">
+              {page.malls.subtitle}
+            </p>
+          </div>
+          <ul className="mt-8 grid gap-5 sm:grid-cols-2 sm:items-stretch xl:grid-cols-4">
+            {page.malls.items.map((mall) => (
+              <li key={mall.id} id={`mall-${mall.id}`} className="flex min-h-0 scroll-mt-24">
+                <MallCard
+                  name={mall.name}
+                  hours={mall.hours}
+                  hoursLabel={page.malls.hoursLabel}
+                  highlights={mall.highlights}
+                  highlightsLabel={page.malls.highlightsLabel}
+                  text={mall.text}
+                  priceLevel={mall.priceLevel}
+                  priceLevelLabel={page.malls.priceLevelLabel}
+                  href={mall.href}
+                  linkLabel={mall.linkLabel}
+                  image={mall.image}
+                />
+              </li>
+            ))}
+          </ul>
+        </section>
 
-        <section className="mb-16">
-          <h2 className="text-2xl font-semibold md:text-3xl">{page.categories.title}</h2>
+        <section id="categories" className="scroll-mt-24" aria-labelledby="categories-title">
+          <h2 id="categories-title" className="text-2xl font-semibold md:text-3xl">
+            {page.categories.title}
+          </h2>
           <p className="mt-2 text-[#444748]">{page.categories.subtitle}</p>
           <div className="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
             {page.categories.items.map((cat, i) => (
-              <CategoryCard key={cat.name} {...cat} image={categoryImages[i] ?? shoppingImages.souvenirs} />
+              <CategoryCard key={cat.name} {...cat} image={categoryImages[i] ?? shoppingImages.mallCategoryFashion} />
             ))}
           </div>
         </section>
 
-        <section className="mb-16">
-          <h2 className="text-2xl font-semibold md:text-3xl">{page.tips.title}</h2>
-          <p className="mt-2 text-[#444748]">{page.tips.subtitle}</p>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            {page.tips.items.map((tip, i) => {
-              const Icon = tipIcons[i] ?? Car;
-              return (
-                <div
-                  key={tip.title}
-                  className="flex gap-4 rounded-xl border border-[#c4c7c8]/30 bg-white p-4 sm:p-5"
-                >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#B52E88]/10">
-                    <Icon className="h-5 w-5 text-[#B52E88]" aria-hidden />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-[#191c1d]">{tip.title}</h4>
-                    <p className="mt-1 text-sm leading-relaxed text-[#444748]">{tip.text}</p>
-                  </div>
-                </div>
-              );
-            })}
+        <section id="mall-guides" className="scroll-mt-24" aria-labelledby="tips-title">
+          <div>
+            <h2 id="tips-title" className="text-2xl font-semibold text-[#191c1d] md:text-3xl">
+              {page.tips.title}
+            </h2>
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[#747878] sm:text-base">
+              {page.tips.subtitle}
+            </p>
+          </div>
+          <div className="mt-8 grid gap-5 md:grid-cols-2 md:items-stretch">
+            {page.tips.items.map((tip) => (
+              <TipCard key={tip.id} id={tip.id} title={tip.title} paragraphs={tip.paragraphs} image={tip.image} />
+            ))}
           </div>
         </section>
 

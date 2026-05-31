@@ -205,11 +205,12 @@ export function ExploreHubPage() {
         <BreakingNewsTicker variant="explore" />
       </div>
 
-      <section aria-label={tExplore(language, "heroTitle")}>
-        <article
-          data-cinematic="active"
-          className="hero-cinematic group relative isolate z-0 overflow-hidden min-h-[min(70dvh,400px)] sm:min-h-[500px] lg:min-h-[560px]"
-        >
+      <div className="mx-auto max-w-[1280px] px-5 pt-8 md:px-16">
+        <section className="mb-12 md:mb-16" aria-label={tExplore(language, "heroTitle")}>
+          <article
+            data-cinematic="active"
+            className="hero-cinematic group relative isolate z-0 overflow-hidden rounded-xl shadow-2xl ring-1 ring-black/10 sm:rounded-2xl min-h-[min(70dvh,400px)] sm:min-h-[500px] lg:min-h-[560px]"
+          >
           <div className="hero-cinematic__bg absolute inset-[-4%]">
             <Image
               src={exploreImages.hero}
@@ -217,7 +218,7 @@ export function ExploreHubPage() {
               fill
               className="object-cover"
               priority
-              sizes="100vw"
+              sizes="(max-width: 1280px) 100vw, 1280px"
             />
           </div>
           <div className="hero-cinematic__shine pointer-events-none absolute inset-0" aria-hidden />
@@ -229,7 +230,7 @@ export function ExploreHubPage() {
             aria-hidden
           />
 
-          <div className="relative z-10 mx-auto flex min-h-[min(70dvh,400px)] w-full max-w-[1280px] flex-col items-center justify-center px-5 text-center sm:min-h-[500px] md:px-16 lg:min-h-[560px]">
+          <div className="relative z-10 mx-auto flex min-h-[min(70dvh,400px)] w-full flex-col items-center justify-center px-5 text-center sm:min-h-[500px] md:px-10 lg:min-h-[560px]">
             <h1 className="hero-cinematic__rise hero-cinematic__rise--2 mb-8 text-3xl font-bold tracking-tight text-white drop-shadow-lg md:text-5xl">
               {tExplore(language, "heroTitle")}
             </h1>
@@ -250,8 +251,9 @@ export function ExploreHubPage() {
               </button>
             </div>
           </div>
-        </article>
-      </section>
+          </article>
+        </section>
+      </div>
 
       <ExploreCategoryNav />
 

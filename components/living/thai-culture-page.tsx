@@ -11,9 +11,10 @@ import { LocalizedLivingPageShell } from "@/components/living/localized-living-p
 import { useLanguage } from "@/components/layout/language-provider";
 import { livingTheme } from "@/lib/design/living-theme";
 import { livingImages } from "@/lib/design/living-images";
-import { faqEnTh, iconEnTh, L, t } from "@/lib/i18n/living-helpers";
+import { iconEnTh, L, t } from "@/lib/i18n/living-helpers";
 import { getThaiCulturePageCopy } from "@/lib/i18n/messages/living/thai-culture-survival";
 import { faqSubtitle } from "@/lib/i18n/messages/living/shells";
+import { thaiCulturePageFaqs } from "@/lib/i18n/messages/living/living-page-faqs";
 import type { LocalizedText } from "@/lib/i18n/text";
 import { Calendar, HandHeart, Languages, Sparkles } from "lucide-react";
 import Link from "next/link";
@@ -91,26 +92,6 @@ function getPattayaNotes(): { title: LocalizedText; text: LocalizedText }[] {
   ];
 }
 
-const faqs = [
-  faqEnTh(
-    "learn",
-    "How can I learn Thai quickly?",
-    "เรียนภาษาไทยเร็วๆ ได้อย่างไร?",
-    "Evening classes, language apps, and daily market practice beat textbook-only study.",
-    "เรียนเย็น แอปภาษา และฝึกที่ตลาดทุกวันดีกว่าอ่านอย่างเดียว",
-    "如何快速学泰语？",
-    "Как быстро выучить тайский?",
-  ),
-  faqEnTh(
-    "etiquette",
-    "Where is the full etiquette guide?",
-    "คู่มือมารยาทฉบับเต็มอยู่ที่ไหน?",
-    "The etiquette page adds temples, monarchy, dress, and Pattaya tips — with the same illustrated shoes, wai, and calm-behavior panels as this page.",
-    "หน้ามารยาทมีเรื่องวัด สถาบัน การแต่งกาย และพัทยา — พร้อมภาพรองเท้า ไหว้ และใจเย็นแบบเดียวกับหน้านี้",
-    "完整礼仪见礼仪专页，插图与本页相同。",
-    "Полный этикет — отдельная страница с теми же иллюстрациями.",
-  ),
-];
 
 export function ThaiCulturePage() {
   const { language } = useLanguage();
@@ -195,7 +176,7 @@ export function ThaiCulturePage() {
       </section>
 
       <LivingFaqSection
-        faqs={faqs}
+        faqs={thaiCulturePageFaqs}
         subtitle={faqSubtitle(language, "Thai culture", "วัฒนธรรมไทย", "泰国文化", "Культура")}
       />
     </LocalizedLivingPageShell>

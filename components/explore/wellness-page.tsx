@@ -1,44 +1,192 @@
 "use client";
 
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
-import { ExploreGuideCarousel } from "@/components/explore/explore-guide-carousel";
-import type { ExploreGuideCardData } from "@/components/explore/explore-guide-types";
 import { useLanguage } from "@/components/layout/language-provider";
-import { tSiteUi } from "@/lib/i18n/messages/site-ui";
-import { exploreImages } from "@/lib/design/explore-images";
-import { getExploreCommon } from "@/lib/i18n/messages/explore-common";
+import { wellnessHeroImage } from "@/lib/design/wellness-images";
 import { getWellnessPage } from "@/lib/i18n/messages/explore-wellness";
-import { Clock, MapPin, Sparkles, Sun } from "lucide-react";
+import { tSiteUi } from "@/lib/i18n/messages/site-ui";
+import { Clock, MapPin, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-const spaImages: Record<string, string> = {
-  "aura-sanctuary": exploreImages.auraSanctuary,
-  "cliff-spa": exploreImages.skyGallery,
-  "jomtien-retreat": exploreImages.cafeLifestyle,
-  "naklua-herbal": exploreImages.caveBeachClub,
-};
+function isExternalHref(href: string) {
+  return href.startsWith("http://") || href.startsWith("https://");
+}
 
-const tipIcons = [Clock, Sun, Sparkles, MapPin] as const;
+function ZoneCard({
+  name,
+  hours,
+  hoursLabel,
+  highlight,
+  highlightLabel,
+  text,
+  priceRange,
+  priceRangeLabel,
+  href,
+  linkLabel,
+  image,
+  secondaryHref,
+  secondaryLinkLabel,
+}: {
+  name: string;
+  hours: string;
+  hoursLabel: string;
+  highlight: string;
+  highlightLabel: string;
+  text: string;
+  priceRange: string;
+  priceRangeLabel: string;
+  href: string;
+  linkLabel: string;
+  image: string;
+  secondaryHref?: string;
+  secondaryLinkLabel?: string;
+}) {
+  return (
+    <article className="flex h-full w-full flex-col overflow-hidden rounded-xl border border-[#e7e8e9] bg-[#fdf8fb] shadow-sm">
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group flex min-h-0 flex-1 flex-col transition hover:border-[#B52E88]/30"
+      >
+        <div className="relative aspect-[4/3] w-full shrink-0 bg-[#e7e8e9]">
+          <Image
+            src={image}
+            alt={name}
+            fill
+            className="object-cover transition duration-500 group-hover:scale-105"
+            sizes="(max-width: 640px) 100vw, 400px"
+          />
+        </div>
+        <div className="flex flex-1 flex-col p-4 sm:p-5">
+          <p className="flex items-start gap-2 font-bold text-[#191c1d]">
+            <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#B52E88]" aria-hidden />
+            {name}
+          </p>
+          <p className="mt-2 flex items-start gap-2 pl-6 text-xs font-medium text-[#747878]">
+            <Clock className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#B52E88]" aria-hidden />
+            <span>
+              {hoursLabel}: <span className="text-[#191c1d]">{hours}</span>
+            </span>
+          </p>
+          <p className="mt-2 flex items-start gap-2 pl-6 text-xs font-medium text-[#747878]">
+            <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#B52E88]" aria-hidden />
+            <span>
+              {highlightLabel}: <span className="text-[#191c1d]">{highlight}</span>
+            </span>
+          </p>
+          <p className="mt-2 pl-6 text-sm">
+            <span className="font-medium text-[#747878]">{priceRangeLabel}: </span>
+            <span className="font-semibold text-[#B52E88]">{priceRange}</span>
+          </p>
+          <p className="mt-2 flex-1 pl-6 text-sm leading-relaxed text-[#444748]">{text}</p>
+          <span className="mt-4 pl-6 text-sm font-semibold text-[#B52E88] group-hover:underline">
+            {linkLabel}
+          </span>
+        </div>
+      </a>
+      {secondaryHref && secondaryLinkLabel ? (
+        <div className="border-t border-[#e7e8e9] px-4 py-3 sm:px-5">
+          {isExternalHref(secondaryHref) ? (
+            <a
+              href={secondaryHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-semibold text-[#455f88] transition hover:text-[#B52E88] hover:underline"
+            >
+              {secondaryLinkLabel}
+            </a>
+          ) : (
+            <Link
+              href={secondaryHref}
+              className="text-sm font-semibold text-[#455f88] transition hover:text-[#B52E88] hover:underline"
+            >
+              {secondaryLinkLabel}
+            </Link>
+          )}
+        </div>
+      ) : null}
+    </article>
+  );
+}
+
+function DayPlanCard({
+  title,
+  paragraphs,
+  href,
+  linkLabel,
+  image,
+}: {
+  title: string;
+  paragraphs: string[];
+  href: string;
+  linkLabel: string;
+  image: string;
+}) {
+  const linkClass =
+    "mt-4 inline-flex text-sm font-semibold text-[#B52E88] transition hover:underline";
+
+  return (
+    <article className="flex h-full flex-col overflow-hidden rounded-xl border border-[#e7e8e9] bg-white shadow-sm">
+      <div className="relative aspect-[16/9] w-full shrink-0 bg-[#e7e8e9]">
+        <Image src={image} alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+      </div>
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        <h3 className="text-base font-bold text-[#191c1d] sm:text-lg">{title}</h3>
+        <div className="mt-3 flex-1 space-y-3 text-sm leading-relaxed text-[#444748]">
+          {paragraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+        {isExternalHref(href) ? (
+          <a href={href} target="_blank" rel="noopener noreferrer" className={linkClass}>
+            {linkLabel}
+          </a>
+        ) : (
+          <Link href={href} className={linkClass}>
+            {linkLabel}
+          </Link>
+        )}
+      </div>
+    </article>
+  );
+}
+
+function TipCard({
+  id,
+  title,
+  paragraphs,
+  image,
+}: {
+  id: string;
+  title: string;
+  paragraphs: string[];
+  image: string;
+}) {
+  return (
+    <article
+      id={`tip-${id}`}
+      className="scroll-mt-24 flex h-full flex-col overflow-hidden rounded-xl border border-[#e7e8e9] bg-[#fdf8fb] shadow-sm"
+    >
+      <div className="relative aspect-[21/9] w-full shrink-0 bg-[#e7e8e9] sm:aspect-[2/1]">
+        <Image src={image} alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+      </div>
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        <h3 className="text-base font-bold text-[#191c1d] sm:text-lg">{title}</h3>
+        <div className="mt-3 space-y-3 text-sm leading-relaxed text-[#444748]">
+          {paragraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+      </div>
+    </article>
+  );
+}
 
 export function WellnessPage() {
   const { language } = useLanguage();
-  const c = getExploreCommon(language);
   const page = getWellnessPage(language);
-
-  const spaGuideCards: ExploreGuideCardData[] = page.spas.map((spa) => ({
-    id: spa.id,
-    name: spa.name,
-    nameTh: spa.nameTh,
-    image: spaImages[spa.id] ?? exploreImages.auraSanctuary,
-    tags: spa.tags,
-    excerpt: spa.excerpt,
-    details: [
-      { icon: "clock", label: c.hours, value: spa.hours },
-      { icon: "mapPin", label: c.location, value: spa.location },
-      { icon: "sparkles", label: c.from, value: spa.session },
-    ],
-  }));
 
   return (
     <div data-full-bleed className="bg-[#fdf8fb] text-[#191c1d]">
@@ -51,7 +199,7 @@ export function WellnessPage() {
         aria-labelledby="wellness-hero-title"
       >
         <Image
-          src={exploreImages.auraSanctuary}
+          src={wellnessHeroImage}
           alt={page.hero.title}
           fill
           priority
@@ -90,36 +238,75 @@ export function WellnessPage() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-[1280px] px-5 py-12 md:px-16 md:py-16">
-        <ExploreGuideCarousel
-          title={page.carousel.title}
-          description={page.carousel.description}
-          prevLabel={page.carousel.prev}
-          nextLabel={page.carousel.next}
-          items={spaGuideCards}
-        />
+      <div className="mx-auto max-w-[1280px] space-y-14 px-5 py-12 md:px-16 md:py-16">
+        <section id="wellness-zones" className="scroll-mt-24" aria-labelledby="zones-title">
+          <div>
+            <h2 id="zones-title" className="text-2xl font-semibold text-[#191c1d] md:text-3xl">
+              {page.zones.title}
+            </h2>
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[#747878] sm:text-base">
+              {page.zones.subtitle}
+            </p>
+          </div>
+          <ul className="mt-8 grid gap-5 sm:grid-cols-2 sm:items-stretch xl:grid-cols-4">
+            {page.zones.items.map((zone) => (
+              <li key={zone.id} id={`zone-${zone.id}`} className="flex min-h-0 scroll-mt-24">
+                <ZoneCard
+                  name={zone.name}
+                  hours={zone.hours}
+                  hoursLabel={page.zones.hoursLabel}
+                  highlight={zone.highlight}
+                  highlightLabel={page.zones.highlightLabel}
+                  text={zone.text}
+                  priceRange={zone.priceRange}
+                  priceRangeLabel={page.zones.priceRangeLabel}
+                  href={zone.href}
+                  linkLabel={zone.linkLabel}
+                  image={zone.image}
+                  secondaryHref={zone.secondaryHref}
+                  secondaryLinkLabel={zone.secondaryLinkLabel}
+                />
+              </li>
+            ))}
+          </ul>
+        </section>
 
-        <section className="mb-16">
-          <h2 className="text-2xl font-semibold md:text-3xl">{page.tips.title}</h2>
-          <p className="mt-2 text-[#444748]">{page.tips.subtitle}</p>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            {page.tips.items.map((tip, i) => {
-              const Icon = tipIcons[i] ?? Clock;
-              return (
-                <div
-                  key={tip.title}
-                  className="flex gap-4 rounded-xl border border-[#c4c7c8]/30 bg-white p-4 sm:p-5"
-                >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#B52E88]/10">
-                    <Icon className="h-5 w-5 text-[#B52E88]" aria-hidden />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-[#191c1d]">{tip.title}</h4>
-                    <p className="mt-1 text-sm leading-relaxed text-[#444748]">{tip.text}</p>
-                  </div>
-                </div>
-              );
-            })}
+        <section id="wellness-day-plans" className="scroll-mt-24" aria-labelledby="day-plans-title">
+          <div>
+            <h2 id="day-plans-title" className="text-2xl font-semibold text-[#191c1d] md:text-3xl">
+              {page.dayPlans.title}
+            </h2>
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[#747878] sm:text-base">
+              {page.dayPlans.subtitle}
+            </p>
+          </div>
+          <div className="mt-8 grid gap-5 md:grid-cols-3 md:items-stretch">
+            {page.dayPlans.items.map((plan) => (
+              <DayPlanCard
+                key={plan.id}
+                title={plan.title}
+                paragraphs={plan.paragraphs}
+                href={plan.href}
+                linkLabel={plan.linkLabel}
+                image={plan.image}
+              />
+            ))}
+          </div>
+        </section>
+
+        <section id="wellness-guides" className="scroll-mt-24" aria-labelledby="tips-title">
+          <div>
+            <h2 id="tips-title" className="text-2xl font-semibold text-[#191c1d] md:text-3xl">
+              {page.tips.title}
+            </h2>
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[#747878] sm:text-base">
+              {page.tips.subtitle}
+            </p>
+          </div>
+          <div className="mt-8 grid gap-5 md:grid-cols-2 md:items-stretch">
+            {page.tips.items.map((tip) => (
+              <TipCard key={tip.id} id={tip.id} title={tip.title} paragraphs={tip.paragraphs} image={tip.image} />
+            ))}
           </div>
         </section>
 
@@ -139,10 +326,16 @@ export function WellnessPage() {
               {page.alsoExplore.fineDining}
             </Link>
             <Link
-              href="/explore/islands/koh-larn"
+              href="/explore/hidden-gems"
+              className="rounded-xl border border-[#B52E88]/30 px-6 py-3 text-center text-sm font-semibold text-[#B52E88] transition hover:bg-[#B52E88]/5"
+            >
+              {page.alsoExplore.hiddenGems}
+            </Link>
+            <Link
+              href="/explore/cafes"
               className="rounded-xl border border-[#c4c7c8]/50 px-6 py-3 text-center text-sm font-semibold text-[#191c1d] transition hover:bg-[#edeeef]"
             >
-              {page.alsoExplore.kohLarn}
+              {page.alsoExplore.cafesLink}
             </Link>
           </div>
         </section>

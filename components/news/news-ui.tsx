@@ -97,6 +97,7 @@ export function NewsArticleCard({
   excerpt,
   footer,
   footerClass,
+  linkLabel,
   children,
   className = "",
   borderHover,
@@ -110,16 +111,19 @@ export function NewsArticleCard({
   excerpt: string;
   footer?: ReactNode;
   footerClass?: string;
+  linkLabel?: string;
   children?: React.ReactNode;
   className?: string;
   borderHover?: string;
 }) {
+  const hasCardFooter = Boolean(linkLabel || footer);
+
   return (
     <Link
       href={href}
-      className={`group overflow-hidden rounded-xl bg-[#eef1f5] transition-all ${borderHover ?? "hover:ring-1 hover:ring-[#10438f]/25"} ${className}`}
+      className={`group flex h-full flex-col overflow-hidden rounded-xl bg-[#eef1f5] transition-all ${borderHover ?? "hover:ring-1 hover:ring-[#10438f]/25"} ${className}`}
     >
-      <div className="relative h-48 overflow-hidden">
+      <div className="relative h-48 shrink-0 overflow-hidden">
         <Image
           src={image}
           alt={imageAlt}
@@ -131,14 +135,21 @@ export function NewsArticleCard({
           <NewsBadge className={badgeClass ?? newsTheme.badgePrimary}>{badge}</NewsBadge>
         </div>
       </div>
-      <div className="p-4 sm:p-6">
+      <div className="flex min-h-0 flex-1 flex-col p-4 sm:p-6">
         <h3 className="mb-3 text-base font-semibold leading-snug text-[#0c1a33] transition-colors group-hover:text-[#10438f] sm:text-lg">
           {title}
         </h3>
-        <p className={`mb-4 text-sm leading-relaxed text-[#444748]`}>{excerpt}</p>
+        <p className="flex-1 text-sm leading-relaxed text-[#444748]">{excerpt}</p>
         {children}
-        {footer ? (
-          <div className={`text-xs ${footerClass ?? ""}`}>{footer}</div>
+        {hasCardFooter ? (
+          <div
+            className={`mt-4 flex flex-col gap-2 border-t border-[#d8dee8] pt-3 ${footerClass ?? ""}`}
+          >
+            {linkLabel ? (
+              <p className="text-xs font-bold text-[#10438f] group-hover:underline">{linkLabel}</p>
+            ) : null}
+            {footer ? <div className="text-xs">{footer}</div> : null}
+          </div>
         ) : null}
       </div>
     </Link>

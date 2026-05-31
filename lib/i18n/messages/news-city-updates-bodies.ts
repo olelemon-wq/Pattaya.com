@@ -86,7 +86,12 @@ const articleBodies = {
       "LED и SOS-боксы для безопасности гостей.",
     ),
     footer: L("5 hours ago", "5 ชม.ที่แล้ว", "5 小时前", "5 ч назад"),
-    imageAlt: L("Walking Street Pattaya at night", "Walking Street กลางคืน", "芭提雅步行街夜景", "Walking Street ночью"),
+    imageAlt: L(
+      "Walking Street Pattaya at night with neon signs",
+      "Walking Street กลางคืนพร้อมไฟนีออน",
+      "芭提雅步行街霓虹夜景",
+      "Walking Street с неоном",
+    ),
   },
   sukhumvit: {
     badge: L("Traffic", "จราจร", "交通", "Трафик"),
@@ -103,7 +108,12 @@ const articleBodies = {
       "Третья полоса на съезде — объезд Soi 50.",
     ),
     footer: L("Yesterday", "เมื่อวาน", "昨天", "Вчера"),
-    imageAlt: L("Traffic on Sukhumvit near Pattaya", "จราจรสุขุมวิทใกล้พัทยา", "芭提雅附近素坤逸交通", "Sukhumvit"),
+    imageAlt: L(
+      "Busy road and local transport near Pattaya",
+      "ถนนคึกคักและขนส่งสาธารณะใกล้พัทยา",
+      "芭提雅附近繁忙道路与公共交通",
+      "Оживлённая дорога и транспорт",
+    ),
   },
   cleanup: {
     badge: L("Environment", "สิ่งแวดล้อม", "环境", "Экология"),
@@ -120,7 +130,12 @@ const articleBodies = {
       "Ежемесячная уборка от Bali Hai до Jomtien.",
     ),
     footer: L("2 days ago", "2 วันที่แล้ว", "2 天前", "2 дня назад"),
-    imageAlt: L("Pattaya beach cleanup volunteers", "อาสาเก็บขยะชายหาด", "芭提雅海滩清洁志愿者", "Уборка пляжа"),
+    imageAlt: L(
+      "Jomtien Beach shoreline in Pattaya",
+      "ชายหาดจอมเทียน พัทยา",
+      "芭提雅仲天海滩海岸线",
+      "Берег Jomtien",
+    ),
   },
   wongamat: {
     badge: L("Urban Planning", "ผังเมือง", "城市规划", "Градостроение"),
@@ -137,7 +152,12 @@ const articleBodies = {
       "Лимит 35 этажей для сохранения видов.",
     ),
     footer: L("3 days ago", "3 วันที่แล้ว", "3 天前", "3 дня назад"),
-    imageAlt: L("Pattaya bay skyline and hotels", "เส้นขอบฟ้าอ่าวพัทยา", "芭提雅湾天际线", "Панорама залива"),
+    imageAlt: L(
+      "Wongamat Beach and high-rise coastline in Pattaya",
+      "หาดวงอามาดและตึกสูงริมชายฝั่งพัทยา",
+      "芭提雅 Wongamat 海滩与高层海岸",
+      "Wongamat и высотки",
+    ),
   },
   "tourist-police": {
     badge: L("Public Safety", "ความปลอดภัย", "公共安全", "Безопасность"),
@@ -154,7 +174,12 @@ const articleBodies = {
       "Двуязычные патрули 24/7 на паромы к Koh Larn.",
     ),
     footer: L("4 days ago", "4 วันที่แล้ว", "4 天前", "4 дня назад"),
-    imageAlt: L("Pattaya city safety patrol", "ลาดตระเวนความปลอดภัย", "芭提雅安全巡逻", "Патруль"),
+    imageAlt: L(
+      "Boats and pier traffic toward Koh Larn from Pattaya",
+      "เรือและท่าเรือมุ่งหน้าเกาะล้านจากพัทยา",
+      "芭提雅前往格兰岛的船只与码头",
+      "Лодки к Koh Larn",
+    ),
   },
   "music-festival": {
     badge: L("Events", "งาน", "活动", "События"),
@@ -171,7 +196,12 @@ const articleBodies = {
       "Бесплатный shuttle 3 дня.",
     ),
     footer: L("1 week ago", "1 สัปดาห์ที่แล้ว", "1 周前", "1 неделю назад"),
-    imageAlt: L("Pattaya city festival and promotions", "เทศกาลเมืองพัทยา", "芭提雅城市节庆", "Фестиваль"),
+    imageAlt: L(
+      "Outdoor music festival crowd at night",
+      "งานเทศกาลดนตรีกลางแจ้งยามค่ำ",
+      "夜间户外音乐节人群",
+      "Фестиваль под открытым небом",
+    ),
   },
 } as const;
 

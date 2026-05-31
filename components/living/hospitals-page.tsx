@@ -25,8 +25,8 @@ import { livingTheme } from "@/lib/design/living-theme";
 import { hospitalCardImages } from "@/lib/design/hospital-images";
 import { livingImages } from "@/lib/design/living-images";
 import Image from "next/image";
-import { faqEnTh } from "@/lib/i18n/living-helpers";
 import { faqSubtitle } from "@/lib/i18n/messages/living/shells";
+import { hospitalsFaqs } from "@/lib/i18n/messages/living/living-page-faqs";
 import {
   getHospitalAlternatives,
   getHospitalBringList,
@@ -46,54 +46,6 @@ import {
   Stethoscope,
 } from "lucide-react";
 import Link from "next/link";
-
-const faqs = [
-  faqEnTh(
-    "insurance",
-    "Which hospitals accept expat health insurance?",
-    "โรงพยาบาลไหนรับประกันต่างชาติ?",
-    "Bangkok Hospital Pattaya, Pattaya Memorial, and Pattaya International commonly work with international insurers. Contact the international desk with your policy number before elective care.",
-    "กรุงเทพพัทยา พัทยาเมโมเรียล และพัทยาอินเตอร์มักรับประกันนานาชาติ ติดต่อแผนกต่างประเทศก่อนทำหัตถการ",
-    "哪些医院接受外籍保险？",
-    "Страховка?",
-  ),
-  faqEnTh(
-    "emergency",
-    "What number do I call in a medical emergency?",
-    "ฉุกเฉินโทรเบอร์ไหน?",
-    "Dial 1669 for ambulance. Tourist Police 1155 for coordination. Bangkok Hospital Pattaya ER hotline 1719.",
-    "1669 รถพยาบาล 1155 ตำรวจท่องเที่ยว 1719 กรุงเทพพัทยา",
-    "急救打什么？",
-    "Экстренный номер?",
-  ),
-  faqEnTh(
-    "public",
-    "Can foreigners use public hospitals?",
-    "ชาวต่างชาติใช้ รพ.รัฐได้ไหม?",
-    "Yes — Pattaya City and Pattaya Patimakun hospitals accept foreigners; fees are lower but waits and language support vary.",
-    "ได้ — เมืองพัทยาและพัทยาปัทมคุณรับชาวต่างชาติ ราคาต่ำแต่อาจรอคิว",
-    "能用公立医院吗？",
-    "Госбольницы?",
-  ),
-  faqEnTh(
-    "clinic",
-    "Should I go to a clinic or hospital?",
-    "ไปคลินิกหรือโรงพยาบาล?",
-    "Clinics suit minor illness; hospitals for emergencies, surgery, or specialist care.",
-    "คลินิกสำหรับอาการเล็กน้อย รพ.สำหรับฉุกเฉิน ผ่าตัด หรือเฉพาะทาง",
-    "诊所还是医院？",
-    "Клиника или больница?",
-  ),
-  faqEnTh(
-    "visa-medical",
-    "Where do I get a visa medical certificate?",
-    "ใบตรวจสุขภาพวีซ่าทำที่ไหน?",
-    "Approved clinics and hospitals issue Immigration-standard forms — confirm with Chonburi Immigration.",
-    "คลินิกและรพ.ที่อนุมัติออกแบบฟอร์มตม. — ยืนยันกับตม.ชลบุรี",
-    "签证体检在哪做？",
-    "Медосмотр для визы?",
-  ),
-];
 
 function HospitalCard({
   name,
@@ -360,7 +312,7 @@ export function HospitalsPage() {
       </section>
 
       <LivingFaqSection
-        faqs={faqs}
+        faqs={hospitalsFaqs}
         subtitle={faqSubtitle(language, "Hospitals", "โรงพยาบาล", "医院", "Больницы")}
         titleId="hospitals-faq-title"
       />

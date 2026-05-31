@@ -17,6 +17,7 @@ import {
   getNewsArticles,
   getNewsFeaturedCards,
   getNewsHubImageAlts,
+  getNewsHubLabels,
   getNewsSections,
   getSportsBlock,
   getWorldNewsBlock,
@@ -52,6 +53,7 @@ export function NewsHubPage() {
   const sports = getSportsBlock(language);
   const worldNews = getWorldNewsBlock(language);
   const imageAlts = getNewsHubImageAlts(language);
+  const hubLabels = getNewsHubLabels(language);
   const [propertyCard, visaCard, immigrationCard] = featured;
   const [crimeArticle, accidentArticle, gemsArticle] = articles;
   const [sanctuaryArticle, walkingArticle, immigrationArticle] = moreArticles;
@@ -64,8 +66,13 @@ export function NewsHubPage() {
           <p className="hidden flex-wrap items-center gap-3 px-1 text-sm text-[#777777] sm:flex">
             {tNewsHero(language, "byline")}
           </p>
+          <p className="px-1 text-sm leading-relaxed text-[#64748b]">{hubLabels.categoryNote}</p>
 
-          <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-3">
+          <div>
+            <h2 className="text-sm font-bold uppercase tracking-wide text-[#455f88]">
+              {hubLabels.featuredTopics}
+            </h2>
+            <div className="mt-4 grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-3">
             <OverlayFeaturedCard
               image={newsImages.featuredProperty}
               imageAlt={imageAlts.featuredProperty}
@@ -120,7 +127,7 @@ export function NewsHubPage() {
               </div>
               <Link
                 href={visaCard.href}
-                className="mt-4 block rounded-lg bg-white py-2 text-center text-sm font-semibold text-[#10438f] transition-opacity hover:opacity-90"
+                className={`mt-4 block py-2 text-center ${newsTheme.spotlightCta}`}
               >
                 {visaCard.cta}
               </Link>
@@ -130,7 +137,6 @@ export function NewsHubPage() {
               image={newsImages.immigration}
               imageAlt={imageAlts.featuredImmigration}
               overlayClass="bg-gradient-to-t from-[#0c1a33]/95 via-[#455f88]/70 to-[#455f88]/25"
-              href={immigrationCard.href}
             >
               <div className="mb-2 flex items-center justify-between gap-2">
                 <div className="flex items-center gap-3">
@@ -153,12 +159,14 @@ export function NewsHubPage() {
                   {immigrationCard.excerpt}
                 </p>
               </div>
-              <div className="border-t border-white/20 pt-2">
-                <span className="text-xs font-bold text-white group-hover:underline">
-                  {immigrationCard.cta}
-                </span>
-              </div>
+              <Link
+                href={immigrationCard.href}
+                className={`mt-4 block py-2 text-center ${newsTheme.spotlightCta}`}
+              >
+                {immigrationCard.cta}
+              </Link>
             </OverlayFeaturedCard>
+            </div>
           </div>
         </section>
 
@@ -173,7 +181,7 @@ export function NewsHubPage() {
             }
           />
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
             <NewsArticleCard
               href={crimeArticle.href}
               image={newsImages.policeCrime}
@@ -182,6 +190,7 @@ export function NewsHubPage() {
               badgeClass={newsTheme.badgeDark}
               title={crimeArticle.title}
               excerpt={crimeArticle.excerpt}
+              linkLabel={hubLabels.viewCategory}
               footer={<NewsTimeFooter>{crimeArticle.footer ?? ""}</NewsTimeFooter>}
             />
 
@@ -193,6 +202,7 @@ export function NewsHubPage() {
               badgeClass="animate-pulse bg-[#ba1a1a] text-white"
               title={accidentArticle.title}
               excerpt={accidentArticle.excerpt}
+              linkLabel={hubLabels.viewCategory}
               footer={<NewsLiveFooter>{sections.liveUpdate}</NewsLiveFooter>}
               borderHover="border-2 border-transparent hover:border-[#10438f]"
             />
@@ -205,11 +215,8 @@ export function NewsHubPage() {
               badgeClass="bg-[#ae2f34] text-white"
               title={gemsArticle.title}
               excerpt={gemsArticle.excerpt}
-            >
-              <span className="flex w-full items-center justify-center gap-2 rounded-lg border border-[#10438f] bg-[#10438f] py-2.5 text-sm font-semibold text-white transition-all group-hover:bg-[#10438f]/90">
-                {sections.bookTour}
-              </span>
-            </NewsArticleCard>
+              linkLabel={hubLabels.viewCategory}
+            />
 
             <NewsArticleCard
               href={sanctuaryArticle.href}
@@ -219,6 +226,7 @@ export function NewsHubPage() {
               badgeClass="bg-[#ae2f34] text-white"
               title={sanctuaryArticle.title}
               excerpt={sanctuaryArticle.excerpt}
+              linkLabel={hubLabels.viewCategory}
               footer={<NewsTimeFooter>{sanctuaryArticle.footer}</NewsTimeFooter>}
             />
 
@@ -230,6 +238,7 @@ export function NewsHubPage() {
               badgeClass={newsTheme.badgeDark}
               title={walkingArticle.title}
               excerpt={walkingArticle.excerpt}
+              linkLabel={hubLabels.viewCategory}
               footer={<NewsTimeFooter>{walkingArticle.footer}</NewsTimeFooter>}
             />
 
@@ -241,6 +250,7 @@ export function NewsHubPage() {
               badgeClass={newsTheme.badgeAccent}
               title={immigrationArticle.title}
               excerpt={immigrationArticle.excerpt}
+              linkLabel={hubLabels.viewCategory}
               footer={<NewsTimeFooter>{immigrationArticle.footer}</NewsTimeFooter>}
             />
 
@@ -263,6 +273,9 @@ export function NewsHubPage() {
                   {spotlights.hotel.title}
                 </h3>
                 <p className="line-clamp-2 text-sm text-[#444748]">{spotlights.hotel.excerpt}</p>
+                <p className="mt-3 text-xs font-bold text-[#10438f] group-hover:underline">
+                  {hubLabels.viewCategory}
+                </p>
               </div>
             </Link>
 

@@ -9,8 +9,8 @@ import { LocalizedLivingPageShell } from "@/components/living/localized-living-p
 import { useLanguage } from "@/components/layout/language-provider";
 import { livingTheme } from "@/lib/design/living-theme";
 import { livingImages } from "@/lib/design/living-images";
-import { faqEnTh } from "@/lib/i18n/living-helpers";
 import { faqSubtitle } from "@/lib/i18n/messages/living/shells";
+import { workPermitFaqs } from "@/lib/i18n/messages/living/living-page-faqs";
 import {
   getWorkPermitApplicantReqs,
   getWorkPermitChecklist,
@@ -36,53 +36,6 @@ import Link from "next/link";
 const companyIcons = [Wallet, Users, Building2] as const;
 const ruleIcons = [ShieldAlert, Scale, FileCheck] as const;
 
-const faqs = [
-  faqEnTh(
-    "illegal",
-    "Can I volunteer or work part-time without a permit?",
-    "อาสาหรือพาร์ทไทม์ไม่มีใบอนุญาตได้ไหม?",
-    "No — any paid or unpaid work without a valid work permit is illegal in Thailand.",
-    "ไม่ได้ — งานมีค่าจ้างหรืออาสาสมัครโดยไม่มีใบอนุญาตผิดกฎหมาย",
-    "无许可能否兼职或志愿？",
-    "Работа без permit?",
-  ),
-  faqEnTh(
-    "ratio",
-    "What is the Thai-to-foreign employee ratio?",
-    "อัตราส่วนคนไทยต่อต่างชาติ?",
-    "Typically four Thai employees per one foreign work permit, verified via social security (BOI firms may differ).",
-    "มัก 4 คนไทยต่อ work permit ต่างชาติ 1 ใบ ตรวจจากประกันสังคม (บริษัท BOI อาจต่าง)",
-    "泰外籍员工比例？",
-    "Соотношение 4:1?",
-  ),
-  faqEnTh(
-    "change",
-    "Can I change employers on the same permit?",
-    "เปลี่ยนนายจ้างได้ไหม?",
-    "A new employer requires a new work permit and visa alignment. Working elsewhere without updating is a serious violation.",
-    "นายจ้างใหม่ต้องยื่น work permit ใหม่และจัดวีซ่าให้สอดคล้อง",
-    "能换雇主不换证吗？",
-    "Смена работодателя?",
-  ),
-  faqEnTh(
-    "nomad",
-    "Can digital nomads use a standard work permit?",
-    "Digital Nomad ใช้ work permit ปกติได้ไหม?",
-    "Remote work may qualify under LTR or BOI schemes — not a classic employer-sponsored permit.",
-    "ทำงานรีโมตอาจใช้ LTR หรือ BOI ไม่ใช่ work permit แบบนายจ้างสponsor ทั่วไป",
-    "数字游民能用普通工作证吗？",
-    "Digital nomad?",
-  ),
-  faqEnTh(
-    "90day",
-    "Do I still need 90-day reporting with a work permit?",
-    "มี work permit ยังต้องรายงาน 90 วันไหม?",
-    "Yes — Immigration 90-day reporting is separate and still required in Pattaya (Jomtien) or online.",
-    "ต้อง — รายงาน 90 วันกับ ตม. แยกจาก work permit",
-    "有工作证还要90天报到吗？",
-    "90 дней с work permit?",
-  ),
-];
 
 export function WorkPermitPage() {
   const { language } = useLanguage();
@@ -284,7 +237,7 @@ export function WorkPermitPage() {
       </section>
 
       <LivingFaqSection
-        faqs={faqs}
+        faqs={workPermitFaqs}
         subtitle={faqSubtitle(language, "Work permit", "ใบอนุญาตทำงาน", "工作证", "Work permit")}
         titleId="wp-faq-title"
       />

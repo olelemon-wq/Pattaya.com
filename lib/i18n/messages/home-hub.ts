@@ -23,6 +23,7 @@ const hero = {
     "蓝调时刻芭提雅航拍",
     "Паттайя с высоты на закате",
   ),
+  byline: L("By Editor-in-Chief · 2 Hours Ago", "บรรณาธิการ · 2 ชม.ที่แล้ว", "主编 · 2 小时前", "Главред · 2 ч назад"),
 };
 
 export function getHomeHero(lang: LanguageCode) {
@@ -33,6 +34,7 @@ export function getHomeHero(lang: LanguageCode) {
     featured: t(lang, hero.featured),
     cta: t(lang, hero.cta),
     imageAlt: t(lang, hero.imageAlt),
+    byline: t(lang, hero.byline),
   };
 }
 
@@ -61,6 +63,8 @@ export function getHomeSidebar(lang: LanguageCode) {
     promotedEvent: t(lang, L("Promoted Event", "อีเวนต์โปรโมต", "推广活动", "Рекомендуем")),
     techMeetup: t(lang, L("Pattaya Tech Meetup", "Pattaya Tech Meetup", "芭提雅科技聚会", "Tech Meetup")),
     trafficLive: t(lang, L("Traffic Live", "รายงานสดการจราจร", "实时交通", "Трафик")),
+    trafficUpdated: t(lang, L("Updated just now", "อัปเดตเมื่อสักครู่", "刚刚更新", "Только что")),
+    trafficViewAll: t(lang, L("Transport", "การเดินทาง", "交通", "Транспорт")),
     clear: t(lang, L("Clear", "คล่องตัว", "畅通", "Свободно")),
     moderate: t(lang, L("Moderate", "ปานกลาง", "中等", "Умеренно")),
     onSchedule: t(lang, L("On Schedule", "ตรงเวลา", "准点", "По расписанию")),
@@ -75,9 +79,27 @@ export function getHomeSidebar(lang: LanguageCode) {
       },
     ],
     traffic: [
-      { road: "Sukhumvit Rd.", status: t(lang, L("Clear", "คล่องตัว", "畅通", "Свободно")), tone: "success" as const },
-      { road: "Walking Street", status: t(lang, L("Moderate", "ปานกลาง", "中等", "Умеренно")), tone: "warning" as const },
-      { road: "UTP Airport", status: t(lang, L("On Schedule", "ตรงเวลา", "准点", "По расписанию")), tone: "neutral" as const },
+      {
+        road: "Sukhumvit Rd.",
+        status: t(lang, L("Clear", "คล่องตัว", "畅通", "Свободно")),
+        tone: "success" as const,
+        kind: "road" as const,
+        href: "/living/transportation/songthaew",
+      },
+      {
+        road: "Walking Street",
+        status: t(lang, L("Moderate", "ปานกลาง", "中等", "Умеренно")),
+        tone: "warning" as const,
+        kind: "road" as const,
+        href: "/living/transportation/songthaew",
+      },
+      {
+        road: "UTP Airport",
+        status: t(lang, L("On Schedule", "ตรงเวลา", "准点", "По расписанию")),
+        tone: "neutral" as const,
+        kind: "airport" as const,
+        href: "/living/transportation/ride-apps",
+      },
     ],
   };
 }
@@ -133,6 +155,7 @@ export function getHomeForum(lang: LanguageCode) {
         title: t(lang, L("Visa Extension 2024 Updates", "อัปเดตต่อวีซ่า 2024", "2024 签证延期更新", "Продление визы 2024")),
         meta: t(lang, L("Last reply 2m ago", "ตอบล่าสุด 2 นาที", "2 分钟前回复", "2 мин назад")),
         replies: 42,
+        href: "/forum/trending",
       },
       {
         initials: "MK",
@@ -140,6 +163,7 @@ export function getHomeForum(lang: LanguageCode) {
         title: t(lang, L("Best Condo Areas for Expats?", "ย่านคอนโดดีสำหรับชาวต่างชาติ?", "外籍人士最佳公寓区？", "Лучшие районы для экспатов?")),
         meta: t(lang, L("Last reply 15m ago", "ตอบล่าสุด 15 นาที", "15 分钟前", "15 мин назад")),
         replies: 18,
+        href: "/forum/trending",
       },
       {
         initials: "RS",
@@ -147,6 +171,7 @@ export function getHomeForum(lang: LanguageCode) {
         title: t(lang, L("Songthaew Routes Explained", "เส้นทางสองแถว", "双条车路线说明", "Маршруты songthaew")),
         meta: t(lang, L("Last reply 1h ago", "ตอบล่าสุด 1 ชม.", "1 小时前", "1 ч назад")),
         replies: 7,
+        href: "/forum/trending",
       },
     ],
   };
@@ -158,6 +183,143 @@ export function getHomeBusinesses(lang: LanguageCode) {
     verified: t(lang, L("Verified", "ยืนยันแล้ว", "已认证", "Проверено")),
     featured: t(lang, L("Featured", "แนะนำ", "精选", "Рекомендуем")),
     addBranch: t(lang, L("Add Branch", "เพิ่มสาขา", "添加分店", "Добавить филиал")),
+  };
+}
+
+export function getHomeDailyEssentials(lang: LanguageCode) {
+  return {
+    title: t(lang, L("Daily Essentials", "บริการประจำวัน", "每日必备", "Ежедневное")),
+    items: [
+      {
+        id: "top-stories",
+        label: t(lang, L("Top Stories", "ข่าวเด่น", "头条", "Главное")),
+        sub: t(lang, L("Top picks", "ข่าวเด่น", "精选", "Топ")),
+        href: "/news",
+        icon: "newspaper" as const,
+        accent: "text-[#10438f]",
+      },
+      {
+        id: "breaking",
+        label: t(lang, L("Breaking News", "ข่าวด่วน", "突发", "Срочно")),
+        sub: t(lang, L("Live updates", "ข่าวด่วน", "直播", "Live")),
+        href: "/news",
+        icon: "megaphone" as const,
+        accent: "text-[#dc2626]",
+      },
+      {
+        id: "events",
+        label: t(lang, L("Events Today", "อีเวนต์วันนี้", "今日活动", "События")),
+        sub: t(lang, L("Calendar", "กิจกรรม", "日历", "Календарь")),
+        href: "/events",
+        icon: "calendar" as const,
+        accent: "text-[#f97316]",
+      },
+      {
+        id: "weather",
+        label: t(lang, L("Weather", "สภาพอากาศ", "天气", "Погода")),
+        sub: t(lang, L("Live", "สภาพอากาศ", "实时", "Сейчас")),
+        href: "/utilities/weather",
+        icon: "cloud" as const,
+        accent: "text-[#0ea5e9]",
+      },
+      {
+        id: "traffic",
+        label: t(lang, L("Traffic", "จราจร", "交通", "Трафик")),
+        sub: t(lang, L("Routes", "การเดินทาง", "路线", "Маршруты")),
+        href: "/living/transportation/songthaew",
+        icon: "car" as const,
+        accent: "text-[#0c1a33]",
+      },
+      {
+        id: "forum",
+        label: t(lang, L("Forum", "ฟอรัม", "论坛", "Форум")),
+        sub: t(lang, L("Trending", "เว็บบอร์ด", "热门", "Тренды")),
+        href: "/forum/trending",
+        icon: "messages" as const,
+        accent: "text-[#7c3aed]",
+      },
+      {
+        id: "guide",
+        label: t(lang, L("Guide", "คู่มือ", "指南", "Гид")),
+        sub: t(lang, L("City guide", "คู่มือเมือง", "城市", "Город")),
+        href: "/guide",
+        icon: "map" as const,
+        accent: "text-[#059669]",
+      },
+      {
+        id: "emergency",
+        label: t(lang, L("Emergency", "ฉุกเฉิน", "紧急", "SOS")),
+        sub: t(lang, L("24/7", "ฉุกเฉิน", "24/7", "24/7")),
+        href: "/emergency",
+        icon: "siren" as const,
+        accent: "text-[#dc2626]",
+      },
+      {
+        id: "rates",
+        label: t(lang, L("Rates", "อัตราแลกเปลี่ยน", "汇率", "Курсы")),
+        sub: t(lang, L("FX rates", "ค่าเงิน", "外汇", "FX")),
+        href: "#home-currency",
+        icon: "banknote" as const,
+        accent: "text-[#0c1a33]",
+      },
+      {
+        id: "businesses",
+        label: t(lang, L("Businesses", "ธุรกิจ", "商家", "Бизнес")),
+        sub: t(lang, L("Featured", "ธุรกิจแนะนำ", "精选", "Топ")),
+        href: "/directory/featured",
+        icon: "store" as const,
+        accent: "text-[#f97316]",
+      },
+    ],
+  };
+}
+
+export function getHomeTopStories(lang: LanguageCode) {
+  return {
+    title: t(lang, L("Top Stories", "ข่าวเด่น", "头条", "Главное")),
+    viewAll: t(lang, L("View All", "ดูทั้งหมด", "查看全部", "Все")),
+    readMore: t(lang, L("Read more", "อ่านต่อ", "阅读更多", "Читать")),
+    hotelTime: t(lang, L("4 hours ago", "4 ชม.ที่แล้ว", "4 小时前", "4 ч назад")),
+  };
+}
+
+export function getHomeExploreSections(lang: LanguageCode) {
+  return {
+    title: t(lang, L("Explore by Section", "สำรวจตามหมวด", "按栏目浏览", "По разделам")),
+    sections: [
+      {
+        id: "news" as const,
+        label: t(lang, L("News", "ข่าว", "新闻", "Новости")),
+        countValue: "248",
+        countUnit: t(lang, L("Articles", "บทความ", "文章", "статей")),
+        href: "/news",
+        imageAlt: t(lang, L("News section", "หมวดข่าว", "新闻栏目", "Раздел новостей")),
+      },
+      {
+        id: "living" as const,
+        label: t(lang, L("Living", "อยู่อาศัย", "生活", "Жизнь")),
+        countValue: "156",
+        countUnit: t(lang, L("Guides", "คู่มือ", "指南", "гайдов")),
+        href: "/living",
+        imageAlt: t(lang, L("Living section", "หมวดอยู่อาศัย", "生活栏目", "Раздел «Жизнь»")),
+      },
+      {
+        id: "explore" as const,
+        label: t(lang, L("Explore", "สำรวจ", "探索", "Обзор")),
+        countValue: "89",
+        countUnit: t(lang, L("Locations", "สถานที่", "地点", "мест")),
+        href: "/explore",
+        imageAlt: t(lang, L("Explore section", "หมวดสำรวจ", "探索栏目", "Раздел «Обзор»")),
+      },
+      {
+        id: "business" as const,
+        label: t(lang, L("Business", "ธุรกิจ", "商业", "Бизнес")),
+        countValue: "312",
+        countUnit: t(lang, L("Listings", "รายการ", "listing", "записей")),
+        href: "/business",
+        imageAlt: t(lang, L("Business section", "หมวดธุรกิจ", "商业栏目", "Раздел бизнеса")),
+      },
+    ],
   };
 }
 

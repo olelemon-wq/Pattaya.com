@@ -1,5 +1,5 @@
 import type { LanguageCode } from "@/lib/i18n/languages";
-import { L, t } from "@/lib/i18n/living-helpers";
+import { faq, L, t } from "@/lib/i18n/living-helpers";
 
 export function getUtilitiesPage(lang: LanguageCode) {
   return {
@@ -257,3 +257,56 @@ export function getUtilitiesEstimates(lang: LanguageCode) {
     },
   ];
 }
+
+export const utilitiesFaqs = [
+  faq(
+    "high-bill",
+    L("Why is my electric bill so high?", "ค่าไฟแพงผิดปกติ?", "电费为何很高？", "Почему счёт высокий?"),
+    L(
+      "Condo markups (฿7–10/unit), old AC, and Mar–May heat can nearly double costs vs government PEA rates.",
+      "เรทคอนโด แอร์เก่า และหน้าร้อน — อาจแพงเกือบเท่าตัวเทียบเรท PEA",
+      "公寓加价（约 7–10 泰铢/度）、老旧空调与 3–5 月高温，费用可能接近政府 PEA 电价的两倍。",
+      "Наценка кондо (7–10 бат/ед.), старый AC и жара мар–май — почти вдвое дороже PEA.",
+    ),
+  ),
+  faq(
+    "government-rate",
+    L("Can I insist on government utility rates?", "บังคับเรทหลวงได้ไหม?", "能要求政府电价吗？", "Гостариф в договоре?"),
+    L(
+      "Only if the landlord agrees in the lease. Many buildings bill through juristic meters — negotiate before deposit.",
+      "ได้ถ้าเจ้าของตกลงในสัญญา หลายตึกคิดผ่านมิเตอร์นิติบุคคล — ต่อรองก่อนมัดจำ",
+      "仅当房东在租约中同意；许多楼盘通过物业表计费——付定金前谈妥。",
+      "Только если арендодатель согласен в договоре; часто счёт через juristic person — договоритесь до депозита.",
+    ),
+  ),
+  faq(
+    "drinking",
+    L("Is tap water safe if boiled?", "น้ำก๊อกต้มแล้วดื่มได้ไหม?", "自来水烧开能喝吗？", "Кипячённая вода из крана?"),
+    L(
+      "Expats in Pattaya budget bottled delivery or coin machines — not tap, even boiled.",
+      "ชาวต่างชาติใช้น้ำถังหรือตู้หยอดเหรียญ — ไม่ใช่ก๊อกแม้ต้ม",
+      "芭提雅外籍人士通常订桶装水或投币取水——即使烧开也不建议喝自来水。",
+      "Экспаты берут бутилированную воду или автоматы — не из крана, даже кипячёную.",
+    ),
+  ),
+  faq(
+    "fiber",
+    L("How do I get fiber in my condo?", "ติดไฟเบอร์ในคอนโดอย่างไร?", "公寓如何装光纤？", "Оптика в кондо?"),
+    L(
+      "Ask juristic person which ISPs run to your floor. Older buildings may only offer VDSL or shared Wi‑Fi.",
+      "ถามนิติบุคคลว่า ISP ไหนเข้าถึงชั้น ตึกเก่าอาจมีแค่ VDSL",
+      "询问物业哪些运营商接入您的楼层；老楼可能只有 VDSL 或公共 Wi‑Fi。",
+      "Спросите juristic person про ISP; в старых зданиях — VDSL или общий Wi‑Fi.",
+    ),
+  ),
+  faq(
+    "transfer",
+    L("Should utilities be in my name?", "ควรโอนมิเตอร์เป็นชื่อเราไหม?", "水电要过户吗？", "Оформление на имя?"),
+    L(
+      "Long-term renters usually pay via the landlord’s meter. Rare to transfer PEA/PWA unless you own.",
+      "ผู้เช่าระยะยาวมักจ่ายผ่านเจ้าของ ไม่ค่อยโอน PEA/PWA ยกเว้นเป็นเจ้าของ",
+      "长期租客通常通过房东表缴费；除非自有产权，很少过户 PEA/PWA。",
+      "Долгосрочные арендаторы платят по счётчику арендодателя; PEA/PWA на ваше имя — редко, если не владелец.",
+    ),
+  ),
+];

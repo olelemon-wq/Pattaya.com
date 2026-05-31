@@ -10,7 +10,7 @@ import {
 } from "@/lib/data/business-page-content";
 import { getBusinessDetailUi } from "@/lib/i18n/messages/business-detail-ui";
 import { resolveBusinessPage } from "@/lib/i18n/resolve-business-page";
-import { Check } from "lucide-react";
+import { AlertTriangle, Check } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -88,16 +88,50 @@ export function BusinessDetailPage({ pageId }: { pageId: BusinessPageId }) {
               {page.cta.body}
             </p>
           </div>
-          <Link
-            href={page.cta.href}
-            className="mt-5 inline-flex w-full shrink-0 items-center justify-center rounded-xl bg-[#ae2f34] px-6 py-3.5 text-center text-sm font-bold text-white shadow-lg transition hover:bg-[#ce4749] md:mt-0 md:w-auto"
-          >
-            {page.cta.button}
-          </Link>
+          <div className="mt-5 flex w-full shrink-0 flex-col gap-3 sm:flex-row md:mt-0 md:w-auto md:flex-col lg:flex-row">
+            <Link
+              href={page.cta.href}
+              className="inline-flex items-center justify-center rounded-xl bg-[#ae2f34] px-6 py-3.5 text-center text-sm font-bold text-white shadow-lg transition hover:bg-[#ce4749]"
+            >
+              {page.cta.button}
+            </Link>
+            {page.ctaSecondary ? (
+              <Link
+                href={page.ctaSecondary.href}
+                className="inline-flex items-center justify-center rounded-xl border-2 border-[#363636] px-6 py-3.5 text-center text-sm font-bold text-[#363636] transition hover:bg-[#363636] hover:text-white"
+              >
+                {page.ctaSecondary.button}
+              </Link>
+            ) : null}
+          </div>
         </aside>
       </div>
 
       <div className="mx-auto max-w-[1280px] space-y-16 px-5 py-16 md:px-16 md:py-20">
+        {page.quickFacts ? (
+          <section aria-labelledby="business-quick-facts">
+            <h2
+              id="business-quick-facts"
+              className="text-2xl font-semibold text-[#363636] md:text-3xl"
+            >
+              {page.quickFacts.title}
+            </h2>
+            <dl className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {page.quickFacts.items.map((fact) => (
+                <div
+                  key={fact.label}
+                  className="rounded-xl border border-[#c4c7c8]/30 bg-white p-5 shadow-sm"
+                >
+                  <dt className="text-xs font-bold uppercase tracking-[0.15em] text-[#B8860B]">
+                    {fact.label}
+                  </dt>
+                  <dd className="mt-2 text-lg font-semibold text-[#363636]">{fact.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+        ) : null}
+
         <section>
           <h2 className="text-2xl font-semibold text-[#363636] md:text-3xl">
             {page.overview.title}
@@ -106,6 +140,39 @@ export function BusinessDetailPage({ pageId }: { pageId: BusinessPageId }) {
             {page.overview.body}
           </p>
         </section>
+
+        {page.legalNotes ? (
+          <section
+            className="rounded-2xl border border-[#B8860B]/25 bg-[#fffbeb] p-6 sm:p-8"
+            aria-labelledby="business-legal-notes"
+          >
+            <div className="flex gap-3">
+              <AlertTriangle
+                className="mt-0.5 h-6 w-6 shrink-0 text-[#B8860B]"
+                aria-hidden
+              />
+              <div className="min-w-0 flex-1">
+                <h2
+                  id="business-legal-notes"
+                  className="text-xl font-semibold text-[#363636] md:text-2xl"
+                >
+                  {page.legalNotes.title}
+                </h2>
+                <ul className="mt-4 space-y-3">
+                  {page.legalNotes.items.map((note) => (
+                    <li
+                      key={note.slice(0, 48)}
+                      className="text-sm leading-relaxed text-[#444748]"
+                    >
+                      {note}
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-4 text-xs text-[#64748b]">{ui.legalDisclaimer}</p>
+              </div>
+            </div>
+          </section>
+        ) : null}
 
         {page.economyStats && page.economyStats.length > 0 && (
           <section className="relative overflow-hidden rounded-2xl bg-[#363636] p-6 sm:p-10">
@@ -185,7 +252,10 @@ export function BusinessDetailPage({ pageId }: { pageId: BusinessPageId }) {
           </section>
         )}
 
-        <section className="rounded-2xl border border-[#c4c7c8]/30 bg-white p-6 sm:p-10">
+        <section
+          id="registration-roadmap"
+          className="scroll-mt-24 rounded-2xl border border-[#c4c7c8]/30 bg-white p-6 sm:p-10"
+        >
           <h2 className="text-2xl font-semibold text-[#363636] md:text-3xl">
             {page.steps.title}
           </h2>
@@ -210,7 +280,10 @@ export function BusinessDetailPage({ pageId }: { pageId: BusinessPageId }) {
         </section>
 
         <section className="grid gap-8 lg:grid-cols-2">
-          <div className="rounded-2xl border border-[#c4c7c8]/30 bg-white p-6 sm:p-8">
+          <div
+            id="document-checklist"
+            className="scroll-mt-24 rounded-2xl border border-[#c4c7c8]/30 bg-white p-6 sm:p-8"
+          >
             <h2 className="text-xl font-semibold text-[#363636] md:text-2xl">
               {page.checklist.title}
             </h2>
@@ -246,11 +319,93 @@ export function BusinessDetailPage({ pageId }: { pageId: BusinessPageId }) {
           </div>
         </section>
 
+        {page.readingPath ? (
+          <section
+            id="reading-path"
+            className="scroll-mt-24 rounded-2xl border border-[#c4c7c8]/30 bg-white p-6 sm:p-10"
+          >
+            <h2 className="text-2xl font-semibold text-[#363636] md:text-3xl">
+              {page.readingPath.title}
+            </h2>
+            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#444748]">
+              {page.readingPath.intro}
+            </p>
+            <ol className="mt-8 space-y-4">
+              {page.readingPath.items.map((item) => (
+                <li key={item.step}>
+                  <Link
+                    href={item.href}
+                    className="group flex gap-4 rounded-xl border border-[#c4c7c8]/25 bg-[#f5f5f4] p-5 transition hover:border-[#B8860B]/35 hover:bg-white"
+                  >
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#363636] text-sm font-bold text-white">
+                      {item.step}
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="font-bold text-[#363636] transition-colors group-hover:text-[#B8860B]">
+                        {item.label} →
+                      </p>
+                      <p className="mt-1 text-sm leading-relaxed text-[#444748]">
+                        {item.description}
+                      </p>
+                    </div>
+                  </Link>
+                </li>
+              ))}
+            </ol>
+          </section>
+        ) : null}
+
+        {page.faq ? (
+          <section className="rounded-2xl border border-[#c4c7c8]/30 bg-white p-6 sm:p-10">
+            <h2 className="text-2xl font-semibold text-[#363636] md:text-3xl">{page.faq.title}</h2>
+            <div className="mt-8 divide-y divide-[#c4c7c8]/30">
+              {page.faq.items.map((item) => (
+                <details key={item.question} className="group py-5 first:pt-0 last:pb-0">
+                  <summary className="cursor-pointer list-none text-base font-semibold text-[#363636] marker:content-none [&::-webkit-details-marker]:hidden">
+                    <span className="flex items-start justify-between gap-4">
+                      {item.question}
+                      <span
+                        className="shrink-0 text-[#B8860B] transition group-open:rotate-45"
+                        aria-hidden
+                      >
+                        +
+                      </span>
+                    </span>
+                  </summary>
+                  <p className="mt-3 text-sm leading-relaxed text-[#444748]">{item.answer}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        {page.servicePoints ? (
+          <section className="rounded-2xl border border-[#c4c7c8]/30 bg-[#ebebea] p-6 sm:p-10">
+            <h2 className="text-2xl font-semibold text-[#363636] md:text-3xl">
+              {page.servicePoints.title}
+            </h2>
+            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#444748]">
+              {page.servicePoints.intro}
+            </p>
+            <ul className="mt-8 space-y-4">
+              {page.servicePoints.items.map((point) => (
+                <li
+                  key={point.name}
+                  className="rounded-xl border border-[#c4c7c8]/25 bg-white p-5"
+                >
+                  <h3 className="font-bold text-[#363636]">{point.name}</h3>
+                  <p className="mt-1 text-sm text-[#444748]">{point.note}</p>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
+
         <section>
           <h2 className="text-2xl font-semibold text-[#363636] md:text-3xl">
             {ui.exploreMore}
           </h2>
-          <div className="mt-6 grid gap-4 sm:grid-cols-3">
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {page.related.map((link) => (
               <Link
                 key={link.href}

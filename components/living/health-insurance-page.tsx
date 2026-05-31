@@ -9,8 +9,8 @@ import { LocalizedLivingPageShell } from "@/components/living/localized-living-p
 import { useLanguage } from "@/components/layout/language-provider";
 import { livingTheme } from "@/lib/design/living-theme";
 import { livingImages } from "@/lib/design/living-images";
-import { faqEnTh } from "@/lib/i18n/living-helpers";
 import { faqSubtitle } from "@/lib/i18n/messages/living/shells";
+import { healthInsuranceFaqs } from "@/lib/i18n/messages/living/living-page-faqs";
 import {
   getHealthInsuranceClaimSteps,
   getHealthInsuranceCompareItems,
@@ -33,53 +33,6 @@ import {
 import { HealthInsuranceRecommender } from "@/components/living/health-insurance-recommender";
 import Link from "next/link";
 
-const faqs = [
-  faqEnTh(
-    "retirement",
-    "What coverage does retirement visa need?",
-    "วีซ่าเกษียณต้องมีประกันแบบไหน?",
-    "Inpatient cover in Thailand, often ฿3M+ per policy year, valid your full stay, from an Immigration-approved insurer — confirm with Chonburi Immigration before buying.",
-    "คุ้มครองผู้ป่วยในในไทย มักไม่ต่ำกว่า 3 ล้าน/ปี คุ้มครองตลอดพำนัก จากบริษัทที่อนุมัติ — ตรวจกับตม.ชลบุรีก่อนซื้อ",
-    "退休签证需要什么保险？",
-    "Страховка для retirement?",
-  ),
-  faqEnTh(
-    "preexisting",
-    "Are pre-existing conditions covered?",
-    "โรคประจำตัวคุ้มครองไหม?",
-    "Often excluded or subject to waiting periods (6–24 months). Disclose honestly — claims can be denied if you omit history.",
-    "มักไม่คุ้มหรือรอ 6–24 เดือน แจ้งตรง — เคลมอาจถูกปฏิเสธถ้าปิดบัง",
-    "既往症保吗？",
-    "Предсуществующие болезни?",
-  ),
-  faqEnTh(
-    "direct",
-    "How do I get direct billing in Pattaya?",
-    "เคลมตรงในพัทยาทำอย่างไร?",
-    "Call your insurer before elective care. At admission, give your policy number to the international desk for GOP approval.",
-    "โทรประกันก่อนนัด แจ้งเลขกรมธรรม์ที่แผนกต่างชาติเพื่อขอ GOP",
-    "如何在芭提雅直付？",
-    "Direct billing?",
-  ),
-  faqEnTh(
-    "travel",
-    "Can I use travel insurance for O-A?",
-    "ประกันเดินทางใช้ O-A ได้ไหม?",
-    "No — travel policies lack the inpatient limits and validity Immigration requires for retirement extensions.",
-    "ไม่ได้ — ประกันเดินทางไม่มีวงเงินและระยะเวลาตามที่ตม.กำหนด",
-    "旅游险能办O-A吗？",
-    "Travel для O-A?",
-  ),
-  faqEnTh(
-    "local",
-    "Thai vs international insurer?",
-    "ประกันไทยหรือต่างชาติดี?",
-    "Thai plans: lower cost, O-A lists. International: better evacuation and global networks. Many retirees use Thai-approved local policies; frequent travellers prefer IPMI.",
-    "ไทย: เบี้ยต่ำ อยู่ในลิสต์ O-A ต่างชาติ: ส่งตัวและเครือข่ายโลก",
-    "泰国险还是国际险？",
-    "Тайская или международная?",
-  ),
-];
 
 export function HealthInsurancePage() {
   const { language } = useLanguage();
@@ -299,7 +252,7 @@ export function HealthInsurancePage() {
       </section>
 
       <LivingFaqSection
-        faqs={faqs}
+        faqs={healthInsuranceFaqs}
         subtitle={faqSubtitle(language, "Health insurance", "ประกันสุขภาพ", "健康保险", "Страховка")}
         titleId="insurance-faq-title"
       />

@@ -9,8 +9,8 @@ import { LocalizedLivingPageShell } from "@/components/living/localized-living-p
 import { useLanguage } from "@/components/layout/language-provider";
 import { livingTheme } from "@/lib/design/living-theme";
 import { livingImages } from "@/lib/design/living-images";
-import { faqEnTh } from "@/lib/i18n/living-helpers";
 import { faqSubtitle } from "@/lib/i18n/messages/living/shells";
+import { thailandEliteFaqs } from "@/lib/i18n/messages/living/living-page-faqs";
 import {
   getEliteCaveats,
   getElitePerks,
@@ -35,53 +35,6 @@ import {
 const whyIcons: LucideIcon[] = [CalendarRange, FileText, Plane, ClipboardList];
 import Link from "next/link";
 
-const faqs = [
-  faqEnTh(
-    "who",
-    "Who is Thailand Elite best for?",
-    "เหมาะกับใคร?",
-    "High-net-worth individuals and frequent visitors who want premium long-stay without complex financial proofs or queuing at Immigration.",
-    "ผู้มีทรัพย์สินสูงและมาไทยบ่อย ต้องการพำนักระยะยาวแบบพรีเมียม ไม่ยุ่งกับเอกสารการเงินซับซ้อน",
-    "适合谁？",
-    "Для кого Elite?",
-  ),
-  faqEnTh(
-    "work",
-    "Can I work on Thailand Elite?",
-    "ทำงานบน Elite ได้ไหม?",
-    "No — you need a separate work permit for employment or running a business. Elite is a long-stay privilege, not a work visa.",
-    "ไม่ได้ — ต้องมี Work Permit แยก Elite เป็นสิทธิพำนัก ไม่ใช่วีซ่าทำงาน",
-    "能工作吗？",
-    "Можно ли работать?",
-  ),
-  faqEnTh(
-    "refund",
-    "Is the membership fee refundable?",
-    "ค่าสมาชิกคืนได้ไหม?",
-    "No. Fees are prepaid and non-refundable if you cancel or leave early.",
-    "ไม่คืน — เป็นค่าบริการล่วงหน้าแบบจ่ายขาด",
-    "会费可退吗？",
-    "Возврат взноса?",
-  ),
-  faqEnTh(
-    "pattaya",
-    "Can Elite help with 90-day reporting in Pattaya?",
-    "Elite ช่วยรายงาน 90 วันที่พัทยาได้ไหม?",
-    "Yes — assistants can coordinate with Immigration Pattaya (Jomtien) so you avoid long queues.",
-    "ได้ — ผู้ช่วยประสาน ตม. พัทยา (จอมเทียน) แทนการยืนคิวเอง",
-    "芭提雅90天报到？",
-    "90 дней в Паттайе?",
-  ),
-  faqEnTh(
-    "family",
-    "Can family members join?",
-    "ครอบครัวเข้าร่วมได้ไหม?",
-    "Higher tiers allow dependent add-ons — separate applications and fees apply.",
-    "แพ็กเกจสูงเพิ่มผู้อยู่ในอุปการณ์ได้ ยื่นและจ่ายแยก",
-    "家属能加入吗？",
-    "Семья?",
-  ),
-];
 
 export function ThailandElitePage() {
   const { language } = useLanguage();
@@ -322,7 +275,7 @@ export function ThailandElitePage() {
       </section>
 
       <LivingFaqSection
-        faqs={faqs}
+        faqs={thailandEliteFaqs}
         subtitle={faqSubtitle(language, "Thailand Elite", "Thailand Elite", "泰国精英签", "Thailand Elite")}
         titleId="elite-faq-title"
       />

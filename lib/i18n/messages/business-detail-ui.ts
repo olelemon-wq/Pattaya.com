@@ -34,6 +34,15 @@ export function getBusinessDetailUi(lang: LanguageCode) {
       lang,
       L("Business consultation", "ปรึกษาธุรกิจ", "商务咨询", "Бизнес-консультация"),
     ),
+    legalDisclaimer: t(
+      lang,
+      L(
+        "Information only — not legal advice. Confirm details with licensed professionals in Thailand.",
+        "ข้อมูลเพื่อการเรียนรู้เท่านั้น ไม่ใช่คำปรึกษากฎหมาย — ยืนยันรายละเอียดกับผู้เชี่ยวชาญที่มีใบอนุญาตในไทย",
+        "仅供参考，非法律意见 — 请在泰国向持牌专业人士核实。",
+        "Только информация, не юридическая консультация — уточняйте у лицензированных специалистов.",
+      ),
+    ),
     footerTitle: t(
       lang,
       L(

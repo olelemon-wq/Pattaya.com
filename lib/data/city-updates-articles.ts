@@ -1,3 +1,4 @@
+import { cityUpdatesImages } from "@/lib/design/city-updates-images";
 import { newsImages } from "@/lib/design/news-images";
 
 export const cityUpdatesHero = {
@@ -15,8 +16,8 @@ export const cityUpdatesSpotlights = [
     title: "Beach Road Smart Corridor: Phase 1 Breaks Ground",
     excerpt:
       "Lane closures alternate nightly from 22:00–05:00 while crews install fiber ducts and LED wayfinding from Central Pattaya to Walking Street.",
-    image: newsImages.heroCinematic,
-    imageAlt: "Pattaya Beach Road waterfront at dusk",
+    image: cityUpdatesImages.spotlightBeachRoad,
+    imageAlt: "Pattaya Beach Road waterfront at dawn",
     overlayClass:
       "bg-gradient-to-t from-[#0c1a33]/95 via-[#0c1a33]/65 to-[#0c1a33]/30",
     href: "/news/local-news/infrastructure",
@@ -28,8 +29,8 @@ export const cityUpdatesSpotlights = [
     title: "Jomtien Drainage Upgrade: Flood-Prone Sois Targeted",
     excerpt:
       "PEA and city engineers replace aging pumps on Thappraya Road — residents asked to clear storm drains before monsoon peak.",
-    image: newsImages.breakingAccident,
-    imageAlt: "City roadworks and drainage maintenance in Pattaya",
+    image: cityUpdatesImages.spotlightDrainage,
+    imageAlt: "Roadworks and drainage maintenance crew in Pattaya",
     overlayClass:
       "bg-gradient-to-t from-[#1e3a5f]/95 via-[#455f88]/75 to-[#455f88]/30",
     href: "/news/local-news/infrastructure",
@@ -41,8 +42,8 @@ export const cityUpdatesSpotlights = [
     title: "Free Beach Wi-Fi Zones Expand to Naklua & Wongamat",
     excerpt:
       "200 new access points go live this month with bilingual login portals for tourists and long-stay residents.",
-    image: newsImages.walkingStreet,
-    imageAlt: "Pattaya city street at night with public lighting",
+    image: cityUpdatesImages.spotlightPublicWifi,
+    imageAlt: "Pattaya city skyline at twilight with urban lighting",
     overlayClass:
       "bg-gradient-to-t from-[#0c1a33]/95 via-[#2563eb]/70 to-[#3b82f6]/25",
     href: "/news/local-news/city-updates",
@@ -53,8 +54,8 @@ export const cityUpdatesSpotlights = [
 export const cityUpdatesArticles = [
   {
     href: "/news/nightlife/walking-street",
-    image: newsImages.walkingStreet,
-    imageAlt: "Walking Street Pattaya at night",
+    image: cityUpdatesImages.articleWalkingStreet,
+    imageAlt: "Walking Street Pattaya at night with neon signs",
     badge: "Nightlife District",
     badgeClass: "bg-[#191c1d] text-white",
     title: "Walking Street Transformation: Smart Lighting & CCTV Rollout",
@@ -64,8 +65,8 @@ export const cityUpdatesArticles = [
   },
   {
     href: "/news/local-news/infrastructure",
-    image: newsImages.breakingAccident,
-    imageAlt: "Traffic on Sukhumvit near Pattaya",
+    image: cityUpdatesImages.articleSukhumvitTraffic,
+    imageAlt: "Busy road and local transport near Pattaya",
     badge: "Traffic",
     badgeClass: "bg-[#455f88] text-white",
     title: "Sukhumvit U-Turn Widening: Commuter Delays Expected Through May",
@@ -75,8 +76,8 @@ export const cityUpdatesArticles = [
   },
   {
     href: "/news/local-news/city-updates",
-    image: newsImages.hiddenGems,
-    imageAlt: "Pattaya beach cleanup volunteers",
+    image: cityUpdatesImages.articleBeachCleanup,
+    imageAlt: "Jomtien Beach shoreline in Pattaya",
     badge: "Environment",
     badgeClass: "bg-[#059669] text-white",
     title: "Big Beach Clean 2026: 3,000 Volunteers Register in First Week",
@@ -86,8 +87,8 @@ export const cityUpdatesArticles = [
   },
   {
     href: "/news/local-news/infrastructure",
-    image: newsImages.hotels,
-    imageAlt: "Pattaya bay skyline and hotels",
+    image: cityUpdatesImages.articleWongamat,
+    imageAlt: "Wongamat Beach and high-rise coastline in Pattaya",
     badge: "Urban Planning",
     badgeClass: "bg-[#455f88] text-white",
     title: "Wongamat High-Rise Guidelines: New Height Caps Announced",
@@ -97,8 +98,8 @@ export const cityUpdatesArticles = [
   },
   {
     href: "/news/local-news/crime",
-    image: newsImages.policeCrime,
-    imageAlt: "Pattaya city safety patrol",
+    image: cityUpdatesImages.articleBaliHaiPier,
+    imageAlt: "Boats and pier traffic toward Koh Larn from Pattaya",
     badge: "Public Safety",
     badgeClass: "bg-[#191c1d] text-white",
     title: "Tourist Police Mobile Units Deployed at Bali Hai Pier",
@@ -108,8 +109,8 @@ export const cityUpdatesArticles = [
   },
   {
     href: "/news/tourism/promotions",
-    image: newsImages.promotions,
-    imageAlt: "Pattaya city festival and promotions",
+    image: cityUpdatesImages.articleMusicFestival,
+    imageAlt: "Outdoor music festival crowd at night",
     badge: "Events",
     badgeClass: "bg-[#ae2f34] text-white",
     title: "Pattaya Music Festival 2026: Road Closures & Shuttle Routes Published",

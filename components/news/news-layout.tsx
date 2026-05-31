@@ -22,6 +22,8 @@ type NewsCategoryHeaderProps = {
   title: string;
   description: string;
   breadcrumbs: BreadcrumbItem[];
+  categoryBadge: string;
+  categoryIntro?: string;
 };
 
 export function NewsCategoryHeader({
@@ -29,14 +31,22 @@ export function NewsCategoryHeader({
   title,
   description,
   breadcrumbs,
+  categoryBadge,
+  categoryIntro,
 }: NewsCategoryHeaderProps) {
   return (
     <>
       <Breadcrumb items={breadcrumbs} />
       <header className="mb-6 mt-4 sm:mb-8">
-        <p className={newsTheme.eyebrow}>{category}</p>
+        <span className="inline-block rounded-full border border-[#10438f]/20 bg-[#eff6ff] px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-[#10438f]">
+          {categoryBadge}
+        </span>
+        <p className={`${newsTheme.eyebrow} mt-3`}>{category}</p>
         <h1 className={newsTheme.title}>{title}</h1>
         <p className={newsTheme.description}>{description}</p>
+        {categoryIntro ? (
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#64748b]">{categoryIntro}</p>
+        ) : null}
       </header>
     </>
   );

@@ -5,8 +5,9 @@ import { LocalizedLivingPageShell } from "@/components/living/localized-living-p
 import { useLanguage } from "@/components/layout/language-provider";
 import { livingImages } from "@/lib/design/living-images";
 import { livingTheme } from "@/lib/design/living-theme";
-import { faqEnTh, iconEnTh, L, t } from "@/lib/i18n/living-helpers";
+import { iconEnTh, L, t } from "@/lib/i18n/living-helpers";
 import { faqSubtitle } from "@/lib/i18n/messages/living/shells";
+import { rideAppsFaqs } from "@/lib/i18n/messages/living/living-page-faqs";
 import { Car, CreditCard, MapPin, Smartphone, UtensilsCrossed } from "lucide-react";
 import Image from "next/image";
 
@@ -150,35 +151,6 @@ function getFareGuide(lang: import("@/lib/i18n/languages").LanguageCode) {
   ];
 }
 
-const faqs = [
-  faqEnTh(
-    "songthaew",
-    "Grab vs songthaew — which is cheaper?",
-    "สองแถวหรือแอปถูกกว่า?",
-    "Songthaews cost ฿10–20 on fixed routes. Apps cost more but offer door-to-door AC and safety at night.",
-    "สองแถว ฿10–20 แอปแพงกว่าแต่ถึงหน้าประตู มีแอร์ ปลอดภัยกลางคืน",
-    "Grab 还是双条车便宜？",
-    "Grab или songthaew?",
-  ),
-  faqEnTh(
-    "cancel",
-    "Driver cancelled — what now?",
-    "คนขับยกเลิกทำอย่างไร?",
-    "Rebook or switch apps. Peak hours near Walking Street have higher cancel rates.",
-    "จองใหม่หรือเปลี่ยนแอป ช่วงคึก Walking Street ยกเลิกบ่อย",
-    "司机取消怎么办？",
-    "Отмена водителем?",
-  ),
-  faqEnTh(
-    "motorbike",
-    "Is GrabBike safe?",
-    "GrabBike ปลอดภัยไหม?",
-    "Helmet quality varies. GrabCar is safer for luggage and rain.",
-    "หมวกคุณภาพต่างกัน ฝนหนักหรือมีกระเป๋าใช้ GrabCar",
-    "GrabBike 安全吗？",
-    "GrabBike?",
-  ),
-];
 
 export function RideAppsPage() {
   const { language } = useLanguage();
@@ -296,7 +268,7 @@ export function RideAppsPage() {
       </section>
 
       <LivingFaqSection
-        faqs={faqs}
+        faqs={rideAppsFaqs}
         subtitle={faqSubtitle(language, "Grab & Bolt", "Grab & Bolt", "Grab 与 Bolt", "Grab и Bolt")}
       />
     </LocalizedLivingPageShell>

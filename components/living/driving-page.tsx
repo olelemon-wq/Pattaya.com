@@ -10,7 +10,6 @@ import { LocalizedLivingPageShell } from "@/components/living/localized-living-p
 import { useLanguage } from "@/components/layout/language-provider";
 import { livingTheme } from "@/lib/design/living-theme";
 import { livingImages } from "@/lib/design/living-images";
-import { faqEnTh } from "@/lib/i18n/living-helpers";
 import {
   getDrivingHotspots,
   getDrivingInsuranceRows,
@@ -19,65 +18,10 @@ import {
   getDrivingVehicleCompare,
 } from "@/lib/i18n/messages/living/driving";
 import { faqSubtitle } from "@/lib/i18n/messages/living/shells";
+import { drivingFaqs } from "@/lib/i18n/messages/living/living-page-faqs";
 import { AlertTriangle, Bike, Car, FileText, MapPin, Shield, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 
-const faqs = [
-  faqEnTh(
-    "convert",
-    "Can I convert my home country license?",
-    "แปลงใบขับขี่เดิมได้ไหม?",
-    "Many nationals skip the practical test with a valid home license, embassy translation, and medical certificate at Chonburi DLT — confirm your country on the DLT list first.",
-    "หลายสัญชาติข้ามสอบขับถ้ามีใบเดิม แปลสถานทูต และใบตรวจสุขภาพ — ตรวจรายชื่อสัญชาติที่กรมขนส่งก่อน",
-    "能否转换本国驾照？",
-    "Конвертация иностранных прав?",
-  ),
-  faqEnTh(
-    "idp",
-    "Is an International Driving Permit enough?",
-    "ใบขับขี่สากลพอไหม?",
-    "Tourists may use IDP with home license for a limited period. Long-stay visa holders should obtain a Thai license — insurers and police expect it.",
-    "นักท่องเที่ยวใช้ IDP กับใบเดิมได้ระยะสั้น ผู้อยู่ระยะยาวควรมีใบไทย ประกันและตำรวจมักต้องการ",
-    "国际驾照够用吗？",
-    "Достаточно ли IDP?",
-  ),
-  faqEnTh(
-    "moto",
-    "Do I need a separate license for a scooter?",
-    "ต้องใบขับขี่แยกสำหรับสกู๊ตเตอร์ไหม?",
-    "Yes — class A for motorcycles. Riding without it can void insurance and lead to impound.",
-    "ใช่ ชั้น A สำหรับมอเตอร์ไซค์ ขี่โดยไม่มีใบอาจประกันไม่คุ้มและถูกยึดรถ",
-    "踏板需要单独驾照吗？",
-    "Отдельные права на мото?",
-  ),
-  faqEnTh(
-    "fine",
-    "What if police stop me?",
-    "ตำรวจจับได้อย่างไร?",
-    "Show license, registration, and พ.ร.บ. Ask for an official receipt if paying a fine; avoid undocumented payments.",
-    "แสดงใบขับขี่ ทะเบียน และ พ.ร.บ. ขอใบเสร็จทางการหากจ่ายค่าปรับ",
-    "被警察拦下怎么办？",
-    "Остановка полицией?",
-  ),
-  faqEnTh(
-    "drink",
-    "What is the alcohol limit?",
-    "จำกัดแอลกอฮอล์เท่าไร?",
-    "Thailand enforces strict drink-driving penalties — use Grab/Bolt after nightlife in Walking Street or Bali Hai.",
-    "ไทยลงโทษเมาขับหนัก — ใช้ Grab/Bolt หลังเที่ยว Walking Street หรือบาลีไฮ",
-    "酒驾限制是多少？",
-    "Лимит алкоголя?",
-  ),
-  faqEnTh(
-    "accident",
-    "What should I do after an accident?",
-    "อุบัติเหตุต้องทำอย่างไร?",
-    "Do not leave the scene; call 191, photograph positions, exchange details, and notify insurer within 24 hours.",
-    "อย่าออกจากที่เกิดเหตุ โทร 191 ถ่ายรูป แลกข้อมูล แจ้งประกันภายใน 24 ชม.",
-    "发生事故怎么办？",
-    "ДТП — что делать?",
-  ),
-];
 
 export function DrivingPage() {
   const { language } = useLanguage();
@@ -294,7 +238,7 @@ export function DrivingPage() {
       </section>
 
       <LivingFaqSection
-        faqs={faqs}
+        faqs={drivingFaqs}
         subtitle={faqSubtitle(language, "Driving", "ขับขี่", "驾驶", "Вождение")}
       />
     </LocalizedLivingPageShell>

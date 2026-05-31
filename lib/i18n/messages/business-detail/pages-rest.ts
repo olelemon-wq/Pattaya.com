@@ -1,4 +1,10 @@
 import { L } from "@/lib/i18n/living-helpers";
+import { barExtendedCopy, barRelatedExtra } from "@/lib/i18n/messages/business-detail/bar-extended";
+import { hotelExtendedCopy, hotelRelatedExtra } from "@/lib/i18n/messages/business-detail/hotel-extended";
+import {
+  realEstateExtendedCopy,
+  realEstateRelatedExtra,
+} from "@/lib/i18n/messages/business-detail/real-estate-extended";
 import type { BusinessPageCopy } from "@/lib/i18n/messages/business-detail/pages";
 
 export const businessPageCopyRest: Record<
@@ -108,7 +114,9 @@ export const businessPageCopyRest: Record<
       { label: L("Restaurant Guide", "คู่มือร้านอาหาร", "餐厅指南", "Гид по ресторанам"), blurb: L("Kitchen-led venues with bar components", "venue ที่ครัวเป็นหลักพร้อมบาร์", "以厨房为主、含酒吧的 venue", "Заведения с кухней и барной зоной") },
       { label: L("Hotel Business Guide", "คู่มือธุรกิจโรงแรม", "酒店商业指南", "Гид по отелям"), blurb: L("Lobby bars inside licensed hotels", "ล็obby bar ในโรงแรมที่มีใบอนุญาต", "持证酒店内的大堂酒吧", "Lobby bars в лицензированных отелях") },
       { label: L("Business Hub", "ศูนย์ธุรกิจ", "商业中心", "Бизнес-хаб"), blurb: L("Networking nights for operators", "คืนเครือข่ายสำหรับผู้ประกอบการ", "经营者社交之夜", "Networking-вечера для операторов") },
+      ...barRelatedExtra,
     ],
+    ...barExtendedCopy,
   },
   hotel: {
     heroAlt: L("Luxury hotel lobby in Pattaya", "ล็obby โรงแรมหรูในพัทยา", "芭提雅豪华酒店大堂", "Лобби роскошного отеля в Паттайе"),
@@ -213,7 +221,9 @@ export const businessPageCopyRest: Record<
       { label: L("Property Investment", "ลงทุนอสังหา", "房产投资", "Инвестиции в недвижимость"), blurb: L("Acquisition and yield benchmarks", "เกณฑ์ซื้อและ yield", "收购与收益基准", "Бенчмарки покупки и yield") },
       { label: L("BOI Promotion", "สิทธิ BOI", "BOI 促进", "Льготы BOI"), blurb: L("Incentives for large hospitality capex", "สิ่งจูงใจ capex hospitality ใหญ่", "大型 hospitality 资本激励", "Льготы для крупного hospitality capex") },
       { label: L("Main Beaches", "ชายหาดหลัก", "主要海滩", "Главные пляжи"), blurb: L("Location context for beachfront assets", "บริบททำเลสำหรับทรัพย์ริมหาด", "海滨资产的位置背景", "Контекст локации для beachfront-активов") },
+      ...hotelRelatedExtra,
     ],
+    ...hotelExtendedCopy,
   },
   "real-estate": {
     heroAlt: L("Pattaya real estate and investment skyline", "สkyline อสังหาและการลงทุนพัทยา", "芭提雅房产投资天际线", "Skyline недвижимости и инвестиций Паттайи"),
@@ -318,7 +328,9 @@ export const businessPageCopyRest: Record<
       { label: L("Pattaya Economy", "เศรษฐกิจพัทยา", "芭提雅经济", "Экономика Паттайи"), blurb: L("Macro drivers behind price growth", "ปัจจัยมหภาคหลังการเติบโตราคา", "价格增长的宏观驱动", "Макрофакторы роста цен") },
       { label: L("Hotel Business Guide", "คู่มือธุรกิจโรงแรม", "酒店商业指南", "Гид по отелям"), blurb: L("Hospitality assets and licensing", "สินทรัพย์ hospitality และใบอนุญาต", " hospitality 资产与许可", "Hospitality-активы и лицензии") },
       { label: L("Property News", "ข่าวอสังหา", "房产新闻", "Новости недвижимости"), blurb: L("Latest market headlines", "หัวข่าวตลาดล่าสุด", "最新市场头条", "Последние заголовки рынка") },
+      ...realEstateRelatedExtra,
     ],
+    ...realEstateExtendedCopy,
   },
   economy: {
     heroAlt: L("Pattaya city and economic growth", "เมืองพัทยาและการเติบโตทางเศรษฐกิจ", "芭提雅城市与经济增长", "Паттайя и экономический рост"),

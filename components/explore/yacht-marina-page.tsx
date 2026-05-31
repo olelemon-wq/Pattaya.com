@@ -1,37 +1,191 @@
 "use client";
 
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
-import { ExploreGuideCarousel } from "@/components/explore/explore-guide-carousel";
-import type { ExploreGuideCardData } from "@/components/explore/explore-guide-types";
 import { useLanguage } from "@/components/layout/language-provider";
-import { tSiteUi } from "@/lib/i18n/messages/site-ui";
-import { getExploreCommon } from "@/lib/i18n/messages/explore-common";
 import { getYachtPage } from "@/lib/i18n/messages/explore-yacht";
-import { yachtImages } from "@/lib/design/yacht-images";
-import { Anchor, Building2, Palmtree, Sunset } from "lucide-react";
+import { tSiteUi } from "@/lib/i18n/messages/site-ui";
+import { Anchor, Clock, MapPin, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-const routeIcons = [Sunset, Palmtree, Anchor] as const;
+function isExternalHref(href: string) {
+  return href.startsWith("http://") || href.startsWith("https://");
+}
+
+function VenueCard({
+  name,
+  hours,
+  hoursLabel,
+  highlight,
+  highlightLabel,
+  text,
+  priceRange,
+  priceRangeLabel,
+  href,
+  linkLabel,
+  image,
+  secondaryHref,
+  secondaryLinkLabel,
+}: {
+  name: string;
+  hours: string;
+  hoursLabel: string;
+  highlight: string;
+  highlightLabel: string;
+  text: string;
+  priceRange: string;
+  priceRangeLabel: string;
+  href: string;
+  linkLabel: string;
+  image: string;
+  secondaryHref?: string;
+  secondaryLinkLabel?: string;
+}) {
+  return (
+    <article className="flex h-full w-full flex-col overflow-hidden rounded-xl border border-[#e7e8e9] bg-[#fdf8fb] shadow-sm">
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group flex min-h-0 flex-1 flex-col transition hover:border-[#B52E88]/30"
+      >
+        <div className="relative aspect-[4/3] w-full shrink-0 bg-[#e7e8e9]">
+          <Image
+            src={image}
+            alt={name}
+            fill
+            className="object-cover transition duration-500 group-hover:scale-105"
+            sizes="(max-width: 640px) 100vw, 400px"
+          />
+        </div>
+        <div className="flex flex-1 flex-col p-4 sm:p-5">
+          <p className="flex items-start gap-2 font-bold text-[#191c1d]">
+            <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#B52E88]" aria-hidden />
+            {name}
+          </p>
+          <p className="mt-2 flex items-start gap-2 pl-6 text-xs font-medium text-[#747878]">
+            <Clock className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#B52E88]" aria-hidden />
+            <span>
+              {hoursLabel}: <span className="text-[#191c1d]">{hours}</span>
+            </span>
+          </p>
+          <p className="mt-2 flex items-start gap-2 pl-6 text-xs font-medium text-[#747878]">
+            <Users className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#B52E88]" aria-hidden />
+            <span>
+              {highlightLabel}: <span className="text-[#191c1d]">{highlight}</span>
+            </span>
+          </p>
+          <p className="mt-2 pl-6 text-sm">
+            <span className="font-medium text-[#747878]">{priceRangeLabel}: </span>
+            <span className="font-semibold text-[#B52E88]">{priceRange}</span>
+          </p>
+          <p className="mt-2 flex-1 pl-6 text-sm leading-relaxed text-[#444748]">{text}</p>
+          <span className="mt-4 pl-6 text-sm font-semibold text-[#B52E88] group-hover:underline">
+            {linkLabel}
+          </span>
+        </div>
+      </a>
+      {secondaryHref && secondaryLinkLabel ? (
+        <div className="border-t border-[#e7e8e9] px-4 py-3 sm:px-5">
+          {isExternalHref(secondaryHref) ? (
+            <a
+              href={secondaryHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-semibold text-[#455f88] transition hover:text-[#B52E88] hover:underline"
+            >
+              {secondaryLinkLabel}
+            </a>
+          ) : (
+            <Link
+              href={secondaryHref}
+              className="text-sm font-semibold text-[#455f88] transition hover:text-[#B52E88] hover:underline"
+            >
+              {secondaryLinkLabel}
+            </Link>
+          )}
+        </div>
+      ) : null}
+    </article>
+  );
+}
+
+function DayPlanCard({
+  title,
+  paragraphs,
+  href,
+  linkLabel,
+  image,
+}: {
+  title: string;
+  paragraphs: string[];
+  href: string;
+  linkLabel: string;
+  image: string;
+}) {
+  const linkClass =
+    "mt-4 inline-flex text-sm font-semibold text-[#B52E88] transition hover:underline";
+
+  return (
+    <article className="flex h-full flex-col overflow-hidden rounded-xl border border-[#e7e8e9] bg-white shadow-sm">
+      <div className="relative aspect-[16/9] w-full shrink-0 bg-[#e7e8e9]">
+        <Image src={image} alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+      </div>
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        <h3 className="text-base font-bold text-[#191c1d] sm:text-lg">{title}</h3>
+        <div className="mt-3 flex-1 space-y-3 text-sm leading-relaxed text-[#444748]">
+          {paragraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+        {isExternalHref(href) ? (
+          <a href={href} target="_blank" rel="noopener noreferrer" className={linkClass}>
+            {linkLabel}
+          </a>
+        ) : (
+          <Link href={href} className={linkClass}>
+            {linkLabel}
+          </Link>
+        )}
+      </div>
+    </article>
+  );
+}
+
+function TipCard({
+  id,
+  title,
+  paragraphs,
+  image,
+}: {
+  id: string;
+  title: string;
+  paragraphs: string[];
+  image: string;
+}) {
+  return (
+    <article
+      id={`tip-${id}`}
+      className="scroll-mt-24 flex h-full flex-col overflow-hidden rounded-xl border border-[#e7e8e9] bg-[#fdf8fb] shadow-sm"
+    >
+      <div className="relative aspect-[21/9] w-full shrink-0 bg-[#e7e8e9] sm:aspect-[2/1]">
+        <Image src={image} alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+      </div>
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        <h3 className="text-base font-bold text-[#191c1d] sm:text-lg">{title}</h3>
+        <div className="mt-3 space-y-3 text-sm leading-relaxed text-[#444748]">
+          {paragraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+      </div>
+    </article>
+  );
+}
 
 export function YachtMarinaPage() {
   const { language } = useLanguage();
-  const c = getExploreCommon(language);
   const page = getYachtPage(language);
-
-  const charterGuideCards: ExploreGuideCardData[] = page.charters.map((charter) => ({
-    id: charter.id,
-    name: charter.name,
-    nameTh: charter.nameTh,
-    image: charter.image,
-    tags: charter.tags,
-    excerpt: charter.excerpt,
-    details: [
-      { icon: "anchor", label: c.vessel, value: charter.type },
-      { icon: "users", label: c.capacity, value: charter.guests },
-      { icon: "sparkles", label: c.price, value: charter.price },
-    ],
-  }));
 
   return (
     <div data-full-bleed className="bg-[#fdf8fb] text-[#191c1d]">
@@ -44,7 +198,7 @@ export function YachtMarinaPage() {
         aria-labelledby="yacht-hero-title"
       >
         <Image
-          src={yachtImages.hero}
+          src={page.marina.image}
           alt={page.hero.title}
           fill
           priority
@@ -87,54 +241,80 @@ export function YachtMarinaPage() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-[1280px] px-5 py-12 md:px-16 md:py-16">
-        <ExploreGuideCarousel
-          title={page.carousel.title}
-          description={page.carousel.description}
-          prevLabel={page.carousel.prev}
-          nextLabel={page.carousel.next}
-          items={charterGuideCards}
-        />
-
-        <section className="mb-16 rounded-2xl border border-[#c4c7c8]/30 bg-white p-6 sm:p-8">
-          <h2 className="text-2xl font-semibold md:text-3xl">{page.routes.title}</h2>
-          <p className="mt-1 text-sm text-[#747878]">{page.routes.subtitle}</p>
-          <div className="mt-8 grid gap-4 lg:grid-cols-3">
-            {page.routes.items.map((route, i) => {
-              const Icon = routeIcons[i] ?? Anchor;
-              return (
-                <Link
-                  key={route.title}
-                  href={route.href}
-                  className="group flex gap-4 rounded-2xl border border-[#c4c7c8]/30 bg-[#fdf8fb] p-5 transition hover:border-[#B52E88]/30 hover:shadow-md sm:p-6"
-                >
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#B52E88]/10 text-[#B52E88] transition group-hover:bg-[#B52E88] group-hover:text-white">
-                    <Icon className="h-7 w-7" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <h3 className="font-bold text-[#191c1d] group-hover:text-[#B52E88]">
-                        {route.title}
-                      </h3>
-                      <span className="rounded-full bg-white px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-[#747878] ring-1 ring-[#c4c7c8]/40">
-                        {route.duration}
-                      </span>
-                    </div>
-                    <p className="mt-2 text-sm leading-relaxed text-[#444748]">
-                      {route.description}
-                    </p>
-                  </div>
-                </Link>
-              );
-            })}
+      <div className="mx-auto max-w-[1280px] space-y-14 px-5 py-12 md:px-16 md:py-16">
+        <section id="departure-points" className="scroll-mt-24" aria-labelledby="departure-title">
+          <div>
+            <h2 id="departure-title" className="text-2xl font-semibold text-[#191c1d] md:text-3xl">
+              {page.departurePoints.title}
+            </h2>
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[#747878] sm:text-base">
+              {page.departurePoints.subtitle}
+            </p>
           </div>
+          <ul className="mt-8 grid gap-5 sm:grid-cols-2 sm:items-stretch xl:grid-cols-3">
+            {page.departurePoints.items.map((point) => (
+              <li key={point.id} id={`departure-${point.id}`} className="flex min-h-0 scroll-mt-24">
+                <VenueCard
+                  name={point.name}
+                  hours={point.hours}
+                  hoursLabel={page.departurePoints.hoursLabel}
+                  highlight={point.highlight}
+                  highlightLabel={page.departurePoints.highlightLabel}
+                  text={point.text}
+                  priceRange={point.priceRange}
+                  priceRangeLabel={page.departurePoints.priceRangeLabel}
+                  href={point.href}
+                  linkLabel={point.linkLabel}
+                  image={point.image}
+                  secondaryHref={point.secondaryHref}
+                  secondaryLinkLabel={point.secondaryLinkLabel}
+                />
+              </li>
+            ))}
+          </ul>
         </section>
 
-        <section className="mb-16 overflow-hidden rounded-2xl border border-[#c4c7c8]/30 bg-white shadow-sm">
+        <section id="charter-types" className="scroll-mt-24" aria-labelledby="charter-types-title">
+          <div>
+            <h2 id="charter-types-title" className="text-2xl font-semibold text-[#191c1d] md:text-3xl">
+              {page.charterTypes.title}
+            </h2>
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[#747878] sm:text-base">
+              {page.charterTypes.subtitle}
+            </p>
+          </div>
+          <ul className="mt-8 grid gap-5 sm:grid-cols-2 sm:items-stretch xl:grid-cols-3">
+            {page.charterTypes.items.map((charter) => (
+              <li key={charter.id} id={`charter-${charter.id}`} className="flex min-h-0 scroll-mt-24">
+                <VenueCard
+                  name={charter.name}
+                  hours={charter.hours}
+                  hoursLabel={page.charterTypes.hoursLabel}
+                  highlight={charter.highlight}
+                  highlightLabel={page.charterTypes.highlightLabel}
+                  text={charter.text}
+                  priceRange={charter.priceRange}
+                  priceRangeLabel={page.charterTypes.priceRangeLabel}
+                  href={charter.href}
+                  linkLabel={charter.linkLabel}
+                  image={charter.image}
+                  secondaryHref={charter.secondaryHref}
+                  secondaryLinkLabel={charter.secondaryLinkLabel}
+                />
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section
+          id="ocean-marina"
+          className="scroll-mt-24 overflow-hidden rounded-2xl border border-[#c4c7c8]/30 bg-white shadow-sm"
+          aria-labelledby="marina-title"
+        >
           <div className="grid lg:grid-cols-2">
-            <div className="relative min-h-[280px] lg:min-h-[420px]">
+            <div className="relative min-h-[280px] lg:min-h-[360px]">
               <Image
-                src={yachtImages.marina}
+                src={page.marina.image}
                 alt={page.marina.title}
                 fill
                 className="object-cover"
@@ -143,21 +323,18 @@ export function YachtMarinaPage() {
             </div>
             <div className="flex flex-col justify-center p-6 sm:p-10 lg:p-12">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#B52E88]/10 text-[#B52E88]">
-                <Building2 className="h-7 w-7" aria-hidden />
+                <Anchor className="h-7 w-7" aria-hidden />
               </div>
               <p className="mt-4 text-xs font-bold uppercase tracking-[0.2em] text-[#B52E88]">
                 {page.marina.eyebrow}
               </p>
-              <h2 className="mt-2 text-2xl font-semibold text-[#191c1d] md:text-3xl">
+              <h2 id="marina-title" className="mt-2 text-2xl font-semibold text-[#191c1d] md:text-3xl">
                 {page.marina.title}
               </h2>
               <p className="mt-4 leading-relaxed text-[#444748]">{page.marina.body}</p>
               <ul className="mt-6 space-y-3">
                 {page.marina.amenities.map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-3 text-sm text-[#444748]"
-                  >
+                  <li key={item} className="flex items-start gap-3 text-sm text-[#444748]">
                     <span
                       className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#B52E88]"
                       aria-hidden
@@ -166,28 +343,89 @@ export function YachtMarinaPage() {
                   </li>
                 ))}
               </ul>
-              <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-xl">
-                <Image
-                  src={yachtImages.marinaLifestyle}
-                  alt={page.marina.title}
-                  fill
-                  className="object-cover"
-                  sizes="40vw"
-                />
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <a
+                  href={page.marina.mapsHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-xl bg-[#B52E88] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#B52E88]/90"
+                >
+                  {page.marina.mapsLabel}
+                </a>
+                <a
+                  href={page.marina.siteHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-xl border border-[#B52E88]/30 px-6 py-3 text-sm font-semibold text-[#B52E88] transition hover:bg-[#B52E88]/5"
+                >
+                  {page.marina.siteLabel}
+                </a>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="rounded-2xl bg-[#191c1d] px-6 py-10 text-center sm:px-12 sm:py-12">
-          <h2 className="text-xl font-bold text-white md:text-2xl">{page.cta.title}</h2>
-          <p className="mx-auto mt-2 max-w-lg text-sm text-white/75">{page.cta.body}</p>
-          <Link
-            href={page.cta.href}
-            className="mt-6 inline-flex items-center justify-center rounded-xl bg-[#B52E88] px-8 py-3.5 text-sm font-bold text-white shadow-lg transition hover:bg-[#B52E88]/90"
-          >
-            {page.cta.button}
-          </Link>
+        <section id="yacht-day-plans" className="scroll-mt-24" aria-labelledby="day-plans-title">
+          <div>
+            <h2 id="day-plans-title" className="text-2xl font-semibold text-[#191c1d] md:text-3xl">
+              {page.dayPlans.title}
+            </h2>
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[#747878] sm:text-base">
+              {page.dayPlans.subtitle}
+            </p>
+          </div>
+          <div className="mt-8 grid gap-5 md:grid-cols-3 md:items-stretch">
+            {page.dayPlans.items.map((plan) => (
+              <DayPlanCard
+                key={plan.id}
+                title={plan.title}
+                paragraphs={plan.paragraphs}
+                href={plan.href}
+                linkLabel={plan.linkLabel}
+                image={plan.image}
+              />
+            ))}
+          </div>
+        </section>
+
+        <section id="yacht-guides" className="scroll-mt-24" aria-labelledby="tips-title">
+          <div>
+            <h2 id="tips-title" className="text-2xl font-semibold text-[#191c1d] md:text-3xl">
+              {page.tips.title}
+            </h2>
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[#747878] sm:text-base">
+              {page.tips.subtitle}
+            </p>
+          </div>
+          <div className="mt-8 grid gap-5 md:grid-cols-2 md:items-stretch">
+            {page.tips.items.map((tip) => (
+              <TipCard key={tip.id} id={tip.id} title={tip.title} paragraphs={tip.paragraphs} image={tip.image} />
+            ))}
+          </div>
+        </section>
+
+        <section className="rounded-2xl border border-[#c4c7c8]/30 bg-white p-6 sm:p-8">
+          <h2 className="text-xl font-bold md:text-2xl">{page.alsoExplore.title}</h2>
+          <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <Link
+              href="/explore/islands/koh-larn"
+              className="rounded-xl bg-[#B52E88] px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-[#B52E88]/90"
+            >
+              {page.alsoExplore.kohLarnDayTrip}
+            </Link>
+            <Link
+              href="/explore/restaurants/fine-dining"
+              className="rounded-xl border border-[#B52E88]/30 px-6 py-3 text-center text-sm font-semibold text-[#B52E88] transition hover:bg-[#B52E88]/5"
+            >
+              {page.alsoExplore.fineDining}
+            </Link>
+            <Link
+              href="/explore/wellness"
+              className="rounded-xl border border-[#c4c7c8]/50 px-6 py-3 text-center text-sm font-semibold text-[#191c1d] transition hover:bg-[#edeeef]"
+            >
+              {page.alsoExplore.wellness}
+            </Link>
+          </div>
         </section>
       </div>
     </div>

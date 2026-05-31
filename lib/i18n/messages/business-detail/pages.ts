@@ -6,6 +6,10 @@ type StepCopy = { title: LocalizedText; description: LocalizedText };
 type HighlightCopy = { title: LocalizedText; description: LocalizedText };
 type RelatedCopy = { label: LocalizedText; blurb: LocalizedText };
 type EventCopy = { title: LocalizedText; location: LocalizedText };
+type QuickFactCopy = { label: LocalizedText; value: LocalizedText };
+type ReadingPathItemCopy = { label: LocalizedText; description: LocalizedText };
+type FaqCopy = { q: LocalizedText; a: LocalizedText };
+type ServicePointCopy = { name: LocalizedText; note: LocalizedText };
 
 export type BusinessPageCopy = {
   heroAlt: LocalizedText;
@@ -19,6 +23,7 @@ export type BusinessPageCopy = {
     body: LocalizedText;
     button: LocalizedText;
   };
+  ctaSecondary?: { button: LocalizedText };
   overview: { title: LocalizedText; body: LocalizedText };
   steps: { title: LocalizedText; items: StepCopy[] };
   checklist: { title: LocalizedText; items: LocalizedText[] };
@@ -26,8 +31,33 @@ export type BusinessPageCopy = {
   related: RelatedCopy[];
   economyStatLabels?: LocalizedText[];
   networkingEvents?: EventCopy[];
+  quickFacts?: { title: LocalizedText; items: QuickFactCopy[] };
+  legalNotes?: { title: LocalizedText; items: LocalizedText[] };
+  readingPath?: {
+    title: LocalizedText;
+    intro: LocalizedText;
+    items: ReadingPathItemCopy[];
+  };
+  faq?: { title: LocalizedText; items: FaqCopy[] };
+  servicePoints?: {
+    title: LocalizedText;
+    intro: LocalizedText;
+    items: ServicePointCopy[];
+  };
 };
 
+import {
+  boiExtendedCopy,
+  boiRelatedExtra,
+} from "@/lib/i18n/messages/business-detail/boi-extended";
+import {
+  restaurantExtendedCopy,
+  restaurantRelatedExtra,
+} from "@/lib/i18n/messages/business-detail/restaurant-extended";
+import {
+  thaiCompanyExtendedCopy,
+  thaiCompanyRelatedExtra,
+} from "@/lib/i18n/messages/business-detail/thai-company-extended";
 import { businessPageCopyRest } from "@/lib/i18n/messages/business-detail/pages-rest";
 
 const businessPageCopyPart1 = {
@@ -263,7 +293,9 @@ const businessPageCopyPart1 = {
           "Нетворкинг и экономическая статистика",
         ),
       },
+      ...thaiCompanyRelatedExtra,
     ],
+    ...thaiCompanyExtendedCopy,
   },
   boi: {
     heroAlt: L(
@@ -442,7 +474,9 @@ const businessPageCopyPart1 = {
           "Макростатистика для инвестмемо",
         ),
       },
+      ...boiRelatedExtra,
     ],
+    ...boiExtendedCopy,
   },
   restaurant: {
     heroAlt: L(
@@ -576,7 +610,9 @@ const businessPageCopyPart1 = {
         label: L("Fine Dining — Explore", "Fine Dining — สำรวจ", "Fine Dining — 探索", "Fine Dining — Explore"),
         blurb: L("See how premium venues position in Pattaya", "ดูว่าร้านพรีเมียมวางตัวในพัทยาอย่างไร", "了解高端场所在芭提雅如何定位", "Как премиум-заведения позиционируются в Паттайе"),
       },
+      ...restaurantRelatedExtra,
     ],
+    ...restaurantExtendedCopy,
   },
 } satisfies Pick<
   Record<BusinessPageId, BusinessPageCopy>,

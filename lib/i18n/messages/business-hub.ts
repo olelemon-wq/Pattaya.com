@@ -22,6 +22,30 @@ const copy = {
     zh: "浏览服务",
     ru: "Все услуги",
   },
+  heroFeaturedCategory: {
+    en: "Business guides",
+    th: "คู่มือธุรกิจ",
+    zh: "商业指南",
+    ru: "Бизнес-гайды",
+  },
+  heroFeaturedTitle: {
+    en: "Start a business in Pattaya & the EEC",
+    th: "เริ่มธุรกิจในพัทยาและ EEC",
+    zh: "在芭提雅与 EEC 创业",
+    ru: "Бизнес в Паттайе и EEC",
+  },
+  heroFeaturedExcerpt: {
+    en: "Step-by-step guides for company setup, licenses, and investment context — we link to official sources; we do not book consultants on this site.",
+    th: "คู่มือทีละขั้น จดบริษัท ใบอนุญาต และบริบทการลงทุน — ลิงก์แหล่งทางการ Pattaya.com ไม่รับจองที่ปรึกษา",
+    zh: "分步指南：公司设立、牌照与投资背景 — 链至官方来源；本站不提供顾问预约。",
+    ru: "Пошаговые гайды — ссылки на официальные источники; консультантов не бронируем.",
+  },
+  heroCtaStart: {
+    en: "Start with company setup →",
+    th: "เริ่มจากจดบริษัท →",
+    zh: "从公司设立开始 →",
+    ru: "С регистрации компании →",
+  },
   heroImageAlt: {
     en: "Pattaya Business Hub skyline and waterfront",
     th: "เส้นขอบฟ้าธุรกิจพัทยาและริมน้ำ",
@@ -39,6 +63,24 @@ const copy = {
     th: "จัดตั้งบริษัท & กฎหมาย",
     zh: "公司设立与法务",
     ru: "Регистрация и право",
+  },
+  setupSectionTitle: {
+    en: "Setting up a company in Pattaya",
+    th: "จัดตั้งบริษัทในพัทยา",
+    zh: "在芭提雅设立公司",
+    ru: "Регистрация компании в Паттайе",
+  },
+  setupSectionSubtitle: {
+    en: "Choose the structure that fits your business, then read the matching guide for steps and paperwork. When your plan is clear, consult a lawyer or BOI advisor to file.",
+    th: "เลือกรูปแบบบริษัทที่ตรงกับธุรกิจของคุณ แล้วอ่านคู่มือด้านล่างเพื่อดูขั้นตอนและเอกสารที่ต้องใช้ — เมื่อแผนชัดแล้วค่อยปรึกษาทนายหรือที่ปรึกษา BOI เพื่อยื่นจดทะเบียนจริง",
+    zh: "选择适合您业务的类型，阅读下方对应指南了解步骤与材料。计划明确后再咨询律师或 BOI 顾问办理登记。",
+    ru: "Выберите форму компании, изучите шаги и документы в гайде ниже. Когда план ясен — к юристу или консультанту BOI для подачи.",
+  },
+  setupBadge: {
+    en: "Step-by-step guide",
+    th: "คู่มือทีละขั้น",
+    zh: "分步指南",
+    ru: "Пошаговый гайд",
   },
   setupSubtitle: {
     en: "End-to-end support for investors entering the EEC.",
@@ -107,10 +149,10 @@ const copy = {
     ru: "Гид по ресторанам",
   },
   restaurantBadge: {
-    en: "Hot Industry",
-    th: "อุตสาหกรรมมาแรง",
-    zh: "热门行业",
-    ru: "Горячая отрасль",
+    en: "Licenses",
+    th: "ใบอนุญาต",
+    zh: "牌照",
+    ru: "Лицензии",
   },
   restaurantExcerpt: {
     en: "Opening luxury restaurants & cafés: location strategy and international food safety standards.",
@@ -137,10 +179,10 @@ const copy = {
     ru: "Бары и ночная жизнь",
   },
   barBadge: {
-    en: "Elite Zone",
-    th: "โซนเอลิท",
-    zh: "精英区",
-    ru: "Elite Zone",
+    en: "Compliance",
+    th: "กฎหมาย",
+    zh: "合规",
+    ru: "Соответствие",
   },
   barExcerpt: {
     en: "Entertainment venue compliance: sound limits and operating hours under current law.",
@@ -167,10 +209,10 @@ const copy = {
     ru: "Гостиничный бизнес",
   },
   hotelBadge: {
-    en: "High ROI",
-    th: "ผลตอบแทนสูง",
-    zh: "高回报",
-    ru: "Высокий ROI",
+    en: "Licenses",
+    th: "ใบอนุญาต",
+    zh: "牌照",
+    ru: "Лицензии",
   },
   hotelExcerpt: {
     en: "Tourism real estate: hotel licenses and 5-star service standards.",
@@ -305,16 +347,64 @@ const copy = {
     ru: "Недвижимость",
   },
   realEstateExcerpt: {
-    en: "Premium portfolios: beachfront condos and luxury villas with stable returns.",
-    th: "พอร์ตพรีเมียม คอนโดติดทะเลและวิลล่าหรู พร้อมผลตอบแทนที่มั่นคง",
-    zh: "高端组合：海景公寓与豪华别墅，回报稳健。",
-    ru: "Премиум-портфель: кондо у моря и виллы.",
+    en: "Read how condo rules, foreign quotas, and due diligence work in Chonburi — not a sales listing.",
+    th: "อ่านเรื่อง quota ต่างชาติ และ due diligence ในชลบุรี — ไม่ใช่รายการขาย",
+    zh: "了解春武里公寓规则、外资配额与尽职调查 — 非销售 listing。",
+    ru: "Правила condo и due diligence — не листинг продаж.",
   },
   contactAgent: {
-    en: "Contact partner agent",
-    th: "ติดต่อพาร์ทเนอร์เอเจนท์",
-    zh: "联系合作经纪",
-    ru: "Связаться с агентом",
+    en: "Read real estate guide →",
+    th: "อ่านคู่มืออสังหา →",
+    zh: "阅读房地产指南 →",
+    ru: "Гид по недвижимости →",
+  },
+  economyStatDisclaimer: {
+    en: "Illustrative figures from public EEC/TAT reports (circa 2024). Confirm sources on the economy overview.",
+    th: "ตัวเลขคร่าวๆ จากรายงาน EEC/TAT (ประมาณ 2024) ยืนยันแหล่งที่หน้าภาพรวมเศรษฐกิจ",
+    zh: "数字摘自 EEC/TAT 公开报告（约2024年），请在经济概览页核实来源。",
+    ru: "Ориентиры из отчётов EEC/TAT (~2024). Источники — на странице экономики.",
+  },
+  eventsSeeCalendar: {
+    en: "See events calendar →",
+    th: "ดูปฏิทินอีเวนต์ →",
+    zh: "查看活动日历 →",
+    ru: "Календарь событий →",
+  },
+  eventsHubNote: {
+    en: "Sample venues and event types — check our Events hub for current dates.",
+    th: "ตัวอย่างสถานที่และประเภทอีเวนต์ — ดูวันที่ล่าสุดที่หน้า Events",
+    zh: "示例场地与活动类型 — 最新日期见 Events 页。",
+    ru: "Примеры площадок — актуальные даты на Events.",
+  },
+  quickNavSetup: {
+    en: "Company setup",
+    th: "จัดตั้งบริษัท",
+    zh: "公司设立",
+    ru: "Регистрация",
+  },
+  quickNavGuides: {
+    en: "Industry guides",
+    th: "คู่มืออุตสาหกรรม",
+    zh: "行业指南",
+    ru: "Отраслевые гайды",
+  },
+  quickNavEconomy: {
+    en: "Economy & EEC",
+    th: "เศรษฐกิจ & EEC",
+    zh: "经济与 EEC",
+    ru: "Экономика и EEC",
+  },
+  industryGuideCta: {
+    en: "Read guide",
+    th: "อ่านคู่มือ",
+    zh: "阅读指南",
+    ru: "Читать гайд",
+  },
+  quickNavEvents: {
+    en: "Events",
+    th: "อีเวนต์",
+    zh: "活动",
+    ru: "События",
   },
   viewEconomyOverview: {
     en: "View Pattaya economy overview →",
@@ -344,7 +434,7 @@ export function getSetupCards(lang: LanguageCode) {
       excerpt: tBusiness(lang, "setup1Excerpt"),
       image: businessImages.incorporation,
       imageAlt: tBusiness(lang, "setup1Title"),
-      cta: pickText(lang, commonUi.contactLawFirm),
+      cta: pickText(lang, commonUi.readGuide),
       href: "/business/company-setup/thai-company",
       features,
     },
@@ -353,7 +443,7 @@ export function getSetupCards(lang: LanguageCode) {
       excerpt: tBusiness(lang, "setup2Excerpt"),
       image: businessImages.boiEec,
       imageAlt: tBusiness(lang, "setup2Title"),
-      cta: pickText(lang, commonUi.boiConsulting),
+      cta: pickText(lang, commonUi.readGuide),
       href: "/business/company-setup/boi",
       features,
     },
@@ -385,7 +475,7 @@ export function getIndustryGuides(lang: LanguageCode): IndustryGuideItem[] {
         tBusiness(lang, "restaurantCheck1"),
         tBusiness(lang, "restaurantCheck2"),
       ],
-      cta: pickText(lang, commonUi.downloadGuide),
+      cta: tBusiness(lang, "industryGuideCta"),
       href: "/business/guide/restaurant",
       variant: "light" as const,
     },
@@ -399,7 +489,7 @@ export function getIndustryGuides(lang: LanguageCode): IndustryGuideItem[] {
         tBusiness(lang, "barCheck1"),
         tBusiness(lang, "barCheck2"),
       ],
-      cta: pickText(lang, commonUi.bookConsultation),
+      cta: tBusiness(lang, "industryGuideCta"),
       href: "/business/guide/bar",
       variant: "dark" as const,
     },
@@ -413,7 +503,7 @@ export function getIndustryGuides(lang: LanguageCode): IndustryGuideItem[] {
         tBusiness(lang, "hotelCheck1"),
         tBusiness(lang, "hotelCheck2"),
       ],
-      cta: pickText(lang, commonUi.downloadGuide),
+      cta: tBusiness(lang, "industryGuideCta"),
       href: "/business/guide/hotel",
       variant: "light" as const,
       badgePosition: "bottom" as const,
@@ -423,40 +513,41 @@ export function getIndustryGuides(lang: LanguageCode): IndustryGuideItem[] {
 
 export function getEconomyStats(lang: LanguageCode) {
   return [
-    { icon: "👥", value: "12M+", label: tBusiness(lang, "statVisitors") },
-    { icon: "📈", value: "+18%", label: tBusiness(lang, "statRealEstate") },
+    { icon: "👥", value: "~12M", label: tBusiness(lang, "statVisitors") },
     { icon: "💰", value: "฿1.3T", label: tBusiness(lang, "statInvestment") },
     { icon: "🏗️", value: "200+", label: tBusiness(lang, "statInfrastructure") },
-    { icon: "📊", value: "14%", label: tBusiness(lang, "statGdp") },
-    { icon: "🏭", value: "30+", label: tBusiness(lang, "statIndustrial") },
+  ];
+}
+
+export function getBusinessQuickNav(lang: LanguageCode) {
+  return [
+    { id: "company-setup", label: tBusiness(lang, "quickNavSetup"), href: "#company-setup" },
+    { id: "industry-guides", label: tBusiness(lang, "quickNavGuides"), href: "#industry-guides" },
+    { id: "economy", label: tBusiness(lang, "quickNavEconomy"), href: "#economy" },
+    { id: "networking", label: tBusiness(lang, "quickNavEvents"), href: "#networking" },
   ];
 }
 
 export function getNetworkingEvents(lang: LanguageCode) {
+  const linkLabel = tBusiness(lang, "eventsSeeCalendar");
   return [
     {
-      day: "24",
-      month: "OCT",
-      year: "2024",
       title: tBusiness(lang, "event1Title"),
       location: tBusiness(lang, "event1Location"),
-      href: "/business/networking/events",
+      href: "/events",
+      linkLabel,
     },
     {
-      day: "12",
-      month: "NOV",
-      year: "2024",
       title: tBusiness(lang, "event2Title"),
       location: tBusiness(lang, "event2Location"),
-      href: "/business/networking/events",
+      href: "/events",
+      linkLabel,
     },
     {
-      day: "05",
-      month: "DEC",
-      year: "2024",
       title: tBusiness(lang, "event3Title"),
       location: tBusiness(lang, "event3Location"),
-      href: "/business/networking/events",
+      href: "/events",
+      linkLabel,
     },
   ];
 }
