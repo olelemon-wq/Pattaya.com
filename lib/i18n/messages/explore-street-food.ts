@@ -13,7 +13,6 @@ import {
   getStreetFoodGuideCategories,
   getStreetFoodGuideIntro,
   getStreetFoodMoodPicks,
-  getStreetFoodMustTry,
 } from "@/lib/i18n/messages/explore-street-food-guide";
 
 export function getStreetFoodMarkets(lang: LanguageCode) {
@@ -289,7 +288,6 @@ export function getStreetFoodPage(lang: LanguageCode) {
       guide: getStreetFoodGuideIntro(lang),
       categories: getStreetFoodGuideCategories(lang),
       moodPicks: getStreetFoodMoodPicks(lang),
-      mustTry: getStreetFoodMustTry(lang),
     },
     tips: getStreetFoodTips(lang),
     alsoExplore: {

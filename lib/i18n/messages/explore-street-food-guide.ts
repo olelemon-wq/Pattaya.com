@@ -412,34 +412,6 @@ export function getStreetFoodMoodPicks(lang: LanguageCode) {
   };
 }
 
-export function getStreetFoodMustTry(lang: LanguageCode) {
-  return {
-    title: t(
-      lang,
-      L("Tastes that scream Pattaya", "street food ที่เด้งว่าพัทยามาก", "很有芭提雅味的街头美食", "Вкус Паттайи"),
-    ),
-    subtitle: t(
-      lang,
-      L(
-        "A city where you can still eat well at 2:00 — hunt these across the spots above.",
-        "เมืองที่หิวตี 2 ก็ยังมีอะไรกิน — ไล่ล่าตามจุดด้านบน",
-        "凌晨两点仍能吃饱的城市——在上面的点位找这些。",
-        "Голодны в 2:00 — ищите это на рынках выше.",
-      ),
-    ),
-    items: [
-      t(lang, L("Grilled squid, seafood dip", "หมึกย่างน้ำจิ้มซีฟู้ด", "烤鱿鱼配海鲜酱", "Кальмар с соусом")),
-      t(lang, L("Seafood papaya salad", "ส้มตำทะเล", "海鲜青木瓜沙拉", "Som tam морепродукты")),
-      t(lang, L("Late-night roti", "โรตีดึก ๆ", "深夜 roti", "Roti ночью")),
-      t(lang, L("Market fried meatballs", "ลูกชิ้นทอดตลาดนัด", "夜市炸肉丸", "Фрикадельки")),
-      t(lang, L("Grilled shellfish", "หอยเผา", "烤贝", "Моллюски")),
-      t(lang, L("Coconut smoothie", "น้ำมะพร้าวปั่น", "椰子冰沙", "Кокосовый смузи")),
-      t(lang, L("Morning pork sticky rice", "ข้าวเหนียวหมูเช้า ๆ", "清晨猪肉糯米饭", "Утренний рис")),
-      t(lang, L("Chonburi bamboo rice", "ข้าวหลามชลบุรี", "春武里竹筒饭", "Рис в бамбуке")),
-    ],
-  };
-}
-
 export function getStreetFoodForMap(lang: LanguageCode) {
   const keys = Object.keys(guideSpots) as (keyof typeof guideSpots)[];
   return keys.map((key) => {

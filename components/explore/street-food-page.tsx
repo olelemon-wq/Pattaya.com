@@ -445,27 +445,6 @@ export function StreetFoodPage() {
           </div>
         </section>
 
-        <section
-          id="street-must-try"
-          className="scroll-mt-24 rounded-2xl border border-[#D7CBBA]/50 bg-gradient-to-br from-[#fdf8fb] via-white to-[#f5efe6] p-6 sm:p-8"
-          aria-labelledby="street-must-try-title"
-        >
-          <h2 id="street-must-try-title" className="text-xl font-bold text-[#191c1d] md:text-2xl">
-            {page.streetFood.mustTry.title}
-          </h2>
-          <p className="mt-1 text-sm text-[#747878]">{page.streetFood.mustTry.subtitle}</p>
-          <ul className="mt-6 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
-            {page.streetFood.mustTry.items.map((item) => (
-              <li
-                key={item}
-                className="rounded-lg border border-[#e7e8e9] bg-white/90 px-4 py-3 text-sm leading-snug text-[#444748]"
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-        </section>
-
         <section id="eating-guides" className="scroll-mt-24" aria-labelledby="tips-title">
           <div>
             <h2 id="tips-title" className="text-2xl font-semibold text-[#191c1d] md:text-3xl">
