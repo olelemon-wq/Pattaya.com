@@ -110,15 +110,15 @@ const exploreNav: Record<string, NavCopy> = {
     subcategory: L("Yacht & Marina", "เรือยอร์ช", "游艇码头", "Яхты"),
   },
   "hidden-gems": {
-    label: L("Hidden Gems", "จุดลับ", "小众秘境", "Секретные места"),
+    label: L("Going deeper", "เริ่มรู้ลึก", "深入了解", "Глубже"),
     description: L(
-      "Secret spots off the beaten path",
-      "จุดลับที่นักท่องเที่ยวยังไม่ค่อยรู้จัก",
-      "鲜为人知的秘密好去处",
-      "Малоизвестные места вне маршрутов",
+      "Pattaya, going deeper — hidden spots off the main strip",
+      "พัทยาฉบับคนเริ่มรู้ลึก — จุดลับนอกเส้นทางหลัก",
+      "芭提雅深入了解——主路以外的秘境",
+      "Паттайя глубже — вне главных маршрутов",
     ),
-    category: L("Hidden Gems", "จุดลับ", "小众秘境", "Секретные места"),
-    subcategory: L("Secret Spots", "จุดลับ", "秘密地点", "Секретные"),
+    category: L("Going deeper", "เริ่มรู้ลึก", "深入了解", "Глубже"),
+    subcategory: L("Hidden gems", "จุดลับ", "秘境", "Секретные места"),
   },
   wellness: {
     label: L("Spa & Massage", "สปา นวด", "水疗与按摩", "Спа и массаж"),

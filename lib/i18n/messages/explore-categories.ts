@@ -58,10 +58,10 @@ const labels = {
     ru: "Яхты",
   },
   hiddenGems: {
-    en: "Hidden Gems",
-    th: "จุดลับ",
-    zh: "秘境",
-    ru: "Скрытые места",
+    en: "Going deeper",
+    th: "เริ่มรู้ลึก",
+    zh: "深入了解",
+    ru: "Глубже",
   },
   wellness: {
     en: "Wellness",

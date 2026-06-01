@@ -123,7 +123,7 @@ const exploreDedicatedMeta: Record<string, ExploreMetaFn> = {
   },
   "hidden-gems": (lang) => {
     const p = getHiddenGemsPage(lang);
-    return { title: p.hero.title, description: p.hero.body };
+    return { title: p.seoTitle, description: p.hero.body };
   },
   wellness: (lang) => {
     const p = getWellnessPage(lang);

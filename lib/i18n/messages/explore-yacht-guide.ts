@@ -79,32 +79,32 @@ const guideCharters = {
     {
       name: L("Pattaya Yacht Charters", "Pattaya Yacht Charters", "Pattaya Yacht Charters", "Pattaya Yacht Charters"),
       openDays: L("By appointment", "นัดล่วงหน้า", "需预约", "По записи"),
-      hoursRange: L("Half / full day · sunset", "half / full day · sunset", "半日/全日 · 日落", "Полдня / день · закат"),
-      bestTimeOfDay: L("Family · sunset", "ครอบครัว · sunset", "亲子 · 日落", "Семья · закат"),
-      priceGuide: L("Catamaran ~15,000–40,000 THB", "คาตามารัน ~15,000–40,000 บาท", "双体船约1.5–4万泰铢", "Катамаран ~15–40 тыс."),
-      styleCompact: L("Family chill", "ครอบครัวชิล", "亲子轻松", "Семья"),
+      hoursRange: L("Half / full day · sunset", "ครึ่งวัน / เต็มวัน · ช่วงพระอาทิตย์ตก", "半日/全日 · 日落", "Полдня / день · закат"),
+      bestTimeOfDay: L("Family · sunset", "ครอบครัว · ชมอาทิตย์ตก", "亲子 · 日落", "Семья · закат"),
+      priceGuide: L("Catamaran ~15,000–40,000 THB", "เรือสองท้อง ประมาณ 15,000–40,000 บาท", "双体船约1.5–4万泰铢", "Катамаран ~15–40 тыс."),
+      styleCompact: L("Family-friendly", "เหมาะครอบครัว", "亲子轻松", "Семья"),
       highlights: [
-        L("Half & full day", "half & full day", "半日/全日", "Полдня / день"),
-        L("Sunset cruise", "sunset cruise", "日落巡航", "Закат"),
-        L("Koh Larn & island hops", "เกาะล้าน & island hopping", "格兰岛跳岛", "Ko Larn"),
-        L("Crew, food, snorkel gear", "crew อาหาร อุปกรณ์ดำน้ำ", "船员、餐食、浮潜装备", "Экипаж, еда, сноркел"),
+        L("Half & full day", "ครึ่งวันหรือเต็มวัน", "半日/全日", "Полдня / день"),
+        L("Sunset cruise", "ล่องชมพระอาทิตย์ตก", "日落巡航", "Закат"),
+        L("Koh Larn & island hops", "แวะเกาะล้านและเกาะใกล้ ๆ", "格兰岛跳岛", "Ko Larn"),
+        L("Crew, food, snorkel gear", "มีลูกเรือ อาหาร และอุปกรณ์ดำน้ำตื้น", "船员、餐食、浮潜装备", "Экипаж, еда, сноркел"),
       ],
       vibe: L(
-        "Top pick for families with kids — private, comfortable, trips tailored to headcount and budget.",
-        "เหมาะมากพาครอบครัวมีเด็ก — private สบาย ปรับทริปตามจำนวนคนและงบ",
-        "带娃家庭首选——私密舒适，可按人数与预算定制。",
+        "Often the first name locals mention for families — private boat, wide catamaran decks, and trips you can scale to your group size.",
+        "ร้านที่คนพัทยามักแนะนำเมื่อพาครอบครัว — เรือส่วนตัว ดาดฟ้ากว้าง ปรับจำนวนคนและเวลาได้ตามงบ",
+        "本地人常向家庭推荐——私人船、宽甲板，可按人数调整。",
         "Лучший выбор для семей с детьми.",
       ),
       bestFor: L(
-        "Parents who want crew support, food on board, and calm catamaran decks.",
-        "พ่อแม่ที่อยากได้ crew ดูแล มีอาหาร ดาดฟ้าคาตามารันกว้าง",
-        "需要船员照料、船上餐饮、宽敞双体船甲板的家庭。",
+        "Parents who want crew help, meals on board, and a steadier boat than a small speedboat.",
+        "พ่อแม่ที่อยากมีลูกเรือช่วยดูแล มีอาหารบนเรือ และไม่อยากนั่งเรือเร็วที่โยกมาก",
+        "需要船员照料、船上餐饮、比快艇更稳的家庭。",
         "С crew и едой на борту.",
       ),
       tips: L(
-        "They note trips are flexible by group size and budget — confirm inclusions before paying.",
-        "เว็บระบุปรับทริปตามจำนวนคนและงบ — ยืนยันสิ่งที่รวมก่อนจ่าย",
-        "官网称可按人数与预算调整——付款前确认包含项目。",
+        "Ask what is included in the quote (food, fuel, park fees) before you transfer a deposit.",
+        "ก่อนโอนมัดจำ ถามให้ชัดว่าราคารวมอะไรบ้าง เช่น อาหาร น้ำมัน ค่าเข้าอุทยานทางทะเล",
+        "付定金前确认报价包含项目（餐食、燃油、公园费等）。",
         "Уточните, что входит в цену.",
       ),
       phone: "+66876457771",
@@ -161,15 +161,15 @@ const guideCharters = {
       L("Photo-friendly", "ถ่ายรูปสวย", "适合拍照", "Для фото"),
     ],
     vibe: L(
-      "Younger, busier energy — great when teens want action and Instagram-worthy shots.",
-      "ฟีลวัยรุ่น activity เยอะ — เด็กโตชอบ",
-      "更年轻、更有活力——适合青少年想要刺激与出片。",
+      "Busier, more active trips — popular when teenagers want jet skis, loud music, and lots of photo stops.",
+      "ทริปคึกคักกว่า — วัยรุ่นมักชอบเพราะมีกิจกรรมทางน้ำเยอะและแวะถ่ายรูปบ่อย",
+      "行程更热闹——青少年常因水上项目和拍照点多而喜欢。",
       "Для подростков и активного отдыха.",
     ),
     bestFor: L(
-      "Families with older kids who want speedboats, toys, and a livelier deck.",
-      "ครอบครัวเด็กโต อยาก speedboat ของเล่นบนเรือ",
-      "孩子较大、想要快艇与船上活动的家庭。",
+      "Groups with older kids or friends who prefer speedboats and water toys over a slow catamaran day.",
+      "กลุ่มเพื่อนหรือครอบครัวที่เด็กโตแล้ว อยากเรือเร็วและเล่นน้ำหนัก ๆ มากกว่านั่งเรือสองท้องช้า ๆ",
+      "孩子较大或朋友结伴，更想要快艇和水上玩具而非悠闲双体船。",
       "Старшие дети и активность.",
     ),
     phone: "+66942639422",
@@ -280,16 +280,16 @@ const guideCharters = {
       L("Fuel & provisioning", "น้ำมัน & เติมเสบียง", "加油与补给", "Топливо"),
     ],
     vibe: L(
-      "The main yacht hub south of Pattaya — where most operators base, not Bali Hai ferries.",
-      "ฮับยอชต์หลักใต้พัทยา — operator ส่วนใหญ่อยู่ที่นี่ ไม่ใช่เรือโดยสารบาลีไฮ",
-      "芭提雅南侧主要游艇枢纽——多数运营商在此，不是 Bali Hai 渡轮。",
+      "The main marina south of Pattaya — most private charter companies meet guests here, not at Bali Hai passenger pier.",
+      "ท่าเรือหลักใต้พัทยา — ร้านเช่าเรือส่วนตัวส่วนใหญ่นัดเจอที่นี่ ไม่ใช่ท่าบาลีไฮที่เป็นเรือโดยสาร",
+      "芭提雅南侧主码头——多数包船在此会合，不是 Bali Hai 客船码头。",
       "Главная марина — не Bali Hai.",
     ),
     bestFor: L(
-      "Meeting your charter, checking the boat, and planning a multi-hour departure.",
-      "เจอ operator เช็คเรือ ก่อนออกทริปหลายชม.",
-      "与运营商会合、看船、规划数小时行程。",
-      "Встреча с оператором и осмотр лодки.",
+      "Finding your boat, meeting the crew, and leaving on a half- or full-day trip.",
+      "มาพบร้านที่จอง ดูเรือ และออกทะเลครึ่งวันหรือเต็มวัน",
+      "与预订公司会合、看船、出发半日或全日行程。",
+      "Встреча с компанией и осмотр лодки.",
     ),
     tips: L(
       "Arrive 20–30 minutes early for security — bring booking confirmation.",
@@ -311,9 +311,9 @@ const guideCharters = {
       L("Not luxury charters", "ไม่ใช่ยอชต์หรู", "非豪华包船", "Не чартер"),
     ],
     vibe: L(
-      "Busy passenger pier — ferries and budget boats, not private yacht boarding (unless operator says meet here).",
-      "ท่าเรือโดยสารคึกคัก — เรือเกาะล้าน ไม่ใช่จุดขึ้นยอชต์หรู (ยกเว้น operator นัด)",
-      "繁忙客运码头——渡轮与平价船，通常不是豪华包船登船点。",
+      "A busy public pier — Koh Larn ferries and shared boats. Private yachts usually use Ocean Marina unless the company tells you otherwise.",
+      "ท่าเรือโดยสารคนเยอะ — เรือไปเกาะล้านและเรือรวม เรือเช่าส่วนตัวส่วนใหญ่ไม่ขึ้นที่นี่ เว้นแต่ร้านนัดไว้ชัดเจน",
+      "繁忙客运码头——格兰岛渡轮与合乘船；私人包船多在 Ocean Marina，除非公司另有说明。",
       "Пассажирский причал, не чартер.",
     ),
     bestFor: L(
@@ -359,7 +359,7 @@ function resolveCharter(lang: LanguageCode, key: keyof typeof guideCharters): Ya
     mapsHref: raw.mapsHref,
     directionsHref: raw.directionsHref,
     phoneLabel: raw.phoneHref
-      ? t(lang, L("Call operator", "โทร operator", "致电运营商", "Позвонить"))
+      ? t(lang, L("Call to book", "โทรจอง", "致电预订", "Позвонить"))
       : undefined,
     phoneHref: raw.phoneHref,
   };
@@ -374,38 +374,38 @@ export function getYachtGuideIntro(lang: LanguageCode) {
     title: t(
       lang,
       L(
-        "Pattaya yacht & private charters",
-        "ล่องยอร์ช & เช่าเรือส่วนตัวที่พัทยา",
-        "芭提雅游艇与私人包船",
+        "Yacht & boat charters in Pattaya",
+        "เช่าเรือและล่องยอร์ชที่พัทยา",
+        "芭提雅游艇与包船",
         "Чартеры в Паттайе",
       ),
     ),
     body: t(
       lang,
       L(
-        "Pattaya is one of Thailand's easiest yacht starting points — close to Bangkok, often cheaper than Phuket, with boats from small speedboats to superyachts. Most private charters leave Ocean Marina; Bali Hai is for ferries. We list real operators — Pattaya.com does not sell trips.",
-        "พัทยาเป็นเมืองเริ่มต้นล่องยอร์ชที่คุ้มมาก — ใกล้กรุงเทพ ราคาไม่แรงเท่าภูเก็ต มีตั้งแต่เรือเล็กถึง super yacht เหมาะครอบครัว คู่รัก ปาร์ตี้ เรือส่วนใหญ่ออก Ocean Marina บาลีไฮคือเรือโดยสาร หน้านี้ไม่ขายทริป",
-        "芭提雅是泰国最易起步的游艇城市之一——近曼谷、常比普吉实惠，从小快艇到超级游艇都有；多数私人包船从 Ocean Marina 出发，Bali Hai 是渡轮码头。本页不售行程。",
-        "Паттайя — удобный старт для чартеров; Ocean Marina — главный хаб.",
+        "From Pattaya you can book a private boat for a few hours or a full day — catamarans for families, speedboats for island hops, or larger yachts for celebrations. Most charter companies use Ocean Marina; Bali Hai Pier is mainly for Koh Larn passenger ferries. Below we list companies and piers we found useful for planning. Pattaya.com does not sell trips — call and book with the company you choose.",
+        "จากพัทยาจองเรือออกทะเลได้ทั้งแบบครึ่งวันและเต็มวัน มีเรือสองท้องเหมาะพาครอบครัว เรือเร็วไปเกาะล้าน และยอร์ชใหญ่สำหรับงานฉลอง ร้านเช่าเรือส่วนใหญ่ให้ขึ้นที่ Ocean Marina ส่วนท่าบาลีไฮเป็นเรือโดยสารไปเกาะล้าน ด้านล่างรวบรวมชื่อร้านและท่าเรือไว้ช่วยวางแผน Pattaya.com ไม่ขายทริป — โทรจองกับร้านที่คุณเลือกเอง",
+        "芭提雅可订半日或全日私人船——家庭双体船、跳岛快艇、庆典大游艇。多数包船从 Ocean Marina 出发，Bali Hai 主要是去格兰岛的渡轮。下列公司供规划参考，本站不代售。",
+        "Из Паттайи — катамараны, катера и яхты. Чартеры с Ocean Marina; паром на Ко Лан — Bali Hai. Мы не продаём туры.",
       ),
     ),
     sourceNote: t(
       lang,
       L(
-        "Prices and fleets change — confirm quotes, pier, and inclusions with each operator before you pay.",
-        "ราคาและเรือเปลี่ยนได้ — ยืนยันใบเสนอราคา ท่า และสิ่งที่รวมก่อนจ่าย",
-        "价格与船队会变——付款前向运营商确认报价、码头与包含项目。",
-        "Уточняйте цену и pier до оплаты.",
+        "Prices and available boats change often. Before you pay, ask each company for a written quote and confirm the pier, trip length, and what is included (food, fuel, park fees).",
+        "ราคาและเรือที่ว่างเปลี่ยนได้บ่อย ก่อนโอนเงินขอใบเสนอราคาเป็นลายลักษณ์ และยืนยันเรื่องท่าเรือ ระยะเวลา และสิ่งที่รวมในราคา (อาหาร น้ำมัน ค่าเข้าอุทยานทางทะเล)",
+        "价格与船队常变——付款前请书面确认码头、时长及包含项目（餐食、燃油、海洋公园费等）。",
+        "Перед оплатой — письменная смета, причал и что включено.",
       ),
     ),
     openDaysLabel: t(lang, L("Booking", "การจอง", "预订", "Бронь")),
-    hoursRangeLabel: t(lang, L("Trip types", "รูปทริป", "行程类型", "Типы")),
-    bestTimeLabel: t(lang, L("Best for", "เหมาะ", "适合", "Кому")),
-    priceGuideLabel: t(lang, L("Guide price", "ราคาคร่าว ๆ", "参考价", "Ориентир")),
-    highlightsLabel: t(lang, L("Highlights", "เด่น", "亮点", "Изюминка")),
-    vibeLabel: t(lang, L("Vibe", "ฟีล", "氛围", "Атмосфера")),
-    bestForLabel: t(lang, L("Best for", "เหมาะกับ", "适合", "Кому")),
-    tipsLabel: t(lang, L("Tip", "ทิป", "提示", "Совет")),
+    hoursRangeLabel: t(lang, L("Trip types", "ประเภททริป", "行程类型", "Типы")),
+    bestTimeLabel: t(lang, L("Best time", "ช่วงเวลาที่เหมาะ", "适宜时段", "Когда")),
+    priceGuideLabel: t(lang, L("Guide price", "ราคาประมาณ", "参考价", "Ориентир")),
+    highlightsLabel: t(lang, L("Highlights", "จุดเด่น", "亮点", "Изюминка")),
+    vibeLabel: t(lang, L("Atmosphere", "บรรยากาศ", "氛围", "Атмосфера")),
+    bestForLabel: t(lang, L("Good fit if", "เหมาะกับ", "适合", "Кому")),
+    tipsLabel: t(lang, L("Note", "หมายเหตุ", "提示", "Совет")),
     openInMaps: t(lang, L("Open in Google Maps →", "เปิดใน Google Maps →", "在 Google 地图打开 →", "Google Maps →")),
     directionsLabel: t(lang, L("Directions", "เส้นทาง", "路线", "Маршрут")),
     phoneLabel: t(lang, L("Call", "โทร", "电话", "Звонок")),
@@ -417,8 +417,8 @@ export function getYachtCharterQuickRef(lang: LanguageCode) {
     title: t(
       lang,
       L(
-        "Operators at a glance",
-        "operator แต่ละเจ้าในคร่าว ๆ",
+        "Charter companies at a glance",
+        "สรุปร้านเช่าเรือและท่า",
         "运营商速览",
         "Операторы кратко",
       ),
@@ -426,17 +426,17 @@ export function getYachtCharterQuickRef(lang: LanguageCode) {
     subtitle: t(
       lang,
       L(
-        "Tap a row to jump to the full card — prices are whole-boat guides only.",
-        "แตะแถวไปการ์ดเต็ม — ราคาเป็นคร่าว ๆ ทั้งลำ",
-        "点击行跳转详情卡——价格为整船参考。",
+        "Tap a row to open the full details. Prices below are rough whole-boat estimates — your quote may differ.",
+        "แตะแถวเพื่อดูรายละเอียดเต็ม ราคาด้านล่างเป็นเพียงช่วงประมาณต่อลำ ราคาจริงขึ้นกับจำนวนคน เวลา และวันที่จอง",
+        "点击行查看详情。价格为整船约数，实际以报价为准。",
         "Нажмите на строку — цены ориентировочные.",
       ),
     ),
     columns: {
-      name: t(lang, L("Operator / pier", "operator / ท่า", "运营商/码头", "Оператор")),
-      style: t(lang, L("Style", "สไตล์", "风格", "Стиль")),
-      price: t(lang, L("Guide price", "ราคาคร่าว ๆ", "参考价", "Цена")),
-      bestTime: t(lang, L("Sweet spot", "จุดเด่น", "亮点时段", "Когда")),
+      name: t(lang, L("Company / pier", "ร้าน / ท่า", "公司/码头", "Компания")),
+      style: t(lang, L("Type", "ประเภท", "类型", "Тип")),
+      price: t(lang, L("Guide price", "ราคาประมาณ", "参考价", "Цена")),
+      bestTime: t(lang, L("Best for", "เหมาะกับ", "适合", "Кому")),
     },
     rows: [...charterOrder, ...hubOrder].map((key) => {
       const raw = guideCharters[key];
@@ -456,45 +456,45 @@ export function getYachtCharterQuickRef(lang: LanguageCode) {
 const categoriesDef = [
   {
     id: "family",
-    title: L("Family & sunset chill", "สายครอบครัว / sunset ชิล ๆ", "亲子与悠闲日落", "Семья и закат"),
+    title: L("Families & relaxed sunsets", "ครอบครัวและชมพระอาทิตย์ตก", "亲子与悠闲日落", "Семья и закат"),
     subtitle: L(
-      "Private, comfortable, crew-supported days on the water.",
-      "private สบาย มี crew ดูแล",
-      "私密舒适、有船员照料的水上日。",
-      "Private и спокойно.",
+      "Private boats with crew, food on board, and calmer decks — good when you have kids or older guests.",
+      "เรือส่วนตัว มีลูกเรือดูแล มีอาหารบนเรือ ดาดฟ้าไม่แออัด — เหมาะเมื่อมีเด็กหรือผู้สูงอายุ",
+      "有船员与餐食、甲板不挤——适合带孩子或长辈。",
+      "С crew и спокойнее на палубе.",
     ),
     keys: ["pattaya-yacht-charters", "sailbreeze"] as const,
   },
   {
     id: "luxury",
-    title: L("Luxury & big celebrations", "สาย luxury & งานใหญ่", "豪华与大型庆典", "Luxury"),
+    title: L("Large groups & celebrations", "งานใหญ่และยอร์ชหรู", "豪华与大型庆典", "Luxury"),
     subtitle: L(
-      "Premium catering, custom menus, and milestone events.",
-      "catering พรีเมียม งานฉลอง",
-      "高端餐饮与定制庆典。",
-      "Премиум и ивенты.",
+      "Full-day charters with catering, custom menus, and space for birthdays or corporate groups.",
+      "เช่าเต็มวัน จัดอาหารบนเรือ เมนูปรับได้ เหมาะวันเกิด ครบรอบ หรือทีมงานบริษัท",
+      "全日包船、船上餐饮可定制——生日、纪念日或公司活动。",
+      "Кейтеринг и большие группы.",
     ),
     keys: ["we-charters"] as const,
   },
   {
     id: "active",
-    title: L("Active & photo-ready", "สาย activity & ถ่ายรูป", "动感与出片", "Активно"),
+    title: L("Teens & active days", "เด็กโตและสายลุย", "青少年与动感一日", "Активно"),
     subtitle: L(
-      "Speedboats, toys, and livelier decks for older kids and groups.",
-      "speedboat ของเล่นบนเรือ เด็กโต",
-      "快艇、船上玩具，适合大孩子与团体。",
-      "Speedboat и активность.",
+      "Speedboats and busier trips — better when your group wants water toys and a faster pace.",
+      "เรือเร็ว ทริปคึกคักกว่า — เหมาะกลุ่มที่อยากเล่นน้ำหนัก ๆ และชอบความเร็ว",
+      "快艇、节奏更快——适合想玩水上项目、不介意船晃一点的团体。",
+      "Катера и активнее.",
     ),
     keys: ["manta-marina"] as const,
   },
   {
     id: "events",
-    title: L("Birthdays & special days", "วันพิเศษ & งานฉลอง", "生日与特别日子", "Особые дни"),
+    title: L("Birthdays & proposals", "วันเกิดและขอแต่งงาน", "生日与求婚", "Особые дни"),
     subtitle: L(
-      "Proposals, BBQ sunsets, and party setups — compare two popular locals.",
-      "ขอแต่งงาน BBQ sunset — เทียบสองเจ้ายอดนิยม",
-      "求婚、烧烤日落——可对比两家本地热门。",
-      "Дни рождения и BBQ.",
+      "Two Pattaya companies locals often use for decorated trips — compare quotes for your date.",
+      "สองร้านที่คนในพัทยามักใช้จัดทริปมีธีม — ลองขอราคาเทียบกันตามวันที่ต้องการ",
+      "芭提雅两家常办主题航程的公司——可按日期比价。",
+      "Сравните две популярные компании.",
     ),
     keys: ["blue-voyage", "best-yacht-club"] as const,
   },
@@ -538,36 +538,36 @@ export function getYachtCatamaranNote(lang: LanguageCode) {
 
 export function getYachtPriceGuide(lang: LanguageCode) {
   return {
-    title: t(lang, L("Guide prices (whole boat)", "ราคาประมาณของจริง (ทั้งลำ)", "参考价（整船）", "Ориентиры (лодка)")),
+    title: t(lang, L("Rough prices (whole boat)", "ราคาประมาณ (ทั้งลำ)", "参考价（整船）", "Ориентиры (лодка)")),
     subtitle: t(
       lang,
       L(
-        "Depends on guests, hours, route, food, and weekend/sunset slots — always get a written quote.",
-        "ขึ้นกับจำนวนคน ชั่วโมง เส้นทาง อาหาร sunset/วันหยุด — ขอใบเสนอราคาเป็นลายลักษณ์",
-        "因人数、时长、路线、餐饮与周末/日落档期而异——务必书面报价。",
+        "Your final price depends on how many people join, how many hours you book, the route, meals, and whether you pick a weekend or sunset slot. Always ask for a written quote.",
+        "ราคาจริงขึ้นกับจำนวนคน จำนวนชั่วโมง เส้นทาง อาหาร และว่าจองวันหยุดหรือช่วงพระอาทิตย์ตกหรือไม่ ควรขอใบเสนอราคาเป็นลายลักษณ์ทุกครั้ง",
+        "最终价因人数、时长、路线、餐饮及是否周末/日落档期而异——请书面报价。",
         "Зависит от гостей, часов, маршрута и еды.",
       ),
     ),
     rows: [
       {
-        type: t(lang, L("Private speedboat", "Speedboat private", "私人快艇", "Speedboat")),
+        type: t(lang, L("Private speedboat", "เรือเร็วส่วนตัว", "私人快艇", "Speedboat")),
         price: t(lang, L("~5,000–15,000+ THB", "~5,000–15,000+ บาท", "约5,000–15,000+泰铢", "~5–15+ тыс.")),
       },
       {
-        type: t(lang, L("Family catamaran", "Catamaran ครอบครัว", "家庭双体船", "Катамаран")),
+        type: t(lang, L("Family catamaran", "เรือสองท้อง (ครอบครัว)", "家庭双体船", "Катамаран")),
         price: t(lang, L("~15,000–40,000 THB", "~15,000–40,000 บาท", "约1.5–4万泰铢", "~15–40 тыс.")),
       },
       {
-        type: t(lang, L("Luxury yacht", "Luxury yacht", "豪华游艇", "Luxury")),
+        type: t(lang, L("Large luxury yacht", "ยอร์ชใหญ่", "大型豪华游艇", "Luxury")),
         price: t(lang, L("~40,000–200,000+ THB", "~40,000–200,000+ บาท", "约4–20万+泰铢", "40k+")),
       },
     ],
     footnote: t(
       lang,
       L(
-        "Weekends, sunset-only slots, and peak season push prices up — morning departures often mean calmer seas.",
-        "วันหยุด sunset ไฮซีซันราคาขึ้น — ออกเช้ามักทะเลสวย",
-        "周末、仅日落时段与旺季更贵——早出发海况常更好。",
+        "Weekends, sunset-only trips, and high season cost more. If you can, leave in the morning — the sea is usually calmer.",
+        "วันหยุด ทริปช่วงพระอาทิตย์ตกอย่างเดียว และช่วงไฮซีซันมักแพงกว่า ถ้าเลือกได้ ออกเช้าทะเลมักสงบกว่า",
+        "周末、仅日落航程与旺季更贵；能选的话早出发，海况通常更好。",
         "Выходные и закат дороже; утро спокойнее.",
       ),
     ),
@@ -576,42 +576,52 @@ export function getYachtPriceGuide(lang: LanguageCode) {
 
 export function getYachtRoutes(lang: LanguageCode) {
   return {
-    title: t(lang, L("Popular routes", "เส้นทางยอดฮิต", "热门航线", "Маршруты")),
+    title: t(lang, L("Common routes", "เส้นทางที่คนมักจอง", "常见航线", "Маршруты")),
     subtitle: t(
       lang,
-      L("Confirm timing and park fees with your operator.", "ยืนยันเวลาและค่าอุทยานกับ operator", "与运营商确认时间与公园费。", "Уточните у оператора."),
+      L(
+        "Times and marine park fees vary — confirm both with the company before you pay.",
+        "เวลาเดินทางและค่าเข้าอุทยานทางทะเลไม่เท่ากันทุกร้าน — ถามให้ชัดก่อนจ่ายเงิน",
+        "时间与海洋公园费因公司而异——付款前确认。",
+        "Уточните время и парковые сборы.",
+      ),
     ),
     items: [
       {
         id: "basic",
-        title: t(lang, L("Classic day", "ทริปคลาสสิก", "经典一日", "Классика")),
+        title: t(lang, L("Pattaya & Koh Larn day", "พัทยา–เกาะล้าน ครึ่ง–เต็มวัน", "芭提雅–格兰岛一日", "Классика")),
         body: t(
           lang,
           L(
-            "Pattaya → Koh Larn → snorkel stop → sunset on the way back.",
-            "พัทยา → เกาะล้าน → ดำน้ำ → sunset ตอนกลับ",
-            "芭提雅 → 格兰岛 → 浮潜 → 返程日落",
+            "Leave Pattaya Bay, stop at Koh Larn for swimming, add a snorkel point, and head back around sunset if you booked a long enough slot.",
+            "ออกจากอ่าวพัทยา แวะเกาะล้านว่ายน้ำ แวะจุดดำน้ำตื้น แล้วกลับช่วงเย็นถ้าจองเวลายาวพอ",
+            "出芭提雅湾，格兰岛游泳，加浮潜点，时间够则傍晚返航。",
             "Паттайя → Ko Lan → сноркел → закат.",
           ),
         ),
       },
       {
         id: "monkey",
-        title: t(lang, L("Monkey Island loop", "Monkey Island", "猴岛线", "Monkey Island")),
+        title: t(lang, L("Koh Khrok (Monkey Island)", "เกาะครก (เกาะลิง)", "猴岛（Koh Khrok）", "Monkey Island")),
         body: t(
           lang,
-          L("Monkey Island plus snorkeling — check sea state in the afternoon.", "Monkey Island + snorkeling", "猴岛+浮潜", "Остров обезьян."),
+          L(
+            "Loop past the monkey island area with a snorkel stop — ask the captain about afternoon waves before you book.",
+            "วนไปบริเวณเกาะลิง แวะดำน้ำตื้น — ถามกัปตันเรื่องคลื่นช่วงบ่ายก่อนจอง",
+            "经猴岛一带并浮潜——预订前问清下午浪况。",
+            "Остров обезьян + сноркел.",
+          ),
         ),
       },
       {
         id: "sunset",
-        title: t(lang, L("Sunset only", "Sunset อย่างเดียว", "仅日落巡航", "Только закат")),
+        title: t(lang, L("Sunset cruise only", "ล่องชมพระอาทิตย์ตกอย่างเดียว", "仅日落巡航", "Только закат")),
         body: t(
           lang,
           L(
-            "Short bay loop (~3 hours) — many operators run dedicated sunset cruises.",
-            "วนอ่าวสั้น ๆ (~3 ชม.) — หลายเจ้ามี sunset cruise",
-            "短湾内环线（约3小时）——许多运营商有专门日落航程。",
+            "About three hours inside the bay — many companies offer a shorter trip just for sunset photos and drinks.",
+            "ประมาณ 3 ชั่วโมงวนในอ่าว — หลายร้านมีทริปสั้นเฉพาะชมอาทิตย์ตกและดื่มเครื่องดื่มบนเรือ",
+            "约三小时湾内环线——不少公司有专门看日落、船上饮品的短航程。",
             "Короткий закатный круг ~3 ч.",
           ),
         ),
@@ -622,19 +632,19 @@ export function getYachtRoutes(lang: LanguageCode) {
 
 export function getYachtFamilyOnBoard(lang: LanguageCode) {
   return {
-    title: t(lang, L("Traveling with kids", "ถ้ามีเด็ก", "带孩子", "С детьми")),
-    goodTitle: t(lang, L("Works best", "ดีสุด", "最合适", "Лучше")),
+    title: t(lang, L("Traveling with kids", "พาเด็กไปด้วย", "带孩子", "С детьми")),
+    goodTitle: t(lang, L("Usually easier", "มักสบายกว่า", "通常更轻松", "Лучше")),
     goodItems: [
-      t(lang, L("Catamaran", "Catamaran", "双体船", "Катамаран")),
-      t(lang, L("Half day", "Half day", "半日", "Полдня")),
-      t(lang, L("Morning departure", "ออกเช้า", "早上出发", "Утро")),
-      t(lang, L("Shade on deck", "มี shade ในเรือ", "甲板有遮阳", "Тень на палубе")),
+      t(lang, L("Catamaran (wider deck)", "เรือสองท้อง ดาดฟ้ากว้าง", "双体船（甲板宽）", "Катамаран")),
+      t(lang, L("Half-day trip", "ทริปครึ่งวัน", "半日行程", "Полдня")),
+      t(lang, L("Leave in the morning", "ออกเช้า", "早上出发", "Утро")),
+      t(lang, L("Shaded areas on deck", "มีที่ร่มบนดาดฟ้า", "甲板有遮阳", "Тень на палубе")),
     ],
-    avoidTitle: t(lang, L("May be rough", "อาจเหนื่อย", "可能较累", "Тяжелее")),
+    avoidTitle: t(lang, L("Can be harder", "อาจลำบากกว่า", "可能较累", "Тяжелее")),
     avoidItems: [
-      t(lang, L("Very fast speedboats", "Speedboat เร็วมาก", "极快快艇", "Быстрые катера")),
-      t(lang, L("Full day in peak sun", "Full day แดดแรง", "烈日全天", "Весь день на солнце")),
-      t(lang, L("Party yachts (loud music)", "Party yacht เสียงดัง", "派对船（吵）", "Party-yacht")),
+      t(lang, L("Very fast speedboats", "เรือเร็วที่วิ่งแรงมาก", "极快快艇", "Быстрые катера")),
+      t(lang, L("Full day in strong midday sun", "เต็มวันกลางแดดจัด", "烈日下全天", "Весь день на солнце")),
+      t(lang, L("Party boats with loud music", "เรือปาร์ตี้เสียงดัง", "派对船（吵）", "Party-yacht")),
     ],
   };
 }
@@ -644,19 +654,19 @@ export function getYachtValueNote(lang: LanguageCode) {
     title: t(
       lang,
       L(
-        "Worth it for 6–10 people?",
-        "คุ้มไหมถ้ามี 6–10 คน?",
-        "6–10人值得吗？",
+        "Does a private boat make sense for 6–10 people?",
+        "จองเรือส่วนตัวคุ้มไหมถ้ามี 6–10 คน?",
+        "6–10人值得包船吗？",
         "Выгодно ли на 6–10 человек?",
       ),
     ),
     body: t(
       lang,
       L(
-        "Split among a group, a private charter is often better value than crowded tours — you get space, flexible swim stops, safer kids' time, and a calmer vibe for adults. It feels nothing like a packed ferry.",
-        "หารกัน 6–10 คน private yacht มักคุ้มกว่าทัวร์แน่น — ได้พื้นที่ เล่นน้ำอิสระ เด็กปลอดภัยกว่า ผู้ใหญ่สบาย ฟีลต่างจากเรือทัวร์มาก",
-        "6–10人分摊后，私人包船常比拥挤团更划算——空间自由、游泳灵活、孩子更安全、大人更轻松，与挤满人的团完全不同。",
-        "На компанию часто выгоднее, чем тур с толпой.",
+        "If you split the cost, a private charter is often similar to paying for several tour tickets — but you choose the schedule, stop where you want to swim, and the kids are not squeezed on a crowded deck. It feels very different from a packed ferry.",
+        "ถ้าหารค่าเรือกัน 6–10 คน มักใกล้เคียงกับซื้อทัวร์หลายที่นั่ง แต่คุณกำหนดเวลาเอง แวะว่ายน้ำได้ตามใจ และเด็กไม่ต้องเบียดกับคนแน่นเหมือนเรือโดยสาร บรรยากาศต่างจากเรือทัวร์มาก",
+        "6–10人分摊后，常与多张团票相当——但时间自定、游泳点自选，孩子不必挤在满舱甲板上，与渡轮或团船差别很大。",
+        "На компанию часто сопоставимо с турами, но гибче.",
       ),
     ),
   };
@@ -664,16 +674,24 @@ export function getYachtValueNote(lang: LanguageCode) {
 
 export function getYachtMoodPicks(lang: LanguageCode) {
   return {
-    title: t(lang, L("Pick by mood", "เลือกตามฟีล", "按氛围选", "По настроению")),
-    subtitle: t(lang, L("Jump to an operator card below.", "ไปการ์ดด้านล่าง", "跳转到下方卡片。", "К карточке ниже.")),
+    title: t(lang, L("Not sure where to start?", "ยังไม่แน่ใจว่าจะเริ่มที่ไหน?", "不知从何选起？", "С чего начать?")),
+    subtitle: t(
+      lang,
+      L(
+        "Tap a suggestion to jump to that company’s details below.",
+        "แตะหัวข้อด้านล่างเพื่อไปดูรายละเอียดร้านนั้น",
+        "点击下列建议跳转到对应公司详情。",
+        "К карточке ниже.",
+      ),
+    ),
     groups: [
       {
-        title: t(lang, L("Family + kids", "ครอบครัว + เด็ก", "家庭+孩子", "Семья")),
+        title: t(lang, L("Family with kids", "พาครอบครัวมีเด็ก", "带娃家庭", "Семья")),
         pick: t(lang, L("Pattaya Yacht Charters", "Pattaya Yacht Charters", "Pattaya Yacht Charters", "PYC")),
         charterId: "pattaya-yacht-charters" as const,
       },
       {
-        title: t(lang, L("Quiet sail & snorkel", "ล่องใบชิล", "安静帆船浮潜", "Парус")),
+        title: t(lang, L("Quiet sail & snorkel", "ล่องใบเงียบ ๆ ดำน้ำตื้น", "安静帆船浮潜", "Парус")),
         pick: t(lang, L("SailBreeze", "SailBreeze", "SailBreeze", "SailBreeze")),
         charterId: "sailbreeze" as const,
       },
@@ -716,15 +734,15 @@ export function getYachtMapCopy(lang: LanguageCode) {
   return {
     title: t(
       lang,
-      L("Charter operators & piers on the map", "operator & ท่าเรือบนแผนที่", "运营商与码头地图", "На карте"),
+      L("Charter companies & piers on the map", "ร้านเช่าเรือและท่าบนแผนที่", "公司与码头地图", "На карте"),
     ),
     subtitle: t(
       lang,
       L(
-        "Tap a pin for directions — confirm your exact boarding pier before payment.",
-        "แตะหมุดดูเส้นทาง — ยืนยันท่าขึ้นเรือก่อนจ่าย",
-        "点击标记获取路线——付款前确认登船码头。",
-        "Нажмите на метку — уточните pier.",
+        "Tap a pin for directions. Before you pay, double-check which pier your boat leaves from.",
+        "แตะหมุดเพื่อดูเส้นทาง ก่อนจ่ายเงินควยืนยันอีกครั้งว่าต้องไปขึ้นเรือท่าไหน",
+        "点击标记查路线——付款前再次确认登船码头。",
+        "Нажмите на метку — уточните причал.",
       ),
     ),
     directions: t(lang, L("Directions", "เส้นทาง", "路线", "Маршрут")),
@@ -735,7 +753,7 @@ export function getYachtMapCopy(lang: LanguageCode) {
     ),
     openAllHref: yachtChartersMapOpenHref,
     hoursOnCard: t(lang, L("Trip types", "รูปทริป", "行程", "Тип")),
-    legendOperators: t(lang, L("Operators", "operator", "运营商", "Операторы")),
+    legendOperators: t(lang, L("Charter companies", "ร้านเช่าเรือ", "包船公司", "Операторы")),
     legendPiers: t(lang, L("Piers", "ท่าเรือ", "码头", "Причалы")),
   };
 }

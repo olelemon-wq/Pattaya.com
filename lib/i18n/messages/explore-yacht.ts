@@ -147,10 +147,10 @@ export function getYachtPage(lang: LanguageCode) {
       body: t(
         lang,
         L(
-          "Pattaya is an easy yacht city — boats from speedboats to superyachts, great for couples, families, and parties. Compare operators, piers, and guide prices; we link to Maps only.",
-          "พัทยาล่องยอร์ชง่าย มีตั้งแต่เรือเล็กถึง super yacht เหมาะคู่รัก ครอบครัว ปาร์ตี้ เทียบ operator ท่าเรือ ราคาคร่าว ๆ ลิงก์แผนที่เท่านั้น",
-          "芭提雅很适合游艇——从小艇到超级游艇，情侣、家庭、派对皆可；对比运营商、码头与参考价，仅链地图。",
-          "Паттайя — от speedboat до superyacht.",
+          "Pattaya is an easy place to start a day on the water — close to Bangkok, with catamarans, speedboats, and large yachts for couples, families, or group parties. This page lists operators, departure piers, rough prices, and popular routes so you can compare before you book direct. Pattaya.com does not sell trips or take commission.",
+          "พัทยาเป็นจุดเริ่มต้นล่องเรือที่เข้าถึงง่าย — ใกล้กรุงเทพ มีทั้ง catamaran เรือเร็ว และยอร์ชใหญ่ เหมาะทั้งคู่รัก ครอบครัว และปาร์ตี้กลุ่มเพื่อน หน้านี้รวบรวมผู้ให้บริการ ท่าเรือ ราคาคร่าว ๆ และเส้นทางยอดนิยม เพื่อช่วยเปรียบเทียบก่อนติดต่อจองเอง Pattaya.com ไม่ขายทริปหรือรับค่าคอมมิชชัน",
+          "芭提雅很适合水上出行——近曼谷，有双体船、快艇与大游艇，情侣、家庭、派对皆可。本页汇总运营商、出发码头、参考价与热门航线，便于您自行对比预订。Pattaya.com 不代售、不抽佣。",
+          "Паттайя удобна для чартера — близко к Бангкоку, от катамаранов до больших яхт. Сравните операторов, причалы и ориентиры цен. Pattaya.com не продаёт туры.",
         ),
       ),
       badgeAreas: t(
@@ -170,14 +170,14 @@ export function getYachtPage(lang: LanguageCode) {
     categories: getYachtCharterCategories(lang),
     hubCards: getYachtHubCards(lang),
     hubsSection: {
-      title: t(lang, L("Main piers", "ท่าเรือหลัก", "主要码头", "Главные причалы")),
+      title: t(lang, L("Main piers", "ท่าเรือที่ควรรู้", "主要码头", "Главные причалы")),
       subtitle: t(
         lang,
         L(
-          "Most private yachts use Ocean Marina — Bali Hai is for Koh Larn ferries.",
-          "ยอชต์ส่วนตัวส่วนใหญ่ใช้ Ocean Marina — บาลีไฮคือเรือเกาะล้าน",
-          "私人游艇多用 Ocean Marina——Bali Hai 为格兰岛渡轮。",
-          "Чартеры — Ocean Marina; паром — Bali Hai.",
+          "Private charters usually board at Ocean Marina. Bali Hai Pier is where Koh Larn passenger boats leave — easy to confuse if your driver only hears “the pier”.",
+          "เรือเช่าส่วนตัวส่วนใหญ่ขึ้นที่ Ocean Marina ส่วนท่าบาลีไฮเป็นเรือโดยสารไปเกาะล้าน — คนขับรถมักสับสนถ้าคุณบอกแค่ “ไปท่าเรือ”",
+          "私人包船多在 Ocean Marina；Bali Hai 是格兰岛客船码头——只说“码头”时司机易送错。",
+          "Чартеры — Ocean Marina; паром на Ко Лан — Bali Hai.",
         ),
       ),
     },

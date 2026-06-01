@@ -3,7 +3,7 @@ import { images } from "@/lib/design/images";
 
 /** Koh Larn page imagery — all URLs verified HTTP 200 */
 export const kohLarnImages = {
-  hero: "/images/explore/koh-larn-hero.png",
+  hero: "/images/explore/koh-larn-hero.jpg",
   snorkeling: images.guideYacht,
   islandTour:
     "https://images.unsplash.com/photo-1505142468610-359e7d316be0?auto=format&fit=crop&w=800&q=80",

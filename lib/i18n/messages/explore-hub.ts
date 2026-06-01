@@ -1,4 +1,7 @@
 import type { LanguageCode } from "@/lib/i18n/languages";
+import { exploreImages } from "@/lib/design/explore-images";
+import { marketPagePaths } from "@/lib/design/market-page-paths";
+import { streetFoodMarketImages } from "@/lib/design/street-food-market-images";
 import { pickText, type LocalizedText } from "@/lib/i18n/text";
 
 const copy = {
@@ -15,64 +18,82 @@ const copy = {
     ru: "Побережье Паттайи на закате с лодками и skyline",
   },
   searchPlaceholder: {
-    en: "Search experiences, places, or tours...",
-    th: "ค้นหาประสบการณ์ สถานที่ หรือทัวร์...",
-    zh: "搜索体验、地点或行程...",
-    ru: "Поиск впечатлений, мест или туров...",
+    en: "Search islands, food, malls, activities…",
+    th: "ค้นหาเกาะ ร้านอาหาร ห้าง กิจกรรม…",
+    zh: "搜索岛屿、美食、商场、活动…",
+    ru: "Острова, еда, моллы, активности…",
   },
-  exploreBtn: {
-    en: "Explore",
-    th: "สำรวจ",
-    zh: "探索",
-    ru: "Исследовать",
+  searchBtn: {
+    en: "Search",
+    th: "ค้นหา",
+    zh: "搜索",
+    ru: "Найти",
+  },
+  searchNoResults: {
+    en: "No matching page — try “Koh Larn”, “malls”, or “yacht”.",
+    th: "ไม่พบหน้าที่ตรงคำนี้ — ลองพิมพ์ เช่น เกาะล้าน ห้าง หรือ ยอร์ช",
+    zh: "未找到匹配页面——可试「格兰岛」「商场」「游艇」。",
+    ru: "Ничего не найдено — попробуйте «Ko Lan», «mall» или «yacht».",
   },
   mustVisitTitle: {
-    en: "Must-Visit & Top Bookings",
-    th: "ห้ามพลาด & ยอดจองสูงสุด",
-    zh: "必去景点与热门预订",
-    ru: "Обязательные места и топ-бронирования",
+    en: "Guides to start with",
+    th: "คู่มือแนะนำ — เริ่มต้นที่นี่",
+    zh: "推荐指南 — 从这里开始",
+    ru: "С чего начать",
+  },
+  mustVisitSubtitle: {
+    en: "Editorial guides only — Pattaya.com does not sell tours or take bookings.",
+    th: "เป็นคู่มืออ่านอย่างเดียว — Pattaya.com ไม่ขายทัวร์และไม่รับจอง",
+    zh: "仅为内容指南——本站不售行程、不接预订。",
+    ru: "Только гиды — мы не продаём туры.",
   },
   viewAll: {
-    en: "View All →",
-    th: "ดูทั้งหมด →",
-    zh: "查看全部 →",
-    ru: "Смотреть все →",
+    en: "Koh Larn guide →",
+    th: "คู่มือเกาะล้าน →",
+    zh: "格兰岛指南 →",
+    ru: "Гид Ko Lan →",
   },
-  bookingBestSeller: {
-    en: "Best Seller",
-    th: "ขายดีอันดับ 1",
-    zh: "畅销",
-    ru: "Хит продаж",
+  guideReadBtn: {
+    en: "Read guide",
+    th: "อ่านคู่มือ",
+    zh: "阅读指南",
+    ru: "Читать гид",
   },
-  booking1Title: {
-    en: "Pristine Island Hopping",
-    th: "ทัวร์เกาะน้ำใส",
-    zh: "纯净跳岛之旅",
-    ru: "Чистые острова",
+  guidePick1Badge: {
+    en: "Island guide",
+    th: "คู่มือเกาะ",
+    zh: "岛屿指南",
+    ru: "Острова",
   },
-  booking1Excerpt: {
-    en: "Discover hidden lagoons and crystal-clear waters of Koh Larn and beyond.",
-    th: "สำรวจลากูนซ่อนและน้ำทะเลใสของเกาะล้านและเกาะใกล้เคียง",
-    zh: "探索格兰岛及周边隐秘泻湖与清澈海水。",
-    ru: "Скрытые лагуны и прозрачная вода Ко Лан и других островов.",
+  guidePick1Title: {
+    en: "Koh Larn: ferries, beaches & day trips",
+    th: "เกาะล้าน: เรือ หาด และทริปครึ่งวัน",
+    zh: "格兰岛：船班、海滩与半日游",
+    ru: "Ко Лан: паромы и пляжи",
   },
-  bookingPopular: {
-    en: "Popular",
-    th: "ยอดนิยม",
-    zh: "热门",
-    ru: "Популярно",
+  guidePick1Excerpt: {
+    en: "How to get there from Bali Hai Pier, which beach suits swimming, and what to do on the island — plan your own day; we link to maps, not booking sites.",
+    th: "เรือจากท่าบาลีไฮ หาดไหนเหมาะว่ายน้ำ ทำอะไรบนเกาะได้บ้าง — วางแผนเดินทางเอง หน้านี้มีแผนที่และคำแนะนำ ไม่มีจองทัวร์",
+    zh: "从 Bali Hai 码头如何前往、哪片海滩适合游泳、岛上可做什么——自行规划一日，本站提供地图与建议，不代订行程。",
+    ru: "Паром с Bali Hai, пляжи и дела на острове — планируйте сами.",
   },
-  booking2Title: {
-    en: "Coral Coast Discovery",
-    th: "ค้นพบชายฝั่งปะการัง",
-    zh: "珊瑚海岸探索",
-    ru: "Коралловое побережье",
+  guidePick2Badge: {
+    en: "Beach guide",
+    th: "คู่มือชายหาด",
+    zh: "海滩指南",
+    ru: "Пляжи",
   },
-  booking2Excerpt: {
-    en: "The ultimate guide to Pattaya's most exclusive beach clubs and sunset spots.",
-    th: "คู่มือบีชคลับและจุดชมพระอาทิตย์ตกสุดพรีเมียมในพัทยา",
-    zh: "芭提雅最独家海滩俱乐部与日落打卡指南。",
-    ru: "Гид по лучшим бич-клабам и закатам Паттайи.",
+  guidePick2Title: {
+    en: "Pattaya's main beaches",
+    th: "ชายหาดหลักของพัทยา",
+    zh: "芭提雅主要海滩",
+    ru: "Главные пляжи",
+  },
+  guidePick2Excerpt: {
+    en: "Pattaya Beach, Jomtien, Naklua, Wongamat, and Pratumnak — how they differ, who each suits, and how to get there.",
+    th: "หาดพัทยา จอมเทียน นาเกลือ วงศ์อมาตย์ พระตำหนัก — แต่ละแห่งต่างกันยังไง เหมาะกับใคร และไปยังไง",
+    zh: "芭提雅海滩、仲天、那库鲁阿、旺阿玛、帕塔姆纳克——各有何不同、适合谁、如何到达。",
+    ru: "Паттайя, Джомтьен, Наклуа — чем отличаются и как добраться.",
   },
   diningTitle: {
     en: "Pattaya Dining Guide",
@@ -97,6 +118,12 @@ const copy = {
     th: "อาหารท้องถิ่น",
     zh: "本地美食",
     ru: "Местная еда",
+  },
+  diningLocalViewAll: {
+    en: "Street food & markets guide →",
+    th: "คู่มืออาหารข้างทางและตลาด →",
+    zh: "街头美食与市场指南 →",
+    ru: "Гид по уличной еде →",
   },
   dining1Title: { en: "Sky Gallery Cliffside", th: "Sky Gallery Cliffside", zh: "Sky Gallery 悬崖餐厅", ru: "Sky Gallery Cliffside" },
   dining1Excerpt: {
@@ -124,6 +151,42 @@ const copy = {
     zh: "那仲天",
     ru: "На Джомтьен",
   },
+  localDining1Title: {
+    en: "Thepprasit Night Market",
+    th: "ตลาดเทพประสิทธิ์",
+    zh: "Thepprasit 夜市",
+    ru: "Thepprasit",
+  },
+  localDining1Excerpt: {
+    en: "Pattaya's best-known night market — grilled seafood, papaya salad, and snacks. Walk the loop first, then pick a stall.",
+    th: "ตลาดกลางคืนดังสุดในพัทยา — กุ้งเผา ส้มตำ ของกินเล่น เดินดูครบวงก่อนเลือกร้าน",
+    zh: "芭提雅最知名夜市——烤海鲜、青木瓜沙拉；先逛一圈再选摊。",
+    ru: "Самый известный ночной рынок — морепродукты и som tam.",
+  },
+  localDining1Location: {
+    en: "South Pattaya · evenings",
+    th: "ใต้พัทยา · เย็น–ค่ำ",
+    zh: "南芭提雅 · 傍晚",
+    ru: "Юг · вечер",
+  },
+  localDining2Title: {
+    en: "Naklua Morning Market",
+    th: "ตลาดนาเกลือ",
+    zh: "Naklua 早市",
+    ru: "Naklua",
+  },
+  localDining2Excerpt: {
+    en: "Where locals buy breakfast and curry bags before the heat — boat noodles, khao tom, and market-price seafood.",
+    th: "ตลาดเช้าของคนท้องถิ่น — ก๋วยเตี๋ยวเรือ ข้าวต้ม แกงถุง ซีฟู้ดราคาตลาด ควรไปก่อน 9 โมง",
+    zh: "本地人早市——船面、粥、咖喱袋与海鲜；建议九点前到。",
+    ru: "Утренний рынок — лапша, khao tom, морепродукты.",
+  },
+  localDining2Location: {
+    en: "Naklua · morning",
+    th: "นาเกลือ · เช้า",
+    zh: "那库鲁阿 · 早晨",
+    ru: "Naklua · утро",
+  },
   wellnessTitle: {
     en: "Relax & Wellness",
     th: "ผ่อนคลาย & เวลเนส",
@@ -131,92 +194,97 @@ const copy = {
     ru: "Релакс и велнес",
   },
   eliteChoice: {
-    en: "Elite Choice",
-    th: "ตัวเลือกพรีเมียม",
-    zh: "精选推荐",
-    ru: "Премиум-выбор",
+    en: "Guide",
+    th: "คู่มือ",
+    zh: "指南",
+    ru: "Гид",
   },
   wellnessEyebrow: {
-    en: "Global Wellness Destination",
-    th: "จุดหมายเวลเนสระดับโลก",
-    zh: "全球康养目的地",
-    ru: "Мировой велнес-центр",
+    en: "Spas & massage in Pattaya",
+    th: "สปาและนวดในพัทยา",
+    zh: "芭提雅水疗与按摩",
+    ru: "Спа и массаж",
   },
-  wellnessName: { en: "Aura Sanctuary", th: "Aura Sanctuary", zh: "Aura Sanctuary", ru: "Aura Sanctuary" },
+  wellnessName: {
+    en: "Pattaya spa & massage guide",
+    th: "คู่มือสปา & นวดพัทยา",
+    zh: "芭提雅水疗按摩指南",
+    ru: "Гид по спа Паттайи",
+  },
   wellnessTagline: {
-    en: "Traditional Thai massage and world-class spa rituals.",
-    th: "บริการนวดไทยแผนโบราณและสปาระดับเวิลด์คลาส",
-    zh: "泰式古法按摩与世界级水疗。",
-    ru: "Тайский массаж и спа мирового уровня.",
+    en: "Compare mall spas, chains, and street massage zones — book directly with each shop.",
+    th: "เปรียบเทียบสปาในห้าง เครือใหญ่ และโซนนวดริมถนน — จองกับร้านโดยตรง",
+    zh: "对比商场水疗、连锁与街边按摩区——请直接向门店预订。",
+    ru: "Сравните сети и уличные зоны — бронируйте напрямую.",
   },
   wellnessReviews: {
-    en: "4.9 (120 reviews)",
-    th: "4.9 (120 รีวิว)",
-    zh: "4.9（120 条评价）",
-    ru: "4.9 (120 отзывов)",
+    en: "Health Land · Let's Relax · Jomtien",
+    th: "Health Land · Let's Relax · จอมเทียน",
+    zh: "Health Land · Let's Relax · 仲天",
+    ru: "Health Land · Let's Relax · Jomtien",
   },
   tagPremium: { en: "Premium", th: "พรีเมียม", zh: "尊享", ru: "Премиум" },
   tagSkyView: { en: "Sky View", th: "วิวดาดฟ้า", zh: "天际线", ru: "Панорама" },
   tagSeaView: { en: "Sea View", th: "วิวทะเล", zh: "海景", ru: "Море" },
   wellnessP1: {
-    en: "Premium spa blending traditional Thai techniques with luxury aromatherapy.",
-    th: "สปาพรีเมียมผสมนวดไทยและอโรมาเธอราพีหรูหรา",
-    zh: "融合泰式手法与奢华芳疗的高端水疗。",
-    ru: "Премиум-спа: тайский массаж и ароматерапия.",
+    en: "We list real chains (Health Land, Let's Relax) and popular street zones — examples to help you choose, not a ranked “best spa” list.",
+    th: "รวมเครือจริง เช่น Health Land, Let's Relax และโซนนวดริมถนนที่คนใช้กัน — เป็นตัวอย่างช่วยเลือก ไม่ใช่การจัดอันดับ",
+    zh: "收录真实连锁与常见街区示例，供您选择，非排名榜单。",
+    ru: "Реальные сети и зоны — примеры, не рейтинг.",
   },
   wellnessP2: {
-    en: "Private suites, herbal compress rituals, and same-day concierge booking.",
-    th: "ห้องส่วนตัว ลูกประคบสมุนไพย และจองผ่านคอนเซียร์จในวันเดียวกัน",
-    zh: "私人套房、草药热敷与当日礼宾预订。",
-    ru: "Приватные сьюты, травяные компрессы, бронь в день обращения.",
+    en: "Pattaya.com does not book treatments or take commission. Call the spa, use their website, or walk in.",
+    th: "Pattaya.com ไม่จองทรีทเมนต์และไม่รับค่าคอม — โทรร้าน ใช้เว็บของร้าน หรือ walk-in",
+    zh: "Pattaya.com 不代订、不抽佣——请致电门店、官网或到店。",
+    ru: "Pattaya.com не бронирует — звоните в спа сами.",
   },
   wellnessP3: {
-    en: "90-minute Signature course with city-view private suite.",
-    th: "คอร์ส Signature 90 นาที ห้องพักส่วนตัวพร้อมวิวเมือง",
-    zh: "90 分钟招牌疗程与城市景观私人套房。",
-    ru: "90-минутный Signature-курс в приватном сьюте с видом на город.",
+    en: "Prices change by menu and season — confirm with the shop on the day you visit.",
+    th: "ราคาเปลี่ยนตามเมนูและช่วงเวลา — ยืนยันกับร้านวันที่ไป",
+    zh: "价格因套餐与季节而异——到店当天向门店确认。",
+    ru: "Цены уточняйте в день визита.",
   },
   wellnessFeature1: {
-    en: "Award-winning therapists",
-    th: "นักบำบัดรางวัลระดับโลก",
-    zh: "获奖理疗师",
-    ru: "Терапевты-призёры",
+    en: "Mall spas & major chains",
+    th: "สปาในห้างและเครือใหญ่",
+    zh: "商场水疗与连锁",
+    ru: "Сети и ТРЦ",
   },
   wellnessFeature2: {
-    en: "Signature 90-minute treatment",
-    th: "ทรีตเมนต์ Signature 90 นาที",
-    zh: "90 分钟招牌护理",
-    ru: "Signature 90 минут",
+    en: "Guide price ranges per session",
+    th: "ช่วงราคาคร่าวต่อครั้ง",
+    zh: "每次参考价区间",
+    ru: "Ориентиры цен",
   },
   wellnessFeature3: {
-    en: "Complimentary herbal tea & relaxation lounge",
-    th: "ชาสมุนไพรและเลานจ์ผ่อนคลาย",
-    zh: "免费草本茶与休息区",
-    ru: "Травяной чай и лаунж",
+    en: "Maps links for each zone",
+    th: "ลิงก์แผนที่แต่ละโซน",
+    zh: "各区地图链接",
+    ru: "Ссылки на карты",
   },
   wellnessInvestment: {
-    en: "Investment in Wellness",
-    th: "ลงทุนเพื่อสุขภาพ",
-    zh: "健康投资",
-    ru: "Инвестиция в здоровье",
+    en: "Typical session",
+    th: "ราคาประมาณต่อครั้ง",
+    zh: "单次参考价",
+    ru: "За сеанс",
   },
   wellnessPrice: {
-    en: "฿2,400",
-    th: "฿2,400",
-    zh: "฿2,400",
-    ru: "฿2 400",
+    en: "฿400–2,500",
+    th: "฿400–2,500",
+    zh: "฿400–2,500",
+    ru: "฿400–2 500",
   },
   bookNow: {
-    en: "Book Now",
-    th: "จองคิวออนไลน์",
-    zh: "立即预订",
-    ru: "Забронировать",
+    en: "Read guide",
+    th: "อ่านคู่มือ",
+    zh: "阅读指南",
+    ru: "Читать гид",
   },
   checkPrice: {
-    en: "Check Price",
-    th: "เช็กราคาประเมิน",
-    zh: "查看价格",
-    ru: "Узнать цену",
+    en: "See spa zones",
+    th: "ดูโซนในคู่มือ",
+    zh: "查看区域",
+    ru: "Зоны в гиде",
   },
   lifestyleTitle: {
     en: "Lifestyle & Local Vibes",
@@ -333,16 +401,16 @@ const copy = {
     ru: "Престижный флот частных яхт и маршруты на заказ.",
   },
   hiddenGemsTitle: {
-    en: "Hidden Gems Articles",
-    th: "บทความจุดลับ",
-    zh: "秘境文章",
-    ru: "Статьи о скрытых местах",
+    en: "Pattaya, going deeper",
+    th: "พัทยาฉบับคนเริ่มรู้ลึก",
+    zh: "芭提雅·开始深入了解",
+    ru: "Паттайя: глубже",
   },
   hiddenGemsSubtitle: {
-    en: "Curated insights for the modern explorer.",
-    th: "ข้อมูลคัดสรรสำหรับนักสำรวจยุคใหม่",
-    zh: "为现代探索者精选洞察。",
-    ru: "Подборка для современных путешественников.",
+    en: "Hidden gems — quiet corners, timing, and maps links.",
+    th: "จุดลับ — มุมเงียบ เวลา และลิงก์แผนที่",
+    zh: "秘境——安静角落、时间与地图链接。",
+    ru: "Секретные места — тихие уголки и Maps.",
   },
   readAllStories: {
     en: "Read All Stories →",
@@ -477,6 +545,76 @@ const copy = {
     ru: "8 мин чтения",
   },
 } satisfies Record<string, LocalizedText>;
+
+export type ExploreHubDiningCard = {
+  title: string;
+  rating: string;
+  location: string;
+  excerpt: string;
+  image: string;
+  imageAlt: string;
+  cta: string;
+  href: string;
+  sponsored?: boolean;
+};
+
+export function getExploreHubDiningPicks(lang: LanguageCode): {
+  luxury: ExploreHubDiningCard[];
+  local: ExploreHubDiningCard[];
+} {
+  const guideCta = tExplore(lang, "guideReadBtn");
+
+  return {
+    luxury: [
+      {
+        title: tExplore(lang, "dining1Title"),
+        rating: "4.9",
+        location: tExplore(lang, "dining1Location"),
+        excerpt: tExplore(lang, "dining1Excerpt"),
+        image: exploreImages.skyGallery,
+        imageAlt: tExplore(lang, "dining1Title"),
+        cta: guideCta,
+        href: "/explore/restaurants/fine-dining",
+        sponsored: true,
+      },
+      {
+        title: tExplore(lang, "dining2Title"),
+        rating: "4.8",
+        location: tExplore(lang, "dining2Location"),
+        excerpt: tExplore(lang, "dining2Excerpt"),
+        image: exploreImages.caveBeachClub,
+        imageAlt: tExplore(lang, "dining2Title"),
+        cta: guideCta,
+        href: "/explore/restaurants/fine-dining",
+        sponsored: true,
+      },
+    ],
+    local: [
+      {
+        title: tExplore(lang, "localDining1Title"),
+        rating: "4.8",
+        location: tExplore(lang, "localDining1Location"),
+        excerpt: tExplore(lang, "localDining1Excerpt"),
+        image: streetFoodMarketImages[0],
+        imageAlt: tExplore(lang, "localDining1Title"),
+        cta: guideCta,
+        href: marketPagePaths.streetFoodThepprasit,
+        sponsored: false,
+      },
+      {
+        title: tExplore(lang, "localDining2Title"),
+        rating: "4.7",
+        location: tExplore(lang, "localDining2Location"),
+        excerpt: tExplore(lang, "localDining2Excerpt"),
+        image: streetFoodMarketImages[1],
+        imageAlt: tExplore(lang, "localDining2Title"),
+        cta: guideCta,
+        href: marketPagePaths.oldNaklua,
+        sponsored: false,
+      },
+    ],
+  };
+}
 
 export function getLifestyleSpots(lang: LanguageCode) {
   return [

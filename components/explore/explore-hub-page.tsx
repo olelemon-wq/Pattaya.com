@@ -2,18 +2,25 @@
 
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import { ExploreCategoryNav } from "@/components/explore/explore-category-nav";
+import { findExploreSearchHref } from "@/lib/explore/explore-search";
 import { Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useCallback, useState, type FormEvent } from "react";
 import { useLanguage } from "@/components/layout/language-provider";
 import { commonUi } from "@/lib/i18n/messages/common";
-import { getLifestyleSpots, tExplore } from "@/lib/i18n/messages/explore-hub";
+import {
+  getExploreHubDiningPicks,
+  getLifestyleSpots,
+  tExplore,
+} from "@/lib/i18n/messages/explore-hub";
 import { pickText } from "@/lib/i18n/text";
 import { PattayaCityMap } from "@/components/explore/pattaya-city-map";
 import { exploreImages } from "@/lib/design/explore-images";
 import { marketPagePaths } from "@/lib/design/market-page-paths";
 
-function BookingCard({
+function GuidePickCard({
   badge,
   badgeClass,
   title,
@@ -21,7 +28,9 @@ function BookingCard({
   image,
   imageAlt,
   mapHref,
-  bookHref,
+  guideHref,
+  mapLabel,
+  guideLabel,
 }: {
   badge: string;
   badgeClass: string;
@@ -30,16 +39,17 @@ function BookingCard({
   image: string;
   imageAlt: string;
   mapHref: string;
-  bookHref: string;
+  guideHref: string;
+  mapLabel: string;
+  guideLabel: string;
 }) {
-  const { language } = useLanguage();
-
   return (
     <div className="group relative aspect-[4/5] overflow-hidden rounded-3xl border border-[#c4c7c8]/30 shadow-lg">
       <Image
         src={image}
         alt={imageAlt}
         fill
+        unoptimized={image.startsWith("/")}
         className="object-cover transition-transform duration-700 group-hover:scale-110"
         sizes="(max-width: 768px) 100vw, 50vw"
       />
@@ -51,19 +61,19 @@ function BookingCard({
           {badge}
         </span>
         <h3 className="mb-2 text-2xl font-semibold text-white">{title}</h3>
-        <p className="mb-6 line-clamp-2 text-base text-white/80">{excerpt}</p>
+        <p className="mb-6 line-clamp-3 text-base leading-relaxed text-white/85">{excerpt}</p>
         <div className="flex gap-3">
           <Link
             href={mapHref}
             className="flex-1 rounded-xl bg-white py-3 text-center text-sm font-semibold text-[#191c1d] transition-all hover:bg-[#f3f4f5]"
           >
-            {pickText(language, commonUi.seeMap)}
+            {mapLabel}
           </Link>
           <Link
-            href={bookHref}
+            href={guideHref}
             className="flex-1 rounded-xl bg-[#B52E88] py-3 text-center text-sm font-semibold text-white transition-all hover:bg-[#B52E88]/90"
           >
-            {pickText(language, commonUi.bookTour)}
+            {guideLabel}
           </Link>
         </div>
       </div>
@@ -80,6 +90,7 @@ function DiningCard({
   imageAlt,
   cta,
   href,
+  sponsored = true,
 }: {
   title: string;
   rating: string;
@@ -89,9 +100,10 @@ function DiningCard({
   imageAlt: string;
   cta: string;
   href: string;
+  sponsored?: boolean;
 }) {
   const { language } = useLanguage();
-  const sponsored = pickText(language, commonUi.sponsored);
+  const sponsoredLabel = pickText(language, commonUi.sponsored);
 
   return (
     <Link
@@ -100,13 +112,14 @@ function DiningCard({
     >
       {/* Mobile: full-bleed image + overlay text */}
       <div className="relative aspect-[4/5] overflow-hidden md:hidden">
-        <Image
-          src={image}
-          alt={imageAlt}
-          fill
-          className="object-cover transition-transform duration-700 group-hover:scale-110"
-          sizes="100vw"
-        />
+          <Image
+            src={image}
+            alt={imageAlt}
+            fill
+            unoptimized={image.startsWith("/")}
+            className="object-cover transition-transform duration-700 group-hover:scale-110"
+            sizes="100vw"
+          />
         <div
           className="absolute inset-0 bg-gradient-to-t from-[#191c1d]/95 via-[#191c1d]/55 to-[#191c1d]/15"
           aria-hidden
@@ -115,11 +128,13 @@ function DiningCard({
           className="absolute inset-0 bg-gradient-to-b from-black/35 via-transparent to-transparent"
           aria-hidden
         />
-        <span className="absolute left-6 top-6 z-10 rounded-full bg-white/90 px-4 py-1.5 shadow-sm backdrop-blur-md">
-          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#ae2f34]">
-            {sponsored}
+        {sponsored ? (
+          <span className="absolute left-6 top-6 z-10 rounded-full bg-white/90 px-4 py-1.5 shadow-sm backdrop-blur-md">
+            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#ae2f34]">
+              {sponsoredLabel}
+            </span>
           </span>
-        </span>
+        ) : null}
         <div className="absolute inset-x-0 bottom-0 z-10 p-6">
           <div className="mb-3 flex items-start justify-between gap-4">
             <h4 className="text-xl font-semibold leading-tight text-white">
@@ -153,17 +168,20 @@ function DiningCard({
             src={image}
             alt={imageAlt}
             fill
+            unoptimized={image.startsWith("/")}
             className="object-cover transition-transform duration-700 group-hover:scale-110"
             sizes="50vw"
           />
         </div>
         <div className="relative flex min-h-0 flex-1 flex-col p-8">
-          <div className="absolute -top-12 left-8 rounded-full bg-white/90 px-4 py-1.5 shadow-sm backdrop-blur-md">
-            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#ae2f34]">
-              {sponsored}
-            </span>
-          </div>
-          <div className="mb-4 flex items-start justify-between gap-6 pt-1">
+          {sponsored ? (
+            <div className="absolute -top-12 left-8 rounded-full bg-white/90 px-4 py-1.5 shadow-sm backdrop-blur-md">
+              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#ae2f34]">
+                {sponsoredLabel}
+              </span>
+            </div>
+          ) : null}
+          <div className={`mb-4 flex items-start justify-between gap-6 ${sponsored ? "pt-1" : ""}`}>
             <h4 className="min-w-0 flex-1 text-2xl font-semibold leading-tight text-[#191c1d]">
               {title}
             </h4>
@@ -193,7 +211,29 @@ function DiningCard({
 
 export function ExploreHubPage() {
   const { language } = useLanguage();
+  const router = useRouter();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchHint, setSearchHint] = useState<string | null>(null);
+  const [diningTab, setDiningTab] = useState<"luxury" | "local">("luxury");
   const lifestyleSpots = getLifestyleSpots(language);
+  const diningPicks = getExploreHubDiningPicks(language);
+  const activeDiningCards = diningPicks[diningTab];
+
+  const runExploreSearch = useCallback(() => {
+    const href = findExploreSearchHref(searchQuery);
+    if (href) {
+      setSearchHint(null);
+      router.push(href);
+      return;
+    }
+    setSearchHint(tExplore(language, "searchNoResults"));
+    document.getElementById("explore-categories")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [language, router, searchQuery]);
+
+  function handleSearchSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    runExploreSearch();
+  }
   const wellnessTags = [
     tExplore(language, "tagPremium"),
     tExplore(language, "tagSkyView"),
@@ -235,29 +275,47 @@ export function ExploreHubPage() {
             <h1 className="hero-cinematic__rise hero-cinematic__rise--2 mb-8 text-3xl font-bold tracking-tight text-white drop-shadow-lg md:text-5xl">
               {tExplore(language, "heroTitle")}
             </h1>
-            <div className="hero-cinematic__rise hero-cinematic__rise--4 flex w-full max-w-2xl items-center rounded-full bg-white/80 p-2 shadow-2xl backdrop-blur-md">
-              <div className="flex flex-1 items-center px-4 md:px-6">
-                <Search className="h-5 w-5 shrink-0 text-[#747878]" aria-hidden />
-                <input
-                  type="text"
-                  placeholder={tExplore(language, "searchPlaceholder")}
-                  aria-label={tExplore(language, "searchPlaceholder")}
-                  className="w-full border-none bg-transparent px-3 text-base text-[#191c1d] placeholder:text-[#747878] focus:outline-none focus:ring-0"
-                />
+            <form
+              className="hero-cinematic__rise hero-cinematic__rise--4 w-full max-w-2xl"
+              role="search"
+              onSubmit={handleSearchSubmit}
+            >
+              <div className="flex w-full items-center rounded-full bg-white/80 p-2 shadow-2xl backdrop-blur-md">
+                <div className="flex flex-1 items-center px-4 md:px-6">
+                  <Search className="h-5 w-5 shrink-0 text-[#747878]" aria-hidden />
+                  <input
+                    type="search"
+                    value={searchQuery}
+                    onChange={(event) => {
+                      setSearchQuery(event.target.value);
+                      if (searchHint) setSearchHint(null);
+                    }}
+                    placeholder={tExplore(language, "searchPlaceholder")}
+                    aria-label={tExplore(language, "searchPlaceholder")}
+                    className="w-full border-none bg-transparent px-3 text-base text-[#191c1d] placeholder:text-[#747878] focus:outline-none focus:ring-0"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="shrink-0 rounded-full bg-[#B52E88] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#B52E88]/90 md:px-8 md:py-4"
+                >
+                  {tExplore(language, "searchBtn")}
+                </button>
               </div>
-              <button
-                type="button"
-                className="shrink-0 rounded-full bg-[#B52E88] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#B52E88]/90 md:px-8 md:py-4"
-              >
-                {tExplore(language, "exploreBtn")}
-              </button>
-            </div>
+              {searchHint ? (
+                <p className="mt-3 text-sm text-white/90 drop-shadow-sm" role="status">
+                  {searchHint}
+                </p>
+              ) : null}
+            </form>
           </div>
           </article>
         </section>
       </div>
 
-      <ExploreCategoryNav />
+      <div id="explore-categories" className="scroll-mt-24">
+        <ExploreCategoryNav />
+      </div>
 
       <section className="mx-auto max-w-[1280px] px-5 py-8 md:px-16">
         <PattayaCityMap />
@@ -269,37 +327,46 @@ export function ExploreHubPage() {
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-stretch">
             <div className="space-y-12 lg:col-span-8">
               <div>
-                <div className="mb-6 flex items-end justify-between">
-                  <h2 className="text-2xl font-semibold md:text-3xl">
-                    {tExplore(language, "mustVisitTitle")}
-                  </h2>
+                <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                  <div>
+                    <h2 className="text-2xl font-semibold md:text-3xl">
+                      {tExplore(language, "mustVisitTitle")}
+                    </h2>
+                    <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#444748]">
+                      {tExplore(language, "mustVisitSubtitle")}
+                    </p>
+                  </div>
                   <Link
                     href="/explore/islands/koh-larn"
-                    className="flex items-center gap-1 text-sm font-semibold text-[#B52E88] hover:underline"
+                    className="shrink-0 text-sm font-semibold text-[#B52E88] hover:underline"
                   >
                     {tExplore(language, "viewAll")}
                   </Link>
                 </div>
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                  <BookingCard
-                    badge={tExplore(language, "bookingBestSeller")}
+                  <GuidePickCard
+                    badge={tExplore(language, "guidePick1Badge")}
                     badgeClass="bg-[#ae2f34] text-white"
-                    title={tExplore(language, "booking1Title")}
-                    excerpt={tExplore(language, "booking1Excerpt")}
-                    image={exploreImages.islandHopping}
-                    imageAlt={tExplore(language, "booking1Title")}
-                    mapHref="/explore/islands/koh-larn"
-                    bookHref="/explore/islands/koh-larn"
+                    title={tExplore(language, "guidePick1Title")}
+                    excerpt={tExplore(language, "guidePick1Excerpt")}
+                    image={exploreImages.guideKohLarn}
+                    imageAlt={tExplore(language, "guidePick1Title")}
+                    mapHref="/explore/islands/koh-larn#ferry-guide"
+                    guideHref="/explore/islands/koh-larn"
+                    mapLabel={pickText(language, commonUi.seeMap)}
+                    guideLabel={tExplore(language, "guideReadBtn")}
                   />
-                  <BookingCard
-                    badge={tExplore(language, "bookingPopular")}
+                  <GuidePickCard
+                    badge={tExplore(language, "guidePick2Badge")}
                     badgeClass="bg-[#B52E88] text-white"
-                    title={tExplore(language, "booking2Title")}
-                    excerpt={tExplore(language, "booking2Excerpt")}
+                    title={tExplore(language, "guidePick2Title")}
+                    excerpt={tExplore(language, "guidePick2Excerpt")}
                     image={exploreImages.coralCoast}
-                    imageAlt={tExplore(language, "booking2Title")}
+                    imageAlt={tExplore(language, "guidePick2Title")}
                     mapHref="/explore/beaches"
-                    bookHref="/explore/beaches"
+                    guideHref="/explore/beaches"
+                    mapLabel={pickText(language, commonUi.seeMap)}
+                    guideLabel={tExplore(language, "guideReadBtn")}
                   />
                 </div>
               </div>
@@ -314,43 +381,69 @@ export function ExploreHubPage() {
                       {tExplore(language, "diningSubtitle")}
                     </p>
                   </div>
-                  <div className="flex gap-2 rounded-xl bg-[#f3f4f5] p-1">
+                  <div
+                    className="flex gap-2 rounded-xl bg-[#f3f4f5] p-1"
+                    role="tablist"
+                    aria-label={tExplore(language, "diningTitle")}
+                  >
                     <button
                       type="button"
-                      className="rounded-lg bg-white px-6 py-2.5 text-sm font-semibold text-[#B52E88] shadow-sm ring-1 ring-[#B52E88]/15"
+                      role="tab"
+                      aria-selected={diningTab === "luxury"}
+                      onClick={() => setDiningTab("luxury")}
+                      className={`rounded-lg px-6 py-2.5 text-sm font-semibold transition-all ${
+                        diningTab === "luxury"
+                          ? "bg-white text-[#B52E88] shadow-sm ring-1 ring-[#B52E88]/15"
+                          : "text-[#444748] hover:bg-white/50"
+                      }`}
                     >
                       {tExplore(language, "luxuryDining")}
                     </button>
-                    <Link
-                      href={marketPagePaths.streetFoodPage}
-                      className="rounded-lg px-6 py-2.5 text-sm font-semibold text-[#444748] transition-all hover:bg-white/50"
+                    <button
+                      type="button"
+                      role="tab"
+                      aria-selected={diningTab === "local"}
+                      onClick={() => setDiningTab("local")}
+                      className={`rounded-lg px-6 py-2.5 text-sm font-semibold transition-all ${
+                        diningTab === "local"
+                          ? "bg-white text-[#B52E88] shadow-sm ring-1 ring-[#B52E88]/15"
+                          : "text-[#444748] hover:bg-white/50"
+                      }`}
                     >
                       {tExplore(language, "localFood")}
-                    </Link>
+                    </button>
                   </div>
                 </div>
-                <div className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-2">
-                  <DiningCard
-                    title={tExplore(language, "dining1Title")}
-                    rating="4.9"
-                    location={tExplore(language, "dining1Location")}
-                    excerpt={tExplore(language, "dining1Excerpt")}
-                    image={exploreImages.skyGallery}
-                    imageAlt={tExplore(language, "dining1Title")}
-                    cta={pickText(language, commonUi.exploreMenu)}
-                    href="/explore/restaurants/fine-dining"
-                  />
-                  <DiningCard
-                    title={tExplore(language, "dining2Title")}
-                    rating="4.8"
-                    location={tExplore(language, "dining2Location")}
-                    excerpt={tExplore(language, "dining2Excerpt")}
-                    image={exploreImages.caveBeachClub}
-                    imageAlt={tExplore(language, "dining2Title")}
-                    cta={pickText(language, commonUi.bookTable)}
-                    href="/explore/restaurants/fine-dining"
-                  />
+                <div
+                  className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-2"
+                  role="tabpanel"
+                  id="explore-dining-panel"
+                >
+                  {activeDiningCards.map((card) => (
+                    <DiningCard
+                      key={`${diningTab}-${card.href}-${card.title}`}
+                      title={card.title}
+                      rating={card.rating}
+                      location={card.location}
+                      excerpt={card.excerpt}
+                      image={card.image}
+                      imageAlt={card.imageAlt}
+                      cta={card.cta}
+                      href={card.href}
+                      sponsored={card.sponsored}
+                    />
+                  ))}
                 </div>
+                {diningTab === "local" ? (
+                  <p className="text-center text-sm">
+                    <Link
+                      href={marketPagePaths.streetFoodPage}
+                      className="font-semibold text-[#B52E88] hover:underline"
+                    >
+                      {tExplore(language, "diningLocalViewAll")}
+                    </Link>
+                  </p>
+                ) : null}
               </div>
             </div>
 
@@ -383,12 +476,9 @@ export function ExploreHubPage() {
                   <p className="mb-4 text-sm font-medium italic text-[#444748]">
                     {tExplore(language, "wellnessTagline")}
                   </p>
-                  <div className="mb-4 flex text-amber-400">
-                    {"★★★★★"}
-                    <span className="ml-2 text-[10px] font-bold uppercase tracking-widest text-[#191c1d]/60">
-                      {tExplore(language, "wellnessReviews")}
-                    </span>
-                  </div>
+                  <p className="mb-4 text-[10px] font-bold uppercase tracking-widest text-[#747878]">
+                    {tExplore(language, "wellnessReviews")}
+                  </p>
                   <div className="mb-6 flex flex-wrap gap-2">
                     {wellnessTags.map((tag) => (
                       <span
@@ -447,7 +537,7 @@ export function ExploreHubPage() {
                         {tExplore(language, "bookNow")}
                       </Link>
                       <Link
-                        href="/explore/wellness"
+                        href="/explore/wellness#wellness-zones"
                         className="w-full rounded-xl border border-[#c4c7c8] bg-white py-4 text-center text-[13px] font-bold uppercase tracking-[0.15em] text-[#191c1d] transition-all hover:bg-[#edeeef]"
                       >
                         {tExplore(language, "checkPrice")}

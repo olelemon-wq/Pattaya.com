@@ -1,6 +1,8 @@
 /** Image URLs from Stitch: Explore Pattaya - Softened Newsletter Style */
 export const exploreImages = {
   hero: "/images/explore/explore-hero-cinematic.png",
+  /** Explore hub — Koh Larn guide pick card */
+  guideKohLarn: "/images/explore/explore-guide-koh-larn.jpg",
   islandHopping:
     "https://images.unsplash.com/photo-1505142468610-359e7d316be0?auto=format&fit=crop&w=1600&q=80",
   /** Beach clubs & coral coast — verified HTTP 200 */
