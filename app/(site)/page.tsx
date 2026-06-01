@@ -1,5 +1,4 @@
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
-import { DailyEssentials } from "@/components/home/daily-essentials";
 import { EmergencySupportFab } from "@/components/home/emergency-support-fab";
 import { ExploreBySection } from "@/components/home/explore-by-section";
 import { FeaturedBusinesses } from "@/components/home/featured-businesses";
@@ -19,7 +18,6 @@ export default function HomePage() {
         <ForumAndCurrency />
         <PattayaGuideSection />
         <FeaturedBusinesses />
-        <DailyEssentials />
       </div>
       <EmergencySupportFab />
     </div>
