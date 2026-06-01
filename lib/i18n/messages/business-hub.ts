@@ -28,6 +28,12 @@ const copy = {
     zh: "商业指南",
     ru: "Бизнес-гайды",
   },
+  heroFeaturedLabel: {
+    en: "Featured",
+    th: "แนะนำ",
+    zh: "精选",
+    ru: "Рекомендуем",
+  },
   heroFeaturedTitle: {
     en: "Start a business in Pattaya & the EEC",
     th: "เริ่มธุรกิจในพัทยาและ EEC",
@@ -142,6 +148,18 @@ const copy = {
     zh: "面向酒店餐饮创业者的行业手册。",
     ru: "Отраслевые руководства для HoReCa.",
   },
+  industryOperatingGuides: {
+    en: "Industry operating guides",
+    th: "คู่มือบริหารตามอุตสาหกรรม",
+    zh: "行业运营指南",
+    ru: "Отраслевые гайды",
+  },
+  viewAllGuides: {
+    en: "View all guides",
+    th: "ดูคู่มือทั้งหมด",
+    zh: "查看全部指南",
+    ru: "Смотреть все гайды",
+  },
   restaurantTitle: {
     en: "Restaurant Guide",
     th: "คู่มือร้านอาหาร",
@@ -238,6 +256,18 @@ const copy = {
     zh: "芭提雅经济一览",
     ru: "Экономика Паттайи",
   },
+  economyHeadlineTop: {
+    en: "Pattaya Economic",
+    th: "สถิติและความเติบโต",
+    zh: "芭提雅经济",
+    ru: "Экономика Паттайи",
+  },
+  economyHeadlineBottom: {
+    en: "Growth Metrics",
+    th: "ทางเศรษฐกิจพัทยา",
+    zh: "增长指标",
+    ru: "Показатели роста",
+  },
   statVisitors: {
     en: "Annual Visitors",
     th: "นักท่องเที่ยวต่อปี",
@@ -279,6 +309,12 @@ const copy = {
     th: "เน็ตเวิร์ก & อีเวนต์",
     zh: "人脉与活动",
     ru: "Нетворкинг и события",
+  },
+  networkingHeading: {
+    en: "Business Networking Events",
+    th: "ตารางกิจกรรมเครือข่ายธุรกิจ",
+    zh: "商业社交活动",
+    ru: "Бизнес-мероприятия и нетворкинг",
   },
   networkingSubtitle: {
     en: "Connect with investors, operators, and policymakers.",

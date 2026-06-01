@@ -5,14 +5,12 @@ import { PageHero } from "@/components/content/page-hero";
 import { useLanguage } from "@/components/layout/language-provider";
 import { buildStandaloneBreadcrumbs } from "@/lib/i18n/resolve-site-nav";
 import {
-  getEmergencyServiceName,
   getStandalonePageCopy,
   getStandalonePlaceholderLinks,
-  type EmergencyServiceId,
 } from "@/lib/i18n/messages/standalone-pages";
-import { tSiteUi, tSiteUiTemplate } from "@/lib/i18n/messages/site-ui";
+import { tSiteUi } from "@/lib/i18n/messages/site-ui";
+import { EmergencyPage } from "@/components/emergency/emergency-page";
 import { PattayaWeatherPage } from "@/components/utilities/pattaya-weather-page";
-import { emergencyContacts, emergencyTelHref } from "@/lib/data/emergency-contacts";
 import Link from "next/link";
 
 function ComingSoonPanel({
@@ -71,41 +69,7 @@ export function GuidePageContent() {
 }
 
 export function EmergencyPageContent() {
-  const { language } = useLanguage();
-  const copy = getStandalonePageCopy(language, "emergency");
-
-  return (
-    <>
-      <Breadcrumb
-        items={buildStandaloneBreadcrumbs(language, copy.title, "/emergency")}
-      />
-      <PageHero
-        title={copy.title}
-        description={copy.description}
-        badge={copy.badge}
-      />
-      <div className="grid gap-4 sm:grid-cols-2">
-        {emergencyContacts.map((entry) => (
-          <div
-            key={entry.id}
-            className="rounded-xl border border-zinc-200 bg-white p-5 shadow-sm"
-          >
-            <p className="font-semibold text-zinc-900">
-              {getEmergencyServiceName(language, entry.id as EmergencyServiceId)}
-            </p>
-            <p className="mt-2 text-2xl font-bold text-teal-700">{entry.number}</p>
-            <a
-              href={emergencyTelHref(entry.number)}
-              className="mt-4 inline-flex rounded-full bg-teal-700 px-4 py-2 text-sm font-semibold text-white transition hover:bg-teal-800"
-              aria-label={tSiteUiTemplate(language, "callNumber", { number: entry.number })}
-            >
-              {tSiteUiTemplate(language, "callNumber", { number: entry.number })}
-            </a>
-          </div>
-        ))}
-      </div>
-    </>
-  );
+  return <EmergencyPage />;
 }
 
 export function FeaturedDirectoryPageContent() {

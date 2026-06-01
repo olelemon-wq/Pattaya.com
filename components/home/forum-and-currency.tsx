@@ -4,12 +4,6 @@ import Link from "next/link";
 import { useLanguage } from "@/components/layout/language-provider";
 import { getHomeForum } from "@/lib/i18n/messages/home-hub";
 
-const currencies = [
-  { code: "USD", flag: "🇺🇸", flagLabel: "United States", rate: "35.42", trend: "up" as const },
-  { code: "EUR", flag: "🇪🇺", flagLabel: "European Union", rate: "38.15", trend: "down" as const },
-  { code: "GBP", flag: "🇬🇧", flagLabel: "United Kingdom", rate: "44.80", trend: "up" as const },
-];
-
 export function ForumAndCurrency() {
   const { language } = useLanguage();
   const forum = getHomeForum(language);
@@ -57,7 +51,7 @@ export function ForumAndCurrency() {
       >
         <h2 className="mb-4 text-sm font-bold text-[#0c1a33]">{forum.currencyTitle}</h2>
         <ul className="space-y-3">
-          {currencies.map((c) => (
+          {forum.currencies.map((c) => (
             <li key={c.code} className="flex items-center justify-between gap-3">
               <span className="flex min-w-0 items-center gap-2.5">
                 <span

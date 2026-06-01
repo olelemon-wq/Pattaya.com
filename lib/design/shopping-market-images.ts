@@ -3,7 +3,7 @@ import { exploreImages } from "@/lib/design/explore-images";
 
 /** Shopping market cards — same order as `getShoppingMarketsList` items */
 export const shoppingMarketImages = [
-  exploreImages.thepprasitMarket,
+  "/images/explore/market-thepprasit-night.png",
   beachesImages.naklua,
   "/images/explore/pattaya-floating-market.png",
   exploreImages.thepprasitMarket,

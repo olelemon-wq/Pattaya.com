@@ -25,8 +25,6 @@ export const shoppingImages = {
     "https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=800&q=80",
   mallCategoryElectronics:
     "https://images.unsplash.com/photo-1468495244123-6c6c332eeece?auto=format&fit=crop&w=800&q=80",
-  mallCategoryCinema:
-    "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=800&q=80",
-  mallCategoryFoodCourt:
-    "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80",
+  mallCategoryCinema: "/images/explore/mall-cinema-terminal21.png",
+  mallCategoryFoodCourt: "/images/explore/mall-foodcourt-pier21.png",
 } as const;

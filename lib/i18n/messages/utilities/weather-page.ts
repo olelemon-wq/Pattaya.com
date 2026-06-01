@@ -172,6 +172,7 @@ export function getWeatherPage(lang: LanguageCode) {
         "Данные: Open-Meteo · сетка Паттайи",
       ),
     ),
+    relatedLinks: t(lang, L("Related links", "ลิงก์ที่เกี่ยวข้อง", "相关链接", "Связанные ссылки")),
     livingHub: t(lang, L("Living hub", "ศูนย์ไลฟ์สไตล์", "生活中心", "Раздел жизни")),
     events: t(lang, L("Events calendar", "ปฏิทินอีเวนต์", "活动日历", "События")),
     beaches: t(lang, L("Explore beaches", "สำรวจชายหาด", "探索海滩", "Пляжи")),

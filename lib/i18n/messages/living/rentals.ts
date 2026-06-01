@@ -135,6 +135,7 @@ export function getRentalDocuments(lang: LanguageCode) {
         ),
       ),
     ],
+    noteLabel: t(lang, L("Note:", "หมายเหตุ:", "备注：", "Примечание:")),
     notRequired: t(
       lang,
       L(

@@ -10,7 +10,7 @@ import { tSiteUiTemplate } from "@/lib/i18n/messages/site-ui";
 import { Ambulance, MapPin, Phone, Shield } from "lucide-react";
 import { useCallback, useState } from "react";
 
-export function PattayaEmergencyHub() {
+export function PattayaEmergencyHub({ hideIntro = false }: { hideIntro?: boolean }) {
   const { language } = useLanguage();
   const copy = getEmergencyHubCopy(language);
   const moreNumbers = getEmergencyMoreNumbers(language);
@@ -58,13 +58,19 @@ export function PattayaEmergencyHub() {
 
   return (
     <section className="emergency-hub" aria-labelledby="emergency-hub-title">
-      <header className="emergency-hub__intro">
-        <span className="emergency-hub__badge">{copy.badge}</span>
-        <h2 id="emergency-hub-title" className="emergency-hub__title">
+      {hideIntro ? (
+        <h2 id="emergency-hub-title" className="sr-only">
           {copy.title}
         </h2>
-        <p className="emergency-hub__subtitle">{copy.subtitle}</p>
-      </header>
+      ) : (
+        <header className="emergency-hub__intro">
+          <span className="emergency-hub__badge">{copy.badge}</span>
+          <h2 id="emergency-hub-title" className="emergency-hub__title">
+            {copy.title}
+          </h2>
+          <p className="emergency-hub__subtitle">{copy.subtitle}</p>
+        </header>
+      )}
 
       <div className="emergency-hub__card">
         {/* Section 1: Quick call pad */}

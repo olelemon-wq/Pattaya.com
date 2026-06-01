@@ -55,6 +55,7 @@ function HospitalCard({
   services,
   mapsQuery,
   mapsLabel,
+  tierLabel,
   tier,
 }: {
   name: string;
@@ -64,6 +65,7 @@ function HospitalCard({
   services: string;
   mapsQuery: string;
   mapsLabel: string;
+  tierLabel: string;
   tier: "premium" | "public";
 }) {
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
@@ -90,7 +92,7 @@ function HospitalCard({
             tier === "premium" ? "bg-[#B29475]/15 text-[#6b5a48]" : "bg-slate-100 text-slate-600"
           }`}
         >
-          {tier === "premium" ? "Premium" : "Public"}
+          {tierLabel}
         </span>
         <h3 className="text-lg font-bold text-[#0A192F]">{name}</h3>
         <p className={`mt-3 flex-1 text-sm leading-relaxed ${livingTheme.body}`}>{focus}</p>
@@ -209,6 +211,7 @@ export function HospitalsPage() {
               services={h.services}
               mapsQuery={h.mapsQuery}
               mapsLabel={copy.openMaps}
+              tierLabel={copy.tierPremium}
               tier="premium"
             />
           ))}
@@ -232,6 +235,7 @@ export function HospitalsPage() {
               services={h.services}
               mapsQuery={h.mapsQuery}
               mapsLabel={copy.openMaps}
+              tierLabel={copy.tierPublic}
               tier="public"
             />
           ))}

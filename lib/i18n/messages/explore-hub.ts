@@ -112,6 +112,18 @@ const copy = {
     zh: "沙滩波西米亚风情与精品鸡尾酒。",
     ru: "Богемный ужин на песке с коктейлями.",
   },
+  dining1Location: {
+    en: "Pratumnak Hill",
+    th: "พระตำนัก",
+    zh: "帕坦纳克山",
+    ru: "Пратамнак",
+  },
+  dining2Location: {
+    en: "Na Jomtien",
+    th: "หน้าจอมเทียน",
+    zh: "那仲天",
+    ru: "На Джомтьен",
+  },
   wellnessTitle: {
     en: "Relax & Wellness",
     th: "ผ่อนคลาย & เวลเนส",
@@ -187,6 +199,12 @@ const copy = {
     th: "ลงทุนเพื่อสุขภาพ",
     zh: "健康投资",
     ru: "Инвестиция в здоровье",
+  },
+  wellnessPrice: {
+    en: "฿2,400",
+    th: "฿2,400",
+    zh: "฿2,400",
+    ru: "฿2 400",
   },
   bookNow: {
     en: "Book Now",

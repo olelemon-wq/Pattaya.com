@@ -144,7 +144,7 @@ export function RentalsPage() {
             ))}
           </ul>
           <p className={`rounded-xl border border-dashed border-[#e2e8f0] bg-white p-4 text-sm ${livingTheme.body}`}>
-            <span className="font-semibold text-[#0A192F]">Note: </span>
+            <span className="font-semibold text-[#0A192F]">{documents.noteLabel} </span>
             {documents.notRequired}
           </p>
         </div>

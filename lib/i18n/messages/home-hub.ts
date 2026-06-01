@@ -148,6 +148,29 @@ export function getHomeForum(lang: LanguageCode) {
     visitForum: t(lang, L("Visit Forum", "เข้าฟอรัม", "访问论坛", "На форум")),
     replies: t(lang, L("replies", "ตอบกลับ", "回复", "ответов")),
     currencyTitle: t(lang, L("Currency Rates", "อัตราแลกเปลี่ยน", "汇率", "Курсы")),
+    currencies: [
+      {
+        code: "USD",
+        flag: "🇺🇸",
+        flagLabel: t(lang, L("United States", "สหรัฐอเมริกา", "美国", "США")),
+        rate: "35.42",
+        trend: "up" as const,
+      },
+      {
+        code: "EUR",
+        flag: "🇪🇺",
+        flagLabel: t(lang, L("European Union", "สหภาพยุโรป", "欧盟", "ЕС")),
+        rate: "38.15",
+        trend: "down" as const,
+      },
+      {
+        code: "GBP",
+        flag: "🇬🇧",
+        flagLabel: t(lang, L("United Kingdom", "สหราชอาณาจักร", "英国", "Великобритания")),
+        rate: "44.80",
+        trend: "up" as const,
+      },
+    ],
     topics: [
       {
         initials: "JD",

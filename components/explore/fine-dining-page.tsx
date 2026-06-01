@@ -95,7 +95,7 @@ function TipCard({
       className="scroll-mt-24 flex h-full flex-col overflow-hidden rounded-xl border border-[#e7e8e9] bg-[#fdf8fb] shadow-sm"
     >
       <div className="relative aspect-[21/9] w-full shrink-0 bg-[#e7e8e9] sm:aspect-[2/1]">
-        <Image src={image} alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+        <Image src={image} alt={title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
       </div>
       <div className="flex flex-1 flex-col p-5 sm:p-6">
         <h3 className="text-base font-bold text-[#191c1d] sm:text-lg">{title}</h3>
@@ -132,7 +132,7 @@ function CollectionCard({
       <div className="relative aspect-[4/3] w-full shrink-0 bg-[#e7e8e9]">
         <Image
           src={image}
-          alt=""
+          alt={title}
           fill
           className="object-cover transition duration-500 group-hover:scale-105"
           sizes="(max-width: 640px) 100vw, 400px"

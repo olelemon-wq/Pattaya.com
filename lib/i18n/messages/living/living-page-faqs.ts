@@ -598,3 +598,282 @@ export const emergencyGuideFaqs = [
     ),
   ),
 ];
+
+export const cultureEtiquetteFaqs = [
+  faq(
+    "wai",
+    L("When should I use the wai?", "ไหว้เมื่อไหร่?", "何时合十礼？", "Когда делать вай?"),
+    L(
+      "Use the wai when greeting elders, monks, and officials. A slight bow is enough for casual daily interactions.",
+      "ไหว้เมื่อทักทายผู้ใหญ่ พระ และเจ้าหน้าที่ ไหว้เบาๆ ในชีวิตประจำวัน",
+      "问候长辈、僧侣和官员时使用；日常场合轻礼即可。",
+      "Вай приветствуют старших, монахов и чиновников; в быту — лёгкий поклон.",
+    ),
+  ),
+  faq(
+    "temple",
+    L("What should I wear to temples in Pattaya?", "แต่งกายเข้าวัดอย่างไร?", "进庙如何着装？", "Одежда для храма"),
+    L(
+      "Cover shoulders and knees, remove shoes, and keep voices low. Carry a sarong for beach-area temples.",
+      "ปิดไหล่และเข่า ถอดรองเท้า พูดเบา พกผ้าคลุมสำหรับวัดริมทะเล",
+      "遮盖肩膝、脱鞋、低声说话；海边寺庙可备纱笼。",
+      "Плечи и колени закрыты, без обуви, тихий голос; саронг у пляжных храмов.",
+    ),
+  ),
+  faq(
+    "monks",
+    L("Can women interact with monks?", "ผู้หญิงคุยกับพระได้ไหม?", "女性能否与僧侣交流？", "Женщины и монахи"),
+    L(
+      "Women should not touch monks — place items on a cloth or table. Give up seats when possible.",
+      "ผู้หญิงไม่สัมผัสพระ วางของบนผ้าหรือโต๊ะ ให้ที่นั่งพระ",
+      "女性勿触碰僧侣——物品放在布或桌上；尽量让座。",
+      "Женщины не касаются монахов; предметы на ткань или стол; уступайте место.",
+    ),
+  ),
+  faq(
+    "face",
+    L("What does 'saving face' mean?", "‘เกรงใจ/รักษาหน้า’ หมายถึงอะไร?", "“给面子”是什么意思？", "Что такое «сохранение лица»"),
+    L(
+      "Avoid public arguments and embarrassing others. Calm negotiation works better than confrontation.",
+      "หลีกเลี่ยงทะเลาะในที่สาธารณะ การเจรจาอย่างใจเย็นได้ผลดีกว่า",
+      "避免当众争吵或让人难堪；冷静协商比对抗更有效。",
+      "Избегайте публичных ссор и смущения; спокойные переговоры лучше конфронтации.",
+    ),
+  ),
+  faq(
+    "royal",
+    L("Are there rules about the monarchy?", "กฎเกี่ยวกับสถาบันกษัตริย์?", "关于王室有何规定？", "Правила о монархии"),
+    L(
+      "Show respect in public. Avoid casual or critical discussion — strict laws apply.",
+      "แสดงความเคารพในที่สาธารณะ หลีกเลี่ยงการพูดจาไม่เหมาะสม",
+      "在公共场合表示尊重；避免随意或批评性言论——相关法律严格。",
+      "Уважение в публичном пространстве; без лёгких или критичных разговоров — строгие законы.",
+    ),
+  ),
+  faq(
+    "shoes",
+    L("Do I remove shoes everywhere?", "ถอดรองเท้าทุกที่ไหม?", "到处都要脱鞋吗？", "Где снимать обувь?"),
+    L(
+      "Homes, temple buildings, and many shops — look for shoe racks or others barefoot before entering.",
+      "บ้าน อาคารวัด และร้านหลายแห่ง — สังเกตที่วางรองเท้าหรือคนอื่นถอดรองเท้า",
+      "住宅、寺庙建筑及许多店铺——进门先看鞋架或他人是否赤脚。",
+      "Дома, храмы, многие магазины — смотрите на стойки для обуви и других.",
+    ),
+  ),
+  faq(
+    "nightlife",
+    L("Is Walking Street different from temple etiquette?", "Walking Street ต่างจากมารยาทวัดไหม?", "步行街与寺庙礼仪不同吗？", "Walking Street и храмы"),
+    L(
+      "Yes — nightlife is commercial and loud; dress more on the street, stay alert for scams, but still avoid public fights.",
+      "ใช่ — ไนท์ไลฟ์เชิงพาณิชย์และดัง แต่งตัวมิดชิดขึ้น ระวังมิจฉาชีพ อย่าทะเลาะในที่สาธารณะ",
+      "是——夜生活商业且喧闹；穿着更得体，防诈骗，但仍避免当众冲突。",
+      "Да — ночная жизнь громче; одевайтесь скромнее, остерегайтесь мошенников, без драк.",
+    ),
+  ),
+  faq(
+    "songthaew",
+    L("How do I use a Pattaya songthaew without overpaying?", "ขึ้นสองแถวพัทยาไม่ให้โดนแพง?", "芭提雅双条车怎样不被多收钱？", "Как ехать на сонгтхэу?"),
+    L(
+      'Wave to board on the normal route — do not ask "Can you go to…?" Press the buzzer to stop and pay 10–20 THB in small notes at the driver.',
+      "โบกขึ้นเส้นทางปกติ อย่าถาม “ไป...ได้ไหม” กดกิ่งลง จ่าย 10–20 บาทเงินย่อยที่คนขับ",
+      "在固定路线上招手上车——勿问「能去…吗？」按铃下车，付司机 10–20 泰铢零钱。",
+      "Машите на обычном маршруте — не спрашивайте «можете отвезти…»; звонок, 10–20 бат мелочью водителю.",
+    ),
+  ),
+  faq(
+    "currency",
+    L("What if Thai banknotes blow onto the ground?", "ธนบัตรปลิวลงพื้นทำอย่างไร?", "泰铢掉地上怎么办？", "Банкноты на земле"),
+    L(
+      "Pick them up by hand respectfully — never step on notes or coins bearing the King's image.",
+      "เก็บด้วยมืออย่างสุภาพ — ห้ามเหยียบธนบัตรหรือเหรียญที่มีพระบรมฉายาลักษณ์",
+      "用手礼貌拾起——切勿踩踏印有国王肖像的纸币或硬币。",
+      "Поднимите рукой с уважением — не наступайте на банкноты с изображением короля.",
+    ),
+  ),
+  faq(
+    "gift",
+    L("What gifts are appropriate?", "ของขวัญอะไรเหมาะ?", "送什么礼物合适？", "Какие подарки уместны?"),
+    L(
+      "Small thoughtful items (fruit, snacks, local crafts) presented with both hands. Avoid overly expensive gifts that create obligation.",
+      "ของเล็กมีความหมาย (ผลไม้ ขนม หัตถกรรม) ส่งด้วยสองมือ หลีกเลี่ยงของแพงจนเกิดภาระ",
+      "小而用心的礼物（水果、零食、本地手作）双手递送；避免贵重到让人有负担的礼品。",
+      "Небольшие знаки внимания (фрукты, снеки, ремёсла) двумя руками; без слишком дорогих подарков.",
+    ),
+  ),
+];
+
+export const retirementVisaFaqs = [
+  faq(
+    "foreign-bank",
+    L("Can I use a foreign bank account for the financial requirement?", "ใช้บัญชีธนาคารต่างประเทศได้หรือไม่?", "财务要求能用外国银行账户吗？", "Можно ли использовать иностранный счёт?"),
+    L(
+      "Funds must typically be in a Thai bank for two months before application, or show qualifying income in Thailand.",
+      "เงินมักต้องอยู่ในบัญชีไทยอย่างน้อย 2 เดือน หรือแสดงรายได้ในประเทศ",
+      "通常需在泰国银行账户存满两个月，或证明在泰收入。",
+      "Средства обычно должны быть на тайском счёте 2 месяца.",
+    ),
+  ),
+  faq(
+    "duration",
+    L("How long does the retirement visa process take?", "ใช้เวลากี่วันในการดำเนินการ?", "退休签证流程要多久？", "Сколько занимает процесс?"),
+    L(
+      "Document prep takes 1–2 weeks; Immigration extension is often same-day or a few days in Pattaya.",
+      "เตรียมเอกสาร 1–2 สัปดาห์ ต่ออายุที่ Immigration มักเสร็จในวันเดียวหรือไม่กี่วัน",
+      "文件准备约 1–2 周；芭提雅移民局续签常当日或数日完成。",
+      "Подготовка 1–2 недели; продление часто в тот же день.",
+    ),
+  ),
+  faq(
+    "insurance-amount",
+    L("What medical insurance coverage is required?", "ประกันสุขภาพต้องคุ้มครองเท่าไหร่?", "需要多少医疗保险额度？", "Какая страховка нужна?"),
+    L(
+      "Commonly outpatient 40,000 THB and inpatient 400,000 THB minimum, or equivalent approved plans.",
+      "มักต้องมี OP 40,000 บาท และ IP 400,000 บาท หรือแผนที่ Immigration รับรอง",
+      "通常门诊至少 4 万泰铢、住院 40 万泰铢或等效认可方案。",
+      "Обычно 40 000 THB амбулаторно и 400 000 стационар.",
+    ),
+  ),
+  faq(
+    "90-day",
+    L("What is 90-day reporting and do I need to do it?", "รายงานตัว 90 วันคืออะไร?", "什么是90天报到？", "Что такое отчёт 90 дней?"),
+    L(
+      "Every 90 days you must report your address to Immigration (online, mail, or in person).",
+      "ทุก 90 วันต้องรายงานที่อยู่ต่อ Immigration",
+      "每 90 天须向移民局报告住址（网上、邮寄或现场）。",
+      "Каждые 90 дней — отчёт об адресе в Immigration.",
+    ),
+  ),
+  faq(
+    "work",
+    L("Can I work on a retirement visa?", "ทำงานได้ไหมด้วยวีซ่าเกษียณ?", "退休签证可以工作吗？", "Можно ли работать?"),
+    L(
+      "Employment of any kind is prohibited on O-A / retirement extensions. Volunteering or remote work for overseas employers still needs careful legal review.",
+      "ห้ามทำงานทุกประเภทบนวีซ่า O-A / ต่ออายุเกษียณ",
+      "O-A 禁止在泰就业；远程为海外雇主工作也需法律咨询。",
+      "Работа в Таиланде на O-A запрещена.",
+    ),
+  ),
+  faq(
+    "re-entry",
+    L("What is a re-entry permit?", "ใบอนุญาตกลับเข้าประเทศคืออะไร?", "什么是再入境许可？", "Что такое re-entry?"),
+    L(
+      "If you leave Thailand without a re-entry permit, your extension may be cancelled. Get single or multiple re-entry before travel.",
+      "ออกนอกประเทศโดยไม่มี re-entry อาจเสียสถานะต่ออายุ — ขอ single/multiple ก่อนเดินทาง",
+      "离境前须办理再入境许可，否则延期可能失效。",
+      "Re-entry permit перед выездом.",
+    ),
+  ),
+  faq(
+    "renewal-balance",
+    L("How long must 800,000 THB stay in the bank for renewal?", "เงิน 800,000 ต้องอยู่ในบัญชีกี่เดือนก่อนต่ออายุ?", "续签前 80 万要存多久？", "Сколько месяцев 800 000 THB?"),
+    L(
+      "First applications often require 2 months; many Immigration offices ask for 3 months before annual renewal — confirm with Chonburi.",
+      "ครั้งแรกมัก 2 เดือน ต่ออายุหลายที่ขอ 3 เดือน — ยืนยันกับชลบุรี",
+      "首次常 2 个月；续签许多要求 3 个月。",
+      "Первично 2 мес., продление часто 3 мес.",
+    ),
+  ),
+  faq(
+    "ox-visa",
+    L("What is the difference between O-A and Non-OX?", "O-A กับ Non-OX ต่างกันอย่างไร?", "O-A 和 Non-OX 有何区别？", "O-A vs Non-OX?"),
+    L(
+      "Non-OX is a 10-year programme with higher financial thresholds (e.g. 3 million THB deposit). O-A is the standard 1-year renewable route most retirees use.",
+      "Non-OX 10 ปี วงเงินสูงกว่า (เช่น 3 ล้านบาท) O-A ต่อปีที่คนส่วนใหญ่ใช้",
+      "Non-OX 为 10 年计划，资金门槛更高（如 300 万泰铢存款）；O-A 为常见的每年续签路径。",
+      "Non-OX — 10 лет и выше порог; O-A — стандарт.",
+    ),
+  ),
+  faq(
+    "spouse",
+    L("Can my spouse qualify on my retirement visa?", "คู่สมรสสามารถตามวีซ่าเกษียณได้ไหม?", "配偶能随退休签证吗？", "Может ли супруг(а) получить визу?"),
+    L(
+      "Dependents may apply for Non-O as spouse with marriage certificate and financial proof.",
+      "คู่สมรสอาจขอ Non-O พร้อมทะเบียนสมรสและหลักฐานการเงิน",
+      "配偶可凭结婚证与资金证明申请 Non-O 依亲签。",
+      "Супруг(а) может оформить Non-O с документами.",
+    ),
+  ),
+];
+
+export const condoBuyingFaqs = [
+  faq(
+    "quota",
+    L("How do I check if a unit is in the foreign quota?", "ตรวจโควตาต่างชาติอย่างไร?", "如何核实外资配额？", "Как проверить квоту?"),
+    L(
+      "Ask the juristic person for a letter, then confirm at Chonburi Land Office before signing.",
+      "ขอหนังสือจากนิติบุคคล แล้วยืนยันที่สำนักงานที่ดินก่อนเซ็น",
+      "向物业管理方索取证明函，签约前到春武里土地厅核实。",
+      "Запросите письмо у juristic person и подтвердите в Land Office до подписания.",
+    ),
+  ),
+  faq(
+    "fees",
+    L("Who pays transfer fees and taxes?", "ใครจ่ายค่าโอนและภาษี?", "过户费与税费谁付？", "Кто платит пошлины?"),
+    L(
+      "Split is negotiable in the SPA. Budget 3–6% all-in for the buyer side.",
+      "แบ่งจ่ายตามสัญญา ผู้ซื้อควรเผื่อ 3–6%",
+      "买卖协议中可协商分摊；买方侧建议预留总价 3–6%。",
+      "Деление в SPA; закладывайте 3–6% на стороне покупателя.",
+    ),
+  ),
+  faq(
+    "offplan",
+    L("Is off-plan purchase safe for foreigners?", "ซื้อออฟพลานปลอดภัยไหม?", "外籍买期房安全吗？", "Безопасна ли покупка off-plan?"),
+    L(
+      "Use licensed developers, staged payments, and legal review before signing.",
+      "ใช้ผู้พัฒนาที่มีใบอนุญาต จ่ายเป็นงวด และให้ทนายตรวจสัญญา",
+      "选择持牌开发商、分期付款，签约前请律师审阅合同。",
+      "Лицензированный застройщик, этапная оплата и проверка юристом.",
+    ),
+  ),
+  faq(
+    "leasehold",
+    L("What if the foreign quota is full?", "โควตาเต็มทำอย่างไร?", "外资配额满了怎么办？", "Если квота заполнена?"),
+    L(
+      "Consider registered lease, another building, or proper legal structures — not informal nominees.",
+      "พิจารณาสิทธิเช่า อาคารอื่น หรือโครงสร้างที่ถูกกฎหมาย",
+      "可考虑登记租赁权、换楼盘或合法结构——勿用非正式代持。",
+      "Leasehold, другой объект или легальная структура — не nominee.",
+    ),
+  ),
+  faq(
+    "fet",
+    L("Do I need a visa to buy a condo?", "ต้องมีวีซ่าไหมถึงจะซื้อคอนโดได้?", "买房需要签证吗？", "Нужна ли виза?"),
+    L(
+      "Not if you use the overseas funds route (§19(5)): wire purchase money from abroad and obtain an FET form. Other §19 routes may require residence or BOI status.",
+      "ถ้าใช้เงินจากต่างประเทศ (มาตรา 19(5)) ไม่จำเป็น — โอนเงินและขอ FET",
+      "若走境外资金路径（第 19(5) 条）：从海外电汇购房款并取得 FET 即可；其他第 19 条路径可能需居留或 BOI 身份。",
+      "Для пути с FET виза не нужна; иные маршруты §19 могут требовать статус.",
+    ),
+  ),
+  faq(
+    "apartment",
+    L("Can I buy any apartment in Pattaya?", "ซื้ออพาร์ตเมนต์ทั่วไปได้ไหม?", "任何公寓都能买吗？", "Любая квартира?"),
+    L(
+      "Only units in buildings registered under the Condominium Act qualify for foreign freehold. Unregistered apartment blocks cannot transfer title to foreigners.",
+      "เฉพาะอาคารจดทะเบียนอาคารชุดเท่านั้นที่โอนกรรมสิทธิ์ต่างชาติได้",
+      "仅《公寓法》注册楼盘的单元可外籍永久产权过户；未注册公寓楼不能过户给外国人。",
+      "Только зарегистрированное кондо; обычные apartment blocks — нет.",
+    ),
+  ),
+  faq(
+    "timeline",
+    L("How long does a resale purchase take?", "ซื้อมือสองใช้เวลานานแค่ไหน?", "二手房多久完成？", "Сроки resale?"),
+    L(
+      "Typically 30–90 days from reservation to Land Office transfer when documents and FET are ready.",
+      "มัก 30–90 วัน จากจองถึงโอน เมื่อเอกสารและ FET พร้อม",
+      "材料与 FET 齐备时，从预订到土地厅过户通常 30–90 天。",
+      "Обычно 30–90 дней при готовых документах и FET.",
+    ),
+  ),
+  faq(
+    "rental",
+    L("Can I rent out my condo?", "ปล่อยเช่าได้ไหม?", "能否出租公寓？", "Можно ли сдавать в аренду?"),
+    L(
+      "Yes, subject to juristic rules and tax reporting. Short-term may need building permission.",
+      "ได้ ตามกฎนิติบุคคลและภาษี ปล่อยระยะสั้นอาจต้องขออนุญาต",
+      "可以，须遵守物业规定并报税；短租可能需要楼盘许可。",
+      "Да, по правилам juristic person и с налогами; краткосрок — разрешение здания.",
+    ),
+  ),
+];

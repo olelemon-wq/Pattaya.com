@@ -240,6 +240,7 @@ export function ExploreHubPage() {
                 <input
                   type="text"
                   placeholder={tExplore(language, "searchPlaceholder")}
+                  aria-label={tExplore(language, "searchPlaceholder")}
                   className="w-full border-none bg-transparent px-3 text-base text-[#191c1d] placeholder:text-[#747878] focus:outline-none focus:ring-0"
                 />
               </div>
@@ -331,7 +332,7 @@ export function ExploreHubPage() {
                   <DiningCard
                     title={tExplore(language, "dining1Title")}
                     rating="4.9"
-                    location="Pratumnak Hill"
+                    location={tExplore(language, "dining1Location")}
                     excerpt={tExplore(language, "dining1Excerpt")}
                     image={exploreImages.skyGallery}
                     imageAlt={tExplore(language, "dining1Title")}
@@ -341,7 +342,7 @@ export function ExploreHubPage() {
                   <DiningCard
                     title={tExplore(language, "dining2Title")}
                     rating="4.8"
-                    location="Na Jomtien"
+                    location={tExplore(language, "dining2Location")}
                     excerpt={tExplore(language, "dining2Excerpt")}
                     image={exploreImages.caveBeachClub}
                     imageAlt={tExplore(language, "dining2Title")}
@@ -431,7 +432,7 @@ export function ExploreHubPage() {
                     </span>
                     <div className="mb-6 flex items-baseline gap-1.5">
                       <span className="text-4xl font-extrabold tracking-tighter text-[#B52E88]">
-                        ฿2,400
+                        {tExplore(language, "wellnessPrice")}
                       </span>
                       <span className="text-sm font-medium text-[#444748]">
                         {pickText(language, commonUi.perSession)}
@@ -730,6 +731,7 @@ export function ExploreHubPage() {
                 <input
                   type="email"
                   placeholder={pickText(language, commonUi.emailPlaceholder)}
+                  aria-label={pickText(language, commonUi.emailPlaceholder)}
                   className="w-full rounded-xl border border-[#B52E88]/20 bg-white/50 px-5 py-4 text-[#191c1d] shadow-inner backdrop-blur-md outline-none placeholder:text-[#B52E88]/40 focus:border-[#B52E88]/50 focus:ring-2 focus:ring-[#B52E88]/50"
                 />
                 <button

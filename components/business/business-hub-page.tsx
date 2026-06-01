@@ -6,7 +6,6 @@ import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/components/layout/language-provider";
-import { commonUi } from "@/lib/i18n/messages/common";
 import {
   getEconomyStats,
   getIndustryGuides,
@@ -15,7 +14,6 @@ import {
   tBusiness,
   type IndustryGuideItem,
 } from "@/lib/i18n/messages/business-hub";
-import { pickText } from "@/lib/i18n/text";
 import { businessImages } from "@/lib/design/business-images";
 type SetupCardProps = ReturnType<typeof getSetupCards>[number];
 
@@ -165,12 +163,7 @@ export function BusinessHubPage() {
             imageAlt={tBusiness(language, "heroImageAlt")}
             href="/business/company-setup/thai-company"
             category={tBusiness(language, "heroFeaturedCategory")}
-            featuredLabel={pickText(language, {
-              en: "Featured",
-              th: "แนะนำ",
-              zh: "精选",
-              ru: "Рекомендуем",
-            })}
+            featuredLabel={tBusiness(language, "heroFeaturedLabel")}
             title={tBusiness(language, "heroFeaturedTitle")}
             excerpt={tBusiness(language, "heroFeaturedExcerpt")}
             ctaLabel={tBusiness(language, "heroCtaStart")}
@@ -210,12 +203,7 @@ export function BusinessHubPage() {
                 {tBusiness(language, "industryTitle")}
               </span>
               <h2 className="mb-4 text-4xl font-bold text-[#363636] md:text-5xl">
-                {pickText(language, {
-                  en: "Industry operating guides",
-                  th: "คู่มือบริหารตามอุตสาหกรรม",
-                  zh: "行业运营指南",
-                  ru: "Отраслевые гайды",
-                })}
+                {tBusiness(language, "industryOperatingGuides")}
               </h2>
               <p className="border-l-2 border-[#B8860B] pl-6 text-lg text-[#444748]">
                 {tBusiness(language, "industrySubtitle")}
@@ -225,12 +213,7 @@ export function BusinessHubPage() {
               href="/business/guide/restaurant"
               className="group flex items-center gap-3 pb-1 text-sm font-bold uppercase tracking-widest text-[#363636] transition-all hover:text-[#B8860B]"
             >
-              {pickText(language, {
-                en: "View all guides",
-                th: "ดูคู่มือทั้งหมด",
-                zh: "查看全部指南",
-                ru: "Смотреть все гайды",
-              })}
+              {tBusiness(language, "viewAllGuides")}
               <span className="transition-transform group-hover:translate-x-1">
                 →
               </span>
@@ -252,20 +235,10 @@ export function BusinessHubPage() {
           <div className="grid grid-cols-1 items-center gap-20 lg:grid-cols-2">
             <div>
               <h2 className="mb-10 text-4xl font-bold leading-tight text-white">
-                {pickText(language, {
-                  en: "Pattaya Economic",
-                  th: "สถิติและความเติบโต",
-                  zh: "芭提雅经济",
-                  ru: "Экономика Паттайи",
-                })}
+                {tBusiness(language, "economyHeadlineTop")}
                 <br />
                 <span className="text-[#ffb3b0]">
-                  {pickText(language, {
-                    en: "Growth Metrics",
-                    th: "ทางเศรษฐกิจพัทยา",
-                    zh: "增长指标",
-                    ru: "Показатели роста",
-                  })}
+                  {tBusiness(language, "economyHeadlineBottom")}
                 </span>
               </h2>
               <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur-sm">
@@ -344,12 +317,7 @@ export function BusinessHubPage() {
         <div className="mx-auto max-w-[1280px] px-5 md:px-16">
           <div className="mb-4 flex items-center gap-5">
             <h2 className="text-4xl font-bold text-[#363636]">
-              {pickText(language, {
-                en: "Business Networking Events",
-                th: "ตารางกิจกรรมเครือข่ายธุรกิจ",
-                zh: "商业社交活动",
-                ru: "Бизнес-мероприятия и нетворкинг",
-              })}
+              {tBusiness(language, "networkingHeading")}
             </h2>
           </div>
           <p className="mb-10 max-w-2xl text-sm leading-relaxed text-[#444748]">

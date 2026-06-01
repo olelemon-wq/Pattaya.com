@@ -314,7 +314,7 @@ export function PattayaWeatherPage() {
 
       <nav
         className="flex flex-wrap gap-3 border-t border-[#e2e8f0] pt-8"
-        aria-label="Related"
+        aria-label={copy.relatedLinks}
       >
         <Link href="/living" className={livingCtaButtonClass.primary}>
           {copy.livingHub}

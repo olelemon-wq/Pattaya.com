@@ -64,6 +64,8 @@ export function getHospitalsPage(lang: LanguageCode) {
         "Не всегда нужна большая больница.",
       ),
     ),
+    tierPremium: t(lang, L("Premium", "พรีเมียม", "高端", "Премиум")),
+    tierPublic: t(lang, L("Public", "รัฐ", "公立", "Государственная")),
     openMaps: t(lang, L("Open in Google Maps →", "เปิดใน Google Maps →", "在 Google 地图中打开 →", "Google Maps →")),
     mapTitle: t(lang, L("Hospital map", "แผนที่โรงพยาบาล", "医院地图", "Карта больниц")),
     mapSubtitle: t(

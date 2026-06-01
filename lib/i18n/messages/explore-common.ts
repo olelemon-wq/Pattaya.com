@@ -3,7 +3,7 @@ import { L, t } from "@/lib/i18n/living-helpers";
 
 export function getExploreCommon(lang: LanguageCode) {
   return {
-    explore: t(lang, L("Explore", "สำรวจ", "探索", "Explore")),
+    explore: t(lang, L("Explore", "สำรวจ", "探索", "Исследовать")),
     prev: t(lang, L("Previous", "ก่อนหน้า", "上一项", "Назад")),
     next: t(lang, L("Next", "ถัดไป", "下一项", "Далее")),
     hours: t(lang, L("Hours", "เวลาเปิด", "营业时间", "Часы")),
@@ -14,10 +14,10 @@ export function getExploreCommon(lang: LanguageCode) {
     price: t(lang, L("Price", "ราคา", "价格", "Цена")),
     alsoExplore: t(lang, L("Also explore", "สำรวจเพิ่ม", "更多探索", "Также")),
     mainBeaches: t(lang, L("Main beaches →", "ชายหาดหลัก →", "主要海滩 →", "Пляжи →")),
-    fineDining: t(lang, L("Fine dining →", "ไฟน์ไดนิ่ง →", "精致餐饮 →", "Fine dining →")),
+    fineDining: t(lang, L("Fine dining →", "ไฟน์ไดนิ่ง →", "精致餐饮 →", "Рестораны →")),
     kohLarn: t(lang, L("Koh Larn →", "เกาะล้าน →", "格兰岛 →", "Ко Лан →")),
     luxury: t(lang, L("Luxury", "หรู", "奢华", "Люкс")),
-    wellness: t(lang, L("Wellness", "สุขภาพ", "康养", "Wellness")),
+    wellness: t(lang, L("Wellness", "สุขภาพ", "康养", "Велнес")),
     bestFor: t(lang, L("Best for", "เหมาะกับ", "适合", "Лучше для")),
     access: t(lang, L("Access", "การเดินทาง", "交通", "Добраться")),
     water: t(lang, L("Water", "น้ำทะเล", "海水", "Вода")),
