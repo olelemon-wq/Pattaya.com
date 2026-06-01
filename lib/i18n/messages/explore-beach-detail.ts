@@ -135,8 +135,8 @@ function getSlugExtras(lang: LanguageCode, slug: BeachDetailSlug) {
           },
           {
             label: c.streetFood,
-            href: "/explore/restaurants/street-food",
-            blurb: t(lang, L("Night markets after the beach", "ตลาดหลังเล่นหาด", "海滩后的夜市", "Рынки вечером")),
+            href: marketPagePaths.streetFoodThepprasit,
+            blurb: t(lang, L("Thepprasit night market after the beach", "ตลาดเทพประสิทธิ์หลังเล่นหาด", "海滩后 Thepprasit 夜市", "Thepprasit вечером")),
           },
           {
             label: c.cafesLink,

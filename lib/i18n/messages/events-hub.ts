@@ -194,7 +194,7 @@ function todayEvents(lang: LanguageCode): EventsHubEvent[] {
       categoryLabel: cat(lang, "nightlife"),
       image: eventsImages.walkingStreet,
       imageAlt: t(lang, L("Walking Street at night", "Walking Street ยามค่ำ", "夜晚步行街", "Walking Street ночью")),
-      href: "/explore/restaurants/street-food",
+      href: marketPagePaths.streetFoodSection,
     },
     {
       id: "sunset-sounds",

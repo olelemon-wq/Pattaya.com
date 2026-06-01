@@ -19,7 +19,7 @@ import { getShoppingMarketsPage } from "@/lib/i18n/messages/explore-shopping-mar
 import { getStreetFoodPage } from "@/lib/i18n/messages/explore-street-food";
 import { getWellnessPage } from "@/lib/i18n/messages/explore-wellness";
 import { getYachtPage } from "@/lib/i18n/messages/explore-yacht";
-import { fineDiningUi } from "@/lib/i18n/messages/fine-dining";
+import { getFineDiningPage } from "@/lib/i18n/messages/fine-dining";
 import { t } from "@/lib/i18n/living-helpers";
 import type { LanguageCode } from "@/lib/i18n/languages";
 import { createLocalizedItemMetadata } from "@/lib/i18n/localized-metadata";
@@ -93,10 +93,10 @@ const exploreDedicatedMeta: Record<string, ExploreMetaFn> = {
     const p = getKohLarnPage(lang);
     return { title: p.hero.title, description: p.hero.body };
   },
-  "restaurants/fine-dining": (lang) => ({
-    title: t(lang, fineDiningUi.fineDining),
-    description: t(lang, fineDiningUi.heroBody),
-  }),
+  "restaurants/fine-dining": (lang) => {
+    const p = getFineDiningPage(lang);
+    return { title: p.hero.title, description: p.hero.body };
+  },
   "restaurants/street-food": (lang) => {
     const p = getStreetFoodPage(lang);
     return { title: p.hero.title, description: p.hero.body };

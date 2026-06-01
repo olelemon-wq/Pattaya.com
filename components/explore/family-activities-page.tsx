@@ -3,6 +3,7 @@
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import { useLanguage } from "@/components/layout/language-provider";
 import { exploreImages } from "@/lib/design/explore-images";
+import { marketPagePaths } from "@/lib/design/market-page-paths";
 import { getFamilyActivitiesPage } from "@/lib/i18n/messages/explore-family";
 import { tSiteUi } from "@/lib/i18n/messages/site-ui";
 import { Clock, MapPin, Sparkles } from "lucide-react";
@@ -304,7 +305,7 @@ export function FamilyActivitiesPage() {
               {page.alsoExplore.mainBeaches}
             </Link>
             <Link
-              href="/explore/restaurants/street-food"
+              href={marketPagePaths.streetFoodPage}
               className="rounded-xl border border-[#c4c7c8]/50 px-6 py-3 text-center text-sm font-semibold text-[#191c1d] transition hover:bg-[#edeeef]"
             >
               {page.alsoExplore.streetFood}

@@ -1,4 +1,5 @@
 import type { LanguageCode } from "@/lib/i18n/languages";
+import { marketPagePaths } from "@/lib/design/market-page-paths";
 import { pickText, type LocalizedText } from "@/lib/i18n/text";
 
 const labels = {
@@ -39,10 +40,10 @@ const labels = {
     ru: "Шопинг",
   },
   markets: {
-    en: "Markets",
-    th: "ตลาด",
-    zh: "市场",
-    ru: "Рынки",
+    en: "Local Markets",
+    th: "ตลาดท้องถิ่น",
+    zh: "本地市场",
+    ru: "Местные рынки",
   },
   family: {
     en: "Family",
@@ -89,10 +90,10 @@ export const exploreCategoryNavItems = [
   { id: "beaches" as const, href: "/explore/beaches", icon: "waves" as const, active: true },
   { id: "islands" as const, href: "/explore/islands/koh-larn", icon: "ship" as const },
   { id: "luxuryDining" as const, href: "/explore/restaurants/fine-dining", icon: "chefHat" as const },
-  { id: "localFood" as const, href: "/explore/restaurants/street-food", icon: "soup" as const },
+  { id: "localFood" as const, href: marketPagePaths.streetFoodPage, icon: "soup" as const },
   { id: "cafes" as const, href: "/explore/cafes", icon: "coffee" as const },
   { id: "shopping" as const, href: "/explore/shopping/malls", icon: "shoppingBag" as const },
-  { id: "markets" as const, href: "/explore/shopping/markets", icon: "store" as const },
+  { id: "markets" as const, href: marketPagePaths.page, icon: "store" as const },
   { id: "family" as const, href: "/explore/family-activities", icon: "users" as const },
   { id: "yacht" as const, href: "/explore/luxury/yacht", icon: "anchor" as const },
   { id: "hiddenGems" as const, href: "/explore/hidden-gems", icon: "gem" as const },

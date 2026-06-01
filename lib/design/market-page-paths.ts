@@ -21,5 +21,7 @@ export const marketPagePaths = {
   hiddenNoenPlubWan: "/explore/shopping/markets#hidden-market-noen-plub-wan",
   hiddenWatTham: "/explore/shopping/markets#hidden-market-wat-tham-samakkee",
   hiddenNakluaOldTown: "/explore/shopping/markets#hidden-market-naklua-old-town",
-  streetFoodThepprasit: "/explore/restaurants/street-food#market-thepprasit",
+  streetFoodPage: "/explore/restaurants/street-food",
+  streetFoodSection: "/explore/restaurants/street-food#street-food",
+  streetFoodThepprasit: "/explore/restaurants/street-food#street-spot-thepprasit",
 } as const;

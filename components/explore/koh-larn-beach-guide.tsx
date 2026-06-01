@@ -18,12 +18,14 @@ import { getKohLarnPage } from "@/lib/i18n/messages/explore-koh-larn";
 
 const beachImages = {
   tawaen: kohLarnImages.beachTaWan,
+  samae: kohLarnImages.beachSamae,
   nual: kohLarnImages.beachNual,
   tien: kohLarnImages.beachTien,
 } as const;
 
 const featureIcons: Record<string, LucideIcon[]> = {
   tawaen: [Waves, UtensilsCrossed, Ship],
+  samae: [Waves, UtensilsCrossed, Camera],
   nual: [Waves, Palmtree, Camera],
   tien: [Waves, UtensilsCrossed, Camera],
 };

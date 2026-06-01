@@ -3,6 +3,7 @@
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import { useLanguage } from "@/components/layout/language-provider";
 import { cafesImages } from "@/lib/design/cafes-images";
+import { marketPagePaths } from "@/lib/design/market-page-paths";
 import { getCafesPage } from "@/lib/i18n/messages/explore-cafes";
 import { tSiteUi } from "@/lib/i18n/messages/site-ui";
 import { Clock, Coffee, MapPin, Soup, Sparkles } from "lucide-react";
@@ -283,10 +284,16 @@ export function CafesPage() {
               {page.alsoExplore.fineDining}
             </Link>
             <Link
-              href="/explore/restaurants/street-food"
+              href={marketPagePaths.streetFoodThepprasit}
               className="rounded-xl border border-[#B52E88]/30 px-6 py-3 text-center text-sm font-semibold text-[#B52E88] transition hover:bg-[#B52E88]/5"
             >
               {page.alsoExplore.streetFood}
+            </Link>
+            <Link
+              href={marketPagePaths.page}
+              className="rounded-xl border border-[#c4c7c8]/50 px-6 py-3 text-center text-sm font-semibold text-[#191c1d] transition hover:bg-[#edeeef]"
+            >
+              {page.alsoExplore.localMarkets}
             </Link>
             <Link
               href="/explore/beaches"

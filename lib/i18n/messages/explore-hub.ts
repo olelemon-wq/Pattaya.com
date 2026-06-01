@@ -285,10 +285,10 @@ const copy = {
     ru: "Ночной рынок Thepprasit",
   },
   thepprasitExcerpt: {
-    en: "Street food, bargains, live music weekends, and late-night Thai snacks.",
-    th: "สตรีทฟู้ด ของถูก ดนตรีสด และของกินเลิกดึก",
-    zh: "街头美食、淘货、周末现场音乐与深夜小吃。",
-    ru: "Стритфуд, сувениры, музыка по выходным.",
+    en: "Daily night market — street food, bargains, and live music on busy weekends.",
+    th: "ตลาดกลางคืนทุกวัน — สตรีทฟู้ด ของถูก ดนตรีสดช่วงส–อา",
+    zh: "每日夜市：街头美食、淘货，周末现场音乐最热闹。",
+    ru: "Ежедневный ночной рынок — стритфуд; музыка в выходные.",
   },
   familyTitle: {
     en: "Family Activities",

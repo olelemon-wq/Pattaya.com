@@ -1,3 +1,4 @@
+import { marketPagePaths } from "@/lib/design/market-page-paths";
 import type { HomeWidget, MainSection, NavItem } from "./types";
 
 export const SITE_NAME = "Pattaya.com";
@@ -457,7 +458,7 @@ export const mainSections: MainSection[] = [
         subcategory: "Street Food",
         priority: "high",
         monetization: "Sponsored",
-        href: "/explore/restaurants/street-food",
+        href: marketPagePaths.streetFoodPage,
       },
       {
         slug: "cafes",
@@ -490,7 +491,7 @@ export const mainSections: MainSection[] = [
         subcategory: "Local Markets",
         priority: "high",
         monetization: "Ads",
-        href: "/explore/shopping/markets",
+        href: marketPagePaths.page,
       },
       {
         slug: "family-activities",

@@ -318,6 +318,7 @@ export function getCafesPage(lang: LanguageCode) {
       title: c.alsoExplore,
       fineDining: c.fineDining,
       streetFood: c.streetFood,
+      localMarkets: c.localMarkets,
       mainBeaches: c.mainBeaches,
     },
   };

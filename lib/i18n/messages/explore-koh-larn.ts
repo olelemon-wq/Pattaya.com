@@ -1,4 +1,5 @@
 import type { LanguageCode } from "@/lib/i18n/languages";
+import { marketPagePaths } from "@/lib/design/market-page-paths";
 import { kohLarnActivityImages } from "@/lib/design/koh-larn-activity-images";
 import { kohLarnBeachMaps } from "@/lib/design/koh-larn-beach-maps";
 import { kohLarnGuideImages } from "@/lib/design/koh-larn-guide-images";
@@ -6,6 +7,15 @@ import { kohLarnMaps } from "@/lib/design/koh-larn-maps";
 import { kohLarnNearbyImages } from "@/lib/design/koh-larn-nearby-images";
 import { L, t } from "@/lib/i18n/living-helpers";
 import { getExploreCommon } from "@/lib/i18n/messages/explore-common";
+import {
+  getKohLarnCafes,
+  getKohLarnDayPlan,
+  getKohLarnFirstTimerTips,
+  getKohLarnMustTry,
+  getKohLarnOvernightTip,
+  getKohLarnSummary,
+  getKohLarnViewpoint,
+} from "@/lib/i18n/messages/explore-koh-larn-guide";
 
 type NearbyItem = { name: string; text: string; href: string };
 
@@ -24,10 +34,10 @@ export function getKohLarnPage(lang: LanguageCode) {
       body: t(
         lang,
         L(
-          "Island day trips and activities at Koh Larn — crystal water, white sand, and exclusive water sports near Bangkok.",
-          "ทริปเกาะล้าน — น้ำใส หาดทรายขาว กิจกรรมทางน้ำใกล้กรung",
-          "格兰岛一日游：清澈海水、白沙与水上活动。",
-          "Ко Лан — прозрачная вода, белый песок, водные активности.",
+          "More than a quick swim — Koh Larn is Pattaya's easy island escape: clearer water than the mainland, four main beach moods, cafés, and day trips that still work for Bangkok weekends.",
+          "มากกว่าแค่ลงเล่นน้ำ — เกาะล้านคือเกาะพักใจใกล้พัทยา น้ำใสกว่าฝั่งแผ่นดิน หลายหาดหลายฟีล มีคาเฟ่ ทริปวันเดียวจากกรุงเทพก็ไหว",
+          "不只是玩水——格兰岛是芭提雅最便捷的海岛：海水比本岛更清、海滩各具性格、有咖啡馆，曼谷周末也能轻松往返。",
+          "Больше, чем купание — Ко Лан рядом с Паттайей: вода чище, разные пляжи, кафе, поездка на день из Бангкока.",
         ),
       ),
       badgeBeaches: t(lang, L("8 Main Beaches", "8 หาดหลัก", "8 片主海滩", "8 пляжей")),
@@ -59,7 +69,10 @@ export function getKohLarnPage(lang: LanguageCode) {
         {
           id: "beach" as const,
           label: t(lang, L("Pick a beach", "เลือกหาด", "选海滩", "Выбрать пляж")),
-          blurb: t(lang, L("Ta Waen, Nual, Tien…", "ตาแหวน นวล เทียน…", "塔湾、Nual、Tien…", "Ta Waen, Nual, Tien…")),
+          blurb: t(
+            lang,
+            L("Ta Waen, Samae, Tien…", "ตาแหวน แสม เทียน…", "塔湾、Samae、Tien…", "Ta Waen, Samae, Tien…"),
+          ),
           href: "#beach-guide",
         },
         {
@@ -78,10 +91,19 @@ export function getKohLarnPage(lang: LanguageCode) {
       body: t(
         lang,
         L(
-          "Koh Larn sits just kilometres off Pattaya's coast — a top day-trip for clear water, white sand, and water sports from snorkeling to island tours. Speedboats leave from Bali Hai Pier; ideal for families, friends, and Bangkok weekenders.",
-          "เกาะล้านห่างชายฝั่งพัทยาไม่กี่กม. — ทริปวันเดียวยอดนิยม น้ำใส หาดทรายขาว ดำน้ำ เจ็ทสกี ทัวร์รอบเกาะ เรือจากแหลมบาลีฮาย เหมาะครอบครัว เพื่อน คนกรung",
-          "格兰岛距芭提雅海岸仅数公里，是浮潜、摩托艇与环岛游的热门一日游，从 Bali Hai 码头出发。",
-          "Ко Лан в нескольких км от Паттайи — дневная поездка с Bali Hai Pier.",
+          "A few kilometres off Pattaya — easy ferries from Bali Hai Pier, busier hubs like Ta Waen, balanced Samae, slow Tien, and wild Nual with macaques. Most visitors day-trip; staying overnight changes the atmosphere after 5 p.m.",
+          "ห่างพัทยาไม่กี่กม. เรือจากแหลมบาลีฮาย หาดตาแหวนคึกคัก แสมสมดุล เทียนชิล นวลมีลิง ส่วนใหญ่ไปเช้าเย็นกลับ ค้างคืนฟีลต่างหลังบ่าย 4–5",
+          "距芭提雅仅数公里，Bali Hai 码头乘船即达：塔湾热闹、Samae均衡、Tien安静、Nual有猴。多数一日游，下午四五点后过夜氛围截然不同。",
+          "В нескольких км от Паттайи — паром с Bali Hai: Ta Waen, Samae, Tien, Nual. Большинство на день; ночёвка — другой остров после 17:00.",
+        ),
+      ),
+      sourceNote: t(
+        lang,
+        L(
+          "Ferry times and prices change — confirm at the pier counter on the day you travel.",
+          "เวลาเรือและราคาเปลี่ยนได้ — ยืนยันที่เคาน์เตอร์ในท่าวันเดินทาง",
+          "船班与票价可能变动——出行当日请在码头柜台确认。",
+          "Расписание и цены уточняйте в кассе в день поездки.",
         ),
       ),
     },
@@ -110,7 +132,12 @@ export function getKohLarnPage(lang: LanguageCode) {
         label: t(lang, L("On-island transport", "ยานพาหนะบนเกาะ", "岛上交通", "На острове")),
         text: t(
           lang,
-          L("Motorbike rental or songthaew loops", "เช่ามอเตอร์ไซค์ หรือ สองแถวประจำทาง", "租摩托车或双条车环线", "Аренда байка или songthaew"),
+          L(
+            "Songthaew hops ~20–50 THB; motorbike ~250–400 THB/day — island hills are steep, so ride carefully or stick to songthaews if you are not used to slopes.",
+            "สองแถว ~20–50 บาท มอเตอร์ไซค์ ~250–400 บาท/วัน — ถนนชัน ขับระวังหรือนั่งสองแถวถ้าไม่ชินทางลาด",
+            "双条车约20–50泰铢；摩托约250–400泰铢/天——岛上坡陡，不熟山路建议坐双条车。",
+            "Songthaew ~20–50 бат; байк ~250–400 бат — крутые холмы.",
+          ),
         ),
       },
     },
@@ -259,6 +286,35 @@ export function getKohLarnPage(lang: LanguageCode) {
             t(lang, L("Swimming", "ว่ายน้ำได้", "可游泳", "Купание")),
             t(lang, L("Food", "มีอาหาร", "有餐饮", "Еда")),
             t(lang, L("Water sports", "กิจกรรมทางน้ำ", "水上运动", "Водные виды")),
+          ],
+        },
+        {
+          id: "samae" as const,
+          label: t(lang, L("Samae Beach", "หาดแสม", "Samae 海滩", "Samae")),
+          description: t(
+            lang,
+            L(
+              "The sweet spot — turquoise water, sunset views, and cafés without Ta Waen crowds. Locals' pick for a balanced day.",
+              "จุดสมดุล — น้ำสวย พระอาทิตย์ตกดี มีคาเฟ่ คนไม่อัดเท่าตาแหวน คนพื้นที่แนะนำบ่อย",
+              "水质好、日落佳、有咖啡馆且比塔湾人少——本地人常推荐的均衡之选。",
+              "Баланс — чистая вода, закаты, кафе, меньше людей, чем на Ta Waen.",
+            ),
+          ),
+          bestFor: t(
+            lang,
+            L("Photos, cafés, first-timers who want calm-ish water", "ถ่ายรูป คาเฟ่ มาครั้งแรกอยากได้น้ำใสแต่ไม่เงียบสนิท", "摄影、咖啡馆、首次到访想要清静些的海水", "Фото, кафе, первый визит"),
+          ),
+          crowd: t(lang, L("Busy at sunset, calmer mornings", "เย็นคนเยอะ เช้าสงบกว่า", "日落时较热闹，早晨更静", "На закате люднее"),
+          ),
+          access: t(
+            lang,
+            L("Songthaew from Ta Waen ~10–15 min; popular on day-trip loops", "สองแถวจากตาแหวน ~10–15 นาที อยู่ในเส้นทางทัวร์รอบเกาะ", "从塔湾双条车约10–15分钟，常出现在环岛线", "10–15 мин songthaew от Ta Waen"),
+          ),
+          mapsUrl: kohLarnBeachMaps.samae.openHref,
+          features: [
+            t(lang, L("Swimming", "ว่ายน้ำได้", "可游泳", "Купание")),
+            t(lang, L("Cafés", "มีคาเฟ่", "咖啡馆", "Кафе")),
+            t(lang, L("Sunset", "พระอาทิตย์ตกสวย", "日落", "Закат")),
           ],
         },
         {
@@ -428,6 +484,15 @@ export function getKohLarnPage(lang: LanguageCode) {
         t(
           lang,
           L(
+            "Go early: a 7 a.m. crossing means clearer water, easier photos, and shorter queues than 10–11 a.m. tour arrivals.",
+            "ไปเช้า: เรือ 7 โมง น้ำใส ถ่ายรูปง่าย คิวสั้นกว่าช่วง 10–11 โมงที่ทัวร์ลง",
+            "尽量早班：7点左右船水质更清、拍照更容易，比10–11点旅游团抵达时人少。",
+            "Рано: рейс в 7:00 — чище вода и короче очереди, чем в 10–11.",
+          ),
+        ),
+        t(
+          lang,
+          L(
             "Speedboat: ~15 min — often 150–300 THB one-way (confirm before boarding).",
             "เรือเร็ว ~15 นาที — มัก 150–300 บาท/ทาง (ยืนยันก่อนขึ้นเรือ)",
             "快艇约15分钟，单程常见150–300泰铢（上船前确认）",
@@ -490,7 +555,7 @@ export function getKohLarnPage(lang: LanguageCode) {
                 "Ночной рынок после поездки на остров.",
               ),
             ),
-            href: "/explore/restaurants/street-food",
+            href: marketPagePaths.streetFoodThepprasit,
           },
           {
             name: t(lang, L("Central Festival", "เซ็นทรัล เฟสติวัล", "Central Festival", "Central Festival")),
@@ -590,5 +655,12 @@ export function getKohLarnPage(lang: LanguageCode) {
         ),
       ],
     },
+    dayPlan: getKohLarnDayPlan(lang),
+    firstTimerTips: getKohLarnFirstTimerTips(lang),
+    overnight: getKohLarnOvernightTip(lang),
+    viewpoint: getKohLarnViewpoint(lang),
+    cafes: getKohLarnCafes(lang),
+    mustTry: getKohLarnMustTry(lang),
+    summary: getKohLarnSummary(lang),
   };
 }

@@ -1,11 +1,20 @@
 import type { LanguageCode } from "@/lib/i18n/languages";
 import { marketPagePaths } from "@/lib/design/market-page-paths";
-import {
-  streetFoodMarketImages,
-  streetFoodTipImages,
-} from "@/lib/design/street-food-market-images";
+import { streetFoodMarketImages } from "@/lib/design/street-food-market-images";
 import { L, t } from "@/lib/i18n/living-helpers";
 import { getExploreCommon } from "@/lib/i18n/messages/explore-common";
+import {
+  getLocalFoodDayRoute,
+  getLocalFoodGuideCategories,
+  getLocalFoodGuideIntro,
+  getLocalFoodMenuGuide,
+} from "@/lib/i18n/messages/explore-local-food-guide";
+import {
+  getStreetFoodGuideCategories,
+  getStreetFoodGuideIntro,
+  getStreetFoodMoodPicks,
+  getStreetFoodMustTry,
+} from "@/lib/i18n/messages/explore-street-food-guide";
 
 export function getStreetFoodMarkets(lang: LanguageCode) {
   const c = getExploreCommon(lang);
@@ -155,7 +164,6 @@ export function getStreetFoodTips(lang: LanguageCode) {
             ),
           ),
         ],
-        image: streetFoodTipImages[0],
       },
       {
         id: "spice" as const,
@@ -180,7 +188,6 @@ export function getStreetFoodTips(lang: LanguageCode) {
             ),
           ),
         ],
-        image: streetFoodTipImages[1],
       },
       {
         id: "timing" as const,
@@ -205,7 +212,6 @@ export function getStreetFoodTips(lang: LanguageCode) {
             ),
           ),
         ],
-        image: streetFoodTipImages[2],
       },
       {
         id: "seafood" as const,
@@ -230,7 +236,6 @@ export function getStreetFoodTips(lang: LanguageCode) {
             ),
           ),
         ],
-        image: streetFoodTipImages[3],
       },
     ],
   };
@@ -242,90 +247,49 @@ export function getStreetFoodPage(lang: LanguageCode) {
     breadcrumb: {
       explore: c.explore,
       restaurants: c.restaurants,
-      current: t(lang, L("Street Food", "อาหารท้องถิ่น", "街头美食", "Стритфуд")),
+      current: t(
+        lang,
+        L("Local & Street Food", "อาหารท้องถิ่น & สตรีทฟู้ด", "本地与街头美食", "Местная и уличная еда"),
+      ),
     },
     hero: {
       badge: c.restaurants,
-      title: t(lang, L("Street Food", "อาหารท้องถิ่น", "街头美食", "Стритфуд")),
-      subtitle: t(lang, L("Local eats", "อาหารท้องถิ่น", "本地美食", "Местная еда")),
-      body: t(
+      title: t(
         lang,
-        L(
-          "Best local and street food in Pattaya — night markets, morning vendors, and beach-road seafood you can eat like a resident.",
-          "อาหารท้องถิ่นและสตรีทฟู้ดพัทยา — ตลาดกลางคืน แผงเช้า ซีฟู้ดริมหาด",
-          "芭提雅街头美食与夜市海鲜。",
-          "Уличная еда Паттайи — рынки и морепродукты.",
-        ),
+        L("Local & Street Food", "อาหารท้องถิ่น & สตรีทฟู้ด", "本地与街头美食", "Местная и уличная еда"),
       ),
-      badgePicks: t(lang, L("Local picks & markets", "ของดีท้องถิ่น & ตลาด", "本地精选", "Местные рынки")),
-      badgeBudget: t(lang, L("Budget-friendly", "ราคาประหยัด", "实惠", "Бюджетно")),
-    },
-    markets: getStreetFoodMarkets(lang),
-    dishes: {
-      title: t(lang, L("Signature dishes", "เมนูแนะนำ", "招牌菜", "Блюда")),
       subtitle: t(
         lang,
         L(
-          "What to order when you cannot decide — and how to order in Thai comfort zones.",
-          "สั่งอะไรเมื่อตัดสินใจไม่ได้",
-          "不知道点什么时看这里。",
-          "Что заказать, если не знаете.",
+          "Sit-down local kitchens & street stalls",
+          "ครัวท้องถิ่น & รถเข็นตลาด",
+          "本地餐馆与街头摊位",
+          "Рестораны & стритфуд",
         ),
       ),
-      items: [
-        {
-          name: t(lang, L("Pad Thai", "ผัดไทย", "泰式炒河", "Pad Thai")),
-          nameTh: lang === "en" ? "ผัดไทย" : "",
-          note: t(
-            lang,
-            L(
-              "Ask for 'mai ped' if you prefer mild; lime and peanuts on the side.",
-              "บอก 'ไม่เผ็ด' ถ้าชอบเผ็ดน้อย",
-              "可要求不辣。",
-              "Скажите «не остро».",
-            ),
-          ),
-        },
-        {
-          name: t(lang, L("Som Tam", "ส้มตำ", "青木瓜沙拉", "Som Tam")),
-          nameTh: lang === "en" ? "ส้มตำ" : "",
-          note: t(
-            lang,
-            L(
-              "Papaya salad — specify spice level; great with grilled chicken.",
-              "ส้มตำ — บอกระดับเผ็ด คู่ไก่ย่าง",
-              "指定辣度，配烤鸡。",
-              "Укажите остроту.",
-            ),
-          ),
-        },
-        {
-          name: t(lang, L("Grilled Seafood", "ซีฟู้ดย่าง", "烤海鲜", "Гриль морепродукты")),
-          nameTh: lang === "en" ? "ซีฟู้ดย่าง" : "",
-          note: t(
-            lang,
-            L(
-              "Confirm price by weight before cooking; share platters for value.",
-              "ยืนยันราคา/กิโล ก่อนทำ แชร์จานประหยัด",
-              "烹饪前确认重量价。",
-              "Цена за вес до готовки.",
-            ),
-          ),
-        },
-        {
-          name: t(lang, L("Mango Sticky Rice", "ข้าวเหนียวมะม่วง", "芒果糯米饭", "Манго sticky rice")),
-          nameTh: lang === "en" ? "ข้าวเหนียวมะม่วง" : "",
-          note: t(
-            lang,
-            L(
-              "Seasonal Apr–Jun; dessert stalls cluster near markets.",
-              "ฤดู เม.ย.–มิ.ย. แผงใกล้ตลาด",
-              "4–6月当季。",
-              "Сезон апр–июнь.",
-            ),
-          ),
-        },
-      ],
+      body: t(
+        lang,
+        L(
+          "Two guides on one page: homestyle restaurants and market seafood above, then night markets, morning stalls, and late-night soi eats below — how Pattaya actually feeds itself.",
+          "สองคู่มือในหน้าเดียว — ด้านบนคือร้านครัวบ้านและซีฟู้ดตลาด ด้านล่างคือตลาดกลางคืน แผงเช้า และซอยดึก ๆ แบบที่คนพัทยากินจริง",
+          "一页两指南：上方家常馆与市场海鲜，下方夜市、早市与深夜巷食——芭提雅人真实的吃法。",
+          "Два гида: рестораны сверху, рынки и ночные сои снизу.",
+        ),
+      ),
+      badgePicks: t(lang, L("Night markets", "ตลาดกลางคืน", "夜市", "Ночные рынки")),
+      badgeBudget: t(lang, L("Budget-friendly", "ราคาประหยัด", "实惠", "Бюджетно")),
+    },
+    localFood: {
+      guide: getLocalFoodGuideIntro(lang),
+      categories: getLocalFoodGuideCategories(lang),
+      menuGuide: getLocalFoodMenuGuide(lang),
+      dayRoute: getLocalFoodDayRoute(lang),
+    },
+    streetFood: {
+      guide: getStreetFoodGuideIntro(lang),
+      categories: getStreetFoodGuideCategories(lang),
+      moodPicks: getStreetFoodMoodPicks(lang),
+      mustTry: getStreetFoodMustTry(lang),
     },
     tips: getStreetFoodTips(lang),
     alsoExplore: {

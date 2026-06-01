@@ -8,7 +8,20 @@ import { useLanguage } from "@/components/layout/language-provider";
 import { tSiteUi } from "@/lib/i18n/messages/site-ui";
 import { kohLarnImages } from "@/lib/design/koh-larn-images";
 import { getKohLarnPage } from "@/lib/i18n/messages/explore-koh-larn";
-import { Bike, MapPin, Shield, Ship, Sparkles, Sun, Wallet, Waves, type LucideIcon } from "lucide-react";
+import {
+  Bike,
+  Clock,
+  MapPin,
+  Moon,
+  Shield,
+  Ship,
+  Sparkles,
+  Sun,
+  Umbrella,
+  Wallet,
+  Waves,
+  type LucideIcon,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -32,11 +45,15 @@ function TripPlannerAction({
   return (
     <Link
       href={href}
-      className="group flex flex-col rounded-xl border border-[#e7e8e9] bg-white p-4 shadow-sm transition hover:border-[#B52E88]/30 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B52E88]"
+      className="group flex min-w-0 flex-col rounded-xl border border-[#e7e8e9] bg-white p-2.5 shadow-sm transition hover:border-[#B52E88]/30 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B52E88] sm:p-4"
     >
-      <Icon className="h-5 w-5 text-[#B52E88]" aria-hidden />
-      <span className="mt-3 text-sm font-bold text-[#191c1d] group-hover:text-[#B52E88]">{label}</span>
-      <span className="mt-1 text-xs leading-relaxed text-[#747878]">{blurb}</span>
+      <Icon className="h-4 w-4 text-[#B52E88] sm:h-5 sm:w-5" aria-hidden />
+      <span className="mt-2 text-[11px] font-bold leading-snug text-[#191c1d] group-hover:text-[#B52E88] sm:mt-3 sm:text-sm">
+        {label}
+      </span>
+      <span className="mt-0.5 text-[10px] leading-snug text-[#747878] sm:mt-1 sm:text-xs sm:leading-relaxed">
+        {blurb}
+      </span>
     </Link>
   );
 }
@@ -220,7 +237,7 @@ export function KohLarnPage() {
         >
           <p className="text-sm font-bold text-[#191c1d] sm:text-base">{page.tripPlanner.title}</p>
           <p className="mt-2 text-sm leading-relaxed text-[#747878]">{page.tripPlanner.subtitle}</p>
-          <div className="mt-4 grid gap-3 sm:grid-cols-3">
+          <div className="mt-4 grid grid-cols-3 gap-2 sm:gap-3">
             {page.tripPlanner.actions.map((action) => (
               <TripPlannerAction
                 key={action.id}
@@ -241,6 +258,7 @@ export function KohLarnPage() {
               {page.about.title}
             </h2>
             <p className="mt-4 leading-relaxed text-[#444748]">{page.about.body}</p>
+            <p className="mt-2 text-xs text-[#747878]">{page.about.sourceNote}</p>
           </div>
           <aside className="rounded-2xl border border-[#c4c7c8]/30 bg-white p-6 shadow-sm">
             <h3 className="text-lg font-bold text-[#191c1d]">{page.keyInfo.title}</h3>
@@ -262,6 +280,36 @@ export function KohLarnPage() {
               />
             </ul>
           </aside>
+        </section>
+
+        <section
+          id="day-plan"
+          className="scroll-mt-24 rounded-2xl border border-[#D7CBBA]/50 bg-gradient-to-br from-[#fdf8fb] via-white to-[#f5efe6] p-6 sm:p-8"
+          aria-labelledby="day-plan-title"
+        >
+          <div className="flex items-start gap-3">
+            <Clock className="mt-0.5 h-6 w-6 shrink-0 text-[#B52E88]" aria-hidden />
+            <div>
+              <h2 id="day-plan-title" className="text-xl font-bold text-[#191c1d] md:text-2xl">
+                {page.dayPlan.title}
+              </h2>
+              <p className="mt-1 text-sm text-[#747878]">{page.dayPlan.subtitle}</p>
+            </div>
+          </div>
+          <ol className="mt-6 space-y-4">
+            {page.dayPlan.steps.map((step) => (
+              <li
+                key={`${step.time}-${step.title}`}
+                className="flex gap-4 rounded-xl border border-[#e7e8e9] bg-white/90 p-4 shadow-sm"
+              >
+                <span className="w-14 shrink-0 text-sm font-bold tabular-nums text-[#B52E88]">{step.time}</span>
+                <div>
+                  <p className="font-semibold text-[#191c1d]">{step.title}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-[#444748]">{step.body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </section>
 
         <div id="ferry-guide" className="scroll-mt-24 grid gap-8 lg:grid-cols-2 lg:items-stretch">
@@ -329,6 +377,72 @@ export function KohLarnPage() {
 
         <KohLarnBeachGuide />
 
+        <section id="first-visit-tips" className="scroll-mt-24" aria-labelledby="first-visit-tips-title">
+          <div>
+            <h2 id="first-visit-tips-title" className="text-2xl font-semibold text-[#191c1d] md:text-3xl">
+              {page.firstTimerTips.title}
+            </h2>
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[#747878] sm:text-base">
+              {page.firstTimerTips.subtitle}
+            </p>
+          </div>
+          <ul className="mt-6 divide-y divide-[#e7e8e9] overflow-hidden rounded-2xl border border-[#e7e8e9] bg-white shadow-sm">
+            {page.firstTimerTips.items.map((tip) => {
+              const Icon =
+                tip.id === "cash"
+                  ? Wallet
+                  : tip.id === "early"
+                    ? Sun
+                    : tip.id === "sun"
+                      ? Umbrella
+                      : MapPin;
+              return (
+                <li key={tip.id} className="flex gap-4 p-5 sm:gap-5 sm:p-6">
+                  <div
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#fdf8fb] text-[#B52E88] ring-1 ring-[#e7e8e9]"
+                    aria-hidden
+                  >
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-base font-bold text-[#191c1d] sm:text-lg">{tip.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[#444748]">{tip.body}</p>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+
+        <section
+          id="overnight"
+          className="scroll-mt-24 rounded-2xl border border-[#B52E88]/20 bg-[#fdf8fb] p-6 sm:p-8"
+          aria-labelledby="overnight-title"
+        >
+          <div className="flex items-start gap-3">
+            <Moon className="mt-0.5 h-6 w-6 shrink-0 text-[#B52E88]" aria-hidden />
+            <div>
+              <h2 id="overnight-title" className="text-xl font-bold text-[#191c1d] md:text-2xl">
+                {page.overnight.title}
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-[#444748] sm:text-base">{page.overnight.body}</p>
+            </div>
+          </div>
+        </section>
+
+        <SectionBlock title={page.viewpoint.title} className="scroll-mt-24">
+          <p>{page.viewpoint.body}</p>
+          <a
+            href={page.viewpoint.mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-[#B52E88] hover:underline"
+          >
+            <MapPin className="h-4 w-4 shrink-0" aria-hidden />
+            {page.viewpoint.openMaps}
+          </a>
+        </SectionBlock>
+
         <SectionBlock title={page.nearby.title}>
           <ul className="grid gap-5 sm:grid-cols-3 sm:items-stretch">
             {page.nearby.items.map((item) => (
@@ -383,7 +497,7 @@ export function KohLarnPage() {
           </SectionBlock>
         </div>
 
-        <section aria-labelledby="directory-title">
+        <section id="eat-guide" className="scroll-mt-24" aria-labelledby="directory-title">
           <h2 id="directory-title" className="text-2xl font-semibold text-[#191c1d] md:text-3xl">
             {page.directory.title}
           </h2>
@@ -391,8 +505,54 @@ export function KohLarnPage() {
             {page.directory.subtitle}
           </p>
 
-          <h3 className="mt-8 text-lg font-bold text-[#B52E88]">{page.directory.eatTitle}</h3>
-          <ul className="mt-4 grid gap-5 sm:grid-cols-2 sm:items-stretch">
+          <h3 className="mt-8 text-lg font-bold text-[#B52E88]">{page.mustTry.title}</h3>
+          <p className="mt-1 text-sm text-[#747878]">{page.mustTry.subtitle}</p>
+          <ul className="mt-4 flex flex-wrap gap-2">
+            {page.mustTry.dishes.map((dish) => (
+              <li
+                key={dish}
+                className="rounded-full bg-[#fdf8fb] px-3 py-1.5 text-sm font-medium text-[#191c1d] ring-1 ring-[#e7e8e9]"
+              >
+                {dish}
+              </li>
+            ))}
+          </ul>
+
+          <h3 className="mt-10 text-lg font-bold text-[#B52E88]">{page.cafes.title}</h3>
+          <p className="mt-1 text-sm text-[#747878]">{page.cafes.subtitle}</p>
+          <ul className="mt-4 grid gap-5 sm:grid-cols-3 sm:items-stretch">
+            {page.cafes.items.map((item) => (
+              <li key={item.name} className="flex min-h-0">
+                <IslandGuideCard
+                  name={item.name}
+                  text={item.text}
+                  href={item.href}
+                  linkLabel={page.viewpoint.openMaps}
+                  image={item.image}
+                  external
+                />
+              </li>
+            ))}
+          </ul>
+
+          <h3 className="mt-10 text-lg font-bold text-[#B52E88]">{page.mustTry.restaurantsTitle}</h3>
+          <ul className="mt-4 grid gap-5 sm:grid-cols-3 sm:items-stretch">
+            {page.mustTry.restaurants.map((item) => (
+              <li key={item.name} className="flex min-h-0">
+                <IslandGuideCard
+                  name={item.name}
+                  text={item.text}
+                  href={item.href}
+                  linkLabel={page.viewpoint.openMaps}
+                  image={item.image}
+                  external
+                />
+              </li>
+            ))}
+          </ul>
+
+          <h3 className="mt-10 text-lg font-bold text-[#B52E88]">{page.directory.eatTitle}</h3>
+          <ul className="mt-4 grid gap-5 sm:grid-cols-3 sm:items-stretch">
             {page.directory.eat.map((item) => (
               <li key={item.name} className="flex min-h-0">
                 <IslandGuideCard {...item} />
@@ -401,7 +561,7 @@ export function KohLarnPage() {
           </ul>
 
           <h3 className="mt-10 text-lg font-bold text-[#B52E88]">{page.directory.stayTitle}</h3>
-          <ul className="mt-4 grid gap-5 sm:grid-cols-2 sm:items-stretch">
+          <ul className="mt-4 grid gap-5 sm:grid-cols-3 sm:items-stretch">
             {page.directory.stay.map((item) => (
               <li key={item.name} className="flex min-h-0">
                 <IslandGuideCard {...item} />
@@ -409,6 +569,10 @@ export function KohLarnPage() {
             ))}
           </ul>
         </section>
+
+        <SectionBlock title={page.summary.title}>
+          <p>{page.summary.body}</p>
+        </SectionBlock>
       </div>
     </div>
   );

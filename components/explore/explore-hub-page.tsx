@@ -11,6 +11,7 @@ import { getLifestyleSpots, tExplore } from "@/lib/i18n/messages/explore-hub";
 import { pickText } from "@/lib/i18n/text";
 import { PattayaCityMap } from "@/components/explore/pattaya-city-map";
 import { exploreImages } from "@/lib/design/explore-images";
+import { marketPagePaths } from "@/lib/design/market-page-paths";
 
 function BookingCard({
   badge,
@@ -321,7 +322,7 @@ export function ExploreHubPage() {
                       {tExplore(language, "luxuryDining")}
                     </button>
                     <Link
-                      href="/explore/restaurants/street-food"
+                      href={marketPagePaths.streetFoodPage}
                       className="rounded-lg px-6 py-2.5 text-sm font-semibold text-[#444748] transition-all hover:bg-white/50"
                     >
                       {tExplore(language, "localFood")}
@@ -545,7 +546,7 @@ export function ExploreHubPage() {
                 </div>
               </Link>
               <Link
-                href="/explore/shopping/markets"
+                href={marketPagePaths.thepprasit}
                 className="group relative flex aspect-[4/5] flex-col overflow-hidden rounded-3xl border border-[#c4c7c8]/30 shadow-lg lg:aspect-auto lg:h-full lg:min-h-0"
               >
                 <Image
