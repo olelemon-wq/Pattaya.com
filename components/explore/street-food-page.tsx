@@ -27,6 +27,8 @@ function MarketCard({
   priceRangeLabel,
   href,
   linkLabel,
+  secondaryHref,
+  secondaryLinkLabel,
   image,
   external,
 }: {
@@ -40,13 +42,15 @@ function MarketCard({
   priceRangeLabel: string;
   href: string;
   linkLabel: string;
+  secondaryHref?: string;
+  secondaryLinkLabel?: string;
   image: string;
   external: boolean;
 }) {
   const className =
     "group flex h-full w-full flex-col overflow-hidden rounded-xl border border-[#e7e8e9] bg-[#fdf8fb] shadow-sm transition hover:border-[#B52E88]/30 hover:shadow-md";
 
-  const body = (
+  const content = (
     <>
       <div className="relative aspect-[4/3] w-full shrink-0 bg-[#e7e8e9]">
         <Image
@@ -79,25 +83,39 @@ function MarketCard({
           <span className="font-semibold text-[#B52E88]">{priceRange}</span>
         </p>
         <p className="mt-2 flex-1 pl-6 text-sm leading-relaxed text-[#444748]">{text}</p>
-        <span className="mt-4 pl-6 text-sm font-semibold text-[#B52E88] group-hover:underline">
-          {linkLabel}
-        </span>
       </div>
     </>
   );
 
-  if (external) {
-    return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
-        {body}
-      </a>
-    );
-  }
+  const footerLinks = (
+    <div className="flex flex-col gap-2 border-t border-[#e7e8e9] px-4 py-3 sm:px-5">
+      {external ? (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm font-semibold text-[#B52E88] hover:underline"
+        >
+          {linkLabel}
+        </a>
+      ) : (
+        <Link href={href} className="text-sm font-semibold text-[#B52E88] hover:underline">
+          {linkLabel}
+        </Link>
+      )}
+      {secondaryHref && secondaryLinkLabel ? (
+        <Link href={secondaryHref} className="text-sm font-semibold text-[#191c1d] hover:underline">
+          {secondaryLinkLabel}
+        </Link>
+      ) : null}
+    </div>
+  );
 
   return (
-    <Link href={href} className={className}>
-      {body}
-    </Link>
+    <article className={className}>
+      {content}
+      {footerLinks}
+    </article>
   );
 }
 
@@ -246,6 +264,8 @@ export function StreetFoodPage() {
                   priceRangeLabel={page.markets.priceRangeLabel}
                   href={market.href}
                   linkLabel={market.linkLabel}
+                  secondaryHref={market.secondaryHref}
+                  secondaryLinkLabel={market.secondaryLinkLabel}
                   image={market.image}
                   external={market.external}
                 />
@@ -286,22 +306,22 @@ export function StreetFoodPage() {
           <h2 className="text-xl font-bold md:text-2xl">{page.alsoExplore.title}</h2>
           <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Link
-              href="/explore/restaurants/fine-dining"
+              href={page.alsoExplore.fineDining.href}
               className="rounded-xl bg-[#B52E88] px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-[#B52E88]/90"
             >
-              {page.alsoExplore.fineDining}
+              {page.alsoExplore.fineDining.label}
             </Link>
             <Link
-              href="/explore/shopping/markets"
+              href={page.alsoExplore.localMarkets.href}
               className="rounded-xl border border-[#B52E88]/30 px-6 py-3 text-center text-sm font-semibold text-[#B52E88] transition hover:bg-[#B52E88]/5"
             >
-              {page.alsoExplore.localMarkets}
+              {page.alsoExplore.localMarkets.label}
             </Link>
             <Link
-              href="/explore/beaches"
+              href={page.alsoExplore.mainBeaches.href}
               className="rounded-xl border border-[#c4c7c8]/50 px-6 py-3 text-center text-sm font-semibold text-[#191c1d] transition hover:bg-[#edeeef]"
             >
-              {page.alsoExplore.mainBeaches}
+              {page.alsoExplore.mainBeaches.label}
             </Link>
           </div>
         </section>

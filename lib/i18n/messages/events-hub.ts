@@ -1,4 +1,5 @@
 import type { LanguageCode } from "@/lib/i18n/languages";
+import { marketPagePaths } from "@/lib/design/market-page-paths";
 import { L, t } from "@/lib/i18n/living-helpers";
 import { eventsImages } from "@/lib/design/events-images";
 
@@ -170,7 +171,7 @@ function todayEvents(lang: LanguageCode): EventsHubEvent[] {
       categoryLabel: cat(lang, "market"),
       image: eventsImages.nightMarket,
       imageAlt: t(lang, L("Thepprasit Night Market stalls", "ร้านค้าตลาดเทพประสิทธิ์", "Thepprasit 夜市摊位", "Рынок Thepprasit")),
-      href: "/explore/shopping/markets",
+      href: marketPagePaths.thepprasit,
     },
     {
       id: "walking-street",

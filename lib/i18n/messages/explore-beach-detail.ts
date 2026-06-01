@@ -1,4 +1,5 @@
 import type { LanguageCode } from "@/lib/i18n/languages";
+import { marketPagePaths } from "@/lib/design/market-page-paths";
 import { L, t } from "@/lib/i18n/living-helpers";
 import { beachMaps } from "@/lib/design/beach-maps";
 import type { BeachDetailSlug } from "@/lib/explore/beach-detail-slugs";
@@ -422,7 +423,7 @@ function getSlugExtras(lang: LanguageCode, slug: BeachDetailSlug) {
             name: t(lang, L("Thepprasit Night Market", "ตลาดเทพประสิทธิ์", "Thepprasit 夜市", "Thepprasit")),
             text: t(
               lang,
-              L("Weekend street food hub a short ride inland.", "สตรีทฟู้ดวันหยุด ฝั่งในไม่ไกล", "周末夜市，短途可达", "Ночной рынок по выходным."),
+              L("Night street-food hub a short ride inland — busiest on weekends.", "สตรีทฟู้ดกลางคืน ฝั่งในไม่ไกล ส–อาคนเยอะ", "内陆夜市，周末最挤", "Ночной рынок недалеко."),
             ),
           },
           {
@@ -470,15 +471,27 @@ function getSlugExtras(lang: LanguageCode, slug: BeachDetailSlug) {
             ),
           },
           {
-            label: c.localMarkets,
-            href: "/explore/shopping/markets",
-            blurb: t(lang, L("More night & weekend markets", "ตลาดเพิ่มเติม", "更多市集", "Ещё рынки"),
+            label: t(
+              lang,
+              L("Old Naklua market →", "ตลาดเก่านาเกลือ →", "那库拉老市场 →", "Старый рынок Naklua →"),
+            ),
+            href: marketPagePaths.oldNaklua,
+            blurb: t(lang, L("Morning wet market on our guide", "ตลาดสดเช้าในคู่มือ", "指南中的早市", "Утренний рынок"),
+            ),
+          },
+          {
+            label: t(
+              lang,
+              L("Hidden seafood market →", "ตลาดลับลานโพธิ์ →", "隐秘海鲜市场 →", "Lan Pho →"),
+            ),
+            href: marketPagePaths.hiddenLanPho,
+            blurb: t(lang, L("Local seafood — quieter than tourist spots", "ซีฟู้ด local เงียบกว่าจุดทัวร์", "本地海鲜", "Морепродукты"),
             ),
           },
           {
             label: c.streetFood,
-            href: "/explore/restaurants/street-food",
-            blurb: t(lang, L("Street-food routes after the market", "เส้นทางสตรีทฟู้ด", "早市后街头美食", "Стритфуд"),
+            href: marketPagePaths.streetFoodThepprasit,
+            blurb: t(lang, L("Thepprasit eats after the beach", "ของกินเทพประสิทธิ์หลังหาด", "Thepprasit 美食", "Thepprasit"),
             ),
           },
         ],

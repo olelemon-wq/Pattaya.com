@@ -3,6 +3,7 @@
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import { useLanguage } from "@/components/layout/language-provider";
 import { hiddenGemsHeroImage } from "@/lib/design/hidden-gem-images";
+import { marketPagePaths } from "@/lib/design/market-page-paths";
 import { getHiddenGemsPage } from "@/lib/i18n/messages/explore-hidden-gems";
 import { tSiteUi } from "@/lib/i18n/messages/site-ui";
 import { Clock, MapPin, Sparkles } from "lucide-react";
@@ -316,13 +317,13 @@ export function HiddenGemsPage() {
               {page.alsoExplore.mainBeaches}
             </Link>
             <Link
-              href="/explore/shopping/markets"
+              href={marketPagePaths.hiddenSection}
               className="rounded-xl border border-[#B52E88]/30 px-6 py-3 text-center text-sm font-semibold text-[#B52E88] transition hover:bg-[#B52E88]/5"
             >
               {page.alsoExplore.localMarkets}
             </Link>
             <Link
-              href="/explore/restaurants/street-food"
+              href={marketPagePaths.streetFoodThepprasit}
               className="rounded-xl border border-[#B52E88]/30 px-6 py-3 text-center text-sm font-semibold text-[#B52E88] transition hover:bg-[#B52E88]/5"
             >
               {page.alsoExplore.streetFood}

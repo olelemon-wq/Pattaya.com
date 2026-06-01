@@ -4,33 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { LanguageCode } from "@/lib/i18n/languages";
-import { pickText } from "@/lib/i18n/text";
+import { getHeaderNavItems, getHeaderUi } from "@/lib/i18n/messages/site-header";
 import { tSiteUi } from "@/lib/i18n/messages/site-ui";
 import { LanguageSelector } from "./language-selector";
 import { useLanguage } from "./language-provider";
-
-const navItems = [
-  {
-    href: "/",
-    label: { en: "HOME", th: "หน้าแรก", zh: "首页", ru: "ГЛАВНАЯ" },
-  },
-  {
-    href: "/news",
-    label: { en: "NEWS", th: "ข่าวสาร", zh: "新闻", ru: "НОВОСТИ" },
-  },
-  {
-    href: "/living",
-    label: { en: "LIVING", th: "การใช้ชีวิต", zh: "生活", ru: "ЖИЗНЬ" },
-  },
-  {
-    href: "/explore",
-    label: { en: "EXPLORE", th: "สำรวจ", zh: "探索", ru: "ПУТЕВОДИТЕЛЬ" },
-  },
-  {
-    href: "/business",
-    label: { en: "BUSINESS", th: "ธุรกิจ", zh: "商业", ru: "БИЗНЕС" },
-  },
-] as const;
 
 function activeHrefForPath(pathname: string): string {
   if (pathname === "/") return "/";
@@ -52,6 +29,8 @@ function NavLinks({
   onNavigate?: () => void;
   className?: string;
 }) {
+  const navItems = getHeaderNavItems(language);
+
   return (
     <nav aria-label={tSiteUi(language, "mainNav")} className={className}>
       <ul className="flex flex-col gap-1 lg:flex-row lg:items-center lg:gap-8">
@@ -68,7 +47,7 @@ function NavLinks({
                     : "text-[#64748b] hover:text-[#0c1a33]"
                 }`}
               >
-                {pickText(language, item.label)}
+                {item.label}
                 {isActive && (
                   <span className="absolute -bottom-1 left-0 hidden h-0.5 w-full rounded-full bg-[#f97316] lg:block" />
                 )}
@@ -84,6 +63,7 @@ function NavLinks({
 export function SiteHeader() {
   const pathname = usePathname();
   const { language } = useLanguage();
+  const headerUi = getHeaderUi(language);
   const activeHref = activeHrefForPath(pathname);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -120,12 +100,7 @@ export function SiteHeader() {
             <span className="sr-only">{tSiteUi(language, "search")}</span>
             <input
               type="search"
-              placeholder={pickText(language, {
-                en: "Search...",
-                th: "ค้นหา...",
-                zh: "搜索...",
-                ru: "Поиск...",
-              })}
+              placeholder={headerUi.searchPlaceholder}
               className="h-9 w-32 rounded-full border border-[#e2e8f0] bg-[#f8fafc] pl-9 pr-3 text-xs text-[#0c1a33] outline-none placeholder:text-[#94a3b8] focus:border-[#f97316] lg:w-40"
             />
             <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-[#94a3b8]">
@@ -144,19 +119,7 @@ export function SiteHeader() {
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             aria-label={
-              menuOpen
-                ? pickText(language, {
-                    en: "Close menu",
-                    th: "ปิดเมนู",
-                    zh: "关闭菜单",
-                    ru: "Закрыть меню",
-                  })
-                : pickText(language, {
-                    en: "Open menu",
-                    th: "เปิดเมนู",
-                    zh: "打开菜单",
-                    ru: "Открыть меню",
-                  })
+              menuOpen ? headerUi.menuClose : headerUi.menuOpen
             }
           >
             <span
@@ -181,12 +144,7 @@ export function SiteHeader() {
             <span className="sr-only">{tSiteUi(language, "search")}</span>
             <input
               type="search"
-              placeholder={pickText(language, {
-                en: "Search...",
-                th: "ค้นหา...",
-                zh: "搜索...",
-                ru: "Поиск...",
-              })}
+              placeholder={headerUi.searchPlaceholder}
               className="h-10 w-full rounded-full border border-[#e2e8f0] bg-[#f8fafc] pl-10 pr-3 text-sm outline-none focus:border-[#f97316]"
             />
             <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-[#94a3b8]">

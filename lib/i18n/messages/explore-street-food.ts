@@ -1,4 +1,5 @@
 import type { LanguageCode } from "@/lib/i18n/languages";
+import { marketPagePaths } from "@/lib/design/market-page-paths";
 import {
   streetFoodMarketImages,
   streetFoodTipImages,
@@ -8,6 +9,12 @@ import { getExploreCommon } from "@/lib/i18n/messages/explore-common";
 
 export function getStreetFoodMarkets(lang: LanguageCode) {
   const c = getExploreCommon(lang);
+  const marketsGuide = t(
+    lang,
+    L("Full market guide →", "คู่มือตลาดฉบับเต็ม →", "完整市场指南 →", "Полный гид по рынкам →"),
+  );
+  const beachGuide = t(lang, L("Beach guide →", "คู่มือหาด →", "海滩指南 →", "Гид пляжа →"));
+
   return {
     title: t(lang, L("Choose your market", "เลือกตลาด", "选择市场", "Выберите рынок")),
     subtitle: t(
@@ -27,7 +34,7 @@ export function getStreetFoodMarkets(lang: LanguageCode) {
       {
         id: "thepprasit" as const,
         name: t(lang, L("Thepprasit Night Market", "ตลาดเทพประสิทธิ์", "Thepprasit 夜市", "Thepprasit")),
-        hours: t(lang, L("Fri–Sun · ~17:00–23:00", "ศ–อา · ~17:00–23:00", "周五至日 · 约17:00–23:00", "Пт–Вс · ~17:00–23:00")),
+        hours: t(lang, L("Daily · ~17:00–22:30", "ทุกวัน · ~17:00–22:30", "每日 · 约17:00–22:30", "Ежедн. · ~17:00–22:30")),
         mustTry: t(lang, L("Grilled prawns, papaya salad, coconut ice cream", "กุ้งเผา ส้มตำ ไอศกรีมมะพร้าว", "烤虾、青木瓜沙拉", "Креветки, som tam")),
         text: t(
           lang,
@@ -41,13 +48,15 @@ export function getStreetFoodMarkets(lang: LanguageCode) {
         priceRange: t(lang, L("~40–150 THB / dish", "~40–150 บาท/จาน", "约40–150泰铢/道", "~40–150 бат/блюдо")),
         href: "https://www.google.com/maps/search/?api=1&query=Thepprasit+Night+Market+Pattaya+Thailand",
         linkLabel: t(lang, L("Open in Google Maps →", "เปิดใน Google Maps →", "在 Google 地图中打开 →", "Google Maps →")),
+        secondaryHref: marketPagePaths.thepprasit,
+        secondaryLinkLabel: marketsGuide,
         external: true,
         image: streetFoodMarketImages[0],
       },
       {
         id: "naklua" as const,
         name: t(lang, L("Naklua Morning Market", "ตลาดนาเกลือ", "Naklua 早市", "Naklua")),
-        hours: t(lang, L("Daily · ~06:00–11:00", "ทุกวัน · ~06:00–11:00", "每日 · 约6:00–11:00", "Ежедн. · ~6:00–11:00")),
+        hours: t(lang, L("Daily · ~06:00–18:00 (best before 09:00)", "ทุกวัน · ~06:00–18:00 (ควรไปก่อน 9 โมง)", "每日 · 约6:00–18:00（建议9点前）", "Ежедн. · лучше до 9:00")),
         mustTry: t(lang, L("Boat noodles, khao tom, fresh fruit & curry bags", "ก๋วยเตี๋ยวเรือ ข้าวต้ม ผลไม้ แกงถุง", "船面、粥、水果", "Лодочная лапша, khao tom")),
         text: t(
           lang,
@@ -59,8 +68,10 @@ export function getStreetFoodMarkets(lang: LanguageCode) {
           ),
         ),
         priceRange: t(lang, L("~30–80 THB / dish", "~30–80 บาท/จาน", "约30–80泰铢/道", "~30–80 бат/блюдо")),
-        href: "/explore/beaches/naklua",
-        linkLabel: t(lang, L("Naklua beach guide →", "คู่มือหาดนาเกลือ →", "那库拉海滩指南 →", "Гид Naklua →")),
+        href: marketPagePaths.oldNaklua,
+        linkLabel: marketsGuide,
+        secondaryHref: "/explore/beaches/naklua",
+        secondaryLinkLabel: beachGuide,
         external: false,
         image: streetFoodMarketImages[1],
       },
@@ -178,10 +189,10 @@ export function getStreetFoodTips(lang: LanguageCode) {
           t(
             lang,
             L(
-              "Night markets fill 19:00–21:00 on Fri–Sun. Arrive by 18:00 for easier parking and first pick of grilled seafood, or come after 21:30 when queues shorten.",
-              "ตลาดกลางคืน 19:00–21:00 ศ–อา มา 18:00 จอดง่าย หรือหลัง 21:30 คิวสั้น",
-              "周五至日 19:00–21:00 最挤；18:00 前到或 21:30 后人少。",
-              "Пик 19–21 в выходные; приходите раньше или после 21:30.",
+              "Big night markets like Thepprasit peak 19:00–21:00 daily — weekends are busiest. Arrive by 18:00 for parking and seafood, or after 21:30 when queues shorten.",
+              "ตลาดกลางคืนใหญ่ ๆ เช่น เทพประสิทธิ์ คนเยอะ 19–21 น. ทุกวัน ส–อาแน่นสุด มา 18:00 จอดง่าย หรือหลัง 21:30 คิวสั้น",
+              "Thepprasit 等大夜市每天 19–21 点最挤，周末更甚；18:00 前到或 21:30 后人少。",
+              "Пик 19–21 ежедневно; в выходные люднее.",
             ),
           ),
           t(
@@ -319,9 +330,9 @@ export function getStreetFoodPage(lang: LanguageCode) {
     tips: getStreetFoodTips(lang),
     alsoExplore: {
       title: c.alsoExplore,
-      fineDining: c.fineDining,
-      localMarkets: c.localMarkets,
-      mainBeaches: c.mainBeaches,
+      fineDining: { label: c.fineDining, href: "/explore/restaurants/fine-dining" },
+      localMarkets: { label: c.localMarkets, href: marketPagePaths.page },
+      mainBeaches: { label: c.mainBeaches, href: "/explore/beaches" },
     },
   };
 }

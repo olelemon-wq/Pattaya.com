@@ -1,10 +1,13 @@
 import type { LanguageCode } from "@/lib/i18n/languages";
-import {
-  shoppingMallImages,
-  shoppingMallTipImages,
-} from "@/lib/design/shopping-mall-images";
+import { shoppingMallImages } from "@/lib/design/shopping-mall-images";
 import { L, t } from "@/lib/i18n/living-helpers";
 import { getExploreCommon } from "@/lib/i18n/messages/explore-common";
+import {
+  getMallFirstVisitPicks,
+  getMallGuideIntro,
+  getMallGuideItems,
+  getMallMoodPicks,
+} from "@/lib/i18n/messages/explore-shopping-malls-guide";
 
 export function getShoppingMalls(lang: LanguageCode) {
   const c = getExploreCommon(lang);
@@ -18,10 +21,10 @@ export function getShoppingMalls(lang: LanguageCode) {
     subtitle: t(
       lang,
       L(
-        "Four real malls across Pattaya — open hours and price levels are guides only; no paid listings on this page.",
-        "4 ห้างจริงในพัทยา — เวลาและระดับราคาเป็นคร่าวๆ ไม่มีรายการโฆษณาในหน้านี้",
-        "芭提雅四座真实商场 — 时间与价位为参考，本页无商业推广。",
-        "Четыре реальных ТРЦ — часы и уровень цен ориентировочные.",
+        "Five recommended malls across Pattaya — open hours are guides only; no paid listings on this page.",
+        "ห้างแนะนำ 5 แห่งในพัทยา — เวลาเป็นคร่าว ๆ ไม่มีรายการโฆษณาในหน้านี้",
+        "芭提雅五家推荐商场 — 开放时间为参考，本页无商业推广。",
+        "Пять рекомендуемых ТРЦ — часы ориентировочные.",
       ),
     ),
     hoursLabel: c.hours,
@@ -186,7 +189,6 @@ export function getMallTips(lang: LanguageCode) {
             ),
           ),
         ],
-        image: shoppingMallTipImages[0],
       },
       {
         id: "timing" as const,
@@ -211,7 +213,6 @@ export function getMallTips(lang: LanguageCode) {
             ),
           ),
         ],
-        image: shoppingMallTipImages[1],
       },
       {
         id: "vat" as const,
@@ -236,7 +237,6 @@ export function getMallTips(lang: LanguageCode) {
             ),
           ),
         ],
-        image: shoppingMallTipImages[2],
       },
       {
         id: "midday" as const,
@@ -261,7 +261,6 @@ export function getMallTips(lang: LanguageCode) {
             ),
           ),
         ],
-        image: shoppingMallTipImages[3],
       },
     ],
   };
@@ -278,82 +277,20 @@ export function getShoppingMallsPage(lang: LanguageCode) {
       body: t(
         lang,
         L(
-          "Air-conditioned malls along Pattaya Beach Road and central Pattaya — international brands, cinemas, and food courts for hot afternoons.",
-          "ห้างแอร์ Beach Rd และใจกลาง — แบรนด์สากล โรงหนัง ฟู้ดคอร์ท",
-          "芭提雅空调商场，品牌、影院与美食广场。",
-          "ТРЦ с брендами, кино и фуд-кортами.",
+          "Pattaya has more malls than many visitors expect — each with a different character: flagship shopping, themed walks, outlets, local marina life, or gem galleries.",
+          "พัทยามีห้างเยอะกว่าที่หลายคนคิด แต่ละที่คาแรกเตอร์ต่างกัน — ช้อป ธีมเที่ยว เอาท์เล็ต ฟีล local หรือเครื่องประดับ",
+          "芭提雅商场比想象中多，各有特色：旗舰购物、主题逛吃、奥特莱斯、本地生活或珠宝馆。",
+          "В Паттайе больше ТРЦ, чем кажется — у каждого свой характер.",
         ),
       ),
       badgeLuxury: t(lang, L("Luxury & mid-range", "หรู & กลาง", "奢华与中端", "Люкс и mid-range")),
       badgeAreas: t(lang, L("Beach Rd · 2nd Rd", "Beach Rd · 2nd Rd", "Beach Rd · 2nd Rd", "Beach Rd · 2nd Rd")),
     },
     malls: getShoppingMalls(lang),
-    categories: {
-      title: t(lang, L("What to shop", "ซื้ออะไร", "买什么", "Что купить")),
-      subtitle: t(
-        lang,
-        L(
-          "Categories you will find across Pattaya's larger malls.",
-          "หมวดในห้างใหญ่พัทยา",
-          "大型商场常见品类。",
-          "Категории в крупных ТРЦ.",
-        ),
-      ),
-      items: [
-        {
-          name: t(lang, L("Fashion & lifestyle", "แฟชั่น", "时尚与生活", "Мода")),
-          nameTh: lang === "en" ? "แฟชั่น" : "",
-          note: t(
-            lang,
-            L(
-              "International chains mix with local boutiques; sales peak holiday weekends.",
-              "แบรนด์สากล+บูติก ลดราคาวันหยุด",
-              "国际品牌与本地精品，假日促销多。",
-              "Скидки в праздники.",
-            ),
-          ),
-        },
-        {
-          name: t(lang, L("Electronics", "อิเล็กทรอนิกส์", "电子产品", "Электроника")),
-          nameTh: lang === "en" ? "อิเล็กทรอนิกส์" : "",
-          note: t(
-            lang,
-            L(
-              "Compare prices online before big purchases; ask about Thai warranty.",
-              "เทียบราคาออนไลน์ ถาม warranty ไทย",
-              "大件先比价，问泰版保修。",
-              "Сравните цены онлайн.",
-            ),
-          ),
-        },
-        {
-          name: t(lang, L("Cinema & entertainment", "โรงภาพยนตร์", "影院娱乐", "Кино")),
-          nameTh: lang === "en" ? "โรงภาพยนตร์" : "",
-          note: t(
-            lang,
-            L(
-              "Major malls run English-subtitled films; book ahead on Friday nights.",
-              "หนังซับอังกฤษ จองศุกร์ค่ำ",
-              "主要商场有英文字幕电影，周五晚建议预订。",
-              "Бронируйте в пятницу.",
-            ),
-          ),
-        },
-        {
-          name: t(lang, L("Dining courts", "ฟู้ดคอร์ท", "美食广场", "Фуд-корт")),
-          nameTh: lang === "en" ? "ฟู้ดคอร์ท" : "",
-          note: t(
-            lang,
-            L(
-              "Food courts are card/cash friendly — load a stored-value card where offered.",
-              "ฟู้ดคอร์ท บัตร/เงินสด โหลดบัตรมูลค่า",
-              "美食广场支持卡/现金，可充值储值卡。",
-              "Пополняйте карту фуд-корта.",
-            ),
-          ),
-        },
-      ],
-    },
+    guide: getMallGuideIntro(lang),
+    guideItems: getMallGuideItems(lang),
+    moodPicks: getMallMoodPicks(lang),
+    firstVisit: getMallFirstVisitPicks(lang),
     tips: getMallTips(lang),
     alsoExplore: {
       title: c.alsoExplore,

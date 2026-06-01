@@ -4,6 +4,7 @@ import {
   hiddenGemTipImages,
   hiddenGemWalkPlanImages,
 } from "@/lib/design/hidden-gem-images";
+import { marketPagePaths } from "@/lib/design/market-page-paths";
 import { L, t } from "@/lib/i18n/living-helpers";
 import { getExploreCommon } from "@/lib/i18n/messages/explore-common";
 
@@ -66,8 +67,11 @@ export function getHiddenGemsSpots(lang: LanguageCode) {
         ),
         href: "https://www.google.com/maps/search/?api=1&query=Naklua+Market+Pattaya+Thailand",
         linkLabel: openInMaps,
-        secondaryHref: "/explore/beaches/naklua",
-        secondaryLinkLabel: beachGuide,
+        secondaryHref: marketPagePaths.oldNaklua,
+        secondaryLinkLabel: t(
+          lang,
+          L("Naklua market guide →", "คู่มือตลาดนาเกลือ →", "那库拉市场指南 →", "Рынок Naklua →"),
+        ),
         image: hiddenGemSpotImages[0],
       },
       {
@@ -256,7 +260,7 @@ export function getHiddenGemsWalkPlans(lang: LanguageCode) {
             ),
           ),
         ],
-        href: "/explore/shopping/markets#market-naklua",
+        href: marketPagePaths.hiddenLanPho,
         linkLabel: marketGuide,
         image: hiddenGemWalkPlanImages[2],
       },
