@@ -1,8 +1,7 @@
 import type { LanguageCode } from "@/lib/i18n/languages";
 import { marketPagePaths } from "@/lib/design/market-page-paths";
-import { kohLarnActivityImages } from "@/lib/design/koh-larn-activity-images";
 import { kohLarnBeachMaps } from "@/lib/design/koh-larn-beach-maps";
-import { kohLarnGuideImages } from "@/lib/design/koh-larn-guide-images";
+import { getKohLarnActivities } from "@/lib/i18n/messages/explore-koh-larn-activities-guide";
 import { kohLarnMaps } from "@/lib/design/koh-larn-maps";
 import { kohLarnNearbyImages } from "@/lib/design/koh-larn-nearby-images";
 import { L, t } from "@/lib/i18n/living-helpers";
@@ -92,7 +91,7 @@ export function getKohLarnPage(lang: LanguageCode) {
         lang,
         L(
           "A few kilometres off Pattaya — easy ferries from Bali Hai Pier, busier hubs like Ta Waen, balanced Samae, slow Tien, and wild Nual with macaques. Most visitors day-trip; staying overnight changes the atmosphere after 5 p.m.",
-          "ห่างพัทยาไม่กี่กม. เรือจากแหลมบาลีฮาย หาดตาแหวนคึกคัก แสมสมดุล เทียนชิล นวลมีลิง ส่วนใหญ่ไปเช้าเย็นกลับ ค้างคืนฟีลต่างหลังบ่าย 4–5",
+          "เกาะล้านอยู่ห่างจากพัทยาเพียงไม่กี่กิโลเมตร นั่งเรือจากท่าแหลมบาลีฮายเข้าเกาะได้สะดวก แต่ละหาดมีบรรยากาศต่างกัน — หาดตาแหวนคึกคัก หาดแสมสมดุล หาดเทียนเงียบชิล หาดนวลธรรมชาติและมีลิง นักท่องเที่ยวส่วนใหญ่ไปเช้า–เย็นกลับ แต่ถ้าค้างคืน เกาะจะเปลี่ยนบรรยากาศไปมากหลังบ่ายสี่–ห้าโมง",
           "距芭提雅仅数公里，Bali Hai 码头乘船即达：塔湾热闹、Samae均衡、Tien安静、Nual有猴。多数一日游，下午四五点后过夜氛围截然不同。",
           "В нескольких км от Паттайи — паром с Bali Hai: Ta Waen, Samae, Tien, Nual. Большинство на день; ночёвка — другой остров после 17:00.",
         ),
@@ -141,97 +140,7 @@ export function getKohLarnPage(lang: LanguageCode) {
         ),
       },
     },
-    activities: {
-      title: t(
-        lang,
-        L("Water sports & island activities", "กิจกรรมทางน้ำบนเกาะ", "岛上水上活动", "Водные активности"),
-      ),
-      subtitle: t(
-        lang,
-        L(
-          "Book on the beach when you arrive — price ranges are guides only, not live listings.",
-          "จองหน้างานที่หาด — ราคาเป็นคร่าวๆ ไม่ใช่รายการจองออนไลน์",
-          "到海滩后现场预订 — 价格为参考区间，非实时报价。",
-          "Бронь на пляже — цены ориентировочные.",
-        ),
-      ),
-      costsLink: t(lang, L("All typical costs →", "ค่าใช้จ่ายทั้งหมด →", "全部大致花费 →", "Все цены →")),
-      priceRangeLabel: t(lang, L("Typical range", "ราคาโดยประมาณ", "大致价格", "Примерно")),
-      items: [
-        {
-          id: "snorkeling" as const,
-          name: t(lang, L("Snorkeling", "ดำน้ำตื้น", "浮潜", "Снорклинг")),
-          priceRange: t(lang, L("~300–800 THB / person", "~300–800 บาท/คน", "约300–800泰铢/人", "~300–800 бат")),
-          text: t(
-            lang,
-            L(
-              "Rent gear on the beach or join a short boat trip from Ta Waen — clearest water Nov–Apr.",
-              "เช่าอุปกรณ์ริมหาด หรือตามเรือสั้นๆ จากตาแหวน — น้ำใสสุด พ.ย.–เม.ย.",
-              "海滩租装备或从塔湾跟短程船，11–4月水质最佳。",
-              "Аренда снаряжения или лодка с Ta Waen.",
-            ),
-          ),
-          href: "#beach-guide",
-          linkLabel: t(lang, L("Pick a beach →", "เลือกหาด →", "选海滩 →", "Выбрать пляж →")),
-          external: false,
-          image: kohLarnActivityImages[0],
-        },
-        {
-          id: "island-tour" as const,
-          name: t(lang, L("Half-day island loop", "ทัวร์รอบเกาะครึ่งวัน", "半日环岛", "Тур по острову")),
-          priceRange: t(lang, L("~500–800 THB / person", "~500–800 บาท/คน", "约500–800泰铢/人", "~500–800 бат")),
-          text: t(
-            lang,
-            L(
-              "Speedboats circle Koh Larn from the pier or Ta Waen — confirm stops, duration, and return time before paying.",
-              "เรือเร็วอ้อมเกาะจากท่าหรือตาแหวน — ยืนยนจุดแวะ เวลา และเรือกลับก่อนจ่าย",
-              "从码头或塔湾出发环岛快艇 — 付款前确认停靠点与返程时间。",
-              "Катер вокруг острова — уточните остановки и возврат.",
-            ),
-          ),
-          href: kohLarnBeachMaps.tawaen.openHref,
-          linkLabel: t(lang, L("Open Ta Waen on map →", "เปิดแผนที่ตาแหวน →", "打开塔湾地图 →", "Карта Ta Waen →")),
-          external: true,
-          image: kohLarnActivityImages[1],
-        },
-        {
-          id: "jetski" as const,
-          name: t(lang, L("Jet ski & banana boat", "เจ็ทสกี & บานาน่า", "摩托艇与香蕉船", "Jet ski & banana boat")),
-          priceRange: t(lang, L("~800–1,500 THB / session", "~800–1,500 บาท/รอบ", "约800–1500泰铢/次", "~800–1500 бат")),
-          text: t(
-            lang,
-            L(
-              "Operators line Ta Waen Beach — compare 2–3 stalls and agree price plus route in writing.",
-              "ร้านเรียงริมหาดตาแหวน — เทียบ 2–3 ร้าน ตกลงราคาและเส้นทางเป็นลายลักษณ์อักษร",
-              "塔湾海滩有多家运营商 — 货比三家并书面确认价格与路线。",
-              "На Ta Waen — сравните 2–3 операторов, цена письменно.",
-            ),
-          ),
-          href: kohLarnBeachMaps.tawaen.openHref,
-          linkLabel: t(lang, L("Open on map →", "เปิดแผนที่ →", "打开地图 →", "На карте →")),
-          external: true,
-          image: kohLarnActivityImages[2],
-        },
-        {
-          id: "parasailing" as const,
-          name: t(lang, L("Parasailing", "พาราเซลลิ่ง", "滑翔伞", "Parasailing")),
-          priceRange: t(lang, L("~1,000–1,500 THB / flight", "~1,000–1,500 บาท/รอบ", "约1000–1500泰铢/次", "~1000–1500 бат")),
-          text: t(
-            lang,
-            L(
-              "Often run from Ta Waen when wind is calm — may pause on gusty days; life jacket required.",
-              "มักเปิดที่หาดตาแหวนเมื่อลมสงบ — วันลมแรงอาจหยุด ต้องใส่ชูชีพ",
-              "通常在塔湾风小时运营 — 大风可能暂停，须穿救生衣。",
-              "Чаще на Ta Waen при штиле — при ветре отменяют.",
-            ),
-          ),
-          href: "#beach-guide",
-          linkLabel: t(lang, L("See Ta Waen guide →", "ดูคู่มือตาแหวน →", "查看塔湾指南 →", "Гид Ta Waen →")),
-          external: false,
-          image: kohLarnActivityImages[3],
-        },
-      ],
-    },
+    activities: getKohLarnActivities(lang),
     beachGuide: {
       title: t(
         lang,
@@ -392,79 +301,6 @@ export function getKohLarnPage(lang: LanguageCode) {
           "Советы по пляжам — большинство едут с Паттайи на день.",
         ),
       ),
-      eatTitle: t(lang, L("Where to eat", "กินที่ไหนดี?", "在哪吃", "Где поесть")),
-      stayTitle: t(lang, L("Where to stay", "พักที่ไหนดี?", "在哪住", "Где остановиться")),
-      eat: [
-        {
-          name: t(
-            lang,
-            L("Ta Waen beachfront", "ริมหาดตาแหวน", "塔湾海滨", "Набережная Ta Waen"),
-          ),
-          text: t(
-            lang,
-            L(
-              "Rows of seafood shacks right where the ferry lands — check the price board before ordering; lunch 200–400 THB/person is common.",
-              "ร้านอาหารทะเลเรียงริมทางเดินหลังลงเรือ — ดูป้ายราคาก่อนสั่ง มื้อเที่ยง ~200–400 บาท/คน",
-              "渡轮靠岸后沿步道有多家海鲜档，点菜前看清价目，午餐常见约200–400泰铢/人。",
-              "Морепродукты у причала — проверьте цены, обед ~200–400 бат.",
-            ),
-          ),
-          href: kohLarnBeachMaps.tawaen.openHref,
-          linkLabel: t(lang, L("Open on map →", "เปิดแผนที่ →", "打开地图 →", "На карте →")),
-          external: true,
-          image: kohLarnGuideImages.eatTawaen,
-        },
-        {
-          name: t(lang, L("Tien bay restaurants", "ร้านริมอ่าวเทียน", "Tien 湾餐厅", "Рестораны Tien")),
-          text: t(
-            lang,
-            L(
-              "Curved bay with seaside tables — best for a relaxed meal or sunset drinks; slightly pricier than Ta Waen.",
-              "อ่าวโค้ง โต๊ะริมทะเล — มื้อเย็น/ดื่มชมพระอาทิตย์ตก ราคาสูงกว่าตาแหวนเล็กน้อย",
-              "海湾边餐桌，适合晚餐或日落饮品，略贵于塔湾。",
-              "Бухта Tien — ужин и закат, чуть дороже Ta Waen.",
-            ),
-          ),
-          href: kohLarnBeachMaps.tien.openHref,
-          linkLabel: t(lang, L("Open on map →", "เปิดแผนที่ →", "打开地图 →", "На карте →")),
-          external: true,
-          image: kohLarnGuideImages.eatTien,
-        },
-      ],
-      stay: [
-        {
-          name: t(lang, L("Day trip (most common)", "ไปเช้าเย็นกลับ (นิยม)", "一日游（最常见）", "На один день")),
-          text: t(
-            lang,
-            L(
-              "Catch the first ferry out and a late-afternoon return — no hotel needed. Store bags at beach chair rentals if you hop beaches.",
-              "นั่งเรือเช้า กลับบ่ายแก่ๆ ไม่ต้องจองที่พัก ฝากของได้ที่ร้านเช่าเก้าอี้เมื่อเปลี่ยนหาด",
-              "早班船去、下午返程即可，换海滩时可将行李寄放在躺椅租赁处。",
-              "Утренний паром туда, вечером обратно — отель не нужен.",
-            ),
-          ),
-          href: "#beach-guide",
-          linkLabel: t(lang, L("Pick a beach →", "เลือกหาด →", "选海滩 →", "Выбрать пляж →")),
-          external: false,
-          image: kohLarnGuideImages.stayDayTrip,
-        },
-        {
-          name: t(lang, L("Overnight on the island", "ค้างคืนบนเกาะ", "岛上过夜", "Ночёвка на острове")),
-          text: t(
-            lang,
-            L(
-              "Small resorts and bungalows near Ta Waen and Tien — book ahead Fri–Sun. Expect 800–2,500+ THB/night; power and Wi‑Fi vary by property.",
-              "รีสอร์ท/บังกะโลใกล้ตาแหวนและเทียน — ศ–อา จองล่วงหน้า ~800–2,500+ บาท/คื ไฟ/Wi‑Fi แล้วแต่ที่",
-              "塔湾与 Tien 附近有小型度假村与 bungalow，周五至周日宜提前订，约800–2500+泰铢/晚。",
-              "Бунгало у Ta Waen/Tien — бронь на выходные, ~800–2500+ бат.",
-            ),
-          ),
-          href: "#beach-guide",
-          linkLabel: t(lang, L("Compare beaches →", "เทียบหาด →", "对比海滩 →", "Сравнить пляжи →")),
-          external: false,
-          image: kohLarnGuideImages.stayOvernight,
-        },
-      ],
     },
     ferry: {
       title: t(

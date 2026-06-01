@@ -195,14 +195,42 @@ export function getKohLarnViewpoint(lang: LanguageCode) {
     body: t(
       lang,
       L(
-        "A short ride from the main beaches to the hilltop windmill — wide island and sea panoramas, best in late afternoon before sunset crowds.",
-        "ขี่สั้น ๆ จากหาดหลักขึ้นเนินกังหันลม — วิวเกาะและทะเลกว้าง ช่วงบ่ายแก่ก่อนคนแน่นตอนพระอาทิตย์ตก",
-        "从主海滩短程上山至风车处，可俯瞰全岛与海面，建议日落前傍晚前往。",
-        "Короткая поездка к ветряной мельнице — панорама, лучше до заката.",
+        "A short ride from the main beaches to the hilltop windmill — an under-the-radar spot most guides skip, but the wide island and sea views are stunning. Come in the late afternoon or early evening: the light is cinematic and the mood is calmer before sunset crowds arrive.",
+        "ขี่สั้น ๆ จากหาดหลักขึ้นเนินกังหันลม — จุดที่คนไม่ค่อยพูดถึงแต่สวยมาก วิวเกาะและทะเลกว้าง ช่วงบ่ายแก่–เย็นๆ บรรยากาศดี แสงสวย เงียบกว่าหาดหลักก่อนคนแน่นตอนพระอาทิตย์ตก",
+        "从主海滩短程上山至风车处——少被提及却极美，可俯瞰全岛与海面。建议傍晚前往，光线出片、氛围比主海滩安静，日落前人还不多。",
+        "Короткая поездка к мельнице — мало кто пишет, но вид потрясающий. Лучше под вечер: мягкий свет и спокойнее, чем на главных пляжах.",
       ),
     ),
     mapsUrl: mapsSearch("Koh Larn windmill viewpoint Thailand"),
     openMaps: t(lang, L("Open on map →", "เปิดแผนที่ →", "打开地图 →", "На карте →")),
+    images: [
+      {
+        src: kohLarnGuideImages.viewpointDay,
+        alt: t(
+          lang,
+          L(
+            "Windmill viewpoint — daytime panorama over Koh Larn",
+            "จุดชมวิวกังหันลม — วิวกลางวันเหนือเกาะล้าน",
+            "风车观景台——白天俯瞰格兰岛",
+            "Смотровая — панорама днём",
+          ),
+        ),
+        caption: t(lang, L("Daytime", "กลางวัน", "白天", "Днём")),
+      },
+      {
+        src: kohLarnGuideImages.viewpointSunset,
+        alt: t(
+          lang,
+          L(
+            "Windmill viewpoint at golden hour",
+            "จุดชมวิวกังหันลม — ช่วงพระอาทิตย์ตก",
+            "风车观景台——日落时分",
+            "Закат у мельницы",
+          ),
+        ),
+        caption: t(lang, L("Sunset", "พระอาทิตย์ตก", "日落", "Закат")),
+      },
+    ],
   };
 }
 

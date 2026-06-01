@@ -1,5 +1,3 @@
-import { exploreImages } from "@/lib/design/explore-images";
-
 /** Eat & stay guide cards on Koh Larn hub */
 export const kohLarnGuideImages = {
   cafeMaharak: "/images/explore/koh-larn-maharak-cafe.png",
@@ -9,8 +7,6 @@ export const kohLarnGuideImages = {
   restaurantLoveEat: "/images/explore/koh-larn-love-eat-restaurant.png",
   restaurantZappSamantan: "/images/explore/koh-larn-zapp-samantan.png",
   restaurantSunset: "/images/explore/koh-larn-sunset-restaurant.png",
-  eatTawaen: "/images/explore/koh-larn-tawaen-beach.png",
-  eatTien: exploreImages.caveBeachClub,
-  stayDayTrip: "/images/explore/koh-larn-nual-beach.png",
-  stayOvernight: "/images/explore/koh-larn-tawaen-beach.png",
+  viewpointDay: "/images/explore/koh-larn-windmill-viewpoint-day.png",
+  viewpointSunset: "/images/explore/koh-larn-windmill-viewpoint-sunset.png",
 } as const;

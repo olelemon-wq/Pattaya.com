@@ -66,7 +66,7 @@ export function KohLarnBeachGuide() {
       <div
         role="tablist"
         aria-label={page.beachGuide.tablistLabel}
-        className="mt-6 flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-4"
       >
         {beaches.map((beach) => {
           const selected = beach.id === activeId;
@@ -79,7 +79,7 @@ export function KohLarnBeachGuide() {
               aria-controls={`beach-panel-${beach.id}`}
               id={`beach-tab-${beach.id}`}
               onClick={() => setActiveId(beach.id)}
-              className={`shrink-0 rounded-full px-4 py-2.5 text-sm font-semibold transition-colors ${
+              className={`min-h-[44px] w-full rounded-full px-2 py-2 text-center text-xs font-semibold leading-snug transition-colors sm:px-4 sm:py-2.5 sm:text-sm ${
                 selected
                   ? "bg-[#B52E88] text-white shadow-md ring-1 ring-[#B52E88]/15"
                   : "bg-[#fdf8fb] text-[#191c1d] ring-1 ring-[#c4c7c8]/40 hover:bg-[#B52E88]/10"

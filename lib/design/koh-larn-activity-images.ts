@@ -1,9 +1,15 @@
-import { kohLarnImages } from "@/lib/design/koh-larn-images";
+import type { KohLarnActivityId } from "@/lib/i18n/messages/explore-koh-larn-activities-guide";
 
-/** Activity guide cards — same order as Koh Larn `activities.items` */
-export const kohLarnActivityImages = [
-  kohLarnImages.snorkeling,
-  kohLarnImages.islandTour,
-  kohLarnImages.jetski,
-  kohLarnImages.parasailing,
-] as const;
+export const kohLarnActivityImages: Record<KohLarnActivityId, string> = {
+  jetski: "/images/explore/koh-larn-activity-jetski.png",
+  "banana-boat": "/images/explore/koh-larn-activity-banana-boat.png",
+  parasailing: "/images/explore/koh-larn-activity-parasailing.png",
+  snorkeling: "/images/explore/koh-larn-activity-snorkeling.png",
+  "island-tour": "/images/explore/koh-larn-activity-island-tour.png",
+  "paddle-kayak": "/images/explore/koh-larn-activity-paddle-kayak.png",
+  "sunset-boat": "/images/explore/koh-larn-activity-sunset-boat.png",
+};
+
+export function getKohLarnActivityImage(id: KohLarnActivityId): string {
+  return kohLarnActivityImages[id];
+}
