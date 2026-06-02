@@ -49,7 +49,7 @@ export const realEstateExtendedCopy = {
         label: L("Hot districts", "ย่านยอดนิยม", "热门区域", "Районы"),
         value: L(
           "Jomtien, Pratumnak, Wong Amat",
-          "จอมเทียน พระตำหนัก วงอamat",
+          "จอมเทียน พระตำหนัก วงศ์อมาตย์",
           "Jomtien、Pratumnak、Wong Amat",
           "Jomtien, Pratumnak, Wong Amat",
         ),
@@ -72,13 +72,13 @@ export const realEstateExtendedCopy = {
       ),
       L(
         "Villas and land cannot be freehold for most foreigners — leasehold, Thai company structures, or BOI-linked schemes need counsel review.",
-        "วilla และที่ดินส่วนใหญ่ต่างชาติถือ freehold ไม่ได้ — leasehold บริษัทไทย หรือโครงการ BOI ต้องให้ทนายตรวจ",
+        "วิลล่าและที่ดินส่วนใหญ่ชาวต่างชาติถือกรรมสิทธิ์ตรงไม่ได้ จึงต้องพิจารณาเช่าระยะยาว โครงสร้างบริษัทไทย หรือแนวทาง BOI โดยให้ทนายตรวจทุกกรณี",
         "别墅与土地多数外国人无法 freehold — leasehold、泰资公司或 BOI 方案须律师审查。",
         "Виллы и земля — не freehold; leasehold, компания или BOI — с юристом.",
       ),
       L(
         "Off-plan projects require escrow and milestone schedules — developer insolvency risk is real; check DBD filings and past completions.",
-        "โครงการ off-plan ต้องมี escrow และ milestone — ความเสี่ยงผู้พัฒนาล้มละลายมีจริง ตรวจ DBD และโครงการที่ส่งมอบแล้ว",
+        "โครงการ off-plan ควรมีระบบ escrow และตารางจ่ายตามความคืบหน้า เพราะมีความเสี่ยงผู้พัฒนาโครงการด้านการเงิน ควรตรวจเอกสาร DBD และผลงานส่งมอบย้อนหลัง",
         "Off-plan — escrow и этапы; проверьте DBD и сданные проекты.",
         "期房须有 escrow 与里程碑 — 开发商破产风险真实，须查 DBD 与已交付项目。",
       ),
@@ -93,7 +93,7 @@ export const realEstateExtendedCopy = {
     ),
     intro: L(
       "For buyers comparing condos, villas, and yield plays in Chonburi.",
-      "สำหรับผู้ซื้อที่เปรียบเทียบคอนโด วilla และการลงทุนเช่าในชลบุรี",
+      "สำหรับผู้ซื้อที่กำลังเปรียบเทียบคอนโด วิลล่า และการลงทุนปล่อยเช่าในชลบุรี",
       "面向在春武里比较公寓、别墅与租赁收益的投资者。",
       "Для покупателей condo, вилл и yield в Чонбури.",
     ),
@@ -181,7 +181,7 @@ export const realEstateExtendedCopy = {
         ),
         a: L(
           "Condo units can be freehold for qualifying foreign buyers. Land and most villas use long-term lease (often 30+30 years) or Thai company structures — each has tax and control implications.",
-          "ยูนิตคอนโดอาจ freehold สำหรับต่างชาติที่เข้าเกณฑ์ ที่ดินและวilla ส่วนใหญ่ใช้เช่าระยะยาวหรือโครงสร้างบริษัท — มีผลภาษีและการควบคุมต่างกัน",
+          "คอนโดบางยูนิตสามารถถือกรรมสิทธิ์แบบ freehold ได้สำหรับผู้ซื้อที่เข้าเกณฑ์ แต่ที่ดินและวิลล่าส่วนใหญ่มักใช้เช่าระยะยาวหรือโครงสร้างบริษัท ซึ่งมีผลต่างกันทั้งภาษีและสิทธิการควบคุมทรัพย์สิน",
           "公寓单元符合条件的外国人可 freehold；土地与多数别墅采用长期 lease（常见 30+30 年）或泰资公司结构 — 税务与控制权各异。",
           "Condo — freehold; земля и виллы — lease или компания.",
         ),
@@ -195,7 +195,7 @@ export const realEstateExtendedCopy = {
         ),
         a: L(
           "Typical practice is 2% transfer fee, 3.3% business tax or 0.5% stamp duty, and withholding tax depending on seller status — negotiate in the sales agreement; do not assume developer marketing sheets.",
-          "โดยทั่วไปค่าโอน 2% ภาษีธุรกิจหรืออากร และภาษีหัก ณ ที่จ่ายตามสถานะผู้ขาย — ตกลงในสัญญา อย่าอิงแผ่นพับการตลาดอย่างเดียว",
+          "โดยทั่วไปมีค่าโอน 2% ภาษีธุรกิจเฉพาะหรืออากรแสตมป์ และภาษีหัก ณ ที่จ่ายตามสถานะผู้ขาย สัดส่วนจ่ายจริงควรระบุในสัญญาซื้อขาย อย่ายึดตามโบรชัวร์เพียงอย่างเดียว",
           "常见为 2% 过户费、3.3% 营业税或 0.5% 印花税及视卖方身份的预扣税 — 在买卖合同中约定，勿仅信开发商宣传页。",
           "2% transfer, налоги по статусу продавца — фиксируйте в SPA.",
         ),
@@ -259,7 +259,7 @@ export const realEstateExtendedCopy = {
       {
         q: L(
           "Where do transfers happen?",
-          "โอนกรรมสสิทธิ์ที่ไหน?",
+          "โอนกรรมสิทธิ์ที่ไหน?",
           "在哪里办理过户？",
           "Где transfer?",
         ),

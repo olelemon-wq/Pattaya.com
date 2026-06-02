@@ -28,7 +28,7 @@ export function getBusinessDetailUi(lang: LanguageCode) {
     ),
     registerEarly: t(
       lang,
-      L("Register early", "ลงทะเบียนล่วงหน้า", "提前报名", "Ранняя регистрация"),
+      L("View event details", "ดูรายละเอียดกิจกรรม", "查看活动详情", "Подробнее о событии"),
     ),
     consultationAria: t(
       lang,

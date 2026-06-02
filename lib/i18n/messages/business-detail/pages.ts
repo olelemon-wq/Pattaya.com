@@ -90,10 +90,10 @@ const businessPageCopyPart1 = {
     cta: {
       eyebrow: L("Legal & Setup", "กฎหมายและการตั้งค่า", "法律与设立", "Юридическое сопровождение"),
       title: L(
-        "Contact a law firm",
-        "ติดต่อสำนักงานกฎหมาย",
-        "联系律师事务所",
-        "Связаться с юридической фирмой",
+        "Start with your document checklist",
+        "เริ่มจากเช็กลิสต์เอกสารที่ต้องใช้",
+        "先从所需文件清单开始",
+        "Начните с чеклиста документов",
       ),
       body: L(
         "Document review, shareholder structure, VAT registration, and work-permit pathways — matched to your investment timeline.",
@@ -101,7 +101,7 @@ const businessPageCopyPart1 = {
         "文件审查、股东结构、VAT 注册及工作许可路径——匹配您的投资时间表。",
         "Проверка документов, структура акционеров, регистрация VAT и пути получения рабочих разрешений — под ваш инвестиционный график.",
       ),
-      button: L("Request free consultation", "ขอคำปรึกษาฟรี", "免费咨询", "Бесплатная консультация"),
+      button: L("Open document checklist", "เปิดเช็กลิสต์เอกสาร", "打开文件清单", "Открыть чеклист"),
     },
     overview: {
       title: L(
@@ -316,10 +316,10 @@ const businessPageCopyPart1 = {
     cta: {
       eyebrow: L("Investment Incentives", "สิ่งจูงใจการลงทุน", "投资激励", "Инвестиционные льготы"),
       title: L(
-        "BOI promotion consulting",
-        "บริการปรึกษาด้านการขอสิทธิ BOI",
-        "BOI 促进咨询",
-        "Консультации по BOI",
+        "Start with BOI eligibility check",
+        "เริ่มจากเช็กว่าโครงการเข้าเกณฑ์ BOI หรือไม่",
+        "先检查项目是否符合 BOI 条件",
+        "Начните с проверки соответствия BOI",
       ),
       body: L(
         "Activity code mapping, feasibility narratives, and coordination with BOI Bangkok — plus post-approval compliance.",
@@ -327,7 +327,7 @@ const businessPageCopyPart1 = {
         "活动代码匹配、可行性说明及与曼谷 BOI 协调——含获批后合规。",
         "Сопоставление кодов деятельности, обоснование проекта и координация с BOI в Бангкоке — плюс пост-одобрительное соответствие.",
       ),
-      button: L("Book BOI advisor", "นัดที่ปรึกษา BOI", "预约 BOI 顾问", "Записаться к BOI-консультанту"),
+      button: L("Open BOI checklist", "เปิดเช็กลิสต์ BOI", "打开 BOI 清单", "Открыть чеклист BOI"),
     },
     overview: {
       title: L("What BOI can unlock", "BOI เปิดอะไรได้บ้าง", "BOI 能解锁什么", "Что даёт BOI"),
@@ -496,22 +496,27 @@ const businessPageCopyPart1 = {
     ),
     cta: {
       eyebrow: L("Hot Industry", "อุตสาหกรรมร้อน", "热门行业", "Популярная отрасль"),
-      title: L("Download the full guide", "ดาวน์โหลดคู่มือฉบับเต็ม", "下载完整指南", "Скачать полный гид"),
-      body: L(
-        "Health permit checklist, alcohol licensing paths, and lease negotiation tips for Beach Rd, Jomtien, and Naklua.",
-        "เช็กลิสต์ใบอนุญาตสุขภาพ เส้นทางใบอนุญาตแอลกอฮอล์ และเคล็ดลับเจรจาเช่าสำหรับ Beach Rd จอมเทียน และนาเกลือ",
-        "卫生许可清单、酒类许可路径及 Beach Rd、Jomtien、Naklua 租约谈判技巧。",
-        "Чеклист санитарных разрешений, лицензии на алкоголь и советы по аренде для Beach Rd, Jomtien и Naklua.",
+      title: L(
+        "Start with permits and document checks",
+        "เริ่มจากเช็กเอกสารและใบอนุญาตที่ต้องใช้",
+        "先从许可与文件检查开始",
+        "Начните с проверки документов и лицензий",
       ),
-      button: L("Request F&B guide", "ขอคู่มือ F&B", "索取 F&B 指南", "Запросить F&B-гид"),
+      body: L(
+        "See the health-permit checklist, alcohol-license sequence, and common lease pitfalls before you commit.",
+        "ดูเช็กลิสต์ใบอนุญาตสุขภาพ ลำดับขอใบอนุญาตแอลกอฮอล์ และจุดที่มักพลาดก่อนเซ็นสัญญาเช่า",
+        "查看卫生许可清单、酒类许可顺序，以及签约前常见租约风险点。",
+        "Проверьте чеклист санитарных разрешений, порядок алкогольной лицензии и частые риски аренды до подписания.",
+      ),
+      button: L("Open F&B checklist", "เปิดเช็กลิสต์ F&B", "打开 F&B 清单", "Открыть чеклист F&B"),
     },
     overview: {
       title: L("F&B in Pattaya's tourism cycle", "F&B ในวงจรการท่องเที่ยวพัทยา", "芭提雅旅游周期中的餐饮", "F&B в туристическом цикле Паттайи"),
       body: L(
-        "High season drives covers; low season rewards operators with delivery, events, and expat regulars. Success pairs visible location with back-of-house compliance — Thai FDA (อย.), municipal trade licenses, and fire safety for kitchens over certain sizes.",
-        "ไฮซีซันดึงจำนวนลูกค้า โลว์ซีซันให้รางวัลด้วยเดลิเวอรี่ อีเวนต์ และลูกค้าประจำชาวต่างชาติ ความสำเร็จผสานทำเลที่มองเห็นได้กับ compliance หลังบ้าน — อย. ใบอนุญาตการค้าเทศบาล และความปลอดภัยจากไฟไหม้สำหรับครัวขนาดใหญ่",
-        "旺季带来客流；淡季靠外卖、活动与外籍常客。成功=显眼位置+后厨合规——泰国 FDA（อย.）、市政营业许可及大型厨房消防要求。",
-        "Высокий сезон даёт covers; низкий — доставку, ивенты и expat-постоянных. Успех = видимая локация + compliance: FDA (อย.), торговые лицензии и пожарная безопасность кухни.",
+        "In Pattaya, F&B (Food & Beverage) lives on a tourism calendar: high season drives full dining rooms, while low season rewards operators who lean on delivery, hotel partnerships, and expat regulars. High season is when you test menu pricing, staffing levels, and table turns; low season is when you refine costs and loyalty offers. The key is to treat the 2–4 month setup period, core licenses (trade + Thai FDA / อย. + alcohol), Thai entity, and location choice as one plan — your quick facts above are the guardrails for that plan.",
+        "ในพัทยา ธุรกิจ F&B (Food & Beverage) เดินตามปฏิทินท่องเที่ยว: ไฮซีซันดันให้ห้องอาหารเต็ม ส่วนโลว์ซีซันให้รางวัลคนที่พึ่งเดลิเวอรี่ พาร์ตเนอร์โรงแรม และลูกค้าประจำชาวต่างชาติ ไฮซีซันคือช่วงทดสอบราคาเมนู ระดับคน และรอบหมุนโต๊ะ โลว์ซีซันคือช่วงเกลาโครงสร้างต้นทุนและข้อเสนอสำหรับลูกค้าประจำ หัวใจคือมองช่วงเตรียมเปิด 2–4 เดือน ใบอนุญาตหลัก (ใบค้า + อย. + แอลกอฮอล์) นิติบุคคลไทย และการเลือกทำเลเป็นแผนเดียวกัน — ตัวเลขด้านบนคือราวกั้นให้แผนนั้นไม่หลุดกรอบ",
+        "在芭提雅，F&B（Food & Beverage）紧贴旅游日历：旺季带来满座餐厅，淡季则奖励那些善用外卖、酒店合作与外籍常客的经营者。旺季是测试菜单定价、人手与翻台率的时间；淡季则用来打磨成本结构和会员/常客方案。关键是把 2–4 个月筹备期、核心许可（营业 + 泰国 FDA/อย. + 酒类）、泰资实体和选址当成一套计划——上方的关键数字就是那套计划的护栏。",
+        "В Паттайе F&B (Food & Beverage) живёт по туристическому календарю: в высокий сезон залы заполнены, а низкий сезон вознаграждает тех, кто опирается на доставку, партнёрства с отелями и постоянных expat-гостей. Высокий сезон — время тестировать цены, штат и оборачиваемость столов; низкий — донастраивать издержки и программы лояльности. Важнее всего рассматривать 2–4 месяца подготовки, базовые лицензии (торговая + FDA/อย. + алкоголь), тайское юрлицо и выбор локации как единый план — цифры выше служат для этого планa защитными барьерами.",
       ),
     },
     steps: {
@@ -521,7 +526,7 @@ const businessPageCopyPart1 = {
           title: L("Entity & lease", "นิติบุคคลและสัญญาเช่า", "实体与租约", "Юрлицо и аренда"),
           description: L(
             "Thai company or partnership, lease review for tourism zoning and exhaust venting rights.",
-            "บริษัทไทยหรือห้างหุ้นส่วน ตรวจสัญญาเช่าเรื่องโซoning ท่องเที่ยวและสิทธิระบายอากาศ",
+            "เริ่มจากตั้งบริษัทไทยหรือห้างหุ้นส่วน แล้วตรวจสัญญาเช่าให้ชัดเรื่องโซนท่องเที่ยวและสิทธิทำระบบระบายอากาศ",
             "泰资公司或合伙，审查租约中的旅游分区与排烟权。",
             "Тайская компания или партнёрство, проверка аренды на туристическую зону и вытяжку.",
           ),
@@ -530,7 +535,7 @@ const businessPageCopyPart1 = {
           title: L("Construction & kitchen plan", "ก่อสร้างและแผนครัว", "施工与厨房方案", "Строительство и план кухни"),
           description: L(
             "Grease traps, gas certification, and layout approved for health inspection.",
-            "บ่อดักไขมัน ใบรับรองแก๊ส และผังผ่านการตรวจสุขภาพ",
+            "เตรียมบ่อดักไขมัน ใบรับรองระบบแก๊ส และผังครัวให้พร้อมสำหรับการตรวจสุขภาพ",
             "油水分离器、燃气认证及通过卫生检查的布局。",
             "Жироуловители, сертификация газа и планировка под санитарную инспекцию.",
           ),
@@ -539,16 +544,16 @@ const businessPageCopyPart1 = {
           title: L("Licenses", "ใบอนุญาต", "许可", "Лицензии"),
           description: L(
             "สถานประกอบการ, อย. food license, music if applicable, and alcohol (if desired).",
-            "สถานประกอบการ ใบอนุญาตอาหาร อย. เพลงหากจำเป็น และแอลกอฮอล์ (หากต้องการ)",
+            "ยื่นใบอนุญาตสถานประกอบการ ใบอนุญาตอาหารจาก อย. และขอใบอนุญาตเพลง/แอลกอฮอล์เพิ่มเติมตามรูปแบบร้าน",
             "สถานประกอบการ、อย. 食品许可、音乐（如适用）及酒类（如需要）。",
             "สถานประกอบการ, лицензия อย., музыка при необходимости и алкоголь.",
           ),
         },
         {
-          title: L("Soft opening & audit", "เปิดนุ่มและตรวจสอบ", "试营业与审计", "Soft opening и аудит"),
+          title: L("Soft opening & audit", "ทดลองเปิดและตรวจความพร้อม", "试营业与审计", "Soft opening и аудит"),
           description: L(
             "Staff food-hygiene training, HACCP-style logs, and tourism authority registration where required.",
-            "ฝึกอนามัยอาหารพนักงาน บันทึกแบบ HACCP และจดทะเบียนการท่องเที่ยวตามที่กำหนด",
+            "ทดลองเปิดเพื่อเทรนทีมเรื่องสุขอนามัยอาหาร ทำบันทึกแบบ HACCP และจดทะเบียนท่องเที่ยวหากกฎหมายกำหนด",
             "员工食品卫生培训、HACCP 式记录及必要的旅游部门登记。",
             "Обучение персонала гигиене, HACCP-логи и регистрация в туристическом органе при необходимости.",
           ),

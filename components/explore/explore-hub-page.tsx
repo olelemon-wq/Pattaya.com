@@ -2,12 +2,12 @@
 
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import { ExploreCategoryNav } from "@/components/explore/explore-category-nav";
-import { findExploreSearchHref } from "@/lib/explore/explore-search";
+import { findExploreSearchHref, getExploreSearchSuggestions } from "@/lib/explore/explore-search";
 import { Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useCallback, useState, type FormEvent } from "react";
+import { useCallback, useMemo, useState, type FormEvent, type KeyboardEvent } from "react";
 import { useLanguage } from "@/components/layout/language-provider";
 import { commonUi } from "@/lib/i18n/messages/common";
 import {
@@ -18,6 +18,7 @@ import {
 import { pickText } from "@/lib/i18n/text";
 import { PattayaCityMap } from "@/components/explore/pattaya-city-map";
 import { exploreImages } from "@/lib/design/explore-images";
+import { wellnessHeroImage } from "@/lib/design/wellness-images";
 import { marketPagePaths } from "@/lib/design/market-page-paths";
 
 function GuidePickCard({
@@ -214,25 +215,67 @@ export function ExploreHubPage() {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
   const [searchHint, setSearchHint] = useState<string | null>(null);
+  const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(-1);
   const [diningTab, setDiningTab] = useState<"luxury" | "local">("luxury");
   const lifestyleSpots = getLifestyleSpots(language);
   const diningPicks = getExploreHubDiningPicks(language);
   const activeDiningCards = diningPicks[diningTab];
+  const searchSuggestions = useMemo(() => getExploreSearchSuggestions(searchQuery, 6), [searchQuery]);
+
+  const chooseSuggestion = useCallback(
+    (index: number) => {
+      const choice = searchSuggestions[index];
+      if (!choice) return;
+      setSearchHint(null);
+      setSearchQuery(choice.label);
+      setActiveSuggestionIndex(-1);
+      router.push(choice.href);
+    },
+    [router, searchSuggestions],
+  );
 
   const runExploreSearch = useCallback(() => {
     const href = findExploreSearchHref(searchQuery);
     if (href) {
       setSearchHint(null);
+      setActiveSuggestionIndex(-1);
       router.push(href);
       return;
     }
     setSearchHint(tExplore(language, "searchNoResults"));
+    setActiveSuggestionIndex(-1);
     document.getElementById("explore-categories")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, [language, router, searchQuery]);
 
   function handleSearchSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     runExploreSearch();
+  }
+
+  function handleSearchKeyDown(event: KeyboardEvent<HTMLInputElement>) {
+    if (searchSuggestions.length === 0) return;
+
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      setActiveSuggestionIndex((prev) => (prev + 1) % searchSuggestions.length);
+      return;
+    }
+
+    if (event.key === "ArrowUp") {
+      event.preventDefault();
+      setActiveSuggestionIndex((prev) => (prev <= 0 ? searchSuggestions.length - 1 : prev - 1));
+      return;
+    }
+
+    if (event.key === "Enter" && activeSuggestionIndex >= 0) {
+      event.preventDefault();
+      chooseSuggestion(activeSuggestionIndex);
+      return;
+    }
+
+    if (event.key === "Escape") {
+      setActiveSuggestionIndex(-1);
+    }
   }
   const wellnessTags = [
     tExplore(language, "tagPremium"),
@@ -280,7 +323,7 @@ export function ExploreHubPage() {
               role="search"
               onSubmit={handleSearchSubmit}
             >
-              <div className="flex w-full items-center rounded-full bg-white/80 p-2 shadow-2xl backdrop-blur-md">
+              <div className="relative flex w-full items-center rounded-full bg-white/80 p-2 shadow-2xl backdrop-blur-md">
                 <div className="flex flex-1 items-center px-4 md:px-6">
                   <Search className="h-5 w-5 shrink-0 text-[#747878]" aria-hidden />
                   <input
@@ -289,9 +332,14 @@ export function ExploreHubPage() {
                     onChange={(event) => {
                       setSearchQuery(event.target.value);
                       if (searchHint) setSearchHint(null);
+                      setActiveSuggestionIndex(-1);
                     }}
+                    onKeyDown={handleSearchKeyDown}
                     placeholder={tExplore(language, "searchPlaceholder")}
                     aria-label={tExplore(language, "searchPlaceholder")}
+                    aria-autocomplete="list"
+                    aria-expanded={searchSuggestions.length > 0}
+                    aria-controls="explore-search-suggestions"
                     className="w-full border-none bg-transparent px-3 text-base text-[#191c1d] placeholder:text-[#747878] focus:outline-none focus:ring-0"
                   />
                 </div>
@@ -301,6 +349,28 @@ export function ExploreHubPage() {
                 >
                   {tExplore(language, "searchBtn")}
                 </button>
+                {searchSuggestions.length > 0 ? (
+                  <div
+                    id="explore-search-suggestions"
+                    className="absolute left-0 right-0 top-[calc(100%+0.5rem)] z-20 overflow-hidden rounded-2xl border border-[#e7e8e9] bg-white/95 p-1 shadow-xl backdrop-blur-md"
+                  >
+                    {searchSuggestions.map((suggestion, index) => (
+                      <button
+                        key={`${suggestion.href}-${suggestion.label}`}
+                        type="button"
+                        onClick={() => chooseSuggestion(index)}
+                        className={`flex w-full items-center justify-between rounded-xl px-4 py-2.5 text-left text-sm transition ${
+                          index === activeSuggestionIndex
+                            ? "bg-[#fdf8fb] text-[#B52E88]"
+                            : "text-[#191c1d] hover:bg-[#f8f9fa]"
+                        }`}
+                      >
+                        <span className="font-medium">{suggestion.label}</span>
+                        <span className="ml-3 shrink-0 text-xs text-[#747878]">{suggestion.href}</span>
+                      </button>
+                    ))}
+                  </div>
+                ) : null}
               </div>
               {searchHint ? (
                 <p className="mt-3 text-sm text-white/90 drop-shadow-sm" role="status">
@@ -455,11 +525,12 @@ export function ExploreHubPage() {
               <div className="group flex flex-col overflow-hidden rounded-[40px] border border-white/20 bg-[#e1e3e4] shadow-2xl transition-all duration-500 hover:shadow-[#B52E88]/10 lg:min-h-0 lg:flex-1">
                 <div className="relative h-[400px] shrink-0 overflow-hidden">
                   <Image
-                    src={exploreImages.auraSanctuary}
+                    src={wellnessHeroImage}
                     alt={tExplore(language, "wellnessName")}
                     fill
                     className="object-cover transition-transform duration-[2s] group-hover:scale-110"
                     sizes="400px"
+                    unoptimized={wellnessHeroImage.startsWith("/")}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   <span className="absolute left-6 top-6 rounded-full bg-white/90 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.2em] text-[#ae2f34] shadow-lg backdrop-blur-md">

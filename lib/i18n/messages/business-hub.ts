@@ -82,6 +82,48 @@ const copy = {
     zh: "选择适合您业务的类型，阅读下方对应指南了解步骤与材料。计划明确后再咨询律师或 BOI 顾问办理登记。",
     ru: "Выберите форму компании, изучите шаги и документы в гайде ниже. Когда план ясен — к юристу или консультанту BOI для подачи.",
   },
+  setupKeyPointsTitle: {
+    en: "What to check before filing",
+    th: "หัวข้อสำคัญก่อนยื่นจดจริง",
+    zh: "正式提交前先确认",
+    ru: "Проверьте до подачи",
+  },
+  setupPointStructure: {
+    en: "Pick the right structure for your case (Thai Co., BOI, branch/rep office).",
+    th: "เลือกรูปแบบนิติบุคคลให้ตรงเคส (บริษัทไทย, BOI, สาขา/สำนักงานตัวแทน)",
+    zh: "先选对结构（泰国公司、BOI、分公司/代表处）。",
+    ru: "Выберите форму под кейс (Thai Co., BOI, branch/rep office).",
+  },
+  setupPointCapital: {
+    en: "Check registered capital and work-permit conditions early.",
+    th: "เช็กทุนจดทะเบียนและเงื่อนไข work permit ตั้งแต่ต้น",
+    zh: "提前确认注册资本与工签条件。",
+    ru: "Сразу проверьте капитал и условия work permit.",
+  },
+  setupPointTimeline: {
+    en: "Map timeline from name reservation to VAT and operating licenses.",
+    th: "วางไทม์ไลน์ตั้งแต่จองชื่อ จดบริษัท VAT ไปจนถึงใบอนุญาตเปิดกิจการ",
+    zh: "规划从核名到 VAT 与营业许可的时间线。",
+    ru: "Соберите таймлайн: название → VAT → лицензии.",
+  },
+  setupPointBudget: {
+    en: "Set a startup budget (fees, legal docs, accounting, permits).",
+    th: "ตั้งงบเริ่มต้นให้ครบ (ค่าธรรมเนียม เอกสารกฎหมาย บัญชี ใบอนุญาต)",
+    zh: "做启动预算（规费、法务、会计、许可证）。",
+    ru: "Заложите бюджет на старт (пошлины, юристы, бухгалтерия, лицензии).",
+  },
+  setupPointDocs: {
+    en: "Prepare a separate document checklist for Thai and foreign stakeholders.",
+    th: "เตรียมเช็กลิสต์เอกสารแยกฝั่งไทยและต่างชาติ",
+    zh: "把泰方与外方文件清单分开准备。",
+    ru: "Разделите чеклист документов: тайская и иностранная стороны.",
+  },
+  setupPointRisk: {
+    en: "Review common risk points before paying deposits or signing leases.",
+    th: "เช็กจุดพลาดที่พบบ่อยก่อนวางมัดจำหรือเซ็นสัญญาเช่า",
+    zh: "签约或付定金前先排查常见风险点。",
+    ru: "Проверьте типовые риски до депозита и аренды.",
+  },
   setupBadge: {
     en: "Step-by-step guide",
     th: "คู่มือทีละขั้น",
@@ -143,10 +185,10 @@ const copy = {
     ru: "Отраслевые гайды",
   },
   industrySubtitle: {
-    en: "Sector-specific playbooks for hospitality entrepreneurs.",
-    th: "คู่มือเฉพาะสาขาสำหรับผู้ประกอบการบริการ",
-    zh: "面向酒店餐饮创业者的行业手册。",
-    ru: "Отраслевые руководства для HoReCa.",
+    en: "Practical, sector-by-sector playbooks that show what to prepare first, which permits matter, and where most operators get delayed.",
+    th: "คู่มือรายอุตสาหกรรมแบบใช้งานจริง บอกว่าควรเตรียมอะไรก่อน ใบอนุญาตไหนสำคัญ และจุดที่ผู้ประกอบการมักติด",
+    zh: "按行业拆解的实用手册：先准备什么、哪些许可最关键、以及最常卡关的步骤。",
+    ru: "Практичные отраслевые гайды: что готовить сначала, какие лицензии критичны и где чаще всего возникают задержки.",
   },
   industryOperatingGuides: {
     en: "Industry operating guides",
@@ -173,10 +215,10 @@ const copy = {
     ru: "Лицензии",
   },
   restaurantExcerpt: {
-    en: "Opening luxury restaurants & cafés: location strategy and international food safety standards.",
-    th: "เปิดร้านอาหารและคาเฟ่ลักชูรี: ทำเลและมาตรฐานความปลอดภัยอาหารสากล",
-    zh: "开设高端餐厅与咖啡馆：选址与国际食品安全标准。",
-    ru: "Рестораны и кафе: локация и стандарты безопасности.",
+    en: "For restaurant and café operators: from location fit and kitchen flow to food safety, licensing order, and opening-day readiness.",
+    th: "สำหรับร้านอาหารและคาเฟ่ ตั้งแต่เลือกทำเล ผังครัว มาตรฐานอาหาร ไปจนถึงลำดับใบอนุญาตและความพร้อมก่อนเปิดจริง",
+    zh: "面向餐厅与咖啡馆：从选址、后厨动线、食品安全到许可顺序与开业准备。",
+    ru: "Для ресторанов и кафе: локация, кухня, безопасность, порядок лицензий и готовность к открытию.",
   },
   restaurantCheck1: {
     en: "Health permit checklist",
@@ -203,10 +245,10 @@ const copy = {
     ru: "Соответствие",
   },
   barExcerpt: {
-    en: "Entertainment venue compliance: sound limits and operating hours under current law.",
-    th: "กฎหมายสถานบันเทิง: เสียงและเวลาเปิด-ปิดตามกฎหมายใหม่",
-    zh: "娱乐场所合规：噪音与营业时间新规。",
-    ru: "Соответствие клубов: шум и часы работы.",
+    en: "For nightlife venues: zoning, sound control, operating-hour rules, and the legal checks that reduce closure risk.",
+    th: "สำหรับบาร์และไนท์ไลฟ์: ผังเมือง การควบคุมเสียง เวลาเปิด-ปิด และเช็กลิสต์กฎหมายเพื่อลดความเสี่ยงโดนสั่งปิด",
+    zh: "面向酒吧与夜生活：分区、噪音控制、营业时段与降低停业风险的合规检查。",
+    ru: "Для баров и nightlife: зонирование, шум, часы работы и юридические проверки для снижения риска закрытия.",
   },
   barCheck1: {
     en: "Zoning regulations",
@@ -233,10 +275,10 @@ const copy = {
     ru: "Лицензии",
   },
   hotelExcerpt: {
-    en: "Tourism real estate: hotel licenses and 5-star service standards.",
-    th: "ลงทุนโรงแรม: ใบอนุญาตและมาตรฐานบริการ 5 ดาว",
-    zh: "旅游地产：酒店牌照与五星级服务标准。",
-    ru: "Отели: лицензии и стандарты 5*.",
+    en: "For hotel projects: license stack, EIA checkpoints, and service standards needed before launch and during operations.",
+    th: "สำหรับโครงการโรงแรม: ชุดใบอนุญาต จุดตรวจ EIA และมาตรฐานบริการที่ต้องพร้อมก่อนเปิดและระหว่างดำเนินงาน",
+    zh: "面向酒店项目：许可组合、EIA 关键节点，以及开业前后必须落实的服务标准。",
+    ru: "Для отелей: стек лицензий, контрольные точки EIA и стандарты сервиса до и после запуска.",
   },
   hotelCheck1: {
     en: "EIA standards",
@@ -412,6 +454,48 @@ const copy = {
     zh: "示例场地与活动类型 — 最新日期见 Events 页。",
     ru: "Примеры площадок — актуальные даты на Events.",
   },
+  networkingColEvent: {
+    en: "Event",
+    th: "อีเวนต์",
+    zh: "活动",
+    ru: "Событие",
+  },
+  networkingColFormat: {
+    en: "Format",
+    th: "รูปแบบ",
+    zh: "形式",
+    ru: "Формат",
+  },
+  networkingColVenue: {
+    en: "Venue",
+    th: "สถานที่",
+    zh: "地点",
+    ru: "Площадка",
+  },
+  networkingColAction: {
+    en: "Action",
+    th: "ดูต่อ",
+    zh: "操作",
+    ru: "Действие",
+  },
+  networkingTypeSummit: {
+    en: "Investment summit",
+    th: "สัมมนาการลงทุน",
+    zh: "投资峰会",
+    ru: "Инвест-саммит",
+  },
+  networkingTypeMixer: {
+    en: "After-hours mixer",
+    th: "มิกเซอร์หลังเลิกงาน",
+    zh: "下班后社交",
+    ru: "After-hours миксер",
+  },
+  networkingTypeConference: {
+    en: "Conference",
+    th: "งานประชุม",
+    zh: "大会",
+    ru: "Конференция",
+  },
   quickNavSetup: {
     en: "Company setup",
     th: "จัดตั้งบริษัท",
@@ -447,6 +531,18 @@ const copy = {
     th: "ดูภาพรวมเศรษฐกิจพัทยา →",
     zh: "查看芭提雅经济概览 →",
     ru: "Обзор экономики Паттайи →",
+  },
+  economyOverviewHint: {
+    en: "Open full analysis for these economic stats",
+    th: "เปิดหน้าวิเคราะห์เต็มของชุดสถิตินี้",
+    zh: "打开这些经济指标的完整分析页",
+    ru: "Открыть полный анализ этих экономических показателей",
+  },
+  economyOverviewCta: {
+    en: "Open full Pattaya economy analysis",
+    th: "เปิดบทวิเคราะห์เศรษฐกิจพัทยาฉบับเต็ม",
+    zh: "打开芭提雅经济完整分析",
+    ru: "Открыть полный анализ экономики Паттайи",
   },
 } satisfies Record<string, LocalizedText>;
 
@@ -484,6 +580,20 @@ export function getSetupCards(lang: LanguageCode) {
       features,
     },
   ];
+}
+
+export function getSetupKeyPoints(lang: LanguageCode) {
+  return {
+    title: tBusiness(lang, "setupKeyPointsTitle"),
+    items: [
+      tBusiness(lang, "setupPointStructure"),
+      tBusiness(lang, "setupPointCapital"),
+      tBusiness(lang, "setupPointTimeline"),
+      tBusiness(lang, "setupPointBudget"),
+      tBusiness(lang, "setupPointDocs"),
+      tBusiness(lang, "setupPointRisk"),
+    ],
+  };
 }
 
 export type IndustryGuideItem = {
@@ -549,9 +659,9 @@ export function getIndustryGuides(lang: LanguageCode): IndustryGuideItem[] {
 
 export function getEconomyStats(lang: LanguageCode) {
   return [
-    { icon: "👥", value: "~12M", label: tBusiness(lang, "statVisitors") },
-    { icon: "💰", value: "฿1.3T", label: tBusiness(lang, "statInvestment") },
-    { icon: "🏗️", value: "200+", label: tBusiness(lang, "statInfrastructure") },
+    { icon: "visitors", value: "~12M", label: tBusiness(lang, "statVisitors") },
+    { icon: "investment", value: "฿1.3T", label: tBusiness(lang, "statInvestment") },
+    { icon: "infrastructure", value: "200+", label: tBusiness(lang, "statInfrastructure") },
   ];
 }
 
@@ -570,19 +680,22 @@ export function getNetworkingEvents(lang: LanguageCode) {
     {
       title: tBusiness(lang, "event1Title"),
       location: tBusiness(lang, "event1Location"),
-      href: "/events",
+      format: tBusiness(lang, "networkingTypeSummit"),
+      href: "/business/networking/events",
       linkLabel,
     },
     {
       title: tBusiness(lang, "event2Title"),
       location: tBusiness(lang, "event2Location"),
-      href: "/events",
+      format: tBusiness(lang, "networkingTypeMixer"),
+      href: "/business/networking/events",
       linkLabel,
     },
     {
       title: tBusiness(lang, "event3Title"),
       location: tBusiness(lang, "event3Location"),
-      href: "/events",
+      format: tBusiness(lang, "networkingTypeConference"),
+      href: "/business/networking/events",
       linkLabel,
     },
   ];

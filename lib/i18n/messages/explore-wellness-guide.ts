@@ -67,7 +67,7 @@ function spa(
 
 const guideSpas = {
   "oasis-spa-jomtien": spa("oasis-spa-jomtien", "Oasis Spa Pattaya Jomtien Thappraya Road Thailand", {
-    category: L("Luxury / resort vibe", "สาย luxury / รีสอร์ต", "奢华度假感", "Люкс / курорт"),
+    category: L("Luxury / resort vibe", "สายหรู / รีสอร์ต", "奢华度假感", "Люкс / курорт"),
     name: L("Oasis Spa (Jomtien)", "Oasis Spa (จอมเทียน)", "Oasis Spa（Jomtien）", "Oasis Spa Jomtien"),
     openDays: L("Daily", "ทุกวัน", "每天", "Ежедневно"),
     hoursRange: L("~10:00–22:00 (check branch)", "~10:00–22:00 (เช็กสาขา)", "约10:00–22:00（请查分店）", "~10:00–22:00"),
@@ -77,7 +77,7 @@ const guideSpas = {
       L("Aromatherapy", "อโรมาเธอราพี", "芳疗", "Ароматерапия"),
       L("Multi-hour packages", "แพ็กเกจหลายชั่วโมง", "多小时套餐", "Пакеты на несколько часов"),
       L("Beautiful treatment rooms", "ห้องทรีทเมนต์สวย", "护理房漂亮", "Красивые кабинеты"),
-      L("Tropical calm", "สงบ กลิ่นหอม tropical", "热带静谧与香气", "Тропическое спокойствие"),
+      L("Tropical calm", "สงบ กลิ่นหอมแบบทรอปิค", "热带静谧与香气", "Тропическое спокойствие"),
     ],
     vibe: L(
       "Popular with Thai and international guests who want a real spa day — feels like stepping out of noisy Pattaya.",
@@ -96,7 +96,7 @@ const guideSpas = {
     websiteLabel: L("Oasis Spa →", "Oasis Spa →", "Oasis Spa →", "Oasis Spa →"),
   }),
   "cliff-spa-pattaya": spa("cliff-spa-pattaya", "Cliff Spa Royal Cliff Grand Hotel Pattaya Thailand", {
-    category: L("Luxury / resort vibe", "สาย luxury / รีสอร์ต", "奢华度假感", "Люкс / курорт"),
+    category: L("Luxury / resort vibe", "สายหรู / รีสอร์ต", "奢华度假感", "Люкс / курорт"),
     name: L("Cliff Spa (Royal Cliff)", "Cliff Spa (Royal Cliff)", "Cliff Spa（Royal Cliff）", "Cliff Spa"),
     openDays: L("Daily", "ทุกวัน", "每天", "Ежедневно"),
     hoursRange: L("Hotel spa hours", "เวลาสปาโรงแรม", "酒店 spa 时段", "Часы отеля"),
@@ -125,7 +125,7 @@ const guideSpas = {
     websiteLabel: L("Royal Cliff →", "Royal Cliff →", "Royal Cliff →", "Royal Cliff →"),
   }),
   "yunomori-onsen": spa("yunomori-onsen", "Yunomori Onsen Spa Pattaya Thepprasit Road Thailand", {
-    category: L("Japanese onsen", "สาย onsen ญี่ปุ่น", "日式温泉", "Онсэн"),
+    category: L("Japanese onsen", "สายออนเซ็นญี่ปุ่น", "日式温泉", "Онсэн"),
     name: L("Yunomori Onsen & Spa", "Yunomori Onsen & Spa", "Yunomori Onsen & Spa", "Yunomori"),
     openDays: L("Daily", "ทุกวัน", "每天", "Ежедневно"),
     hoursRange: L("~10:00–24:00", "~10:00–24:00", "约10:00–24:00", "~10:00–24:00"),
@@ -157,7 +157,7 @@ const guideSpas = {
     "lets-relax-onsen-pattaya",
     "Let's Relax Onsen and Spa Grande Centre Point Space Pattaya Thailand",
     {
-      category: L("Japanese onsen", "สาย onsen ญี่ปุ่น", "日式温泉", "Онсэн"),
+      category: L("Japanese onsen", "สายออนเซ็นญี่ปุ่น", "日式温泉", "Онсэн"),
       name: L("Let's Relax Onsen & Spa", "Let's Relax Onsen & Spa", "Let's Relax Onsen & Spa", "Let's Relax Onsen"),
       openDays: L("Daily", "ทุกวัน", "每天", "Ежедневно"),
       hoursRange: L("~10:00–22:00", "~10:00–22:00", "约10:00–22:00", "~10:00–22:00"),
@@ -234,7 +234,7 @@ const guideSpas = {
     ],
     vibe: L(
       "Aesthetic day spa in central Pattaya — calm, pretty, and good for a slow relaxing afternoon.",
-      "สปา aesthetic กลางเมือง — เงียบ สวย เหมาะบ่ายชิล",
+      "สปาบรรยากาศสวยกลางเมือง — เงียบ สวย เหมาะบ่ายชิล",
       "市中心有美感的水疗——安静漂亮，适合悠闲下午。",
       "Эстетичный day spa.",
     ),
@@ -249,7 +249,7 @@ const guideSpas = {
     websiteLabel: L("Tea Tree →", "Tea Tree →", "Tea Tree →", "Tea Tree →"),
   }),
   "pra-nita-spa": spa("pra-nita-spa", "Pra Ni Ta Massage Spa Pattaya Nongprue Thailand", {
-    category: L("Local hidden gem", "สาย local / hidden", "本地秘境", "Местное"),
+    category: L("Local hidden gem", "สายท้องถิ่น / จุดลับ", "本地秘境", "Местное"),
     name: L("Pra Ni Ta Massage & Spa", "ปราณิตา นวดไทย & สปา", "Pra Ni Ta Massage & Spa", "Pra Ni Ta"),
     openDays: L("Daily", "ทุกวัน", "每天", "Ежедневно"),
     hoursRange: L("Often until late", "มักเปิดดึก", "常营业至较晚", "До позднего"),
@@ -279,7 +279,7 @@ const guideSpas = {
     "thai-sabai-massage",
     "Thai Sabai Massage 219 Nongprue Pattaya Sukhumvit Road Thailand",
     {
-      category: L("Local hidden gem", "สาย local / hidden", "本地秘境", "Местное"),
+      category: L("Local hidden gem", "สายท้องถิ่น / จุดลับ", "本地秘境", "Местное"),
       name: L("Thai Sabai Massage", "ไทยสบาย มาสสาจ", "Thai Sabai Massage", "Thai Sabai"),
       openDays: L("Daily", "ทุกวัน", "每天", "Ежедневно"),
       hoursRange: L("~09:00–02:00", "~09:00–02:00", "约9:00–2:00", "~09:00–02:00"),
@@ -298,13 +298,13 @@ const guideSpas = {
       ],
       vibe: L(
         "Central Pattaya (Nongprue) — not beachfront, but easy by car or Grab. Local, clean, not flashy; focuses on real massage and draws plenty of Thai regulars.",
-        "โซนพัทยากลาง แถวหนองปรือ — ไม่ติดทะเล แต่ Grab/รถสะดวก ฟีล local สะอาด ไม่หรู เน้นนวดจริง คนไทยใช้เยอะ",
+        "โซนพัทยากลาง แถวหนองปรือ — ไม่ติดทะเล แต่ Grab/รถสะดวก บรรยากาศท้องถิ่น สะอาด ไม่หรู เน้นนวดจริง คนไทยใช้เยอะ",
         "芭提雅中央那库鲁阿区——不临海但 Grab/开车方便；本地、干净、不奢华，专注按摩，泰国常客多。",
         "Центр Pattaya, Nongprue — не у моря, но Grab удобен; местно и по делу.",
       ),
       bestFor: L(
         "Near Pattaya Central and Sukhumvit Road — local shops and stays around; ideal when you are sore after walking and want a late session.",
-        "ใกล้ Pattaya Central ไม่ไกลถนนสุขุมวิท มีร้าน local และที่พักรอบๆ เหมาะเมื่อยแล้วอยากนวดดึก",
+        "ใกล้ Pattaya Central ไม่ไกลถนนสุขุมวิท มีร้านท้องถิ่นและที่พักรอบๆ เหมาะเมื่อยแล้วอยากนวดดึก",
         "近 Pattaya Central 与 Sukhumvit 路——周边本地店与住宿多；走累后想深夜按摩的人。",
         "После прогулок — поздний визит.",
       ),
@@ -402,16 +402,16 @@ export function getWellnessGuideIntro(lang: LanguageCode) {
       lang,
       L(
         "Pattaya mixes local massage shops, luxury resort spas, Japanese onsen, aromatherapy, rooftop soaks, and serious recovery chains — each with a different vibe. Below: eight trusted picks to compare.",
-        "พัทยามีทั้งร้านนวด local สปาหรู onsen ญี่ปุ่น อโรมา rooftop และเครือมาตรฐาน — แต่ละที่ฟีลต่างกัน ด้านล่างคือ 8 ร้านที่แนะนำให้เทียบแล้วเลือก",
+        "พัทยามีทั้งร้านนวดท้องถิ่น สปาหรู ออนเซ็นญี่ปุ่น อโรมาเธอราพี แช่บนดาดฟ้า และเครือมาตรฐาน — แต่ละที่บรรยากาศต่างกัน ด้านล่างคือ 8 ร้านที่แนะนำให้เทียบแล้วเลือก",
         "芭提雅有本地按摩、奢华度假 spa、日式温泉、芳疗、屋顶泡汤与正规连锁——气质各异。下列八家精选供对比选择。",
         "8 проверенных мест — сравните и выберите.",
       ),
     ),
     pillars: [
-      t(lang, L("Local shops with fair prices", "ร้าน local ราคาดี", "本地店价格实惠", "Местные цены")),
-      t(lang, L("Luxury & hotel spas", "luxury & hotel spa", "奢华与酒店 spa", "Люкс и отели")),
-      t(lang, L("Onsen & aromatherapy", "onsen & aromatherapy", "温泉与芳疗", "Онсэн и ароматы")),
-      t(lang, L("Recovery & family-safe chains", "สาย recovery & ครอบครัว", "恢复与家庭友好连锁", "Семьи и recovery")),
+      t(lang, L("Local shops with fair prices", "ร้านท้องถิ่น ราคาดี", "本地店价格实惠", "Местные цены")),
+      t(lang, L("Luxury & hotel spas", "สปาหรูและสปาในโรงแรม", "奢华与酒店 spa", "Люкс и отели")),
+      t(lang, L("Onsen & aromatherapy", "ออนเซ็นและอโรมาเธอราพี", "温泉与芳疗", "Онсэн и ароматы")),
+      t(lang, L("Recovery & family-safe chains", "เครือฟื้นตัวและปลอดภัยสำหรับครอบครัว", "恢复与家庭友好连锁", "Семьи и recovery")),
     ],
     sourceNote: t(
       lang,
@@ -442,7 +442,7 @@ export function getWellnessGuideIntro(lang: LanguageCode) {
 
 export function getWellnessMoodPicks(lang: LanguageCode) {
   return {
-    title: t(lang, L("Pick by mood", "เลือกตาม mood", "按心情选", "По настроению")),
+    title: t(lang, L("Pick by mood", "เลือกตามอารมณ์", "按心情选", "По настроению")),
     subtitle: t(
       lang,
       L("Jump to a spa card below.", "แตะไปการ์ดด้านล่าง", "跳转到下方卡片。", "К карточке ниже."),
@@ -450,32 +450,48 @@ export function getWellnessMoodPicks(lang: LanguageCode) {
     groups: [
       {
         title: t(lang, L("Real rest day", "อยากพักจริง", "认真休息", "Отдых")),
-        pick: t(lang, L("Oasis / Cliff Spa", "Oasis / Cliff Spa", "Oasis / Cliff", "Oasis / Cliff")),
+        pick: t(lang, L("Oasis / Cliff Spa", "โอเอซิส / คลิฟฟ์ สปา", "Oasis / Cliff", "Oasis / Cliff")),
         spaId: "oasis-spa-jomtien" as const,
       },
       {
         title: t(lang, L("Onsen soak", "อยากแช่ออนเซ็น", "想泡温泉", "Онсэн")),
-        pick: t(lang, L("Yunomori / Let's Relax Onsen", "Yunomori / Let's Relax", "Yunomori / Let's Relax", "Yunomori")),
+        pick: t(
+          lang,
+          L(
+            "Yunomori / Let's Relax Onsen",
+            "ยูโนโมริ / เล็ตส์ รีแล็กซ์ ออนเซ็น",
+            "Yunomori / Let's Relax",
+            "Yunomori",
+          ),
+        ),
         spaId: "yunomori-onsen" as const,
       },
       {
         title: t(lang, L("Sore body", "ปวดตัวหนัก", "身体酸痛", "Боли в теле")),
-        pick: t(lang, L("Health Land", "Health Land", "Health Land", "Health Land")),
+        pick: t(lang, L("Health Land", "เฮลธ์แลนด์", "Health Land", "Health Land")),
         spaId: "health-land-sukhumvit" as const,
       },
       {
-        title: t(lang, L("Hidden local", "hidden gem local", "本地秘境", "Местное")),
+        title: t(lang, L("Hidden local", "ร้านท้องถิ่นที่ซ่อนอยู่", "本地秘境", "Местное")),
         pick: t(lang, L("Pra Ni Ta / Thai Sabai", "ปราณิตา / ไทยสบาย", "Pra Ni Ta / Thai Sabai", "Pra Ni Ta")),
         spaId: "pra-nita-spa" as const,
       },
       {
-        title: t(lang, L("Aesthetic spa", "อยากสวย aesthetic", "氛围感", "Эстетика")),
-        pick: t(lang, L("Tea Tree Spa", "Tea Tree Spa", "Tea Tree", "Tea Tree")),
+        title: t(lang, L("Aesthetic spa", "อยากบรรยากาศสวย", "氛围感", "Эстетика")),
+        pick: t(lang, L("Tea Tree Spa", "ทีทรี สปา", "Tea Tree", "Tea Tree")),
         spaId: "tea-tree-spa" as const,
       },
       {
         title: t(lang, L("Family-friendly", "พาครอบครัว", "适合家庭", "С семьёй")),
-        pick: t(lang, L("Oasis / Health Land / Yunomori", "Oasis / Health Land / Yunomori", "三家连锁", "Три варианта")),
+        pick: t(
+          lang,
+          L(
+            "Oasis / Health Land / Yunomori",
+            "โอเอซิส / เฮลธ์แลนด์ / ยูโนโมริ",
+            "三家连锁",
+            "Три варианта",
+          ),
+        ),
         spaId: "oasis-spa-jomtien" as const,
       },
     ],
@@ -489,7 +505,7 @@ export function getWellnessFamilyNote(lang: LanguageCode) {
       lang,
       L(
         "Safest starting points: Oasis Spa (Jomtien), Health Land (Sukhumvit), and Yunomori Onsen — clean, professional, and suitable for adults and older teens. Confirm age rules for onsen with the venue.",
-        "จุดเริ่มที่ปลอดภัย: Oasis Spa จอมเทียน Health Land ถ.สุขุมวิท และ Yunomori — สะอาด มืออาชีพ เหมาะผู้ใหญ่และวัยรุ่นโต ควรถามกฎอายุ onsen ที่ร้าน",
+        "จุดเริ่มที่ปลอดภัย: โอเอซิส สปา จอมเทียน เฮลธ์แลนด์ ถ.สุขุมวิท และยูโนโมริ — สะอาด มืออาชีพ เหมาะผู้ใหญ่และวัยรุ่นโต ควรถามกฎอายุออนเซ็นที่ร้าน",
         "较稳妥选择：Oasis（Jomtien）、Health Land（Sukhumvit）、Yunomori——干净专业，适合成人和较大青少年；温泉年龄规则请向场馆确认。",
         "Для семьи: Oasis, Health Land, Yunomori — уточните возраст для онсэна.",
       ),
@@ -501,13 +517,13 @@ export function getWellnessSafetyNote(lang: LanguageCode) {
   return {
     title: t(
       lang,
-      L("Choose real wellness", "เลือกร้าน wellness จริง", "选择真正的康养店", "Настоящий wellness"),
+      L("Choose real wellness", "เลือกร้านเพื่อสุขภาพจริง", "选择真正的康养店", "Настоящий wellness"),
     ),
     body: t(
       lang,
       L(
         "Pattaya has many massage storefront types. For genuine spa, onsen, or therapeutic massage, stick to hotel spas, onsen venues, day spas, and established chains like those listed above — clearer menus and safer expectations.",
-        "พัทยามีร้านนวดหลายแบบ ถ้าอยากได้ wellness / spa / นวดจริงจัง ให้เลือก hotel spa onsen day spa หรือเครือมาตรฐานแบบในลิสต์ — เมนูชัดและคาดหวังได้",
+        "พัทยามีร้านนวดหลายแบบ ถ้าอยากได้สปา ออนเซ็น หรือนวดจริงจัง ให้เลือกสปาโรงแรม ออนเซ็น สปาเดย์แพ็ก หรือเครือมาตรฐานแบบในลิสต์ — เมนูชัดและคาดหวังได้",
         "芭提雅按摩店类型很多。若要真正的 spa、温泉或理疗，优先酒店 spa、温泉场馆、day spa 与上述连锁——菜单清晰、预期更安全。",
         "Для настоящего spa выбирайте отели, онсэны и сети из списка.",
       ),

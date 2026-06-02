@@ -24,13 +24,13 @@ export function getWellnessTips(lang: LanguageCode) {
     items: [
       {
         id: "booking" as const,
-        title: t(lang, L("Book peak slots", "จองช่วง peak", "高峰时段预约", "Бронь")),
+        title: t(lang, L("Book peak slots", "จองช่วงคนแน่น", "高峰时段预约", "Бронь")),
         paragraphs: [
           t(
             lang,
             L(
               "Weekends and sunset onsen hours fill fast at Yunomori and Let's Relax — call or book online when possible.",
-              "วันหยุดและเย็น onsen ที่ Yunomori / Let's Relax แน่นเร็ว — โทรหรือจองออนไลน์ถ้าได้",
+              "วันหยุดและช่วงเย็นของออนเซ็นที่ Yunomori / Let's Relax เต็มเร็ว — โทรหรือจองออนไลน์ถ้าได้",
               "周末与日落泡汤时段在 Yunomori、Let's Relax 很快满——尽量预约。",
               "В выходные бронируйте онсэны заранее.",
             ),
@@ -39,7 +39,7 @@ export function getWellnessTips(lang: LanguageCode) {
             lang,
             L(
               "Health Land and Oasis accept walk-ins more often, but still expect a short wait at dinner time.",
-              "Health Land และ Oasis มัก walk-in ได้ แต่มื้อเย็นอาจรอสั้นๆ",
+              "Health Land และ Oasis มักเข้าใช้แบบไม่จองล่วงหน้าได้ แต่มื้อเย็นอาจรอสั้นๆ",
               "Health Land 与 Oasis 常可 walk-in，但晚餐时段可能短等。",
               "Health Land и Oasis — walk-in, но вечером очередь.",
             ),
@@ -54,7 +54,7 @@ export function getWellnessTips(lang: LanguageCode) {
             lang,
             L(
               "Hotel spas, onsen, day spas, and chains on this page are easier to read than ambiguous beach-road signs — see the safety note below.",
-              "hotel spa onsen day spa และเครือในลิสต์นี้อ่านเมนูง่ายกว่าป้ายริมหาดกำกวม — ดูหมายเหตุด้านล่าง",
+              "สปาโรงแรม ออนเซ็น สปารายวัน และเครือในลิสต์นี้อ่านเมนูง่ายกว่าป้ายริมหาดที่กำกวม — ดูหมายเหตุด้านล่าง",
               "本页酒店 spa、温泉、day spa 与连锁比海滩路含糊招牌更易判断——见下方安全提示。",
               "Отели, онсэны и сети — понятнее, чем сомнительные вывески.",
             ),
@@ -78,7 +78,7 @@ export function getWellnessTips(lang: LanguageCode) {
             lang,
             L(
               "Drink water before onsen and aromatherapy — heavy meals or alcohol right before can make you nauseous.",
-              "ดื่มน้ำก่อน onsen และอโรมา — มื้อหนักหรือแอลกอฮอลก่อนทรีทเมนต์อาจเมา",
+              "ดื่มน้ำก่อนออนเซ็นและอโรมา — มื้อหนักหรือแอลกอฮอลก่อนทรีทเมนต์อาจทำให้ไม่สบายตัว",
               "泡汤与芳疗前多喝水——大餐或饮酒后立即护理易不适。",
               "Вода перед онсэном; без алкоголя.",
             ),
@@ -124,7 +124,7 @@ export function getWellnessPage(lang: LanguageCode) {
         lang,
         L(
           "Pick spa, onsen, or massage by vibe",
-          "เลือกสปา ออนเซ็น หรือนวดตามฟีลที่อยากได้",
+          "เลือกสปา ออนเซ็น หรือนวดตามบรรยากาศที่อยากได้",
           "按气质选 spa、温泉或按摩",
           "Spa, онсэн или массаж по настроению",
         ),
@@ -133,13 +133,13 @@ export function getWellnessPage(lang: LanguageCode) {
         lang,
         L(
           "From affordable local massage and Japanese onsen to luxury resort spas and serious recovery chains — eight trusted picks sorted by vibe so you can compare and choose.",
-          "พัทยามีครบตั้งแต่ร้านนวด local ราคาดี สปาหรู onsen ญี่ปุ่น อโรมา ไปจนถึงร้านนวดแก้เมื่อยจริงจัง — รวม 8 ร้านแนะนำแยกสาย ให้เทียบแล้วเลือกตามฟีล",
+          "พัทยามีครบตั้งแต่ร้านนวดท้องถิ่นราคาดี สปาหรู ออนเซ็นญี่ปุ่น อโรมา ไปจนถึงร้านนวดแก้เมื่อยจริงจัง — รวม 8 ร้านแนะนำแยกประเภท ให้เทียบแล้วเลือกตามบรรยากาศ",
           "从平价本地按摩、日式温泉到奢华度假 spa 与专业恢复连锁——八家精选按类型分组，方便对比选择。",
           "8 проверенных мест по типу — от местного массажа до люкса и онсэна.",
         ),
       ),
-      badgeLuxury: t(lang, L("Luxury & onsen", "สายหรู & onsen", "奢华与温泉", "Люкс и онсэн")),
-      badgeLocal: t(lang, L("Local & chains", "นวด local & เครือ", "本地与连锁", "Местное и сети")),
+      badgeLuxury: t(lang, L("Luxury & onsen", "สายหรูและออนเซ็น", "奢华与温泉", "Люкс и онсэн")),
+      badgeLocal: t(lang, L("Local & chains", "นวดท้องถิ่นและเครือ", "本地与连锁", "Местное и сети")),
     },
     guide: getWellnessGuideIntro(lang),
     guideItems: getWellnessGuideItems(lang),

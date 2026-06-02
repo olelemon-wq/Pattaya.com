@@ -29,20 +29,20 @@ export const restaurantExtendedCopy = {
     title: L("Compliance reminders", "ข้อควรระวัง", "合规提醒", "Важно"),
     items: [
       L(
-        "Kitchen layout and grease traps must pass อย. inspection before you advertise a opening date.",
-        "ผังครัวและบ่อดักไขมันต้องผ่านตรวจ อย. ก่อนประกาศวันเปิด",
+        "Kitchen layout and grease traps must pass อย. inspection before you announce an opening date.",
+        "ต้องให้ผังครัวและบ่อดักไขมันผ่านการตรวจ อย. ก่อน แล้วค่อยประกาศวันเปิดร้าน",
         "厨房布局与油水分离器须通过 อย. 检查后方可公布开业日期。",
         "Планировка кухни и жироуловители — до объявления открытия.",
       ),
       L(
         "Alcohol tiers differ for beer/wine vs spirits — your license must match what you actually serve.",
-        "ระดับใบอนุญาตแอลกอฮอล์ต่างกัน — ต้องตรงกับสิ่งที่เสิร์ฟจริง",
+        "ใบอนุญาตแอลกอฮอล์มีหลายระดับ (เบียร์/ไวน์ และสุรา) ต้องขอให้ตรงกับเครื่องดื่มที่ขายจริง",
         "酒类许可分啤酒/葡萄酒与烈酒等级 — 须与实际供应一致。",
         "Уровни алкогольной лицензии должны совпадать с меню.",
       ),
       L(
         "Lease clauses on exhaust, hours, and tourism zoning can block permits — review before signing.",
-        "ข้อเช่าเรื่องระบายอากาศ เวลา และโซoning อาจขวางใบอนุญาต — ตรวจก่อนเซ็น",
+        "เงื่อนไขในสัญญาเช่าเรื่องระบบระบายอากาศ เวลาเปิด-ปิด และการใช้ประโยชน์พื้นที่ อาจทำให้ขอใบอนุญาตไม่ผ่าน ควรตรวจให้ชัดก่อนเซ็น",
         "租约中的排烟、营业时间与旅游分区条款可能阻碍许可 — 签约前审查。",
         "Пункты аренды о вытяжке и часах могут блокировать лицензии.",
       ),

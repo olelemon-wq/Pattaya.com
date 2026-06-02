@@ -24,4 +24,4 @@ export const wellnessTipImages = [
   "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1600&q=80",
 ] as const;
 
-export const wellnessHeroImage = exploreImages.auraSanctuary;
+export const wellnessHeroImage = "/images/explore/wellness-hero.png";

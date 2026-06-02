@@ -4,6 +4,12 @@ export type ExploreSearchEntry = {
   keywords: string[];
 };
 
+export type ExploreSearchSuggestion = {
+  href: string;
+  label: string;
+  score: number;
+};
+
 export const exploreSearchIndex: ExploreSearchEntry[] = [
   {
     href: "/explore/beaches",
@@ -244,21 +250,29 @@ function scoreKeyword(query: string, keyword: string): number {
 }
 
 export function findExploreSearchHref(query: string): string | null {
-  const q = normalizeQuery(query);
-  if (!q) return null;
+  const [first] = getExploreSearchSuggestions(query, 1);
+  return first?.href ?? null;
+}
 
-  let bestHref: string | null = null;
-  let bestScore = 0;
+export function getExploreSearchSuggestions(query: string, limit = 6): ExploreSearchSuggestion[] {
+  const q = normalizeQuery(query);
+  if (!q) return [];
+
+  const bestByHref = new Map<string, ExploreSearchSuggestion>();
 
   for (const entry of exploreSearchIndex) {
     for (const keyword of entry.keywords) {
       const score = scoreKeyword(q, keyword);
-      if (score > bestScore) {
-        bestScore = score;
-        bestHref = entry.href;
+      if (score < 35) continue;
+
+      const current = bestByHref.get(entry.href);
+      if (!current || score > current.score || (score === current.score && keyword.length < current.label.length)) {
+        bestByHref.set(entry.href, { href: entry.href, label: keyword, score });
       }
     }
   }
 
-  return bestScore >= 35 ? bestHref : null;
+  return [...bestByHref.values()]
+    .sort((a, b) => b.score - a.score || a.label.length - b.label.length)
+    .slice(0, limit);
 }

@@ -11,10 +11,12 @@ import {
   getIndustryGuides,
   getNetworkingEvents,
   getSetupCards,
+  getSetupKeyPoints,
   tBusiness,
   type IndustryGuideItem,
 } from "@/lib/i18n/messages/business-hub";
 import { businessImages } from "@/lib/design/business-images";
+import { Banknote, Construction, Users } from "lucide-react";
 type SetupCardProps = ReturnType<typeof getSetupCards>[number];
 
 function SetupCard({
@@ -146,8 +148,14 @@ function IndustryGuideCard({
 export function BusinessHubPage() {
   const { language } = useLanguage();
   const setupCards = getSetupCards(language);
+  const setupKeyPoints = getSetupKeyPoints(language);
   const industryGuides = getIndustryGuides(language);
   const economyStats = getEconomyStats(language);
+  const economyStatIcons = {
+    visitors: Users,
+    investment: Banknote,
+    infrastructure: Construction,
+  } as const;
   const networkingEvents = getNetworkingEvents(language);
 
   return (
@@ -186,10 +194,29 @@ export function BusinessHubPage() {
               {tBusiness(language, "setupSectionSubtitle")}
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {setupCards.map((card) => (
               <SetupCard key={card.href} {...card} />
             ))}
+            <div className="flex h-full flex-col overflow-hidden rounded-xl border border-[#B8860B]/20 bg-gradient-to-br from-white via-[#fffcf5] to-[#fff7e8] p-8 shadow-[0_12px_45px_-14px_rgba(0,0,0,0.12)]">
+              <span className="mb-4 inline-block w-fit rounded-full border border-[#B8860B]/25 bg-[#B8860B]/10 px-4 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#8f6705]">
+                {tBusiness(language, "setupBadge")}
+              </span>
+              <h3 className="mb-2 text-2xl font-bold text-[#363636]">{setupKeyPoints.title}</h3>
+              <p className="mb-6 text-sm leading-relaxed text-[#666a6b]">
+                {tBusiness(language, "setupSectionSubtitle")}
+              </p>
+              <ul className="flex-grow space-y-3.5">
+                {setupKeyPoints.items.map((item, index) => (
+                  <li key={item} className="flex items-start gap-3 rounded-lg border border-[#B8860B]/12 bg-white/70 px-3 py-2.5 text-sm leading-relaxed text-[#444748]">
+                    <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#B8860B]/15 text-[11px] font-bold text-[#8f6705]">
+                      {index + 1}
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -246,8 +273,14 @@ export function BusinessHubPage() {
                   {economyStats.map((stat) => (
                     <div key={stat.label} className="group space-y-2">
                       <div className="flex items-center gap-3">
-                        <span className="text-3xl" aria-hidden>
-                          {stat.icon}
+                        <span className="text-[#ffb3b0]" aria-hidden>
+                          {(() => {
+                            const Icon =
+                              economyStatIcons[
+                                stat.icon as keyof typeof economyStatIcons
+                              ] ?? Users;
+                            return <Icon className="h-7 w-7" strokeWidth={2.2} />;
+                          })()}
                         </span>
                         <div className="text-3xl font-bold text-white">
                           {stat.value}
@@ -263,6 +296,17 @@ export function BusinessHubPage() {
                 <p className="mt-6 text-xs leading-relaxed text-white/50">
                   {tBusiness(language, "economyStatDisclaimer")}
                 </p>
+                <div className="mt-5">
+                  <Link
+                    href="/business/investment/economy"
+                    className="group inline-flex w-full items-center justify-center rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-center transition hover:border-white/40 hover:bg-white/15"
+                  >
+                    <span className="inline-flex items-center gap-1 text-sm font-bold text-white transition group-hover:translate-x-0.5">
+                      {tBusiness(language, "economyOverviewCta")}
+                      <span aria-hidden>→</span>
+                    </span>
+                  </Link>
+                </div>
               </div>
             </div>
             <div className="rounded-[2rem] bg-white p-6 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)]">
@@ -301,14 +345,6 @@ export function BusinessHubPage() {
               </div>
             </div>
           </div>
-          <div className="mt-10 text-center">
-            <Link
-              href="/business/investment/economy"
-              className="text-sm font-bold uppercase tracking-widest text-white/80 transition-colors hover:text-white"
-            >
-              {tBusiness(language, "viewEconomyOverview")}
-            </Link>
-          </div>
         </div>
       </section>
 
@@ -324,25 +360,29 @@ export function BusinessHubPage() {
             {tBusiness(language, "eventsHubNote")}
           </p>
           <div className="overflow-hidden rounded-2xl border border-[#c4c7c8]/30 bg-[#ebebea]">
+            <div className="hidden grid-cols-[1.8fr_1fr_1.4fr_auto] gap-4 border-b border-[#c4c7c8]/30 bg-[#f5f5f4] px-8 py-4 text-xs font-bold uppercase tracking-[0.14em] text-[#666] md:grid">
+              <span>{tBusiness(language, "networkingColEvent")}</span>
+              <span>{tBusiness(language, "networkingColFormat")}</span>
+              <span>{tBusiness(language, "networkingColVenue")}</span>
+              <span className="text-right">{tBusiness(language, "networkingColAction")}</span>
+            </div>
             {networkingEvents.map((event, i) => (
               <div
                 key={event.title}
-                className={`group flex flex-col items-start bg-white p-8 transition-all hover:bg-[#f5f5f4] md:flex-row md:items-center ${
+                className={`group grid grid-cols-1 gap-4 bg-white p-6 transition-all hover:bg-[#f5f5f4] md:grid-cols-[1.8fr_1fr_1.4fr_auto] md:items-center md:gap-6 md:p-8 ${
                   i < networkingEvents.length - 1
                     ? "border-b border-[#c4c7c8]/30"
                     : ""
                 }`}
               >
-                <div className="flex-grow md:pr-8">
-                  <h5 className="mb-3 text-2xl font-bold text-[#363636]">
+                <div>
+                  <h5 className="text-xl font-bold text-[#363636] md:text-2xl">
                     {event.title}
                   </h5>
-                  <p className="flex items-center gap-2 text-sm font-medium text-[#444748] opacity-80">
-                    <span aria-hidden>📍</span>
-                    {event.location}
-                  </p>
                 </div>
-                <div className="mt-6 shrink-0 md:mt-0">
+                <p className="text-sm font-semibold text-[#444748]">{event.format}</p>
+                <p className="text-sm font-medium text-[#444748]/85">{event.location}</p>
+                <div className="md:justify-self-end">
                   <Link
                     href={event.href}
                     className="whitespace-nowrap rounded-full border-2 border-[#363636] px-8 py-3.5 text-sm font-bold tracking-wide text-[#363636] transition-all hover:bg-[#363636] hover:text-white"

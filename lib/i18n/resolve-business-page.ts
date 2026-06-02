@@ -118,6 +118,7 @@ export function resolveBusinessPage(lang: LanguageCode, pageId: BusinessPageId) 
       year: event.year,
       title: t(lang, copy.networkingEvents![i].title),
       location: t(lang, copy.networkingEvents![i].location),
+      href: event.href,
     })),
   };
 }

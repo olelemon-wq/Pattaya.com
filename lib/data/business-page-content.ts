@@ -25,6 +25,7 @@ export type BusinessNetworkingEvent = {
   year: string;
   title: string;
   location: string;
+  href?: string;
 };
 
 export type BusinessReadingPathItem = {
@@ -90,7 +91,7 @@ export const businessPages: Record<BusinessPageId, BusinessPageConfig> = {
       title: "ติดต่อสำนักงานกฎหมาย",
       body: "Document review, shareholder structure, VAT registration, and work-permit pathways — matched to your investment timeline.",
       button: "ขอคำปรึกษาฟรี",
-      href: "/business",
+      href: "#document-checklist",
     },
     ctaSecondary: {
       button: "See reading order",
@@ -188,7 +189,7 @@ export const businessPages: Record<BusinessPageId, BusinessPageConfig> = {
       },
       {
         label: "Business Hub",
-        href: "/business",
+        href: "#document-checklist",
         blurb: "Networking events and economy stats",
       },
       {
@@ -223,10 +224,10 @@ export const businessPages: Record<BusinessPageId, BusinessPageConfig> = {
       "Competitive tax privileges and enhanced foreign ownership for strategic projects in the Eastern Economic Corridor.",
     cta: {
       eyebrow: "Investment Incentives",
-      title: "บริการปรึกษาด้านการขอสิทธิ BOI",
+      title: "เริ่มจากเช็กว่าโครงการเข้าเกณฑ์ BOI หรือไม่",
       body: "Activity code mapping, feasibility narratives, and coordination with BOI Bangkok — plus post-approval compliance.",
-      button: "นัดที่ปรึกษา BOI",
-      href: "/business",
+      button: "เปิดเช็กลิสต์ BOI",
+      href: "#document-checklist",
     },
     ctaSecondary: {
       button: "See reading order",
@@ -364,10 +365,10 @@ export const businessPages: Record<BusinessPageId, BusinessPageConfig> = {
       "Luxury dining and café launches: site selection, kitchen design, and international food-safety standards in a tourism market.",
     cta: {
       eyebrow: "Hot Industry",
-      title: "ดาวน์โหลดคู่มือฉบับเต็ม",
-      body: "Health permit checklist, alcohol licensing paths, and lease negotiation tips for Beach Rd, Jomtien, and Naklua.",
-      button: "ขอคู่มือ F&B",
-      href: "/business",
+      title: "เริ่มจากเช็กเอกสารและใบอนุญาตที่ต้องใช้",
+      body: "ดูเช็กลิสต์ใบอนุญาตสุขภาพ ลำดับขอใบอนุญาตแอลกอฮอล์ และจุดที่มักพลาดก่อนเซ็นสัญญาเช่าใน Beach Rd จอมเทียน และนาเกลือ",
+      button: "เปิดเช็กลิสต์ F&B",
+      href: "#document-checklist",
     },
     ctaSecondary: {
       button: "See reading order",
@@ -503,7 +504,7 @@ export const businessPages: Record<BusinessPageId, BusinessPageConfig> = {
       title: "นัดคุยที่ปรึกษา",
       body: "Zoning review, entertainment license timeline, and music copyright (MCT) guidance for live DJs and venues.",
       button: "ปรึกษาเปิดบาร์",
-      href: "/business",
+      href: "#document-checklist",
     },
     ctaSecondary: {
       button: "See reading order",
@@ -636,10 +637,10 @@ export const businessPages: Record<BusinessPageId, BusinessPageConfig> = {
       "Tourism real estate investment — hotel licenses, service standards, and environmental approvals for coastal projects.",
     cta: {
       eyebrow: "Hospitality Investment",
-      title: "ดาวน์โหลดคู่มือฉบับเต็ม",
+      title: "เริ่มจากเช็กเอกสารและใบอนุญาตที่ต้องใช้",
       body: "EIA triggers, hotel license flow, and operator agreements for condo-hotel and full-service assets.",
-      button: "ขอคู่มือโรงแรม",
-      href: "/business",
+      button: "เปิดเช็กลิสต์โรงแรม",
+      href: "#document-checklist",
     },
     ctaSecondary: {
       button: "See reading order",
@@ -774,8 +775,8 @@ export const businessPages: Record<BusinessPageId, BusinessPageConfig> = {
       eyebrow: "Real Estate Opportunity",
       title: "ติดต่อพาร์ทเนอร์เอเจนท์",
       body: "Off-plan vs resale, foreign quota checks, and rental management introductions for Jomtien, Pratumnak, and Wong Amat.",
-      button: "ขอพอร์ตโครงการ",
-      href: "/business",
+      button: "เปิดเช็กลิสต์ผู้ซื้อ",
+      href: "#document-checklist",
     },
     ctaSecondary: {
       button: "See reading order",
@@ -910,8 +911,8 @@ export const businessPages: Record<BusinessPageId, BusinessPageConfig> = {
       eyebrow: "Market Intelligence",
       title: "ดูภาพรวมเศรษฐกิจพัทยา",
       body: "Weekly business briefings and sector reports — align your expansion or acquisition timeline with local data.",
-      button: "สมัครรับรายงาน",
-      href: "/business",
+      button: "เปิดเช็กลิสต์ตัวชี้วัด",
+      href: "#document-checklist",
     },
     overview: {
       title: "Why Pattaya’s economy matters",
@@ -1017,8 +1018,8 @@ export const businessPages: Record<BusinessPageId, BusinessPageConfig> = {
       "Connect with investors, operators, and service providers at curated Pattaya business events throughout the year.",
     cta: {
       eyebrow: "Upcoming Events",
-      title: "ลงทะเบียนล่วงหน้า",
-      body: "Priority seating for EEC summits and chamber mixers — RSVP for calendar invites and speaker line-ups.",
+      title: "ตรวจตารางกิจกรรมล่าสุด",
+      body: "หน้านี้เป็นตัวอย่างรูปแบบกิจกรรมและสถานที่จัดงาน ควรตรวจวัน-เวลาล่าสุดจากปฏิทินกิจกรรมก่อนเข้าร่วมทุกครั้ง",
       button: "ดูตารางกิจกรรม",
       href: "/business/networking/events",
     },
@@ -1087,25 +1088,28 @@ export const businessPages: Record<BusinessPageId, BusinessPageConfig> = {
     },
     networkingEvents: [
       {
-        day: "24",
-        month: "OCT",
-        year: "2024",
-        title: "Pattaya EEC Investment Summit",
-        location: "Royal Cliff Grand Hotel, Pattaya",
+        day: "04",
+        month: "JUN",
+        year: "2026",
+        title: "Government-BCCT Site Visit: Ministry of Education to King's College International School",
+        location: "Policy & Advocacy Call (see organizer for venue details)",
+        href: "https://members.bccthai.com/bcct/asp/eventlist.asp?view=L",
       },
       {
-        day: "12",
-        month: "NOV",
-        year: "2024",
-        title: "Business After Hours: Networking Night",
-        location: "Hilton Pattaya - Horizon Rooftop",
+        day: "17",
+        month: "JUN",
+        year: "2026",
+        title: "STCC Multi-Chamber Networking Night",
+        location: "Co-Branded Networking Evening (see organizer for venue details)",
+        href: "https://members.bccthai.com/bcct/asp/eventlist.asp?view=L",
       },
       {
-        day: "05",
-        month: "DEC",
-        year: "2024",
-        title: "Digital Nomad & Tech Hub Conference",
-        location: "Pattaya City Hall - Convention Center",
+        day: "18",
+        month: "JUN",
+        year: "2026",
+        title: "BCCT Insight: From Entry to Belonging: Navigating Thailand’s Long-Term Residency Pathways",
+        location: "Evening Briefing (see organizer for venue details)",
+        href: "https://members.bccthai.com/bcct/asp/eventlist.asp?view=L",
       },
     ],
     related: [

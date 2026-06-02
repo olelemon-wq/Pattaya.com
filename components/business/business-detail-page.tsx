@@ -10,7 +10,18 @@ import {
 } from "@/lib/data/business-page-content";
 import { getBusinessDetailUi } from "@/lib/i18n/messages/business-detail-ui";
 import { resolveBusinessPage } from "@/lib/i18n/resolve-business-page";
-import { AlertTriangle, Check } from "lucide-react";
+import {
+  AlertTriangle,
+  Building2,
+  ChartColumnIncreasing,
+  Check,
+  ChevronDown,
+  Coins,
+  Factory,
+  Users,
+  Wrench,
+  type LucideIcon,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -21,6 +32,14 @@ export function BusinessDetailPage({ pageId }: { pageId: BusinessPageId }) {
 
   if (!businessPages[pageId]) notFound();
   const page = resolveBusinessPage(language, pageId);
+  const economyIconMap: Record<string, LucideIcon> = {
+    "👥": Users,
+    "📈": ChartColumnIncreasing,
+    "💰": Coins,
+    "🏗️": Wrench,
+    "📊": Building2,
+    "🏭": Factory,
+  };
 
   const heroTitleId = `business-${pageId}-hero`;
 
@@ -88,17 +107,17 @@ export function BusinessDetailPage({ pageId }: { pageId: BusinessPageId }) {
               {page.cta.body}
             </p>
           </div>
-          <div className="mt-5 flex w-full shrink-0 flex-col gap-3 sm:flex-row md:mt-0 md:w-auto md:flex-col lg:flex-row">
+          <div className="mt-5 grid w-full shrink-0 grid-cols-2 gap-3 md:mt-0 md:w-auto md:grid-cols-1 lg:grid-cols-2">
             <Link
               href={page.cta.href}
-              className="inline-flex items-center justify-center rounded-xl bg-[#ae2f34] px-6 py-3.5 text-center text-sm font-bold text-white shadow-lg transition hover:bg-[#ce4749]"
+              className="inline-flex w-full items-center justify-center rounded-xl bg-[#ae2f34] px-4 py-3.5 text-center text-sm font-bold text-white shadow-lg transition hover:bg-[#ce4749]"
             >
               {page.cta.button}
             </Link>
             {page.ctaSecondary ? (
               <Link
                 href={page.ctaSecondary.href}
-                className="inline-flex items-center justify-center rounded-xl border-2 border-[#363636] px-6 py-3.5 text-center text-sm font-bold text-[#363636] transition hover:bg-[#363636] hover:text-white"
+                className="inline-flex w-full items-center justify-center rounded-xl border-2 border-[#363636] px-4 py-3.5 text-center text-sm font-bold text-[#363636] transition hover:bg-[#363636] hover:text-white"
               >
                 {page.ctaSecondary.button}
               </Link>
@@ -185,8 +204,11 @@ export function BusinessDetailPage({ pageId }: { pageId: BusinessPageId }) {
                 {page.economyStats.map((stat) => (
                   <div key={stat.label} className="group space-y-2">
                     <div className="flex items-center gap-3">
-                      <span className="text-2xl md:text-3xl" aria-hidden>
-                        {stat.icon}
+                      <span className="text-[#ffb3b0]" aria-hidden>
+                        {(() => {
+                          const Icon = economyIconMap[stat.icon] ?? ChartColumnIncreasing;
+                          return <Icon className="h-6 w-6 md:h-7 md:w-7" strokeWidth={2.2} />;
+                        })()}
                       </span>
                       <div className="text-2xl font-bold text-white md:text-3xl">
                         {stat.value}
@@ -241,7 +263,9 @@ export function BusinessDetailPage({ pageId }: { pageId: BusinessPageId }) {
                     </p>
                   </div>
                   <Link
-                    href="/business"
+                    href={event.href ?? "/business/networking/events"}
+                    target={event.href?.startsWith("http") ? "_blank" : undefined}
+                    rel={event.href?.startsWith("http") ? "noopener noreferrer" : undefined}
                     className="mt-8 whitespace-nowrap rounded-full bg-[#363636] px-10 py-3.5 text-sm font-bold tracking-wide text-white shadow-md transition-all hover:bg-[#363636]/90 md:mt-0"
                   >
                     {ui.registerEarly}
@@ -360,16 +384,19 @@ export function BusinessDetailPage({ pageId }: { pageId: BusinessPageId }) {
             <h2 className="text-2xl font-semibold text-[#363636] md:text-3xl">{page.faq.title}</h2>
             <div className="mt-8 divide-y divide-[#c4c7c8]/30">
               {page.faq.items.map((item) => (
-                <details key={item.question} className="group py-5 first:pt-0 last:pb-0">
-                  <summary className="cursor-pointer list-none text-base font-semibold text-[#363636] marker:content-none [&::-webkit-details-marker]:hidden">
-                    <span className="flex items-start justify-between gap-4">
+                <details
+                  key={item.question}
+                  className="group py-5 first:pt-0 last:pb-0"
+                >
+                  <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left [&::-webkit-details-marker]:hidden">
+                    <span className="min-w-0 pr-2 text-base font-semibold text-[#363636]">
                       {item.question}
-                      <span
-                        className="shrink-0 text-[#B8860B] transition group-open:rotate-45"
-                        aria-hidden
-                      >
-                        +
-                      </span>
+                    </span>
+                    <span
+                      className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#b5b8bb] bg-[#f1f2f3] text-[#363636] transition duration-200 group-open:rotate-180 group-open:border-[#191c1d] group-open:bg-[#191c1d] group-open:text-white"
+                      aria-hidden
+                    >
+                      <ChevronDown className="h-4 w-4" strokeWidth={2.5} />
                     </span>
                   </summary>
                   <p className="mt-3 text-sm leading-relaxed text-[#444748]">{item.answer}</p>
