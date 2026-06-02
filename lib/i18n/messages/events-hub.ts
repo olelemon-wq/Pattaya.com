@@ -70,6 +70,12 @@ const sections = {
   promotedTitle: L("Promoted", "โปรโมต", "推广", "Рекомендуем"),
   tipsTitle: L("Insider tips", "เคล็ดลับ", "小贴士", "Советы"),
   exploreCta: L("Explore venue →", "ดูสถานที่ →", "查看场地 →", "Место →"),
+  eventDetailsCta: L(
+    "View event details →",
+    "ดูรายละเอียดกิจกรรม →",
+    "查看活动详情 →",
+    "Подробнее о событии →",
+  ),
   addEvent: L(
     "List your event on Pattaya.com",
     "ลงประกาศงานบน Pattaya.com",
@@ -171,7 +177,7 @@ function todayEvents(lang: LanguageCode): EventsHubEvent[] {
       categoryLabel: cat(lang, "market"),
       image: eventsImages.nightMarket,
       imageAlt: t(lang, L("Thepprasit Night Market stalls", "ร้านค้าตลาดเทพประสิทธิ์", "Thepprasit 夜市摊位", "Рынок Thepprasit")),
-      href: marketPagePaths.thepprasit,
+      href: marketPagePaths.page,
     },
     {
       id: "walking-street",
@@ -348,6 +354,7 @@ export function getEventsHub(lang: LanguageCode) {
       promotedTitle: t(lang, sections.promotedTitle),
       tipsTitle: t(lang, sections.tipsTitle),
       exploreCta: t(lang, sections.exploreCta),
+      eventDetailsCta: t(lang, sections.eventDetailsCta),
       addEvent: t(lang, sections.addEvent),
     },
     featured: {

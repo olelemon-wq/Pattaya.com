@@ -5,6 +5,7 @@ import { useLanguage } from "@/components/layout/language-provider";
 import type { EventsHubEvent } from "@/lib/i18n/messages/events-hub";
 import { buildStandaloneBreadcrumbs } from "@/lib/i18n/resolve-site-nav";
 import { getEventsHub } from "@/lib/i18n/messages/events-hub";
+import { eventsImages } from "@/lib/design/events-images";
 import { Calendar, Clock, MapPin, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -117,23 +118,37 @@ export function EventsTodayPage() {
     <>
       <Breadcrumb items={breadcrumbs} />
 
-      <div className="mb-8 border-b border-zinc-200 pb-8">
-        <span className="mb-3 inline-block rounded-full bg-teal-100 px-3 py-1 text-xs font-medium uppercase tracking-wide text-teal-800">
-          {hub.hero.badge}
-        </span>
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
-          {hub.hero.title}
-        </h1>
-        {language === "th" && hub.hero.titleTh ? (
-          <p className="mt-1 text-lg text-teal-700">{hub.hero.titleTh}</p>
-        ) : null}
-        <p className="mt-3 max-w-2xl text-base leading-7 text-zinc-600">
-          {hub.hero.description}
-        </p>
-        <p className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#fff7ed] px-4 py-2 text-sm font-semibold text-[#c2410c]">
-          <Calendar className="h-4 w-4" aria-hidden />
-          {hub.todayFormatted}
-        </p>
+      <div className="relative mb-10 overflow-hidden rounded-3xl border border-[#c4c7c8]/30 bg-[#363636] p-6 text-white shadow-xl sm:p-8">
+        <Image
+          src="/images/events/events-hero-pattaya-festival.png"
+          alt={hub.hero.title}
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#191c1d]/90 via-[#191c1d]/70 to-[#191c1d]/55" />
+        <div className="absolute inset-0 bg-[#363636]/35" />
+        <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-white/10 blur-3xl" />
+        <div className="absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-[#ae2f34]/20 blur-3xl" />
+        <div className="relative">
+          <span className="mb-4 inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-white/85">
+            {hub.hero.badge}
+          </span>
+          <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            {hub.hero.title}
+          </h1>
+          {language === "th" && hub.hero.titleTh ? (
+            <p className="mt-1 text-lg font-semibold text-[#ffb3b0]">{hub.hero.titleTh}</p>
+          ) : null}
+          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-white/80 sm:text-base">
+            {hub.hero.description}
+          </p>
+          <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-[#B8860B]/40 bg-[#B8860B]/15 px-4 py-2 text-sm font-semibold text-[#f8e6b5]">
+            <Calendar className="h-4 w-4" aria-hidden />
+            {hub.todayFormatted}
+          </p>
+        </div>
       </div>
 
       <section className="mb-12" aria-labelledby="events-featured">
@@ -143,10 +158,7 @@ export function EventsTodayPage() {
         >
           {hub.sections.featuredLabel}
         </p>
-        <Link
-          href={hub.featured.href}
-          className="group relative block overflow-hidden rounded-3xl border border-zinc-200 shadow-lg"
-        >
+        <div className="group relative overflow-hidden rounded-3xl border border-zinc-200 shadow-lg">
           <div className="relative aspect-[21/9] w-full md:aspect-[2.4/1]">
             <Image
               src={hub.featured.image}
@@ -176,12 +188,23 @@ export function EventsTodayPage() {
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/85 md:text-base">
                 {hub.featured.excerpt}
               </p>
-              <span className="mt-5 inline-block w-fit rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#c2410c] transition-colors group-hover:bg-[#fff7ed]">
-                {hub.sections.exploreCta}
-              </span>
+              <div className="mt-5 flex flex-wrap items-center gap-3">
+                <Link
+                  href={hub.featured.href}
+                  className="inline-block rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#c2410c] transition-colors hover:bg-[#fff7ed]"
+                >
+                  {hub.sections.eventDetailsCta}
+                </Link>
+                <Link
+                  href="/explore/beaches"
+                  className="inline-block rounded-full border border-white/45 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/20"
+                >
+                  {hub.sections.exploreCta}
+                </Link>
+              </div>
             </div>
           </div>
-        </Link>
+        </div>
       </section>
 
       <div className="grid gap-10 lg:grid-cols-[1fr_300px] lg:gap-12">

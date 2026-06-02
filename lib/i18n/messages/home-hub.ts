@@ -84,14 +84,14 @@ export function getHomeSidebar(lang: LanguageCode) {
         status: t(lang, L("Clear", "คล่องตัว", "畅通", "Свободно")),
         tone: "success" as const,
         kind: "road" as const,
-        href: "/living/transportation/songthaew",
+        href: "/living/transportation/driving",
       },
       {
         road: "Walking Street",
         status: t(lang, L("Moderate", "ปานกลาง", "中等", "Умеренно")),
         tone: "warning" as const,
         kind: "road" as const,
-        href: "/living/transportation/songthaew",
+        href: "/explore/beaches/pattaya-beach",
       },
       {
         road: "UTP Airport",

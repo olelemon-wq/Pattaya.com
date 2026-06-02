@@ -85,7 +85,7 @@ const hub = {
     "文件、资金沉淀与续签策略（50 岁以上）。",
     "Документы, депозиты и продление для 50+.",
   ),
-  retirementCta: L("Get Visa Quote", "ขอใบเสนอวีซ่า", "获取签证报价", "Запросить визу"),
+  retirementCta: L("Open Visa Guide", "เปิดคู่มือวีซ่า", "打开签证指南", "Открыть гайд по визе"),
   realEstateBadge: L("Real Estate", "อสังหาริมทรัพย์", "房地产", "Недвижимость"),
   condoTitle: L(
     "Mastering Pattaya's Condo Market",
@@ -99,7 +99,7 @@ const hub = {
     "永久产权与租赁权及 49% 外资配额。",
     "Freehold, leasehold и квота 49% для иностранцев.",
   ),
-  condoCta: L("View Property Ads →", "ดูประกาศอสังหา →", "查看房源 →", "Объявления →"),
+  condoCta: L("Open Condo Guide", "เปิดคู่มือคอนโด", "打开公寓指南", "Открыть гайд по кондо"),
   scamTitle: L("Urgent: Scam Alerts", "ด่วน: แจ้งเตือนมิจฉาชีพ", "紧急：诈骗预警", "Срочно: мошенничество"),
   safetyEssentials: L("Safety Essentials", "ความปลอดภัยพื้นฐาน", "安全要点", "Безопасность"),
   safety1: L(
@@ -122,10 +122,10 @@ const hub = {
     "Срочная помощь и местные протоколы.",
   ),
   downloadSafety: L(
-    "Download Safety Guide PDF",
-    "ดาวน์โหลดคู่มือความปลอดภัย",
-    "下载安全指南 PDF",
-    "Скачать PDF по безопасности",
+    "Open Safety Guide",
+    "เปิดคู่มือความปลอดภัย",
+    "打开安全指南",
+    "Открыть гайд по безопасности",
   ),
   retirementImageAlt: L(
     "Retirement lifestyle in Pattaya",
@@ -430,7 +430,7 @@ function commercialDefs(): HubCardDef[] {
         "5–20 年签证，礼宾服务与专属权益。",
         "Виза 5–20 лет с консьержем.",
       ),
-      cta: L("Apply Now", "สมัครเลย", "立即申请", "Подать заявку"),
+      cta: L("Open Elite Guide", "เปิดคู่มือ Elite", "打开 Elite 指南", "Открыть гайд Elite"),
       href: "/living/visa/thailand-elite",
     },
     {
@@ -444,7 +444,7 @@ function commercialDefs(): HubCardDef[] {
         "就业、创业与数字游民 LTR 框架。",
         "Работа, бизнес и LTR для digital nomads.",
       ),
-      cta: L("Legal Compliance", "ความถูกต้องตามกฎหมาย", "合规指南", "Соответствие закону"),
+      cta: L("Open Work Permit Guide", "เปิดคู่มือใบอนุญาตทำงาน", "打开工作许可指南", "Открыть гайд по work permit"),
       href: "/living/visa/work-permit",
     },
     {
@@ -458,7 +458,7 @@ function commercialDefs(): HubCardDef[] {
         "租约、押金与 TM30 报备。",
         "Договоры, депозиты и TM30.",
       ),
-      cta: L("View Listings", "ดูประกาศ", "查看房源", "Объявления"),
+      cta: L("Open Rental Guide", "เปิดคู่มือเช่าที่พัก", "打开租房指南", "Открыть гайд по аренде"),
       href: "/living/housing/rentals",
     },
     {
@@ -472,7 +472,7 @@ function commercialDefs(): HubCardDef[] {
         "芭提雅地区国际医院与诊所。",
         "Международные клиники Паттайи.",
       ),
-      cta: L("Hospital List", "รายชื่อโรงพยาบาล", "医院列表", "Список клиник"),
+      cta: L("Open Hospital Guide", "เปิดคู่มือโรงพยาบาล", "打开医院指南", "Открыть гайд по больницам"),
       href: "/living/healthcare/hospitals",
     },
   ];
@@ -490,7 +490,7 @@ function infoDefs() {
         "外资产权与过户。",
         "Владение недвижимостью иностранцами.",
       ),
-      cta: L("Legal Guide", "คู่มือกฎหมาย", "法律指南", "Правовой гид"),
+      cta: L("Open Ownership Guide", "เปิดคู่มือกรรมสิทธิ์", "打开产权指南", "Открыть гайд по владению"),
       href: "/living/housing/ownership",
     },
     {
@@ -503,7 +503,7 @@ function infoDefs() {
         "电费、水费与光纤网络。",
         "Электричество, вода, интернет.",
       ),
-      cta: L("Budget Tools", "เครื่องมืองบประมาณ", "预算工具", "Бюджет"),
+      cta: L("Open Utilities Guide", "เปิดคู่มือสาธารณูปโภค", "打开公用事业指南", "Открыть гайд по коммуналке"),
       href: "/living/cost-of-living/utilities",
     },
     {
@@ -516,7 +516,7 @@ function infoDefs() {
         "长期外籍人士国际医疗保险。",
         "Международная страховка.",
       ),
-      cta: L("View Policies", "ดูแผนประกัน", "查看方案", "Полисы"),
+      cta: L("Open Insurance Guide", "เปิดคู่มือประกัน", "打开保险指南", "Открыть гайд по страховке"),
       href: "/living/healthcare/insurance",
     },
     {
@@ -529,7 +529,7 @@ function infoDefs() {
         "泰国驾照与当地交通法规。",
         "Тайские права и ПДД.",
       ),
-      cta: L("License Guide", "คู่มือใบขับขี่", "驾照指南", "Права"),
+      cta: L("Open Driving Guide", "เปิดคู่มือใบขับขี่", "打开驾驶指南", "Открыть гайд по вождению"),
       href: "/living/transportation/driving",
     },
     {
@@ -542,7 +542,7 @@ function infoDefs() {
         "芭提雅礼仪与商务社交。",
         "Этикет и нетворкинг.",
       ),
-      cta: L("Learn More", "เรียนรู้เพิ่ม", "了解更多", "Подробнее"),
+      cta: L("Open Culture Guide", "เปิดคู่มือวัฒนธรรม", "打开文化指南", "Открыть культурный гайд"),
       href: "/living/culture/thai-culture",
     },
     {
@@ -555,7 +555,7 @@ function infoDefs() {
         "移民 90 天报到简明指南。",
         "Отчётность каждые 90 дней.",
       ),
-      cta: L("Process Guide", "คู่มือขั้นตอน", "流程指南", "Процесс"),
+      cta: L("Open 90-Day Guide", "เปิดคู่มือรายงาน 90 วัน", "打开 90 天报到指南", "Открыть гайд по 90 дням"),
       href: "/living/visa/90-day-report",
     },
     {
@@ -568,7 +568,7 @@ function infoDefs() {
         "双条车、渡轮与城际巴士。",
         "Сонгтео, паромы, автобусы.",
       ),
-      cta: L("Transit Map", "แผนที่ขนส่ง", "交通图", "Транспорт"),
+      cta: L("Open Transport Guide", "เปิดคู่มือขนส่ง", "打开交通指南", "Открыть транспортный гайд"),
       href: "/living/transportation/songthaew",
     },
     {
@@ -581,7 +581,7 @@ function infoDefs() {
         "紧急服务、旅游警察与安全守则。",
         "Экстренные службы и полиция.",
       ),
-      cta: L("Emergency Info", "ข้อมูลฉุกเฉิน", "紧急信息", "Экстренно"),
+      cta: L("Open Emergency Guide", "เปิดคู่มือฉุกเฉิน", "打开紧急指南", "Открыть экстренный гайд"),
       href: "/living/safety/emergency-guide",
     },
   ] as const;

@@ -28,7 +28,7 @@ export const livingImages = {
     "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80",
   insurance:
     "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80",
-  driving: "/images/living/driving-license.png",
+  driving: "/images/living/driving-guide.png",
   cultureCard:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuDgHRHTs44RnWQGUGkcQhs44nPAdKqu3s56UY9ZVig37OexggLa1AV4IkJ3MD9j2zmcNUOaDDFm0p07t3wqmJhUVwfFd3BVRpfpsenjm9s07Xh4pjIDwNsnxUENmqzTWa6KXoBICd1o08KEQz7L5fAdsTWluuj7HjB6HOj-gXCp03BNKrtusENTuZ1nWEvwP6KAH3RSpLMd9UFNl6njDQX312VRqSLhefd0EchUgRGO-0sMtYw9-ZJ-QClPpwSQoniL6v96nhqnb8Mv",
   ninetyDay:
@@ -42,6 +42,5 @@ export const livingImages = {
   grabApp: "/images/living/ride-grab.png",
   /** Bolt — city rides */
   boltApp: "/images/living/ride-bolt.png",
-  safetyGuide:
-    "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
+  safetyGuide: "/images/living/safety-guide-emergency.png",
 } as const;

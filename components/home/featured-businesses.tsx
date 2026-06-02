@@ -11,6 +11,7 @@ type FeaturedBusiness = {
   badgeStyle: string;
   logoSrc: string;
   logoAlt: string;
+  websiteHref: string;
   markClassName?: string;
 };
 
@@ -21,6 +22,7 @@ const businesses: FeaturedBusiness[] = [
     badgeStyle: "bg-[#fff7ed] text-[#f97316]",
     logoSrc: "/logos/royal-cliff.png",
     logoAlt: "Royal Cliff Hotels",
+    websiteHref: "https://www.royalcliff.com/",
     markClassName:
       "overflow-hidden rounded-full border border-[#fde8d8] bg-white p-3 shadow-sm",
   },
@@ -30,6 +32,7 @@ const businesses: FeaturedBusiness[] = [
     badgeStyle: "bg-[#eff6ff] text-[#2563eb]",
     logoSrc: "/logos/siam-yacht-club.png",
     logoAlt: "Siam Yacht Club",
+    websiteHref: "https://www.siamyachtclub.com/",
     markClassName: "overflow-hidden rounded-full bg-[#1a2344] p-2.5 shadow-sm",
   },
   {
@@ -38,6 +41,7 @@ const businesses: FeaturedBusiness[] = [
     badgeStyle: "bg-[#eff6ff] text-[#2563eb]",
     logoSrc: "/logos/bangkok-hospital.png",
     logoAlt: "Bangkok Hospital Pattaya",
+    websiteHref: "https://pattaya.bangkokhospital.com/",
     markClassName:
       "overflow-hidden rounded-full border border-[#e2e8f0] bg-white p-3 shadow-sm",
   },
@@ -75,7 +79,9 @@ export function FeaturedBusinesses() {
         {businesses.map((biz) => (
           <Link
             key={biz.name}
-            href="/directory/featured"
+            href={biz.websiteHref}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex flex-col items-center rounded-2xl border border-[#e2e8f0] bg-white p-6 text-center shadow-sm transition-shadow hover:shadow-md"
           >
             <BusinessMark biz={biz} />
