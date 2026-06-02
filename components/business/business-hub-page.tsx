@@ -385,7 +385,7 @@ export function BusinessHubPage() {
                 <div className="md:justify-self-end">
                   <Link
                     href={event.href}
-                    className="whitespace-nowrap rounded-full border-2 border-[#363636] px-8 py-3.5 text-sm font-bold tracking-wide text-[#363636] transition-all hover:bg-[#363636] hover:text-white"
+                    className="whitespace-nowrap rounded-full border-2 border-[#363636] px-5 py-2.5 text-xs font-bold tracking-wide text-[#363636] transition-all hover:bg-[#363636] hover:text-white sm:px-7 sm:py-3 sm:text-sm"
                   >
                     {event.linkLabel}
                   </Link>
