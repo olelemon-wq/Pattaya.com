@@ -7,11 +7,12 @@ import { getHomeForum } from "@/lib/i18n/messages/home-hub";
 export function ForumAndCurrency() {
   const { language } = useLanguage();
   const forum = getHomeForum(language);
+  const forumTopics = forum.topics.slice(0, 9);
 
   return (
-    <section className="mx-auto grid max-w-[1280px] gap-5 px-4 lg:grid-cols-[1fr_300px] lg:px-6">
+    <section className="mx-auto grid max-w-[1280px] items-stretch gap-5 px-4 lg:grid-cols-[1fr_300px] lg:px-6">
       <div className="rounded-2xl border border-[#e2e8f0] bg-[#f8fafc] p-5">
-        <div className="mb-4 flex items-center justify-between">
+        <div className="mb-3 flex shrink-0 items-center justify-between">
           <h2 className="text-base font-bold text-[#0c1a33]">{forum.title}</h2>
           <Link
             href="/forum/trending"
@@ -21,11 +22,11 @@ export function ForumAndCurrency() {
           </Link>
         </div>
         <ul className="divide-y divide-[#e2e8f0]">
-          {forum.topics.map((topic) => (
+          {forumTopics.map((topic) => (
             <li key={topic.title}>
               <Link
                 href={topic.href}
-                className="flex items-center gap-3 py-3 transition-colors first:pt-0 last:pb-0 hover:bg-[#f1f5f9]/80"
+                className="flex items-center gap-3 py-2.5 transition-colors first:pt-0 last:pb-0 hover:bg-[#f1f5f9]/80"
               >
                 <span
                   className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-bold ${topic.color}`}
@@ -47,24 +48,24 @@ export function ForumAndCurrency() {
 
       <div
         id="home-currency"
-        className="scroll-mt-24 rounded-2xl border border-[#e2e8f0] bg-white p-5 shadow-sm"
+        className="scroll-mt-24 flex h-full flex-col rounded-2xl border border-[#e2e8f0] bg-white p-5 shadow-sm"
       >
-        <h2 className="mb-4 text-sm font-bold text-[#0c1a33]">{forum.currencyTitle}</h2>
-        <ul className="space-y-3">
+        <h2 className="mb-3 text-sm font-bold text-[#0c1a33]">{forum.currencyTitle}</h2>
+        <ul className="space-y-2">
           {forum.currencies.map((c) => (
-            <li key={c.code} className="flex items-center justify-between gap-3">
-              <span className="flex min-w-0 items-center gap-2.5">
+            <li key={c.code} className="flex items-center justify-between gap-2">
+              <span className="flex min-w-0 items-center gap-2">
                 <span
-                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#f8fafc] text-lg leading-none ring-1 ring-[#e2e8f0]"
+                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#f8fafc] text-base leading-none ring-1 ring-[#e2e8f0]"
                   role="img"
                   aria-label={c.flagLabel}
                 >
                   {c.flag}
                 </span>
-                <span className="text-sm font-bold text-[#0c1a33]">{c.code}/THB</span>
+                <span className="text-xs font-bold text-[#0c1a33]">{c.code}/THB</span>
               </span>
-              <span className="flex shrink-0 items-center gap-2">
-                <span className="text-sm font-semibold tabular-nums text-[#0c1a33]">{c.rate}</span>
+              <span className="flex shrink-0 items-center gap-1.5">
+                <span className="text-xs font-semibold tabular-nums text-[#0c1a33]">{c.rate}</span>
                 <span
                   className={`text-xs ${c.trend === "up" ? "text-[#15803d]" : "text-[#dc2626]"}`}
                   aria-hidden

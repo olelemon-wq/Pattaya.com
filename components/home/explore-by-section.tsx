@@ -57,10 +57,10 @@ export function ExploreBySection() {
                 className="group flex h-full flex-col overflow-hidden rounded-xl border border-[#e2e8f0] bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md motion-reduce:transform-none sm:rounded-2xl"
                 aria-label={`${section.label}: ${section.countValue} ${section.countUnit}`}
               >
-                <div className="relative h-[4.5rem] shrink-0 overflow-hidden sm:h-20 md:h-[5.25rem]">
+                <div className="relative aspect-[6/5] w-full shrink-0 overflow-hidden sm:aspect-[5/4]">
                   <Image
                     src={image}
-                    alt=""
+                    alt={section.imageAlt}
                     fill
                     unoptimized={!isLocalAsset}
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
