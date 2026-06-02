@@ -22,7 +22,7 @@ export function NewsFeaturedHeroCinematic() {
       ctaTone="news"
       visualTone="news-dawn"
       showAiSummary={false}
-      minHeightClass="min-h-[min(70dvh,400px)] sm:min-h-[500px] lg:min-h-[560px]"
+      minHeightClass="min-h-[min(56dvh,360px)] sm:min-h-[420px] lg:min-h-[480px]"
       byline={tNewsHero(language, "byline")}
     />
   );

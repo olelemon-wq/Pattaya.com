@@ -62,7 +62,7 @@ export function BusinessDetailPage({ pageId }: { pageId: BusinessPageId }) {
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#363636]/90 via-[#363636]/55 to-[#363636]/25" />
-        <div className="relative z-10 mx-auto w-full max-w-[1280px] px-5 md:px-16">
+        <div className="relative z-10 mx-auto w-full max-w-[1280px] px-4 lg:px-6">
           <nav aria-label={tSiteUi(language, "breadcrumb")} className="mb-4">
             <ol className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/80">
               <li>
@@ -91,7 +91,7 @@ export function BusinessDetailPage({ pageId }: { pageId: BusinessPageId }) {
         </div>
       </section>
 
-      <div className="relative z-10 mx-auto -mt-12 max-w-[900px] px-5 md:-mt-14 md:px-16">
+      <div className="relative z-10 mx-auto -mt-12 max-w-[900px] px-4 md:-mt-14 lg:px-6">
         <aside
           className="rounded-2xl border border-[#c4c7c8]/30 bg-white p-6 shadow-xl md:flex md:items-center md:justify-between md:gap-8 md:p-8"
           aria-label={ui.consultationAria}
@@ -126,7 +126,7 @@ export function BusinessDetailPage({ pageId }: { pageId: BusinessPageId }) {
         </aside>
       </div>
 
-      <div className="mx-auto max-w-[1280px] space-y-16 px-5 py-16 md:px-16 md:py-20">
+      <div className="mx-auto max-w-[1280px] space-y-16 px-4 py-16 lg:px-6 md:py-20">
         {page.quickFacts ? (
           <section aria-labelledby="business-quick-facts">
             <h2

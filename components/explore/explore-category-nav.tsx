@@ -152,7 +152,7 @@ export function ExploreCategoryNav() {
 
   return (
     <section className="sticky top-0 z-30 border-b border-[#B52E88]/15 bg-white py-4">
-      <div className="mx-auto max-w-[1280px] px-5 md:px-16">
+      <div className="mx-auto max-w-[1280px] px-4 lg:px-6">
         <div
           ref={scrollRef}
           onMouseDown={onMouseDown}

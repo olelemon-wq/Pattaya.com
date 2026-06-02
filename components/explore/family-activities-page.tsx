@@ -260,7 +260,7 @@ export function FamilyActivitiesPage() {
           className="absolute inset-0 bg-gradient-to-b from-[#191c1d]/70 via-[#191c1d]/50 to-[#191c1d]/85"
           aria-hidden
         />
-        <div className="relative mx-auto flex min-h-[min(65vh,480px)] max-w-[1280px] flex-col justify-end px-5 pb-14 pt-20 md:px-16 md:pb-16">
+        <div className="relative mx-auto flex min-h-[min(65vh,480px)] max-w-[1280px] flex-col justify-end px-4 pb-14 pt-20 lg:px-6 md:pb-16">
           <nav aria-label={tSiteUi(language, "breadcrumb")} className="mb-4">
             <ol className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/80">
               <li>
@@ -291,7 +291,7 @@ export function FamilyActivitiesPage() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-[1280px] space-y-14 px-5 py-12 md:px-16 md:py-16">
+      <div className="mx-auto max-w-[1280px] space-y-14 px-4 py-12 lg:px-6 md:py-16">
         <section id="family-guide" className="scroll-mt-24" aria-labelledby="family-guide-title">
           <div>
             <h2 id="family-guide-title" className="text-2xl font-semibold text-[#191c1d] md:text-3xl">

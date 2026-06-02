@@ -18,6 +18,15 @@ function activeHrefForPath(pathname: string): string {
   return "";
 }
 
+function activeUnderlineClass(href: string): string {
+  if (href === "/") return "bg-[#f97316]";
+  if (href === "/news") return "bg-[#10438f]";
+  if (href === "/living") return "bg-[#B29475]";
+  if (href === "/explore") return "bg-[#B52E88]";
+  if (href === "/business") return "bg-[#363636]";
+  return "bg-[#f97316]";
+}
+
 function NavLinks({
   activeHref,
   language,
@@ -33,24 +42,29 @@ function NavLinks({
 
   return (
     <nav aria-label={tSiteUi(language, "mainNav")} className={className}>
-      <ul className="flex flex-col gap-1 lg:flex-row lg:items-center lg:gap-8">
+      <ul className="flex flex-col gap-0.5 lg:flex-row lg:items-center lg:gap-8">
         {navItems.map((item) => {
           const isActive = item.href === activeHref;
+          const underlineClass = activeUnderlineClass(item.href);
           return (
             <li key={item.href}>
               <Link
                 href={item.href}
                 onClick={onNavigate}
-                className={`relative block py-3 text-sm font-bold tracking-[0.12em] transition-colors lg:py-0 lg:text-xs ${
+                className={`relative block py-2 text-[14px] font-bold leading-tight tracking-[0.12em] transition-colors lg:py-0 lg:leading-normal ${
                   isActive
                     ? "text-[#0c1a33]"
                     : "text-[#64748b] hover:text-[#0c1a33]"
                 }`}
               >
                 {item.label}
-                {isActive && (
-                  <span className="absolute -bottom-1 left-0 hidden h-0.5 w-full rounded-full bg-[#f97316] lg:block" />
-                )}
+                <span
+                  className={`absolute -bottom-1 left-0 hidden h-0.5 w-full origin-left rounded-full lg:block ${underlineClass} ${
+                    isActive
+                      ? "scale-x-100 [animation:nav-underline-in_460ms_cubic-bezier(0.22,1,0.36,1)_both]"
+                      : "scale-x-0"
+                  }`}
+                />
               </Link>
             </li>
           );

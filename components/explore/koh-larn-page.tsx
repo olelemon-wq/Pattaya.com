@@ -274,7 +274,7 @@ export function KohLarnPage() {
           className="absolute inset-0 bg-gradient-to-b from-[#191c1d]/70 via-[#191c1d]/50 to-[#191c1d]/85"
           aria-hidden
         />
-        <div className="relative mx-auto flex min-h-[min(75vh,560px)] max-w-[1280px] flex-col justify-end px-5 pb-28 pt-20 md:px-16 md:pb-32">
+        <div className="relative mx-auto flex min-h-[min(75vh,560px)] max-w-[1280px] flex-col justify-end px-4 pb-28 pt-20 lg:px-6 md:pb-32">
           <nav aria-label={tSiteUi(language, "breadcrumb")} className="mb-4">
             <ol className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/80 sm:text-sm">
               <li>
@@ -308,7 +308,7 @@ export function KohLarnPage() {
         </div>
       </section>
 
-      <div className="relative z-10 mx-auto -mt-16 max-w-[960px] px-5 sm:-mt-20 md:px-16">
+      <div className="relative z-10 mx-auto -mt-16 max-w-[960px] px-4 sm:-mt-20 lg:px-6">
         <nav
           className="rounded-2xl border border-[#c4c7c8]/30 bg-white/95 p-5 shadow-xl backdrop-blur-md sm:p-6"
           aria-label={page.tripPlanner.ariaLabel}

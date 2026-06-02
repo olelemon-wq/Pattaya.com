@@ -2226,6 +2226,17 @@ body {
   animation: home-section-reveal 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+@keyframes nav-underline-in {
+  from {
+    transform: scaleX(0);
+    opacity: 0.75;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .home-section-reveal {
     animation: none;

@@ -106,7 +106,7 @@ export function BeachDetailPage({ slug }: { slug: BeachDetailSlug }) {
           className="absolute inset-0 bg-gradient-to-b from-[#191c1d]/55 via-[#191c1d]/35 to-[#191c1d]/85"
           aria-hidden
         />
-        <div className="relative mx-auto flex min-h-[min(55vh,480px)] max-w-[1280px] flex-col justify-end px-5 pb-12 pt-16 md:min-h-[min(60vh,520px)] md:px-16 md:pb-14">
+        <div className="relative mx-auto flex min-h-[min(55vh,480px)] max-w-[1280px] flex-col justify-end px-4 pb-12 pt-16 md:min-h-[min(60vh,520px)] lg:px-6 md:pb-14">
           <nav aria-label={tSiteUi(language, "breadcrumb")} className="mb-4">
             <ol className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/80">
               <li>
@@ -145,7 +145,7 @@ export function BeachDetailPage({ slug }: { slug: BeachDetailSlug }) {
         </div>
       </section>
 
-      <div className="mx-auto max-w-[1280px] space-y-10 px-5 py-12 md:px-16 md:py-16">
+      <div className="mx-auto max-w-[1280px] space-y-10 px-4 py-12 lg:px-6 md:py-16">
         <div className="grid gap-4 sm:grid-cols-3">
           <SummaryRow icon={Users} label={page.summary.bestFor.label} value={page.summary.bestFor.value} />
           <SummaryRow

@@ -32,9 +32,34 @@ export function PattayaWeatherWidget() {
   return (
     <Link
       href="/utilities/weather"
-      className="group flex h-full overflow-hidden rounded-2xl border border-[#e2e8f0]/90 bg-white shadow-sm transition-shadow hover:border-[#bae6fd]/80 hover:shadow-md"
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white shadow-sm transition-shadow hover:border-[#bae6fd]/80 hover:shadow-md"
     >
-      <div className="relative flex min-h-full flex-1 flex-col overflow-hidden px-4 py-4 sm:px-5 sm:py-5">
+      <div className="flex items-center justify-between gap-2 border-b border-[#bae6fd]/70 bg-gradient-to-r from-[#e0f2fe] via-[#bae6fd]/35 to-white px-4 py-3.5">
+        <div className="flex min-w-0 items-center gap-2.5">
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#0ea5e9]/20 text-[#0284c7] ring-1 ring-[#7dd3fc]/70">
+            <CloudSun className="h-4 w-4" strokeWidth={2.25} aria-hidden />
+          </span>
+          <h2 className="truncate text-base font-extrabold tracking-tight text-[#0c1a33]">
+            {copy.title}
+          </h2>
+        </div>
+        <div className="shrink-0 text-right">
+          {dateLabel ? (
+            <>
+              <p className="text-[9px] font-bold uppercase tracking-wide text-[#0284c7]/90">
+                {dateLabel.weekday}
+              </p>
+              <p className="text-[11px] font-bold tabular-nums text-[#0c1a33]">
+                {dateLabel.dayMonth}
+              </p>
+            </>
+          ) : (
+            <p className="h-7 w-12 animate-pulse rounded-md bg-white/60" aria-hidden />
+          )}
+        </div>
+      </div>
+
+      <div className="relative flex min-h-0 flex-1 flex-col justify-between overflow-hidden px-4 py-3.5 sm:px-4 sm:py-4">
         <div
           className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#fafcff] via-[#f4f9ff] to-[#eef6fc]"
           aria-hidden
@@ -47,61 +72,39 @@ export function PattayaWeatherWidget() {
           className="pointer-events-none absolute -bottom-10 -left-6 h-32 w-32 bg-[radial-gradient(circle,rgba(125,211,252,0.12)_0%,transparent_70%)]"
           aria-hidden
         />
-        <div
-          className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/90 to-transparent"
-          aria-hidden
-        />
 
-        <div className="relative flex items-start justify-between gap-3">
-          <h2 className="text-sm font-bold tracking-tight text-[#0A192F]">{copy.title}</h2>
-          <div className="text-right">
-            {dateLabel ? (
-              <>
-                <p className="text-[10px] font-semibold uppercase tracking-wide text-[#10438f]/80">
-                  {dateLabel.weekday}
-                </p>
-                <p className="text-xs font-bold tabular-nums text-[#0A192F]">
-                  {dateLabel.dayMonth}
-                </p>
-              </>
-            ) : (
-              <p className="h-8 w-14 animate-pulse rounded-md bg-white/50" aria-hidden />
-            )}
-          </div>
-        </div>
-
-        <div className="relative mt-4 flex items-center justify-between gap-2">
-          <div className="min-w-0 shrink-0">
-            <p className="text-[2.75rem] font-extrabold leading-none tracking-tight text-[#0A192F] sm:text-5xl">
+        <div className="relative flex w-full max-w-[17.5rem] items-center justify-between gap-3 pt-0.5 sm:max-w-[19rem] sm:gap-4">
+          <div className="min-w-0 shrink-0 pl-1 sm:pl-1.5">
+            <p className="text-[3.05rem] font-extrabold leading-none tracking-tight text-[#0A192F] sm:text-[3.25rem]">
               31
-              <span className="text-2xl font-bold text-[#10438f]/90 sm:text-3xl">°C</span>
+              <span className="text-[1.95rem] font-bold text-[#2f5aa3] sm:text-[2.1rem]">°C</span>
             </p>
-            <p className="mt-1.5 text-xs font-medium text-[#475569]">
+            <p className="mt-1 text-[0.92rem] font-semibold text-[#64748b]">
               {copy.feelsLike} <span className="font-bold text-[#0A192F]">34°</span>
             </p>
           </div>
 
-          <div className="relative flex shrink-0 items-center justify-center pr-0.5 sm:pr-1">
+          <div className="relative flex shrink-0 items-center justify-center">
             <span
-              className="absolute h-16 w-16 rounded-full bg-white/50 ring-1 ring-white/80 sm:h-20 sm:w-20"
+              className="absolute h-16 w-16 rounded-full bg-white/50 ring-1 ring-white/80 sm:h-[4.5rem] sm:w-[4.5rem]"
               aria-hidden
             />
             <CloudSun
-              className="relative h-[4.5rem] w-[4.5rem] stroke-[1.15] text-[#0c4a6e] transition-transform duration-300 group-hover:scale-105 sm:h-24 sm:w-24"
+              className="relative h-16 w-16 stroke-[1.15] text-[#0c4a6e] transition-transform duration-300 group-hover:scale-105 sm:h-[4.5rem] sm:w-[4.5rem]"
               aria-hidden
             />
           </div>
         </div>
 
-        <div className="relative mt-4 flex flex-wrap gap-2">
+        <div className="relative flex flex-wrap gap-2.5 pt-3.5">
           {stats.map((item) => {
             const Icon = item.icon;
             return (
               <span
                 key={item.label}
-                className="inline-flex items-center gap-1.5 rounded-full border border-[#e2e8f0]/60 bg-white/75 px-2.5 py-1 text-[10px] font-semibold text-[#0A192F] shadow-[0_1px_2px_rgba(15,23,42,0.04)] backdrop-blur-sm sm:text-[11px]"
+                className="inline-flex items-center gap-1.5 rounded-full border border-[#dbeafe] bg-white/85 px-3 py-1 text-xs font-semibold text-[#0A192F] shadow-[0_1px_2px_rgba(15,23,42,0.06)] backdrop-blur-sm sm:gap-2 sm:px-3.5 sm:py-1.5 sm:text-[13px]"
               >
-                <Icon className="h-3.5 w-3.5 shrink-0 text-[#10438f]" aria-hidden />
+                <Icon className="h-3.5 w-3.5 shrink-0 text-[#10438f] sm:h-4 sm:w-4" aria-hidden />
                 <span className="text-[#64748b]">{item.label}</span>
                 <span>{item.value}</span>
               </span>

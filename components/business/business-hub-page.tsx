@@ -164,7 +164,7 @@ export function BusinessHubPage() {
         <BreakingNewsTicker variant="business" />
       </div>
 
-      <div className="mx-auto max-w-[1280px] px-5 pt-8 md:px-16">
+      <div className="mx-auto max-w-[1280px] px-4 pt-8 lg:px-6">
         <section className="mb-12 md:mb-16" aria-label={tBusiness(language, "heroTitle")}>
           <FeaturedHeroCinematic
             image={businessImages.hero}
@@ -178,14 +178,14 @@ export function BusinessHubPage() {
             ctaTone="news"
             visualTone="news-dawn"
             showAiSummary={false}
-            minHeightClass="min-h-[min(70dvh,400px)] sm:min-h-[500px] lg:min-h-[560px]"
+            minHeightClass="min-h-[min(56dvh,360px)] sm:min-h-[420px] lg:min-h-[480px]"
           />
         </section>
       </div>
 
       {/* Company Setup */}
       <section id="company-setup" className="scroll-mt-24 relative bg-white py-20 md:py-[100px]">
-        <div className="mx-auto max-w-[1280px] px-5 md:px-16">
+        <div className="mx-auto max-w-[1280px] px-4 lg:px-6">
           <div className="mx-auto mb-16 max-w-3xl text-center">
             <h2 className="mb-6 text-4xl font-bold text-[#363636] md:text-5xl">
               {tBusiness(language, "setupSectionTitle")}
@@ -223,7 +223,7 @@ export function BusinessHubPage() {
 
       {/* Industry Guides */}
       <section id="industry-guides" className="scroll-mt-24 relative bg-[#f5f5f4] py-20 md:py-[100px]">
-        <div className="mx-auto max-w-[1280px] px-5 md:px-16">
+        <div className="mx-auto max-w-[1280px] px-4 lg:px-6">
           <div className="mb-16 flex flex-col items-end justify-between gap-6 md:flex-row">
             <div className="max-w-2xl">
               <span className="mb-4 block text-sm font-bold uppercase tracking-[0.3em] text-[#B8860B]">
@@ -258,7 +258,7 @@ export function BusinessHubPage() {
       <section id="economy" className="scroll-mt-24 relative overflow-hidden bg-[#363636] py-20 md:py-[100px]">
         <div className="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-white/5 blur-3xl" />
         <div className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-[#ae2f34]/10 blur-3xl" />
-        <div className="relative z-10 mx-auto max-w-[1280px] px-5 md:px-16">
+        <div className="relative z-10 mx-auto max-w-[1280px] px-4 lg:px-6">
           <div className="grid grid-cols-1 items-center gap-20 lg:grid-cols-2">
             <div>
               <h2 className="mb-10 text-4xl font-bold leading-tight text-white">
@@ -350,7 +350,7 @@ export function BusinessHubPage() {
 
       {/* Networking Events */}
       <section id="networking" className="scroll-mt-24 bg-white py-20 md:py-[100px]">
-        <div className="mx-auto max-w-[1280px] px-5 md:px-16">
+        <div className="mx-auto max-w-[1280px] px-4 lg:px-6">
           <div className="mb-4 flex items-center gap-5">
             <h2 className="text-4xl font-bold text-[#363636]">
               {tBusiness(language, "networkingHeading")}

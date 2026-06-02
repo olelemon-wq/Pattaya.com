@@ -52,35 +52,42 @@ export function BreakingNewsTicker({
     return () => observer.disconnect();
   }, []);
 
+  const marqueeMask =
+    "linear-gradient(90deg, transparent 0, #000 4.5rem, #000 calc(100% - 2rem), transparent 100%)";
+
   return (
-    <div
-      ref={rootRef}
-      className={`flex h-8 items-center overflow-hidden px-4 text-[11px] font-bold uppercase tracking-[0.15em] lg:px-6 ${barStyles[variant]}`}
-      role="region"
-      aria-label={tSiteUi(language, "breakingNews")}
-    >
-      <span className={labelStyles[variant]}>{breakingLabel}</span>
+    <div className={`w-full ${barStyles[variant]}`}>
       <div
-        className="relative ml-4 min-w-0 flex-1 overflow-hidden"
-        style={{
-          maskImage:
-            "linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent)",
-          WebkitMaskImage:
-            "linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent)",
-        }}
+        ref={rootRef}
+        className="mx-auto flex h-10 max-w-[1280px] items-center px-4 lg:px-6"
+        role="region"
+        aria-label={tSiteUi(language, "breakingNews")}
       >
-        <div
-          className={`breaking-news-marquee-track flex w-max ${paused ? "is-paused" : ""}`}
+        <span
+          className={`${labelStyles[variant]} shrink-0 pr-4 text-[14px] font-bold uppercase tracking-[0.12em]`}
         >
-          {[0, 1].map((copy) => (
-            <span
-              key={copy}
-              className="inline-block shrink-0 pr-12 font-medium normal-case tracking-normal opacity-95 motion-reduce:pr-0"
-              aria-hidden={copy === 1 ? true : undefined}
-            >
-              {text}
-            </span>
-          ))}
+          {breakingLabel}
+        </span>
+        <div
+          className="relative min-w-0 flex-1 overflow-hidden"
+          style={{
+            maskImage: marqueeMask,
+            WebkitMaskImage: marqueeMask,
+          }}
+        >
+          <div
+            className={`breaking-news-marquee-track flex w-max ${paused ? "is-paused" : ""}`}
+          >
+            {[0, 1].map((copy) => (
+              <span
+                key={copy}
+                className="inline-block shrink-0 pr-12 text-[14px] font-medium leading-none normal-case tracking-normal opacity-95 motion-reduce:pr-0"
+                aria-hidden={copy === 1 ? true : undefined}
+              >
+                {text}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -289,11 +289,11 @@ export function ExploreHubPage() {
         <BreakingNewsTicker variant="explore" />
       </div>
 
-      <div className="mx-auto max-w-[1280px] px-5 pt-8 md:px-16">
+      <div className="mx-auto max-w-[1280px] px-4 pt-8 lg:px-6">
         <section className="mb-12 md:mb-16" aria-label={tExplore(language, "heroTitle")}>
           <article
             data-cinematic="active"
-            className="hero-cinematic group relative isolate z-0 overflow-hidden rounded-xl shadow-2xl ring-1 ring-black/10 sm:rounded-2xl min-h-[min(70dvh,400px)] sm:min-h-[500px] lg:min-h-[560px]"
+            className="hero-cinematic group relative isolate z-0 overflow-hidden rounded-xl shadow-2xl ring-1 ring-black/10 sm:rounded-2xl min-h-[min(56dvh,360px)] sm:min-h-[420px] lg:min-h-[480px]"
           >
           <div className="hero-cinematic__bg absolute inset-[-4%]">
             <Image
@@ -314,7 +314,7 @@ export function ExploreHubPage() {
             aria-hidden
           />
 
-          <div className="relative z-10 mx-auto flex min-h-[min(70dvh,400px)] w-full flex-col items-center justify-center px-5 text-center sm:min-h-[500px] md:px-10 lg:min-h-[560px]">
+          <div className="relative z-10 mx-auto flex min-h-[min(56dvh,360px)] w-full flex-col items-center justify-center px-5 text-center sm:min-h-[420px] md:px-10 lg:min-h-[480px]">
             <h1 className="hero-cinematic__rise hero-cinematic__rise--2 mb-8 text-3xl font-bold tracking-tight text-white drop-shadow-lg md:text-5xl">
               {tExplore(language, "heroTitle")}
             </h1>
@@ -387,11 +387,11 @@ export function ExploreHubPage() {
         <ExploreCategoryNav />
       </div>
 
-      <section className="mx-auto max-w-[1280px] px-5 py-8 md:px-16">
+      <section className="mx-auto max-w-[1280px] px-4 py-8 lg:px-6">
         <PattayaCityMap />
       </section>
 
-      <div className="mx-auto max-w-[1280px] px-5 py-16 md:px-16">
+      <div className="mx-auto max-w-[1280px] px-4 py-16 lg:px-6">
         {/* Must-Visit + Dining + Wellness */}
         <section className="mb-20">
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-stretch">
@@ -624,7 +624,7 @@ export function ExploreHubPage() {
 
       {/* Lifestyle carousel */}
       <section className="mb-20 bg-white py-16">
-        <div className="mx-auto max-w-[1280px] px-5 md:px-16">
+        <div className="mx-auto max-w-[1280px] px-4 lg:px-6">
           <div className="mb-8">
             <h2 className="text-2xl font-semibold md:text-3xl">
               {tExplore(language, "lifestyleTitle")}
@@ -671,7 +671,7 @@ export function ExploreHubPage() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-[1280px] px-5 md:px-16">
+      <div className="mx-auto max-w-[1280px] px-4 lg:px-6">
         {/* Shopping & Family */}
         <section className="mb-20 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:items-stretch">
           <div className="flex flex-col gap-8 lg:min-h-0">
