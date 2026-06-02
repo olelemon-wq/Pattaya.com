@@ -5,6 +5,13 @@ import { LANGUAGES } from "@/lib/i18n/languages";
 import { tSiteUi } from "@/lib/i18n/messages/site-ui";
 import { useLanguage } from "./language-provider";
 
+const LANGUAGE_FLAGS: Record<(typeof LANGUAGES)[number]["code"], string> = {
+  th: "https://flagcdn.com/w40/th.png",
+  en: "https://flagcdn.com/w40/gb.png",
+  zh: "https://flagcdn.com/w40/cn.png",
+  ru: "https://flagcdn.com/w40/ru.png",
+};
+
 export function LanguageSelector({ className = "" }: { className?: string }) {
   const { language, setLanguage } = useLanguage();
   const [open, setOpen] = useState(false);
@@ -41,8 +48,14 @@ export function LanguageSelector({ className = "" }: { className?: string }) {
         aria-label={tSiteUi(language, "selectLanguage")}
         className="flex items-center gap-1.5 rounded-full border border-[#e2e8f0] bg-white px-3 py-2 text-xs font-semibold text-[#0c1a33] transition-colors hover:border-[#f97316] hover:text-[#f97316]"
       >
-        <span aria-hidden="true">🌐</span>
-        <span>{current.label}</span>
+        <img
+          src={LANGUAGE_FLAGS[current.code]}
+          alt=""
+          aria-hidden="true"
+          className="h-3.5 w-5 rounded-[2px] object-cover ring-1 ring-black/10"
+          loading="lazy"
+        />
+        <span className="sr-only">{current.label}</span>
         <span
           className={`text-[10px] transition-transform ${open ? "rotate-180" : ""}`}
           aria-hidden="true"
@@ -74,7 +87,16 @@ export function LanguageSelector({ className = "" }: { className?: string }) {
                       : "text-[#0c1a33] hover:bg-[#f8fafc]"
                   }`}
                 >
-                  <span>{lang.menuLabel}</span>
+                  <span className="inline-flex items-center gap-2">
+                    <img
+                      src={LANGUAGE_FLAGS[lang.code]}
+                      alt=""
+                      aria-hidden="true"
+                      className="h-3.5 w-5 rounded-[2px] object-cover ring-1 ring-black/10"
+                      loading="lazy"
+                    />
+                    <span>{lang.menuLabel}</span>
+                  </span>
                   {selected && <span aria-hidden="true">✓</span>}
                 </button>
               </li>
