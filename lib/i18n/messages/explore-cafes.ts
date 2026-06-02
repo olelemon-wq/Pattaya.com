@@ -1,113 +1,15 @@
 import type { LanguageCode } from "@/lib/i18n/languages";
-import { cafeTipImages, cafeZoneImages } from "@/lib/design/cafe-zone-images";
+import { cafesImages } from "@/lib/design/cafes-images";
+import { marketPagePaths } from "@/lib/design/market-page-paths";
 import { L, t } from "@/lib/i18n/living-helpers";
 import { getExploreCommon } from "@/lib/i18n/messages/explore-common";
-
-export function getCafeZones(lang: LanguageCode) {
-  const c = getExploreCommon(lang);
-  return {
-    title: t(lang, L("Choose your café area", "เลือกโซนคาเฟ่", "选择咖啡区域", "Выберите район")),
-    subtitle: t(
-      lang,
-      L(
-        "Where to look for beach-club mornings, central bay terraces, or hilltop pour-overs — price ranges are guides only; no paid listings on this page.",
-        "โซนริมหาด อ่าวกลาง บนหน้าผา — ราคาเป็นคร่าวๆ ไม่มีรายการโฆษณาในหน้านี้",
-        "海滨、中央海湾或山顶手冲 — 价格为参考，本页无商业推广。",
-        "Где искать кофе у моря, в заливе или на холме — цены ориентировочные.",
-      ),
-    ),
-    hoursLabel: c.hours,
-    mustTryLabel: c.mustTry,
-    vibeLabel: t(lang, L("Vibe", "บรรยากาศ", "氛围", "Атмосфера")),
-    priceRangeLabel: t(lang, L("Typical spend", "ราคาโดยประมาณ", "人均参考", "Примерно")),
-    items: [
-      {
-        id: "jomtien" as const,
-        name: t(lang, L("Jomtien Beach Road", "ถนนจอมเทียน", "Jomtien 海滩路", "Jomtien Beach Rd")),
-        vibe: t(lang, L("Beach-club · Relaxed · Day to dusk", "beach club · ชิล · กลางวันถึงเย็น", "海滩俱乐部 · 休闲 · 白天至黄昏", "Beach club · расслабленно")),
-        hours: t(lang, L("Most · ~08:00–22:00", "ส่วนใหญ่ · ~08:00–22:00", "多数 · 约8:00–22:00", "Большинство · ~8:00–22:00")),
-        mustTry: t(lang, L("Iced latte, fresh coconut, beachfront seating", "ลาเต้เย็น มะพร้าว ที่นั่งริมหาด", "冰拿铁、鲜椰、海滨座位", "Iced latte, кокос")),
-        text: t(
-          lang,
-          L(
-            "Long chats facing the Gulf — coffee and light bites by day, golden-hour drinks as the light drops. Quieter than central Pattaya.",
-            "นั่งคุยยาววิวอ่าว — กาแฟกลางวัน ดื่มยามเย็น เงียบกว่ากลางเมือง",
-            "面向海湾的长聊 — 白天咖啡轻食，黄昏饮品；比市中心安静。",
-            "Кофе днём, напитки на закате — тише центра.",
-          ),
-        ),
-        priceRange: t(lang, L("~80–180 THB / drink", "~80–180 บาท/แก้ว", "约80–180泰铢/杯", "~80–180 бат/напиток")),
-        href: "/explore/beaches/jomtien",
-        linkLabel: t(lang, L("Jomtien beach guide →", "คู่มือหาดจอมเทียน →", "Jomtien 海滩指南 →", "Гид Jomtien →")),
-        external: false,
-        image: cafeZoneImages[0],
-      },
-      {
-        id: "pattaya-beach" as const,
-        name: t(lang, L("Pattaya Beach & Beach Road", "หาดพัทยา & Beach Road", "芭提雅海滩与 Beach Road", "Pattaya Beach Rd")),
-        vibe: t(lang, L("Central bay · Terraces · Evening buzz", "อ่าวกลาง · เทอร์เรส · ค่ำคึก", "中央海湾 · 露台 · 傍晚热闹", "Центр · террасы")),
-        hours: t(lang, L("Most · ~09:00–23:00", "ส่วนใหญ่ · ~09:00–23:00", "多数 · 约9:00–23:00", "Большинство · ~9:00–23:00")),
-        mustTry: t(lang, L("Espresso tonic, sunset mocktails, light bites", "Espresso tonic mocktail ของว่าง", "Espresso tonic、无酒精 mocktail", "Espresso tonic, mocktail")),
-        text: t(
-          lang,
-          L(
-            "Elevated terrace vibes above the main bay — come before dusk for the best light and breeze. Walkable from the beach.",
-            "เทอร์เรสเหนืออ่าวหลัก — มาก่อนค่ำ แสงและลมดี เดินจากหาดได้",
-            "主湾上方露台 — 黄昏前光线与海风最佳，步行可达海滩。",
-            "Террасы над заливом — до заката, пешком от пляжа.",
-          ),
-        ),
-        priceRange: t(lang, L("~90–200 THB / drink", "~90–200 บาท/แก้ว", "约90–200泰铢/杯", "~90–200 бат/напиток")),
-        href: "/explore/beaches/pattaya-beach",
-        linkLabel: t(lang, L("Pattaya Beach guide →", "คู่มือหาดพัทยา →", "芭提雅海滩指南 →", "Гид Pattaya Beach →")),
-        external: false,
-        image: cafeZoneImages[1],
-      },
-      {
-        id: "pratumnak" as const,
-        name: t(lang, L("Pratumnak Hill & clifftop", "พระตำหนัก & ริมหน้าผา", "帕坦纳克山与悬崖", "Pratumnak Hill")),
-        vibe: t(lang, L("Viewpoint · Specialty · Slow mornings", "จุดชมวิว · สペเชียลตี้ · เช้าช้า", "观景点 · 精品 · 慢早晨", "Виды · specialty · медленное утро")),
-        hours: t(lang, L("Most · ~08:00–20:00", "ส่วนใหญ่ · ~08:00–20:00", "多数 · 约8:00–20:00", "Большинство · ~8:00–20:00")),
-        mustTry: t(lang, L("Pour-over, house pastries, avocado toast", "พูรโอเวอร์ เบเกอรี่ อาหารเช้า", "手冲、烘焙、牛油果吐司", "Pour-over, выпечка")),
-        text: t(
-          lang,
-          L(
-            "Small footprint cafés tucked into the hill with big views — specialty roasts and bakery-forward brunch between beach time and dinner.",
-            "คาเฟ่เล็กบนเขา วิวใหญ่ — คั่วพิเศษ บรันช์ ระหว่างหาดกับดินเนอร์",
-            "山丘小馆大视野 — 精品烘焙与早午餐，介于海滩与晚餐之间。",
-            "Маленькие кафе на холме — specialty и бранч.",
-          ),
-        ),
-        priceRange: t(lang, L("~100–250 THB / drink · ~200–400 brunch", "~100–250 บาท/แก้ว · บรันช์ ~200–400", "约100–250泰铢/杯 · 早午餐200–400", "~100–250 бат · бранч ~200–400")),
-        href: "/explore/beaches/pratumnak",
-        linkLabel: t(lang, L("Pratumnak beach guide →", "คู่มือหาดพระตำหนัก →", "帕坦纳克指南 →", "Гид Pratumnak →")),
-        external: false,
-        image: cafeZoneImages[2],
-      },
-      {
-        id: "wongamat" as const,
-        name: t(lang, L("Wongamat & Naklua north", "วงอมาตย์ & นาเกลือเหนือ", "Wongamat 与北部那库拉", "Wongamat & Naklua")),
-        vibe: t(lang, L("Quiet · Resort-adjacent · Morning calm", "เงียบ · ใกล้รีสอร์ท · เช้าสงบ", "安静 · 度假村旁 · 晨间宁静", "Тихо · у курортов")),
-        hours: t(lang, L("Most · ~07:30–18:00", "ส่วนใหญ่ · ~07:30–18:00", "多数 · 约7:30–18:00", "Большинство · ~7:30–18:00")),
-        mustTry: t(lang, L("Flat white, Thai tea soft-serve, quiet laptop spots", "flat white ชาไทย soft-serve นั่ง laptop", "flat white、泰茶 soft-serve", "Flat white, Thai tea")),
-        text: t(
-          lang,
-          L(
-            "Calmer northern cove — good for slow pour-over mornings and work-friendly AC before the central bay crowds arrive.",
-            "อ่าวเหนือเงียบ — พูรโอเวอร์เช้า นั่ง laptop แอร์เย็น ก่อนคนเยอะกลางเมือง",
-            "北部静湾 — 适合慢手冲早晨与有空调的办公位。",
-            "Северная бухта — тихое утро и кондиционер.",
-          ),
-        ),
-        priceRange: t(lang, L("~80–160 THB / drink", "~80–160 บาท/แก้ว", "约80–160泰铢/杯", "~80–160 бат/напиток")),
-        href: "/explore/beaches/wongamat",
-        linkLabel: t(lang, L("Wongamat beach guide →", "คู่มือหาดวงอมาตย์ →", "Wongamat 指南 →", "Гид Wongamat →")),
-        external: false,
-        image: cafeZoneImages[3],
-      },
-    ],
-  };
-}
+import {
+  getCafeFirstVisitPicks,
+  getCafeGuideIntro,
+  getCafeGuideItems,
+  getCafeHoppingRoute,
+  getCafeMoodPicks,
+} from "@/lib/i18n/messages/explore-cafes-guide";
 
 export function getCafeTips(lang: LanguageCode) {
   return {
@@ -115,112 +17,108 @@ export function getCafeTips(lang: LanguageCode) {
     subtitle: t(
       lang,
       L(
-        "Practical habits for timing, seating, and ordering — no paid listings on this page.",
-        "เคล็ดลับเวลา ที่นั่ง การสั่ง — ไม่มีรายการโฆษณาในหน้านี้",
-        "时间、座位与点单实用建议 — 本页无商业推广。",
-        "Советы по времени, местам и заказу.",
+        "Simple tips for café days in Pattaya — the best times to go, where to sit, and how to order what you actually want.",
+        "เคล็ดลับก่อนไปคาเฟ่ในพัทยา — ไปเวลาไหนดี นั่งตรงไหนสบาย และสั่งอะไรให้ได้ตามใจ",
+        "芭提雅喝咖啡的实用建议——什么时候去、坐哪里更舒服、怎么点到你想要的。",
+        "Простые советы для café-дня в Pattaya — когда идти, где сидеть и как заказать то, что хочется.",
       ),
     ),
     items: [
       {
         id: "hours" as const,
-        title: t(lang, L("Best hours", "ช่วงเวลาดี", "最佳时段", "Время")),
+        title: t(lang, L("Best hours", "ช่วงเวลาไหนดี", "什么时候去最好", "Когда идти")),
         paragraphs: [
           t(
             lang,
             L(
-              "Morning (08:00–11:00) for quiet laptop sessions and fresh bakery — hill and north-shore spots fill slower than Beach Road.",
-              "เช้า 08–11 เงียบ laptop เบเกอรี่สด — บนเขา/เหนือคนน้อยกว่า Beach Road",
-              "早晨8–11点适合安静办公与新鲜烘焙 — 山上与北部比 Beach Road 人少。",
-              "Утро 8–11 — тихо для ноутбука и выпечки.",
+              "08:00–11:00 is the sweet spot for quiet mornings — good for laptop time, fresh bakery, and photos without crowds. Spots on the hill or north shore (Jomtien, Naklua) usually feel calmer than Beach Road at this hour.",
+              "เช้า 08:00–11:00 คือช่วงที่คุ้มสุด — เงียบพอนั่ง laptop ได้ เบเกอรี่ยังสด ถ่ายรูปไม่ต้องแย่งคน โซนบนเขาหรือฝั่งเหนืออย่างจอมเทียน/นาเกลือมักเงียบกว่า Beach Road",
+              "8:00–11:00 是早晨黄金时段——适合办公、新鲜烘焙和拍照，人相对少；山上或北部（Jomtien、Naklua）通常比 Beach Road 安静。",
+              "08:00–11:00 — тихое утро для ноутбука и выпечки; Jomtien и Naklua спокойнее Beach Road.",
             ),
           ),
           t(
             lang,
             L(
-              "17:00–19:00 for sunset terraces and photo light on Pratumnak and central bay decks. Weekends 10:00–12:00 brunch queues are common — arrive early or after 13:00.",
-              "17–19 แสงพระอาทิตย์ตก พระตำหนัก/อ่าวกลาง สุดสัปดาห์บรันช์ 10–12 คิวยาว มาเช้าหรือหลัง 13:00",
-              "17–19点帕坦纳克与中央湾露台看日落；周末10–12点早午餐常排队。",
-              "17–19 — закат на террасах; бранч в выходные 10–12 — очереди.",
+              "17:00–19:00 is prime time for beach cafés and rooftop sunset views — arrive before the light drops. On weekends, brunch queues often hit 10:00–12:00; come before 10:00 or after 13:00 if you hate waiting.",
+              "17:00–19:00 เหมาะคาเฟ่ริมทะเลและ rooftop ดูพระอาทิตย์ตก — มาก่อนแสงลง ส่วนสุดสัปดาห์บรันช์ช่วง 10:00–12:00 มักมีคิว ถ้าไม่อยากรอ มาก่อน 10:00 หรือหลัง 13:00",
+              "17:00–19:00 适合海滨咖啡和屋顶看日落——最好在光线暗下来前到。周末 10:00–12:00 早午餐常排队，不想等就 10 点前或 13 点后去。",
+              "17:00–19:00 — закат у моря и на rooftop; в выходные бранч 10:00–12:00 — очереди.",
             ),
           ),
         ],
-        image: cafeTipImages[0],
       },
       {
         id: "work" as const,
-        title: t(lang, L("Work-friendly spots", "นั่งทำงานได้", "适合办公", "Для работы")),
+        title: t(lang, L("Working from a café", "นั่งทำงานในร้าน", "在咖啡馆办公", "Работа из кафе")),
         paragraphs: [
           t(
             lang,
             L(
-              "Check power outlets and Wi‑Fi at the counter before settling in — not every beachfront table has plugs. Hill cafés cool faster with AC; open-deck spots can be breezy and loud.",
-              "ถามปลั๊กและ Wi‑Fi ก่อนนั่ง — โต๊ะริมหาดไม่มีปลั๊กทุกที่ บนเขาแอร์เย็น ดาดฟ้าลมแรง",
-              "入座前确认插座与 Wi‑Fi — 海滨桌并非都有电源；山上空调更凉，露天台可能风大嘈杂。",
-              "Спросите про розетки и Wi‑Fi; у моря не везде есть питание.",
+              "Ask about Wi‑Fi and power outlets at the counter before you sit — beachfront tables look great but not every seat has a plug. Garden cafés (Sheeva) and hidden spots (Backstreet) tend to have stronger AC if midday heat is an issue.",
+              "ถาม Wi‑Fi และปลั๊กที่เคาน์เตอร์ก่อนนั่ง — โต๊ะริมหาดสวยแต่ไม่ใช่ทุกที่มีปลั๊ก คาเฟ่สวนอย่าง Sheeva หรือร้านลับอย่าง Backstreet มักแอร์เย็นกว่า ถ้ากลางวันร้อน",
+              "入座前先问 Wi‑Fi 和插座——海滨位好看，但不是每张桌子都有电源。花园店（Sheeva）或隐蔽店（Backstreet）空调通常更凉，中午更舒服。",
+              "Спросите Wi‑Fi и розетки до посадки; у моря не везде есть питание. Sheeva и Backstreet — прохладнее днём.",
             ),
           ),
           t(
             lang,
             L(
-              "One drink per hour is an unwritten norm at busy specialty shops. Long laptop sessions are welcome off-peak; move on if a queue builds at the door.",
-              "กติกาไม่เป็นลายลักษณ์ ~1 แก้ว/ชม. นอก peak นั่งได้ ถ้ามีคิวรอให้ย้าย",
-              "精品店非正式规则约每小时一杯；非高峰可久坐，门口排队时请让位。",
-              "Неформально ~1 напиток в час; уступите место, если очередь.",
+              "At busy specialty shops, ordering roughly one drink per hour is the unspoken norm. Off-peak hours are fine for long sits; if people start queuing at the door, it is polite to wrap up and free a table.",
+              "ร้าน specialty ที่คนเยอะ มักมีกติกาไม่เป็นลายลักษณ์ว่าสั่งประมาณ 1 แก้วต่อชั่วโมง นอก peak นั่งนานได้ แต่ถ้ามีคิวรอหน้าร้าน ควรเก็บของให้โต๊ะว่าง",
+              "人气精品店非正式规则大约是每小时一杯；非高峰可以久坐，但如果门口开始排队，最好收拾让位。",
+              "В specialty-кафе неформально ~1 напиток в час; уступите стол, если очередь у входа.",
             ),
           ),
         ],
-        image: cafeTipImages[1],
       },
       {
         id: "seating" as const,
-        title: t(lang, L("Seating choice", "เลือกที่นั่ง", "选座", "Места")),
+        title: t(lang, L("Pick your seat", "เลือกที่นั่งให้เหมาะ", "怎么选座位", "Выбор места")),
         paragraphs: [
           t(
             lang,
             L(
-              "Indoor or shaded tables for midday heat (11:00–15:00) — Pattaya sun is strong even on cloudy days. Outdoor decks and cliff rails shine at golden hour.",
-              "ในร่ม/ร่ม 11–15 น. แดดแรงแม้เมฆครึ้ม ดาดฟ้าและริมหน้าผาดีช่วงเย็น",
-              "11–15点选室内或荫凉位 — 芭提雅日照强；黄昏时户外露台与悬崖边最佳。",
-              "11–15 — внутри или в тени; на закат — террасы.",
+              "11:00–15:00 — choose indoor or shaded seats. Pattaya sun is harsh even when it looks cloudy, and open decks get uncomfortable fast. Save outdoor and seafront tables for late afternoon when the light turns golden.",
+              "11:00–15:00 เลือกที่ในร่มหรือมีร่มเงา — แดดพัทยาแรงแม้ท้องฟ้าเมฆครึ้ม โต๊ะกลางแจ้งร้อนเร็ว เก็บที่นั่งริมทะเล/ดาดฟ้าไว้ช่วงบ่ายแก่ แสงจะสวยกว่า",
+              "11:00–15:00 选室内或有荫凉的位子——芭提雅日照很强，阴天也晒；露天位很快会热。海滨和露台留到下午晚些时候，光线更柔和。",
+              "11:00–15:00 — внутри или в тени; террасы и море — ближе к вечеру.",
             ),
           ),
           t(
             lang,
             L(
-              "After dark, hill viewpoints get breezy — a light layer helps. Smoking rules vary; most indoor rooms are non-smoking.",
-              "หลังค่ำบนหน้าผาลมแรง เอาเสื้อบาง กฎสูบบุหรี่ต่างกัน ในอาคารส่วนใหญ่ห้าม",
-              "入夜后山顶风大，备薄外套；室内多数禁烟。",
-              "После темноты на холме прохладно; внутри обычно некурящая зона.",
+              "If you are planning a full café day, Jomtien and Naklua are worth starting early — many regulars say the best mood and sea views in Pattaya right now cluster in these zones, away from central Beach Road crowds.",
+              "ถ้าวางแผนคาเฟ่ฮอปทั้งวัน ลองเริ่มที่จอมเทียนหรือนาเกลือตั้งแต่เช้า — หลายคนบอกว่าช่วงนี้ฟีลและวิวทะเลดีที่สุดอยู่แถวนี้ ห่างจากความวุ่นวาย Beach Road กลางเมือง",
+              "如果计划咖啡巡游一整天，建议一早从 Jomtien 或 Naklua 开始——不少常客说目前芭提雅最好的氛围和海景集中在这里，远离市中心 Beach Road 的拥挤。",
+              "На полный café-day начните рано с Jomtien или Naklua — лучший mood и вид сейчас там.",
             ),
           ),
         ],
-        image: cafeTipImages[2],
       },
       {
         id: "ordering" as const,
-        title: t(lang, L("Order like a local", "สั่งแบบคนท้องถิ่น", "像本地人点单", "Как местные")),
+        title: t(lang, L("Order without confusion", "สั่งให้ตรงใจ", "点单不踩雷", "Заказ без сюрпризов")),
         paragraphs: [
           t(
             lang,
             L(
-              "'Kafe yen' (iced coffee), 'kafe ron' (hot), 'mai wan' (less sweet) — Thai iced coffee is often pre-sweetened; ask upfront. 'O liang' is Thai-style iced black coffee.",
-              "'กาแฟเย็น' 'ร้อน' 'ไม่หวาน' — กาแฟเย็นไทยมักหวาน ถามก่อน 'โอเลี้ยง' กาแฟดำเย็น",
-              "「กาแฟเย็น」冰咖啡、「ร้อน」热、「ไม่หวาน」少糖；泰式冰咖啡常预甜，「โอเลี้ยง」为泰式冰黑咖。",
-              "«Kafe yen», «kafe ron», «mai wan»; «o liang» — Thai iced black.",
+              "Handy Thai phrases: กาแฟเย็น (iced coffee), ร้อน (hot), ไม่หวาน (less sweet). Thai iced coffee is often pre-sweetened — say ไม่หวาน or หวานน้อย when you order. โอเลี้ยง is Thai-style iced black coffee, a different vibe from specialty espresso.",
+              "คำไทยที่ใช้บ่อย: กาแฟเย็น ร้อน ไม่หวาน — กาแฟเย็นไทยมักหวานมาแล้ว บอก ไม่หวาน หรือ หวานน้อย ตอนสั่ง โอเลี้ยง คือกาแฟดำเย็นแบบไทย คนละสายกับ specialty espresso",
+              "常用泰语：กาแฟเย็น（冰）、ร้อน（热）、ไม่หวาน（少糖）。泰式冰咖啡常预甜，点单时说 ไม่หวาน 或 หวานน้อย。โอเลี้ยง 是泰式冰黑咖，和精品 espresso 不是一路。",
+              "Полезно: กาแฟเย็น, ร้อน, ไม่หวาน; โอเลี้ยง — Thai iced black, не specialty espresso.",
             ),
           ),
           t(
             lang,
             L(
-              "Plant milk and decaf vary by shop — ask before ordering pour-over or flat white. Single-origin beans rotate; baristas usually explain what's on today if you ask.",
-              "นมพืชและ decaf แล้วแต่ร้าน ถามก่อนสั่งพูรโอเวอร์ เมล็ด single-origin หมุน ถามบาริสต้าวันนี้ใช้อะไร",
-              "植物奶与 decaf 因店而异；单品豆常轮换，可问 barista 当日豆子。",
-              "Растительное молоко и decaf — уточняйте; зерно меняется.",
+              "Plant milk, decaf, and oat options vary shop by shop — ask before you order a pour-over or flat white. Single-origin beans rotate often; most baristas will tell you what is on the bar today if you ask.",
+              "นมพืช decaf หรือ oat milk แล้วแต่ร้าน — ถามก่อนสั่ง pour-over หรือ flat white เมล็ด single-origin หมุนเปลี่ยนบ่อย ถามบาริสต้าว่าวันนี้ใช้อะไร ส่วนใหญ่จะบอกได้",
+              "植物奶、decaf、燕麦奶因店而异——点 hand brew 或 flat white 前先问。单品豆经常轮换，问 barista 今天用什么豆，一般都会告诉你。",
+              "Растительное молоко и decaf — уточняйте; зерно меняется — спросите barista.",
             ),
           ),
         ],
-        image: cafeTipImages[3],
       },
     ],
   };
@@ -232,87 +130,33 @@ export function getCafesPage(lang: LanguageCode) {
     breadcrumb: { explore: c.explore, current: t(lang, L("Cafes", "คาเฟ่", "咖啡馆", "Кафе")) },
     hero: {
       badge: t(lang, L("Cafes", "คาเฟ่", "咖啡馆", "Кафе")),
-      title: t(lang, L("Specialty Coffee", "คาเฟ่", "精品咖啡", "Кофе")),
-      subtitle: t(lang, L("Cafes", "คาเฟ่", "咖啡馆", "Кафе")),
-      body: t(
-        lang,
-        L(
-          "Cafes and specialty coffee spots across Pattaya — from beach-club terraces to hilltop brunch and slow pour-over mornings.",
-          "คาเฟ่และกาแฟพิเศษทั่วพัทยา — ริมหาด บนหน้าผา บรันช์",
-          "芭提雅精品咖啡与咖啡馆。",
-          "Кофейни и specialty coffee Паттайи.",
-        ),
-      ),
-      badgeSunset: t(lang, L("Sunset & brunch", "พระอาทิตย์ตก & บรันช์", "日落与早午餐", "Закат и бранч")),
-      badgeAreas: t(lang, L("Jomtien · Beach Rd · Pratumnak", "จอมเทียน · Beach Rd · พระตำหนัก", "Jomtien · Beach Rd · Pratumnak", "Jomtien · Beach Rd · Pratumnak")),
-    },
-    zones: getCafeZones(lang),
-    styles: {
-      title: t(lang, L("What to order", "สั่งอะไร", "点什么", "Что заказать")),
+      title: t(lang, L("Café guide", "คู่มือคาเฟ่", "咖啡指南", "Гид по кафе")),
       subtitle: t(
         lang,
         L(
-          "Four coffee-house styles you will see again and again in Pattaya.",
-          "4 สไตล์คาเฟ่ที่พบบ่อยในพัทยา",
-          "芭提雅常见的四种风格。",
-          "Четыре стиля кофеен.",
+          "Beach views, specialty roasters & hidden gardens",
+          "วิวทะเล specialty & สวนลับ",
+          "海景、精品烘焙与隐藏花园",
+          "Море, specialty и сады",
         ),
       ),
-      items: [
-        {
-          name: t(lang, L("Single-origin pour-over", "พูรโอเวอร์", "单品手冲", "Pour-over")),
-          nameTh: lang === "en" ? "พูรโอเวอร์" : "",
-          note: t(
-            lang,
-            L(
-              "Ask which beans are on rotation; light roasts suit Pattaya's heat.",
-              "ถามเมล็ดที่ใช้ คั่วอ่อนเหมาะอากาศร้อน",
-              "询问当日豆子，浅烘适合炎热。",
-              "Спросите про зерно.",
-            ),
-          ),
-        },
-        {
-          name: t(lang, L("Thai tea & coffee", "ชาไทย / กาแฟโบราณ", "泰式茶与咖啡", "Thai tea & coffee")),
-          nameTh: lang === "en" ? "ชาไทย / กาแฟโบราณ" : "",
-          note: t(
-            lang,
-            L(
-              "Sweetened classics over ice — specify less sugar ('mai wan').",
-              "หวานคลาสสิก — บอก 'ไม่หวาน'",
-              "经典冰饮，可要求少糖。",
-              "Скажите «меньше сахара».",
-            ),
-          ),
-        },
-        {
-          name: t(lang, L("Brunch plates", "บรันช์", "早午餐", "Бранч")),
-          nameTh: lang === "en" ? "บรันช์" : "",
-          note: t(
-            lang,
-            L(
-              "Weekends fill 10:00–12:00; reserve directly with the venue if they take bookings.",
-              "สุดสัปดาห์ 10–12 คนเยอะ จองตรงกับร้านถ้ารับ",
-              "周末10–12点较满；若接受预订请直接向店预约。",
-              "В выходные 10–12 занято; бронируйте напрямую.",
-            ),
-          ),
-        },
-        {
-          name: t(lang, L("Dessert & bakery", "เบเกอรี่", "甜点与烘焙", "Выпечка")),
-          nameTh: lang === "en" ? "เบเกอรี่" : "",
-          note: t(
-            lang,
-            L(
-              "Croissants, basque cheesecake, and local fruit tarts pair well with flat whites.",
-              "ครัวซอง basque ทาร์ตผลไม้ คู่ flat white",
-              "可颂、巴斯克、水果塔。",
-              "Круассаны и basque cheesecake.",
-            ),
-          ),
-        },
-      ],
+      body: t(
+        lang,
+        L(
+          "Pattaya is a real café-hopping city — beach-club mornings, serious specialty coffee, and hidden spots with completely different moods. Nine picks sorted by vibe so you can compare and choose.",
+          "พัทยาคือสายคาเฟ่ฮอปจริง — มีตั้งแต่คาเฟ่ทะเล vibe ดี ยัน specialty coffee จริงจัง และ hidden gem mood ดี รวม 9 ร้านแนะนำแยกสาย ให้เทียบแล้วเลือกตามฟีล",
+          "芭提雅是名副其实的咖啡巡游城市——海滨早晨、认真精品咖啡与气质各异的隐藏店，九家精选按类型分组方便对比。",
+          "9 кафе по типу — от моря до specialty и hidden gems.",
+        ),
+      ),
+      badgeSunset: t(lang, L("Sunset & brunch", "พระอาทิตย์ตก & บรันช์", "日落与早午餐", "Закат и бранч")),
+      badgeAreas: t(lang, L("Jomtien · Naklua · Central", "จอมเทียน · นาเกลือ · กลางเมือง", "Jomtien · Naklua · 中心", "Jomtien · Naklua · центр")),
     },
+    guide: getCafeGuideIntro(lang),
+    guideItems: getCafeGuideItems(lang),
+    moodPicks: getCafeMoodPicks(lang),
+    firstVisit: getCafeFirstVisitPicks(lang),
+    hoppingRoute: getCafeHoppingRoute(lang),
     tips: getCafeTips(lang),
     alsoExplore: {
       title: c.alsoExplore,
@@ -321,5 +165,6 @@ export function getCafesPage(lang: LanguageCode) {
       localMarkets: c.localMarkets,
       mainBeaches: c.mainBeaches,
     },
+    heroImage: cafesImages.hero,
   };
 }

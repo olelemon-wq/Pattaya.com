@@ -70,6 +70,7 @@ export const siteUi = {
     "等待期间，可先浏览这些栏目：",
     "Пока ждёте, загляните сюда:",
   ),
+  backToTop: L("Back to top", "กลับขึ้นด้านบน", "回到顶部", "Наверх"),
 } as const;
 
 const priorityLabels: Record<Priority, ReturnType<typeof L>> = {

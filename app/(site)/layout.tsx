@@ -1,3 +1,4 @@
+import { BackToTopButton } from "@/components/layout/back-to-top-button";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { LanguageProvider } from "@/components/layout/language-provider";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -16,6 +17,7 @@ export default function SiteLayout({
         </div>
       </main>
       <SiteFooter />
+      <BackToTopButton />
     </LanguageProvider>
   );
 }

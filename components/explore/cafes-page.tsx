@@ -1,153 +1,174 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import { useLanguage } from "@/components/layout/language-provider";
-import { cafesImages } from "@/lib/design/cafes-images";
-import { marketPagePaths } from "@/lib/design/market-page-paths";
+import {
+  getCafeGuideImage,
+  type CafeGuideItem,
+} from "@/lib/i18n/messages/explore-cafes-guide";
 import { getCafesPage } from "@/lib/i18n/messages/explore-cafes";
+import { marketPagePaths } from "@/lib/design/market-page-paths";
 import { tSiteUi } from "@/lib/i18n/messages/site-ui";
-import { Clock, Coffee, MapPin, Soup, Sparkles } from "lucide-react";
+import {
+  Calendar,
+  Clock,
+  Coffee,
+  MapPin,
+  Navigation,
+  Phone,
+  Sparkles,
+  SunMedium,
+  UtensilsCrossed,
+  Wifi,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-const styleImages = [
-  cafesImages.latteArt,
-  cafesImages.coldBrew,
-  cafesImages.brunch,
-  cafesImages.dessert,
-];
+const CafesMap = dynamic(() => import("@/components/explore/cafes-map").then((m) => m.CafesMap), {
+  ssr: false,
+  loading: () => (
+    <div className="h-[320px] w-full animate-pulse rounded-2xl bg-[#e7e8e9] md:h-[380px]" aria-hidden />
+  ),
+});
 
-function ZoneCard({
-  name,
-  vibe,
-  vibeLabel,
-  hours,
-  hoursLabel,
-  mustTry,
-  mustTryLabel,
-  text,
-  priceRange,
-  priceRangeLabel,
-  href,
-  linkLabel,
-  image,
-}: {
-  name: string;
-  vibe: string;
-  vibeLabel: string;
-  hours: string;
-  hoursLabel: string;
-  mustTry: string;
-  mustTryLabel: string;
-  text: string;
-  priceRange: string;
-  priceRangeLabel: string;
-  href: string;
-  linkLabel: string;
-  image: string;
-}) {
-  return (
-    <Link
-      href={href}
-      className="group flex h-full w-full flex-col overflow-hidden rounded-xl border border-[#e7e8e9] bg-[#fdf8fb] shadow-sm transition hover:border-[#B52E88]/30 hover:shadow-md"
-    >
-      <div className="relative aspect-[4/3] w-full shrink-0 bg-[#e7e8e9]">
-        <Image
-          src={image}
-          alt={name}
-          fill
-          className="object-cover transition duration-500 group-hover:scale-105"
-          sizes="(max-width: 640px) 100vw, 400px"
-        />
-      </div>
-      <div className="flex flex-1 flex-col p-4 sm:p-5">
-        <p className="flex items-start gap-2 font-bold text-[#191c1d]">
-          <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#B52E88]" aria-hidden />
-          {name}
-        </p>
-        <p className="mt-2 flex items-start gap-2 pl-6 text-xs font-medium text-[#747878]">
-          <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#B52E88]" aria-hidden />
-          <span>
-            {vibeLabel}: <span className="text-[#191c1d]">{vibe}</span>
-          </span>
-        </p>
-        <p className="mt-2 flex items-start gap-2 pl-6 text-xs font-medium text-[#747878]">
-          <Clock className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#B52E88]" aria-hidden />
-          <span>
-            {hoursLabel}: <span className="text-[#191c1d]">{hours}</span>
-          </span>
-        </p>
-        <p className="mt-2 flex items-start gap-2 pl-6 text-xs font-medium text-[#747878]">
-          <Soup className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#B52E88]" aria-hidden />
-          <span>
-            {mustTryLabel}: <span className="text-[#191c1d]">{mustTry}</span>
-          </span>
-        </p>
-        <p className="mt-2 pl-6 text-sm">
-          <span className="font-medium text-[#747878]">{priceRangeLabel}: </span>
-          <span className="font-semibold text-[#B52E88]">{priceRange}</span>
-        </p>
-        <p className="mt-2 flex-1 pl-6 text-sm leading-relaxed text-[#444748]">{text}</p>
-        <span className="mt-4 pl-6 text-sm font-semibold text-[#B52E88] group-hover:underline">
-          {linkLabel}
-        </span>
-      </div>
-    </Link>
-  );
-}
+type CafeGuideLabels = ReturnType<typeof getCafesPage>["guide"];
 
-function TipCard({
-  id,
-  title,
-  paragraphs,
-  image,
-}: {
-  id: string;
-  title: string;
-  paragraphs: string[];
-  image: string;
-}) {
+function CafeGuideCard({ cafe, labels }: { cafe: CafeGuideItem; labels: CafeGuideLabels }) {
+  const image = getCafeGuideImage(cafe.id);
   return (
     <article
-      id={`tip-${id}`}
-      className="scroll-mt-24 flex h-full flex-col overflow-hidden rounded-xl border border-[#e7e8e9] bg-[#fdf8fb] shadow-sm"
+      id={`cafe-${cafe.id}`}
+      className="scroll-mt-24 flex h-full flex-col overflow-hidden rounded-xl border border-[#e7e8e9] bg-white shadow-sm"
     >
-      <div className="relative aspect-[21/9] w-full shrink-0 bg-[#e7e8e9] sm:aspect-[2/1]">
-        <Image src={image} alt={title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+      <div className="relative aspect-[16/10] w-full shrink-0 bg-[#e7e8e9]">
+        <Image
+          src={image}
+          alt={cafe.name}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          unoptimized={image.startsWith("/")}
+        />
       </div>
       <div className="flex flex-1 flex-col p-5 sm:p-6">
-        <h3 className="text-base font-bold text-[#191c1d] sm:text-lg">{title}</h3>
-        <div className="mt-3 space-y-3 text-sm leading-relaxed text-[#444748]">
-          {paragraphs.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
+        <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#B52E88]">{cafe.category}</p>
+        <h3 className="mt-1 text-lg font-bold text-[#191c1d]">{cafe.name}</h3>
+        <dl className="mt-3 space-y-1.5 text-xs font-medium text-[#747878]">
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+            <dt className="flex items-center gap-1.5">
+              <Calendar className="h-3.5 w-3.5 shrink-0 text-[#B52E88]" aria-hidden />
+              {labels.openDaysLabel}
+            </dt>
+            <dd className="text-[#191c1d]">{cafe.openDays}</dd>
+          </div>
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+            <dt className="flex items-center gap-1.5">
+              <Clock className="h-3.5 w-3.5 shrink-0 text-[#B52E88]" aria-hidden />
+              {labels.hoursRangeLabel}
+            </dt>
+            <dd className="text-[#191c1d]">{cafe.hoursRange}</dd>
+          </div>
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+            <dt>{labels.bestTimeLabel}</dt>
+            <dd className="text-[#191c1d]">{cafe.bestTimeOfDay}</dd>
+          </div>
+        </dl>
+        <div className="mt-4">
+          <p className="text-xs font-bold uppercase tracking-wide text-[#B52E88]">{labels.highlightsLabel}</p>
+          <ul className="mt-2 list-inside list-disc space-y-1 text-sm leading-relaxed text-[#444748]">
+            {cafe.highlights.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <p className="mt-4 text-sm leading-relaxed text-[#444748]">
+          <span className="font-semibold text-[#191c1d]">{labels.vibeLabel}: </span>
+          {cafe.vibe}
+        </p>
+        <p className="mt-2 text-sm leading-relaxed text-[#444748]">
+          <span className="font-semibold text-[#191c1d]">{labels.bestForLabel}: </span>
+          {cafe.bestFor}
+        </p>
+        {cafe.mustTry ? (
+          <p className="mt-3 rounded-lg bg-[#fdf8fb] px-3 py-2 text-sm font-medium text-[#191c1d] ring-1 ring-[#e7e8e9]">
+            <span className="text-[#B52E88]">{labels.mustTryLabel}: </span>
+            {cafe.mustTry}
+          </p>
+        ) : null}
+        {cafe.tips ? (
+          <p className="mt-3 rounded-lg bg-[#fdf8fb] px-3 py-2 text-xs leading-relaxed text-[#444748] ring-1 ring-[#e7e8e9]">
+            <span className="font-semibold text-[#191c1d]">{labels.tipsLabel}: </span>
+            {cafe.tips}
+          </p>
+        ) : null}
+        <div className="mt-auto flex flex-wrap gap-3 pt-4">
+          {cafe.phone && cafe.phoneHref ? (
+            <a
+              href={cafe.phoneHref}
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#191c1d] hover:underline"
+            >
+              <Phone className="h-4 w-4 shrink-0 text-[#B52E88]" aria-hidden />
+              {cafe.phone}
+            </a>
+          ) : null}
+          <a
+            href={cafe.mapsHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#B52E88] hover:underline"
+          >
+            <MapPin className="h-4 w-4 shrink-0" aria-hidden />
+            {labels.openInMaps}
+          </a>
+          <a
+            href={cafe.directionsHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#191c1d] hover:underline"
+          >
+            <Navigation className="h-4 w-4 shrink-0 text-[#B52E88]" aria-hidden />
+            {labels.directionsLabel}
+          </a>
         </div>
       </div>
     </article>
   );
 }
 
-function StyleCard({
-  name,
-  nameTh,
-  image,
-  note,
-}: {
-  name: string;
-  nameTh: string;
-  image: string;
-  note: string;
-}) {
+const cafeTipIcons = {
+  hours: SunMedium,
+  work: Wifi,
+  seating: Coffee,
+  ordering: UtensilsCrossed,
+} as const;
+
+function CafeTipsPanel({ tips }: { tips: ReturnType<typeof getCafesPage>["tips"] }) {
   return (
-    <article className="overflow-hidden rounded-xl border border-[#c4c7c8]/30 bg-white shadow-sm">
-      <div className="relative aspect-[4/3]">
-        <Image src={image} alt={name} fill className="object-cover" sizes="(max-width: 640px) 50vw, 25vw" />
-      </div>
-      <div className="p-4">
-        <h4 className="font-bold text-[#191c1d]">{name}</h4>
-        {nameTh ? <p className="text-sm text-[#B52E88]">{nameTh}</p> : null}
-        <p className="mt-2 text-xs leading-relaxed text-[#444748]">{note}</p>
-      </div>
+    <article className="mt-8 overflow-hidden rounded-2xl border border-[#e7e8e9] bg-white shadow-sm">
+      <ul className="divide-y divide-[#e7e8e9]">
+        {tips.items.map((tip) => {
+          const Icon = cafeTipIcons[tip.id];
+          return (
+            <li key={tip.id} id={`tip-${tip.id}`} className="scroll-mt-24 flex gap-4 p-5 sm:gap-5 sm:p-6">
+              <div
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#fdf8fb] text-[#B52E88] ring-1 ring-[#e7e8e9]"
+                aria-hidden
+              >
+                <Icon className="h-5 w-5" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <h3 className="text-base font-bold text-[#191c1d] sm:text-lg">{tip.title}</h3>
+                <div className="mt-2 space-y-2 text-sm leading-relaxed text-[#444748]">
+                  {tip.paragraphs.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
     </article>
   );
 }
@@ -167,7 +188,7 @@ export function CafesPage() {
         aria-labelledby="cafes-hero-title"
       >
         <Image
-          src={cafesImages.hero}
+          src={page.heroImage}
           alt={page.hero.title}
           fill
           priority
@@ -214,48 +235,160 @@ export function CafesPage() {
       </section>
 
       <div className="mx-auto max-w-[1280px] space-y-14 px-5 py-12 md:px-16 md:py-16">
-        <section id="cafe-zones" className="scroll-mt-24" aria-labelledby="zones-title">
+        <section id="cafes" className="scroll-mt-24" aria-labelledby="cafes-title">
           <div>
-            <h2 id="zones-title" className="text-2xl font-semibold text-[#191c1d] md:text-3xl">
-              {page.zones.title}
+            <h2 id="cafes-title" className="text-2xl font-semibold text-[#191c1d] md:text-3xl">
+              {page.guide.title}
             </h2>
-            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[#747878] sm:text-base">
-              {page.zones.subtitle}
-            </p>
+            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#444748] sm:text-base">{page.guide.body}</p>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {page.guide.pillars.map((pillar) => (
+                <li
+                  key={pillar}
+                  className="rounded-full bg-white px-3 py-1 text-xs font-medium text-[#444748] ring-1 ring-[#e7e8e9]"
+                >
+                  {pillar}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-2 max-w-3xl text-xs text-[#747878]">{page.guide.sourceNote}</p>
           </div>
-          <ul className="mt-8 grid gap-5 sm:grid-cols-2 sm:items-stretch xl:grid-cols-4">
-            {page.zones.items.map((zone) => (
-              <li key={zone.id} id={`zone-${zone.id}`} className="flex min-h-0 scroll-mt-24">
-                <ZoneCard
-                  name={zone.name}
-                  vibe={zone.vibe}
-                  vibeLabel={page.zones.vibeLabel}
-                  hours={zone.hours}
-                  hoursLabel={page.zones.hoursLabel}
-                  mustTry={zone.mustTry}
-                  mustTryLabel={page.zones.mustTryLabel}
-                  text={zone.text}
-                  priceRange={zone.priceRange}
-                  priceRangeLabel={page.zones.priceRangeLabel}
-                  href={zone.href}
-                  linkLabel={zone.linkLabel}
-                  image={zone.image}
-                />
-              </li>
+
+          <div className="mt-10">
+            <CafesMap />
+          </div>
+
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3 md:items-stretch">
+            {page.guideItems.map((cafe) => (
+              <CafeGuideCard key={cafe.id} cafe={cafe} labels={page.guide} />
             ))}
-          </ul>
+          </div>
         </section>
 
-        <section id="styles" className="scroll-mt-24" aria-labelledby="styles-title">
-          <h2 id="styles-title" className="text-2xl font-semibold md:text-3xl">
-            {page.styles.title}
-          </h2>
-          <p className="mt-2 text-[#444748]">{page.styles.subtitle}</p>
-          <div className="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
-            {page.styles.items.map((style, i) => (
-              <StyleCard key={style.name} {...style} image={styleImages[i] ?? cafesImages.latteArt} />
+        <section
+          id="cafe-mood"
+          className="scroll-mt-24 rounded-2xl border border-[#D7CBBA]/50 bg-gradient-to-br from-[#fdf8fb] via-white to-[#f5efe6] p-6 sm:p-8"
+          aria-labelledby="mood-title"
+        >
+          <div className="flex items-start gap-3">
+            <Sparkles className="mt-0.5 h-6 w-6 shrink-0 text-[#B52E88]" aria-hidden />
+            <div>
+              <h2 id="mood-title" className="text-xl font-bold text-[#191c1d] md:text-2xl">
+                {page.moodPicks.title}
+              </h2>
+              <p className="mt-1 text-sm text-[#747878]">{page.moodPicks.subtitle}</p>
+            </div>
+          </div>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {page.moodPicks.groups.map((group) => (
+              <a
+                key={group.title}
+                href={`#cafe-${group.cafeId}`}
+                className="rounded-xl border border-[#e7e8e9] bg-white/90 p-4 shadow-sm transition hover:border-[#B52E88]/35 hover:bg-white"
+              >
+                <h3 className="text-sm font-bold text-[#B52E88]">{group.title}</h3>
+                <p className="mt-2 text-sm font-semibold leading-snug text-[#191c1d]">{group.pick}</p>
+              </a>
             ))}
           </div>
+        </section>
+
+        <section
+          id="cafe-first-visit"
+          className="scroll-mt-24 rounded-2xl border border-[#c4c7c8]/30 bg-white p-6 sm:p-8"
+          aria-labelledby="first-visit-title"
+        >
+          <h2 id="first-visit-title" className="text-xl font-bold text-[#191c1d] md:text-2xl">
+            {page.firstVisit.title}
+          </h2>
+          <p className="mt-1 text-sm text-[#747878]">{page.firstVisit.subtitle}</p>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            {page.firstVisit.items.map((item) => (
+              <a
+                key={item.title}
+                href={`#cafe-${item.cafeId}`}
+                className="rounded-xl border border-[#e7e8e9] bg-[#fdf8fb] p-5 transition hover:border-[#B52E88]/35"
+              >
+                <h3 className="font-bold text-[#B52E88]">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-[#444748]">{item.body}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <section
+          id="cafe-route"
+          className="scroll-mt-24 rounded-2xl border border-[#B52E88]/20 bg-gradient-to-br from-[#fdf8fb] to-white p-6 sm:p-8"
+          aria-labelledby="route-title"
+        >
+          <h2 id="route-title" className="text-2xl font-semibold text-[#191c1d] md:text-3xl">
+            {page.hoppingRoute.title}
+          </h2>
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[#747878] sm:text-base">
+            {page.hoppingRoute.subtitle}
+          </p>
+
+          <div className="mt-8 grid gap-6 lg:grid-cols-2">
+            {page.hoppingRoute.routes.map((route) => (
+              <article
+                key={route.id}
+                className="flex flex-col rounded-xl border border-[#e7e8e9] bg-white p-5 shadow-sm sm:p-6"
+              >
+                <h3 className="text-lg font-bold text-[#B52E88] md:text-xl">{route.title}</h3>
+                <p className="mt-1 text-sm text-[#747878]">{route.subtitle}</p>
+                <ol className="mt-5 space-y-5">
+                  {route.stops.map((stop) => {
+                    const primaryHref = stop.cafeId
+                      ? `#cafe-${stop.cafeId}`
+                      : "mapsHref" in stop && stop.mapsHref
+                        ? stop.mapsHref
+                        : "#";
+                    const isAnchor = Boolean(stop.cafeId);
+                    return (
+                      <li key={`${route.id}-${stop.timeLabel}-${stop.title}`} className="border-l-2 border-[#B52E88]/25 pl-4">
+                        <p className="text-xs font-bold uppercase tracking-wide text-[#B52E88]">{stop.timeLabel}</p>
+                        <a
+                          href={primaryHref}
+                          {...(!isAnchor ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                          className="mt-1 block text-base font-bold text-[#191c1d] hover:text-[#B52E88] hover:underline"
+                        >
+                          {stop.title}
+                        </a>
+                        <p className="mt-1.5 text-sm leading-relaxed text-[#444748]">{stop.body}</p>
+                        {"mustTry" in stop && stop.mustTry ? (
+                          <p className="mt-2 text-xs font-medium text-[#747878]">
+                            <span className="text-[#B52E88]">→ </span>
+                            {stop.mustTry}
+                          </p>
+                        ) : null}
+                        {"alternative" in stop && stop.alternative ? (
+                          <a
+                            href={stop.alternative.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-2 inline-block text-xs font-semibold text-[#455f88] hover:underline"
+                          >
+                            {stop.alternative.label}
+                          </a>
+                        ) : null}
+                      </li>
+                    );
+                  })}
+                </ol>
+                <a
+                  href={route.openRouteHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-semibold text-[#B52E88] hover:underline"
+                >
+                  <Navigation className="h-4 w-4 shrink-0" aria-hidden />
+                  {page.hoppingRoute.openRouteLabel}
+                </a>
+              </article>
+            ))}
+          </div>
+
+          <p className="mt-6 max-w-3xl text-xs leading-relaxed text-[#747878]">{page.hoppingRoute.footnote}</p>
         </section>
 
         <section id="cafe-guides" className="scroll-mt-24" aria-labelledby="tips-title">
@@ -267,11 +400,7 @@ export function CafesPage() {
               {page.tips.subtitle}
             </p>
           </div>
-          <div className="mt-8 grid gap-5 md:grid-cols-2 md:items-stretch">
-            {page.tips.items.map((tip) => (
-              <TipCard key={tip.id} id={tip.id} title={tip.title} paragraphs={tip.paragraphs} image={tip.image} />
-            ))}
-          </div>
+          <CafeTipsPanel tips={page.tips} />
         </section>
 
         <section className="rounded-2xl border border-[#c4c7c8]/30 bg-white p-6 sm:p-8">

@@ -127,7 +127,7 @@ const exploreDedicatedMeta: Record<string, ExploreMetaFn> = {
   },
   wellness: (lang) => {
     const p = getWellnessPage(lang);
-    return { title: p.hero.title, description: p.hero.body };
+    return { title: p.seoTitle, description: p.hero.body };
   },
 };
 

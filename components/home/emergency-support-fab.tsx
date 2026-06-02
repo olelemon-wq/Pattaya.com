@@ -7,9 +7,15 @@ import {
 import { useLanguage } from "@/components/layout/language-provider";
 import { getHomeEmergency } from "@/lib/i18n/messages/home-hub";
 import { Asterisk, Phone, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 
+/** Above back-to-top FAB (h-12 + gap) on homepage */
+const HOME_EMERGENCY_BOTTOM_CLASS = "bottom-[5.75rem] sm:bottom-24";
+
 export function EmergencySupportFab() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const { language } = useLanguage();
   const copy = getHomeEmergency(language);
   const [open, setOpen] = useState(false);
@@ -45,7 +51,7 @@ export function EmergencySupportFab() {
         ref={triggerRef}
         type="button"
         onClick={() => setOpen(true)}
-        className="fixed bottom-6 right-4 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#FF7320] text-white shadow-[0_8px_24px_rgba(255,115,32,0.45)] transition-transform hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF7320] active:scale-95 sm:right-6 motion-reduce:transition-none motion-reduce:hover:scale-100"
+        className={`fixed right-4 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#FF7320] text-white shadow-[0_8px_24px_rgba(255,115,32,0.45)] transition-transform hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF7320] active:scale-95 sm:right-6 motion-reduce:transition-none motion-reduce:hover:scale-100 ${isHome ? HOME_EMERGENCY_BOTTOM_CLASS : "bottom-6"}`}
         aria-haspopup="dialog"
         aria-expanded={open}
         aria-controls={open ? titleId : undefined}
