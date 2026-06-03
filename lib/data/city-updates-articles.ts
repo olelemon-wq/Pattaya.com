@@ -53,6 +53,17 @@ export const cityUpdatesSpotlights = [
 
 export const cityUpdatesArticles = [
   {
+    href: "/news/local-news/city-updates/pattaya-smart-city-beach-road",
+    image: cityUpdatesImages.spotlightBeachRoad,
+    imageAlt: "Pattaya Beach Road waterfront at dawn",
+    badge: "City Updates",
+    badgeClass: "bg-[#455f88] text-white",
+    title: "Pattaya Smart City Initiatives: Infrastructure Overhaul Commences on Beach Road",
+    excerpt:
+      "City Hall unveils a 500 million THB plan to modernize waterfront access, bury overhead cables, and expand public Wi-Fi along Beach Road by Q4 2026.",
+    footer: "2 hours ago",
+  },
+  {
     href: "/news/nightlife/walking-street",
     image: cityUpdatesImages.articleWalkingStreet,
     imageAlt: "Walking Street Pattaya at night with neon signs",

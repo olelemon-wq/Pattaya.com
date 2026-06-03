@@ -1,6 +1,6 @@
 "use client";
 
-import { Breadcrumb } from "@/components/layout/breadcrumb";
+import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import { useLanguage } from "@/components/layout/language-provider";
 import {
   CLASSIFIEDS_THEME,
@@ -8,7 +8,6 @@ import {
   type ClassifiedListing,
   type ListingCategoryId,
 } from "@/lib/i18n/messages/classifieds-hub";
-import { buildStandaloneBreadcrumbs } from "@/lib/i18n/resolve-site-nav";
 import {
   Building2,
   Car,
@@ -30,6 +29,10 @@ import { useCallback, useState, type FormEvent } from "react";
 const THEME = CLASSIFIEDS_THEME;
 const THEME_DARK = "#A86854";
 const THEME_LIGHT = "#F5E8E2";
+
+function isLocalImage(src: string) {
+  return src.startsWith("/");
+}
 
 const categoryIcons: Record<ListingCategoryId, typeof Building2> = {
   property: Building2,
@@ -68,6 +71,7 @@ function FeaturedCard({
           src={listing.image}
           alt={listing.imageAlt}
           fill
+          unoptimized={isLocalImage(listing.image)}
           className="object-cover transition-transform duration-700 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, 33vw"
         />
@@ -124,6 +128,7 @@ function ListingRow({
           src={listing.image}
           alt={listing.imageAlt}
           fill
+          unoptimized={isLocalImage(listing.image)}
           className="object-cover transition-transform duration-500 group-hover:scale-105"
           sizes="128px"
         />
@@ -166,11 +171,6 @@ export function ClassifiedsHubPage() {
   const router = useRouter();
   const hub = getClassifiedsHub(language);
   const [query, setQuery] = useState("");
-  const breadcrumbs = buildStandaloneBreadcrumbs(
-    language,
-    hub.hero.title,
-    "/classifieds",
-  );
 
   const handleSearch = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
@@ -184,11 +184,13 @@ export function ClassifiedsHubPage() {
   );
 
   return (
-    <>
-      <Breadcrumb items={breadcrumbs} />
+    <div data-full-bleed className="bg-[#faf8f6]">
+      <BreakingNewsTicker variant="classifieds" />
+
+      <div className="mx-auto max-w-[1280px] px-3 py-8 sm:px-4 lg:px-6">
 
       <div
-        className="relative mb-10 overflow-hidden rounded-3xl border border-[#E8DDD6] p-6 shadow-xl sm:p-8"
+        className="relative mb-10 min-h-[280px] overflow-hidden rounded-3xl border border-[#E8DDD6] p-6 shadow-xl sm:min-h-[320px] sm:p-8"
         style={{ backgroundColor: THEME_DARK }}
       >
         <Image
@@ -196,6 +198,7 @@ export function ClassifiedsHubPage() {
           alt={hub.hero.title}
           fill
           priority
+          unoptimized
           className="object-cover"
           sizes="100vw"
         />
@@ -279,6 +282,7 @@ export function ClassifiedsHubPage() {
                     src={category.image}
                     alt={category.label}
                     fill
+                    unoptimized={isLocalImage(category.image)}
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="128px"
                   />
@@ -404,6 +408,7 @@ export function ClassifiedsHubPage() {
           {hub.sections.postCta}
         </Link>
       </section>
-    </>
+      </div>
+    </div>
   );
 }

@@ -1,3 +1,5 @@
+import { cityUpdatesImages } from "@/lib/design/city-updates-images";
+import { newsImages } from "@/lib/design/news-images";
 import type { LanguageCode } from "@/lib/i18n/languages";
 import { L, t } from "@/lib/i18n/living-helpers";
 
@@ -267,7 +269,7 @@ export function getNewsSections(lang: LanguageCode) {
 export function getCitySpotlights(lang: LanguageCode) {
   return {
     hotel: {
-      href: "/news/business/hotels",
+      href: "/news/business/hotels/occupancy-3-year-high",
       eyebrow: t(lang, L("Hotel Industry", "อุตสาหกรรมโรงแรม", "酒店业", "Отели")),
       title: t(
         lang,
@@ -281,10 +283,28 @@ export function getCitySpotlights(lang: LanguageCode) {
       excerpt: t(
         lang,
         L(
-          "Pattaya's luxury hotel sector sees a rebound with Chinese and European tourists leading the charge...",
-          "โรงแรมหรูพัทยาฟื้นตัว นักท่องเที่ยวจีนและยุโรปนำโด่ง...",
-          "芭提雅 luxury 酒店板块复苏，中国与欧洲游客引领…",
-          "Сектор luxury-отелей восстанавливается — лидируют туристы из Китая и Европы...",
+          "Pattaya's luxury hotel sector sees a rebound with Chinese and European tourists leading the charge.",
+          "โรงแรมหรูพัทยาฟื้นตัว นักท่องเที่ยวจีนและยุโรปนำโด่ง",
+          "芭提雅高端酒店板块复苏，中国与欧洲游客引领回升。",
+          "Сектор luxury-отелей восстанавливается — лидируют туристы из Китая и Европы.",
+        ),
+      ),
+      detail: t(
+        lang,
+        L(
+          "MICE bookings and weekend domestic travel pushed citywide occupancy toward 78% in Q1 — Wongamat luxury properties report the strongest recovery since 2019.",
+          "การจอง MICE และท่องเที่ยวในประเทศช่วงสุดสัปดาห์ดันอัตราเข้าพักทั่วเมืองใกล้ 78% ใน Q1 — โรงแรมหรูวงวงามาดฟื้นตัวแรงสุดนับจาก 2019",
+          "会展预订与周末国内游推动全市 Q1 入住率接近 78%——旺玛特高端酒店录得 2019 年以来最强复苏。",
+          "MICE и внутренний турисм вывели загрузку к 78% в Q1 — Wongamat лидирует с 2019 года.",
+        ),
+      ),
+      detailExtra: t(
+        lang,
+        L(
+          "Average daily rates rose roughly 12% year-on-year. Operators expect the trend to hold through Songkran if flight capacity to U-Tapao and Bangkok remains steady.",
+          "ราคาห้องเฉลี่ยสูงขึ้นราว 12% เทียบปีก่อน ผู้ประกอบการคาดแนวโน้มคงไปถึงสงกรานต์หากที่นั่งเที่ยวบินอู่ตะเภา–กรุงเทพคงที่",
+          "平均房价同比上涨约 12%。若乌塔保与曼谷航线运力稳定，业者预计宋干节前趋势将延续。",
+          "ADR +12% г/г. Тренд сохранится к Сонгкрану при стабильных рейсах в U-Tapao и Bangkok.",
         ),
       ),
     },
@@ -317,7 +337,7 @@ export function getCitySpotlights(lang: LanguageCode) {
 export function getMoreCityArticles(lang: LanguageCode) {
   return [
     {
-      href: "/news/tourism/promotions",
+      href: "/news/tourism/attractions/sanctuary-of-truth-craftsmanship",
       badge: t(lang, L("Tourism", "ท่องเที่ยว", "旅游", "Туризм")),
       title: t(
         lang,
@@ -340,16 +360,34 @@ export function getMoreCityArticles(lang: LanguageCode) {
       detail: t(
         lang,
         L(
-          "Rising 105 metres on the coast north of Pattaya, the all-teak temple has been hand-carved for decades. Guided tours reveal Buddhist, Hindu, and mythological scenes—each panel reflects truth, craftsmanship, and patience. Plan a morning visit for softer light and fewer crowds.",
-          "ตั้งริมชายหาดเหนือพัทยา สูง 105 เมตร สร้างจากไม้สักทั้งหลัง แกะสลักด้วยมือมาหลายทศวรรษ ไกด์พาชมศิลปะพุทธ ฮินดู และตำนาน—ทุกแผ่นไม้สะท้อนสัจธรรม ฝีมือ และความอดทน แนะนำมาช่วงเช้า แสงนุ่มและคนน้อยกว่า",
-          "芭提雅以北海滨，全木结构高 105 米，数十年来手工雕刻。导览讲解佛教、印度教与神话主题——每一块木板都体现真理、工艺与耐心。建议上午参观，光线柔和、人流较少。",
-          "На побережье к северу от Паттайи — 105 м, кругом тик. Десятилетия ручной резьбы; экскурсии по буддийским, индуистским и мифологическим сюжетам. Лучше утром — мягкий свет и меньше людей.",
+          "Rising 105 metres on the coast north of Pattaya, the all-teak temple has been hand-carved for decades. Guided tours reveal Buddhist, Hindu, and mythological scenes—each panel reflects truth, craftsmanship, and patience.",
+          "ตั้งริมชายหาดเหนือพัทยา สูง 105 เมตร สร้างจากไม้สักทั้งหลัง แกะสลักด้วยมือมาหลายทศวรรษ ไกด์พาชมศิลปะพุทธ ฮินดู และตำนาน—ทุกแผ่นไม้สะท้อนสัจธรรม ฝีมือ และความอดทน",
+          "芭提雅以北海滨，全木结构高 105 米，数十年来手工雕刻。导览讲解佛教、印度教与神话主题——每一块木板都体现真理、工艺与耐心。",
+          "На побережье к северу от Паттайи — 105 м, кругом тик. Десятилетия ручной резьбы; экскурсии по буддийским, индуистским и мифологическим сюжетам.",
+        ),
+      ),
+      detailExtra: t(
+        lang,
+        L(
+          "Plan a morning visit for softer light and fewer crowds. Dress modestly (shoulders and knees covered); tickets and guided tours are available at the entrance daily.",
+          "แนะนำมาช่วงเช้า แสงนุ่มและคนน้อยกว่า แต่งกายสุภาพ (ปิดบ่าและเข่า) มีจำหน่ายบัตรและทัวร์ไกด์ที่ทางเข้าทุกวัน",
+          "建议上午参观，光线柔和、人流较少。请穿着得体（遮盖肩膝）；门口每日售票并提供导览。",
+          "Лучше утром — мягкий свет и меньше людей. Скромная одежда; билеты и экскурсии у входа ежедневно.",
+        ),
+      ),
+      detailThird: t(
+        lang,
+        L(
+          "Editor's pick for a half-day north Pattaya itinerary—pair with Naklua seafood lunch or a clifftop sunset stop after your temple tour.",
+          "ข่าวแนะนำสำหรับทริปครึ่งวันเหนือพัทยา—ต่อด้วยอาหารทะเลนาเกลือหรือจุดชมพระอาทิตย์ตกหลังชมปราสาท",
+          "编辑推荐北芭提雅半日行程——参观后可衔接那库拉海鲜午餐或崖顶日落观景点。",
+          "Выбор редакции на полдня к северу — обед в Naklua или закат после храма.",
         ),
       ),
       footer: t(lang, L("3 Hours Ago", "3 ชม.ที่แล้ว", "3 小时前", "3 ч назад")),
     },
     {
-      href: "/news/nightlife/walking-street",
+      href: "/news/nightlife/walking-street/walking-street-smart-city",
       badge: t(lang, L("Nightlife Updates", "อัปเดตไนท์ไลฟ์", "夜生活动态", "Ночная жизнь")),
       title: t(
         lang,
@@ -369,11 +407,29 @@ export function getMoreCityArticles(lang: LanguageCode) {
           "Модернизация ночного центра ради безопасности.",
         ),
       ),
+      detail: t(
+        lang,
+        L(
+          "LED lighting, CCTV, and bilingual wayfinding kiosks now span the full entertainment zone—part of Pattaya's Smart City rollout focused on pedestrian safety.",
+          "ไฟ LED กล้อง CCTV และคีออสนำทางสองภาษาครอบคลุมทั้งโซน—ส่วนหนึ่งของ Smart City เพื่อความปลอดภัยคนเดิน",
+          "LED 照明、监控与双语导览亭现已覆盖整个娱乐区——芭提雅智慧城市计划的一环，侧重行人安全。",
+          "LED, CCTV и киоски на двух языках — часть Smart City для безопасности пешеходов.",
+        ),
+      ),
+      detailExtra: t(
+        lang,
+        L(
+          "Peak-hour patrols and emergency call boxes stay active through high season; venues must display updated fire-safety capacity notices.",
+          "ลาดตระเวนช่วงพีคและตู้ฉุกเฉินทำงานตลอดไฮซีซัน สถานที่ต้องแสดงป้ายความจุไฟฟ้าที่อัปเดตแล้ว",
+          "高峰巡逻与紧急呼叫亭在旺季持续运行；场所须张贴更新后的消防容量告示。",
+          "Патрули и SOS-боксы в сезон; заведения обязаны показать актуальные лимиты по пожарной безопасности.",
+        ),
+      ),
       footer: t(lang, L("5 Hours Ago", "5 ชม.ที่แล้ว", "5 小时前", "5 ч назад")),
     },
     {
-      href: "/news/expat/tax-legal",
-      badge: t(lang, L("Tax & Legal", "ภาษี & กฎหมาย", "税务与法律", "Налоги и право")),
+      href: "/news/expat/immigration/90-day-online-maintenance",
+      badge: t(lang, L("Immigration", "ตรวจคนเข้าเมือง", "移民", "Immigration")),
       title: t(
         lang,
         L(
@@ -392,7 +448,188 @@ export function getMoreCityArticles(lang: LanguageCode) {
           "Временный перерыв — офис Jomtien или приложение.",
         ),
       ),
+      detail: t(
+        lang,
+        L(
+          "Scheduled maintenance Oct 14–16 affects the national online portal. Jomtien Immigration accepts walk-ins 08:30–16:30 with passport and your previous receipt.",
+          "ปิดปรับปรุงระบบ 14–16 ต.ค. ตม.จอมเทียนรับยื่นตัว 08:30–16:30 นำพาสปอร์ตและใบเสร็จครั้งก่อน",
+          "10 月 14–16 日全国在线系统维护。Jomtien 办事处 08:30–16:30 现场受理，请带护照与上次回执。",
+          "Техработы 14–16 окт. Jomtien: 08:30–16:30, паспорт и квитанция.",
+        ),
+      ),
+      detailExtra: t(
+        lang,
+        L(
+          "File before your due date to avoid fines. Hotels and condos in Pattaya can assist with TM.30 registration if your address changed recently.",
+          "ยื่นก่อนครบกำหนดเพื่อหลีกเลี่ยงค่าปรับ โรงแรมและคอนโดช่วย TM.30 หากเพิ่งย้ายที่อยู่",
+          "请在截止日期前提交以免罚款。若近期变更地址，芭提雅酒店或公寓可协助 TM.30 登记。",
+          "Подайте до срока. Отели и кондо помогут с TM.30 при смене адреса.",
+        ),
+      ),
       footer: t(lang, L("Updated 15m ago", "อัปเดต 15 นาทีที่แล้ว", "15 分钟前更新", "15 мин назад")),
+    },
+  ];
+}
+
+export type HomeTopStoryCard = {
+  badge: string;
+  title: string;
+  excerpt: string;
+  href: string;
+  image: string;
+  time: string;
+  detail?: string;
+  detailExtra?: string;
+};
+
+export function getHomeTopStoriesCards(lang: LanguageCode): HomeTopStoryCard[] {
+  const [sanctuary, walking, immigration] = getMoreCityArticles(lang);
+  const { hotel } = getCitySpotlights(lang);
+
+  const smartCity = {
+    href: "/news/local-news/city-updates/pattaya-smart-city-beach-road",
+    badge: t(lang, L("City Updates", "ข่าวในเมือง", "城市动态", "Город")),
+    title: t(
+      lang,
+      L(
+        "Pattaya Smart City Initiatives: Infrastructure Overhaul Commences on Beach Road",
+        "Smart City พัทยา: ปรับโฉมโครงสร้าง Beach Road",
+        "芭提雅智慧城市：海滩路基建升级启动",
+        "Smart City Pattaya: модернизация Beach Road",
+      ),
+    ),
+    excerpt: t(
+      lang,
+      L(
+        "City Hall unveils a 500 million THB plan to modernize waterfront access, bury overhead cables, and expand public Wi-Fi along Beach Road by Q4 2026.",
+        "ศาลากลางงบ 500 ล้านบาทปรับทางเข้าชายหาด ฝังสายไฟ และขยาย Wi-Fi สาธารณะถึง Q4 2026",
+        "市政公布 5 亿泰铢计划：升级海滨通道、地下线缆，2026 年第四季度前扩展 Beach Road 公共 Wi-Fi。",
+        "City Hall: 500 млн бат на набережную, кабели и Wi-Fi к Q4 2026.",
+      ),
+    ),
+    detail: t(
+      lang,
+      L(
+        "Phase 1 alternates nightly lane closures 22:00–05:00 while crews install fiber ducts and LED wayfinding from Central Pattaya to Walking Street.",
+        "เฟส 1 ปิดเลนสลับกันคืน 22:00–05:00 ติดตั้งท่อใยแสงและป้าย LED จากใจกลางพัทยาถึง Walking Street",
+        "第一阶段 22:00–05:00 夜间交替封 lane，铺设光纤与 LED 导视，从中芭提雅至 Walking Street。",
+        "Фаза 1: ночные перекрытия 22:00–05:00, оптоволокно и LED до Walking Street.",
+      ),
+    ),
+    detailExtra: t(
+      lang,
+      L(
+        "Shuttle loops and bilingual kiosks will guide visitors during construction — download the city detour map before driving Beach Road.",
+        "รถรับส่งและคีออสสองภาษาช่วยระหว่างก่อสร้าง — ดาวน์โหลดแผนเลี่ยงก่อนขับ Beach Road",
+        "施工期间提供接驳与双语信息亭——驾车前请下载绕行地图。",
+        "Шаттлы и киоски в стройке — карта объезда Beach Road.",
+      ),
+    ),
+    footer: t(lang, L("2 hours ago", "2 ชม.ที่แล้ว", "2 小时前", "2 ч назад")),
+  };
+
+  const beachClean = {
+    href: "/news/local-news/city-updates/beach-clean-2026",
+    badge: t(lang, L("Environment", "สิ่งแวดล้อม", "环境", "Экология")),
+    title: t(
+      lang,
+      L(
+        "Big Beach Clean 2026: 3,000 Volunteers Register in First Week",
+        "Big Beach Clean 2026: อาสา 3,000 คนสมัครในสัปดาห์แรก",
+        "2026 海滩大清洁：首周 3000 志愿者报名",
+        "Big Beach Clean 2026: 3000 волонтёров",
+      ),
+    ),
+    excerpt: t(
+      lang,
+      L(
+        "City partners with hotels and dive shops for monthly waste collection from Bali Hai Pier to Jomtien Beach.",
+        "เทศบาลร่วมโรงแรมและร้านดำน้ำเก็บขยะรายเดือนจากแหลมบาลีฮายถึงจอมเทียน",
+        "市政与酒店、潜店合作，每月从 Bali Hai 至仲天清理垃圾。",
+        "Ежемесячная уборка от Bali Hai до Jomtien.",
+      ),
+    ),
+    detail: t(
+      lang,
+      L(
+        "Registration is open for the March coastal sweep — gloves, bags, and water stations provided at Bali Hai and Jomtien check-in points.",
+        "เปิดรับสมัครกิจกรรมมีนาค์ — มีถุงมือ ถุงขยะ และน้ำดื่มที่จุดลงทะเบียนบาลีฮายและจอมเทียน",
+        "三月海岸清洁开放报名——Bali Hai 与仲天登记点提供手套、垃圾袋与饮水。",
+        "Мартовский субботник — перчатки и вода на Bali Hai и Jomtien.",
+      ),
+    ),
+    detailExtra: t(
+      lang,
+      L(
+        "Families and school groups welcome. Follow city social channels for tide-safe start times each month.",
+        "รับครอบครัวและโรงเรียน ติดตามเวลาเริ่มตามกระแสน้ำทุกเดือนผ่านโซเชียลเทศบาล",
+        "欢迎家庭与学校团体。请关注市政社交账号获取每月适潮出发时间。",
+        "Семьи и школы приветствуются. Время старта — в соцсетях города.",
+      ),
+    ),
+    footer: t(lang, L("2 days ago", "2 วันที่แล้ว", "2 天前", "2 дня назад")),
+  };
+
+  return [
+    {
+      badge: sanctuary.badge,
+      title: sanctuary.title,
+      excerpt: sanctuary.excerpt,
+      href: sanctuary.href,
+      image: newsImages.sanctuary,
+      time: sanctuary.footer,
+      detail: sanctuary.detail,
+      detailExtra: sanctuary.detailExtra,
+    },
+    {
+      badge: hotel.eyebrow,
+      title: hotel.title,
+      excerpt: hotel.excerpt,
+      href: hotel.href,
+      image: newsImages.hotels,
+      time: t(lang, L("4 hours ago", "4 ชม.ที่แล้ว", "4 小时前", "4 ч назад")),
+      detail: hotel.detail,
+      detailExtra: hotel.detailExtra,
+    },
+    {
+      badge: walking.badge,
+      title: walking.title,
+      excerpt: walking.excerpt,
+      href: walking.href,
+      image: newsImages.walkingStreet,
+      time: walking.footer,
+      detail: walking.detail,
+      detailExtra: walking.detailExtra,
+    },
+    {
+      badge: immigration.badge,
+      title: immigration.title,
+      excerpt: immigration.excerpt,
+      href: immigration.href,
+      image: newsImages.immigration,
+      time: immigration.footer,
+      detail: immigration.detail,
+      detailExtra: immigration.detailExtra,
+    },
+    {
+      badge: smartCity.badge,
+      title: smartCity.title,
+      excerpt: smartCity.excerpt,
+      href: smartCity.href,
+      image: cityUpdatesImages.spotlightBeachRoad,
+      time: smartCity.footer,
+      detail: smartCity.detail,
+      detailExtra: smartCity.detailExtra,
+    },
+    {
+      badge: beachClean.badge,
+      title: beachClean.title,
+      excerpt: beachClean.excerpt,
+      href: beachClean.href,
+      image: cityUpdatesImages.articleBeachCleanup,
+      time: beachClean.footer,
+      detail: beachClean.detail,
+      detailExtra: beachClean.detailExtra,
     },
   ];
 }

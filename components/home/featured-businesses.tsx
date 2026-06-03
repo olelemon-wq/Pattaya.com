@@ -32,10 +32,11 @@ const businesses: FeaturedBusiness[] = [
     name: "InterContinental Pattaya",
     badgeKey: "featured",
     badgeStyle: "bg-[#eff6ff] text-[#2563eb]",
+    logoSrc: "/logos/intercontinental-pattaya.png",
     logoAlt: "InterContinental Pattaya Resort",
     websiteHref: "https://pattaya.intercontinental.com/",
-    markClassName: "rounded-full bg-[#1a2b4a] shadow-sm",
-    monogram: "IC",
+    markClassName:
+      "overflow-hidden rounded-full bg-white p-3 shadow-sm sm:p-4",
   },
   {
     name: "Bangkok Hospital Pattaya",

@@ -51,6 +51,17 @@ export const immigrationNewsSpotlights = [
 
 export const immigrationNewsArticles = [
   {
+    href: "/news/expat/immigration/90-day-online-maintenance",
+    image: newsImages.immigration,
+    imageAlt: "Thailand immigration documents and official forms",
+    badge: "Immigration",
+    badgeClass: "bg-[#455f88] text-white",
+    title: "90-Day Online Reporting: System Offline for Maintenance",
+    excerpt:
+      "Chonburi Immigration announces temporary interruption. Visit Jomtien office or use the mobile app.",
+    footer: "Updated 15m ago",
+  },
+  {
     href: "/living/visa/90-day-report",
     image: newsImages.immigration,
     imageAlt: "90-day reporting immigration form",

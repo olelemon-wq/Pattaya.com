@@ -72,6 +72,28 @@ export const newsTourismBusinessBodies: Record<string, NewsCategoryBodySet> = {
       },
     },
     articles: {
+      "The Sanctuary of Truth: A Masterpiece of Thai Craftsmanship": {
+        badge: L("Tourism", "ท่องเที่ยว", "旅游", "Туризм"),
+        title: L(
+          "The Sanctuary of Truth: A Masterpiece of Thai Craftsmanship",
+          "ปราสาทสัจธรรม: ชิ้นงานไม้แกะสลักไทย",
+          "真理寺：泰国木雕杰作",
+          "Sanctuary of Truth: шедевр резьбы",
+        ),
+        excerpt: L(
+          "Explore intricate carvings and the spiritual journey behind Pattaya's iconic wooden structure.",
+          "สำรวจงานแกะสลักและเส้นทางจิตวิญญาณของสถาปัตยกรรมไม้ในตำนาน",
+          "探索芭提雅标志性木构建筑背后的精雕与精神旅程。",
+          "Резьба и духовный путь легендарной деревянной постройки.",
+        ),
+        footer: L("3 Hours Ago", "3 ชม.ที่แล้ว", "3 小时前", "3 ч назад"),
+        imageAlt: L(
+          "Sanctuary of Truth Pattaya",
+          "ปราสาทสัจธรรม พัทยา",
+          "芭提雅真理寺",
+          "Sanctuary of Truth, Pattaya",
+        ),
+      },
       "Koh Larn Day Trip: Best Beaches Ranked": {
         badge: L("Islands", "เกาะ", "岛屿", "Острова"),
         title: L(
@@ -482,6 +504,28 @@ export const newsTourismBusinessBodies: Record<string, NewsCategoryBodySet> = {
       },
     },
     articles: {
+      "Occupancy Rates Hit 3-Year High as International Flights Return": {
+        badge: L("Hotel Industry", "อุตสาหกรรมโรงแรม", "酒店业", "Отели"),
+        title: L(
+          "Occupancy Rates Hit 3-Year High as International Flights Return",
+          "อัตราเข้าพักสูงสุด 3 ปี หลังเที่ยวบินระหว่างประเทศกลับมา",
+          "国际航班回归，入住率创三年新高",
+          "Загрузка отелей — максимум за 3 года",
+        ),
+        excerpt: L(
+          "Pattaya's luxury hotel sector sees a rebound with Chinese and European tourists leading the charge.",
+          "โรงแรมหรูพัทยาฟื้นตัว นักท่องเที่ยวจีนและยุโรปนำโด่ง",
+          "芭提雅高端酒店板块复苏，中国与欧洲游客引领回升。",
+          "Сектор luxury-отелей восстанавливается — лидируют туристы из Китая и Европы.",
+        ),
+        footer: L("4 hours ago", "4 ชม.ที่แล้ว", "4 小时前", "4 ч назад"),
+        imageAlt: L(
+          "Pattaya beachfront hotels",
+          "โรงแรมริมหาดพัทยา",
+          "芭提雅海滨酒店",
+          "Отели на набережной Pattaya",
+        ),
+      },
       "Naklua: Boutique 120-Room Property Soft-Opens": {
         badge: L("Development", "พัฒนา", "开发", "Развитие"),
         title: L(

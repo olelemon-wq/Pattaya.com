@@ -71,6 +71,28 @@ const spotlightBodies = {
 } as const;
 
 const articleBodies = {
+  "ninety-day-online": {
+    badge: L("Immigration", "ตรวจคนเข้าเมือง", "移民", "Immigration"),
+    title: L(
+      "90-Day Online Reporting: System Offline for Maintenance",
+      "รายงานตัว 90 วันออนไลน์: ปิดปรับปรุงระบบ",
+      "90 天在线报到：系统维护暂停",
+      "90-дневный отчёт: техработы",
+    ),
+    excerpt: L(
+      "Chonburi Immigration announces temporary interruption. Visit Jomtien office or use the mobile app.",
+      "ตม.ชลบุรีแจ้งหยุดชั่วคราว ไปสำนักงานจอมเทียนหรือใช้แอปมือถือ",
+      "春武里移民局临时中断服务，请至 Jomtien 办事处或使用 App。",
+      "Временный перерыв — офис Jomtien или приложение.",
+    ),
+    footer: L("Updated 15m ago", "อัปเดต 15 นาทีที่แล้ว", "15 分钟前更新", "15 мин назад"),
+    imageAlt: L(
+      "Thailand immigration documents and official forms",
+      "เอกสารตม.ไทย",
+      "泰国移民文件",
+      "Документы Immigration",
+    ),
+  },
   "missed-90-day": {
     badge: L("Compliance", "ปฏิบัติตาม", "合规", "Соответствие"),
     title: L(
@@ -176,6 +198,7 @@ const articleBodies = {
 } as const;
 
 const articleKeyByTitle: Record<string, keyof typeof articleBodies> = {
+  "90-Day Online Reporting: System Offline for Maintenance": "ninety-day-online",
   "Missed a 90-Day Report? Penalties and How to Fix": "missed-90-day",
   "Tourist Visa Extensions: Documents Checklist for Pattaya": "visa-extensions",
   "Annual Retirement Extension: Bank Letter Requirements": "retirement-bank",

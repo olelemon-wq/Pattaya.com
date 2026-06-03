@@ -1,3 +1,6 @@
+import { kohLarnImages } from "@/lib/design/koh-larn-images";
+import { livingImages } from "@/lib/design/living-images";
+import { newsImages } from "@/lib/design/news-images";
 import type { LanguageCode } from "@/lib/i18n/languages";
 import { L, t } from "@/lib/i18n/living-helpers";
 
@@ -104,9 +107,169 @@ export function getHomeSidebar(lang: LanguageCode) {
   };
 }
 
+export function getHomeLivingPicks(lang: LanguageCode) {
+  return {
+    title: t(lang, L("Expat life in Pattaya", "ชีวิตชาวต่างชาติในพัทยา", "芭提雅外籍生活", "Жизнь expat в Паттайе")),
+    subtitle: t(
+      lang,
+      L(
+        "Visa, healthcare, housing, and safety guides for daily life.",
+        "วีซ่า สุขภาพ ที่อยู่อาศัย และความปลอดภัยสำหรับชีวิตประจำวัน",
+        "签证、医疗、住房与安全——日常生活指南。",
+        "Виза, медицина, жильё и безопасность — гайды на каждый день.",
+      ),
+    ),
+    viewAll: t(lang, L("Visit Expat hub →", "เข้าหมวดชุมชน →", "进入生活栏目 →", "Раздел «Жизнь» →")),
+    viewAllHref: "/living",
+    readMore: t(lang, L("Read more", "อ่านต่อ", "阅读更多", "Читать")),
+    picks: [
+      {
+        title: t(lang, L("90-Day Reporting Guide", "รายงานตัว 90 วัน", "90 天报到指南", "Отчёт 90 дней")),
+        meta: t(lang, L("Immigration", "ตรวจคนเข้าเมือง", "移民", "Immigration")),
+        href: "/living/visa/90-day-report",
+        image: newsImages.immigration,
+        lines: [
+          t(
+            lang,
+            L(
+              "Long-stay visa holders must report every 90 days — online, by post, or in person at immigration.",
+              "ผู้ถือวีซ่าพักระยะยาวต้องรายงานตัวทุก 90 วัน — ออนไลน์ ส่งไปรษณีย์ หรือไปที่ตม.เอง",
+              "长期签证持有人须每 90 天报到一次——可在线、邮寄或亲临移民局。",
+              "Долгосрочная виза — отчёт каждые 90 дней: онлайн, почта или лично.",
+            ),
+          ),
+          t(
+            lang,
+            L(
+              "Jomtien Immigration is the main office for Pattaya — bring passport, TM.30, and your last receipt.",
+              "ตม.จอมเทียนเป็นสำนักงานหลักของพัทยา — นำพาสปอร์ต TM.30 และใบเสร็จครั้งก่อน",
+              "乔木提恩移民局为芭提雅主办事处——请带护照、TM.30 与上次回执。",
+              "Jomtien — паспорт, TM.30 и прошлая квитанция.",
+            ),
+          ),
+          t(
+            lang,
+            L(
+              "File before your due date to avoid fines; many condos and agents offer TM.30 help.",
+              "ยื่นก่อนครบกำหนดเพื่อหลีกเลี่ยงค่าปรับ หลายคอนโดและเอเจนต์ช่วย TM.30 ได้",
+              "请在截止日期前提交以免罚款；许多公寓与中介可协助 TM.30。",
+              "Подайте до срока; кондо и агенты помогают с TM.30.",
+            ),
+          ),
+        ],
+      },
+      {
+        title: t(lang, L("Hospitals & Clinics", "โรงพยาบาล & คลินิก", "医院与诊所", "Больницы и клиники")),
+        meta: t(lang, L("Healthcare", "สุขภาพ", "医疗", "Здоровье")),
+        href: "/living/healthcare/hospitals",
+        image: livingImages.medical,
+        lines: [
+          t(
+            lang,
+            L(
+              "Bangkok Hospital Pattaya, Phyathai, and Memorial offer international departments and English-speaking staff.",
+              "โรงพยาบาลกรุงเทพพัทยา พญาไท และเมโมเรียล มีแผนกต่างชาติและเจ้าหน้าที่พูดอังกฤษ",
+              "曼谷医院芭提雅分院、Phyathai、Memorial 设有国际部与英语服务。",
+              "Bangkok Hospital Pattaya, Phyathai, Memorial — международные отделения.",
+            ),
+          ),
+          t(
+            lang,
+            L(
+              "Emergency: dial 1669 for ambulance; keep insurance card and passport copies ready.",
+              "ฉุกเฉินโทร 1669 เรียกรถพยาบาล — เตรียมบัตรประกันและสำเนาพาสปอร์ตไว้",
+              "急救请拨 1669；备好保险卡与护照复印件。",
+              "Экстренно: 1669; держите страховку и копии паспорта.",
+            ),
+          ),
+          t(
+            lang,
+            L(
+              "Compare outpatient packages for dental, check-ups, and specialist referrals before choosing a provider.",
+              "เปรียบเทียบแพ็กผู้ป่วยนอกทันตกรรม ตรวจสุขภาพ และส่งต่อผู้เชี่ยวชาญก่อนเลือกโรงพยาบาล",
+              "选定前可比较牙科、体检与专科转诊的门诊套餐。",
+              "Сравните амбулаторные пакеты: стоматология, check-up, специалисты.",
+            ),
+          ),
+        ],
+      },
+      {
+        title: t(lang, L("Rentals & Condos", "เช่า & คอนโด", "租房与公寓", "Аренда и кондо")),
+        meta: t(lang, L("Housing", "ที่อยู่อาศัย", "住房", "Жильё")),
+        href: "/living/housing/rentals",
+        image: livingImages.rentals,
+        lines: [
+          t(
+            lang,
+            L(
+              "Jomtien and Pratumnak suit families and long stays; Central Pattaya suits walkable nightlife and transit.",
+              "จอมเทียนและพระตำหนักเหมาะครอบครัวและพักยาว พัทยากลางเดินทางและไนท์ไลฟ์สะดวก",
+              "仲天与帕坦纳克适合家庭与长租；中心区步行与夜生活便利。",
+              "Jomtien и Pratumnak — для семей; центр — ночная жизнь.",
+            ),
+          ),
+          t(
+            lang,
+            L(
+              "Ask for Chanote title, foreign quota letter, and a clear lease before paying deposit.",
+              "ขอโฉนด หนังสือโควตาต่างชาติ และสัญญาเช่าชัดเจนก่อนจ่ายมัดจำ",
+              "付押金前请确认地契、外资配额函与租约条款。",
+              "Chanote, квота и договор аренды до депозита.",
+            ),
+          ),
+          t(
+            lang,
+            L(
+              "Typical 1BR sea-view condos run ฿12,000–35,000/mo depending on building age and facilities.",
+              "คอนโด 1 ห้องนอนวิวทะเลโดยทั่วไป ฿12,000–35,000/เดือน ตามอายุตึกและสิ่งอำนวยความสะดวก",
+              "海景一卧公寓月租通常约 12,000–35,000 泰铢，视楼龄与配套而定。",
+              "1BR с видом на море: примерно ฿12,000–35,000/мес.",
+            ),
+          ),
+        ],
+      },
+      {
+        title: t(lang, L("Scam Alerts", "เตือนภัยมิจฉาชีพ", "诈骗预警", "Мошенничество")),
+        meta: t(lang, L("Safety", "ความปลอดภัย", "安全", "Безопасность")),
+        href: "/living/safety/scam-alerts",
+        image: livingImages.scamAlerts,
+        lines: [
+          t(
+            lang,
+            L(
+              "Watch for jet-ski damage claims, rental deposit traps, and fake property agents on social media.",
+              "ระวังค่าเสียหายเจ็ทสกี มัดจำเช่าหลอก และนายหน้าอสังหาปลอมบนโซเชียล",
+              "警惕水上摩托索赔、租房押金陷阱及社交媒体假房产中介。",
+              "Осторожно: jet-ski, депозиты, фейковые агенты.",
+            ),
+          ),
+          t(
+            lang,
+            L(
+              "Never wire money before viewing a unit in person — meet in public and verify IDs.",
+              "อย่าโอนเงินก่อนดูห้องจริง — นัดพบในที่สาธารณะและตรวจสอบตัวตน",
+              "看房前切勿转账——公共场所见面并核实身份。",
+              "Не переводите до осмотра; встреча в людном месте.",
+            ),
+          ),
+          t(
+            lang,
+            L(
+              "Report issues to Tourist Police 1155 and keep Pattaya.com verified listings in mind.",
+              "แจ้ง Tourist Police 1155 และใช้ประกาศที่ตรวจสอบบน Pattaya.com",
+              "可向旅游警察 1155 举报，并优先参考本站已核实信息。",
+              "Tourist Police 1155; проверенные объявления Pattaya.com.",
+            ),
+          ),
+        ],
+      },
+    ],
+  };
+}
+
 export function getHomeGuide(lang: LanguageCode) {
   return {
-    title: t(lang, L("Pattaya Guide", "คู่มือพัทยา", "芭提雅指南", "Гид по Паттайе")),
+    title: t(lang, L("Pattaya Guide", "เที่ยวรอบเมือง", "芭提雅指南", "Гид по Паттайе")),
     subtitle: t(
       lang,
       L(
@@ -116,27 +279,165 @@ export function getHomeGuide(lang: LanguageCode) {
         "Город от местных экспертов.",
       ),
     ),
-    exploreAll: t(lang, L("Explore All Guides →", "สำรวจคู่มือทั้งหมด →", "探索全部指南 →", "Все гайды →")),
+    exploreAll: t(lang, L("Explore All Guides →", "ดูรอบเมืองทั้งหมด →", "探索全部指南 →", "Все гайды →")),
+    exploreAllHref: "/explore",
+    readMore: t(lang, L("Read more", "อ่านต่อ", "阅读更多", "Читать")),
     guides: [
       {
         title: t(lang, L("Island Hopping: Koh Larn & Beyond", "ทัวร์เกาะ: เกาะล้าน & อื่นๆ", "跳岛：格兰岛及周边", "Острова: Ко Лан")),
-        meta: t(lang, L("12 ARTICLES • SEO OPTIMIZED", "12 บทความ", "12 篇文章", "12 СТАТЕЙ")),
+        meta: t(lang, L("Islands", "เกาะ", "岛屿", "Острова")),
         href: "/explore/islands/koh-larn",
+        image: kohLarnImages.hero,
+        lines: [
+          t(
+            lang,
+            L(
+              "Ferries from Bali Hai Pier reach Koh Larn in 30–45 minutes — check morning and last return times.",
+              "เรือจากท่าแหลมบาลีฮายถึงเกาะล้าน 30–45 นาที — เช็คเที่ยวเช้าและเรือกลับสุดท้าย",
+              "从 Bali Hai 码头渡轮约 30–45 分钟抵格兰岛——请确认首班与末班返程时间。",
+              "Паром с Bali Hai — 30–45 мин; уточните последний рейс обратно.",
+            ),
+          ),
+          t(
+            lang,
+            L(
+              "Tien and Samae beaches are calmer; Nual suits snorkeling on clear days.",
+              "หาดเทียนและสมาเอเงียบกว่า หาดนวลเหมาะดำน้ำวันทะเลใส",
+              "Tien、Samae 海滩较安静；天气好时 Nual 适合浮潜。",
+              "Tien и Samae спокойнее; Nual — для снорклинга.",
+            ),
+          ),
+          t(
+            lang,
+            L(
+              "Rent a golf cart or book a glass-bottom boat if you want to circle the island in one day.",
+              "เช่ารถกอล์ฟหรือจองเรือก้นจอกเพื่อรอบเกาะในวันเดียว",
+              "想一日环岛可租高尔夫车或预订玻璃底船。",
+              "Арендуйте гольф-кар или стеклянное дно — круг острова за день.",
+            ),
+          ),
+        ],
       },
       {
         title: t(lang, L("Street Food: Best Local Eats", "สตรีทฟู้ด: ร้านเด็ดพัทยา", "街头美食：本地必吃", "Уличная еда: лучшие места")),
-        meta: t(lang, L("10 ARTICLES • LOCAL TIPS", "10 บทความ", "10 篇文章", "10 СТАТЕЙ")),
+        meta: t(lang, L("Street food", "สตรีทฟู้ด", "街头美食", "Уличная еда")),
         href: "/explore/restaurants/street-food",
+        image: "/images/explore/street-food-thepprasit.png",
+        lines: [
+          t(
+            lang,
+            L(
+              "Thepprasit Night Market fires up weekends with seafood grills, live music, and late snacks.",
+              "ตลาดเทพประสิทธิ์คึกสุดสัปดาห์ มีซีฟู้ดย่าง ดนตรีสด และของว่างดึกๆ",
+              "Thepprasit 夜市周末最热闹——海鲜烧烤、现场音乐与深夜小吃。",
+              "Thepprasit по выходным — морепродукты и музыка.",
+            ),
+          ),
+          t(
+            lang,
+            L(
+              "Soi Buakhao and Naklua markets are budget-friendly — agree prices before seafood by weight.",
+              "ตลาดซอยบัวขาวและนาเกลือราคาดี — ตกลงราคาอาหารทะเลก่อนชั่ง",
+              "Soi Buakhao 与那库拉市集实惠——海鲜按重量前先讲价。",
+              "Soi Buakhao и Naklua — договоритесь о цене за морепродукты.",
+            ),
+          ),
+          t(
+            lang,
+            L(
+              "Carry cash for stalls; peak hours 18:00–21:00 — go earlier for shorter queues.",
+              "พกเงินสดสำหรับร้านค้า ช่วง 18:00–21:00 คนแน่น — ไปเช้ากว่าคิวสั้น",
+              "摊位多收现金；18:00–21:00 最挤——稍早去排队较短。",
+              "Наличные; пик 18:00–21:00 — приходите раньше.",
+            ),
+          ),
+        ],
       },
       {
-        title: t(lang, L("Retirement in Pattaya: Full Guide", "เกษียณในพัทยา: คู่มือเต็ม", "芭提雅退休完整指南", "Пенсия в Паттайе")),
-        meta: t(lang, L("24 ARTICLES • ESSENTIAL", "24 บทความ", "24 篇文章", "24 СТАТЬИ")),
-        href: "/living/visa/retirement",
+        title: t(
+          lang,
+          L(
+            "Pattaya Beaches: Jomtien to Wongamat",
+            "ชายหาดพัทยา: จอมเทียนถึงวงอามาด",
+            "芭提雅海滩：仲天至 Wongamat",
+            "Пляжи Pattaya: от Jomtien до Wongamat",
+          ),
+        ),
+        meta: t(lang, L("Beaches", "ชายหาด", "海滩", "Пляжи")),
+        href: "/explore/beaches",
+        image: "/images/explore/jomtien-beach.png",
+        lines: [
+          t(
+            lang,
+            L(
+              "Pattaya Beach and Walking Street south end suit first-time visitors and evening strolls.",
+              "หาดพัทยาและปลาย Walking Street ฝั่งใต้เหมาะมือใหม่และเดินเล่นตอนเย็น",
+              "芭提雅海滩与步行街南端适合初访者与傍晚散步。",
+              "Pattaya Beach и юг Walking Street — для первого визита.",
+            ),
+          ),
+          t(
+            lang,
+            L(
+              "Jomtien offers calmer water and family zones; Dongtan is popular with local crowds.",
+              "จอมเทียนน้ำสงบและมีโซนครอบครัว หาดดงตาลคนท้องถิ่นเยอะ",
+              "仲天海水较平静并有家庭区； Dongtan 深受本地人喜爱。",
+              "Jomtien — спокойнее; Dongtan — местные.",
+            ),
+          ),
+          t(
+            lang,
+            L(
+              "Wongamat and Naklua north beaches pair well with Sanctuary of Truth and seafood lunch.",
+              "วงอามาดและนาเกลือเหนือเหมาะจับคู่ปราสาทสัจธรรมและอาหารทะเลมื้อเที่ยง",
+              "北侧 Wongamat、那库拉海滩适合搭配真理寺与海鲜午餐。",
+              "Wongamat и Naklua — рядом Sanctuary of Truth.",
+            ),
+          ),
+        ],
       },
       {
-        title: t(lang, L("Yachting Life: Marina Secrets", "เรือยอชต์: ความลับมารีน่า", "游艇生活：码头秘闻", "Яхты: секреты марины")),
-        meta: t(lang, L("15 ARTICLES • EXCLUSIVE", "15 บทความ", "15 篇文章", "15 СТАТЕЙ")),
-        href: "/explore/luxury/yacht",
+        title: t(
+          lang,
+          L(
+            "Hidden Spots Around Pattaya",
+            "จุดลับรอบเมืองพัทยา",
+            "芭提雅周边秘境",
+            "Скрытые места вокруг Pattaya",
+          ),
+        ),
+        meta: t(lang, L("Hidden gems", "จุดลับ", "秘境", "Секреты")),
+        href: "/explore/hidden-gems",
+        image: "/images/explore/hidden-mabprachan-lake.png",
+        lines: [
+          t(
+            lang,
+            L(
+              "Mabprachan Lake and hill viewpoints offer quiet mornings away from Beach Road traffic.",
+              "อ่างมาบประชันและจุดชมวิวบนเนินเหมาะเช้าๆ ห่างจากจราจร Beach Road",
+              "Mabprachan 湖与山景适合远离海滩路车流的清晨。",
+              "Mabprachan и смотровые — тихое утро.",
+            ),
+          ),
+          t(
+            lang,
+            L(
+              "Koh Rin and Koh Kram Yai are day-trip snorkel picks with fewer tour boats than Koh Larn.",
+              "เกาะรินและเกาะกรามใหญ่ดำน้ำได้ในวันเดียว เรือทัวร์น้อยกว่าเกาะล้าน",
+              "Koh Rin、Koh Kram Yai 适合一日浮潜，游船比格兰岛少。",
+              "Koh Rin и Koh Kram Yai — снорклинг без толп.",
+            ),
+          ),
+          t(
+            lang,
+            L(
+              "Bring sun protection and cash — many hidden coves have minimal shade and no card machines.",
+              "พกครีมกันแดดและเงินสด — หลายอ่าวมีร่มน้อยและไม่มีเครื่องรูดบัตร",
+              "请带防晒与现金——不少隐秘海湾遮阳少且无刷卡机。",
+              "Солнце и наличные — в бухтах мало тени.",
+            ),
+          ),
+        ],
       },
     ],
   };

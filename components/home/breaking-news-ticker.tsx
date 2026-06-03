@@ -20,6 +20,7 @@ const barStyles = {
   living: "bg-[#B29475] text-white",
   explore: "bg-[#B52E88] text-white",
   business: "bg-[#363636] text-white",
+  classifieds: "bg-[#C7856D] text-white",
 } as const;
 
 const labelStyles = {
@@ -28,6 +29,7 @@ const labelStyles = {
   living: "shrink-0",
   explore: "shrink-0",
   business: "shrink-0 text-[#E2B04E]",
+  classifieds: "shrink-0 text-white/90",
 } as const;
 
 export function BreakingNewsTicker({

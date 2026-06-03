@@ -2,7 +2,21 @@ import { slugifyNewsTitle } from "@/lib/data/news-article-slug";
 
 /** English title → slug for articles listed on a category page. */
 const TITLE_SLUGS: Record<string, Record<string, string>> = {
+  "tourism/attractions": {
+    "The Sanctuary of Truth: A Masterpiece of Thai Craftsmanship":
+      "sanctuary-of-truth-craftsmanship",
+  },
+  "business/hotels": {
+    "Occupancy Rates Hit 3-Year High as International Flights Return":
+      "occupancy-3-year-high",
+  },
+  "nightlife/walking-street": {
+    "Walking Street Transformation: Smart City Infrastructure Rollout":
+      "walking-street-smart-city",
+  },
   "local-news/city-updates": {
+    "Pattaya Smart City Initiatives: Infrastructure Overhaul Commences on Beach Road":
+      "pattaya-smart-city-beach-road",
     "Walking Street Transformation: Smart Lighting & CCTV Rollout": "walking-street",
     "Sukhumvit U-Turn Widening: Commuter Delays Expected Through May": "sukhumvit",
     "Big Beach Clean 2026: 3,000 Volunteers Register in First Week": "beach-clean-2026",
@@ -27,6 +41,7 @@ const TITLE_SLUGS: Record<string, Record<string, string>> = {
     "Tax Residency Rules: Remote Workers in Pattaya": "tax-residency-remote-workers",
   },
   "expat/immigration": {
+    "90-Day Online Reporting: System Offline for Maintenance": "90-day-online-maintenance",
     "Missed a 90-Day Report? Penalties and How to Fix": "missed-90-day",
     "Tourist Visa Extensions: Documents Checklist for Pattaya": "visa-extensions",
     "Annual Retirement Extension: Bank Letter Requirements": "retirement-bank",

@@ -89,7 +89,7 @@ const sections = {
     "Тысячи expat и местных в Паттайе — недвижимость, авто, работа, услуги.",
   ),
   postCta: L("Submit a listing →", "ส่งประกาศ →", "提交信息 →", "Подать объявление →"),
-  viewListing: L("View listing →", "ดูประกาศ →", "查看 →", "Подробнее →"),
+  viewListing: L("View listing", "ดูประกาศ", "查看", "Подробнее"),
   verified: L("Verified", "ยืนยันแล้ว", "已认证", "Проверено"),
   promoted: L("Promoted", "โปรโมต", "推广", "Рекомендуем"),
 };
@@ -408,6 +408,70 @@ function buildListings(lang: LanguageCode): ClassifiedListing[] {
     excerpt: t(lang, item.excerpt),
     imageAlt: t(lang, item.imageAlt),
   }));
+}
+
+export type ClassifiedListingPreview = ClassifiedListing & { lines: string[] };
+
+const previewLinesById: Record<
+  string,
+  [ReturnType<typeof L>, ReturnType<typeof L>, ReturnType<typeof L>]
+> = {
+  "condo-jomtien": [
+    L("Jomtien Beach Road · posted 2 hours ago", "ถนนเลียบหาด Jomtien · ลงเมื่อ 2 ชม.ที่แล้ว", "仲天海滨路 · 2 小时前", "Jomtien · 2 ч назад"),
+    L("Fully furnished with pool, gym, and foreign quota available.", "เฟอร์ครบ มีสระ ฟิตเนส และโควตาต่างชาติ", "全配家具，含泳池、健身与外资配额。", "Мебель, бассейн, квота."),
+    L("12-month lease, two months deposit — view before you transfer.", "สัญญา 12 เดือน มัดจำ 2 เดือน — ดูห้องก่อนโอน", "12 个月约、押二 — 看房后再转账。", "12 мес., депозит 2 мес."),
+  ],
+  "honda-city": [
+    L("Central Pattaya · posted today", "พัทยากลาง · ลงวันนี้", "芭提雅中心 · 今天", "Central Pattaya · сегодня"),
+    L("One owner, full dealer service history on file.", "เจ้าของคนเดียว ประวัติศูนย์ครบ", "一手车，完整 4S 保养记录。", "Один владелец, сервис."),
+    L("Registration transfer ready — inspect and test drive in person.", "โอนทะเบียนได้ — นัดดูและทดลองขับ", "可过户 — 请当面验车试驾。", "Переоформление — осмотр лично."),
+  ],
+  "hotel-front-desk": [
+    L("North Pattaya · posted yesterday", "พัทยาเหนือ · ลงเมื่อวาน", "北芭提雅 · 昨天", "North Pattaya · вчера"),
+    L("English required; Thai language skills are a plus.", "ต้องใช้อังกฤษได้ ภาษาไทยเป็นพลัส", "需英语；泰语加分。", "Английский обязателен."),
+    L("Work permit support offered for the right candidate.", "ช่วย work permit สำหรับผู้สมัครที่เหมาะสม", "合适人选可协助工作证。", "Work permit возможен."),
+  ],
+  "language-exchange": [
+    L("Terminal 21 area · posted today", "แถว Terminal 21 · ลงวันนี้", "Terminal 21 附近 · 今天", "Terminal 21 · сегодня"),
+    L("Weekly Saturday meetup — beginners welcome.", "พบกันทุกเสาร์ มือใหม่ยินดี", "每周六聚会，欢迎新手。", "Каждую субботу."),
+    L("First round of coffee on us — RSVP in the post.", "รอบแรกเลี้ยงกาแฟ — ตอบรับในโพสต์", "首轮咖啡我们请 — 请在帖内报名。", "Первый кофе — в посте."),
+  ],
+};
+
+export function getHomeClassifiedsPreview(lang: LanguageCode) {
+  const listings = buildListings(lang);
+  const picks = (
+    ["condo-jomtien", "honda-city", "hotel-front-desk", "language-exchange"] as const
+  )
+    .map((id) => listings.find((l) => l.id === id))
+    .filter((l): l is ClassifiedListing => Boolean(l))
+    .map((listing) => {
+      const lines = previewLinesById[listing.id];
+      return {
+        ...listing,
+        lines: lines
+          ? [t(lang, lines[0]), t(lang, lines[1]), t(lang, lines[2])]
+          : [listing.location, listing.excerpt, listing.posted],
+      };
+    });
+
+  return {
+    theme: CLASSIFIEDS_THEME,
+    title: t(lang, L("Latest listings", "ประกาศล่าสุด", "最新信息", "Новые объявления")),
+    subtitle: t(
+      lang,
+      L(
+        "Rentals, vehicles, jobs, and community posts — updated across Pattaya.",
+        "เช่า ขาย งาน และโพสต์ชุมชน — อัปเดตทั่วพัทยา",
+        "租赁、车辆、招聘与社区帖——芭提雅每日更新。",
+        "Аренда, авто, работа и посты сообщества в Паттайе.",
+      ),
+    ),
+    viewAll: t(lang, L("View all listings →", "ดูประกาศทั้งหมด →", "查看全部信息 →", "Все объявления →")),
+    viewAllHref: "/classifieds",
+    viewListing: t(lang, sections.viewListing),
+    listings: picks,
+  };
 }
 
 export function getClassifiedsHub(lang: LanguageCode) {

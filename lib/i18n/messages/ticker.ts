@@ -39,6 +39,12 @@ const headlines = {
     zh: "芭提雅 EEC 投资简报 — BOI 优惠、公司设立与社交活动",
     ru: "Брифинг EEC в Паттайе — BOI, регистрация, нетворкинг",
   },
+  classifieds: {
+    en: "Listings: Jomtien 2BR sea-view condo ฿28,000/mo · Honda City 2021 ฿520K · Visa & TM30 from ฿2,500 · Moving sale furniture in Naklua · Post free on Pattaya.com",
+    th: "ประกาศ: คอนโด 2 ห้องนอนวิวทะเล Jomtien ฿28,000/เดือน · Honda City 2021 ฿520K · วีซ่า & TM30 จาก ฿2,500 · ขายเฟอร์นิเจอร์ย้ายบ้านนาเกลือ · ลงประกาศฟรีที่ Pattaya.com",
+    zh: "分类信息：仲天海景两卧 ฿28,000/月 · Honda City 2021 ฿520K · 签证与 TM30 起 ฿2,500 · 那库拉搬家甩卖家具 · 免费发布",
+    ru: "Объявления: 2BR Jomtien ฿28,000/мес · Honda City ฿520K · виза и TM30 от ฿2,500 · мебель Naklua · бесплатно",
+  },
 } satisfies Record<string, LocalizedText>;
 
 export type TickerVariant = keyof typeof headlines;

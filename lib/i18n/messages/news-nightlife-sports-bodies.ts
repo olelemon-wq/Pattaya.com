@@ -232,6 +232,28 @@ export const newsNightlifeSportsBodies: Record<string, NewsCategoryBodySet> = {
       },
     },
     articles: {
+      "Walking Street Transformation: Smart City Infrastructure Rollout": {
+        badge: L("Nightlife Updates", "อัปเดตไนท์ไลฟ์", "夜生活动态", "Ночная жизнь"),
+        title: L(
+          "Walking Street Transformation: Smart City Infrastructure Rollout",
+          "Walking Street: โครงสร้าง Smart City",
+          "Walking Street 改造：智慧城市基建",
+          "Walking Street: инфраструктура Smart City",
+        ),
+        excerpt: L(
+          "Pattaya's nightlife hub undergoes a digital and structural renaissance for visitor safety.",
+          "ย่านไนท์ไลฟ์พัทยาปรับโครงสร้างดิจิทัลเพื่อความปลอดภัยนักท่องเที่ยว",
+          "芭提雅夜生活核心区进行数字化与结构升级，提升游客安全。",
+          "Модернизация ночного центра ради безопасности.",
+        ),
+        footer: L("5 Hours Ago", "5 ชม.ที่แล้ว", "5 小时前", "5 ч назад"),
+        imageAlt: L(
+          "Walking Street Pattaya at night",
+          "Walking Street พัทยายามค่ำ",
+          "芭提雅步行街夜景",
+          "Walking Street Pattaya ночью",
+        ),
+      },
       "Neon Festival: Closing Road One Night Only": {
         badge: L("Events", "กิจกรรม", "活动", "События"),
         title: L(

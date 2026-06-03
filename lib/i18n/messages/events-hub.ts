@@ -71,10 +71,10 @@ const sections = {
   tipsTitle: L("Insider tips", "เคล็ดลับ", "小贴士", "Советы"),
   exploreCta: L("Explore venue →", "ดูสถานที่ →", "查看场地 →", "Место →"),
   eventDetailsCta: L(
-    "View event details →",
-    "ดูรายละเอียดกิจกรรม →",
-    "查看活动详情 →",
-    "Подробнее о событии →",
+    "View event details",
+    "ดูรายละเอียดกิจกรรม",
+    "查看活动详情",
+    "Подробнее о событии",
   ),
   addEvent: L(
     "List your event on Pattaya.com",
@@ -318,6 +318,57 @@ function weekEvents(lang: LanguageCode): EventsHubEvent[] {
       href: "/explore/cafes",
     },
   ];
+}
+
+export type EventsHubEventPreview = EventsHubEvent & { lines: string[] };
+
+const homeWeekPreviewLines: Record<
+  string,
+  [ReturnType<typeof L>, ReturnType<typeof L>, ReturnType<typeof L>]
+> = {
+  "yacht-show": [
+    L("Ocean Marina Yacht Club · Sat–Sun", "โอเชียน มารีน่า · ส–อา", "Ocean Marina · 周六–日", "Ocean Marina · Сб–Вс"),
+    L("Charter demos and guided marina tours all weekend.", "ทดลองเช่าเรือและทัวร์มารีน่าตลอดสุดสัปดาห์", "周末包船体验与码头导览。", "Демо чартеров и туры по марине."),
+    L("Sunset deck parties — arrive early for parking near Jomtien.", "ปาร์ตี้ดาดฟ้ายามเย็น — มาถึงก่อนเพื่อจอดรถแถวจอมเทียน", "日落甲板派对——建议提早到场停车。", "Вечеринки на палубе — приезжайте заранее."),
+  ],
+  "muay-thai": [
+    L("Max Muay Thai · Fri · 20:00", "แม็กมวยไทย · ศ. · 20:00", "Max Muay Thai · 周五 20:00", "Max Muay Thai · Пт 20:00"),
+    L("Main-card fights with live stadium music.", "คู่เอกพร้อมดนตรีสดในสนาม", "正赛搭配现场音乐。", "Главные бои и живая музыка."),
+    L("Stadium food and walk-in tickets — book online to skip queues.", "อาหารในสนาม บัตรหน้างาน — จองออนไลน์ลดคิว", "场馆美食，可现场购票——建议网上预约。", "Еда на стадионе — билеты онлайн."),
+  ],
+  "aquaverse": [
+    L("Na Jomtien · daily from 10:00", "นาเกลือ / จอมเทียน · ทุกวัน 10:00", "纳琼天 · 每日 10:00", "Na Jomtien · ежедневно 10:00"),
+    L("Water park zones and movie-themed character experiences.", "โซนสวนน้ำและธีมภาพยนตร์", "水上分区与电影主题角色体验。", "Аквапарк и темы кино."),
+    L("Book tickets online for shorter queues on peak days.", "จองตั๋วออนไลน์ลดคิววันคนเยอะ", "旺季建议网上预约减少排队。", "Билеты онлайн в пик сезона."),
+  ],
+  "tech-meetup": [
+    L("Central Pattaya co-working · Thu · 18:30", "โคเวิร์กกิ้งกลางเมือง · พฤ. · 18:30", "市中心联合办公 · 周四 18:30", "Коворкинг · Чт 18:30"),
+    L("Monthly founders and developers networking night.", "พบปะนักพัฒนาและผู้ประกอบการรายเดือน", "每月创业者与开发者交流夜。", "Ежемесячный нетворкинг."),
+    L("Lightning talks and rooftop mingling after sessions.", "ไลท์นิ่งทอล์กและเน็ตเวิร์กดาดฟ้าหลังจบ", "闪电演讲结束后天台交流。", "Lightning talks и крыша после."),
+  ],
+};
+
+export function getHomeEventsWeek(lang: LanguageCode) {
+  const events = weekEvents(lang)
+    .slice(0, 4)
+    .map((event) => {
+      const lines = homeWeekPreviewLines[event.id];
+      return {
+        ...event,
+        lines: lines
+          ? [t(lang, lines[0]), t(lang, lines[1]), t(lang, lines[2])]
+          : [event.venue, event.excerpt, event.time],
+      };
+    });
+
+  return {
+    title: t(lang, sections.weekTitle),
+    subtitle: t(lang, sections.weekSubtitle),
+    viewAll: t(lang, L("View all events", "ดูงานทั้งหมด", "查看全部活动", "Все события")),
+    viewAllHref: "/events",
+    eventCta: t(lang, sections.eventDetailsCta),
+    events,
+  };
 }
 
 export function getEventsHub(lang: LanguageCode) {

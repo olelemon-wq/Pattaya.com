@@ -423,6 +423,17 @@ export const newsCategoryBySlug: Record<string, NewsCategoryContent> = {
     ],
     articles: [
       {
+        href: "/news/tourism/attractions/sanctuary-of-truth-craftsmanship",
+        image: newsImages.sanctuary,
+        imageAlt: "Sanctuary of Truth Pattaya",
+        badge: "Tourism",
+        badgeClass: "bg-[#ae2f34] text-white",
+        title: "The Sanctuary of Truth: A Masterpiece of Thai Craftsmanship",
+        excerpt:
+          "Explore intricate carvings and the spiritual journey behind Pattaya's iconic wooden structure.",
+        footer: "3 Hours Ago",
+      },
+      {
         href: "/explore/islands/koh-larn",
         image: newsImages.hiddenGems,
         imageAlt: "Koh Larn snorkeling",
@@ -656,6 +667,17 @@ export const newsCategoryBySlug: Record<string, NewsCategoryContent> = {
       },
     ],
     articles: [
+      {
+        href: "/news/business/hotels/occupancy-3-year-high",
+        image: newsImages.hotels,
+        imageAlt: "Pattaya beachfront hotels",
+        badge: "Hotel Industry",
+        badgeClass: "bg-[#455f88] text-white",
+        title: "Occupancy Rates Hit 3-Year High as International Flights Return",
+        excerpt:
+          "Pattaya's luxury hotel sector sees a rebound with Chinese and European tourists leading the charge...",
+        footer: "4 hours ago",
+      },
       {
         href: "/news/business/hotels",
         image: newsImages.hotels,
@@ -1063,6 +1085,17 @@ export const newsCategoryBySlug: Record<string, NewsCategoryContent> = {
       },
     ],
     articles: [
+      {
+        href: "/news/nightlife/walking-street/walking-street-smart-city",
+        image: newsImages.walkingStreet,
+        imageAlt: "Walking Street Pattaya at night",
+        badge: "Nightlife Updates",
+        badgeClass: "bg-[#ae2f34] text-white",
+        title: "Walking Street Transformation: Smart City Infrastructure Rollout",
+        excerpt:
+          "Pattaya's nightlife hub undergoes a digital and structural renaissance for visitor safety.",
+        footer: "5 Hours Ago",
+      },
       {
         href: "/news/nightlife/walking-street",
         image: newsImages.walkingStreet,

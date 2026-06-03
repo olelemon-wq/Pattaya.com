@@ -93,6 +93,28 @@ const articleBodies = {
       "Walking Street с неоном",
     ),
   },
+  "smart-city-beach": {
+    badge: L("City Updates", "ข่าวในเมือง", "城市动态", "Город"),
+    title: L(
+      "Pattaya Smart City Initiatives: Infrastructure Overhaul Commences on Beach Road",
+      "Smart City พัทยา: ปรับโฉมโครงสร้าง Beach Road",
+      "芭提雅智慧城市：海滩路基建升级启动",
+      "Smart City Pattaya: модернизация Beach Road",
+    ),
+    excerpt: L(
+      "City Hall unveils a 500 million THB plan to modernize waterfront access, bury overhead cables, and expand public Wi-Fi along Beach Road by Q4 2026.",
+      "ศาลากลางงบ 500 ล้านบาทปรับทางเข้าชายหาด ฝังสายไฟ และขยาย Wi-Fi สาธารณะถึง Q4 2026",
+      "市政公布 5 亿泰铢计划：升级海滨通道、地下线缆，2026 年第四季度前扩展 Beach Road 公共 Wi-Fi。",
+      "City Hall: 500 млн бат на набережную, кабели и Wi-Fi к Q4 2026.",
+    ),
+    footer: L("2 hours ago", "2 ชม.ที่แล้ว", "2 小时前", "2 ч назад"),
+    imageAlt: L(
+      "Pattaya Beach Road waterfront at dawn",
+      "ริม Beach Road พัทยายามรุ่ง",
+      "芭提雅海滩路海滨黎明",
+      "Beach Road на рассвете",
+    ),
+  },
   sukhumvit: {
     badge: L("Traffic", "จราจร", "交通", "Трафик"),
     title: L(
@@ -206,6 +228,8 @@ const articleBodies = {
 } as const;
 
 const articleKeyByTitle: Record<string, keyof typeof articleBodies> = {
+  "Pattaya Smart City Initiatives: Infrastructure Overhaul Commences on Beach Road":
+    "smart-city-beach",
   "Walking Street Transformation: Smart Lighting & CCTV Rollout": "walking-street",
   "Sukhumvit U-Turn Widening: Commuter Delays Expected Through May": "sukhumvit",
   "Big Beach Clean 2026: 3,000 Volunteers Register in First Week": "cleanup",

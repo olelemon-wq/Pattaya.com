@@ -2,7 +2,7 @@
 export const newsTheme = {
   page: "bg-[#f5f7fa] font-sans text-[#0c1a33]",
   container:
-    "mx-auto max-w-[1280px] px-4 pt-4 pb-10 sm:pt-6 lg:px-6",
+    "mx-auto max-w-[1280px] px-4 pt-8 pb-10 lg:px-6",
   navy: "#0c1a33",
   accent: "#455f88",
   primary: "#10438f",
