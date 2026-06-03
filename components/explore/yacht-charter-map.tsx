@@ -77,7 +77,7 @@ export function YachtCharterMap() {
           <strong>${escapeHtml(item.name)}</strong>
           <span class="market-popup__hours">${escapeHtml(item.hoursRange)} · ${escapeHtml(item.priceGuide)}</span>
           <div class="market-popup__actions">
-            <a href="${item.directionsHref}" target="_blank" rel="noopener noreferrer">${escapeHtml(directions)} →</a>
+            <a href="${item.directionsHref}" target="_blank" rel="noopener noreferrer">${escapeHtml(directions)}</a>
             <a href="${item.mapsHref}" target="_blank" rel="noopener noreferrer">${escapeHtml(openPlace)}</a>
           </div>
         </div>

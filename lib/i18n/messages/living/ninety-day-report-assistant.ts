@@ -60,7 +60,7 @@ export function getNinetyDayAssistantCopy(lang: LanguageCode) {
       lang,
       L("Use the official Immigration e-Service (TM47).", "ใช้ระบบ e-Service ตม. (TM47)", "使用移民局 e-Service (TM47)。", "Официальный e-Service TM47."),
     ),
-    onlineCta: t(lang, L("Open TM47 e-Service →", "เปิด TM47 ออนไลน์ →", "打开 TM47 →", "Открыть TM47 →")),
+    onlineCta: t(lang, L("Open TM47 e-Service", "เปิด TM47 ออนไลน์", "打开 TM47", "Открыть TM47")),
     onlineNoteTitle: t(lang, L("Before you start", "ก่อนเริ่ม", "开始前", "Перед началом")),
     onlineNotes: [
       t(

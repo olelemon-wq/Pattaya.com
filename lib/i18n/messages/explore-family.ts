@@ -155,7 +155,7 @@ export function getFamilyActivitiesPage(lang: LanguageCode) {
       mainBeaches: c.mainBeaches,
       streetFood: c.streetFood,
       shoppingMalls: c.shoppingMalls,
-      markets: t(lang, L("Local markets →", "ตลาดท้องถิ่น →", "本地市场 →", "Рынки →")),
+      markets: t(lang, L("Local markets", "ตลาดท้องถิ่น", "本地市场", "Рынки")),
       marketsHref: marketPagePaths.page,
     },
   };

@@ -82,7 +82,7 @@ const guideGems = {
       "Эстетичные фото и спокойные свидания.",
     ),
     guideHref: "/explore/cafes",
-    guideLabel: L("Pattaya café guide →", "คู่มือคาเฟ่พัทยา →", "芭提雅咖啡馆指南 →", "Гид по кафе →"),
+    guideLabel: L("Pattaya café guide", "คู่มือคาเฟ่พัทยา", "芭提雅咖啡馆指南", "Гид по кафе"),
   }),
   "cave-beach-club-morning": gem("cave-beach-club-morning", "Cave Beach Club Na Jomtien Pattaya Thailand", {
     category: L("Photo & aesthetic", "สายถ่ายรูป / aesthetic", "摄影与氛围", "Фото и эстетика"),
@@ -140,7 +140,7 @@ const guideGems = {
       "Полдня на юг, закат и морепродукты.",
     ),
     guideHref: "/explore/beaches/jomtien",
-    guideLabel: L("South coast beaches →", "หาดฝั่งใต้ →", "南岸海滩 →", "Пляжи юга →"),
+    guideLabel: L("South coast beaches", "หาดฝั่งใต้", "南岸海滩", "Пляжи юга"),
   }),
   "khao-chi-chan-golden-hour": gem(
     "khao-chi-chan-golden-hour",
@@ -196,7 +196,7 @@ const guideGems = {
       "Ужин после пляжа Bang Saray.",
     ),
     guideHref: marketPagePaths.streetFoodPage,
-    guideLabel: L("Street food guide →", "คู่มืออาหารข้างทาง →", "街头美食指南 →", "Уличная еда →"),
+    guideLabel: L("Street food guide", "คู่มืออาหารข้างทาง", "街头美食指南", "Уличная еда"),
   }),
   "pa-tid-kitchen-naklua": gem("pa-tid-kitchen-naklua", "Pa Tid Kitchen Naklua Pattaya Thailand", {
     category: L("Hidden food", "อาหาร local จริง", "地道美食", "Еда"),
@@ -223,7 +223,7 @@ const guideGems = {
       "После рынка Naklua.",
     ),
     guideHref: marketPagePaths.oldNaklua,
-    guideLabel: L("Naklua market guide →", "คู่มือตลาดนาเกลือ →", "那库拉市场指南 →", "Рынок Naklua →"),
+    guideLabel: L("Naklua market guide", "คู่มือตลาดนาเกลือ", "那库拉市场指南", "Рынок Naklua"),
   }),
   "dicey-reillys-bars": gem("dicey-reillys-bars", "Dicey Reilly's Bar Pattaya Thailand", {
     category: L("Hidden nightlife", "ไนท์ไลฟ์ผู้ใหญ่", "隐秘夜生活", "Ночная жизнь"),
@@ -275,7 +275,7 @@ const guideGems = {
       "Закат без шаблонных rooftop.",
     ),
     guideHref: "/explore/beaches/pratumnak",
-    guideLabel: L("Pratumnak guide →", "คู่มือพระตำหนัก →", "Pratumnak 指南 →", "Pratumnak →"),
+    guideLabel: L("Pratumnak guide", "คู่มือพระตำหนัก", "Pratumnak 指南", "Pratumnak"),
   }),
   "mabprachan-lake-cafes": gem("mabprachan-lake-cafes", "Mabprachan Lake Pattaya Thailand", {
     category: L("Slow life", "ชีวิตช้า", "慢生活", "Slow life"),
@@ -302,7 +302,7 @@ const guideGems = {
       "Перезагрузка у озера.",
     ),
     guideHref: "/explore/cafes",
-    guideLabel: L("Pattaya café guide →", "คู่มือคาเฟ่พัทยา →", "芭提雅咖啡馆指南 →", "Гид по кафе →"),
+    guideLabel: L("Pattaya café guide", "คู่มือคาเฟ่พัทยา", "芭提雅咖啡馆指南", "Гид по кафе"),
   }),
 } as const;
 
@@ -432,9 +432,9 @@ export function getHiddenGemGuideIntro(lang: LanguageCode) {
     ),
     openInMaps: t(
       lang,
-      L("Open in Google Maps →", "เปิดใน Google Maps →", "在 Google 地图中打开 →", "Google Maps →"),
+      L("Open in Google Maps", "เปิดใน Google Maps", "在 Google 地图中打开", "Google Maps"),
     ),
-    directionsLabel: t(lang, L("Directions →", "เส้นทาง →", "路线 →", "Маршрут →")),
+    directionsLabel: t(lang, L("Directions", "เส้นทาง", "路线", "Маршрут")),
     highlightsLabel: t(lang, L("Highlights", "จุดเด่น", "亮点", "Особенности")),
     vibeLabel: t(lang, L("Atmosphere", "บรรยากาศ", "氛围", "Атмосфера")),
     bestForLabel: t(lang, L("Good fit if", "เหมาะกับ", "适合", "Кому")),
@@ -515,7 +515,7 @@ export function getHiddenGemSecretRoute(lang: LanguageCode) {
     mapsHref: hiddenGemsMapOpenHref,
     mapsLabel: t(
       lang,
-      L("Open route in Google Maps →", "เปิดเส้นทางใน Google Maps →", "在 Google 地图中打开路线 →", "Маршрут в Maps →"),
+      L("Open route in Google Maps", "เปิดเส้นทางใน Google Maps", "在 Google 地图中打开路线", "Маршрут в Maps"),
     ),
   };
 }

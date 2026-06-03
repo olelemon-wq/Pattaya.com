@@ -49,10 +49,10 @@ export function getInsuranceRecommenderCopy(lang: LanguageCode) {
     ),
     step1Hint: t(
       lang,
-      L("Choose age and visa — results update on the right →",
-        "เลือกอายุและวีซ่า — ผลจะอัปเดตที่กล่องด้านขวา →",
-        "选择年龄和签证——右侧即时更新 →",
-        "Выберите возраст и визу — справа →",
+      L("Choose age and visa — results update on the right",
+        "เลือกอายุและวีซ่า — ผลจะอัปเดตที่กล่องด้านขวา",
+        "选择年龄和签证——右侧即时更新",
+        "Выберите возраст и визу — справа",
       ),
     ),
     step1HintMobile: t(

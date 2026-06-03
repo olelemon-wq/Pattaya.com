@@ -64,7 +64,7 @@ export function getFineDiningPage(lang: LanguageCode) {
       streetFood: {
         label: t(
           lang,
-          L("Local & street food →", "อาหารท้องถิ่น & สตรีทฟู้ด →", "本地与街头美食 →", "Еда →"),
+          L("Local & street food", "อาหารท้องถิ่น & สตรีทฟู้ด", "本地与街头美食", "Еда"),
         ),
         href: marketPagePaths.streetFoodThepprasit,
       },

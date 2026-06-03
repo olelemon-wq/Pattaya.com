@@ -191,7 +191,7 @@ export function getMainBeachesPage(lang: LanguageCode) {
           text: t(lang, L("cliff sunsets and fine dining, smaller swim coves.", "พระอาทิตย์ตกหน้าผา ไฟน์ไดนิ่ง อ่าวเล็ก", "悬崖日落与精致餐饮", "закаты и fine dining")),
         },
       ],
-      cta: t(lang, L("Plan a Koh Larn day trip →", "วางแผนทริปเกาะล้าน →", "规划格兰岛一日游 →", "Ко Лан →")),
+      cta: t(lang, L("Plan a Koh Larn day trip", "วางแผนทริปเกาะล้าน", "规划格兰岛一日游", "Ко Лан")),
     },
     tips: {
       title: t(lang, L("Practical tips", "เคล็ดลับ", "实用贴士", "Советы")),

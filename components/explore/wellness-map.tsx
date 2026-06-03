@@ -75,7 +75,7 @@ export function WellnessMap() {
           <strong>${escapeHtml(spa.name)}</strong>
           <span class="market-popup__hours">${escapeHtml(spa.hoursRange)} · ${escapeHtml(spa.openDays)}</span>
           <div class="market-popup__actions">
-            <a href="${spa.directionsHref}" target="_blank" rel="noopener noreferrer">${escapeHtml(directions)} →</a>
+            <a href="${spa.directionsHref}" target="_blank" rel="noopener noreferrer">${escapeHtml(directions)}</a>
             <a href="${spa.mapsHref}" target="_blank" rel="noopener noreferrer">${escapeHtml(openPlace)}</a>
           </div>
         </div>

@@ -155,9 +155,9 @@ export function getOwnershipPage(lang: LanguageCode) {
         "Не юридическая консультация.",
       ),
     ),
-    condoGuide: t(lang, L("Condo buying guide →", "คู่มือซื้อคอนโด →", "公寓购买指南 →", "Гид по покупке кондо →")),
-    rentals: t(lang, L("Rentals guide →", "คู่มือเช่าที่พัก →", "租房指南 →", "Аренда →")),
-    livingHub: t(lang, L("Living hub →", "ศูนย์ไลฟ์สไตล์ →", "生活中心 →", "Раздел «Жизнь» →")),
+    condoGuide: t(lang, L("Condo buying guide", "คู่มือซื้อคอนโด", "公寓购买指南", "Гид по покупке кондо")),
+    rentals: t(lang, L("Rentals guide", "คู่มือเช่าที่พัก", "租房指南", "Аренда")),
+    livingHub: t(lang, L("Living hub", "ศูนย์ไลฟ์สไตล์", "生活中心", "Раздел «Жизнь»")),
   };
 }
 

@@ -2,7 +2,7 @@ import { images } from "@/lib/design/images";
 
 /** Local assets + verified Unsplash URLs (HTTP 200). */
 export const classifiedsImages = {
-  hero: "/images/living/living-hero-hub.jpg",
+  hero: "/images/classifieds/hero-community-hub.png",
   propertyRent: images.guideInterior,
   propertySale:
     "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80",

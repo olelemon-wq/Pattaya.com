@@ -2,15 +2,15 @@ import type { LanguageCode } from "@/lib/i18n/languages";
 import { L, t } from "@/lib/i18n/living-helpers";
 
 export const newsCategoryUi = {
-  newsHub: L("News Hub →", "ศูนย์ข่าว →", "新闻中心 →", "Новости →"),
+  newsHub: L("News Hub", "ศูนย์ข่าว", "新闻中心", "Новости"),
   browseHeadlines: L(
     "Browse headlines in this category",
     "ดูหัวข้อข่าวในหมวดนี้",
     "浏览本类别要闻",
     "Смотреть заголовки в разделе",
   ),
-  viewCategory: L("View category →", "เข้าหมวดข่าว →", "进入新闻类别 →", "В раздел →"),
-  relatedGuide: L("Related guide →", "คู่มือที่เกี่ยวข้อง →", "相关指南 →", "См. гайд →"),
+  viewCategory: L("View category", "เข้าหมวดข่าว", "进入新闻类别", "В раздел"),
+  relatedGuide: L("Related guide", "คู่มือที่เกี่ยวข้อง", "相关指南", "См. гайд"),
   categoryBadge: L("News category", "หมวดข่าว", "新闻类别", "Раздел новостей"),
   categoryIntro: L(
     "Headlines and updates grouped by topic — select a story to read the full article.",

@@ -29,8 +29,8 @@ export type KohLarnActivityItem = {
 export function getKohLarnActivities(lang: LanguageCode) {
   const whereLabel = t(lang, L("Best on", "เล่นที่", "推荐地点", "Где"));
   const priceRangeLabel = t(lang, L("Typical price", "ราคาโดยประมาณ", "大致价格", "Цена"));
-  const openMaps = t(lang, L("Open on map →", "เปิดแผนที่ →", "打开地图 →", "На карте →"));
-  const pickBeach = t(lang, L("Pick a beach →", "เลือกหาด →", "选海滩 →", "Выбрать пляж →"));
+  const openMaps = t(lang, L("Open on map", "เปิดแผนที่", "打开地图", "На карте"));
+  const pickBeach = t(lang, L("Pick a beach", "เลือกหาด", "选海滩", "Выбрать пляж"));
 
   const items: KohLarnActivityItem[] = [
     {
@@ -212,7 +212,7 @@ export function getKohLarnActivities(lang: LanguageCode) {
         "Бронь на пляже — часто дешевле, чем на Пхукете.",
       ),
     ),
-    costsLink: t(lang, L("All typical costs →", "ค่าใช้จ่ายทั้งหมด →", "全部大致花费 →", "Все цены →")),
+    costsLink: t(lang, L("All typical costs", "ค่าใช้จ่ายทั้งหมด", "全部大致花费", "Все цены")),
     whereLabel,
     priceRangeLabel,
     beachMatrix: {

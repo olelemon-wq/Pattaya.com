@@ -75,7 +75,7 @@ export function HiddenGemsMap() {
           <strong>${escapeHtml(gem.name)}</strong>
           <span class="market-popup__hours">${escapeHtml(gem.hoursRange)} · ${escapeHtml(gem.openDays)}</span>
           <div class="market-popup__actions">
-            <a href="${gem.directionsHref}" target="_blank" rel="noopener noreferrer">${escapeHtml(directions)} →</a>
+            <a href="${gem.directionsHref}" target="_blank" rel="noopener noreferrer">${escapeHtml(directions)}</a>
             <a href="${gem.mapsHref}" target="_blank" rel="noopener noreferrer">${escapeHtml(openPlace)}</a>
           </div>
         </div>

@@ -145,7 +145,7 @@ export function getCultureEtiquettePage(lang: LanguageCode) {
     ),
     waiPromoCta: t(
       lang,
-      L("Open wai visualizer →", "เปิดจำลองไหว้ →", "打开合十礼示意 →", "Открыть wai →"),
+      L("Open wai visualizer", "เปิดจำลองไหว้", "打开合十礼示意", "Открыть wai"),
     ),
     extendedDosDontsIntro: t(
       lang,
@@ -201,9 +201,9 @@ export function getCultureEtiquettePage(lang: LanguageCode) {
       L("How locals expect you to behave in this city.", "สิ่งที่คนท้องถิ่นคาดหวังในเมืองนี้", "本地人对行为的期待", "Ожидания в городе"),
     ),
     socialTitle: t(lang, L("Daily social life", "ชีวิตสังคมประจำวัน", "日常社交", "Бытовой этикет")),
-    livingHub: t(lang, L("Living hub →", "ศูนย์ไลฟ์สไตล์ →", "生活中心 →", "Раздел «Жизнь» →")),
-    thaiCulture: t(lang, L("Thai culture →", "วัฒนธรรมไทย →", "泰国文化 →", "Культура →")),
-    scamAlerts: t(lang, L("Scam alerts →", "แจ้งเตือนมิจฉาชีพ →", "诈骗提醒 →", "Мошенничество →")),
+    livingHub: t(lang, L("Living hub", "ศูนย์ไลฟ์สไตล์", "生活中心", "Раздел «Жизнь»")),
+    thaiCulture: t(lang, L("Thai culture", "วัฒนธรรมไทย", "泰国文化", "Культура")),
+    scamAlerts: t(lang, L("Scam alerts", "แจ้งเตือนมิจฉาชีพ", "诈骗提醒", "Мошенничество")),
   };
 }
 

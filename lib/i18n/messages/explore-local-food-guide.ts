@@ -360,12 +360,12 @@ export function getLocalFoodGuideIntro(lang: LanguageCode) {
     ),
     openInMaps: t(
       lang,
-      L("Open in Google Maps →", "เปิดใน Google Maps →", "在 Google 地图中打开 →", "Google Maps →"),
+      L("Open in Google Maps", "เปิดใน Google Maps", "在 Google 地图中打开", "Google Maps"),
     ),
-    directionsLabel: t(lang, L("Directions →", "เส้นทาง →", "路线 →", "Маршрут →")),
+    directionsLabel: t(lang, L("Directions", "เส้นทาง", "路线", "Маршрут")),
     siteGuideLabel: t(
       lang,
-      L("Full guide on Pattya →", "คู่มือฉบับเต็มใน Pattya →", "本站完整指南 →", "Полный гид на сайте →"),
+      L("Full guide on Pattya", "คู่มือฉบับเต็มใน Pattya", "本站完整指南", "Полный гид на сайте"),
     ),
     highlightsLabel: t(lang, L("Must try", "เมนูที่ควรลอง", "必试", "Попробуйте")),
     vibeLabel: t(lang, L("Vibe", "ฟีล", "氛围", "Атмосфера")),

@@ -48,7 +48,7 @@ export function getEmergencyPageCopy(lang: LanguageCode) {
     ),
     fullGuideLink: t(
       lang,
-      L("Open emergency guide →", "เปิดคู่มือฉุกเฉิน →", "打开紧急指南 →", "Открыть гид →"),
+      L("Open emergency guide", "เปิดคู่มือฉุกเฉิน", "打开紧急指南", "Открыть гид"),
     ),
   };
 }

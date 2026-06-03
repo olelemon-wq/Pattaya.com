@@ -349,7 +349,7 @@ function HiddenMarketsSection({
             className="rounded-xl border border-[#e7e8e9] bg-white/90 p-4 shadow-sm"
           >
             <h3 className="text-sm font-bold text-[#2d6a4f]">{group.title}</h3>
-            <p className="mt-2 text-sm font-semibold leading-snug text-[#191c1d]">→ {group.pick}</p>
+            <p className="mt-2 text-sm font-semibold leading-snug text-[#191c1d]">{group.pick}</p>
           </div>
         ))}
       </div>

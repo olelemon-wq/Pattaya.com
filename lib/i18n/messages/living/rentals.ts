@@ -74,9 +74,9 @@ export function getRentalsPage(lang: LanguageCode) {
     tableArea: t(lang, L("Area", "ทำเล", "区域", "Район")),
     tableStudio: t(lang, L("Studio", "สตูดิโอ", "单间", "Студия")),
     tableTwoBr: t(lang, L("2 BR", "2 ห้องนอน", "两卧", "2 спальни")),
-    livingHub: t(lang, L("Living hub →", "ศูนย์ไลฟ์สไตล์ →", "生活中心 →", "Раздел «Жизнь» →")),
-    condoBuying: t(lang, L("Condo buying →", "ซื้อคอนโด →", "购买公寓 →", "Покупка кондо →")),
-    scamAlerts: t(lang, L("Scam alerts →", "แจ้งเตือนมิจฉาชีพ →", "诈骗提醒 →", "Мошенничество →")),
+    livingHub: t(lang, L("Living hub", "ศูนย์ไลฟ์สไตล์", "生活中心", "Раздел «Жизнь»")),
+    condoBuying: t(lang, L("Condo buying", "ซื้อคอนโด", "购买公寓", "Покупка кондо")),
+    scamAlerts: t(lang, L("Scam alerts", "แจ้งเตือนมิจฉาชีพ", "诈骗提醒", "Мошенничество")),
   };
 }
 

@@ -168,10 +168,10 @@ const hub = {
     "Узнать о местных обычаях.",
   ),
   protocolGuide: L(
-    "Detailed Protocol Guide →",
-    "คู่มือมารยาทฉบับเต็ม →",
-    "详细礼仪指南 →",
-    "Полный этикет →",
+    "Detailed Protocol Guide",
+    "คู่มือมารยาทฉบับเต็ม",
+    "详细礼仪指南",
+    "Полный этикет",
   ),
   commercialTitle: L(
     "Commercial Potential",
@@ -217,7 +217,7 @@ const hub = {
     "高端公寓与现代配套。",
     "Премиум-кондо с удобствами.",
   ),
-  fullAnalysis: L("View Full Analysis →", "ดูการวิเคราะห์เต็ม →", "查看完整分析 →", "Полный анализ →"),
+  fullAnalysis: L("View Full Analysis", "ดูการวิเคราะห์เต็ม", "查看完整分析", "Полный анализ"),
   mobilityTitle: L("Elite Mobility", "การเดินทางระดับพรีเมียม", "精英出行", "Премиум-транспорт"),
   mobilityDesc: L(
     "Verified ride-hailing for transparent, safe transport across the city.",

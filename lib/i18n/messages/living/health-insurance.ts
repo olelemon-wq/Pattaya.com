@@ -148,19 +148,19 @@ export function getHealthInsurancePage(lang: LanguageCode) {
         "Документы для Immigration",
       ),
     ),
-    hospitalsLink: t(lang, L("Full hospital guide →", "คู่มือโรงพยาบาล →", "医院指南 →", "Клиники →")),
+    hospitalsLink: t(lang, L("Full hospital guide", "คู่มือโรงพยาบาล", "医院指南", "Клиники")),
     retirementLink: t(
       lang,
-      L("Retirement visa guide →",
-        "คู่มือวีซ่าเกษียณ →",
-        "退休签证指南 →",
-        "Retirement visa →",
+      L("Retirement visa guide",
+        "คู่มือวีซ่าเกษียณ",
+        "退休签证指南",
+        "Retirement visa",
       ),
     ),
-    livingHub: t(lang, L("Living hub →", "ศูนย์ไลฟ์สไตล์ →", "生活中心 →", "Раздел «Жизнь» →")),
+    livingHub: t(lang, L("Living hub", "ศูนย์ไลฟ์สไตล์", "生活中心", "Раздел «Жизнь»")),
     emergencyLink: t(
       lang,
-      L("Emergency guide →", "คู่มือฉุกเฉิน →", "紧急指南 →", "Экстренная помощь →"),
+      L("Emergency guide", "คู่มือฉุกเฉิน", "紧急指南", "Экстренная помощь"),
     ),
   };
 }

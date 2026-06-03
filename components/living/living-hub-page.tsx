@@ -82,7 +82,7 @@ function GridInfoCard({
           {excerpt}
         </p>
         <span className="mt-auto text-xs font-bold uppercase tracking-wider text-[#455f88] group-hover:underline">
-          {cta} →
+          {cta}
         </span>
       </div>
     </Link>
@@ -352,7 +352,7 @@ export function LivingHubPage() {
                     {card.excerpt}
                   </p>
                   <span className="text-xs font-bold text-[#455f88] group-hover:underline">
-                    {card.cta.toUpperCase()} →
+                    {card.cta.toUpperCase()}
                   </span>
                 </div>
               </Link>
@@ -429,9 +429,6 @@ export function LivingHubPage() {
                           {tLivingHub(language, "grabSub")}
                         </p>
                       </div>
-                      <span className="hub-mobility__link-arrow" aria-hidden>
-                        →
-                      </span>
                     </div>
                   </Link>
                   <Link
@@ -459,9 +456,6 @@ export function LivingHubPage() {
                           {tLivingHub(language, "boltSub")}
                         </p>
                       </div>
-                      <span className="hub-mobility__link-arrow" aria-hidden>
-                        →
-                      </span>
                     </div>
                   </Link>
                 </div>

@@ -71,9 +71,9 @@ export function getCostFoodPageCopy(lang: LanguageCode) {
         ),
       ),
     ],
-    utilitiesLink: t(lang, L("Utilities guide →", "คู่มือค่าไฟน้ำ →", "水电指南 →", "Коммуналка →")),
-    rentalsLink: t(lang, L("Rentals guide →", "คู่มือเช่า →", "租房指南 →", "Аренда →")),
-    streetFoodLink: t(lang, L("Street food guide →", "สตรีทฟู้ด →", "街头美食 →", "Стритфуд →")),
+    utilitiesLink: t(lang, L("Utilities guide", "คู่มือค่าไฟน้ำ", "水电指南", "Коммуналка")),
+    rentalsLink: t(lang, L("Rentals guide", "คู่มือเช่า", "租房指南", "Аренда")),
+    streetFoodLink: t(lang, L("Street food guide", "สตรีทฟู้ด", "街头美食", "Стритфуд")),
   };
 }
 

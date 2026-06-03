@@ -151,7 +151,7 @@ export function getWellnessPage(lang: LanguageCode) {
       title: c.alsoExplore,
       mainBeaches: c.mainBeaches,
       fineDining: c.fineDining,
-      hiddenGems: t(lang, L("Hidden gems →", "เริ่มรู้ลึก →", "深入了解 →", "Секреты →")),
+      hiddenGems: t(lang, L("Hidden gems", "เริ่มรู้ลึก", "深入了解", "Секреты")),
       cafesLink: c.cafesLink,
     },
   };

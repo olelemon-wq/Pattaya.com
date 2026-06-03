@@ -69,7 +69,7 @@ const sections = {
   ),
   promotedTitle: L("Promoted", "โปรโมต", "推广", "Рекомендуем"),
   tipsTitle: L("Insider tips", "เคล็ดลับ", "小贴士", "Советы"),
-  exploreCta: L("Explore venue →", "ดูสถานที่ →", "查看场地 →", "Место →"),
+  exploreCta: L("Explore venue", "ดูสถานที่", "查看场地", "Место"),
   eventDetailsCta: L(
     "View event details",
     "ดูรายละเอียดกิจกรรม",

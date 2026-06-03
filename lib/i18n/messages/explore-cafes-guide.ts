@@ -370,7 +370,7 @@ export function getCafeMapCopy(lang: LanguageCode) {
       L("Open suggested café route in Maps", "เปิดเส้นทางคาเฟ่แนะนำใน Maps", "在地图中打开推荐咖啡路线", "Маршрут кафе в Maps"),
     ),
     openRouteHref: cafesMapRouteHref,
-    openAll: t(lang, L("Browse cafés in Pattaya →", "ดูคาเฟ่ในพัทยา →", "浏览芭提雅咖啡馆 →", "Кафе Pattaya →")),
+    openAll: t(lang, L("Browse cafés in Pattaya", "ดูคาเฟ่ในพัทยา", "浏览芭提雅咖啡馆", "Кафе Pattaya")),
     openAllHref: cafesMapOpenHref,
     legendGuide: t(lang, L("9 cafés", "9 ร้าน", "9 家", "9 кафе")),
   };
@@ -405,9 +405,9 @@ export function getCafeGuideIntro(lang: LanguageCode) {
     ),
     openInMaps: t(
       lang,
-      L("Open in Google Maps →", "เปิดใน Google Maps →", "在 Google 地图中打开 →", "Google Maps →"),
+      L("Open in Google Maps", "เปิดใน Google Maps", "在 Google 地图中打开", "Google Maps"),
     ),
-    directionsLabel: t(lang, L("Directions →", "เส้นทาง →", "路线 →", "Маршрут →")),
+    directionsLabel: t(lang, L("Directions", "เส้นทาง", "路线", "Маршрут")),
     highlightsLabel: t(lang, L("Highlights", "จุดเด่น", "亮点", "Особенности")),
     vibeLabel: t(lang, L("Vibe", "ฟีล", "氛围", "Атмосфера")),
     bestForLabel: t(lang, L("Best for", "เหมาะกับ", "适合", "Подходит")),
@@ -429,32 +429,32 @@ export function getCafeMoodPicks(lang: LanguageCode) {
     groups: [
       {
         title: t(lang, L("Sunset & sea breeze", "อยากพระอาทิตย์ตก ลมทะเล", "日落与海风", "Закат и море")),
-        pick: t(lang, L("→ The Lunar Beach House", "→ The Lunar Beach House", "→ The Lunar", "→ The Lunar")),
+        pick: t(lang, L("The Lunar Beach House", "The Lunar Beach House", "The Lunar", "The Lunar")),
         cafeId: "lunar-beach-house" as const,
       },
       {
         title: t(lang, L("Escape central chaos", "อยากหลุดจากพัทยาวุ่น", "逃离市中心喧嚣", "Вдали от суеты")),
-        pick: t(lang, L("→ Siri's Beach Café", "→ Siri's Beach Café", "→ Siri's", "→ Siri's Beach Café")),
+        pick: t(lang, L("Siri's Beach Café", "Siri's Beach Café", "Siri's", "Siri's Beach Café")),
         cafeId: "siris-beach-cafe" as const,
       },
       {
         title: t(lang, L("Cute content day", "สายคอนเทนต์ คิวท์ ๆ", "可爱出片日", "Милый контент")),
-        pick: t(lang, L("→ S'more Beach Cafe", "→ S'more Beach Cafe", "→ S'more", "→ S'more")),
+        pick: t(lang, L("S'more Beach Cafe", "S'more Beach Cafe", "S'more", "S'more")),
         cafeId: "smore-beach-cafe" as const,
       },
       {
         title: t(lang, L("Serious coffee", "สายกาแฟจริงจัง", "认真喝咖啡", "Серьёзный кофе")),
-        pick: t(lang, L("→ Sunset Coffee Roasters", "→ Sunset Coffee Roasters", "→ Sunset Coffee", "→ Sunset Coffee")),
+        pick: t(lang, L("Sunset Coffee Roasters", "Sunset Coffee Roasters", "Sunset Coffee", "Sunset Coffee")),
         cafeId: "sunset-coffee-roasters" as const,
       },
       {
         title: t(lang, L("Slow & unhurried", "อยากพักแบบไม่รีบ", "慢慢休息", "Без спешки")),
-        pick: t(lang, L("→ Albatross Coffee Roasters", "→ Albatross Coffee Roasters", "→ Albatross", "→ Albatross")),
+        pick: t(lang, L("Albatross Coffee Roasters", "Albatross Coffee Roasters", "Albatross", "Albatross")),
         cafeId: "albatross-coffee" as const,
       },
       {
         title: t(lang, L("Garden morning", "เช้าในสวน", "花园早晨", "Утро в саду")),
-        pick: t(lang, L("→ Sheeva Cafe", "→ Sheeva Cafe", "→ Sheeva", "→ Sheeva")),
+        pick: t(lang, L("Sheeva Cafe", "Sheeva Cafe", "Sheeva", "Sheeva")),
         cafeId: "sheeva-cafe" as const,
       },
     ],
@@ -528,7 +528,7 @@ export function getCafeHoppingRoute(lang: LanguageCode) {
     ),
     openRouteLabel: t(
       lang,
-      L("Open route in Google Maps →", "เปิดเส้นทางใน Google Maps →", "在 Google 地图中打开路线 →", "Маршрут в Maps →"),
+      L("Open route in Google Maps", "เปิดเส้นทางใน Google Maps", "在 Google 地图中打开路线", "Маршрут в Maps"),
     ),
     routes: [
       {
@@ -602,7 +602,7 @@ export function getCafeHoppingRoute(lang: LanguageCode) {
             ),
             mapsHref: mapsSearch("Skybar Summer Club Pattaya Thailand"),
             alternative: {
-              label: t(lang, L("Sola Luna Rooftop →", "Sola Luna Rooftop →", "Sola Luna Rooftop →", "Sola Luna →")),
+              label: t(lang, L("Sola Luna Rooftop", "Sola Luna Rooftop", "Sola Luna Rooftop", "Sola Luna")),
               href: mapsSearch("Sola Luna Rooftop Restaurant Pattaya Thailand"),
             },
           },

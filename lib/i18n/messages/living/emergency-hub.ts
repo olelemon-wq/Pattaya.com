@@ -40,7 +40,7 @@ export function getEmergencyHubCopy(lang: LanguageCode) {
     locationTitle: t(lang, L("Share where you are", "แชร์ตำแหน่งของคุณ", "分享您的位置", "Поделиться местоположением")),
     locationBtn: t(lang, L("Get my current location", "ดึงตำแหน่งปัจจุบัน", "获取当前位置", "Моё местоположение")),
     locationLoading: t(lang, L("Locating…", "กำลังหาพิกัด…", "定位中…", "Поиск…")),
-    locationOpenMaps: t(lang, L("Open in Google Maps →", "เปิดใน Google Maps →", "在 Google 地图中打开 →", "Google Maps →")),
+    locationOpenMaps: t(lang, L("Open in Google Maps", "เปิดใน Google Maps", "在 Google 地图中打开", "Google Maps")),
     locationCoords: (lat: string, lng: string) =>
       t(
         lang,
@@ -158,8 +158,8 @@ export function getEmergencyScenarios(lang: LanguageCode) {
 export function getEmergencyGuidePage(lang: LanguageCode) {
   return {
     scenariosTitle: t(lang, L("What to do next", "ขั้นตอนถัดไป", "后续步骤", "Что делать дальше")),
-    hospitalsLink: t(lang, L("Hospitals directory →", "รายชื่อโรงพยาบาล →", "医院目录 →", "Больницы →")),
-    scamLink: t(lang, L("Common scams →", "มิจฉาชีพที่พบบ่อย →", "常见骗局 →", "Мошенничество →")),
+    hospitalsLink: t(lang, L("Hospitals directory", "รายชื่อโรงพยาบาล", "医院目录", "Больницы")),
+    scamLink: t(lang, L("Common scams", "มิจฉาชีพที่พบบ่อย", "常见骗局", "Мошенничество")),
     appNote: t(
       lang,
       L(

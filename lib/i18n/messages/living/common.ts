@@ -29,5 +29,5 @@ export const livingUi = {
   requirements: L("Requirements", "ข้อกำหนด", "要求", "Требования"),
   process: L("Process", "ขั้นตอน", "流程", "Процесс"),
   timeline: L("Timeline", "ไทม์ไลน์", "时间线", "Сроки"),
-  learnMore: L("Learn more →", "ดูเพิ่มเติม →", "了解更多 →", "Подробнее →"),
+  learnMore: L("Learn more", "ดูเพิ่มเติม", "了解更多", "Подробнее"),
 } as const;

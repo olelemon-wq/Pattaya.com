@@ -85,7 +85,7 @@ export function HospitalsMap() {
       const popupHtml = `
         <div class="hospital-popup">
           <strong>${h.name}</strong>
-          <a href="${mapsUrl}" target="_blank" rel="noopener noreferrer">${directionsLabel} →</a>
+          <a href="${mapsUrl}" target="_blank" rel="noopener noreferrer">${directionsLabel}</a>
         </div>
       `;
 

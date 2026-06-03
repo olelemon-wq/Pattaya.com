@@ -126,7 +126,7 @@ export function ExploreGuideCard({
               href={href}
               className="inline-flex w-fit items-center text-sm font-semibold text-[#B52E88] transition hover:underline"
             >
-              {ctaLabel} →
+              {ctaLabel}
             </Link>
           </div>
         ) : null}

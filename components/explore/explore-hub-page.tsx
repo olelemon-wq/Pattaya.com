@@ -156,7 +156,7 @@ function DiningCard({
               {location}
             </span>
             <span className="text-sm font-semibold text-[#F5D0E8] group-hover:underline">
-              {cta} →
+              {cta}
             </span>
           </div>
         </div>
@@ -201,7 +201,7 @@ function DiningCard({
               {location}
             </span>
             <span className="shrink-0 text-sm font-semibold text-[#B52E88] group-hover:underline">
-              {cta} →
+              {cta}
             </span>
           </div>
         </div>

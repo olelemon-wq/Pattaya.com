@@ -72,7 +72,7 @@ export function getThaiCultureSurvivalCopy(lang: LanguageCode) {
     ),
     etiquetteLink: t(
       lang,
-      L("Full etiquette guide →", "คู่มือมารยาทฉบับเต็ม →", "完整礼仪指南 →", "Полный этикет →"),
+      L("Full etiquette guide", "คู่มือมารยาทฉบับเต็ม", "完整礼仪指南", "Полный этикет"),
     ),
   };
 }
@@ -329,7 +329,7 @@ export function getThaiCulturePageCopy(lang: LanguageCode) {
     ),
     pillarsTitle: t(lang, L("Cultural pillars", "หัวใจวัฒนธรรม", "文化支柱", "Столпы")),
     pattayaTitle: t(lang, L("Living in Pattaya", "ใช้ชีวิตในพัทยา", "在芭提雅生活", "Жизнь в Паттайе")),
-    etiquetteLink: t(lang, L("Full etiquette guide →", "คู่มือมารยาทฉบับเต็ม →", "完整礼仪指南 →", "Этикет →")),
+    etiquetteLink: t(lang, L("Full etiquette guide", "คู่มือมารยาทฉบับเต็ม", "完整礼仪指南", "Этикет")),
     livingHub: t(lang, L("Living hub", "ศูนย์ Living", "生活中心", "Living")),
     etiquette: t(lang, L("Do & Don't", "ควรทำ/ไม่ควรทำ", "礼仪指南", "Этикет")),
   };

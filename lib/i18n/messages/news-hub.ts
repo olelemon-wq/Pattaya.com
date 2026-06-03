@@ -168,7 +168,7 @@ export function getNewsFeaturedCards(lang: LanguageCode) {
           "Резиденции от 25 млн бат с видом на море.",
         ),
       ),
-      cta: t(lang, L("View category →", "เข้าหมวดข่าว →", "进入类别 →", "В раздел →")),
+      cta: t(lang, L("View category", "เข้าหมวดข่าว", "进入类别", "В раздел")),
       href: "/news/business/real-estate",
     },
     {
@@ -191,7 +191,7 @@ export function getNewsFeaturedCards(lang: LanguageCode) {
           "5-летняя виза для digital nomads.",
         ),
       ),
-      cta: t(lang, L("View category →", "เข้าหมวดข่าว →", "进入类别 →", "В раздел →")),
+      cta: t(lang, L("View category", "เข้าหมวดข่าว", "进入类别", "В раздел")),
       href: "/news/expat/visa",
     },
     {
@@ -207,7 +207,7 @@ export function getNewsFeaturedCards(lang: LanguageCode) {
         ),
       ),
       updated: t(lang, L("Updated 15m ago", "อัปเดต 15 นาทีที่แล้ว", "15 分钟前更新", "15 мин назад")),
-      cta: t(lang, L("View category →", "เข้าหมวดข่าว →", "进入类别 →", "В раздел →")),
+      cta: t(lang, L("View category", "เข้าหมวดข่าว", "进入类别", "В раздел")),
       href: "/news/expat/immigration",
     },
   ];
@@ -219,8 +219,8 @@ export function getNewsHubLabels(lang: LanguageCode) {
       lang,
       L("Featured topics", "หมวดข่าวแนะนำ", "精选主题", "Темы"),
     ),
-    viewCategory: t(lang, L("View category →", "เข้าหมวดข่าว →", "进入类别 →", "В раздел →")),
-    relatedGuide: t(lang, L("Related guide →", "คู่มือที่เกี่ยวข้อง →", "相关指南 →", "См. гайд →")),
+    viewCategory: t(lang, L("View category", "เข้าหมวดข่าว", "进入类别", "В раздел")),
+    relatedGuide: t(lang, L("Related guide", "คู่มือที่เกี่ยวข้อง", "相关指南", "См. гайд")),
     categoryNote: t(
       lang,
       L(
@@ -236,11 +236,11 @@ export function getNewsHubLabels(lang: LanguageCode) {
 export function getNewsSections(lang: LanguageCode) {
   return {
     cityMovements: t(lang, L("City Movements", "ข่าวเคลื่อนไหวในเมือง", "城市动态", "Городские новости")),
-    exploreAll: t(lang, L("Browse categories →", "ดูหมวดข่าว →", "浏览类别 →", "Разделы →")),
+    exploreAll: t(lang, L("Browse categories", "ดูหมวดข่าว", "浏览类别", "Разделы")),
     infrastructure: t(lang, L("Infrastructure & Growth", "โครงสร้างพื้นฐาน & การเติบบโต", "基建与增长", "Инфраструктура")),
     q3Update: t(lang, L("Q3 UPDATE", "อัปเดต Q3", "第三季度", "Q3")),
     liveUpdate: t(lang, L("Live Update", "อัปเดตสด", "实时更新", "Live")),
-    bookTour: t(lang, L("View category →", "เข้าหมวดข่าว →", "进入类别 →", "В раздел →")),
+    bookTour: t(lang, L("View category", "เข้าหมวดข่าว", "进入类别", "В раздел")),
     liveWebcams: t(lang, L("Live Webcams", "กล้องสด", "直播摄像头", "Веб-камеры")),
     sponsored: t(lang, L("SPONSORED", "สปอนเซอร์", "赞助", "Спонсор")),
     walkingStreetNews: t(lang, L("Walking Street News", "ข่าว Walking Street", "Walking Street 新闻", "Walking Street")),
@@ -329,7 +329,7 @@ export function getCitySpotlights(lang: LanguageCode) {
           "Что открыто, лимиты шума и безопасность в районах ночной жизни.",
         ),
       ),
-      cta: t(lang, L("View category →", "เข้าหมวดข่าว →", "进入类别 →", "В раздел →")),
+      cta: t(lang, L("View category", "เข้าหมวดข่าว", "进入类别", "В раздел")),
     },
   };
 }
@@ -648,7 +648,7 @@ export function getInfrastructureBlock(lang: LanguageCode) {
           "Naklua: работы 14 окт., 9:00–16:00.",
         ),
       ),
-      cta: t(lang, L("Full Impact Map →", "แผนที่ผลกระทบ →", "完整影响地图 →", "Карта →")),
+      cta: t(lang, L("Full Impact Map", "แผนที่ผลกระทบ", "完整影响地图", "Карта")),
     },
     sponsored: {
       href: "/news/business/openings",

@@ -366,7 +366,7 @@ export function BusinessDetailPage({ pageId }: { pageId: BusinessPageId }) {
                     </span>
                     <div className="min-w-0 flex-1">
                       <p className="font-bold text-[#363636] transition-colors group-hover:text-[#B8860B]">
-                        {item.label} →
+                        {item.label}
                       </p>
                       <p className="mt-1 text-sm leading-relaxed text-[#444748]">
                         {item.description}
@@ -439,7 +439,7 @@ export function BusinessDetailPage({ pageId }: { pageId: BusinessPageId }) {
                 href={link.href}
                 className="rounded-xl border border-[#c4c7c8]/30 bg-white p-5 shadow-sm transition hover:border-[#363636]/30 hover:shadow-md"
               >
-                <p className="font-bold text-[#363636]">{link.label} →</p>
+                <p className="font-bold text-[#363636]">{link.label}</p>
                 <p className="mt-2 text-sm text-[#444748]">{link.blurb}</p>
               </Link>
             ))}

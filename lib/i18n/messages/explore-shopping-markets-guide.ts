@@ -692,9 +692,9 @@ export function getMarketGuideIntro(lang: LanguageCode) {
     ),
     openInMaps: t(
       lang,
-      L("Open in Google Maps →", "เปิดใน Google Maps →", "在 Google 地图中打开 →", "Google Maps →"),
+      L("Open in Google Maps", "เปิดใน Google Maps", "在 Google 地图中打开", "Google Maps"),
     ),
-    directionsLabel: t(lang, L("Directions →", "เส้นทาง →", "路线 →", "Маршрут →")),
+    directionsLabel: t(lang, L("Directions", "เส้นทาง", "路线", "Маршрут")),
     highlightsLabel: t(lang, L("Highlights", "จุดเด่น", "亮点", "Особенности")),
     vibeLabel: t(lang, L("Vibe", "ฟีล", "氛围", "Атмосфера")),
     bestForLabel: t(lang, L("Best for", "เหมาะกับ", "适合", "Подходит")),

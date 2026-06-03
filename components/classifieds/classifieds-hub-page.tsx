@@ -1,5 +1,6 @@
 "use client";
 
+import { FeaturedHeroCinematic } from "@/components/cinematic/featured-hero-cinematic";
 import { BreakingNewsTicker } from "@/components/home/breaking-news-ticker";
 import { useLanguage } from "@/components/layout/language-provider";
 import {
@@ -29,6 +30,8 @@ import { useCallback, useState, type FormEvent } from "react";
 const THEME = CLASSIFIEDS_THEME;
 const THEME_DARK = "#A86854";
 const THEME_LIGHT = "#F5E8E2";
+
+const HERO_MIN_HEIGHT = "min-h-[min(56dvh,360px)] sm:min-h-[420px] lg:min-h-[480px]";
 
 function isLocalImage(src: string) {
   return src.startsWith("/");
@@ -187,72 +190,52 @@ export function ClassifiedsHubPage() {
     <div data-full-bleed className="bg-[#faf8f6]">
       <BreakingNewsTicker variant="classifieds" />
 
-      <div className="mx-auto max-w-[1280px] px-3 py-8 sm:px-4 lg:px-6">
-
-      <div
-        className="relative mb-10 min-h-[280px] overflow-hidden rounded-3xl border border-[#E8DDD6] p-6 shadow-xl sm:min-h-[320px] sm:p-8"
-        style={{ backgroundColor: THEME_DARK }}
-      >
-        <Image
-          src={hub.heroImage}
-          alt={hub.hero.title}
-          fill
-          priority
-          unoptimized
-          className="object-cover"
-          sizes="100vw"
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to right, rgba(60,40,32,0.92) 0%, rgba(168,104,84,0.78) 55%, rgba(199,133,109,0.55) 100%)",
-          }}
-        />
-        <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-white/10 blur-3xl" />
-        <div className="relative">
-          <span className="mb-4 inline-flex items-center rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-white/90">
-            {hub.hero.badge}
-          </span>
-          <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            {hub.hero.title}
-          </h1>
-          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-white/85 sm:text-base">
-            {hub.hero.description}
-          </p>
-
-          <form
-            onSubmit={handleSearch}
-            className="mt-6 flex max-w-xl flex-col gap-2 sm:flex-row"
-            role="search"
-          >
-            <label htmlFor="listings-search" className="sr-only">
-              {hub.hero.searchPlaceholder}
-            </label>
-            <div className="relative flex-1">
-              <Search
-                className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#94a3b8]"
-                aria-hidden
-              />
-              <input
-                id="listings-search"
-                type="search"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder={hub.hero.searchPlaceholder}
-                className="w-full rounded-xl border border-white/20 bg-white/95 py-3 pl-10 pr-4 text-sm text-[#191c1d] placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-white/40"
-              />
-            </div>
-            <button
-              type="submit"
-              className="rounded-xl px-6 py-3 text-sm font-bold text-white transition-opacity hover:opacity-90"
-              style={{ backgroundColor: THEME }}
-            >
-              {hub.hero.searchButton}
-            </button>
-          </form>
-        </div>
-      </div>
+      <div className="mx-auto max-w-[1280px] px-3 pb-8 pt-8 sm:px-4 lg:px-6">
+        <section className="mb-12 md:mb-16" aria-label={hub.hero.title}>
+          <FeaturedHeroCinematic
+            image={hub.heroImage}
+            imageAlt={hub.hero.title}
+            href="/classifieds#recent"
+            category={hub.hero.category}
+            featuredLabel={hub.hero.badge}
+            title={hub.hero.title}
+            excerpt={hub.hero.description}
+            ctaTone="classifieds"
+            visualTone="classifieds"
+            showAiSummary={false}
+            minHeightClass={HERO_MIN_HEIGHT}
+            footer={
+              <form
+                onSubmit={handleSearch}
+                className="w-full max-w-xl"
+                role="search"
+              >
+                <label htmlFor="listings-search" className="sr-only">
+                  {hub.hero.searchPlaceholder}
+                </label>
+                <div className="relative flex w-full items-center rounded-full bg-white/80 p-2 shadow-2xl backdrop-blur-md">
+                  <div className="flex min-w-0 flex-1 items-center px-3 sm:px-4">
+                    <Search className="h-5 w-5 shrink-0 text-[#94a3b8]" aria-hidden />
+                    <input
+                      id="listings-search"
+                      type="search"
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                      placeholder={hub.hero.searchPlaceholder}
+                      className="w-full border-none bg-transparent px-3 py-2.5 text-sm text-[#191c1d] placeholder:text-[#94a3b8] focus:outline-none focus:ring-0 sm:text-base"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="hero-cinematic__cta shrink-0 rounded-full bg-[#C7856D] px-5 py-2.5 text-sm font-semibold text-white shadow-[0_8px_32px_rgba(199,133,109,0.4)] transition-all hover:bg-[#C7856D]/90 sm:px-6 sm:py-3"
+                  >
+                    {hub.hero.searchButton}
+                  </button>
+                </div>
+              </form>
+            }
+          />
+        </section>
 
       <section className="mb-12" aria-labelledby="listings-categories">
         <div className="mb-6">

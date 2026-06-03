@@ -406,7 +406,7 @@ export function getYachtGuideIntro(lang: LanguageCode) {
     vibeLabel: t(lang, L("Atmosphere", "บรรยากาศ", "氛围", "Атмосфера")),
     bestForLabel: t(lang, L("Good fit if", "เหมาะกับ", "适合", "Кому")),
     tipsLabel: t(lang, L("Note", "หมายเหตุ", "提示", "Совет")),
-    openInMaps: t(lang, L("Open in Google Maps →", "เปิดใน Google Maps →", "在 Google 地图打开 →", "Google Maps →")),
+    openInMaps: t(lang, L("Open in Google Maps", "เปิดใน Google Maps", "在 Google 地图打开", "Google Maps")),
     directionsLabel: t(lang, L("Directions", "เส้นทาง", "路线", "Маршрут")),
     phoneLabel: t(lang, L("Call", "โทร", "电话", "Звонок")),
   };

@@ -192,10 +192,10 @@ export function getSongthaewPage(lang: LanguageCode) {
         ),
       ),
     ],
-    cultureLink: t(lang, L("Full etiquette guide →", "คู่มือมารยาทฉบับเต็ม →", "完整礼仪 →", "Этикет →")),
-    scamLink: t(lang, L("Common scams →", "มิจฉาชีพที่พบบ่อย →", "常见骗局 →", "Скамы →")),
-    rideApps: t(lang, L("Ride apps →", "แอปเรียกรถ →", "网约车 →", "Приложения →")),
-    driving: t(lang, L("Driving & licenses →", "ขับรถและใบขับขี่ →", "驾照指南 →", "Права →")),
+    cultureLink: t(lang, L("Full etiquette guide", "คู่มือมารยาทฉบับเต็ม", "完整礼仪", "Этикет")),
+    scamLink: t(lang, L("Common scams", "มิจฉาชีพที่พบบ่อย", "常见骗局", "Скамы")),
+    rideApps: t(lang, L("Ride apps", "แอปเรียกรถ", "网约车", "Приложения")),
+    driving: t(lang, L("Driving & licenses", "ขับรถและใบขับขี่", "驾照指南", "Права")),
   };
 }
 

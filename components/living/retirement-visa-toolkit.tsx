@@ -357,7 +357,7 @@ export function RetirementVisaToolkit() {
                         href="/living/visa/90-day-report"
                         className="retirement-toolkit__link"
                       >
-                        {copy.ninetyDayLink} →
+                        {copy.ninetyDayLink}
                       </Link>
                     ) : null}
                   </span>

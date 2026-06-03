@@ -64,9 +64,9 @@ export function getThailandElitePage(lang: LanguageCode) {
       ),
     ),
     inviteOnly: t(lang, L("Invitation only", "เชิญเท่านั้น", "仅限邀请", "Только по приглашению")),
-    livingHub: t(lang, L("Living hub →", "ศูนย์ไลฟ์สไตล์ →", "生活中心 →", "Раздел «Жизнь» →")),
-    retirementVisa: t(lang, L("Retirement visa →", "วีซ่าเกษียณ →", "退休签证 →", "Пенсионная виза →")),
-    workPermit: t(lang, L("Work permit →", "ใบอนุญาตทำงาน →", "工作许可 →", "Work permit →")),
+    livingHub: t(lang, L("Living hub", "ศูนย์ไลฟ์สไตล์", "生活中心", "Раздел «Жизнь»")),
+    retirementVisa: t(lang, L("Retirement visa", "วีซ่าเกษียณ", "退休签证", "Пенсионная виза")),
+    workPermit: t(lang, L("Work permit", "ใบอนุญาตทำงาน", "工作许可", "Work permit")),
   };
 }
 

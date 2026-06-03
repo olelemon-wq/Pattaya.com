@@ -66,7 +66,7 @@ export function getHospitalsPage(lang: LanguageCode) {
     ),
     tierPremium: t(lang, L("Premium", "พรีเมียม", "高端", "Премиум")),
     tierPublic: t(lang, L("Public", "รัฐ", "公立", "Государственная")),
-    openMaps: t(lang, L("Open in Google Maps →", "เปิดใน Google Maps →", "在 Google 地图中打开 →", "Google Maps →")),
+    openMaps: t(lang, L("Open in Google Maps", "เปิดใน Google Maps", "在 Google 地图中打开", "Google Maps")),
     mapTitle: t(lang, L("Hospital map", "แผนที่โรงพยาบาล", "医院地图", "Карта больниц")),
     mapSubtitle: t(
       lang,
@@ -77,9 +77,9 @@ export function getHospitalsPage(lang: LanguageCode) {
         "5 больниц — карта и кнопки навигации.",
       ),
     ),
-    livingHub: t(lang, L("Living hub →", "ศูนย์ไลฟ์สไตล์ →", "生活中心 →", "Раздел «Жизнь» →")),
-    insuranceGuide: t(lang, L("Health insurance →", "ประกันสุขภาพ →", "健康保险 →", "Страхование →")),
-    emergencyGuide: t(lang, L("Emergency guide →", "คู่มือฉุกเฉิน →", "紧急指南 →", "Экстренная помощь →")),
+    livingHub: t(lang, L("Living hub", "ศูนย์ไลฟ์สไตล์", "生活中心", "Раздел «Жизнь»")),
+    insuranceGuide: t(lang, L("Health insurance", "ประกันสุขภาพ", "健康保险", "Страхование")),
+    emergencyGuide: t(lang, L("Emergency guide", "คู่มือฉุกเฉิน", "紧急指南", "Экстренная помощь")),
   };
 }
 
@@ -346,10 +346,10 @@ export function getHospitalsMapCopy(lang: LanguageCode) {
     openAll: t(
       lang,
       L(
-        "Open all in Google Maps →",
-        "เปิดทั้งหมดใน Google Maps →",
-        "在 Google 地图中打开全部 →",
-        "Открыть все в Google Maps →",
+        "Open all in Google Maps",
+        "เปิดทั้งหมดใน Google Maps",
+        "在 Google 地图中打开全部",
+        "Открыть все в Google Maps",
       ),
     ),
     directions: t(

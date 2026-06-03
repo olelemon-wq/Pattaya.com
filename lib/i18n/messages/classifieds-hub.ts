@@ -42,6 +42,7 @@ function cat(lang: LanguageCode, id: ListingCategoryId) {
 
 const hero = {
   badge: L("Classifieds", "ประกาศ", "分类信息", "Объявления"),
+  category: L("Rent · Sale · Jobs", "เช่า · ขาย · งาน", "租 · 售 · 招聘", "Аренда · продажа"),
   title: L("Pattaya Listings", "ประกาศพัทยา", "芭提雅分类信息", "Объявления Паттайи"),
   description: L(
     "Browse rentals, sales, jobs, services, and community posts from expats and locals — updated daily across Jomtien, Naklua, and Central Pattaya.",
@@ -88,7 +89,7 @@ const sections = {
     "触达芭提雅数千外籍与本地用户——欢迎房产、车辆、招聘与服务类信息。",
     "Тысячи expat и местных в Паттайе — недвижимость, авто, работа, услуги.",
   ),
-  postCta: L("Submit a listing →", "ส่งประกาศ →", "提交信息 →", "Подать объявление →"),
+  postCta: L("Submit a listing", "ส่งประกาศ", "提交信息", "Подать объявление"),
   viewListing: L("View listing", "ดูประกาศ", "查看", "Подробнее"),
   verified: L("Verified", "ยืนยันแล้ว", "已认证", "Проверено"),
   promoted: L("Promoted", "โปรโมต", "推广", "Рекомендуем"),
@@ -481,6 +482,7 @@ export function getClassifiedsHub(lang: LanguageCode) {
     theme: CLASSIFIEDS_THEME,
     hero: {
       badge: t(lang, hero.badge),
+      category: t(lang, hero.category),
       title: t(lang, hero.title),
       description: t(lang, hero.description),
       searchPlaceholder: t(lang, hero.searchPlaceholder),

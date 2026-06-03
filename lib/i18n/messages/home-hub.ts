@@ -55,6 +55,10 @@ export function getHomeWeather(lang: LanguageCode) {
     seaUv: t(lang, L("Sea & UV", "ทะเล & UV", "海水与紫外线", "Море и UV")),
     high: t(lang, L("High", "สูง", "高", "Высокий")),
     wind: t(lang, L("Wind", "ลม", "风力", "Ветер")),
+    unavailable: t(
+      lang,
+      L("Weather unavailable", "โหลดข้อมูลไม่ได้", "天气暂不可用", "Погода недоступна"),
+    ),
     locale: LOCALE_BY_LANG[lang],
   };
 }
@@ -702,30 +706,27 @@ export function getHomeExploreSections(lang: LanguageCode) {
     sections: [
       {
         id: "news" as const,
-        label: t(lang, L("News", "ข่าว", "新闻", "Новости")),
+        label: t(lang, L("News", "ข่าวสาร", "新闻", "Новости")),
         countValue: "248",
         countUnit: t(lang, L("Articles", "บทความ", "文章", "статей")),
         href: "/news",
-        imageAlt: t(lang, L("News section", "หมวดข่าว", "新闻栏目", "Раздел новостей")),
+        imageAlt: t(lang, L("News section", "หมวดข่าวสาร", "新闻栏目", "Раздел новостей")),
       },
       {
         id: "living" as const,
-        label: t(lang, L("Expat", "ไลฟ์สไตล์", "生活", "Жизнь")),
+        label: t(lang, L("Living", "ชุมชน", "生活", "Жизнь")),
         countValue: "156",
         countUnit: t(lang, L("Guides", "คู่มือ", "指南", "гайдов")),
         href: "/living",
-        imageAlt: t(lang, L("Expat section", "หมวดไลฟ์สไตล์", "生活栏目", "Раздел «Жизнь»")),
+        imageAlt: t(lang, L("Living section", "หมวดชุมชน", "生活栏目", "Раздел «Жизнь»")),
       },
       {
         id: "explore" as const,
-        label: t(lang, L("Explore", "สถานที่น่าสนใจ", "探索", "Обзор")),
+        label: t(lang, L("Explore", "รอบเมือง", "探索", "Обзор")),
         countValue: "89",
         countUnit: t(lang, L("Locations", "สถานที่", "地点", "мест")),
         href: "/explore",
-        imageAlt: t(
-          lang,
-          L("Explore section", "หมวดสถานที่น่าสนใจ", "探索栏目", "Раздел «Обзор»"),
-        ),
+        imageAlt: t(lang, L("Explore section", "หมวดรอบเมือง", "探索栏目", "Раздел «Обзор»")),
       },
       {
         id: "business" as const,

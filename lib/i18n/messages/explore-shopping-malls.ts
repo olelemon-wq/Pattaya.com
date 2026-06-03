@@ -13,7 +13,7 @@ export function getShoppingMalls(lang: LanguageCode) {
   const c = getExploreCommon(lang);
   const openInMaps = t(
     lang,
-    L("Open in Google Maps →", "เปิดใน Google Maps →", "在 Google 地图中打开 →", "Google Maps →"),
+    L("Open in Google Maps", "เปิดใน Google Maps", "在 Google 地图中打开", "Google Maps"),
   );
 
   return {

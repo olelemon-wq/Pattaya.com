@@ -118,7 +118,7 @@ const shells = {
       href: "/living/cost-of-living/food",
     },
     bottomSecondary: {
-      label: L("Rentals guide →", "คู่มือเช่า →", "租房指南 →", "Аренда →"),
+      label: L("Rentals guide", "คู่มือเช่า", "租房指南", "Аренда"),
       href: "/living/housing/rentals",
     },
   },
@@ -169,7 +169,7 @@ const shells = {
       href: "/living/cost-of-living/utilities",
     },
     bottomSecondary: {
-      label: L("Living hub →", "ศูนย์ Living →", "生活中心 →", "Living →"),
+      label: L("Living hub", "ศูนย์ Living", "生活中心", "Living"),
       href: "/living",
     },
   },
@@ -273,7 +273,7 @@ const shells = {
       href: "/living/housing/condo-buying",
     },
     bottomSecondary: {
-      label: L("Rentals →", "คู่มือเช่า →", "租房 →", "Аренда →"),
+      label: L("Rentals", "คู่มือเช่า", "租房", "Аренда"),
       href: "/living/housing/rentals",
     },
   },
@@ -320,7 +320,7 @@ const shells = {
       href: "/living",
     },
     bottomSecondary: {
-      label: L("Condo buying →", "ซื้อคอนโด →", "购房 →", "Покупка →"),
+      label: L("Condo buying", "ซื้อคอนโด", "购房", "Покупка"),
       href: "/living/housing/condo-buying",
     },
   },
@@ -367,7 +367,7 @@ const shells = {
       href: "/living",
     },
     bottomSecondary: {
-      label: L("Rentals →", "เช่า →", "租房 →", "Аренда →"),
+      label: L("Rentals", "เช่า", "租房", "Аренда"),
       href: "/living/housing/rentals",
     },
   },

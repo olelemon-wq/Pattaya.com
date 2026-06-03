@@ -77,7 +77,7 @@ export function LocalFoodMap() {
           <strong>${escapeHtml(venue.name)}</strong>
           <span class="market-popup__hours">${escapeHtml(venue.hoursRange)} · ${escapeHtml(venue.openDays)}</span>
           <div class="market-popup__actions">
-            <a href="${venue.directionsHref}" target="_blank" rel="noopener noreferrer">${escapeHtml(directions)} →</a>
+            <a href="${venue.directionsHref}" target="_blank" rel="noopener noreferrer">${escapeHtml(directions)}</a>
             <a href="${venue.mapsHref}" target="_blank" rel="noopener noreferrer">${escapeHtml(openPlace)}</a>
           </div>
         </div>

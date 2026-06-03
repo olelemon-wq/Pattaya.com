@@ -175,7 +175,7 @@ export function BusinessHubPage() {
             title={tBusiness(language, "heroFeaturedTitle")}
             excerpt={tBusiness(language, "heroFeaturedExcerpt")}
             ctaLabel={tBusiness(language, "heroCtaStart")}
-            ctaTone="news"
+            ctaTone="business"
             visualTone="news-dawn"
             showAiSummary={false}
             minHeightClass="min-h-[min(56dvh,360px)] sm:min-h-[420px] lg:min-h-[480px]"
@@ -241,9 +241,6 @@ export function BusinessHubPage() {
               className="group flex items-center gap-3 pb-1 text-sm font-bold uppercase tracking-widest text-[#363636] transition-all hover:text-[#B8860B]"
             >
               {tBusiness(language, "viewAllGuides")}
-              <span className="transition-transform group-hover:translate-x-1">
-                →
-              </span>
             </Link>
           </div>
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
@@ -301,9 +298,8 @@ export function BusinessHubPage() {
                     href="/business/investment/economy"
                     className="group inline-flex w-full items-center justify-center rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-center transition hover:border-white/40 hover:bg-white/15"
                   >
-                    <span className="inline-flex items-center gap-1 text-sm font-bold text-white transition group-hover:translate-x-0.5">
+                    <span className="text-sm font-bold text-white">
                       {tBusiness(language, "economyOverviewCta")}
-                      <span aria-hidden>→</span>
                     </span>
                   </Link>
                 </div>

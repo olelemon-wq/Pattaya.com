@@ -93,7 +93,7 @@ const guideSpas = {
     ),
     phone: "+6638115888",
     websiteHref: "https://www.oasisspa.net/",
-    websiteLabel: L("Oasis Spa →", "Oasis Spa →", "Oasis Spa →", "Oasis Spa →"),
+    websiteLabel: L("Oasis Spa", "Oasis Spa", "Oasis Spa", "Oasis Spa"),
   }),
   "cliff-spa-pattaya": spa("cliff-spa-pattaya", "Cliff Spa Royal Cliff Grand Hotel Pattaya Thailand", {
     category: L("Luxury / resort vibe", "สายหรู / รีสอร์ต", "奢华度假感", "Люкс / курорт"),
@@ -122,7 +122,7 @@ const guideSpas = {
     ),
     phone: "+6638250421",
     websiteHref: "https://www.royalcliff.com/",
-    websiteLabel: L("Royal Cliff →", "Royal Cliff →", "Royal Cliff →", "Royal Cliff →"),
+    websiteLabel: L("Royal Cliff", "Royal Cliff", "Royal Cliff", "Royal Cliff"),
   }),
   "yunomori-onsen": spa("yunomori-onsen", "Yunomori Onsen Spa Pattaya Thepprasit Road Thailand", {
     category: L("Japanese onsen", "สายออนเซ็นญี่ปุ่น", "日式温泉", "Онсэн"),
@@ -151,7 +151,7 @@ const guideSpas = {
     ),
     phone: "+6622595778",
     websiteHref: "https://yunomorionsen.com/",
-    websiteLabel: L("Yunomori →", "Yunomori →", "Yunomori →", "Yunomori →"),
+    websiteLabel: L("Yunomori", "Yunomori", "Yunomori", "Yunomori"),
   }),
   "lets-relax-onsen-pattaya": spa(
     "lets-relax-onsen-pattaya",
@@ -183,7 +183,7 @@ const guideSpas = {
       ),
       phone: "+6633266145",
       websiteHref: "https://www.letsrelaxspa.com/",
-      websiteLabel: L("Let's Relax →", "Let's Relax →", "Let's Relax →", "Let's Relax →"),
+      websiteLabel: L("Let's Relax", "Let's Relax", "Let's Relax", "Let's Relax"),
     },
   ),
   "health-land-sukhumvit": spa(
@@ -216,7 +216,7 @@ const guideSpas = {
       ),
       phone: "+6638412995",
       websiteHref: "https://www.healthlandspa.com/",
-      websiteLabel: L("Health Land →", "Health Land →", "Health Land →", "Health Land →"),
+      websiteLabel: L("Health Land", "Health Land", "Health Land", "Health Land"),
     },
   ),
   "tea-tree-spa": spa("tea-tree-spa", "Tea Tree Spa Pattaya Sai 1 Thailand", {
@@ -246,7 +246,7 @@ const guideSpas = {
     ),
     phone: "+6638725555",
     websiteHref: "https://www.teatreespattaya.com/",
-    websiteLabel: L("Tea Tree →", "Tea Tree →", "Tea Tree →", "Tea Tree →"),
+    websiteLabel: L("Tea Tree", "Tea Tree", "Tea Tree", "Tea Tree"),
   }),
   "pra-nita-spa": spa("pra-nita-spa", "Pra Ni Ta Massage Spa Pattaya Nongprue Thailand", {
     category: L("Local hidden gem", "สายท้องถิ่น / จุดลับ", "本地秘境", "Местное"),
@@ -424,9 +424,9 @@ export function getWellnessGuideIntro(lang: LanguageCode) {
     ),
     openInMaps: t(
       lang,
-      L("Open in Google Maps →", "เปิดใน Google Maps →", "在 Google 地图中打开 →", "Google Maps →"),
+      L("Open in Google Maps", "เปิดใน Google Maps", "在 Google 地图中打开", "Google Maps"),
     ),
-    directionsLabel: t(lang, L("Directions →", "เส้นทาง →", "路线 →", "Маршрут →")),
+    directionsLabel: t(lang, L("Directions", "เส้นทาง", "路线", "Маршрут")),
     phoneLabel: t(lang, L("Phone", "โทร", "电话", "Телефон")),
     websiteLabel: t(lang, L("Website", "เว็บไซต์", "网站", "Сайт")),
     highlightsLabel: t(lang, L("Highlights", "จุดเด่น", "亮点", "Особенности")),

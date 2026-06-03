@@ -165,7 +165,7 @@ export function getKohLarnPage(lang: LanguageCode) {
         bestFor: t(lang, L("Best for", "เหมาะกับ", "适合", "Подходит")),
         crowd: t(lang, L("Crowd level", "ความคึกคัก", "人流", "Людность")),
         access: t(lang, L("From Bali Hai pier", "จากท่าบาลีฮาย", "从 Bali Hai 码头", "От Bali Hai")),
-        openMaps: t(lang, L("Open beach on map →", "เปิดแผนที่หาด →", "在地图中打开 →", "На карте →")),
+        openMaps: t(lang, L("Open beach on map", "เปิดแผนที่หาด", "在地图中打开", "На карте")),
       },
       beaches: [
         {

@@ -41,7 +41,7 @@ function ComingSoonPanel({
                   href={link.href}
                   className="inline-flex rounded-full border border-zinc-300 bg-white px-4 py-2 text-sm font-medium text-zinc-800 transition hover:border-teal-600 hover:text-teal-700"
                 >
-                  {link.label} →
+                  {link.label}
                 </Link>
               </li>
             ))}
@@ -94,7 +94,7 @@ export function FeaturedDirectoryPageContent() {
     ),
     verified: t(language, L("Verified", "ยืนยันแล้ว", "已认证", "Проверено")),
     featured: t(language, L("Featured", "แนะนำ", "精选", "Рекомендуем")),
-    viewProfile: t(language, L("View profile →", "ดูโปรไฟล์ →", "查看详情 →", "Профиль →")),
+    viewProfile: t(language, L("View profile", "ดูโปรไฟล์", "查看详情", "Профиль")),
     openDirectory: t(
       language,
       L("Open business hub", "ไปที่ศูนย์ธุรกิจ", "打开商业中心", "Открыть бизнес-хаб"),

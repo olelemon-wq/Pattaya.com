@@ -211,9 +211,9 @@ export function getUtilitiesPage(lang: LanguageCode) {
     ),
     tableProfile: t(lang, L("Profile", "รูปแบบการอยู่", "居住类型", "Профиль")),
     tableMonthly: t(lang, L("Approx. utilities", "สาธารณูปโภคโดยประมาณ", "约计公用事业", "Примерно")),
-    livingHub: t(lang, L("Living hub →", "ศูนย์ไลฟ์สไตล์ →", "生活中心 →", "Раздел «Жизнь» →")),
-    rentals: t(lang, L("Rentals guide →", "คู่มือเช่าที่พัก →", "租房指南 →", "Аренда →")),
-    foodGuide: t(lang, L("Food costs →", "ค่าอาหาร →", "餐饮费用 →", "Еда →")),
+    livingHub: t(lang, L("Living hub", "ศูนย์ไลฟ์สไตล์", "生活中心", "Раздел «Жизнь»")),
+    rentals: t(lang, L("Rentals guide", "คู่มือเช่าที่พัก", "租房指南", "Аренда")),
+    foodGuide: t(lang, L("Food costs", "ค่าอาหาร", "餐饮费用", "Еда")),
   };
 }
 

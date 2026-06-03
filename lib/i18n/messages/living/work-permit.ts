@@ -73,9 +73,9 @@ export function getWorkPermitPage(lang: LanguageCode) {
         "LTR — отдельный маршрут для удалённой работы.",
       ),
     ),
-    livingHub: t(lang, L("Living hub →", "ศูนย์ไลฟ์สไตล์ →", "生活中心 →", "Раздел «Жизнь» →")),
-    retirementVisa: t(lang, L("Retirement visa →", "วีซ่าเกษียณ →", "退休签证 →", "Пенсионная виза →")),
-    thailandElite: t(lang, L("Thailand Elite →", "Thailand Elite →", "泰国精英签 →", "Thailand Elite →")),
+    livingHub: t(lang, L("Living hub", "ศูนย์ไลฟ์สไตล์", "生活中心", "Раздел «Жизнь»")),
+    retirementVisa: t(lang, L("Retirement visa", "วีซ่าเกษียณ", "退休签证", "Пенсионная виза")),
+    thailandElite: t(lang, L("Thailand Elite", "Thailand Elite", "泰国精英签", "Thailand Elite")),
     prohibitedTitle: t(lang, L("Reserved occupations", "งานที่สงวนให้คนไทย", "泰国籍保留职业", "Запрещённые профессии")),
   };
 }

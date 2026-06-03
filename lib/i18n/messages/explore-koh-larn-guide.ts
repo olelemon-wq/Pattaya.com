@@ -202,7 +202,7 @@ export function getKohLarnViewpoint(lang: LanguageCode) {
       ),
     ),
     mapsUrl: mapsSearch("Koh Larn windmill viewpoint Thailand"),
-    openMaps: t(lang, L("Open on map →", "เปิดแผนที่ →", "打开地图 →", "На карте →")),
+    openMaps: t(lang, L("Open on map", "เปิดแผนที่", "打开地图", "На карте")),
     images: [
       {
         src: kohLarnGuideImages.viewpointDay,

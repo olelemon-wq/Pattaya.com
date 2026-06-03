@@ -332,9 +332,9 @@ export function getFineDiningGuideIntro(lang: LanguageCode) {
     ),
     openInMaps: t(
       lang,
-      L("Open in Google Maps →", "เปิดใน Google Maps →", "在 Google 地图中打开 →", "Google Maps →"),
+      L("Open in Google Maps", "เปิดใน Google Maps", "在 Google 地图中打开", "Google Maps"),
     ),
-    directionsLabel: t(lang, L("Directions →", "เส้นทาง →", "路线 →", "Маршрут →")),
+    directionsLabel: t(lang, L("Directions", "เส้นทาง", "路线", "Маршрут")),
     highlightsLabel: t(lang, L("Highlights", "จุดเด่น", "亮点", "Особенности")),
     vibeLabel: t(lang, L("Vibe", "ฟีล", "氛围", "Атмосфера")),
     bestForLabel: t(lang, L("Best for", "เหมาะกับ", "适合", "Подходит")),
@@ -356,32 +356,32 @@ export function getFineDiningMoodPicks(lang: LanguageCode) {
     groups: [
       {
         title: t(lang, L("Date / anniversary", "เดต / anniversary", "约会/周年纪念", "Свидание")),
-        pick: t(lang, L("→ Cafe des Amis", "→ Cafe des Amis", "→ Cafe des Amis", "→ Cafe des Amis")),
+        pick: t(lang, L("Cafe des Amis", "Cafe des Amis", "Cafe des Amis", "Cafe des Amis")),
         restaurantId: "cafe-des-amis" as const,
       },
       {
         title: t(lang, L("Best sea sunset", "วิวทะเลสวยที่สุด", "最美海上日落", "Закат у моря")),
-        pick: t(lang, L("→ Horizon Rooftop", "→ Horizon Rooftop", "→ Horizon", "→ Horizon")),
+        pick: t(lang, L("Horizon Rooftop", "Horizon Rooftop", "Horizon", "Horizon")),
         restaurantId: "horizon-rooftop" as const,
       },
       {
         title: t(lang, L("Serious foodie", "สาย foodie จริงจัง", "认真美食家", "Гурман")),
-        pick: t(lang, L("→ Harlan's Pattaya", "→ Harlan's Pattaya", "→ Harlan's", "→ Harlan's")),
+        pick: t(lang, L("Harlan's Pattaya", "Harlan's Pattaya", "Harlan's", "Harlan's")),
         restaurantId: "harlans" as const,
       },
       {
         title: t(lang, L("European elegance", "elegant แบบยุโรป", "欧式优雅", "Европейская элегантность")),
-        pick: t(lang, L("→ Casa Pascal", "→ Casa Pascal", "→ Casa Pascal", "→ Casa Pascal")),
+        pick: t(lang, L("Casa Pascal", "Casa Pascal", "Casa Pascal", "Casa Pascal")),
         restaurantId: "casa-pascal" as const,
       },
       {
         title: t(lang, L("Photos & romance", "ถ่ายรูปสวย", "拍照与浪漫", "Фото")),
-        pick: t(lang, L("→ The VIEW Pattaya", "→ The VIEW", "→ The VIEW", "→ The VIEW")),
+        pick: t(lang, L("The VIEW Pattaya", "The VIEW", "The VIEW", "The VIEW")),
         restaurantId: "the-view" as const,
       },
       {
         title: t(lang, L("Chill but still luxe", "ชิลแต่ยังหรู", "轻松仍奢华", "Chill luxury")),
-        pick: t(lang, L("→ Prego Pasta Lab & Bar", "→ Prego", "→ Prego", "→ Prego")),
+        pick: t(lang, L("Prego Pasta Lab & Bar", "Prego", "Prego", "Prego")),
         restaurantId: "prego" as const,
       },
     ],

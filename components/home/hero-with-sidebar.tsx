@@ -8,7 +8,6 @@ import { getHomeSidebar } from "@/lib/i18n/messages/home-hub";
 import {
   CalendarDays,
   Car,
-  ChevronRight,
   Plane,
   Radio,
   Sparkles,
@@ -37,10 +36,9 @@ function EventsTodayCard({
         </div>
         <Link
           href="/events"
-          className="inline-flex shrink-0 items-center gap-0.5 rounded-full px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-[#ea580c] transition-colors hover:bg-[#fff7ed] hover:text-[#c2410c]"
+          className="inline-flex shrink-0 rounded-full px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-[#ea580c] transition-colors hover:bg-[#fff7ed] hover:text-[#c2410c]"
         >
           {viewAll}
-          <ChevronRight className="h-3 w-3" aria-hidden />
         </Link>
       </div>
 
@@ -67,10 +65,6 @@ function EventsTodayCard({
                     {event.title}
                   </span>
                 </span>
-                <ChevronRight
-                  className="mt-1.5 h-3.5 w-3.5 shrink-0 text-[#cbd5e1] transition-all group-hover:translate-x-0.5 group-hover:text-[#f97316]"
-                  aria-hidden
-                />
               </Link>
             </li>
           );
@@ -93,10 +87,6 @@ function EventsTodayCard({
               {techMeetup}
             </p>
           </div>
-          <ChevronRight
-            className="h-4 w-4 shrink-0 text-[#f97316]/50 transition-transform group-hover:translate-x-0.5 group-hover:text-[#f97316]"
-            aria-hidden
-          />
         </div>
       </Link>
     </div>
@@ -144,10 +134,9 @@ function TrafficLiveCard({
           </p>
           <Link
             href="/living/transportation/songthaew"
-            className="inline-flex items-center gap-0.5 text-[11px] font-bold text-[#0c1a33] transition-colors hover:text-[#15803d]"
+            className="text-[11px] font-bold text-[#0c1a33] transition-colors hover:text-[#15803d]"
           >
             {trafficViewAll}
-            <ChevronRight className="h-3 w-3" aria-hidden />
           </Link>
         </div>
       </div>

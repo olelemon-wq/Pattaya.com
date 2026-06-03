@@ -404,10 +404,10 @@ export function getFamilyGuideIntro(lang: LanguageCode) {
     vibeLabel: t(lang, L("Vibe", "ฟีล", "氛围", "Атмосфера")),
     bestForLabel: t(lang, L("Best for", "เหมาะกับ", "适合", "Кому")),
     tipsLabel: t(lang, L("Tip", "ทิป", "提示", "Совет")),
-    openInMaps: t(lang, L("Open in Google Maps →", "เปิดใน Google Maps →", "在 Google 地图打开 →", "Google Maps →")),
+    openInMaps: t(lang, L("Open in Google Maps", "เปิดใน Google Maps", "在 Google 地图打开", "Google Maps")),
     directionsLabel: t(lang, L("Directions", "เส้นทาง", "路线", "Маршрут")),
-    officialSiteLabel: t(lang, L("Official site →", "เว็บทางการ →", "官网 →", "Сайт →")),
-    guideLinkLabel: t(lang, L("Full guide on Pattaya.com →", "คู่มือฉบับเต็ม →", "本站完整指南 →", "Полный гид →")),
+    officialSiteLabel: t(lang, L("Official site", "เว็บทางการ", "官网", "Сайт")),
+    guideLinkLabel: t(lang, L("Full guide on Pattaya.com", "คู่มือฉบับเต็ม", "本站完整指南", "Полный гид")),
   };
 }
 

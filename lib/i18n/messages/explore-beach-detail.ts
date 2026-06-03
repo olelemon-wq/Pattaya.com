@@ -351,7 +351,7 @@ function getSlugExtras(lang: LanguageCode, slug: BeachDetailSlug) {
         title: shared.related.title,
         links: [
           {
-            label: t(lang, L("Jomtien guide →", "คู่มือจอมเทียน →", "仲天指南 →", "Jomtien →")),
+            label: t(lang, L("Jomtien guide", "คู่มือจอมเทียน", "仲天指南", "Jomtien")),
             href: "/explore/beaches/jomtien",
             blurb: t(lang, L("Compare the longer main Jomtien strip", "เทียบชายหาดจอมเทียนหลัก", "对比仲天主海滩", "Основной Jomtien"),
             ),
@@ -465,7 +465,7 @@ function getSlugExtras(lang: LanguageCode, slug: BeachDetailSlug) {
         title: shared.related.title,
         links: [
           {
-            label: t(lang, L("Wongamat guide →", "คู่มือวงอมาตย์ →", "Wongamat 指南 →", "Wongamat →")),
+            label: t(lang, L("Wongamat guide", "คู่มือวงอมาตย์", "Wongamat 指南", "Wongamat")),
             href: "/explore/beaches/wongamat",
             blurb: t(lang, L("Quieter upscale bay next door", "อ่าวหรูเงียบถัดไป", "隔壁高端静湾", "Тихая бухта рядом"),
             ),
@@ -473,7 +473,7 @@ function getSlugExtras(lang: LanguageCode, slug: BeachDetailSlug) {
           {
             label: t(
               lang,
-              L("Old Naklua market →", "ตลาดเก่านาเกลือ →", "那库拉老市场 →", "Старый рынок Naklua →"),
+              L("Old Naklua market", "ตลาดเก่านาเกลือ", "那库拉老市场", "Старый рынок Naklua"),
             ),
             href: marketPagePaths.oldNaklua,
             blurb: t(lang, L("Morning wet market on our guide", "ตลาดสดเช้าในคู่มือ", "指南中的早市", "Утренний рынок"),
@@ -482,7 +482,7 @@ function getSlugExtras(lang: LanguageCode, slug: BeachDetailSlug) {
           {
             label: t(
               lang,
-              L("Hidden seafood market →", "ตลาดลับลานโพธิ์ →", "隐秘海鲜市场 →", "Lan Pho →"),
+              L("Hidden seafood market", "ตลาดลับลานโพธิ์", "隐秘海鲜市场", "Lan Pho"),
             ),
             href: marketPagePaths.hiddenLanPho,
             blurb: t(lang, L("Local seafood — quieter than tourist spots", "ซีฟู้ด local เงียบกว่าจุดทัวร์", "本地海鲜", "Морепродукты"),
@@ -591,7 +591,7 @@ function getSlugExtras(lang: LanguageCode, slug: BeachDetailSlug) {
         title: shared.related.title,
         links: [
           {
-            label: t(lang, L("Naklua guide →", "คู่มือนาเกลือ →", "那库拉指南 →", "Naklua →")),
+            label: t(lang, L("Naklua guide", "คู่มือนาเกลือ", "那库拉指南", "Naklua")),
             href: "/explore/beaches/naklua",
             blurb: t(lang, L("Morning markets & fishing boats", "ตลาดเช้า เรือประมง", "早市与渔船", "Рынок и лодки"),
             ),
@@ -705,7 +705,7 @@ function getSlugExtras(lang: LanguageCode, slug: BeachDetailSlug) {
         title: shared.related.title,
         links: [
           {
-            label: t(lang, L("Pattaya Beach →", "หาดพัทยา →", "芭提雅海滩 →", "Pattaya →")),
+            label: t(lang, L("Pattaya Beach", "หาดพัทยา", "芭提雅海滩", "Pattaya")),
             href: "/explore/beaches/pattaya-beach",
             blurb: t(lang, L("Central bay & nightlife", "อ่าวกลาง ไนท์ไลฟ์", "中心海湾与夜生活", "Центр"),
             ),
@@ -717,7 +717,7 @@ function getSlugExtras(lang: LanguageCode, slug: BeachDetailSlug) {
             ),
           },
           {
-            label: t(lang, L("Hidden gems →", "จุดลับ →", "秘境 →", "Секреты →")),
+            label: t(lang, L("Hidden gems", "จุดลับ", "秘境", "Секреты")),
             href: "/explore/hidden-gems",
             blurb: t(lang, L("Secret viewpoints beyond the main hill", "จุดชมวิวลับ", "主山以外的秘境", "Секретные виды"),
             ),

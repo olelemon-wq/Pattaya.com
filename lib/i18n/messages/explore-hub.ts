@@ -48,10 +48,10 @@ const copy = {
     ru: "Начните здесь: выберите гид по стилю поездки и откройте раздел под ваш день.",
   },
   viewAll: {
-    en: "Koh Larn guide →",
-    th: "คู่มือเกาะล้าน →",
-    zh: "格兰岛指南 →",
-    ru: "Гид Ko Lan →",
+    en: "Koh Larn guide",
+    th: "คู่มือเกาะล้าน",
+    zh: "格兰岛指南",
+    ru: "Гид Ko Lan",
   },
   guideReadBtn: {
     en: "Read guide",
@@ -120,10 +120,10 @@ const copy = {
     ru: "Местная еда",
   },
   diningLocalViewAll: {
-    en: "Street food & markets guide →",
-    th: "คู่มืออาหารข้างทางและตลาด →",
-    zh: "街头美食与市场指南 →",
-    ru: "Гид по уличной еде →",
+    en: "Street food & markets guide",
+    th: "คู่มืออาหารข้างทางและตลาด",
+    zh: "街头美食与市场指南",
+    ru: "Гид по уличной еде",
   },
   dining1Title: {
     en: "Horizon Rooftop Restaurant & Bar",
@@ -423,10 +423,10 @@ const copy = {
     ru: "Секретные места — тихие уголки и Maps.",
   },
   readAllStories: {
-    en: "Read All Stories →",
-    th: "อ่านทุกเรื่อง →",
-    zh: "阅读全部 →",
-    ru: "Все статьи →",
+    en: "Read All Stories",
+    th: "อ่านทุกเรื่อง",
+    zh: "阅读全部",
+    ru: "Все статьи",
   },
   article1Title: {
     en: "10 Hidden Spots Only Locals Know",

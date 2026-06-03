@@ -60,8 +60,8 @@ export function getScamAlertsPage(lang: LanguageCode) {
     redFlagsTitle: t(lang, L("Red flags — walk away", "สัญญาณอันตราย — ถอยทันที", "危险信号——立即离开", "Красные флаги")),
     reportTitle: t(lang, L("If you are scammed", "ถ้าถูกโกง", "若遭遇诈骗", "Если обманули")),
     essentialsTitle: t(lang, L("Safety essentials", "สิ่งที่ควรทำเป็นประจำ", "安全要点", "Безопасность")),
-    rentalLink: t(lang, L("Rental checklist →", "เช็กลิสต์เช่า →", "租房清单 →", "Аренда →")),
-    cultureLink: t(lang, L("Cultural do's & don'ts →", "มารยาทไทย →", "文化宜忌 →", "Этикет →")),
+    rentalLink: t(lang, L("Rental checklist", "เช็กลิสต์เช่า", "租房清单", "Аренда")),
+    cultureLink: t(lang, L("Cultural do's & don'ts", "มารยาทไทย", "文化宜忌", "Этикет")),
     severityHigh: t(lang, L("High risk", "เสี่ยงสูง", "高风险", "Высокий риск")),
     severityWatch: t(lang, L("Watch", "ระวัง", "注意", "Внимание")),
     appNote: t(

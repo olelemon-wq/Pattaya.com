@@ -225,14 +225,14 @@ export function DrivingPage() {
             href="/living/culture/etiquette"
             className="text-sm font-semibold text-[#B29475] underline-offset-2 hover:underline"
           >
-            {copy.etiquette} →
+            {copy.etiquette}
           </Link>
           <span className="mx-2 text-[#D7CBBA]">|</span>
           <Link
             href="/living/safety/emergency-guide"
             className="text-sm font-semibold text-[#B29475] underline-offset-2 hover:underline"
           >
-            {copy.emergency} →
+            {copy.emergency}
           </Link>
         </p>
       </section>

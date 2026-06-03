@@ -19,9 +19,9 @@ export function getStreetFoodMarkets(lang: LanguageCode) {
   const c = getExploreCommon(lang);
   const marketsGuide = t(
     lang,
-    L("Full market guide →", "คู่มือตลาดฉบับเต็ม →", "完整市场指南 →", "Полный гид по рынкам →"),
+    L("Full market guide", "คู่มือตลาดฉบับเต็ม", "完整市场指南", "Полный гид по рынкам"),
   );
-  const beachGuide = t(lang, L("Beach guide →", "คู่มือหาด →", "海滩指南 →", "Гид пляжа →"));
+  const beachGuide = t(lang, L("Beach guide", "คู่มือหาด", "海滩指南", "Гид пляжа"));
 
   return {
     title: t(lang, L("Choose your market", "เลือกตลาด", "选择市场", "Выберите рынок")),
@@ -37,7 +37,7 @@ export function getStreetFoodMarkets(lang: LanguageCode) {
     hoursLabel: c.hours,
     mustTryLabel: c.mustTry,
     priceRangeLabel: t(lang, L("Typical spend", "ราคาโดยประมาณ", "人均参考", "Примерно")),
-    openInMaps: t(lang, L("Open in Google Maps →", "เปิดใน Google Maps →", "在 Google 地图中打开 →", "Google Maps →")),
+    openInMaps: t(lang, L("Open in Google Maps", "เปิดใน Google Maps", "在 Google 地图中打开", "Google Maps")),
     items: [
       {
         id: "thepprasit" as const,
@@ -55,7 +55,7 @@ export function getStreetFoodMarkets(lang: LanguageCode) {
         ),
         priceRange: t(lang, L("~40–150 THB / dish", "~40–150 บาท/จาน", "约40–150泰铢/道", "~40–150 бат/блюдо")),
         href: "https://www.google.com/maps/search/?api=1&query=Thepprasit+Night+Market+Pattaya+Thailand",
-        linkLabel: t(lang, L("Open in Google Maps →", "เปิดใน Google Maps →", "在 Google 地图中打开 →", "Google Maps →")),
+        linkLabel: t(lang, L("Open in Google Maps", "เปิดใน Google Maps", "在 Google 地图中打开", "Google Maps")),
         secondaryHref: marketPagePaths.thepprasit,
         secondaryLinkLabel: marketsGuide,
         external: true,
@@ -99,7 +99,7 @@ export function getStreetFoodMarkets(lang: LanguageCode) {
         ),
         priceRange: t(lang, L("~300–800 THB / kg seafood", "~300–800 บาท/กก. ซีฟู้ด", "海鲜约300–800泰铢/公斤", "~300–800 бат/кг")),
         href: "/explore/beaches/jomtien",
-        linkLabel: t(lang, L("Jomtien beach guide →", "คู่มือหาดจอมเทียน →", "Jomtien 海滩指南 →", "Гид Jomtien →")),
+        linkLabel: t(lang, L("Jomtien beach guide", "คู่มือหาดจอมเทียน", "Jomtien 海滩指南", "Гид Jomtien")),
         external: false,
         image: streetFoodMarketImages[2],
       },
@@ -119,7 +119,7 @@ export function getStreetFoodMarkets(lang: LanguageCode) {
         ),
         priceRange: t(lang, L("~40–120 THB / snack", "~40–120 บาท/ของว่าง", "约40–120泰铢/小食", "~40–120 бат")),
         href: "/explore/beaches/pattaya-beach",
-        linkLabel: t(lang, L("Pattaya Beach guide →", "คู่มือหาดพัทยา →", "芭提雅海滩指南 →", "Гид Pattaya Beach →")),
+        linkLabel: t(lang, L("Pattaya Beach guide", "คู่มือหาดพัทยา", "芭提雅海滩指南", "Гид Pattaya Beach")),
         external: false,
         image: streetFoodMarketImages[3],
       },

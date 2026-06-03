@@ -79,7 +79,7 @@ export function CafesMap() {
           <strong>${escapeHtml(cafe.name)}</strong>
           <span class="market-popup__hours">${escapeHtml(cafe.hoursRange)} · ${escapeHtml(cafe.openDays)}</span>
           <div class="market-popup__actions">
-            <a href="${cafe.directionsHref}" target="_blank" rel="noopener noreferrer">${escapeHtml(directions)} →</a>
+            <a href="${cafe.directionsHref}" target="_blank" rel="noopener noreferrer">${escapeHtml(directions)}</a>
             <a href="${cafe.mapsHref}" target="_blank" rel="noopener noreferrer">${escapeHtml(openPlace)}</a>
           </div>
         </div>

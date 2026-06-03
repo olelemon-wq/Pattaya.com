@@ -47,10 +47,10 @@ const copy = {
     ru: "Пошаговые гайды — ссылки на официальные источники; консультантов не бронируем.",
   },
   heroCtaStart: {
-    en: "Start with company setup →",
-    th: "เริ่มจากจดบริษัท →",
-    zh: "从公司设立开始 →",
-    ru: "С регистрации компании →",
+    en: "Start with company setup",
+    th: "เริ่มจากจดบริษัท",
+    zh: "从公司设立开始",
+    ru: "С регистрации компании",
   },
   heroImageAlt: {
     en: "Pattaya Business Hub skyline and waterfront",
@@ -365,10 +365,10 @@ const copy = {
     ru: "Инвесторы, операторы и регуляторы.",
   },
   viewAllEvents: {
-    en: "View All Events →",
-    th: "ดูอีเวนต์ทั้งหมด →",
-    zh: "查看全部活动 →",
-    ru: "Все события →",
+    en: "View All Events",
+    th: "ดูอีเวนต์ทั้งหมด",
+    zh: "查看全部活动",
+    ru: "Все события",
   },
   event1Title: {
     en: "Government-BCCT Site Visit: Ministry of Education to King's College International School",
@@ -431,10 +431,10 @@ const copy = {
     ru: "Правила condo и due diligence — не листинг продаж.",
   },
   contactAgent: {
-    en: "Read real estate guide →",
-    th: "อ่านคู่มืออสังหา →",
-    zh: "阅读房地产指南 →",
-    ru: "Гид по недвижимости →",
+    en: "Read real estate guide",
+    th: "อ่านคู่มืออสังหา",
+    zh: "阅读房地产指南",
+    ru: "Гид по недвижимости",
   },
   economyStatDisclaimer: {
     en: "Illustrative figures from public EEC/TAT reports (circa 2024). Confirm sources on the economy overview.",
@@ -443,10 +443,10 @@ const copy = {
     ru: "Ориентиры из отчётов EEC/TAT (~2024). Источники — на странице экономики.",
   },
   eventsSeeCalendar: {
-    en: "See events calendar →",
-    th: "ดูปฏิทินอีเวนต์ →",
-    zh: "查看活动日历 →",
-    ru: "Календарь событий →",
+    en: "See events calendar",
+    th: "ดูปฏิทินอีเวนต์",
+    zh: "查看活动日历",
+    ru: "Календарь событий",
   },
   eventsHubNote: {
     en: "Latest listings are synchronized with the Business Events page. Recheck dates and venue updates before attending.",
@@ -527,10 +527,10 @@ const copy = {
     ru: "События",
   },
   viewEconomyOverview: {
-    en: "View Pattaya economy overview →",
-    th: "ดูภาพรวมเศรษฐกิจพัทยา →",
-    zh: "查看芭提雅经济概览 →",
-    ru: "Обзор экономики Паттайи →",
+    en: "View Pattaya economy overview",
+    th: "ดูภาพรวมเศรษฐกิจพัทยา",
+    zh: "查看芭提雅经济概览",
+    ru: "Обзор экономики Паттайи",
   },
   economyOverviewHint: {
     en: "Open full analysis for these economic stats",

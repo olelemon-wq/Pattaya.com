@@ -191,8 +191,8 @@ export function getYachtPage(lang: LanguageCode) {
       title: c.alsoExplore,
       kohLarnDayTrip: c.kohLarnDayTrip,
       fineDining: c.fineDining,
-      wellness: t(lang, L("Wellness →", "สปา & สุขภาพ →", "康养 →", "Wellness →")),
-      familyActivities: t(lang, L("Family activities →", "กิจกรรมครอบครัว →", "亲子活动 →", "Семья →")),
+      wellness: t(lang, L("Wellness", "สปา & สุขภาพ", "康养", "Wellness")),
+      familyActivities: t(lang, L("Family activities", "กิจกรรมครอบครัว", "亲子活动", "Семья")),
       familyActivitiesHref: "/explore/family-activities",
     },
   };

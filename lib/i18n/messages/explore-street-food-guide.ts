@@ -354,12 +354,12 @@ export function getStreetFoodGuideIntro(lang: LanguageCode) {
     ),
     openInMaps: t(
       lang,
-      L("Open in Google Maps →", "เปิดใน Google Maps →", "在 Google 地图中打开 →", "Google Maps →"),
+      L("Open in Google Maps", "เปิดใน Google Maps", "在 Google 地图中打开", "Google Maps"),
     ),
-    directionsLabel: t(lang, L("Directions →", "เส้นทาง →", "路线 →", "Маршрут →")),
+    directionsLabel: t(lang, L("Directions", "เส้นทาง", "路线", "Маршрут")),
     siteGuideLabel: t(
       lang,
-      L("Market guide on Pattya →", "คู่มือตลาดใน Pattya →", "本站市场指南 →", "Гид по рынкам →"),
+      L("Market guide on Pattya", "คู่มือตลาดใน Pattya", "本站市场指南", "Гид по рынкам"),
     ),
     highlightsLabel: t(lang, L("Must try", "ของกินเด่น", "必吃", "Попробуйте")),
     vibeLabel: t(lang, L("Vibe", "ฟีล", "氛围", "Атмосфера")),
@@ -385,27 +385,27 @@ export function getStreetFoodMoodPicks(lang: LanguageCode) {
     items: [
       {
         mood: t(lang, L("Busiest feast", "อยากกินแบบแน่นที่สุด", "最热闹大餐", "Самый плотный")),
-        pick: t(lang, L("→ Thepprasit", "→ เทพประสิทธิ์", "→ Thepprasit", "→ Thepprasit")),
+        pick: t(lang, L("Thepprasit", "เทพประสิทธิ์", "Thepprasit", "Thepprasit")),
         spotId: "thepprasit" as const,
       },
       {
         mood: t(lang, L("Most local", "อยาก local จริง", "最本地", "Самый local")),
-        pick: t(lang, L("→ Noen Plub Wan", "→ เนินพลับหวาน", "→ Noen Plub Wan", "→ Noen Plub Wan")),
+        pick: t(lang, L("Noen Plub Wan", "เนินพลับหวาน", "Noen Plub Wan", "Noen Plub Wan")),
         spotId: "noen-plub-wan" as const,
       },
       {
         mood: t(lang, L("Seafood grills", "อยากซีฟู้ด", "海鲜烧烤", "Морепродукты")),
-        pick: t(lang, L("→ Lan Pho Naklua", "→ ลานโพธิ์นาเกลือ", "→ 兰坡", "→ Lan Pho")),
+        pick: t(lang, L("Lan Pho Naklua", "ลานโพธิ์นาเกลือ", "兰坡", "Lan Pho")),
         spotId: "lan-pho-naklua" as const,
       },
       {
         mood: t(lang, L("Morning local", "อยากอาหารเช้า local", "本地早餐", "Утро")),
-        pick: t(lang, L("→ Wat Chai Mongkhon", "→ วัดชัยมงคล", "→ 柴孟坤寺", "→ Wat Chai")),
+        pick: t(lang, L("Wat Chai Mongkhon", "วัดชัยมงคล", "柴孟坤寺", "Wat Chai")),
         spotId: "wat-chai-mongkhon" as const,
       },
       {
         mood: t(lang, L("Late-night hungry", "อยากกินดึก", "深夜解馋", "Поздно ночью")),
-        pick: t(lang, L("→ Soi Buakhao", "→ ซอยบัวขาว", "→ Buakhao 巷", "→ Buakhao")),
+        pick: t(lang, L("Soi Buakhao", "ซอยบัวขาว", "Buakhao 巷", "Buakhao")),
         spotId: "soi-buakhao" as const,
       },
     ],

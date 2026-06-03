@@ -354,9 +354,9 @@ export function getHiddenMarketsSection(lang: LanguageCode) {
       tipsLabel: t(lang, L("Tip", "เคล็ดลับ", "提示", "Совет")),
       openInMaps: t(
         lang,
-        L("Open in Google Maps →", "เปิดใน Google Maps →", "在 Google 地图中打开 →", "Google Maps →"),
+        L("Open in Google Maps", "เปิดใน Google Maps", "在 Google 地图中打开", "Google Maps"),
       ),
-      directionsLabel: t(lang, L("Directions →", "เส้นทาง →", "路线 →", "Маршрут →")),
+      directionsLabel: t(lang, L("Directions", "เส้นทาง", "路线", "Маршрут")),
     },
   };
 }

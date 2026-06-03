@@ -77,7 +77,7 @@ export function StreetFoodMap() {
           <strong>${escapeHtml(spot.name)}</strong>
           <span class="market-popup__hours">${escapeHtml(spot.hoursRange)} · ${escapeHtml(spot.openDays)}</span>
           <div class="market-popup__actions">
-            <a href="${spot.directionsHref}" target="_blank" rel="noopener noreferrer">${escapeHtml(directions)} →</a>
+            <a href="${spot.directionsHref}" target="_blank" rel="noopener noreferrer">${escapeHtml(directions)}</a>
             <a href="${spot.mapsHref}" target="_blank" rel="noopener noreferrer">${escapeHtml(openPlace)}</a>
           </div>
         </div>

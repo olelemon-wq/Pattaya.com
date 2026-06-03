@@ -77,7 +77,7 @@ export function ShoppingMallsMap() {
           <strong>${escapeHtml(mall.name)}</strong>
           <span class="market-popup__hours">${escapeHtml(mall.hoursRange)} · ${escapeHtml(mall.openDays)}</span>
           <div class="market-popup__actions">
-            <a href="${mall.directionsHref}" target="_blank" rel="noopener noreferrer">${escapeHtml(directions)} →</a>
+            <a href="${mall.directionsHref}" target="_blank" rel="noopener noreferrer">${escapeHtml(directions)}</a>
             <a href="${mall.mapsHref}" target="_blank" rel="noopener noreferrer">${escapeHtml(openPlace)}</a>
           </div>
         </div>

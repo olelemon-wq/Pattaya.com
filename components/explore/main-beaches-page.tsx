@@ -176,7 +176,7 @@ export function MainBeachesPage() {
                 href={link.href}
                 className="rounded-xl border border-[#c4c7c8]/30 bg-white p-5 shadow-sm transition hover:border-[#B52E88]/30 hover:shadow-md"
               >
-                <p className="font-bold text-[#B52E88]">{link.label} →</p>
+                <p className="font-bold text-[#B52E88]">{link.label}</p>
                 <p className="mt-2 text-sm text-[#444748]">{link.blurb}</p>
               </Link>
             ))}

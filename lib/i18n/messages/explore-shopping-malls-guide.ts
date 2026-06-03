@@ -286,9 +286,9 @@ export function getMallGuideIntro(lang: LanguageCode) {
     ),
     openInMaps: t(
       lang,
-      L("Open in Google Maps →", "เปิดใน Google Maps →", "在 Google 地图中打开 →", "Google Maps →"),
+      L("Open in Google Maps", "เปิดใน Google Maps", "在 Google 地图中打开", "Google Maps"),
     ),
-    directionsLabel: t(lang, L("Directions →", "เส้นทาง →", "路线 →", "Маршрут →")),
+    directionsLabel: t(lang, L("Directions", "เส้นทาง", "路线", "Маршрут")),
     highlightsLabel: t(lang, L("Highlights", "จุดเด่น", "亮点", "Особенности")),
     vibeLabel: t(lang, L("Vibe", "ฟีล", "氛围", "Атмосфера")),
     bestForLabel: t(lang, L("Best for", "เหมาะกับ", "适合", "Подходит")),
@@ -311,29 +311,29 @@ export function getMallMoodPicks(lang: LanguageCode) {
     groups: [
       {
         title: t(lang, L("Most fun to wander", "อยากเดินเพลินสุด", "最想轻松逛", "Прогулка")),
-        pick: t(lang, L("→ Terminal 21 Pattaya", "→ Terminal 21 Pattaya", "→ Terminal 21", "→ Terminal 21")),
+        pick: t(lang, L("Terminal 21 Pattaya", "Terminal 21 Pattaya", "Terminal 21", "Terminal 21")),
         mallId: "terminal-21" as const,
       },
       {
         title: t(lang, L("Pattaya beach vibe & sea views", "อยากฟีลพัทยา วิวทะเล", "芭提雅海景氛围", "Море и Паттайя")),
-        pick: t(lang, L("→ Central Pattaya", "→ Central Pattaya", "→ Central", "→ Central Pattaya")),
+        pick: t(lang, L("Central Pattaya", "Central Pattaya", "Central", "Central Pattaya")),
         mallId: "central-pattaya" as const,
       },
       {
         title: t(lang, L("Deals & outlet prices", "อยากได้ของถูก ของลด", "淘折扣", "Скидки")),
-        pick: t(lang, L("→ Outlet Mall Pattaya", "→ Outlet Mall Pattaya", "→ Outlet Mall", "→ Outlet Mall")),
+        pick: t(lang, L("Outlet Mall Pattaya", "Outlet Mall Pattaya", "Outlet Mall", "Outlet Mall")),
         mallId: "outlet-mall" as const,
       },
       {
         title: t(lang, L("Quiet & easy", "อยากเดินเงียบ ๆ ชิล ๆ", "安静轻松", "Спокойно")),
-        pick: t(lang, L("→ Central Marina", "→ Central Marina", "→ Central Marina", "→ Central Marina")),
+        pick: t(lang, L("Central Marina", "Central Marina", "Central Marina", "Central Marina")),
         mallId: "central-marina" as const,
       },
       {
         title: t(lang, L("Food first", "อยากเน้นกิน", "以吃为主", "Еда")),
         pick: t(
           lang,
-          L("→ Terminal 21 + Central Pattaya", "→ Terminal 21 + Central Pattaya", "→ T21 + Central", "→ T21 + Central"),
+          L("Terminal 21 + Central Pattaya", "Terminal 21 + Central Pattaya", "T21 + Central", "T21 + Central"),
         ),
         mallId: "terminal-21" as const,
       },
