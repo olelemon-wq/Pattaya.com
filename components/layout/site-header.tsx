@@ -25,7 +25,7 @@ function activeUnderlineClass(href: string): string {
   if (href === "/living") return "bg-[#B29475]";
   if (href === "/explore") return "bg-[#B52E88]";
   if (href === "/business") return "bg-[#363636]";
-  if (href === "/classifieds") return "bg-[#0d9488]";
+  if (href === "/classifieds") return "bg-[#C7856D]";
   return "bg-[#f97316]";
 }
 

@@ -59,7 +59,7 @@ export function BreakingNewsTicker({
     <div className={`w-full ${barStyles[variant]}`}>
       <div
         ref={rootRef}
-        className="mx-auto flex h-10 max-w-[1280px] items-center px-4 lg:px-6"
+        className="mx-auto flex h-10 max-w-[1280px] items-center px-3 sm:px-4 lg:px-6"
         role="region"
         aria-label={tSiteUi(language, "breakingNews")}
       >

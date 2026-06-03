@@ -124,9 +124,9 @@ export function getHomeGuide(lang: LanguageCode) {
         href: "/explore/islands/koh-larn",
       },
       {
-        title: t(lang, L("Fine Dining: Michelin Guide 2024", "Fine Dining: Michelin 2024", "Fine Dining 2024", "Fine Dining 2024")),
-        meta: t(lang, L("8 ARTICLES • LOCAL TIPS", "8 บทความ", "8 篇文章", "8 СТАТЕЙ")),
-        href: "/explore/restaurants/fine-dining",
+        title: t(lang, L("Street Food: Best Local Eats", "สตรีทฟู้ด: ร้านเด็ดพัทยา", "街头美食：本地必吃", "Уличная еда: лучшие места")),
+        meta: t(lang, L("10 ARTICLES • LOCAL TIPS", "10 บทความ", "10 篇文章", "10 СТАТЕЙ")),
+        href: "/explore/restaurants/street-food",
       },
       {
         title: t(lang, L("Retirement in Pattaya: Full Guide", "เกษียณในพัทยา: คู่มือเต็ม", "芭提雅退休完整指南", "Пенсия в Паттайе")),

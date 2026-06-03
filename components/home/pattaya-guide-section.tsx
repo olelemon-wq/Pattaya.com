@@ -9,7 +9,7 @@ import { images } from "@/lib/design/images";
 
 const guideImages = [
   kohLarnImages.hero,
-  images.guideDining,
+  "/images/explore/street-food-thepprasit.png",
   images.guideInterior,
   images.guideYacht,
 ];
@@ -19,7 +19,7 @@ export function PattayaGuideSection() {
   const guide = getHomeGuide(language);
 
   return (
-    <section className="mx-auto max-w-[1280px] px-4 py-8 lg:px-6">
+    <section className="mx-auto max-w-[1280px] px-3 py-8 sm:px-4 lg:px-6">
       <div className="mb-6 flex items-end justify-between">
         <div>
           <h2 className="text-2xl font-extrabold text-[#0c1a33]">{guide.title}</h2>

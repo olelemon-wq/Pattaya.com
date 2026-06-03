@@ -6,6 +6,7 @@ import {
   type StandalonePageKey,
 } from "@/lib/i18n/messages/standalone-pages";
 import { getEventsHub } from "@/lib/i18n/messages/events-hub";
+import { getClassifiedsHub } from "@/lib/i18n/messages/classifieds-hub";
 import { localizeNavItem } from "@/lib/i18n/resolve-site-nav";
 import { getNavItemBySlug, getSectionById } from "@/lib/navigation/site-map";
 
@@ -85,6 +86,15 @@ export async function createStandalonePageMetadata(
 export async function createEventsPageMetadata(): Promise<Metadata> {
   const lang = await getRequestLanguage();
   const hub = getEventsHub(lang);
+  return {
+    title: `${hub.hero.title} | ${SITE}`,
+    description: hub.hero.description,
+  };
+}
+
+export async function createClassifiedsPageMetadata(): Promise<Metadata> {
+  const lang = await getRequestLanguage();
+  const hub = getClassifiedsHub(lang);
   return {
     title: `${hub.hero.title} | ${SITE}`,
     description: hub.hero.description,

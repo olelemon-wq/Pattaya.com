@@ -192,7 +192,7 @@ export function HeroWithSidebar() {
   const sidebar = getHomeSidebar(language);
 
   return (
-    <section className="mx-auto max-w-[1280px] space-y-5 px-4 py-6 lg:px-6">
+    <section className="mx-auto max-w-[1280px] space-y-5 px-3 py-6 sm:px-4 lg:px-6">
       <FeaturedHeroCinematic />
 
       <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-3 md:gap-5">

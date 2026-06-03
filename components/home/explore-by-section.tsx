@@ -32,7 +32,7 @@ export function ExploreBySection() {
   return (
     <section
       aria-labelledby="explore-sections-heading"
-      className="home-section-reveal mx-auto max-w-[1280px] px-4 lg:px-6"
+      className="home-section-reveal mx-auto max-w-[1280px] px-3 sm:px-4 lg:px-6"
       style={{ animationDelay: "160ms" }}
     >
       <div className="mb-5 flex items-end gap-3">

@@ -11,7 +11,7 @@ export default function HomePage() {
   return (
     <div data-full-bleed className="bg-[#f4f6f9]">
       <BreakingNewsTicker />
-      <div className="space-y-6 pb-8 pt-2">
+      <div className="space-y-6 overflow-x-hidden pb-8 pt-2">
         <HeroWithSidebar />
         <TopStoriesBento />
         <ExploreBySection />

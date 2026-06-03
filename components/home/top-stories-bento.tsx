@@ -53,7 +53,7 @@ export function TopStoriesBento() {
   return (
     <section
       aria-labelledby="top-stories-heading"
-      className="home-section-reveal mx-auto max-w-[1280px] px-4 lg:px-6"
+      className="home-section-reveal mx-auto max-w-[1280px] px-3 sm:px-4 lg:px-6"
       style={{ animationDelay: "120ms" }}
     >
       <div className="mb-5 flex items-end justify-between border-b border-[#e2e8f0] pb-3">
