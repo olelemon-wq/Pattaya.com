@@ -12,5 +12,8 @@ export const DEFAULT_LANGUAGE: LanguageCode = "en";
 export const LANGUAGE_STORAGE_KEY = "pattaya-lang";
 
 export function getLanguageByCode(code: string) {
-  return LANGUAGES.find((lang) => lang.code === code) ?? LANGUAGES[1];
+  return (
+    LANGUAGES.find((lang) => lang.code === code) ??
+    LANGUAGES.find((lang) => lang.code === DEFAULT_LANGUAGE)!
+  );
 }

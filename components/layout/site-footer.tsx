@@ -5,14 +5,14 @@ import {
   getFooterConnectLinks,
   getFooterCopy,
   getFooterCopyright,
-  getFooterNetworkLinks,
+  getFooterSectionLinks,
 } from "@/lib/i18n/messages/site-footer";
 import { useLanguage } from "./language-provider";
 
 export function SiteFooter() {
   const { language } = useLanguage();
   const copy = getFooterCopy(language);
-  const networkLinks = getFooterNetworkLinks(language);
+  const sectionLinks = getFooterSectionLinks(language);
   const connectLinks = getFooterConnectLinks(language);
   const year = new Date().getFullYear();
 
@@ -28,10 +28,10 @@ export function SiteFooter() {
 
         <div>
           <h3 className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-white/40">
-            {copy.networkTitle}
+            {copy.sectionsTitle}
           </h3>
           <ul className="space-y-2.5">
-            {networkLinks.map((link) => (
+            {sectionLinks.map((link) => (
               <li key={link.key}>
                 <Link
                   href={link.href}

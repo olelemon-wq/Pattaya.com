@@ -15,6 +15,7 @@ function activeHrefForPath(pathname: string): string {
   if (pathname.startsWith("/living")) return "/living";
   if (pathname.startsWith("/explore")) return "/explore";
   if (pathname.startsWith("/business")) return "/business";
+  if (pathname.startsWith("/classifieds")) return "/classifieds";
   return "";
 }
 
@@ -24,6 +25,7 @@ function activeUnderlineClass(href: string): string {
   if (href === "/living") return "bg-[#B29475]";
   if (href === "/explore") return "bg-[#B52E88]";
   if (href === "/business") return "bg-[#363636]";
+  if (href === "/classifieds") return "bg-[#0d9488]";
   return "bg-[#f97316]";
 }
 
@@ -110,18 +112,6 @@ export function SiteHeader() {
         />
 
         <div className="relative z-[200] ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
-          <label className="relative hidden sm:block">
-            <span className="sr-only">{tSiteUi(language, "search")}</span>
-            <input
-              type="search"
-              placeholder={headerUi.searchPlaceholder}
-              className="h-9 w-32 rounded-full border border-[#e2e8f0] bg-[#f8fafc] pl-9 pr-3 text-xs text-[#0c1a33] outline-none placeholder:text-[#94a3b8] focus:border-[#f97316] lg:w-40"
-            />
-            <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-[#94a3b8]">
-              🔍
-            </span>
-          </label>
-
           <div className="relative z-[130] hidden sm:block">
             <LanguageSelector />
           </div>
@@ -154,18 +144,6 @@ export function SiteHeader() {
           id="mobile-menu"
           className="relative z-[121] border-t border-[#e2e8f0] bg-white px-4 py-4 pointer-events-auto lg:hidden"
         >
-          <label className="relative mb-4 block sm:hidden">
-            <span className="sr-only">{tSiteUi(language, "search")}</span>
-            <input
-              type="search"
-              placeholder={headerUi.searchPlaceholder}
-              className="h-10 w-full rounded-full border border-[#e2e8f0] bg-[#f8fafc] pl-10 pr-3 text-sm outline-none focus:border-[#f97316]"
-            />
-            <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-[#94a3b8]">
-              🔍
-            </span>
-          </label>
-
           <NavLinks
             activeHref={activeHref}
             language={language}

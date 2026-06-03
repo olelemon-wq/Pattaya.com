@@ -75,29 +75,36 @@ export function FeaturedHeroCinematic({
   }, []);
 
   return (
-    <article
-      ref={articleRef}
-      data-cinematic={active ? "active" : "idle"}
-      className={`hero-cinematic group relative isolate z-0 overflow-hidden rounded-xl shadow-2xl ring-1 ring-black/10 sm:rounded-2xl ${visualTone === "neo-smart-city" ? "hero-cinematic--neo" : ""} ${visualTone === "news-dawn" ? "hero-cinematic--news-dawn" : ""} ${minHeightClass} ${className}`}
-    >
-      <div
-        className={`hero-cinematic__bg absolute inset-[-4%] ${kenBurnsPaused ? "is-paused" : ""}`}
+    <div className="hero-cinematic-shell overflow-hidden rounded-xl shadow-2xl ring-1 ring-black/10 sm:rounded-2xl">
+      <article
+        ref={articleRef}
+        data-cinematic={active ? "active" : "idle"}
+        className={`hero-cinematic group relative isolate z-0 overflow-hidden ${visualTone === "neo-smart-city" ? "hero-cinematic--neo" : ""} ${visualTone === "news-dawn" ? "hero-cinematic--news-dawn" : ""} ${minHeightClass} ${className}`}
       >
-        <Image
-          src={image}
-          alt={imageAlt}
-          fill
-          unoptimized={isLocalAsset}
-          className="object-cover"
-          priority
-          sizes="(max-width: 1280px) 100vw, 1280px"
-        />
-      </div>
+      <div className="hero-cinematic__media pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]">
+        <div
+          className={`hero-cinematic__bg absolute inset-[-4%] ${kenBurnsPaused ? "is-paused" : ""}`}
+        >
+          <Image
+            src={image}
+            alt={imageAlt}
+            fill
+            unoptimized={isLocalAsset}
+            className="object-cover"
+            priority
+            sizes="(max-width: 1280px) 100vw, 1280px"
+          />
+        </div>
 
-      <div className="hero-cinematic__shine pointer-events-none absolute inset-0" aria-hidden />
-      <div className="hero-cinematic__vignette pointer-events-none absolute inset-0" aria-hidden />
-      <div className="hero-cinematic__glow pointer-events-none absolute inset-x-0 bottom-0 h-2/5" aria-hidden />
-      <div className="hero-cinematic__grain pointer-events-none absolute inset-0 opacity-[0.14]" aria-hidden />
+        <div className="hero-cinematic__shine absolute inset-0" aria-hidden />
+        <div className="hero-cinematic__vignette absolute inset-0" aria-hidden />
+        <div
+          className="hero-cinematic__text-scrim absolute inset-x-0 bottom-0 h-[58%] sm:h-[52%]"
+          aria-hidden
+        />
+        <div className="hero-cinematic__glow absolute inset-x-0 bottom-0 h-2/5" aria-hidden />
+        <div className="hero-cinematic__grain absolute inset-0 opacity-[0.14]" aria-hidden />
+      </div>
 
       <div
         className={`relative flex h-full flex-col justify-end p-4 pb-5 sm:p-8 sm:pb-8 lg:p-10 ${minHeightClass}`}
@@ -157,5 +164,6 @@ export function FeaturedHeroCinematic({
         )}
       </div>
     </article>
+    </div>
   );
 }

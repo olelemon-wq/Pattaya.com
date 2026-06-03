@@ -2320,12 +2320,54 @@ body {
   }
 }
 
+.hero-cinematic__bg img {
+  filter: brightness(1.06) saturate(1.12);
+}
+
+/* Rounded corners — shell clips shadow; inner layers clip Ken Burns in Safari */
+.hero-cinematic-shell {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+@media (min-width: 640px) {
+  .hero-cinematic-shell {
+    border-radius: 1rem;
+  }
+}
+
+.hero-cinematic {
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.hero-cinematic__media {
+  overflow: hidden;
+  border-radius: inherit;
+  clip-path: inset(0 round 0.75rem);
+  -webkit-clip-path: inset(0 round 0.75rem);
+}
+
+@media (min-width: 640px) {
+  .hero-cinematic__media {
+    clip-path: inset(0 round 1rem);
+    -webkit-clip-path: inset(0 round 1rem);
+  }
+}
+
+.hero-cinematic__bg {
+  overflow: hidden;
+}
+
+/* Light overall tint — keeps photography vivid */
 .hero-cinematic__vignette {
   background: linear-gradient(
     165deg,
-    rgba(10, 25, 47, 0.55) 0%,
-    rgba(10, 25, 47, 0.25) 40%,
-    rgba(10, 25, 47, 0.92) 100%
+    rgba(10, 25, 47, 0.22) 0%,
+    rgba(10, 25, 47, 0.08) 38%,
+    transparent 62%
   );
 }
 
@@ -2333,19 +2375,29 @@ body {
   .hero-cinematic__vignette {
     background: linear-gradient(
       180deg,
-      rgba(10, 25, 47, 0.35) 0%,
-      rgba(10, 25, 47, 0.5) 35%,
-      rgba(10, 25, 47, 0.95) 72%,
-      rgba(10, 25, 47, 0.98) 100%
+      rgba(10, 25, 47, 0.2) 0%,
+      rgba(10, 25, 47, 0.06) 40%,
+      transparent 58%
     );
   }
+}
+
+/* Stronger band where headline / CTA sit */
+.hero-cinematic__text-scrim {
+  background: linear-gradient(
+    to top,
+    rgba(8, 15, 30, 0.94) 0%,
+    rgba(8, 15, 30, 0.78) 26%,
+    rgba(8, 15, 30, 0.42) 50%,
+    transparent 100%
+  );
 }
 
 .hero-cinematic__glow {
   background: linear-gradient(
     to top,
-    rgba(255, 115, 32, 0.22) 0%,
-    rgba(255, 115, 32, 0.06) 40%,
+    rgba(255, 115, 32, 0.28) 0%,
+    rgba(255, 115, 32, 0.1) 40%,
     transparent 100%
   );
 }
@@ -2354,10 +2406,9 @@ body {
 .hero-cinematic--neo .hero-cinematic__vignette {
   background: linear-gradient(
     155deg,
-    rgba(15, 23, 42, 0.35) 0%,
-    rgba(30, 58, 95, 0.2) 35%,
-    rgba(15, 23, 42, 0.75) 70%,
-    rgba(10, 15, 30, 0.94) 100%
+    rgba(15, 23, 42, 0.2) 0%,
+    rgba(30, 58, 95, 0.1) 38%,
+    transparent 62%
   );
 }
 
@@ -2365,12 +2416,21 @@ body {
   .hero-cinematic--neo .hero-cinematic__vignette {
     background: linear-gradient(
       180deg,
-      rgba(15, 23, 42, 0.25) 0%,
-      rgba(15, 23, 42, 0.55) 40%,
-      rgba(10, 15, 30, 0.96) 78%,
-      rgba(10, 15, 30, 0.98) 100%
+      rgba(15, 23, 42, 0.18) 0%,
+      rgba(15, 23, 42, 0.06) 42%,
+      transparent 58%
     );
   }
+}
+
+.hero-cinematic--neo .hero-cinematic__text-scrim {
+  background: linear-gradient(
+    to top,
+    rgba(10, 15, 30, 0.94) 0%,
+    rgba(15, 23, 42, 0.76) 28%,
+    rgba(30, 58, 95, 0.38) 52%,
+    transparent 100%
+  );
 }
 
 .hero-cinematic--neo .hero-cinematic__glow {
@@ -2400,10 +2460,9 @@ body {
 .hero-cinematic--news-dawn .hero-cinematic__vignette {
   background: linear-gradient(
     160deg,
-    rgba(15, 23, 42, 0.5) 0%,
-    rgba(30, 41, 59, 0.35) 30%,
-    rgba(15, 23, 42, 0.8) 65%,
-    rgba(3, 7, 18, 0.96) 100%
+    rgba(15, 23, 42, 0.28) 0%,
+    rgba(30, 41, 59, 0.12) 32%,
+    transparent 60%
   );
 }
 
@@ -2411,12 +2470,60 @@ body {
   .hero-cinematic--news-dawn .hero-cinematic__vignette {
     background: linear-gradient(
       180deg,
-      rgba(15, 23, 42, 0.4) 0%,
-      rgba(15, 23, 42, 0.65) 45%,
-      rgba(3, 7, 18, 0.97) 80%,
-      rgba(3, 7, 18, 0.99) 100%
+      rgba(15, 23, 42, 0.24) 0%,
+      rgba(15, 23, 42, 0.08) 42%,
+      transparent 58%
     );
   }
+}
+
+.hero-cinematic--news-dawn .hero-cinematic__text-scrim {
+  background: linear-gradient(
+    to top,
+    rgba(3, 7, 18, 0.95) 0%,
+    rgba(15, 23, 42, 0.8) 28%,
+    rgba(30, 41, 59, 0.4) 52%,
+    transparent 100%
+  );
+}
+
+/* Explore hub — centered copy */
+.hero-cinematic--explore .hero-cinematic__text-scrim {
+  height: 100%;
+  background: linear-gradient(
+    to top,
+    rgba(25, 28, 29, 0.88) 0%,
+    rgba(25, 28, 29, 0.55) 38%,
+    rgba(25, 28, 29, 0.22) 68%,
+    transparent 100%
+  );
+}
+
+.hero-cinematic--explore .hero-cinematic__vignette {
+  background: linear-gradient(
+    165deg,
+    rgba(181, 46, 136, 0.12) 0%,
+    transparent 45%
+  );
+}
+
+/* News spotlight / category cards */
+.hero-card-overlay-vivid {
+  background: linear-gradient(
+    165deg,
+    rgba(10, 25, 47, 0.12) 0%,
+    transparent 55%
+  );
+}
+
+.hero-card-overlay-text {
+  background: linear-gradient(
+    to top,
+    rgba(8, 15, 30, 0.93) 0%,
+    rgba(8, 15, 30, 0.72) 32%,
+    rgba(8, 15, 30, 0.28) 58%,
+    transparent 100%
+  );
 }
 
 .hero-cinematic--news-dawn .hero-cinematic__glow {
@@ -2469,13 +2576,13 @@ body {
   filter: none;
 }
 
-/* Active: Ken Burns + staggered copy */
-.hero-cinematic[data-cinematic="active"] .hero-cinematic__bg {
+/* Active: Ken Burns on image only — keeps parent clip intact in Safari */
+.hero-cinematic[data-cinematic="active"] .hero-cinematic__bg img {
   animation: hero-ken-burns 18s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate;
   transform-origin: center 40%;
 }
 
-.hero-cinematic[data-cinematic="active"] .hero-cinematic__bg.is-paused {
+.hero-cinematic[data-cinematic="active"] .hero-cinematic__bg.is-paused img {
   animation-play-state: paused;
 }
 
@@ -2484,6 +2591,7 @@ body {
 }
 
 .hero-cinematic[data-cinematic="active"] .hero-cinematic__vignette,
+.hero-cinematic[data-cinematic="active"] .hero-cinematic__text-scrim,
 .hero-cinematic[data-cinematic="active"] .hero-cinematic__glow {
   animation: hero-cinematic-fade 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -2514,8 +2622,10 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .hero-cinematic[data-cinematic="active"] .hero-cinematic__bg,
+  .hero-cinematic[data-cinematic="active"] .hero-cinematic__bg img,
   .hero-cinematic[data-cinematic="active"] .hero-cinematic__shine,
   .hero-cinematic[data-cinematic="active"] .hero-cinematic__vignette,
+  .hero-cinematic[data-cinematic="active"] .hero-cinematic__text-scrim,
   .hero-cinematic[data-cinematic="active"] .hero-cinematic__glow,
   .hero-cinematic[data-cinematic="active"] .hero-cinematic__rise,
   .hero-cinematic[data-cinematic="active"] .hero-cinematic__cta {

@@ -291,28 +291,32 @@ export function ExploreHubPage() {
 
       <div className="mx-auto max-w-[1280px] px-4 pt-8 lg:px-6">
         <section className="mb-12 md:mb-16" aria-label={tExplore(language, "heroTitle")}>
+          <div className="hero-cinematic-shell overflow-hidden rounded-xl shadow-2xl ring-1 ring-black/10 sm:rounded-2xl">
           <article
             data-cinematic="active"
-            className="hero-cinematic group relative isolate z-0 overflow-hidden rounded-xl shadow-2xl ring-1 ring-black/10 sm:rounded-2xl min-h-[min(56dvh,360px)] sm:min-h-[420px] lg:min-h-[480px]"
+            className="hero-cinematic hero-cinematic--explore group relative isolate z-0 overflow-hidden min-h-[min(56dvh,360px)] sm:min-h-[420px] lg:min-h-[480px]"
           >
-          <div className="hero-cinematic__bg absolute inset-[-4%]">
-            <Image
-              src={exploreImages.hero}
-              alt={tExplore(language, "heroImageAlt")}
-              fill
-              className="object-cover"
-              priority
-              sizes="(max-width: 1280px) 100vw, 1280px"
+          <div className="hero-cinematic__media pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]">
+            <div className="hero-cinematic__bg absolute inset-[-4%]">
+              <Image
+                src={exploreImages.hero}
+                alt={tExplore(language, "heroImageAlt")}
+                fill
+                className="object-cover"
+                priority
+                sizes="(max-width: 1280px) 100vw, 1280px"
+              />
+            </div>
+            <div className="hero-cinematic__shine absolute inset-0" aria-hidden />
+            <div className="hero-cinematic__vignette absolute inset-0" aria-hidden />
+            <div className="hero-cinematic__text-scrim absolute inset-0" aria-hidden />
+            <div className="hero-cinematic__glow absolute inset-x-0 bottom-0 h-2/5" aria-hidden />
+            <div className="hero-cinematic__grain absolute inset-0 opacity-[0.14]" aria-hidden />
+            <div
+              className="absolute inset-0 bg-gradient-to-b from-[#B52E88]/18 via-transparent to-transparent"
+              aria-hidden
             />
           </div>
-          <div className="hero-cinematic__shine pointer-events-none absolute inset-0" aria-hidden />
-          <div className="hero-cinematic__vignette pointer-events-none absolute inset-0" aria-hidden />
-          <div className="hero-cinematic__glow pointer-events-none absolute inset-x-0 bottom-0 h-2/5" aria-hidden />
-          <div className="hero-cinematic__grain pointer-events-none absolute inset-0 opacity-[0.14]" aria-hidden />
-          <div
-            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#B52E88]/30 via-transparent to-black/20"
-            aria-hidden
-          />
 
           <div className="relative z-10 mx-auto flex min-h-[min(56dvh,360px)] w-full flex-col items-center justify-center px-5 text-center sm:min-h-[420px] md:px-10 lg:min-h-[480px]">
             <h1 className="hero-cinematic__rise hero-cinematic__rise--2 mb-8 text-3xl font-bold tracking-tight text-white drop-shadow-lg md:text-5xl">
@@ -380,6 +384,7 @@ export function ExploreHubPage() {
             </form>
           </div>
           </article>
+          </div>
         </section>
       </div>
 

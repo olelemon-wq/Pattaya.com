@@ -57,14 +57,12 @@ export function NewsArticlePage({ categoryItem, record }: NewsArticlePageProps) 
               alt={article.imageAlt}
               fill
               unoptimized={!isLocalAsset}
-              className="object-cover"
+              className="object-cover brightness-[1.05] saturate-[1.1]"
               sizes="(max-width: 1280px) 100vw"
               priority
             />
-            <div
-              className="absolute inset-0 bg-gradient-to-t from-[#0c1a33]/80 via-transparent to-transparent"
-              aria-hidden
-            />
+            <div className="hero-card-overlay-vivid absolute inset-0" aria-hidden />
+            <div className="hero-card-overlay-text absolute inset-x-0 bottom-0 h-[55%]" aria-hidden />
             <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6">
               <NewsBadge className={article.badgeClass}>{article.badge}</NewsBadge>
             </div>

@@ -64,12 +64,14 @@ export function OverlayFeaturedCard({
           alt=""
           fill
           unoptimized={isLocalAsset}
-          className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          className="object-cover object-center brightness-[1.05] saturate-[1.1] transition-transform duration-700 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, 33vw"
           aria-hidden
         />
       </div>
-      <div className={`absolute inset-0 z-[1] ${overlayClass}`} aria-hidden />
+      <div className="hero-card-overlay-vivid absolute inset-0 z-[1]" aria-hidden />
+      <div className="hero-card-overlay-text absolute inset-x-0 bottom-0 z-[1] h-[78%]" aria-hidden />
+      <div className={`absolute inset-0 z-[1] opacity-75 ${overlayClass}`} aria-hidden />
       <div className="relative z-10 flex flex-1 flex-col justify-between p-4 sm:p-6">
         {children}
       </div>

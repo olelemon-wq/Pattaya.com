@@ -32,14 +32,12 @@ export function NewsCategoryLead({
           alt={imageAlt}
           fill
           unoptimized={!isLocalAsset}
-          className="object-cover"
+          className="object-cover brightness-[1.05] saturate-[1.1]"
           sizes="(max-width: 1280px) 100vw"
           priority
         />
-        <div
-          className="absolute inset-0 bg-gradient-to-t from-[#0c1a33]/85 via-[#0c1a33]/35 to-transparent"
-          aria-hidden
-        />
+        <div className="hero-card-overlay-vivid absolute inset-0" aria-hidden />
+        <div className="hero-card-overlay-text absolute inset-x-0 bottom-0 h-[70%]" aria-hidden />
       </div>
       <div className="border-t border-[#f1f5f9] p-4 sm:p-5">
         <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#10438f]">

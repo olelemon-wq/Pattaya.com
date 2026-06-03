@@ -76,7 +76,7 @@ export function NewsHubPage() {
             <OverlayFeaturedCard
               image={newsImages.featuredProperty}
               imageAlt={imageAlts.featuredProperty}
-              overlayClass="bg-gradient-to-t from-[#0c1a33]/95 via-[#0c1a33]/65 to-[#0c1a33]/30"
+              overlayClass={newsOverlay.dark}
             >
               <div>
                 <div className="mb-4 flex items-start justify-between">
@@ -136,7 +136,7 @@ export function NewsHubPage() {
             <OverlayFeaturedCard
               image={newsImages.immigration}
               imageAlt={imageAlts.featuredImmigration}
-              overlayClass="bg-gradient-to-t from-[#0c1a33]/95 via-[#455f88]/70 to-[#455f88]/25"
+              overlayClass={newsOverlay.navy}
             >
               <div className="mb-2 flex items-center justify-between gap-2">
                 <div className="flex items-center gap-3">

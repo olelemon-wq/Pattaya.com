@@ -1,10 +1,11 @@
+/** Subtle color accents on news spotlight cards — readability from hero-card-overlay-text */
 export const newsOverlay = {
-  dark: "bg-gradient-to-t from-[#0c1a33]/95 via-[#0c1a33]/65 to-[#0c1a33]/30",
-  navy: "bg-gradient-to-t from-[#0c1a33]/95 via-[#455f88]/75 to-[#455f88]/30",
-  /** Visa / expat — same navy family as hub (no bright blue) */
-  blue: "bg-gradient-to-t from-[#0c1a33]/95 via-[#455f88]/75 to-[#455f88]/30",
-  amber: "bg-gradient-to-t from-[#78350f]/90 via-[#b45309]/65 to-[#d97706]/30",
-  red: "bg-gradient-to-t from-[#7f1d1d]/95 via-[#ba1a1a]/70 to-[#dc2626]/30",
-  /** Fight night — legible copy without washing out the ring photo */
-  fight: "bg-gradient-to-t from-[#0c1a33]/95 via-[#450a0a]/55 to-black/15",
+  dark: "bg-gradient-to-br from-[#0c1a33]/25 via-transparent to-transparent",
+  navy: "bg-gradient-to-br from-[#455f88]/30 via-transparent to-transparent",
+  /** Visa / expat — same navy family as hub */
+  blue: "bg-gradient-to-br from-[#455f88]/30 via-transparent to-transparent",
+  amber: "bg-gradient-to-br from-[#b45309]/25 via-transparent to-transparent",
+  red: "bg-gradient-to-br from-[#ba1a1a]/22 via-transparent to-transparent",
+  /** Fight night — warm ring tint without crushing the photo */
+  fight: "bg-gradient-to-br from-[#450a0a]/28 via-transparent to-transparent",
 } as const;
