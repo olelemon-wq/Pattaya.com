@@ -5,7 +5,7 @@ export function getHeaderNavItems(lang: LanguageCode) {
   return [
     { href: "/", label: t(lang, L("HOME", "หน้าแรก", "首页", "ГЛАВНАЯ")) },
     { href: "/news", label: t(lang, L("NEWS", "ข่าวสาร", "新闻", "НОВОСТИ")) },
-    { href: "/living", label: t(lang, L("EXPAT", "ชุมชน", "生活", "ЖИЗНЬ")) },
+    { href: "/living", label: t(lang, L("EXPAT", "ใช้ชีวิตในพัทยา", "生活", "ЖИЗНЬ")) },
     { href: "/explore", label: t(lang, L("EXPLORE", "รอบเมือง", "探索", "ПУТЕВОДИТЕЛЬ")) },
     { href: "/business", label: t(lang, L("BUSINESS", "ธุรกิจ", "商业", "БИЗНЕС")) },
     {
