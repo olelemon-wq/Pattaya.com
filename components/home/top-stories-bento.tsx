@@ -92,7 +92,7 @@ export function TopStoriesBento() {
           href="/news"
           className="text-xs font-bold text-[#10438f] transition-colors hover:text-[#f97316] sm:text-sm"
         >
-          {copy.viewAll} →
+          {copy.viewAll}
         </Link>
       </div>
 

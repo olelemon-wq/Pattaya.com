@@ -119,7 +119,7 @@ export function getHomeLivingPicks(lang: LanguageCode) {
         "Виза, медицина, жильё и безопасность — гайды на каждый день.",
       ),
     ),
-    viewAll: t(lang, L("Visit Expat hub →", "เข้าหมวดชุมชน →", "进入生活栏目 →", "Раздел «Жизнь» →")),
+    viewAll: t(lang, L("View all community", "ดูหมวดชุมชนทั้งหมด", "查看全部社区", "Весь раздел «Жизнь»")),
     viewAllHref: "/living",
     readMore: t(lang, L("Read more", "อ่านต่อ", "阅读更多", "Читать")),
     picks: [
@@ -279,7 +279,7 @@ export function getHomeGuide(lang: LanguageCode) {
         "Город от местных экспертов.",
       ),
     ),
-    exploreAll: t(lang, L("Explore All Guides →", "ดูรอบเมืองทั้งหมด →", "探索全部指南 →", "Все гайды →")),
+    exploreAll: t(lang, L("Explore All Guides", "ดูรอบเมืองทั้งหมด", "探索全部指南", "Все гайды")),
     exploreAllHref: "/explore",
     readMore: t(lang, L("Read more", "อ่านต่อ", "阅读更多", "Читать")),
     guides: [
@@ -690,7 +690,7 @@ export function getHomeBusinesses(lang: LanguageCode) {
 export function getHomeTopStories(lang: LanguageCode) {
   return {
     title: t(lang, L("Top Stories", "ข่าวเด่น", "头条", "Главное")),
-    viewAll: t(lang, L("View All", "ดูทั้งหมด", "查看全部", "Все")),
+    viewAll: t(lang, L("View all news", "ดูข่าวทั้งหมด", "查看全部新闻", "Все новости")),
     readMore: t(lang, L("Read more", "อ่านต่อ", "阅读更多", "Читать")),
     hotelTime: t(lang, L("4 hours ago", "4 ชม.ที่แล้ว", "4 小时前", "4 ч назад")),
   };

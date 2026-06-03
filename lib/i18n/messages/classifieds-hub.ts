@@ -467,7 +467,7 @@ export function getHomeClassifiedsPreview(lang: LanguageCode) {
         "Аренда, авто, работа и посты сообщества в Паттайе.",
       ),
     ),
-    viewAll: t(lang, L("View all listings →", "ดูประกาศทั้งหมด →", "查看全部信息 →", "Все объявления →")),
+    viewAll: t(lang, L("View all listings", "ดูประกาศทั้งหมด", "查看全部信息", "Все объявления")),
     viewAllHref: "/classifieds",
     viewListing: t(lang, sections.viewListing),
     listings: picks,
