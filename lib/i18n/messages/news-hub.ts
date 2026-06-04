@@ -485,6 +485,7 @@ export type HomeTopStoryCard = {
 export function getHomeTopStoriesCards(lang: LanguageCode): HomeTopStoryCard[] {
   const [sanctuary, walking, immigration] = getMoreCityArticles(lang);
   const { hotel } = getCitySpotlights(lang);
+  const [crimeArticle, , hiddenGemsArticle] = getNewsArticles(lang);
 
   const smartCity = {
     href: "/news/local-news/city-updates/pattaya-smart-city-beach-road",
@@ -630,6 +631,26 @@ export function getHomeTopStoriesCards(lang: LanguageCode): HomeTopStoryCard[] {
       time: beachClean.footer,
       detail: beachClean.detail,
       detailExtra: beachClean.detailExtra,
+    },
+    {
+      badge: crimeArticle.badge,
+      title: crimeArticle.title,
+      excerpt: crimeArticle.excerpt,
+      href: crimeArticle.href,
+      image: newsImages.policeCrime,
+      time:
+        crimeArticle.footer ??
+        t(lang, L("45 mins ago", "45 นาทีที่แล้ว", "45 分钟前", "45 мин назад")),
+      detail: crimeArticle.excerpt,
+    },
+    {
+      badge: hiddenGemsArticle.badge,
+      title: hiddenGemsArticle.title,
+      excerpt: hiddenGemsArticle.excerpt,
+      href: hiddenGemsArticle.href,
+      image: newsImages.hiddenGems,
+      time: t(lang, L("1 day ago", "1 วันที่แล้ว", "1 天前", "1 день назад")),
+      detail: hiddenGemsArticle.excerpt,
     },
   ];
 }

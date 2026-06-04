@@ -48,6 +48,42 @@ const LOCALE_BY_LANG: Record<LanguageCode, string> = {
   ru: "ru-RU",
 };
 
+export function getHomeAqi(lang: LanguageCode) {
+  return {
+    title: t(lang, L("Air Quality", "คุณภาพอากาศ", "空气质量", "Качество воздуха")),
+    location: t(lang, L("Pattaya, Chon Buri", "พัทยา ชลบุรี", "芭提雅，春武里", "Паттайя, Чонбури")),
+    pm25Label: t(lang, L("PM2.5", "PM2.5", "PM2.5", "PM2.5")),
+    pm25At: t(
+      lang,
+      L(
+        "air quality in {location}",
+        "มลพิษอากาศที่ {location}",
+        "{location}空气质量",
+        "воздух: {location}",
+      ),
+    ),
+    updated: t(lang, L("Live", "สด", "实时", "Онлайн")),
+    temp: t(lang, L("Temp", "อุณหภูมิ", "温度", "Темп.")),
+    wind: t(lang, L("Wind", "ลม", "风力", "Ветер")),
+    humidity: t(lang, L("Humidity", "ความชื้น", "湿度", "Влажн.")),
+    unavailable: t(
+      lang,
+      L("Air quality unavailable", "โหลดคุณภาพอากาศไม่ได้", "空气质量暂不可用", "Данные недоступны"),
+    ),
+    levels: {
+      good: t(lang, L("Good", "ดี", "优", "Хорошо")),
+      moderate: t(lang, L("Moderate", "ปานกลาง", "良", "Умеренно")),
+      unhealthySensitive: t(
+        lang,
+        L("Unhealthy (sensitive)", "ไม่ดีต่อกลุ่มเสี่ยง", "敏感人群不健康", "Вредно (чувств.)"),
+      ),
+      unhealthy: t(lang, L("Unhealthy", "ไม่ดีต่อสุขภาพ", "不健康", "Вредно")),
+      veryUnhealthy: t(lang, L("Very Unhealthy", "ไม่ดีมาก", "非常不健康", "Очень вредно")),
+      hazardous: t(lang, L("Hazardous", "อันตราย", "危险", "Опасно")),
+    },
+  };
+}
+
 export function getHomeWeather(lang: LanguageCode) {
   return {
     title: t(lang, L("Pattaya Weather", "สภาพอากาศพัทยา", "芭提雅天气", "Погода в Паттайе")),
@@ -69,12 +105,6 @@ export function getHomeSidebar(lang: LanguageCode) {
     viewAll: t(lang, L("VIEW ALL", "ดูทั้งหมด", "查看全部", "ВСЕ")),
     promotedEvent: t(lang, L("Promoted Event", "อีเวนต์โปรโมต", "推广活动", "Рекомендуем")),
     techMeetup: t(lang, L("Pattaya Tech Meetup", "Pattaya Tech Meetup", "芭提雅科技聚会", "Tech Meetup")),
-    trafficLive: t(lang, L("Traffic Live", "รายงานสดการจราจร", "实时交通", "Трафик")),
-    trafficUpdated: t(lang, L("Updated just now", "อัปเดตเมื่อสักครู่", "刚刚更新", "Только что")),
-    trafficViewAll: t(lang, L("Transport", "การเดินทาง", "交通", "Транспорт")),
-    clear: t(lang, L("Clear", "คล่องตัว", "畅通", "Свободно")),
-    moderate: t(lang, L("Moderate", "ปานกลาง", "中等", "Умеренно")),
-    onSchedule: t(lang, L("On Schedule", "ตรงเวลา", "准点", "По расписанию")),
     events: [
       {
         date: "OCT 24",
@@ -83,29 +113,6 @@ export function getHomeSidebar(lang: LanguageCode) {
       {
         date: "OCT 26",
         title: t(lang, L("Yacht Show 2024", "Yacht Show 2024", "2024 游艇展", "Yacht Show 2024")),
-      },
-    ],
-    traffic: [
-      {
-        road: "Sukhumvit Rd.",
-        status: t(lang, L("Clear", "คล่องตัว", "畅通", "Свободно")),
-        tone: "success" as const,
-        kind: "road" as const,
-        href: "/living/transportation/driving",
-      },
-      {
-        road: "Walking Street",
-        status: t(lang, L("Moderate", "ปานกลาง", "中等", "Умеренно")),
-        tone: "warning" as const,
-        kind: "road" as const,
-        href: "/explore/beaches/pattaya-beach",
-      },
-      {
-        road: "UTP Airport",
-        status: t(lang, L("On Schedule", "ตรงเวลา", "准点", "По расписанию")),
-        tone: "neutral" as const,
-        kind: "airport" as const,
-        href: "/living/transportation/ride-apps",
       },
     ],
   };
@@ -696,6 +703,8 @@ export function getHomeTopStories(lang: LanguageCode) {
     title: t(lang, L("Top Stories", "ข่าวเด่น", "头条", "Главное")),
     viewAll: t(lang, L("View all news", "ดูข่าวทั้งหมด", "查看全部新闻", "Все новости")),
     readMore: t(lang, L("Read more", "อ่านต่อ", "阅读更多", "Читать")),
+    prev: t(lang, L("Previous stories", "ข่าวก่อนหน้า", "上一组", "Предыдущие")),
+    next: t(lang, L("Next stories", "ข่าวถัดไป", "下一组", "Следующие")),
     hotelTime: t(lang, L("4 hours ago", "4 ชม.ที่แล้ว", "4 小时前", "4 ч назад")),
   };
 }

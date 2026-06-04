@@ -19,4 +19,5 @@ export const eventsImages = {
   familyPark: exploreImages.aquaverse,
   wellness: exploreImages.auraSanctuary,
   foodFestival: exploreImages.cafeLifestyle,
+  golf: newsImages.golf,
 } as const;

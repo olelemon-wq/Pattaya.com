@@ -2,16 +2,11 @@
 
 import Link from "next/link";
 import { FeaturedHeroCinematic } from "@/components/home/featured-hero-cinematic";
+import { PattayaAqiWidget } from "@/components/home/pattaya-aqi-widget";
 import { PattayaWeatherWidget } from "@/components/home/pattaya-weather-widget";
 import { useLanguage } from "@/components/layout/language-provider";
 import { getHomeSidebar } from "@/lib/i18n/messages/home-hub";
-import {
-  CalendarDays,
-  Car,
-  Plane,
-  Radio,
-  Sparkles,
-} from "lucide-react";
+import { CalendarDays, Sparkles } from "lucide-react";
 
 function parseEventDate(date: string) {
   const [month, day] = date.trim().split(/\s+/);
@@ -93,89 +88,6 @@ function EventsTodayCard({
   );
 }
 
-const toneBar: Record<"success" | "warning" | "neutral", string> = {
-  success: "bg-[#22c55e]",
-  warning: "bg-[#f97316]",
-  neutral: "bg-[#94a3b8]",
-};
-
-const tonePill: Record<"success" | "warning" | "neutral", string> = {
-  success: "bg-[#dcfce7] text-[#15803d]",
-  warning: "bg-[#ffedd5] text-[#c2410c] motion-safe:animate-pulse",
-  neutral: "bg-[#e2e8f0] text-[#475569]",
-};
-
-function TrafficLiveCard({
-  trafficLive,
-  trafficUpdated,
-  trafficViewAll,
-  traffic,
-}: ReturnType<typeof getHomeSidebar>) {
-  return (
-    <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white shadow-sm">
-      <div className="flex items-center justify-between gap-2 border-b border-[#bbf7d0]/70 bg-gradient-to-r from-[#ecfdf5] via-[#bbf7d0]/35 to-white px-4 py-3.5">
-        <div className="flex min-w-0 items-center gap-2.5">
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#15803d]/15 text-[#15803d] ring-1 ring-[#86efac]/70">
-            <Radio className="h-4 w-4" strokeWidth={2.25} aria-hidden />
-          </span>
-          <div className="flex min-w-0 items-center gap-1.5">
-            <h2 className="truncate text-base font-extrabold tracking-tight text-[#0c1a33]">
-              {trafficLive}
-            </h2>
-            <span className="relative flex h-2 w-2 shrink-0" aria-hidden>
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#22c55e] opacity-50 motion-reduce:animate-none" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#22c55e]" />
-            </span>
-          </div>
-        </div>
-        <div className="shrink-0 text-right">
-          <p className="text-[9px] font-bold uppercase tracking-wide text-[#15803d]/90">
-            {trafficUpdated}
-          </p>
-          <Link
-            href="/living/transportation/songthaew"
-            className="text-[11px] font-bold text-[#0c1a33] transition-colors hover:text-[#15803d]"
-          >
-            {trafficViewAll}
-          </Link>
-        </div>
-      </div>
-
-      <ul className="flex flex-1 flex-col justify-center divide-y divide-[#f1f5f9] px-3 py-3">
-        {traffic.map((item) => {
-          const Icon = item.kind === "airport" ? Plane : Car;
-          return (
-            <li key={item.road}>
-              <Link
-                href={item.href}
-                className="group flex items-center gap-2.5 rounded-xl py-2 pl-1 pr-1 transition-colors hover:bg-[#f8fafc]"
-              >
-                <span
-                  className={`w-1 shrink-0 self-stretch rounded-full ${toneBar[item.tone]}`}
-                  aria-hidden
-                />
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#f8fafc] text-[#475569] ring-1 ring-[#e2e8f0]">
-                  <Icon className="h-4 w-4" strokeWidth={2} aria-hidden />
-                </span>
-                <span className="min-w-0 flex-1">
-                  <span className="block truncate text-xs font-semibold text-[#0c1a33] group-hover:text-[#15803d]">
-                    {item.road}
-                  </span>
-                </span>
-                <span
-                  className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold ${tonePill[item.tone]}`}
-                >
-                  {item.status}
-                </span>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
-  );
-}
-
 export function HeroWithSidebar() {
   const { language } = useLanguage();
   const sidebar = getHomeSidebar(language);
@@ -189,7 +101,9 @@ export function HeroWithSidebar() {
         <div className="h-full min-h-0">
           <PattayaWeatherWidget />
         </div>
-        <TrafficLiveCard {...sidebar} />
+        <div className="h-full min-h-0">
+          <PattayaAqiWidget />
+        </div>
       </div>
     </section>
   );

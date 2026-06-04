@@ -41,7 +41,7 @@ export type FeaturedHeroCinematicProps = {
   image: string;
   imageAlt: string;
   href: string;
-  category: string;
+  category?: string;
   title: string;
   excerpt: string;
   featuredLabel?: string;
@@ -154,11 +154,13 @@ export function FeaturedHeroCinematic({
           >
             {featuredLabel}
           </span>
-          <span
-            className={`hero-cinematic__rise hero-cinematic__rise--1 inline-flex w-fit items-center rounded-full border px-3 py-1 backdrop-blur-md sm:px-3.5 sm:py-1.5 ${heroMetaPillText} ${categoryPillClass(visualTone)}`}
-          >
-            {category}
-          </span>
+          {category ? (
+            <span
+              className={`hero-cinematic__rise hero-cinematic__rise--1 inline-flex w-fit items-center rounded-full border px-3 py-1 backdrop-blur-md sm:px-3.5 sm:py-1.5 ${heroMetaPillText} ${categoryPillClass(visualTone)}`}
+            >
+              {category}
+            </span>
+          ) : null}
           {showAiSummary && (
             <span className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-[10px] font-medium text-white backdrop-blur-md">
               AI Summary

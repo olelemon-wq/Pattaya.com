@@ -7,15 +7,7 @@ import type { EventsHubEventPreview } from "@/lib/i18n/messages/events-hub";
 import { HomeCardCtaButton } from "@/components/home/home-card-cta-button";
 import { getHomeEventsWeek } from "@/lib/i18n/messages/events-hub";
 
-const categoryStyles: Record<EventsHubEventPreview["category"], string> = {
-  festival: "text-[#c2410c]",
-  market: "text-[#b91c1c]",
-  nightlife: "text-[#6d28d9]",
-  food: "text-[#be185d]",
-  family: "text-[#1d4ed8]",
-  business: "text-[#334155]",
-  sports: "text-[#15803d]",
-};
+import { eventCategoryTextStyles } from "@/lib/events/event-category-styles";
 
 function EventCard({ event, cta }: { event: EventsHubEventPreview; cta: string }) {
   return (
@@ -34,7 +26,7 @@ function EventCard({ event, cta }: { event: EventsHubEventPreview; cta: string }
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0c1a33]/70 via-[#0c1a33]/10 to-transparent" />
         <span
-          className={`absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide ${categoryStyles[event.category]}`}
+          className={`absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide ${eventCategoryTextStyles[event.category]}`}
         >
           {event.categoryLabel}
         </span>
